@@ -22,6 +22,19 @@ test "independent Python integer fixtures through 512 bits" {
       Some(@oracle.binary_from_hex("b")),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("165963e8")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(@oracle.binary_from_hex("a02eda1d"))
@@ -43,6 +56,19 @@ test "independent Python integer fixtures through 512 bits" {
       Some(@oracle.binary_from_hex("1405db")),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("a02eda1d")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(@oracle.binary_from_hex("9d4ea394"))
@@ -64,6 +90,19 @@ test "independent Python integer fixtures through 512 bits" {
       Some(@oracle.binary_from_hex("0")),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("9d4ea394")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(@oracle.binary_from_hex("f02bdc172d633ba5"))
@@ -88,6 +127,19 @@ test "independent Python integer fixtures through 512 bits" {
       subtract(a, b),
       Some(from_binary(@oracle.binary_from_hex("a70984d7d8c74329"))),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("3")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("14c4d6592f8f5231")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(@oracle.binary_from_hex("a31afb7dd93d6aac"))
@@ -112,6 +164,19 @@ test "independent Python integer fixtures through 512 bits" {
       subtract(a, b),
       Some(from_binary(@oracle.binary_from_hex("942cdfad6d2c626d"))),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("a")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("dcde559a0931836")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(@oracle.binary_from_hex("21649e45ce3989f9"))
@@ -133,6 +198,19 @@ test "independent Python integer fixtures through 512 bits" {
       Some(@oracle.binary_from_hex("85")),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("21649e45ce3989f9")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -169,6 +247,19 @@ test "independent Python integer fixtures through 512 bits" {
         from_binary(@oracle.binary_from_hex("860f036c4c8fb7636890cadfa1d0eaf1")),
       ),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("3")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("10a3609d1f5beba28197f4e2f40952f3")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -207,6 +298,19 @@ test "independent Python integer fixtures through 512 bits" {
         from_binary(@oracle.binary_from_hex("8cac65997e2b2a50dce389aa3b4e73aa")),
       ),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("3")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("13e11b999e7a07f238d4fb560031da2a")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -243,6 +347,19 @@ test "independent Python integer fixtures through 512 bits" {
         from_binary(@oracle.binary_from_hex("a1409c19c5009d5b6053f3d9351143a7")),
       ),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("1d")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("244784e3806b5203c03bc4c2dbbea7f")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -293,6 +410,23 @@ test "independent Python integer fixtures through 512 bits" {
         ),
       ),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("5a")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "287d83d50e05ee7c6502f575fe32d5c10982d36045c52608986ba8fdcb1c5dc",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -343,6 +477,23 @@ test "independent Python integer fixtures through 512 bits" {
         ),
       ),
     )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("1")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "606e5cac0fee08d68153db8ff1d43e2986efd357dc5d7ec3d9d80d61a19cf69a",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -384,6 +535,23 @@ test "independent Python integer fixtures through 512 bits" {
       Some(@oracle.binary_from_hex("1ae7bd566b1001d8f")),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "35cf7aacd62003b1fcb6a6da6ac8bec9bfa8f6893b2140eedd664be7e17f519",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -429,6 +597,23 @@ test "independent Python integer fixtures through 512 bits" {
       ),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "9827b06441ee0773533550d362f3658fcc8387c073d8b1d894fe4478b6ee9768c525c42157f7c4c8dc948d4016a790b1caacae7f6570e41aaffb0dad6028353a",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   {
     let a = from_binary(
@@ -474,22 +659,218 @@ test "independent Python integer fixtures through 512 bits" {
       ),
     )
     assert_eq(subtract(a, b), None)
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "8576cfcbac8b3932133e9d2d0c0a09d0e847e7d6dd370edda21346f9155e7cd21e6fc8a0c188b149633da4c9648939f6a6cc51be26a2e73a7eabbb4eb593ad92",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
+  }
+  {
+    let a = from_binary(
+      @oracle.binary_from_hex(
+        "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f4b77bca1228857f1191dba6a6184c65dddf9409e10f1b402e0630d43a085bf4",
+      ),
+    )
+    let b = from_binary(
+      @oracle.binary_from_hex(
+        "5a328540fe6c58e0c26808544a279b684f336e231ebee28c9c2f6c8cd3839eaf82538e6ed875e56c297e9815babc231024941e7b9851a1fc53c42485266ea27",
+      ),
+    )
+    assert_eq(
+      expand(add(a, b), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "fa1b9cae7154b951c832fd33f9541a5548cbca6c9b7913f40be994fe8be07b3fecdcb4b0ffafe3d5d429c52801c40e96e028d5f19a94355ff342731c8c6f461b",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(multiply(a, b), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "562297af256eb585b55073c9613a86169427838dc91a5431e5e28179d5c11d581d86b929aba598e70bbbdf271be560ef1541067a589aad26fb55c833306a4bde04fb6636ebd42ced05f16b0b0d484ea58fe55bb7e502f63c17c3a814e38127a8980ce480f9601a6893cb4b2882a9820d5827078c95e88dee5f7fec9468b0a2c",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(shift_left(a, @oracle.binary(252)), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f4b77bca1228857f1191dba6a6184c65dddf9409e10f1b402e0630d43a085bf4000000000000000000000000000000000000000000000000000000000000000",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(shift_right(a, @oracle.binary(252)), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f",
+        ),
+      ),
+    )
+    assert_eq(
+      subtract(a, b),
+      Some(
+        from_binary(
+          @oracle.binary_from_hex(
+            "eed54c0651872e35afe5fc29700f26e83ee55ca837a137a27863a76cf1700769fc9242e324a127284ef9f2254a6c8a34db965222278a012068c9ee8be7a171cd",
+          ),
+        ),
+      ),
+    )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("2b")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "210ae3bb5aac4e7b194e64c2d672ef66efe5b8c06ec24f15e672a7b463686dd4676ed002c6bacec620da2ec403eae2a7b91821db7b3b7ea0ce70eae62bf0767",
+            ),
+          ),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
+  }
+  {
+    let a = from_binary(
+      @oracle.binary_from_hex("ffffffffffffffffffffffffffffffff"),
+    )
+    let b = from_binary(@oracle.binary_from_hex("3"))
+    assert_eq(
+      expand(add(a, b), @oracle.binary(2048)),
+      Some(@oracle.binary_from_hex("100000000000000000000000000000002")),
+    )
+    assert_eq(
+      expand(multiply(a, b), @oracle.binary(2048)),
+      Some(@oracle.binary_from_hex("2fffffffffffffffffffffffffffffffd")),
+    )
+    assert_eq(
+      expand(shift_left(a, @oracle.binary(64)), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "ffffffffffffffffffffffffffffffff0000000000000000",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(shift_right(a, @oracle.binary(64)), @oracle.binary(2048)),
+      Some(@oracle.binary_from_hex("ffffffffffffffff")),
+    )
+    assert_eq(
+      subtract(a, b),
+      Some(
+        from_binary(@oracle.binary_from_hex("fffffffffffffffffffffffffffffffc")),
+      ),
+    )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("55555555555555555555555555555555")),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("0")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
+  }
+  {
+    let a = from_binary(
+      @oracle.binary_from_hex(
+        "10000000000000000000000000000000008000000000000000000000000000009",
+      ),
+    )
+    let b = from_binary(@oracle.binary_from_hex("61"))
+    assert_eq(
+      expand(add(a, b), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "1000000000000000000000000000000000800000000000000000000000000006a",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(multiply(a, b), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "610000000000000000000000000000000308000000000000000000000000000369",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(shift_left(a, @oracle.binary(130)), @oracle.binary(2048)),
+      Some(
+        @oracle.binary_from_hex(
+          "4000000000000000000000000000000002000000000000000000000000000002400000000000000000000000000000000",
+        ),
+      ),
+    )
+    assert_eq(
+      expand(shift_right(a, @oracle.binary(130)), @oracle.binary(2048)),
+      Some(@oracle.binary_from_hex("40000000000000000000000000000000")),
+    )
+    assert_eq(
+      subtract(a, b),
+      Some(
+        from_binary(
+          @oracle.binary_from_hex(
+            "10000000000000000000000000000000007ffffffffffffffffffffffffffffa8",
+          ),
+        ),
+      ),
+    )
+    match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+      Divided(result) => {
+        assert_eq(
+          expand(quotient(result), @oracle.binary(2048)),
+          Some(
+            @oracle.binary_from_hex(
+              "2a3a0fd5c5f02a3a0fd5c5f02a3a0fd5c741fab8be054741fab8be054741fab",
+            ),
+          ),
+        )
+        assert_eq(
+          expand(remainder(result), @oracle.binary(2048)),
+          Some(@oracle.binary_from_hex("3e")),
+        )
+      }
+      _ => fail("Python division fixture did not finish")
+    }
   }
   let a = from_binary(
     @oracle.binary_from_hex(
-      "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f4b77bca1228857f1191dba6a6184c65dddf9409e10f1b402e0630d43a085bf4",
+      "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     ),
   )
   let b = from_binary(
     @oracle.binary_from_hex(
-      "5a328540fe6c58e0c26808544a279b684f336e231ebee28c9c2f6c8cd3839eaf82538e6ed875e56c297e9815babc231024941e7b9851a1fc53c42485266ea27",
+      "8000000000000000000000000000000000000000000000000000000000000003",
     ),
   )
   assert_eq(
     expand(add(a, b), @oracle.binary(2048)),
     Some(
       @oracle.binary_from_hex(
-        "fa1b9cae7154b951c832fd33f9541a5548cbca6c9b7913f40be994fe8be07b3fecdcb4b0ffafe3d5d429c52801c40e96e028d5f19a94355ff342731c8c6f461b",
+        "100000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000002",
       ),
     ),
   )
@@ -497,23 +878,23 @@ test "independent Python integer fixtures through 512 bits" {
     expand(multiply(a, b), @oracle.binary(2048)),
     Some(
       @oracle.binary_from_hex(
-        "562297af256eb585b55073c9613a86169427838dc91a5431e5e28179d5c11d581d86b929aba598e70bbbdf271be560ef1541067a589aad26fb55c833306a4bde04fb6636ebd42ced05f16b0b0d484ea58fe55bb7e502f63c17c3a814e38127a8980ce480f9601a6893cb4b2882a9820d5827078c95e88dee5f7fec9468b0a2c",
+        "8000000000000000000000000000000000000000000000000000000000000002ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd",
       ),
     ),
   )
   assert_eq(
-    expand(shift_left(a, @oracle.binary(252)), @oracle.binary(2048)),
+    expand(shift_left(a, @oracle.binary(256)), @oracle.binary(2048)),
     Some(
       @oracle.binary_from_hex(
-        "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f4b77bca1228857f1191dba6a6184c65dddf9409e10f1b402e0630d43a085bf4000000000000000000000000000000000000000000000000000000000000000",
+        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000000000000000000000000000000000000000000000000000000000",
       ),
     ),
   )
   assert_eq(
-    expand(shift_right(a, @oracle.binary(252)), @oracle.binary(2048)),
+    expand(shift_right(a, @oracle.binary(256)), @oracle.binary(2048)),
     Some(
       @oracle.binary_from_hex(
-        "f478745a616df3c3bc0c7caeb4b1a09ec3d8938a698d25cb42269e35bea84154f",
+        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       ),
     ),
   )
@@ -522,9 +903,26 @@ test "independent Python integer fixtures through 512 bits" {
     Some(
       from_binary(
         @oracle.binary_from_hex(
-          "eed54c0651872e35afe5fc29700f26e83ee55ca837a137a27863a76cf1700769fc9242e324a127284ef9f2254a6c8a34db965222278a012068c9ee8be7a171cd",
+          "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc",
         ),
       ),
     ),
   )
+  match run_division(start_division(a, b).unwrap(), @oracle.nat(2048)) {
+    Divided(result) => {
+      assert_eq(
+        expand(quotient(result), @oracle.binary(2048)),
+        Some(
+          @oracle.binary_from_hex(
+            "1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff4",
+          ),
+        ),
+      )
+      assert_eq(
+        expand(remainder(result), @oracle.binary(2048)),
+        Some(@oracle.binary_from_hex("23")),
+      )
+    }
+    _ => fail("Python division fixture did not finish")
+  }
 }

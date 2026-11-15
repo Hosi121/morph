@@ -50,8 +50,8 @@ CPU固定なし、他agentが動作する環境。一般の数や全backendで�
 生ログ：[runbinary-native.txt](../measurements/runbinary-native.txt)。
 
 0〜127の全16,384対をnative整数算術と比較し、shift/pair/underflow/正規化/展開上限も検査した。
-Pythonの任意精度整数から生成した15組の32〜512bit fixtureは、加減乗算とshiftを別途照合する。
-6通常テストがWasm GC/JS/nativeで通過。巨大な例は圧縮された式の等式検査であり、
+Pythonの任意精度整数から生成した18組の32〜512bit fixtureは、加減乗除算とshiftを別途照合する。
+基本6＋除算3通常テストがWasm GC/JS/nativeで通過。巨大な例は圧縮された式の等式検査であり、
 展開した全bitを第三者の整数ライブラリと比べたものではない。
 
 ```sh
@@ -59,3 +59,26 @@ tools/moon test src/runbinary --target native
 tools/moon bench src/runbinary --target native --release
 python3 tools/generate_runbinary.py
 ```
+
+## 展開しないsplit、燃料付き除算
+
+`split_at(value,k)`は下位k bitと残りをrunの境界で分け、
+`value=low+(high<<k)`を満たす。kもBinaryなので、幅をNatへ展開する必要がない。
+2の冪による除算はこのsplitで一遷移で終わる。
+たとえば`2^(2^1000) / 2^(2^999)`を実際に計算し、商が`2^(2^999)`、余り0と照合した。
+
+一般の除算はbit幅から除数を上位へ合わせ、引ける最大の二進位置を商へ足す。
+`start_division`/`step_division`/`run_division`は途中状態と燃料を明示し、
+`Divided`を返す前に探索と異なる`q*b+r=a`および`0<=r<b`のcheckerを通す。
+0除算はconstructorで拒否する。燃料は遷移数で、時間やBool操作数ではない。
+
+圧縮入力から短い出力が得られるとは限らない。
+`(2^E−1)/3`の商は長い交互bit列になり得るため、圧縮サイズに対する高速性は主張しない。
+E=2^1000の例は3遷移で停止させ、商・残りが元の式を保っていることだけを検査する。
+0〜127×除数1〜63の8,064問題、Pythonの18fixture、fuel分割を別に照合した。
+
+専用の`mersenne_gcd`は、非零の全1-run二数について
+`gcd(2^a−1,2^b−1)=2^gcd(a,b)−1`を使う。
+指数にEuclidを適用して一runの結果を作り、巨大なbit列を生成しない。
+根拠は`2^b≡1 mod(2^b−1)`による指数の剰余への縮小である。
+一般の入力のGCDをこの関数で代用することはなく、適用できなければNoneを返す。

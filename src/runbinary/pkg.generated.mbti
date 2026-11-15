@@ -10,7 +10,11 @@ import {
 // Values
 pub fn add(Number, Number) -> Number
 
+pub fn check_division(Number, Number, Number, Number) -> Division?
+
 pub fn compare(Number, Number) -> @core.Ordering
+
+pub fn division_transitions(DivisionSearch) -> @core.Nat
 
 pub fn expand(Number, @binary.Binary) -> @binary.Binary?
 
@@ -20,6 +24,8 @@ pub fn from_runs(@core.Chain[Run]) -> Number
 
 pub fn is_zero(Number) -> Bool
 
+pub fn mersenne_gcd(Number, Number) -> Number?
+
 pub fn multiply(Number, Number) -> Number
 
 pub fn one() -> Number
@@ -28,11 +34,23 @@ pub fn pair(@binary.Binary, Number) -> Number
 
 pub fn power_of_two(@binary.Binary) -> Number
 
+pub fn quotient(Division) -> Number
+
+pub fn remainder(Division) -> Number
+
+pub fn run_division(DivisionSearch, @core.Nat) -> DivisionStatus
+
 pub fn runs(Number) -> @core.Chain[Run]
 
 pub fn shift_left(Number, @binary.Binary) -> Number
 
 pub fn shift_right(Number, @binary.Binary) -> Number
+
+pub fn split_at(Number, @binary.Binary) -> (Number, Number)
+
+pub fn start_division(Number, Number) -> DivisionSearch?
+
+pub fn step_division(DivisionSearch) -> DivisionStatus
 
 pub fn subtract(Number, Number) -> Number?
 
@@ -47,6 +65,39 @@ pub fn zero() -> Number
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Division {
+  dividend : Number
+  divisor : Number
+  quotient : Number
+  remainder : Number
+}
+pub fn Division::equal(Self, Self) -> Bool
+pub fn Division::not_equal(Self, Self) -> Bool
+pub fn Division::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct DivisionSearch {
+  dividend : Number
+  divisor : Number
+  quotient : Number
+  remainder : Number
+  transitions : @core.Nat
+}
+pub fn DivisionSearch::equal(Self, Self) -> Bool
+pub fn DivisionSearch::not_equal(Self, Self) -> Bool
+pub fn DivisionSearch::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum DivisionStatus {
+  Divided(Division)
+  DivisionPaused(DivisionSearch)
+  DivisionFault(DivisionSearch)
+}
+pub fn DivisionStatus::equal(Self, Self) -> Bool
+pub fn DivisionStatus::not_equal(Self, Self) -> Bool
+pub fn DivisionStatus::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Number {
   runs : @core.Chain[Run]
