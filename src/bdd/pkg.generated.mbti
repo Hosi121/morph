@@ -1,0 +1,59 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bdd"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/circuit",
+  "Hosi121/morph/core",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn allocated_count(Diagram) -> @binary.Binary
+
+pub fn apply(Operation, Diagram, Diagram) -> Diagram?
+
+pub fn compile(@circuit.Expr, @core.Chain[@core.Nat]) -> Diagram?
+
+pub fn equivalent(Diagram, Diagram) -> Bool?
+
+pub fn evaluate(Diagram, @core.Chain[@sat.Literal]) -> Bool?
+
+pub fn negate(Diagram) -> Diagram?
+
+pub fn node_count(Diagram) -> @core.Nat?
+
+pub fn order(Diagram) -> @core.Chain[@core.Nat]
+
+pub fn pick_model(Diagram) -> @core.Chain[@sat.Literal]?
+
+pub fn restrict(Diagram, @sat.Literal) -> Diagram?
+
+pub fn valid(Diagram) -> Bool
+
+// Errors
+
+// Types and methods
+pub struct Diagram {
+  manager : Manager
+  root : Edge
+}
+
+type Edge
+
+type Manager
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Operation {
+  Conjunction
+  Disjunction
+  Exclusive
+}
+pub fn Operation::equal(Self, Self) -> Bool
+pub fn Operation::not_equal(Self, Self) -> Bool
+pub fn Operation::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
