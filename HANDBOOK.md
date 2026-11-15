@@ -302,3 +302,18 @@ DPLL は unit propagation、pure literal elimination、二分岐を使う。
 最悪は指数時間であり、watched literals や CDCL 学習は実装していない。
 
 原典：[Davis–Logemann–Loveland, A Machine Program for Theorem-Proving (1962)](https://cs.stanford.edu/content/contacting-donald-knuth/siam-final.pdf)。
+
+## 一階単一化と occurs check
+
+`Term[S] = Variable(Nat) | Node(S, Chain[Term[S]])`。
+変数と構成子の記号を別の型で表し、構成子のアルファベット自体もパラメータにした。
+単一化では構成子を分解し、変数を束縛し、既存の置換の値域にも新しい束縛を反映する。
+置換は外から構築できないので、非循環・冪等という不変条件を守れる。
+既存置換に新しい等式を追加する `unify_into` も用意した。
+
+変数が自分を含む項と結ばれると有限項では解を持たないため occurs check で拒否。
+構成子名の不一致と引数数の不一致は別のエラーにする。
+直接・間接の循環、置換の合成、44項からなる全1936組で、成功した置換が
+等式を満たし、二度適用しても変わらないことを確認した。
+このテストは最汎性の形式証明ではない。算法は分解・束縛による通常の一階単一化で、
+高階単一化や rational tree の循環項は対象にしていない。

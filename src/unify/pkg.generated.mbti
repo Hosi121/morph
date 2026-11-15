@@ -1,0 +1,56 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/unify"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[S] apply(Substitution[S], Term[S]) -> Term[S]
+
+pub fn[S] bindings(Substitution[S]) -> @core.Chain[(@core.Nat, Term[S])]
+
+pub fn[S] empty() -> Substitution[S]
+
+pub fn[S] free_variables(Term[S]) -> @core.Chain[@core.Nat]
+
+pub fn[S] occurs(@core.Nat, Term[S]) -> Bool
+
+pub fn[S] unify(@core.Chain[(Term[S], Term[S])], (S, S) -> Bool) -> Result[Substitution[S], UnifyError[S]]
+
+pub fn[S] unify_into(Substitution[S], @core.Chain[(Term[S], Term[S])], (S, S) -> Bool) -> Result[Substitution[S], UnifyError[S]]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Substitution[S] {
+  bindings : @core.Chain[(@core.Nat, Term[S])]
+}
+pub fn[S : Eq] Substitution::equal(Self[S], Self[S]) -> Bool
+pub fn[S : Eq] Substitution::not_equal(Self[S], Self[S]) -> Bool
+pub fn[S : @debug.Debug] Substitution::to_repr(Self[S]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Term[S] {
+  Variable(@core.Nat)
+  Node(S, @core.Chain[Term[S]])
+}
+pub fn[S : Eq] Term::equal(Self[S], Self[S]) -> Bool
+pub fn[S : Eq] Term::not_equal(Self[S], Self[S]) -> Bool
+pub fn[S : @debug.Debug] Term::to_repr(Self[S]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum UnifyError[S] {
+  OccursCheck(@core.Nat, Term[S])
+  SymbolMismatch(S, S)
+  ArityMismatch
+}
+pub fn[S : Eq] UnifyError::equal(Self[S], Self[S]) -> Bool
+pub fn[S : Eq] UnifyError::not_equal(Self[S], Self[S]) -> Bool
+pub fn[S : @debug.Debug] UnifyError::to_repr(Self[S]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
