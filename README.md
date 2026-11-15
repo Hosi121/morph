@@ -51,6 +51,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](src/polynomial/polynomial.mbt) |
 | 計算代数 | [再開可能なBuchberger・既約Gröbner基底](src/groebner/groebner.mbt) |
+| 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](src/sturm/sturm.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](src/autodiff/expression.mbt)・[前向き/逆向き自動微分](src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](src/geometry/geometry.mbt) |
 

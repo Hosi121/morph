@@ -1,0 +1,88 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/sturm"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Isolation, @core.Nat) -> Progress
+
+pub fn bound(System) -> @exact.Rational
+
+pub fn check_isolation(System, @core.Chain[Interval]) -> Bool
+
+pub fn count_all(System) -> @core.Nat
+
+pub fn count_between(System, @exact.Rational, @exact.Rational) -> @core.Nat?
+
+pub fn isolate(System) -> Isolation
+
+pub fn refine(System, Interval, @core.Nat) -> Interval?
+
+pub fn squarefree(System) -> @polynomial.Polynomial
+
+pub fn system(@polynomial.Polynomial) -> Result[System, BuildError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum BuildError {
+  NotUnivariate
+  ZeroPolynomial
+  PolynomialFailure
+}
+pub fn BuildError::equal(Self, Self) -> Bool
+pub fn BuildError::not_equal(Self, Self) -> Bool
+pub fn BuildError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Interval {
+  lower : @exact.Rational
+  upper : @exact.Rational
+}
+pub fn Interval::equal(Self, Self) -> Bool
+pub fn Interval::not_equal(Self, Self) -> Bool
+pub fn Interval::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Isolation {
+  system : System
+  pending : @core.Chain[Span]
+  accepted : @core.Chain[Interval]
+}
+pub fn Isolation::equal(Self, Self) -> Bool
+pub fn Isolation::not_equal(Self, Self) -> Bool
+pub fn Isolation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Isolated(@core.Chain[Interval])
+  Paused(Isolation)
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Span
+pub fn Span::equal(Self, Self) -> Bool
+pub fn Span::not_equal(Self, Self) -> Bool
+pub fn Span::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct System {
+  squarefree : @polynomial.Polynomial
+  sequence : @core.Chain[@polynomial.Polynomial]
+}
+pub fn System::equal(Self, Self) -> Bool
+pub fn System::not_equal(Self, Self) -> Bool
+pub fn System::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
