@@ -29,6 +29,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | FFT | [画像の12等式に対応するFFTと直接DFT](src/fft/fft.mbt) |
 | 剰余算術 | [平方反復・拡張Euclid・逆元・素数判定](src/modular/modular.mbt)・[一般化CRT](src/modular/crt.mbt)・[小さなRSA](src/modular/rsa.mbt) |
 | 有限体 | [Euler判定・Tonelli–Shanksの剰余平方根](src/finitefield/sqrt.mbt) |
+| 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](src/elliptic/elliptic.mbt) |
 | NTT | [有限体変換・逆変換・線形畳み込み](src/ntt/ntt.mbt) |
 | 行列 | [半環](src/algebra/algebra.mbt)・[行列積・累乗・Warshall](src/matrix/matrix.mbt) |
 | 線形代数 | [Gauss–Jordan・行列式・逆行列・解空間](src/linear/linear.mbt) |

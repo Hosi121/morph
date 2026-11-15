@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/elliptic"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/finitefield",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Point, Point) -> Point?
+
+pub fn compress(Point) -> Compressed
+
+pub fn coordinates(Point) -> Coordinates
+
+pub fn curve(@finitefield.Field, @binary.Binary, @binary.Binary) -> Curve?
+
+pub fn decompress(Curve, Compressed) -> Point?
+
+pub fn infinity(Curve) -> Point
+
+pub fn negate(Point) -> Point
+
+pub fn point(Curve, @binary.Binary, @binary.Binary) -> Point?
+
+pub fn scale(Point, @binary.Binary) -> Point?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Compressed {
+  AtInfinity
+  XParity(@binary.Binary, Bool)
+}
+pub fn Compressed::equal(Self, Self) -> Bool
+pub fn Compressed::not_equal(Self, Self) -> Bool
+pub fn Compressed::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Coordinates {
+  Infinity
+  Affine(@binary.Binary, @binary.Binary)
+}
+pub fn Coordinates::equal(Self, Self) -> Bool
+pub fn Coordinates::not_equal(Self, Self) -> Bool
+pub fn Coordinates::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Curve {
+  field : @finitefield.Field
+  a : @binary.Binary
+  b : @binary.Binary
+}
+pub fn Curve::equal(Self, Self) -> Bool
+pub fn Curve::not_equal(Self, Self) -> Bool
+pub fn Curve::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Point {
+  curve : Curve
+  coordinates : Coordinates
+}
+pub fn Point::equal(Self, Self) -> Bool
+pub fn Point::not_equal(Self, Self) -> Bool
+pub fn Point::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
