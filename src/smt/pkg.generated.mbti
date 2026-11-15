@@ -1,0 +1,110 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/smt"
+
+import {
+  "Hosi121/morph/cdcl",
+  "Hosi121/morph/core",
+  "Hosi121/morph/difference",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn atoms(Problem) -> @core.Chain[Atom]
+
+pub fn booleans(Model) -> @core.Chain[@sat.Literal]
+
+pub fn check_model(Problem, Model) -> Bool
+
+pub fn check_refutation(Problem, Refutation) -> Bool
+
+pub fn cnf(Problem) -> @core.Chain[@core.Chain[@sat.Literal]]
+
+pub fn differences(@core.Chain[@difference.Constraint], @core.Chain[@core.Chain[@sat.Literal]]) -> Problem?
+
+pub fn integers(Model) -> @difference.Solution
+
+pub fn lemma_clause(Problem, Lemma) -> @core.Chain[@sat.Literal]?
+
+pub fn problem(@core.Chain[Atom], @core.Chain[@core.Chain[@sat.Literal]]) -> Problem?
+
+pub fn run(Search, @core.Nat) -> Outcome
+
+pub fn start(Problem) -> Search
+
+pub fn step(Search) -> Outcome
+
+pub fn theory_conflicts(Search) -> @core.Nat
+
+pub fn transitions(Search) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Atom {
+  Difference(@difference.Constraint)
+  Free
+}
+pub fn Atom::equal(Self, Self) -> Bool
+pub fn Atom::not_equal(Self, Self) -> Bool
+pub fn Atom::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Lemma {
+  cycle : @core.Chain[@sat.Literal]
+}
+pub fn Lemma::equal(Self, Self) -> Bool
+pub fn Lemma::not_equal(Self, Self) -> Bool
+pub fn Lemma::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Model {
+  booleans : @core.Chain[@sat.Literal]
+  integers : @difference.Solution
+}
+pub fn Model::equal(Self, Self) -> Bool
+pub fn Model::not_equal(Self, Self) -> Bool
+pub fn Model::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Outcome {
+  Satisfiable(Model)
+  Unsatisfiable(Refutation)
+  Paused(Search)
+  InvariantViolation
+}
+
+pub enum Phase {
+  Boolean(@cdcl.Search)
+  Theory(@core.Chain[@sat.Literal])
+}
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  atoms : @core.Chain[Atom]
+  formula : @core.Chain[@core.Chain[@sat.Literal]]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Refutation {
+  lemmas : @core.Chain[Lemma]
+  propositional : @cdcl.Proof
+}
+pub fn Refutation::equal(Self, Self) -> Bool
+pub fn Refutation::not_equal(Self, Self) -> Bool
+pub fn Refutation::to_repr(Self) -> @debug.Repr
+
+pub struct Search {
+  problem : Problem
+  formula : @core.Chain[@core.Chain[@sat.Literal]]
+  lemmas_rev : @core.Chain[Lemma]
+  phase : Phase
+  transitions : @core.Nat
+}
+
+// Type aliases
+
+// Traits

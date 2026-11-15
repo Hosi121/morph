@@ -36,3 +36,39 @@ native符号付き整数による別のFloyd–Warshallと照合した。
 ```sh
 tools/moon test src/difference --target native
 ```
+
+## Boolと整数を往復するlazy SMT
+
+`smt`は`Atom = Difference(Constraint) | Free`のリストと、そのindexを使うCNFを受け取る。
+CDCLがBoolモデルを返したら、正の差分原子は元の不等式、負の原子は厳密な整数の補集合へ戻す。
+Freeは整数条件を課さず、Boolの補助変数として使える。
+Boolモデルが部分的な場合は残りをfalseで補完し、その全割当てに対して理論を検査する。
+
+負閉路があれば、その辺の符号付き原子だけから`not p1 or ... or not pk`を作る。
+各辺を足すと矛盾するため、このclauseは理論的に妥当である。
+clauseを足したCNFでCDCLを再起動し、次のBool割当てを探す。
+整数モデルが見つかったら、元のCNFと全原子の真偽を別のcheckerで検査して返す。
+
+UNSATの証拠は負閉路lemma列と最後のRUP証拠からなる。
+`check_refutation`は探索を呼ばず、各lemmaの辺・向き・負の和を検査した後で
+拡張CNFに対するRUPを検査する。
+例えば`x<=0`と`x>=1`を同時に真にするBool単位節はSATだが、
+整数の二辺の重み和は−1になり、SMTでは検査可能なUNSATとなる。
+ちょうど補集合の二原子に同じ真偽を要求した例では、両方true/両方falseの二モデルを排除できる。
+
+`start`/`step`/`run`は再開可能。燃料一単位はCDCL一遷移、または理論全体の一回の検査であり、
+処理時間やBool操作の一定量を意味しない。
+現版は理論lemmaを残してCDCLを再起動する素朴なlazy方式で、
+部分割当て中の理論伝播やBoolean学習の再利用は実装していない。
+一般の線形整数算術や乗算を扱うsolverでもない。
+
+2原子の全小CNF6,517例、3整数変数の生成500例を、
+グラフやSATを使わないnative整数値・Free Boolの全列挙と照合した。
+小例の整数値域は−4〜4で、3変数・重み±1の差分制約に必要なpotential範囲を覆う。
+Freeを挟んだindex、未出現原子の補完、理論lemmaの欠落・別問題への流用、
+非負のwalk・不正ID・不完全な整数モデル、燃料分割を検査した。
+5テストがnative/JS/Wasm GCで通過。符号化・理論checker全体の形式証明は行っていない。
+
+```sh
+tools/moon test src/smt --target native
+```
