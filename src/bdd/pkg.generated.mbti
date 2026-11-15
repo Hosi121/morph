@@ -20,6 +20,12 @@ pub fn equivalent(Diagram, Diagram) -> Bool?
 
 pub fn evaluate(Diagram, @core.Chain[@sat.Literal]) -> Bool?
 
+pub fn exists_variable(Diagram, @core.Nat) -> Diagram?
+
+pub fn forall_variable(Diagram, @core.Nat) -> Diagram?
+
+pub fn model_count(Diagram) -> @binary.Binary?
+
 pub fn negate(Diagram) -> Diagram?
 
 pub fn node_count(Diagram) -> @core.Nat?

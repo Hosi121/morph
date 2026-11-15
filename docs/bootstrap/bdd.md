@@ -18,6 +18,9 @@ order(Diagram) -> Chain[Nat]
 node_count(Diagram) -> Nat?
 allocated_count(Diagram) -> Binary
 valid(Diagram) -> Bool
+model_count(Diagram) -> Binary?
+exists_variable(Diagram, Nat) -> Diagram?
+forall_variable(Diagram, Nat) -> Diagram?
 Operation = Conjunction | Disjunction | Exclusive
 ```
 
@@ -96,4 +99,36 @@ tools/moon test src/bdd --target wasm-gc
 tools/moon bench src/bdd/circuits_wbtest.mbt --target native --release
 ```
 
-モデル数と量化は、この基本単位の次に追加する。
+## モデル数と量化の後続単位
+
+`model_count` は宣言した順序の全変数について、充足割当て数を任意精度のBinaryで返す。
+終端trueには残りの変数数に応じた自由度を与える。各決定節点のmemoには、その節点自身の
+rankから末尾までの個数を保存し、親からその節点まで飛ばしたrank数だけ2倍する。
+同じ節点を異なる深さの親が共有しても、親依存の値を誤って再利用しない。
+
+`exists_variable` は両制限結果のOR、`forall_variable` はANDを、新managerへの安全な
+import/applyで作る。未知の変数は拒否する。どちらも元の宣言領域を保持する。
+例えば順序 `[x,y]`、関数 `x AND y` でxを存在量化するとyになるが、モデル数は2である。
+xが結果に影響しなくなり、xの両値を自由な割当てとして数えるためである。
+`restrict` 後の個数についても同じ契約を使う。
+
+追加4テストを含む全13テストをnative、JavaScript、Wasm GCで確認する。
+全3変数関数×全6順序のモデル数は真理値表のpopcountと一致する。
+正順・別順の全小関数、全変数の両量化についても全真理値と個数を照合した。
+空領域、飛ばしたrank、余分な宣言変数、ラベル65535を検査する。
+64変数の恒真で2^64、64変数parityで2^63を、組み込み整数へ変換せずBinaryのbit列として
+確認した。parityの到達節点は127である。
+carry-outの0〜6bitのモデル数も全入力の整数加算と一致する。
+
+8bit carryのprebuilt Diagramを毎回数え、memo構築も計測に含めたnative release結果：
+
+| 順序 | モデル数 | 平均 ± 標準偏差 |
+| --- | ---: | ---: |
+| blocked | 65,536 | 794.72 µs ± 34.78 µs |
+| interleaved | 65,536 | 17.87 µs ± 588.78 ns |
+
+各10サンプル。節点構築は計測外であり、上のcompile比較とは別の処理を測っている。
+
+```sh
+tools/moon bench src/bdd/count_wbtest.mbt --target native --release
+```
