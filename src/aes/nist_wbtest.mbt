@@ -240,7 +240,7 @@ test "official NIST AES-192 intermediate state transformations" {
   let context = required(tables())
   assert_transform_fixture(
     context,
-    "8e73b0f7da0e6452c810f32b809079e5",
+    "8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b",
     "6bc1bee22e409f96e93d7e117393172a",
     [
       ("KeyAddition", "e5b20e15f44efbc4212d8d3af3036ecf"),
@@ -295,7 +295,7 @@ test "official NIST AES-192 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "8e73b0f7da0e6452c810f32b809079e5",
+    "8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b",
     "ae2d8a571e03ac9c9eb76fac45af8e51",
     [
       ("KeyAddition", "205e3aa0c40dc8ce56a79c87c53ff7b4"),
@@ -350,7 +350,7 @@ test "official NIST AES-192 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "8e73b0f7da0e6452c810f32b809079e5",
+    "8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b",
     "30c81c46a35ce411e5fbc1191a0a52ef",
     [
       ("KeyAddition", "bebbacb1795280432deb32329a9a2b0a"),
@@ -405,7 +405,7 @@ test "official NIST AES-192 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "8e73b0f7da0e6452c810f32b809079e5",
+    "8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b",
     "f69f2445df4f9b17ad2b417be66c3710",
     [
       ("KeyAddition", "78ec94b20541ff45653bb25066fc4ef5"),
@@ -465,7 +465,7 @@ test "official NIST AES-256 intermediate state transformations" {
   let context = required(tables())
   assert_transform_fixture(
     context,
-    "603deb1015ca71be2b73aef0857d7781",
+    "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4",
     "6bc1bee22e409f96e93d7e117393172a",
     [
       ("KeyAddition", "0bfc55f23b8aee28c24ed0e1f6ee60ab"),
@@ -528,7 +528,7 @@ test "official NIST AES-256 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "603deb1015ca71be2b73aef0857d7781",
+    "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4",
     "ae2d8a571e03ac9c9eb76fac45af8e51",
     [
       ("KeyAddition", "ce1061470bc9dd22b5c4c15cc0d2f9d0"),
@@ -591,7 +591,7 @@ test "official NIST AES-256 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "603deb1015ca71be2b73aef0857d7781",
+    "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4",
     "30c81c46a35ce411e5fbc1191a0a52ef",
     [
       ("KeyAddition", "50f5f756b69695afce886fe99f77256e"),
@@ -654,7 +654,7 @@ test "official NIST AES-256 intermediate state transformations" {
   )
   assert_transform_fixture(
     context,
-    "603deb1015ca71be2b73aef0857d7781",
+    "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4",
     "f69f2445df4f9b17ad2b417be66c3710",
     [
       ("KeyAddition", "96a2cf55ca85eaa98658ef8b63114091"),

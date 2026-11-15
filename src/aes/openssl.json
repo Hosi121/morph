@@ -1,0 +1,655 @@
+{
+  "oracle": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)",
+  "seed": 202611153,
+  "command": "openssl enc -aes-{bits}-ecb -K <fixture-key> -nosalt -nopad -e",
+  "blocks": [
+    {
+      "key_bits": 128,
+      "key": "00000000000000000000000000000000",
+      "plaintext": "00000000000000000000000000000000",
+      "ciphertext": "66e94bd4ef8a2c3b884cfa59ca342b2e"
+    },
+    {
+      "key_bits": 128,
+      "key": "ffffffffffffffffffffffffffffffff",
+      "plaintext": "ffffffffffffffffffffffffffffffff",
+      "ciphertext": "bcbf217cb280cf30b2517052193ab979"
+    },
+    {
+      "key_bits": 128,
+      "key": "000102030405060708090a0b0c0d0e0f",
+      "plaintext": "000102030405060708090a0b0c0d0e0f",
+      "ciphertext": "0a940bb5416ef045f1c39458c653ea5a"
+    },
+    {
+      "key_bits": 128,
+      "key": "000102030405060708090a0b0c0d0e0f",
+      "plaintext": "00112233445566778899aabbccddeeff",
+      "ciphertext": "69c4e0d86a7b0430d8cdb78070b4c55a"
+    },
+    {
+      "key_bits": 128,
+      "key": "66a1ca635a410791a10cf25eb1aa11b4",
+      "plaintext": "8f9b65861f221fb2b55c95a9a9f2f9dc",
+      "ciphertext": "81ed9d966734d49a248b3f315c7b4a46"
+    },
+    {
+      "key_bits": 128,
+      "key": "3976761bae6f16554660803e3906ba1e",
+      "plaintext": "6a447ade08904391a86826ea518964e0",
+      "ciphertext": "d294ec6832fdfddc11803d20986868b3"
+    },
+    {
+      "key_bits": 128,
+      "key": "a874bcac88f369fd2c452db746a7ce4e",
+      "plaintext": "1620e0372d7b7898369d958bed5f409b",
+      "ciphertext": "2bd935c88735cf94e6724a022a1048db"
+    },
+    {
+      "key_bits": 128,
+      "key": "5d9bb23abcfc79d776e5061c3ab981f1",
+      "plaintext": "3a39cf610c22cbf3c25b3ecbf390055b",
+      "ciphertext": "18a13c9d61e9fe7939dda51b4e76176b"
+    },
+    {
+      "key_bits": 128,
+      "key": "813fe731b4c87b7eb611def7b8eaedbb",
+      "plaintext": "9390b31ed01c4ed58d5b0d0073f0d457",
+      "ciphertext": "693a3599c11b47544384a45230106d5c"
+    },
+    {
+      "key_bits": 128,
+      "key": "e801b772c637d840413336228b9ea6c0",
+      "plaintext": "d9efd6d82c5c6891be6b6b5d77ddca5a",
+      "ciphertext": "3638031141e957dc2b33d9c2fe6a950e"
+    },
+    {
+      "key_bits": 128,
+      "key": "7c3ea92cd449a8e67600e5f943064424",
+      "plaintext": "56a6d156bbbc330cc704558a2acf54e9",
+      "ciphertext": "b41e4cc20f8267bee2aa4a9c04312215"
+    },
+    {
+      "key_bits": 128,
+      "key": "acb46c8667faa1bfa00747a9138a4a94",
+      "plaintext": "7c50ed35bb57e5bcde754c2f54f40dc4",
+      "ciphertext": "c3467e186bc9b8f70b05f1ed69373fed"
+    },
+    {
+      "key_bits": 128,
+      "key": "7eb20ba3d9bf7156bea6388a7da0fcd2",
+      "plaintext": "1d49c7f0d5c321779d156020988c441a",
+      "ciphertext": "b2ff40569e13e5bebc5ab3e0cea141fa"
+    },
+    {
+      "key_bits": 128,
+      "key": "aef9118454329a99506f63c6bb9acd9f",
+      "plaintext": "bced59e989735f835a6432b0bdb165b2",
+      "ciphertext": "65d9b9e90a643b492eb3c1a4af879b01"
+    },
+    {
+      "key_bits": 128,
+      "key": "3e6509a0a78ee223a63c2028bb2bdd96",
+      "plaintext": "fb5498ebbddb3497ff12d1c858e9a8f4",
+      "ciphertext": "5454cb28bbbe2b06398810c833e4516a"
+    },
+    {
+      "key_bits": 128,
+      "key": "453c8ebcc3fb4e60eebfd605c5903c0e",
+      "plaintext": "0b75e5ce807f51fb6c94978244c23371",
+      "ciphertext": "1f3ccbba38b5d5364cf8e0160c8ce7de"
+    },
+    {
+      "key_bits": 128,
+      "key": "a244e44f240e2e4476c755fbe6a58672",
+      "plaintext": "b5ec66ea77c3cad31e462affbb0b707c",
+      "ciphertext": "e7eaf472aa531b45f6d42027fe648900"
+    },
+    {
+      "key_bits": 128,
+      "key": "fc881d26cd3b3e2832dbc574fbdfc3e7",
+      "plaintext": "d3a71b3071650f6695e4b6a2dff65851",
+      "ciphertext": "ba93287a5e4c637899323068193b19fa"
+    },
+    {
+      "key_bits": 128,
+      "key": "93068d9a7a69dbc453085b5e2ded01be",
+      "plaintext": "d07e51813b6375331dd23272b9320c16",
+      "ciphertext": "7f43b7293c83ef26e107834b3bfac7b6"
+    },
+    {
+      "key_bits": 128,
+      "key": "67cf288e4fe595de5ea27ad8b511170b",
+      "plaintext": "0df6d227d9019ce42a6d1294141d5696",
+      "ciphertext": "72d4c3593fe3c801eb2509f839f5e359"
+    },
+    {
+      "key_bits": 128,
+      "key": "438f36a36b7a67bb9511dd6ff132801d",
+      "plaintext": "cebf090554ad4464371a2ed870f094d5",
+      "ciphertext": "b0c238f615c51fd32218033922f538ac"
+    },
+    {
+      "key_bits": 128,
+      "key": "2cc589d1f5817e98e952e1095b49bbd6",
+      "plaintext": "36f7c00d09fd8c2eac6ca61974360bd5",
+      "ciphertext": "08533c4dc95d66e38850db6213b82691"
+    },
+    {
+      "key_bits": 128,
+      "key": "92c27514236cd14e7ea84aa68edc1b3e",
+      "plaintext": "0cbd36539004e508338188a681e746a6",
+      "ciphertext": "92c2d7bdf44f5051be41ed0eb0a2cbdf"
+    },
+    {
+      "key_bits": 128,
+      "key": "106f202ad2b923671e1b3b4f889d1aad",
+      "plaintext": "6c1a1b1d0c4fc978ddccd16435a54ccf",
+      "ciphertext": "ae9125c64c034fb06e79171343d58441"
+    },
+    {
+      "key_bits": 128,
+      "key": "33081b83553be1f6c9d1d847a5ee6d8f",
+      "plaintext": "23aa42e13c3a420500b9c76f3c91422d",
+      "ciphertext": "59a2042e48e388a803fa4d6e459331df"
+    },
+    {
+      "key_bits": 128,
+      "key": "ab727dc203dad1dbafd5600362930870",
+      "plaintext": "3669c4eb2f80d832fb8f38e971ce99f4",
+      "ciphertext": "51763629ddb085d002aef03f6807c189"
+    },
+    {
+      "key_bits": 128,
+      "key": "71c7d69fafe799303283e091a9301a7c",
+      "plaintext": "f908e946c3f106fa2750af62211f99bb",
+      "ciphertext": "1c13ec6220d7325b511aff5a81e54e3b"
+    },
+    {
+      "key_bits": 128,
+      "key": "0d1b6eab41d6144d24dab1cc8766023b",
+      "plaintext": "b0e14f30e9f45172f02f808d5c0da009",
+      "ciphertext": "b1ab67b3b68dc69b58bed19d2cd79028"
+    },
+    {
+      "key_bits": 128,
+      "key": "95af983191ac7f68ff18fea88d32a8d9",
+      "plaintext": "ab05cd24315a0713e5a2a62c0586f088",
+      "ciphertext": "755a461fc07cce97459bf678f1db57b0"
+    },
+    {
+      "key_bits": 128,
+      "key": "7d0196f16f04bd48fbe72bdaa859c853",
+      "plaintext": "3c5cf6dfe594639b36581029cb21d7d1",
+      "ciphertext": "0a27ec0897db4fe078abe7f98e5385cb"
+    },
+    {
+      "key_bits": 128,
+      "key": "16904a07f24244894faeb4a4bf6e3898",
+      "plaintext": "c5d294280fa2471ac39849d688862747",
+      "ciphertext": "5ebac4146157388bb6788ed6e4ee588f"
+    },
+    {
+      "key_bits": 128,
+      "key": "712a99c2248130299223c5e3bc7cf8be",
+      "plaintext": "747db6fcbba3485b8b4f941b344daa09",
+      "ciphertext": "a0c1689b959d050bea498ec16adee2f6"
+    },
+    {
+      "key_bits": 128,
+      "key": "c5c242cab3b5a3107f36d63948d40f79",
+      "plaintext": "e4f72acbbcbf4ba593a45e84941decfa",
+      "ciphertext": "279ac3387f2b012819943870f91f7d18"
+    },
+    {
+      "key_bits": 128,
+      "key": "4c3a939cb73733480c04f0cfd8cacc3a",
+      "plaintext": "ff9921e1cddedf7ff1cf4be308529f68",
+      "ciphertext": "59506d77377aded81de1fbc2cd06940d"
+    },
+    {
+      "key_bits": 128,
+      "key": "933f8c9c5268a9c2756c3fd2d310a08b",
+      "plaintext": "c5936b6da47d698d59988db568e1b53c",
+      "ciphertext": "eb430110f59487f8e67bfa8d0fdb32ef"
+    },
+    {
+      "key_bits": 128,
+      "key": "944ee3de351b2dd603b48ec77b476562",
+      "plaintext": "0ecd12ed62e2a3c6f004f286d2ba112c",
+      "ciphertext": "c96ec4625322e85b360ad8b52e664a92"
+    },
+    {
+      "key_bits": 192,
+      "key": "000000000000000000000000000000000000000000000000",
+      "plaintext": "00000000000000000000000000000000",
+      "ciphertext": "aae06992acbf52a3e8f4a96ec9300bd7"
+    },
+    {
+      "key_bits": 192,
+      "key": "ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "plaintext": "ffffffffffffffffffffffffffffffff",
+      "ciphertext": "bf70034e29ff718ee48ddf36bb8174ef"
+    },
+    {
+      "key_bits": 192,
+      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "plaintext": "000102030405060708090a0b0c0d0e0f",
+      "ciphertext": "0060bffe46834bb8da5cf9a61ff220ae"
+    },
+    {
+      "key_bits": 192,
+      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "plaintext": "00112233445566778899aabbccddeeff",
+      "ciphertext": "dda97ca4864cdfe06eaf70a0ec0d7191"
+    },
+    {
+      "key_bits": 192,
+      "key": "e312759d68478aaecd48a938e872c2198e722a87d6dfa8ac",
+      "plaintext": "852c25326cfbb7982a1f90fa8d51edd2",
+      "ciphertext": "eb7d22dac1376ce2e916149e603bc572"
+    },
+    {
+      "key_bits": 192,
+      "key": "4b2f244395949ef541539d8e247089a142dc1c2cbe12c3e1",
+      "plaintext": "5318b0cbc3bbc23a49bf47eb157df3f2",
+      "ciphertext": "6467b72f471d4a5e28bdf46a67aafee0"
+    },
+    {
+      "key_bits": 192,
+      "key": "cc4a0b436db798a06f6e794e840e938a4e4a1c3df3a9b6c4",
+      "plaintext": "af85dc6168556560f7f314b026483bd4",
+      "ciphertext": "632e0cc69bfb3194574e8a581e452a4f"
+    },
+    {
+      "key_bits": 192,
+      "key": "6714e131ec885d3fd5f2c7a8e7e33d1f95e0e109bc6bd9f4",
+      "plaintext": "b62b270bb1b761a32a97bf1df8c74f91",
+      "ciphertext": "25ca2ada0a16e9ddd00fbd2914b1692e"
+    },
+    {
+      "key_bits": 192,
+      "key": "9facf207d7b555dcd81c693d65950436d65f73e841d395f4",
+      "plaintext": "8366a2a031709c4823912c7990c5eea9",
+      "ciphertext": "dbea63f2a0d7a9f62c2615ede7db6180"
+    },
+    {
+      "key_bits": 192,
+      "key": "b292d42eb0cbcec3a6dfa059412216077c4cb7dd6ed67c53",
+      "plaintext": "4ead590c34699fd290e5c7ff44b92808",
+      "ciphertext": "b221941804a1f81719439819ca4ab3e2"
+    },
+    {
+      "key_bits": 192,
+      "key": "eda9a4eeece16452954ea39e36402dfad2907b5791a6500d",
+      "plaintext": "e1006dd0417f87d1b483dc0f949f6428",
+      "ciphertext": "208ef129dda2a7c2384669c325b26b80"
+    },
+    {
+      "key_bits": 192,
+      "key": "06a13af3cee486d2eecf2085d540f17a69731df9f40f6a6c",
+      "plaintext": "6a591c3f3e32248526a3ed5f609300c0",
+      "ciphertext": "1a83c5436fa783e4de1e502bc8161fb8"
+    },
+    {
+      "key_bits": 192,
+      "key": "739375fd87fbdd3cec7e93690d92c1f2f2a8706dcf6e638e",
+      "plaintext": "e5104869dcf52046451a145852a62194",
+      "ciphertext": "3e8306560cda72445f9eb519c6e24eaa"
+    },
+    {
+      "key_bits": 192,
+      "key": "6729e9201dfe3ab59a77c78d68d45861b690179b645e2df8",
+      "plaintext": "cae55f7ee0afac104dc3296f833a2740",
+      "ciphertext": "f20666e19f6fd03aa7428d440604d585"
+    },
+    {
+      "key_bits": 192,
+      "key": "e12069bdf902a0e195f4aef8f8d73731ab188b9497871282",
+      "plaintext": "8cb150c1977a32f07acc06a82eb0ad3e",
+      "ciphertext": "94dbadadacae24a9b1fac0b0fb2f5ec1"
+    },
+    {
+      "key_bits": 192,
+      "key": "5eac256f7c35056b04cd767b209981a0e2db6961bd6a521f",
+      "plaintext": "832accd4df04744920dd006e04315152",
+      "ciphertext": "f3488796dfd589617c85593ec8eb6251"
+    },
+    {
+      "key_bits": 192,
+      "key": "5bfcbb5fe3b6477bad999fa24db18201a5db5bd13c764444",
+      "plaintext": "bef55bc2c423d91c6dd80b559e796248",
+      "ciphertext": "cb4913a0a63d370a78e8453ac30a2a21"
+    },
+    {
+      "key_bits": 192,
+      "key": "0ca8e2077e92c282207a827ecb7de3295426759462c87193",
+      "plaintext": "b85ce9ca4a23a5e22cec95c636bc5740",
+      "ciphertext": "220324885238d13fabaa707fec5f367f"
+    },
+    {
+      "key_bits": 192,
+      "key": "b9b1ca57befece95e21b6be8074715ca94645349ada28a38",
+      "plaintext": "231c4ed84af5dbdd28f7afa3a2d0bdf0",
+      "ciphertext": "346777e6253606e3fd4461a695d35f1e"
+    },
+    {
+      "key_bits": 192,
+      "key": "76e1b8c02748e11f617bdbcf01b337de7f68c483b58e8f00",
+      "plaintext": "cb003043207f0fbfd30e8d1c11913485",
+      "ciphertext": "2c3204911b215ca57b68d9a161be438f"
+    },
+    {
+      "key_bits": 192,
+      "key": "dd3484269375d987f7c910c23c0402ca6b22a13c7d3eb0aa",
+      "plaintext": "8f0bc813f8e557811fb643426bc4dd06",
+      "ciphertext": "3bd1d31c9527b1f354c1f1bbd71bf6a6"
+    },
+    {
+      "key_bits": 192,
+      "key": "f7999ed3c4fb03108a71996fc49600bdf8498c1f009e5c8c",
+      "plaintext": "b7cee38116970ca8a6732ebeccca8b89",
+      "ciphertext": "b66e94f2c1075276da590c0e0ae9e1fe"
+    },
+    {
+      "key_bits": 192,
+      "key": "fccadf1753afc12a482fcb35204725539772bd9255830498",
+      "plaintext": "4c8aeb2cb3b6cae05ea392734016e2fd",
+      "ciphertext": "8a301a910b82eeecf65845e6137ede0e"
+    },
+    {
+      "key_bits": 192,
+      "key": "3fc235b3866f83187dc5bf17c60a2efc05783e40b6287861",
+      "plaintext": "6e7a05def685e1e3d3a7b1b247d708a4",
+      "ciphertext": "75ea5b6c1f4f76de228e4cec09943096"
+    },
+    {
+      "key_bits": 192,
+      "key": "94f2a9c401768ecc373612e8c724af8f200b26302e5496e2",
+      "plaintext": "d26ac85147ab237c0d57124e12660723",
+      "ciphertext": "24f83a27c54ebfb6ae54e12505838678"
+    },
+    {
+      "key_bits": 192,
+      "key": "cdd9f1a695354bfab99416aff294d402b858d2f0faac81fc",
+      "plaintext": "ccf475e785fda3c5f7a0a34b8aef468a",
+      "ciphertext": "ccd7159edbb14a481f2536650a7f7f39"
+    },
+    {
+      "key_bits": 192,
+      "key": "44e0cea897153d36e9c1cdaf7bc33cb658da56db3e41bd7d",
+      "plaintext": "1ef5593cfa1a28fee17202ef7d09c9ff",
+      "ciphertext": "e6423b73a8a3e9f90edb42239a2a6b7a"
+    },
+    {
+      "key_bits": 192,
+      "key": "405bbd917e102e991b92eeba93d6e06f535ad8b1e7174371",
+      "plaintext": "d5b9cef91e47eab3d2ff1eabd2805ec0",
+      "ciphertext": "63ccea6d2e6c7e0f6cbfedaf8df17577"
+    },
+    {
+      "key_bits": 192,
+      "key": "4851c60b5f54e7f84c3388781acfd62a7146212148dc59e0",
+      "plaintext": "7dc062fe96c3b8bc717c1298b511930f",
+      "ciphertext": "3667a2d4ffb8422ad7244760485375dc"
+    },
+    {
+      "key_bits": 192,
+      "key": "b68b641e0d820785f8207ac9d1f03dacdf13e0df0a89b3e0",
+      "plaintext": "37ac551a3b328b46e3051de2c2f9eec0",
+      "ciphertext": "324dd6baa0448e652bda33f80535d35c"
+    },
+    {
+      "key_bits": 192,
+      "key": "9417a418c419c2cae8301edf11dcc7a1455c1a879675e380",
+      "plaintext": "6f61b527395a16560a6bf91d77ed6e6b",
+      "ciphertext": "7d4f08d33140cd1b476ecf81ada18c1d"
+    },
+    {
+      "key_bits": 192,
+      "key": "1ec3daf3a6d5759655bd9edda57636cbeb410f8c8d5c402b",
+      "plaintext": "699881d691c446426682fbba6ad06ca3",
+      "ciphertext": "930ae77b3d952af3bb553f38e6755a93"
+    },
+    {
+      "key_bits": 192,
+      "key": "0e6287b67347c7515fbc0cac508dcfe6dce8120896a5565c",
+      "plaintext": "1f1e5174a68b6d3d19be2c3ca802074c",
+      "ciphertext": "60ad20b35c4cf96e0377ba7bc2db3c04"
+    },
+    {
+      "key_bits": 192,
+      "key": "fb3fb5ca304f094364df65663a853d97a61473296f5c017a",
+      "plaintext": "021265024f553badaab8529ffc3ea489",
+      "ciphertext": "272cb8f6b89a773adfff8c39844d446e"
+    },
+    {
+      "key_bits": 192,
+      "key": "a0d2932d93518a1bf74fb48805e88cc1a9c7d71bd18c3cfa",
+      "plaintext": "055fd5bb407b40accaf38c489db6c199",
+      "ciphertext": "a3e421540984bc4b7624f2bcbaac9f81"
+    },
+    {
+      "key_bits": 192,
+      "key": "43cd395c6353f11604b3d2c4e9ccc6204d631d2ef2d13f61",
+      "plaintext": "eb0a236c43309ac8c723054ead4fc243",
+      "ciphertext": "4a5d0113ab4ff2eb81b8b5af2e8c7847"
+    },
+    {
+      "key_bits": 256,
+      "key": "0000000000000000000000000000000000000000000000000000000000000000",
+      "plaintext": "00000000000000000000000000000000",
+      "ciphertext": "dc95c078a2408989ad48a21492842087"
+    },
+    {
+      "key_bits": 256,
+      "key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "plaintext": "ffffffffffffffffffffffffffffffff",
+      "ciphertext": "d5f93d6d3311cb309f23621b02fbd5e2"
+    },
+    {
+      "key_bits": 256,
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "plaintext": "000102030405060708090a0b0c0d0e0f",
+      "ciphertext": "5a6e045708fb7196f02e553d02c3a692"
+    },
+    {
+      "key_bits": 256,
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "plaintext": "00112233445566778899aabbccddeeff",
+      "ciphertext": "8ea2b7ca516745bfeafc49904b496089"
+    },
+    {
+      "key_bits": 256,
+      "key": "9731f71cb9a5611eb94e4eebce421e0fdb349981c1aba2311fafc58d89d0ed3d",
+      "plaintext": "67330b316ab2b20dbed159d9f41e2d03",
+      "ciphertext": "37a57504b6c3671c8954c283969f808f"
+    },
+    {
+      "key_bits": 256,
+      "key": "a05af9e9724cbda3904eb97bacda980c8b5a46da64da8221d29e482b488db636",
+      "plaintext": "bad6073cc1a7cd31da57d54572903bc1",
+      "ciphertext": "cd59cb51545f1f9ea6139b96cacb0f16"
+    },
+    {
+      "key_bits": 256,
+      "key": "9477f0aaa035d4f209646027eed8c1dbedbceddccc0ef161ded0daa2479ac62e",
+      "plaintext": "a13999c1e7eee857494be1d402bf28cf",
+      "ciphertext": "3610dcd18b0937b3c987c594fd60e150"
+    },
+    {
+      "key_bits": 256,
+      "key": "562191176b6a69fa38cd0ead6233badadbc8553e98315b225a4e865ef892ec51",
+      "plaintext": "312d935e46b18701437bd4b001542773",
+      "ciphertext": "1a087c93d1dfa46992c5f3437b3648c9"
+    },
+    {
+      "key_bits": 256,
+      "key": "8ecf1e5d39bf1a8d1cc310e0c8aa0e12cf3333f0de4c3ff325ae6d795ec0bd7b",
+      "plaintext": "27245be10d909b3cc22259a07f194b54",
+      "ciphertext": "31978c551a7e471f95c991096bea404a"
+    },
+    {
+      "key_bits": 256,
+      "key": "8281ad79e58ac8597b7c02bcaf998acbd96e6ae6754ffff97d344959249e9865",
+      "plaintext": "7af63cd451a40b0de7b63213240c7cdf",
+      "ciphertext": "7482aa69b35b18840a1d8389ee53018a"
+    },
+    {
+      "key_bits": 256,
+      "key": "ffa37e2c63bbb1b63c57f31264763cc03e9050c9b4eb8a4d662fed7ce7baded5",
+      "plaintext": "0ce8529f29bf6e084449ca9a2d89d053",
+      "ciphertext": "c27620ce8af05c16d61d74648908dbfb"
+    },
+    {
+      "key_bits": 256,
+      "key": "06e2492cb8974b1f25ec205fee201f403ff191ec067b6bd75327ac2df799c23d",
+      "plaintext": "9491ef5597c86a6faea6347271608343",
+      "ciphertext": "4edc0cab0cfb64b03b3d0fe99c80d1b7"
+    },
+    {
+      "key_bits": 256,
+      "key": "7d3aebdbfc8e032eb606e7f0c246879c444c6ffbdb01c7ec783bbf33a7614e2c",
+      "plaintext": "d111601f6871bcc20e07086f96d98b00",
+      "ciphertext": "a2b70b620407bf7c85bee2b4f9003c65"
+    },
+    {
+      "key_bits": 256,
+      "key": "2800093234e4208c985f5b6a38cb3cb122450a620434f012adc90d1c4b6a7720",
+      "plaintext": "b196b0c8899bea91398dccd8fc5054ad",
+      "ciphertext": "4702f11ce246d9342fe8045711aa5539"
+    },
+    {
+      "key_bits": 256,
+      "key": "6b91d50e5602deb3ef3c45864044916898d14ed0417af2b25c435727b2e84a70",
+      "plaintext": "fb703178881b33586673516e66e39576",
+      "ciphertext": "ae2521e968f278555e5d5396883e3347"
+    },
+    {
+      "key_bits": 256,
+      "key": "81ce869a1597c6e3c944005cb13f8c9aff2c627e0603909e843250764711f888",
+      "plaintext": "38cdc28285a513668719f7a155e578f6",
+      "ciphertext": "e44ec80ebc6a3189362dfc01bd47ad0a"
+    },
+    {
+      "key_bits": 256,
+      "key": "3a012632bf6bee2a5d9aee1fd2d5d3c46c810413aa4cbaa0f12910eabe3fcc62",
+      "plaintext": "bc6729fb7e2c6841d32fb942551d0f4b",
+      "ciphertext": "ed717732efc7a67c8aedfd6f0390f3dc"
+    },
+    {
+      "key_bits": 256,
+      "key": "b6ae7af87d2a1e6408152448728c300b4857c3c6dedc6e991877a2b879dd41b3",
+      "plaintext": "523cc513a4a205a60fa6ace38fa33421",
+      "ciphertext": "ce4383c31ef2b16718244e106eec2b8c"
+    },
+    {
+      "key_bits": 256,
+      "key": "1d1b57d3019c1c512a13c8cba6576526a76cda6320a0f0c15b579f13f3b824ce",
+      "plaintext": "394831e546657e1c95b69960b64409c3",
+      "ciphertext": "a5084d7d9490a702ad73a8828731f6fe"
+    },
+    {
+      "key_bits": 256,
+      "key": "831425eeff880091d0a7388c2316344bdfe4a96eb1c0a0540482193367e2894c",
+      "plaintext": "0bf956b28960fb1a5b528faaafbfe688",
+      "ciphertext": "5c1de26ea2a277b92e9cdb609dd86596"
+    },
+    {
+      "key_bits": 256,
+      "key": "187841c24418e58a8d29d0131347a29fc453c2708fa660ba5d189c92c97dc6e2",
+      "plaintext": "aa4e48eb44ab5817b1edc243e834bdd4",
+      "ciphertext": "ea6fd82505c9e4c39fb5cabecde70137"
+    },
+    {
+      "key_bits": 256,
+      "key": "f27d95ce2ed2b5aa30775b65fc852e015f0d44550a0b3dac0a694d29c59982b5",
+      "plaintext": "edc516cc4a642d37f62d42a6b6ac30d0",
+      "ciphertext": "8685f5208f97bdaf662ec7f7e2acd75a"
+    },
+    {
+      "key_bits": 256,
+      "key": "0b637661cdf1ecf3748248796d33de70bf88ac39f17784227f948113317e41fa",
+      "plaintext": "be735b446ae5020defcbb37f93014678",
+      "ciphertext": "20cf967f5b95082edeeec7845ffa79c2"
+    },
+    {
+      "key_bits": 256,
+      "key": "0849072542e7ba598681b3262274d337ad8d1926efe6302d7af7afb54b85fe11",
+      "plaintext": "b98e228e8bd6af4cf5b765d83b4d7183",
+      "ciphertext": "801e7bbeed2ad877d6784eb3ee9520f6"
+    },
+    {
+      "key_bits": 256,
+      "key": "8c895b5f834376ea32dd2d7cff3681b7d769afa2c6b2800c47d4faab8b72d593",
+      "plaintext": "b4169b98a03cfbee33f28980e604b9f1",
+      "ciphertext": "260ee68831cd63c22b21bceff00f5a5a"
+    },
+    {
+      "key_bits": 256,
+      "key": "7df5d8200753bc2d340dd711c2bfd93745cbb4c0a1e4e01f7b5b73dfc17ad99d",
+      "plaintext": "d5091e14c904643406dc9cf99b4d2d93",
+      "ciphertext": "a768d035333fffa181af391c44171cd9"
+    },
+    {
+      "key_bits": 256,
+      "key": "9d93443ec9e1299e449f019b6e1f1560cb05c77825c480d63b2579133a4817ff",
+      "plaintext": "2e0012b40e46f5371daa429c80e07a4d",
+      "ciphertext": "9276799026ddad84b02256a6d6b81949"
+    },
+    {
+      "key_bits": 256,
+      "key": "937a6e50b3c9a645d4c2215325076f2cbc95c2eeaec8a17ce88fb32e0b8a862d",
+      "plaintext": "b8c11f9f4096143fcb9cc77546b7dd23",
+      "ciphertext": "b4ba27cbaeafd636c71ea9188df1431e"
+    },
+    {
+      "key_bits": 256,
+      "key": "c730b2f0baf4f3dc3d7491ffc8a310d4d020b359ca8fe3efda5be96b1422de53",
+      "plaintext": "942362f96c40fa77ef33b32806c10f09",
+      "ciphertext": "3a7196d9259f0d243028b69c92d68338"
+    },
+    {
+      "key_bits": 256,
+      "key": "cedab700c8f39cda7419f69c507f97a93ac825d8de80c028fab09b846dbf5e20",
+      "plaintext": "6f07a8a104ccd1cb710b2121a369e792",
+      "ciphertext": "00b1bb377a873c087864b29c1f6c9ec0"
+    },
+    {
+      "key_bits": 256,
+      "key": "c7b2ff239c84c000912a06c8299a21122e0f63a496dc14fcfacb4fb38a6dcf92",
+      "plaintext": "0bc5ffc0ad240be1b970d5f743502a94",
+      "ciphertext": "44adf3b477251816f9a9ddac1431aa54"
+    },
+    {
+      "key_bits": 256,
+      "key": "948e35d28cf1eda68e10d3e84fdf76e9d7664b9786ddd016be76ed4e393e24ed",
+      "plaintext": "3379a46c04663819bd7c51298c3c76c0",
+      "ciphertext": "1424418860ec4fe21ae27804bbf9b181"
+    },
+    {
+      "key_bits": 256,
+      "key": "c90a86dfb86925473c7b385e4c854ec67c72e581f8cbf4a5af05972e2e6e2cc6",
+      "plaintext": "b47298f2c96b08e64a3445ea7a52040b",
+      "ciphertext": "b65696427c746725e36f267e4d6edf43"
+    },
+    {
+      "key_bits": 256,
+      "key": "960c30653cfd796a8d4e8a91ad006dbf3f5ddf93b78cd1f87e1ed8cbb844a2fc",
+      "plaintext": "2aaf961c399e0cbc3a5aa0722d38844c",
+      "ciphertext": "a1089f30089cb9a203864f8bf55f97f3"
+    },
+    {
+      "key_bits": 256,
+      "key": "1ca4e0d28577d69167e16c84c37a19467b378f50afc686c1bf75468655b24924",
+      "plaintext": "634525be6884bd4dbfd4b6d2fc46b8ee",
+      "ciphertext": "eebfd92f640426e541fbcf3aa18d6ecf"
+    },
+    {
+      "key_bits": 256,
+      "key": "59974aa2fa94e1dea153e6cfcbcdd75a6c2d572f7d3e5a5d382208dbc7629e66",
+      "plaintext": "9a8830566d30dd556d042f095569ab99",
+      "ciphertext": "8f594096a32bd6df972b59c762c67b2e"
+    }
+  ]
+}

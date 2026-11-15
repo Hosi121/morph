@@ -141,7 +141,9 @@ fn assert_transform_fixture(
   stages : Array[(String, String)],
 ) -> Unit raise {
   let mut previous = hex_block(input)
-  let mut first = true
+  let expanded = required(cipher(context, hex_octets(initial_key)))
+  let keys = @oracle.array(round_keys(expanded))
+  let mut key_index = 0
   for (operation, output) in stages {
     let expected = hex_block(output)
     match operation {
@@ -157,15 +159,17 @@ fn assert_transform_fixture(
         assert_eq(mix_columns(previous), expected)
         assert_eq(inverse_mix_columns(expected), previous)
       }
-      "KeyAddition" =>
-        if first {
-          assert_eq(add_round_key(previous, hex_block(initial_key)), expected)
-        }
+      "KeyAddition" => {
+        assert_eq(add_round_key(previous, keys[key_index]), expected)
+        key_index += 1
+      }
       _ => abort("unknown official AES stage")
     }
     previous = expected
-    first = false
   }
+  assert_eq(key_index, keys.length())
+  assert_eq(encrypt(expanded, hex_block(input)), Ok(previous))
+  assert_eq(decrypt(expanded, previous), Ok(hex_block(input)))
 }
 
 ///|
@@ -261,4 +265,71 @@ test "column-major permutations and direct inverse matrices agree on every state
     )
     assert_eq(add_round_key(add_round_key(state, indices), indices), state)
   }
+}
+
+///|
+fn assert_schedule_fixture(
+  context : Tables,
+  key : String,
+  expected : Array[String],
+) -> Unit raise {
+  let expanded = required(cipher(context, hex_octets(key)))
+  assert_eq(@oracle.array(round_keys(expanded)), expected.map(hex_block))
+  assert_eq(@oracle.int_of_nat(rounds(expanded)), expected.length() - 1)
+  assert_eq(
+    key_size(expanded),
+    match key.length() {
+      32 => Aes128
+      48 => Aes192
+      64 => Aes256
+      _ => abort("fixture key size")
+    },
+  )
+}
+
+///|
+fn assert_block_fixture(
+  context : Tables,
+  key : String,
+  plaintext : String,
+  ciphertext : String,
+) -> Unit raise {
+  let expanded = required(cipher(context, hex_octets(key)))
+  let plain = hex_block(plaintext)
+  let encrypted = hex_block(ciphertext)
+  assert_eq(encrypt(expanded, plain), Ok(encrypted))
+  assert_eq(decrypt(expanded, encrypted), Ok(plain))
+}
+
+///|
+test "key expansion rejects all unsupported lengths and expanded ciphers remain persistent" {
+  let context = required(tables())
+  for size in 0..<41 {
+    if size != 16 && size != 24 && size != 32 {
+      assert_eq(
+        cipher(context, @core.replicate(@oracle.nat(size), zero())),
+        Err(InvalidKeyLength),
+      )
+    }
+  }
+  for size in [64, 65, 256] {
+    assert_eq(
+      cipher(context, @core.replicate(@oracle.nat(size), zero())),
+      Err(InvalidKeyLength),
+    )
+  }
+  let expanded = required(
+    cipher(context, hex_octets("000102030405060708090a0b0c0d0e0f")),
+  )
+  let original = round_keys(expanded)
+  let plain = hex_block("00112233445566778899aabbccddeeff")
+  assert_eq(
+    encrypt(expanded, plain),
+    Ok(hex_block("69c4e0d86a7b0430d8cdb78070b4c55a")),
+  )
+  assert_eq(
+    encrypt(expanded, plain),
+    Ok(hex_block("69c4e0d86a7b0430d8cdb78070b4c55a")),
+  )
+  assert_eq(round_keys(expanded), original)
 }

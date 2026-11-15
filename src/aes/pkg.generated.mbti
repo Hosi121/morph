@@ -23,6 +23,12 @@ pub fn byte_field(Tables) -> @galois.Field
 
 pub fn calculate_sbox(Tables, Octet) -> Result[Octet, AesError]
 
+pub fn cipher(Tables, @core.Chain[Octet]) -> Result[Cipher, AesError]
+
+pub fn decrypt(Cipher, Block) -> Result[Block, AesError]
+
+pub fn encrypt(Cipher, Block) -> Result[Block, AesError]
+
 pub fn from_binary(@binary.Binary) -> Octet?
 
 pub fn from_galois(Tables, @galois.Element) -> Result[Octet, AesError]
@@ -35,6 +41,8 @@ pub fn inverse_shift_rows(Block) -> Block
 
 pub fn inverse_sub_bytes(Tables, Block) -> Result[Block, AesError]
 
+pub fn key_size(Cipher) -> KeySize
+
 pub fn mix_columns(Block) -> Block
 
 pub fn multiply(Octet, Octet) -> Octet
@@ -44,6 +52,10 @@ pub fn octet(@core.Chain[Bool]) -> Octet?
 pub fn octets(Block) -> @core.Chain[Octet]
 
 pub fn one() -> Octet
+
+pub fn round_keys(Cipher) -> @core.Chain[Block]
+
+pub fn rounds(Cipher) -> @core.Nat
 
 pub fn sbox(Tables, Octet) -> Result[Octet, AesError]
 
@@ -84,6 +96,16 @@ pub fn Block::not_equal(Self, Self) -> Bool
 pub fn Block::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+pub struct Cipher {
+  tables : Tables
+  size : KeySize
+  round_keys : @core.Chain[Block]
+}
+pub fn Cipher::equal(Self, Self) -> Bool
+pub fn Cipher::not_equal(Self, Self) -> Bool
+pub fn Cipher::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub(all) struct Four[A] {
   a : A
   b : A
@@ -93,6 +115,16 @@ pub(all) struct Four[A] {
 pub fn[A : Eq] Four::equal(Self[A], Self[A]) -> Bool
 pub fn[A : Eq] Four::not_equal(Self[A], Self[A]) -> Bool
 pub fn[A : @debug.Debug] Four::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum KeySize {
+  Aes128
+  Aes192
+  Aes256
+}
+pub fn KeySize::equal(Self, Self) -> Bool
+pub fn KeySize::not_equal(Self, Self) -> Bool
+pub fn KeySize::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Octet {

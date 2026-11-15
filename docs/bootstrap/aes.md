@@ -72,3 +72,47 @@ layout抽出を使い、全round・全block・鍵との整合も検査する。
 constant-time、鍵の安全な消去、サイドチャネル耐性、FIPS認証、製品用暗号実装の性質は主張しない。
 ランタイムやcache探索の時間・allocationにも依存する。
 外部プロトコル、モード、padding、認証はこの基本変換の範囲に含めない。
+
+## AES-128/192/256の鍵展開とblock暗号
+
+`cipher(tables, key_octets)` は16・24・32 octetの鍵だけを受理する。
+`KeySize` はそれぞれ `Aes128`・`Aes192`・`Aes256`、round数は10・12・14。
+`round_keys` は順序付きの不変Block列、`rounds`・`key_size` がその種別を返す。
+
+鍵展開はNk個のwordを保持する不変の小さいqueueを使い、前のwordとNk個前のwordから次のwordを作る。
+周期の先頭ではRotWord・生成S-box・Rconを使い、AES-256の周期位置4では追加のSubWordを行う。
+Rcon自身も `one` と `xtime` から構成し、表を貼り付けない。
+AES-192のround境界とNk-word境界がずれる場合も、52wordすべてを構成してからBlockへまとめる。
+
+`encrypt(cipher, block)` と `decrypt(cipher, block)` は単一の128bit Blockを扱う。
+暗号化は最初のAddRoundKey、通常round、MixColumnsを省いた最終roundを構成する。
+復号は同じround key列を逆順に使う通常のInvCipher。
+cache・鍵展開結果とも不変で、再利用時に内部状態は更新しない。
+
+## 完成単位の追加検証
+
+追加後は14テストがWasm GC・JS・nativeすべてで成功した。上の検証コマンドはそのまま使える。
+
+- 公式12ブロックの**全576中間状態**を実際の展開鍵を使って検査し、最終暗号化・復号も照合。
+- NISTが示すAddRoundKey前後の状態のXORから、公式round keyを独立に復元。
+  4ブロックで同じ鍵列になることを抽出時に検査し、3鍵長の**全156word（624 octet）**を比較。
+- 別実装のOpenSSLから、各鍵長36例、計108個のblock暗号化・復号fixtureを作成。
+  ゼロ、全FF、連番、固定seedの32個の任意鍵・平文を含む。
+  同じ核での往復だけを正しさのoracleには使わない。
+- 0〜40 octetの不正鍵長すべて、さらに64・65・256 octetを拒否。
+  同じCipherの再利用で展開鍵が変わらないことも検査。
+
+OpenSSL oracleは `OpenSSL 3.0.13 30 Jan 2024`、seed `202611153`。
+`src/aes/openssl.json` にコマンド・version・入力・出力を保持する。
+通常の生成器は保存済みfixtureを使い、OpenSSLへ依存しない。
+外部oracleを再計算する場合だけ、次を使う。
+
+```sh
+python3 tools/generate_aes.py --refresh-openssl
+tools/moon fmt src/aes
+```
+
+生成器はローカルのOpenSSLへ、公開fixture用の鍵と1ブロックを渡す。
+ECBの単一ブロック・saltなし・paddingなしで暗号化し、外部復号でも平文へ戻ることを確認する。
+これはblock primitiveの検証方法であり、本パッケージがECBなどのモードAPIを提供するという意味ではない。
+公式PDFの再抽出、保存データからの再生成、外部oracleの更新を別々に行える。
