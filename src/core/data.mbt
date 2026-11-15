@@ -116,6 +116,51 @@ pub fn[A] nth(xs : Chain[A], n : Nat) -> A? {
 }
 
 ///|
+pub fn[A] last(xs : Chain[A]) -> A? {
+  match xs {
+    Nil => None
+    Cons(x, Nil) => Some(x)
+    Cons(_, rest) => last(rest)
+  }
+}
+
+///|
+pub fn[A] filter(xs : Chain[A], keep : (A) -> Bool) -> Chain[A] {
+  match xs {
+    Nil => Nil
+    Cons(x, rest) =>
+      match keep(x) {
+        true => Cons(x, filter(rest, keep))
+        false => filter(rest, keep)
+      }
+  }
+}
+
+///|
+pub fn[A] any(xs : Chain[A], predicate : (A) -> Bool) -> Bool {
+  match xs {
+    Nil => false
+    Cons(x, rest) =>
+      match predicate(x) {
+        true => true
+        false => any(rest, predicate)
+      }
+  }
+}
+
+///|
+pub fn[A] all(xs : Chain[A], predicate : (A) -> Bool) -> Bool {
+  match xs {
+    Nil => true
+    Cons(x, rest) =>
+      match predicate(x) {
+        false => false
+        true => all(rest, predicate)
+      }
+  }
+}
+
+///|
 pub fn[A, B] zip(xs : Chain[A], ys : Chain[B]) -> Chain[(A, B)]? {
   match (xs, ys) {
     (Nil, Nil) => Some(Nil)

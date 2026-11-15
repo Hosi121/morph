@@ -8,7 +8,11 @@ import {
 // Values
 pub fn add(Nat, Nat) -> Nat
 
+pub fn[A] all(Chain[A], (A) -> Bool) -> Bool
+
 pub fn[A] alternating(Chain[A]) -> (Chain[A], Chain[A])
+
+pub fn[A] any(Chain[A], (A) -> Bool) -> Bool
 
 pub fn[A] append(Chain[A], Chain[A]) -> Chain[A]
 
@@ -18,6 +22,8 @@ pub fn divmod(Nat, Nat) -> (Nat, Nat)?
 
 pub fn[A] drop(Nat, Chain[A]) -> Chain[A]
 
+pub fn[A] filter(Chain[A], (A) -> Bool) -> Chain[A]
+
 pub fn[A, B] fold_left(Chain[A], B, (B, A) -> B) -> B
 
 pub fn gcd(Nat, Nat) -> Nat
@@ -25,6 +31,8 @@ pub fn gcd(Nat, Nat) -> Nat
 pub fn[A] interleave(Chain[A], Chain[A]) -> Chain[A]
 
 pub fn is_zero(Nat) -> Bool
+
+pub fn[A] last(Chain[A]) -> A?
 
 pub fn[A] length(Chain[A]) -> Nat
 

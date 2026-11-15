@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/dp"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] apply_script(@core.Chain[A], @core.Chain[Edit[A]], (A, A) -> Bool) -> @core.Chain[A]?
+
+pub fn[A] edit_script(@core.Chain[A], @core.Chain[A], (A, A) -> Bool) -> @core.Chain[Edit[A]]
+
+pub fn[A] lcs(@core.Chain[A], @core.Chain[A], (A, A) -> Bool) -> @core.Chain[A]
+
+pub fn[A] levenshtein(@core.Chain[A], @core.Chain[A], (A, A) -> Bool) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Edit[A] {
+  Keep(A)
+  Insert(A)
+  Delete(A)
+  Replace(A, A)
+}
+pub fn[A : Eq] Edit::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Edit::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Edit::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
