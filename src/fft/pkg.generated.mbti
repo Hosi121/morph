@@ -1,0 +1,30 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/fft"
+
+import {
+  "Hosi121/morph/core",
+}
+
+// Values
+pub fn add(@core.Chain[@core.Chain[Unit]], @core.Chain[@core.Chain[Unit]]) -> @core.Chain[@core.Chain[Unit]]
+
+pub fn dft(@core.Chain[Unit], @core.Chain[@core.Chain[@core.Chain[Unit]]]) -> @core.Chain[@core.Chain[@core.Chain[Unit]]]
+
+pub fn fft(@core.Chain[Unit], @core.Chain[@core.Chain[@core.Chain[Unit]]]) -> @core.Chain[@core.Chain[@core.Chain[Unit]]]?
+
+pub fn rotate_add(@core.Chain[Unit], @core.Chain[@core.Chain[Unit]], @core.Chain[@core.Chain[Unit]]) -> @core.Chain[@core.Chain[Unit]]
+
+pub fn[A] valid_length(@core.Chain[A]) -> Bool
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+pub type Arrow = @core.Chain[Unit]
+
+pub type Number = @core.Chain[@core.Chain[Unit]]
+
+pub type Signal = @core.Chain[@core.Chain[@core.Chain[Unit]]]
+
+// Traits
