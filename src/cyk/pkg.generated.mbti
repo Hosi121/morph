@@ -1,0 +1,55 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cyk"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] check(Grammar[A], @core.Chain[A], Tree[A], (A, A) -> Bool) -> Bool
+
+pub fn[A] grammar(@core.Chain[@core.Nat], @core.Nat, @core.Chain[Rule[A]], Bool) -> Grammar[A]?
+
+pub fn[A] parse(Grammar[A], @core.Chain[A], (A, A) -> Bool) -> Tree[A]?
+
+pub fn[A] root(Tree[A]) -> @core.Nat
+
+pub fn[A] yield_word(Tree[A]) -> @core.Chain[A]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Grammar[A] {
+  symbols : @core.Chain[@core.Nat]
+  start : @core.Nat
+  rules : @core.Chain[Rule[A]]
+  epsilon : Bool
+}
+pub fn[A : Eq] Grammar::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Grammar::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Grammar::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Rule[A] {
+  Terminal(@core.Nat, A)
+  Binary(@core.Nat, @core.Nat, @core.Nat)
+}
+pub fn[A : Eq] Rule::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Rule::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Rule::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Tree[A] {
+  Empty(@core.Nat)
+  Leaf(@core.Nat, A)
+  Branch(@core.Nat, Tree[A], Tree[A])
+}
+pub fn[A : Eq] Tree::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Tree::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Tree::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits

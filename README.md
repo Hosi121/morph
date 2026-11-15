@@ -45,6 +45,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 型推論 | [Hindley–Milner・let多相](src/infer/infer.mbt) |
 | 評価機械 | [燃料付き・再開可能なCEK](src/cek/cek.mbt) |
 | 正規表現 | [Brzozowski微分](src/regex/derivative.mbt)・[Thompson NFA](src/regex/thompson.mbt) |
+| 構文解析 | [CNF文法のCYK・構文木と導出検査](src/cyk/cyk.mbt) |
 | 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt) |
 | ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](src/polynomial/polynomial.mbt) |
