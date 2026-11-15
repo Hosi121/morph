@@ -38,6 +38,8 @@ pub fn rational_compare(Rational, Rational) -> @core.Ordering
 
 pub fn rational_divide(Rational, Rational) -> Rational?
 
+pub fn rational_half(Rational) -> Rational
+
 pub fn rational_multiply(Rational, Rational) -> Rational
 
 pub fn rational_negate(Rational) -> Rational

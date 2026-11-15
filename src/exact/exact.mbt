@@ -178,6 +178,12 @@ pub fn rational_multiply(a : Rational, b : Rational) -> Rational {
 }
 
 ///|
+/// Halve using the nonzero denominator invariant, without a partial division API.
+pub fn rational_half(value : Rational) -> Rational {
+  normalize(value.numerator, @binary.double(value.denominator))
+}
+
+///|
 pub fn rational_divide(a : Rational, b : Rational) -> Rational? {
   match nonzero(b) {
     None => None

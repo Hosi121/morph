@@ -1,0 +1,9 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/sorting",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"

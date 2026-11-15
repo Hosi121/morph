@@ -1,0 +1,51 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/geometry"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn area(@core.Chain[Point]) -> @exact.Rational
+
+pub fn bezier(@core.Chain[Point], @exact.Rational) -> Point?
+
+pub fn compare(Point, Point) -> @core.Ordering
+
+pub fn convex_hull(@core.Chain[Point]) -> @core.Chain[Point]
+
+pub fn intersection(Point, Point, Point, Point) -> Intersection
+
+pub fn on_segment(Point, Point, Point) -> Bool
+
+pub fn orientation(Point, Point, Point) -> @core.Ordering
+
+pub fn twice_signed_area(@core.Chain[Point]) -> @exact.Rational
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Intersection {
+  NoIntersection
+  PointIntersection(Point)
+  SegmentIntersection(Point, Point)
+}
+pub fn Intersection::equal(Self, Self) -> Bool
+pub fn Intersection::not_equal(Self, Self) -> Bool
+pub fn Intersection::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Point {
+  x : @exact.Rational
+  y : @exact.Rational
+}
+pub fn Point::equal(Self, Self) -> Bool
+pub fn Point::not_equal(Self, Self) -> Bool
+pub fn Point::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
