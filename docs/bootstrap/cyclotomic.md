@@ -60,9 +60,78 @@ fixtureの再生成は次で行う。
 
 ```sh
 python3 tools/generate_cyclotomic.py
-tools/moon fmt src/cyclotomic
+tools/moon fmt src/cyclotomic src/exactfft
 ```
 
 生成器は固定seed `20261115`、追加依存なし。fixtureを検証済みの有限例として扱い、
 すべての入力に対する形式証明や性能向上を主張しない。
 疎多項式の汎用除算とPeano指数を使うので、大きな次数への高速な数値FFTの代替は目的としていない。
+
+## 厳密FFTと逆変換
+
+`src/exactfft` の `plan(field, N)` は、体の次数 `M` に対して `N` が正の2冪であり
+`M` を割り切る場合だけ成功する。根は `ω = ζ_M^(M/N)`。したがって、変換長より大きい円分体の
+任意の元も入力にできる。`size`・`field_of`・`root` で計画の意味を確認できる。
+
+規約は次の通り。インデックスは `0` から `N−1`。
+
+```text
+transform(x)[k] = Σ_j x[j] ω^(j k)
+inverse(y)[j]   = (1/N) Σ_k y[k] ω^(−j k)
+```
+
+`transform` は偶数位置・奇数位置へ再帰し、`E + ω^k O` と `E − ω^k O` を連結する。
+`inverse` は根の共役を使って同じ算法を呼び、有理数 `1/N` を厳密に掛ける。
+`dft` は再帰分割を使わず、各binを入力全体から順に加算する独立な二次時間の仕様。
+3関数とも計画と異なる長さを `LengthMismatch`、他の体の元を `FieldMismatch` として拒否する。
+内部の体演算エラーを消さずに `Arithmetic` に包む。
+
+例えば `QQ(i)` で `[1,2,3,4]` を変換すると、近似を介さず
+`[10, −2−2i, −2, −2+2i]` になる。逆変換は元の整数列に戻る。
+`N=1` は1元の恒等変換、`N=2` は根 `−1` による和と差であり、同じAPIで扱う。
+
+## 既存の12等式との意味対応
+
+従来の `fft.Arrow` は長さ `k` の `Unit` リスト、`fft.Number` は矢印の形式和。
+`interpret_arrow(field, arrow)` を `ζ_M^k`、`interpret_number` をその和、
+`interpret_signal` を成分ごとの解釈と定義した。
+この解釈では、形式和に残っている一周分や逆向きの矢印が正規化によって厳密に相殺される。
+
+変換長 `N` に対し、従来の `fft.fft(w, xs)` のstep `w` を長さ `M/N` の矢印にする。
+すると各段の形式的な回転が `ω = ζ_M^(M/N)` の乗算に対応する。
+`M=N` の場合は長さ1の矢印でよい。次の可換性を有限例で確認した。
+
+```text
+interpret_signal(field, fft.fft(w, xs))
+  = exactfft.transform(plan(field, N), interpret_signal(field, xs))
+```
+
+従来の `fft.dft` についても同じ対応を確認している。従来の形式和の並びが異なっても、
+円分体の正規形として厳密に比較するため、浮動小数点の誤差閾値は存在しない。
+任意の別のstepに対する自動的な根の選択は行わない。
+
+## FFTの検証と次の候補
+
+以下を実行し、Wasm GC・JavaScript・nativeの各バックエンドで15テストが通った。
+円分体の10テストと合わせて25テスト。
+
+```sh
+tools/moon fmt --check src/cyclotomic src/exactfft
+tools/moon check --deny-warn src/cyclotomic src/exactfft
+tools/moon test src/exactfft --target wasm-gc
+tools/moon test src/exactfft --target js
+tools/moon test src/exactfft --target native
+tools/moon info src/cyclotomic src/exactfft
+```
+
+- 計画の受理・拒否、空・長さ不一致・他の体の混入。
+- 明示的な4点DFTと、長さ1/2/4の全binary信号。
+- 長さ1/2/4/8/16の円分体入力30組で直接DFT一致と両向きの厳密往復。
+- Python `Fraction` で、係数配列を直接回転・加算するDFTオラクル8組。
+  `M=16,N=8` のような拡大体内の変換、`N=1` の非有理入力も含む。
+- 矢印FFT/DFTとの対応を7種類の `(M,N)`、各4入力で確認。加法と回転の解釈、逆位相の相殺も確認。
+
+次の候補は、`Φ_N = (x^N−1) / ∏_{d|N,d<N} Φ_d` の厳密多項式除算による一般次数への拡張、
+異なる次数間の明示的な埋め込み、`ζ_N + ζ_N^(−1)` を生成元とする実部分体。
+一般次数ではFFTも2冪の変換長だけが現状の対象になる。
+ここではそれらの実装・一般性能・形式証明は主張しない。

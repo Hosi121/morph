@@ -1,0 +1,58 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/exactfft"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/cyclotomic",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn dft(Plan, @core.Chain[@cyclotomic.Element]) -> Result[@core.Chain[@cyclotomic.Element], TransformError]
+
+pub fn field_of(Plan) -> @cyclotomic.Field
+
+pub fn interpret_arrow(@cyclotomic.Field, @core.Chain[Unit]) -> Result[@cyclotomic.Element, @cyclotomic.CyclotomicError]
+
+pub fn interpret_number(@cyclotomic.Field, @core.Chain[@core.Chain[Unit]]) -> Result[@cyclotomic.Element, @cyclotomic.CyclotomicError]
+
+pub fn interpret_signal(@cyclotomic.Field, @core.Chain[@core.Chain[@core.Chain[Unit]]]) -> Result[@core.Chain[@cyclotomic.Element], @cyclotomic.CyclotomicError]
+
+pub fn inverse(Plan, @core.Chain[@cyclotomic.Element]) -> Result[@core.Chain[@cyclotomic.Element], TransformError]
+
+pub fn plan(@cyclotomic.Field, @core.Nat) -> Plan?
+
+pub fn root(Plan) -> @cyclotomic.Element
+
+pub fn size(Plan) -> @core.Nat
+
+pub fn transform(Plan, @core.Chain[@cyclotomic.Element]) -> Result[@core.Chain[@cyclotomic.Element], TransformError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  field : @cyclotomic.Field
+  size : @core.Nat
+  root : @cyclotomic.Element
+  inverse_root : @cyclotomic.Element
+  inverse_size : @cyclotomic.Element
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum TransformError {
+  LengthMismatch
+  FieldMismatch
+  Arithmetic(@cyclotomic.CyclotomicError)
+}
+pub fn TransformError::equal(Self, Self) -> Bool
+pub fn TransformError::not_equal(Self, Self) -> Bool
+pub fn TransformError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
