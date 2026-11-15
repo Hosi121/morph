@@ -25,3 +25,33 @@ test "trial division 998244353 excluding input construction" (b : @bench.T) {
   let n = @oracle.binary(998244353)
   b.bench(fn() { b.keep(@modular.is_prime(n)) })
 }
+
+///|
+test "composite screen 1373653 bases two three five" (b : @bench.T) {
+  let n = @oracle.binary(1373653)
+  let bases = @oracle.chain([2, 3, 5].map(@oracle.binary))
+  b.bench(fn() { b.keep(screen(n, bases)) })
+}
+
+///|
+test "trial composite decision 1373653 excluding input construction" (
+  b : @bench.T,
+) {
+  let n = @oracle.binary(1373653)
+  b.bench(fn() { b.keep(@modular.is_prime(n)) })
+}
+
+///|
+test "composite screen 100160063 base two" (b : @bench.T) {
+  let n = @oracle.binary(100160063)
+  let bases : @core.Chain[@binary.Binary] = Cons(@oracle.binary(2), Nil)
+  b.bench(fn() { b.keep(screen(n, bases)) })
+}
+
+///|
+test "trial composite decision 100160063 excluding input construction" (
+  b : @bench.T,
+) {
+  let n = @oracle.binary(100160063)
+  b.bench(fn() { b.keep(@modular.is_prime(n)) })
+}

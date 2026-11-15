@@ -109,3 +109,20 @@ test "empty bases invalid bases small inputs and prime inputs give no false verd
     Inconclusive => abort("even composite is exposed without bases")
   }
 }
+
+///|
+test "factor and strong witnesses independently certify benchmark composites" {
+  for (n, divisor) in [(1373653, 829), (100160063, 10007)] {
+    assert_false(@modular.is_prime(@oracle.binary(n)))
+    assert_true(
+      check_composite(@oracle.binary(n), Divisor(@oracle.binary(divisor)))
+      is Some(_),
+    )
+    let bases = @oracle.chain([2, 3, 5].map(@oracle.binary))
+    match screen(@oracle.binary(n), bases) {
+      Composite(proof) => assert_eq(composite_value(proof), @oracle.binary(n))
+      Inconclusive =>
+        abort("fixed benchmark bases must expose these composites")
+    }
+  }
+}
