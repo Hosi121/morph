@@ -75,6 +75,25 @@ fn trim(
 }
 
 ///|
+/// Private arithmetic already returns reduced coefficients. Only high zeros
+/// need removing; sending these values through public construction repeats all
+/// modular divisions without strengthening the invariant.
+fn trim_reduced(
+  coefficients : @core.Chain[@binary.Binary],
+) -> @core.Chain[@binary.Binary] {
+  match coefficients {
+    Nil => Nil
+    Cons(head, rest) => {
+      let tail = trim_reduced(rest)
+      match (tail, @binary.is_zero(head)) {
+        (Nil, true) => Nil
+        _ => Cons(head, tail)
+      }
+    }
+  }
+}
+
+///|
 pub fn polynomial(
   field : @primefield.Field,
   coefficients : @core.Chain[@binary.Binary],
@@ -180,14 +199,16 @@ fn add_raw(a : Polynomial, b : Polynomial) -> Polynomial {
       }
     false => ()
   }
-  polynomial(
-    a.field,
-    add_coefficients(
-      @primefield.modulus(a.field),
-      a.coefficients,
-      b.coefficients,
+  {
+    field: a.field,
+    coefficients: trim_reduced(
+      add_coefficients(
+        @primefield.modulus(a.field),
+        a.coefficients,
+        b.coefficients,
+      ),
     ),
-  )
+  }
 }
 
 ///|
@@ -205,12 +226,12 @@ pub fn negate(value : Polynomial) -> Polynomial {
     false => ()
   }
   let modulus = @primefield.modulus(value.field)
-  polynomial(
-    value.field,
-    @core.map(value.coefficients, fn(coefficient) {
+  {
+    field: value.field,
+    coefficients: @core.map(value.coefficients, fn(coefficient) {
       @modular.subtract(modulus, @binary.zero(), coefficient)
     }),
-  )
+  }
 }
 
 ///|
@@ -240,12 +261,14 @@ pub fn scale(value : Polynomial, scalar : @binary.Binary) -> Polynomial {
     false => ()
   }
   let modulus = @primefield.modulus(value.field)
-  polynomial(
-    value.field,
-    @core.map(value.coefficients, fn(coefficient) {
-      @modular.multiply(modulus, coefficient, scalar)
-    }),
-  )
+  {
+    field: value.field,
+    coefficients: trim_reduced(
+      @core.map(value.coefficients, fn(coefficient) {
+        @modular.multiply(modulus, coefficient, scalar)
+      }),
+    ),
+  }
 }
 
 ///|
@@ -281,14 +304,16 @@ fn multiply_raw(a : Polynomial, b : Polynomial) -> Polynomial {
       }
     false => ()
   }
-  polynomial(
-    a.field,
-    multiply_coefficients(
-      @primefield.modulus(a.field),
-      a.coefficients,
-      b.coefficients,
+  {
+    field: a.field,
+    coefficients: trim_reduced(
+      multiply_coefficients(
+        @primefield.modulus(a.field),
+        a.coefficients,
+        b.coefficients,
+      ),
     ),
-  )
+  }
 }
 
 ///|
@@ -304,10 +329,17 @@ pub fn multiply(
 
 ///|
 fn shifted(value : Polynomial, exponent : @core.Nat) -> Polynomial {
-  polynomial(
-    value.field,
-    @core.append(@core.replicate(exponent, @binary.zero()), value.coefficients),
-  )
+  match is_zero(value) {
+    true => value
+    false =>
+      {
+        field: value.field,
+        coefficients: @core.append(
+          @core.replicate(exponent, @binary.zero()),
+          value.coefficients,
+        ),
+      }
+  }
 }
 
 ///|
@@ -482,14 +514,16 @@ pub fn derivative(value : Polynomial) -> Polynomial {
   match value.coefficients {
     Nil => value
     Cons(_, rest) =>
-      polynomial(
-        value.field,
-        derivative_coefficients(
-          @primefield.modulus(value.field),
-          rest,
-          @binary.one(),
+      {
+        field: value.field,
+        coefficients: trim_reduced(
+          derivative_coefficients(
+            @primefield.modulus(value.field),
+            rest,
+            @binary.one(),
+          ),
         ),
-      )
+      }
   }
 }
 
