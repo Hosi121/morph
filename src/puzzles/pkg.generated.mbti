@@ -9,11 +9,25 @@ import {
 // Values
 pub fn check_queens(@core.Nat, @core.Chain[Queen]) -> Bool
 
+pub fn check_sudoku(@core.Nat, @core.Chain[Cell], @core.Chain[Cell]) -> Bool
+
 pub fn n_queens(@core.Nat) -> @core.Chain[Queen]?
+
+pub fn sudoku(@core.Nat, @core.Chain[Cell]) -> @core.Chain[Cell]?
 
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Cell {
+  row : @core.Nat
+  column : @core.Nat
+  value : @core.Nat
+}
+pub fn Cell::equal(Self, Self) -> Bool
+pub fn Cell::not_equal(Self, Self) -> Bool
+pub fn Cell::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub(all) struct Queen {
   row : @core.Nat
