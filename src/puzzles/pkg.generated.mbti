@@ -3,6 +3,7 @@ package "Hosi121/morph/puzzles"
 
 import {
   "Hosi121/morph/core",
+  "Hosi121/morph/exactcover",
   "moonbitlang/core/debug",
 }
 
@@ -12,6 +13,8 @@ pub fn check_queens(@core.Nat, @core.Chain[Queen]) -> Bool
 pub fn check_sudoku(@core.Nat, @core.Chain[Cell], @core.Chain[Cell]) -> Bool
 
 pub fn n_queens(@core.Nat) -> @core.Chain[Queen]?
+
+pub fn queens_problem(@core.Nat) -> @exactcover.Problem?
 
 pub fn sudoku(@core.Nat, @core.Chain[Cell]) -> @core.Chain[Cell]?
 

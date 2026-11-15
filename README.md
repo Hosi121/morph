@@ -39,7 +39,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | ネットワーク | [Edmonds–Karp最大流・最小カット・証拠検査](src/maxflow/maxflow.mbt) |
 | 動的計画法 | [編集距離・編集手順・LCS](src/dp/sequences.mbt)・[0/1 knapsack](src/dp/knapsack.mbt) |
 | 論理 | [DPLL SAT・モデルと反証の検査](src/sat/sat.mbt) |
-| 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](src/exactcover/exactcover.mbt) |
+| 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](src/exactcover/exactcover.mbt)・[再開可能な全解列挙](src/exactcover/enumerate.mbt) |
 | 制約のモデル化 | [Nクイーン](src/puzzles/queens.mbt)・[4×4/9×9数独](src/puzzles/sudoku.mbt) |
 | 単一化 | [occurs check・冪等置換](src/unify/unify.mbt) |
 | 型推論 | [Hindley–Milner・let多相](src/infer/infer.mbt) |

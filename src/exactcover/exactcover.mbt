@@ -113,13 +113,11 @@ fn occurrences(column : @core.Nat, rows : @core.Chain[Row]) -> @core.Nat {
 }
 
 ///|
-/// Algorithm X with the smallest-column heuristic, implemented by immutable
-/// filtering rather than mutable dancing links. Returns one solution.
-pub fn solve(problem : Problem) -> @core.Chain[@core.Nat]? {
-  fn count(
-    column : @binary.Binary,
-    rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
-  ) -> @core.Nat {
+fn candidate_rows(
+  primary : @core.Chain[@binary.Binary],
+  rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
+) -> @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])] {
+  fn count(column : @binary.Binary) -> @core.Nat {
     @core.fold_left(rows, @core.Zero, fn(count, row) {
       let (_, columns) = row
       match key_member(columns, column) {
@@ -128,60 +126,74 @@ pub fn solve(problem : Problem) -> @core.Chain[@core.Nat]? {
       }
     })
   }
+  match primary {
+    Nil => Nil
+    Cons(first, rest) => {
+      let (column, _) = @core.fold_left(rest, (first, count(first)), fn(
+        best,
+        column,
+      ) {
+        let (_, smallest) = best
+        let number = count(column)
+        match @core.compare(number, smallest) {
+          Less => (column, number)
+          _ => best
+        }
+      })
+      @core.filter(rows, fn(row) {
+        let (_, columns) = row
+        key_member(columns, column)
+      })
+    }
+  }
+}
+
+///|
+fn remove_columns(
+  primary : @core.Chain[@binary.Binary],
+  covered : @core.Chain[@binary.Binary],
+) -> @core.Chain[@binary.Binary] {
+  @core.filter(primary, fn(column) { !key_member(covered, column) })
+}
+
+///|
+fn compatible_rows(
+  rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
+  covered : @core.Chain[@binary.Binary],
+) -> @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])] {
+  @core.filter(rows, fn(row) {
+    let (_, columns) = row
+    !@core.any(columns, fn(column) { key_member(covered, column) })
+  })
+}
+
+///|
+/// Algorithm X with the smallest-column heuristic and immutable filtering.
+/// Returns one solution, omitting unnecessary secondary-only and empty rows.
+pub fn solve(problem : Problem) -> @core.Chain[@core.Nat]? {
   fn search(
     primary : @core.Chain[@binary.Binary],
     rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
   ) -> @core.Chain[@core.Nat]? {
+    fn choose(
+      candidates : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
+    ) -> @core.Chain[@core.Nat]? {
+      match candidates {
+        Nil => None
+        Cons((label, covered), rest) =>
+          match
+            search(
+              remove_columns(primary, covered),
+              compatible_rows(rows, covered),
+            ) {
+            Some(solution) => Some(Cons(label, solution))
+            None => choose(rest)
+          }
+      }
+    }
     match primary {
       Nil => Some(Nil)
-      Cons(first, rest) => {
-        let initial = (first, count(first, rows))
-        let (column, number) = @core.fold_left(rest, initial, fn(best, column) {
-          let (_, smallest) = best
-          let number = count(column, rows)
-          match @core.compare(number, smallest) {
-            Less => (column, number)
-            _ => best
-          }
-        })
-        fn choose(
-          candidates : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
-        ) -> @core.Chain[@core.Nat]? {
-          match candidates {
-            Nil => None
-            Cons((label, covered), rest) => {
-              let remaining_columns = @core.filter(primary, fn(column) {
-                match key_member(covered, column) {
-                  true => false
-                  false => true
-                }
-              })
-              let remaining_rows = @core.filter(rows, fn(other) {
-                let (_, columns) = other
-                match
-                  @core.any(columns, fn(column) { key_member(covered, column) }) {
-                  true => false
-                  false => true
-                }
-              })
-              match search(remaining_columns, remaining_rows) {
-                Some(solution) => Some(Cons(label, solution))
-                None => choose(rest)
-              }
-            }
-          }
-        }
-        match number {
-          Zero => None
-          Succ(_) =>
-            choose(
-              @core.filter(rows, fn(row) {
-                let (_, columns) = row
-                key_member(columns, column)
-              }),
-            )
-        }
-      }
+      Cons(_, _) => choose(candidate_rows(primary, rows))
     }
   }
   search(problem.indexed_primary, problem.indexed_rows)

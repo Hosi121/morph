@@ -13,9 +13,9 @@ pub extend Queen with Debug::{to_repr}
 
 ///|
 /// Rows/columns are primary constraints, both diagonal families secondary.
-pub fn n_queens(n : @core.Nat) -> @core.Chain[Queen]? {
+pub fn queens_problem(n : @core.Nat) -> @exactcover.Problem? {
   match n {
-    Zero => Some(Nil)
+    Zero => @exactcover.problem(Nil, Nil, Nil)
     Succ(previous) => {
       let twice = @core.add(n, n)
       let diagonal_count = @core.add(n, previous)
@@ -53,38 +53,41 @@ pub fn n_queens(n : @core.Nat) -> @core.Chain[Queen]? {
           })
         },
       )
-      match @exactcover.problem(primary, secondary, choices) {
+      @exactcover.problem(primary, secondary, choices)
+    }
+  }
+}
+
+///|
+/// Decode row labels r*n+c from queens_problem and return one placement.
+pub fn n_queens(n : @core.Nat) -> @core.Chain[Queen]? {
+  fn decode(labels : @core.Chain[@core.Nat]) -> @core.Chain[Queen]? {
+    match labels {
+      Nil => Some(Nil)
+      Cons(label, rest) =>
+        match (@core.divmod(label, n), decode(rest)) {
+          (Some((row, column)), Some(rest)) =>
+            Some(Cons({ row, column, }, rest))
+          _ => None
+        }
+    }
+  }
+  match queens_problem(n) {
+    None => None
+    Some(problem) =>
+      match @exactcover.solve(problem) {
         None => None
-        Some(problem) =>
-          match @exactcover.solve(problem) {
+        Some(labels) =>
+          match decode(labels) {
             None => None
-            Some(labels) => {
-              fn decode(
-                labels : @core.Chain[@core.Nat],
-              ) -> @core.Chain[Queen]? {
-                match labels {
-                  Nil => Some(Nil)
-                  Cons(label, rest) =>
-                    match (@core.divmod(label, n), decode(rest)) {
-                      (Some((row, column)), Some(rest)) =>
-                        Some(Cons({ row, column, }, rest))
-                      _ => None
-                    }
-                }
-              }
-              match decode(labels) {
-                None => None
-                Some(queens) =>
-                  Some(
-                    @sorting.merge_sort(queens, fn(a, b) {
-                      @core.compare(a.row, b.row)
-                    }),
-                  )
-              }
-            }
+            Some(queens) =>
+              Some(
+                @sorting.merge_sort(queens, fn(a, b) {
+                  @core.compare(a.row, b.row)
+                }),
+              )
           }
       }
-    }
   }
 }
 
