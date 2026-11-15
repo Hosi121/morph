@@ -24,6 +24,7 @@ Mooncakes の追加依存はない。公開リポジトリは[Hosi121/morph](htt
 
 算法の核・依存・テスト宣言数は、ソースから生成する[一覧](docs/INVENTORY.md)にある。
 公開APIの実装と内部への統合は、[呼び出し経路の一覧](docs/CALL_PATHS.md)で区別する。
+[共有kernelの採用状況](docs/KERNELS.md)には、通常経路・計測・棄却案の区別をまとめた。
 `tools/check`で制約・整形・警告禁止・Wasm GC/JavaScriptのテスト・公開APIの生成差分を検査する。
 nativeは`tools/moon test --target native`で確認する。有限の総当たり、外部オラクル、個別問題の証拠検査であり、
 すべての入力に対する形式証明ではない。
