@@ -2,6 +2,7 @@
 package "Hosi121/morph/dp"
 
 import {
+  "Hosi121/morph/binary",
   "Hosi121/morph/core",
   "moonbitlang/core/debug",
 }
@@ -10,6 +11,8 @@ import {
 pub fn[A] apply_script(@core.Chain[A], @core.Chain[Edit[A]], (A, A) -> Bool) -> @core.Chain[A]?
 
 pub fn[A] edit_script(@core.Chain[A], @core.Chain[A], (A, A) -> Bool) -> @core.Chain[Edit[A]]
+
+pub fn knapsack(@core.Chain[Item], @core.Nat) -> Selection
 
 pub fn[A] lcs(@core.Chain[A], @core.Chain[A], (A, A) -> Bool) -> @core.Chain[A]
 
@@ -28,6 +31,24 @@ pub(all) enum Edit[A] {
 pub fn[A : Eq] Edit::equal(Self[A], Self[A]) -> Bool
 pub fn[A : Eq] Edit::not_equal(Self[A], Self[A]) -> Bool
 pub fn[A : @debug.Debug] Edit::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Item {
+  weight : @core.Nat
+  value : @binary.Binary
+}
+pub fn Item::equal(Self, Self) -> Bool
+pub fn Item::not_equal(Self, Self) -> Bool
+pub fn Item::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Selection {
+  value : @binary.Binary
+  chosen : @core.Chain[@core.Nat]
+}
+pub fn Selection::equal(Self, Self) -> Bool
+pub fn Selection::not_equal(Self, Self) -> Bool
+pub fn Selection::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
