@@ -115,4 +115,5 @@ fn main {
   )
   arithmetic_and_algebra()
   search_and_geometry()
+  codes_and_optimization()
 }

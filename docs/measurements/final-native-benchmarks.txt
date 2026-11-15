@@ -1,0 +1,45 @@
+[Hosi121/morph] bench benchmarks/unify_test.mbt:2 ("Apply idempotent substitution to bound shared term") ok
+time (mean ± σ)         range (min … max) 
+   8.38 ns ±   0.17 ns     8.11 ns …   8.71 ns  in 10 × 100000 runs
+[Hosi121/morph] bench benchmarks/sudoku_test.mbt:2 ("Sudoku nine by nine symbolic encoding and search") ok
+time (mean ± σ)         range (min … max) 
+ 128.86 ms ±   4.40 ms   122.53 ms … 135.69 ms  in 10 ×      1 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:2 ("rational reciprocal product with 128-bit factors") ok
+time (mean ± σ)         range (min … max) 
+ 109.06 µs ±   1.85 µs   107.28 µs … 111.86 µs  in 10 ×    916 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:12 ("rational sum with a shared 127-bit denominator") ok
+time (mean ± σ)         range (min … max) 
+  60.39 µs ± 694.84 ns    59.37 µs …  61.33 µs  in 10 ×   1634 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:23 ("two-phase simplex rational optimum including tableau initialization") ok
+time (mean ± σ)         range (min … max) 
+  39.47 µs ± 644.63 ns    38.68 µs …  40.46 µs  in 10 ×   2548 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:40 ("Sturm quintic squarefree sequence and full root isolation") ok
+time (mean ± σ)         range (min … max) 
+  88.28 µs ±   1.29 µs    86.88 µs …  90.75 µs  in 10 ×   1103 runs
+[Hosi121/morph] bench benchmarks/multiply_test.mbt:2 ("School versus Karatsuba exact binary multiplication") ok
+name                time (mean ± σ)         range (min … max) 
+school 128 bits      148.18 µs ±   3.12 µs   144.18 µs … 152.73 µs  in 10 ×    679 runs
+karatsuba 128 bits   136.32 µs ±   2.86 µs   133.36 µs … 141.30 µs  in 10 ×    732 runs
+school 512 bits        2.61 ms ±  88.68 µs     2.52 ms …   2.75 ms  in 10 ×     40 runs
+karatsuba 512 bits     1.45 ms ±  28.41 µs     1.40 ms …   1.49 ms  in 10 ×     69 runs
+school 2048 bits      40.51 ms ± 499.10 µs    39.68 ms …  41.11 ms  in 10 ×      3 runs
+karatsuba 2048 bits   14.09 ms ± 548.60 µs    13.41 ms …  14.86 ms  in 10 ×      8 runs
+[Hosi121/morph] bench benchmarks/matrix_test.mbt:2 ("Warshall Bool 24 vertices") ok
+time (mean ± σ)         range (min … max) 
+ 357.43 µs ±   6.23 µs   349.01 µs … 368.85 µs  in 10 ×    278 runs
+[Hosi121/morph] bench benchmarks/linear_test.mbt:2 ("exact rational four-by-four inverse including Gauss-Jordan") ok
+time (mean ± σ)         range (min … max) 
+ 118.63 µs ±   1.21 µs   116.83 µs … 120.91 µs  in 10 ×    858 runs
+[Hosi121/morph] bench benchmarks/groebner_test.mbt:18 ("Buchberger separable three-variable quadratics") ok
+time (mean ± σ)         range (min … max) 
+   1.50 µs ±  16.32 ns     1.48 µs …   1.53 µs  in 10 ×  65375 runs
+[Hosi121/morph] bench benchmarks/groebner_test.mbt:30 ("Buchberger coupled three-variable quadratics") ok
+time (mean ± σ)         range (min … max) 
+  56.05 µs ± 787.81 ns    54.87 µs …  57.23 µs  in 10 ×   1765 runs
+[Hosi121/morph] bench benchmarks/avl_test.mbt:17 ("five fixed lookups on a 1024-entry association list") ok
+time (mean ± σ)         range (min … max) 
+  36.17 µs ± 608.42 ns    35.33 µs …  36.87 µs  in 10 ×   2795 runs
+[Hosi121/morph] bench benchmarks/avl_test.mbt:30 ("same five lookups on a persistent AVL with binary keys") ok
+time (mean ± σ)         range (min … max) 
+ 417.54 ns ±   9.05 ns   407.66 ns … 433.73 ns  in 10 × 100000 runs
+Total tests: 13, passed: 13, failed: 0.

@@ -1,0 +1,2 @@
+# Only needed to regenerate the committed Groebner fixtures.
+sympy==1.14.0

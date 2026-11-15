@@ -24,6 +24,13 @@ import {
   "Hosi121/morph/geometry",
   "Hosi121/morph/simplex",
   "Hosi121/morph/sturm",
+  "Hosi121/morph/aho",
+  "Hosi121/morph/lz78",
+  "Hosi121/morph/finitefield",
+  "Hosi121/morph/elliptic",
+  "Hosi121/morph/bipartite",
+  "Hosi121/morph/zeroone",
+  "Hosi121/morph/reedsolomon",
   "Hosi121/morph/testsupport" @oracle,
   "moonbitlang/core/debug",
 }

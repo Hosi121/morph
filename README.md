@@ -20,6 +20,10 @@ tools/moon bench src/benchmarks --target native --release
 bootstrap を省略した場合、`tools/moon` は PATH 上の moon を使う。
 Mooncakes の追加依存はない。外部公開はしていない。
 
+算法の核は42パッケージ、定数データを含む56ソースファイル。166テストをWasm GC・JavaScript・nativeで確認し、
+Pythonの制約検査にも3テストを置いている。有限の総当たりや外部オラクルとの比較であり、
+すべての入力に対する形式証明ではない。
+
 | 分野 | 実装と入口 |
 | --- | --- |
 | 基礎 | [不変リスト・Peano算術・Euclid](src/core/data.mbt) |
@@ -63,6 +67,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 
 設計、検証範囲、表現コスト、採用理由、限界は [ハンドブック](HANDBOOK.md) に記録する。
 性能比較の条件と生ログは [計測記録](docs/MEASUREMENTS.md) にある。
+ツールチェーンとfixture再生成の条件は [検証環境](docs/ENVIRONMENT.md) にある。
 これは数値計算ライブラリの高速化を目的とするものではない。
 
 ツアーは期待値を表示するだけでなく、各アルゴリズムを呼んで結果を表示する。
