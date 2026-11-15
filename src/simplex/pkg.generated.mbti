@@ -1,0 +1,83 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/simplex"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_optimum(Problem, Optimum) -> Bool
+
+pub fn check_ray(Problem, Ray) -> Bool
+
+pub fn problem(@matrix.Matrix[@exact.Rational], @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Problem?
+
+pub fn run(State, @core.Nat) -> Progress
+
+pub fn start(Problem) -> State
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Optimum {
+  primal : @core.Chain[@exact.Rational]
+  dual : @core.Chain[@exact.Rational]
+  value : @exact.Rational
+}
+pub fn Optimum::equal(Self, Self) -> Bool
+pub fn Optimum::not_equal(Self, Self) -> Bool
+pub fn Optimum::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  a : @matrix.Matrix[@exact.Rational]
+  b : @core.Chain[@exact.Rational]
+  c : @core.Chain[@exact.Rational]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Optimal(Optimum)
+  Unbounded(Ray)
+  Paused(State)
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Ray {
+  point : @core.Chain[@exact.Rational]
+  direction : @core.Chain[@exact.Rational]
+}
+pub fn Ray::equal(Self, Self) -> Bool
+pub fn Ray::not_equal(Self, Self) -> Bool
+pub fn Ray::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Row
+pub fn Row::equal(Self, Self) -> Bool
+pub fn Row::not_equal(Self, Self) -> Bool
+pub fn Row::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  problem : Problem
+  rows : @core.Chain[Row]
+  objective : @core.Chain[@exact.Rational]
+  value : @exact.Rational
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

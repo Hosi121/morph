@@ -31,6 +31,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | NTT | [有限体変換・逆変換・線形畳み込み](src/ntt/ntt.mbt) |
 | 行列 | [半環](src/algebra/algebra.mbt)・[行列積・累乗・Warshall](src/matrix/matrix.mbt) |
 | 線形代数 | [Gauss–Jordan・行列式・逆行列・解空間](src/linear/linear.mbt) |
+| 線形最適化 | [厳密有理数の単体法・Bland規則・双対解と非有界証拠](src/simplex/simplex.mbt) |
 | ソート | [安定merge/insertion/quick sort](src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](src/heap/heap.mbt) |
 | 辞書 | [Boolワードの永続trie・最長prefix・union](src/trie/trie.mbt) |
