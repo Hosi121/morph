@@ -36,6 +36,14 @@ pub fn reduce(Modulus, @binary.Binary) -> @binary.Binary
 
 pub fn residue(Congruence) -> @binary.Binary
 
+pub fn rsa_decrypt(RsaKey, @binary.Binary) -> @binary.Binary?
+
+pub fn rsa_encrypt(RsaKey, @binary.Binary) -> @binary.Binary?
+
+pub fn rsa_key(@binary.Binary, @binary.Binary, @binary.Binary) -> RsaKey?
+
+pub fn rsa_public(RsaKey) -> (Modulus, @binary.Binary)
+
 pub fn semiring(Modulus) -> @algebra.Semiring[@binary.Binary]
 
 pub fn signed_reduce(Modulus, @exact.Integer) -> @binary.Binary
@@ -63,6 +71,16 @@ pub struct Modulus {
 pub fn Modulus::equal(Self, Self) -> Bool
 pub fn Modulus::not_equal(Self, Self) -> Bool
 pub fn Modulus::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct RsaKey {
+  modulus : Modulus
+  public_exponent : @binary.Binary
+  private_exponent : @binary.Binary
+}
+pub fn RsaKey::equal(Self, Self) -> Bool
+pub fn RsaKey::not_equal(Self, Self) -> Bool
+pub fn RsaKey::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

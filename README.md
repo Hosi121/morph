@@ -26,7 +26,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 二進表現 | [Boolリスト算術・累乗・GCD・連結・pair/unpair](src/binary/binary.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](src/exact/exact.mbt) |
 | FFT | [画像の12等式に対応するFFTと直接DFT](src/fft/fft.mbt) |
-| 剰余算術 | [平方反復・拡張Euclid・逆元・素数判定](src/modular/modular.mbt) |
+| 剰余算術 | [平方反復・拡張Euclid・逆元・素数判定](src/modular/modular.mbt)・[一般化CRT](src/modular/crt.mbt)・[小さなRSA](src/modular/rsa.mbt) |
 | NTT | [有限体変換・逆変換・線形畳み込み](src/ntt/ntt.mbt) |
 | 行列 | [半環](src/algebra/algebra.mbt)・[行列積・累乗・Warshall](src/matrix/matrix.mbt) |
 | 線形代数 | [Gauss–Jordan・行列式・逆行列・解空間](src/linear/linear.mbt) |
