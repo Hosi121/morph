@@ -1,0 +1,31 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/recurrence"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/rowreduce",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] berlekamp_massey(@rowreduce.Field[A], @core.Chain[A]) -> Recurrence[A]?
+
+pub fn[A] check(@rowreduce.Field[A], @core.Chain[A], Recurrence[A]) -> Bool
+
+pub fn[A] predict(@rowreduce.Field[A], Recurrence[A], @core.Chain[A]) -> A?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Recurrence[A] {
+  length : @core.Nat
+  connection : @core.Chain[A]
+}
+pub fn[A : Eq] Recurrence::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Recurrence::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Recurrence::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
