@@ -564,3 +564,74 @@ pre-optimization hashes recorded in `ruplog.md`:
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/pipeline_wbtest.mbt --target native --release
 /home/hosi/morph/tools/measure --cpu 10 python3 tools/generate_ruplog.py --check --miter64 --cpu 10
 ```
+
+## Direct decision-value lookup remains an experiment
+
+The polarity-only value lookup considered earlier was re-evaluated after the
+larger scan and analysis costs were removed. This experiment changes only
+quiescent decision evaluation. Propagation and replacement retain their
+existing value checks. The trie path already establishes variable identity;
+its candidate reads the assigned polarity directly.
+
+A deterministic 64-bit count records 1,413,663 decision literal queries,
+including 1,073,212 assigned queries where the original helper also compares
+the already matched Binary key. Both versions return identical complete final
+statistics/proof and all paused states in the transition regressions. The
+independent hinted checker accepts the shared proof.
+
+One CPU-10/mutex/native release executable, ten samples per ABBA block:
+
+| Search block | Mean ± standard deviation | Range |
+| --- | ---: | ---: |
+| Key verification, first control | 532.03 ms ± 30.89 ms | 488.84–571.97 ms |
+| Direct polarity | 482.85 ms ± 20.70 ms | 453.73–505.89 ms |
+| Direct polarity, repeated control | 480.64 ms ± 18.28 ms | 459.34–510.04 ms |
+| Key verification, repeated control | 570.44 ms ± 50.60 ms | 499.72–654.83 ms |
+
+The unchanged prepared checker control was 43.55 ms ± 2.96 ms. The process used
+25.77 s elapsed, 25.85 s user, and 0.05 s system time.
+
+A follow-up alternates execution order across 20 complete-query pairs, including
+startup, preparation, hinted building, and independent checking. The checked
+mode averaged 843.36 ms ± 36.27 ms, and direct polarity 814.93 ms ± 43.83 ms.
+Direct polarity was quicker in 16 of 20 pairs. The average paired difference
+was 28.42 ms, with paired standard deviation 51.07 ms; the ratio median was
+1.039, range 0.862–1.147. Both execution-order groups had the same mean direction.
+The unchanged checker control was 42.54 ms ± 2.37 ms, and the process used
+35.09 s elapsed, 34.90 s user, and 0.11 s system time. Shared Binary and Core
+were fixed throughout these comparisons.
+
+The observed complete-query mean improvement is about 3.4%, with substantial
+variation. Under the current policy of holding small effects under host noise,
+production retains key verification. The candidate and whole-engine selectors
+are isolated in `key_values_wbtest.mbt` for future investigation. This preserves
+the earlier negative width-16 result and the modest width-64 observation instead
+of treating the eliminated comparisons as a proven general pipeline speedup.
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/key_values_wbtest.mbt --target native --release -i 0
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/key_values_wbtest.mbt --target native --release -i 2
+```
+
+## Split residual conflict maintenance
+
+A test-only sampler replays the same analysis helpers around each actual
+conflict transition. One CPU-10/mutex 64-bit observation recorded 477 learned
+clauses, 169,747 assignment entries reinserted into fresh watch-value tries,
+and 21,659 abandoned entries. Analysis took 48.04 ms, trail backjump filtering
+32.79 ms, and watch learning 69.00 ms. Separately timing second-watch selection
+measured 5.13 ms; it is a subset of watch learning and must not be added again.
+The unchanged prepared hinted-checker control was 41.17 ms ± 1.54 ms.
+
+The sampler repeats helper work to separate these regions and is not a
+statistical complete-query measurement. It checks the actual final proof with
+the independent hinted checker. The result prioritizes sharing the surviving
+trail suffix and updating only abandoned assignment-index paths. Changing
+second-watch lookup is a lower priority under this observation.
+
+The experiment isolation and sampler pass all 23 ordinary CDCL tests on native,
+JS, and Wasm GC, the warning-denying check, and the unchanged purity gate.
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/maintenance_wbtest.mbt --target native --release
+```
