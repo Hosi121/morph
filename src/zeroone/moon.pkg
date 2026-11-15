@@ -8,4 +8,6 @@ import {
 import {
   "Hosi121/morph/testsupport" @oracle,
   "Hosi121/morph/dp",
+  "Hosi121/morph/exactcover",
+  "Hosi121/morph/sat",
 } for "wbtest"
