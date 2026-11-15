@@ -359,23 +359,18 @@ fn shifted(value : Polynomial, exponent : @core.Nat) -> Polynomial {
 fn divide_loop(
   remainder : Polynomial,
   divisor : Polynomial,
+  divisor_width : @core.Nat,
   inverse_leading : @binary.Binary,
   quotient : Polynomial,
 ) -> Division {
   match leading(remainder) {
     None => { quotient, remainder, }
-    Some(coefficient) =>
-      match
-        @core.compare(
-          @core.length(remainder.coefficients),
-          @core.length(divisor.coefficients),
-        ) {
+    Some(coefficient) => {
+      let remainder_width = @core.length(remainder.coefficients)
+      match @core.compare(remainder_width, divisor_width) {
         Less => { quotient, remainder, }
         _ => {
-          let exponent = @core.subtract(
-            @core.length(remainder.coefficients),
-            @core.length(divisor.coefficients),
-          )
+          let exponent = @core.subtract(remainder_width, divisor_width)
           let scalar = match characteristic_two(remainder.field) {
             true => coefficient
             false =>
@@ -389,11 +384,13 @@ fn divide_loop(
           divide_loop(
             subtract_raw(remainder, shifted(scale(divisor, scalar), exponent)),
             divisor,
+            divisor_width,
             inverse_leading,
             add_raw(quotient, term),
           )
         }
       }
+    }
   }
 }
 
@@ -406,14 +403,20 @@ pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
       match leading(b) {
         None => Err(ZeroDivisor)
         Some(coefficient) => {
+          let divisor_width = @core.length(b.coefficients)
           match characteristic_two(b.field) {
-            true => return Ok(divide_loop(a, b, @binary.one(), zero(a.field)))
+            true =>
+              return Ok(
+                divide_loop(a, b, divisor_width, @binary.one(), zero(a.field)),
+              )
             false => ()
           }
           match @modular.inverse(@primefield.modulus(b.field), coefficient) {
             None => Err(InternalInvariant)
             Some(inverse_leading) =>
-              Ok(divide_loop(a, b, inverse_leading, zero(a.field)))
+              Ok(
+                divide_loop(a, b, divisor_width, inverse_leading, zero(a.field)),
+              )
           }
         }
       }
