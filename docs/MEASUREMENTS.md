@@ -45,3 +45,24 @@ bind が新しい束縛を全既存値域へ合成するため、値域の再走
 ```sh
 tools/moon bench src/benchmarks/unify_test.mbt --target native --release
 ```
+
+## 2026-11-15：Buchberger の積判定
+
+同じ native release、各10サンプル。入力構築は範囲外で、基底計算全体を測定。
+比較前の核は `79c4fb1`。
+
+| 三変数の入力系 | 全Sペアを除算 | 先頭単項式が互いに素なら省略 |
+| --- | ---: | ---: |
+| x²−1, y²−1, z²−1 | 18.51 µs ± 0.41 µs | 4.48 µs ± 0.14 µs |
+| xy−z, yz−x, zx−y | 184.06 µs ± 4.62 µs | 111.19 µs ± 1.69 µs |
+
+この二系では約75.8% / 39.6%短縮。Buchberger の product criterion により、
+先頭単項式の支持が交わらないペアのS多項式は生成・除算せずに処理済みにできる。
+全45系の SymPy fixture とS多項式検証を維持した。一般の系での速度比ではない。
+燃料は省略したペアも一回と数え、予算の意味を維持する。
+
+生ログ：[変更前](measurements/groebner-before.txt)、[変更後](measurements/groebner-after.txt)。
+
+```sh
+tools/moon bench src/benchmarks/groebner_test.mbt --target native --release
+```

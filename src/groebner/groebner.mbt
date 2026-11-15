@@ -198,7 +198,25 @@ fn reduced(
 }
 
 ///|
-/// One S-pair reduction; an empty queue performs final interreduction.
+/// Buchberger's product criterion: disjoint leading-monomial supports mean
+/// the S-polynomial reduces to zero using the two polynomials.
+fn relatively_prime_leads(a : @poly.Polynomial, b : @poly.Polynomial) -> Bool {
+  fn disjoint(a : @core.Chain[@core.Nat], b : @core.Chain[@core.Nat]) -> Bool {
+    match (a, b) {
+      (Nil, Nil) => true
+      (Cons(Succ(_), _), Cons(Succ(_), _)) => false
+      (Cons(_, at), Cons(_, bt)) => disjoint(at, bt)
+      _ => false
+    }
+  }
+  match (@poly.terms(a), @poly.terms(b)) {
+    (Cons(x, _), Cons(y, _)) => disjoint(x.exponents, y.exponents)
+    _ => false
+  }
+}
+
+///|
+/// One S-pair inspection; an empty queue performs final interreduction.
 pub fn step(state : State) -> Result[Progress, @poly.PolyError] {
   match state.pairs {
     Nil =>
@@ -207,41 +225,46 @@ pub fn step(state : State) -> Result[Progress, @poly.PolyError] {
         Ok(polynomials) =>
           Ok(Complete({ variables: state.variables, polynomials, }))
       }
-    Cons((a, b), rest) =>
-      match s_polynomial(a, b) {
-        Err(error) => Err(error)
-        Ok(s) =>
-          match @poly.normal_form(s, state.candidates) {
+    Cons((a, b), rest) => {
+      let skipped : State = {
+        variables: state.variables,
+        candidates: state.candidates,
+        pairs: rest,
+      }
+      match relatively_prime_leads(a, b) {
+        true => Ok(Paused(skipped))
+        false =>
+          match s_polynomial(a, b) {
             Err(error) => Err(error)
-            Ok(remainder) =>
-              match @poly.is_zero(remainder) {
-                true =>
-                  Ok(
-                    Paused({
-                      variables: state.variables,
-                      candidates: state.candidates,
-                      pairs: rest,
-                    }),
-                  )
-                false => {
-                  let new = @poly.monic(remainder)
-                  let extra = @core.map(state.candidates, fn(old) { (new, old) })
-                  Ok(
-                    Paused({
-                      variables: state.variables,
-                      candidates: Cons(new, state.candidates),
-                      pairs: @core.append(extra, rest),
-                    }),
-                  )
-                }
+            Ok(s) =>
+              match @poly.normal_form(s, state.candidates) {
+                Err(error) => Err(error)
+                Ok(remainder) =>
+                  match @poly.is_zero(remainder) {
+                    true => Ok(Paused(skipped))
+                    false => {
+                      let new = @poly.monic(remainder)
+                      let extra = @core.map(state.candidates, fn(old) {
+                        (new, old)
+                      })
+                      Ok(
+                        Paused({
+                          variables: state.variables,
+                          candidates: Cons(new, state.candidates),
+                          pairs: @core.append(extra, rest),
+                        }),
+                      )
+                    }
+                  }
               }
           }
       }
+    }
   }
 }
 
 ///|
-/// Fuel counts S-pair reductions plus one finalization. A single polynomial
+/// Fuel counts S-pair inspections plus one finalization. A single polynomial
 /// reduction may be expensive, so this is not a wall-time or allocation limit.
 pub fn run(
   state : State,

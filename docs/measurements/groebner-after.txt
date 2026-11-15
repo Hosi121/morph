@@ -1,0 +1,7 @@
+[Hosi121/morph] bench benchmarks/groebner_test.mbt:18 ("Buchberger separable three-variable quadratics") ok
+time (mean ± σ)         range (min … max) 
+   4.48 µs ± 137.48 ns     4.27 µs …   4.71 µs  in 10 ×  21681 runs
+[Hosi121/morph] bench benchmarks/groebner_test.mbt:30 ("Buchberger coupled three-variable quadratics") ok
+time (mean ± σ)         range (min … max) 
+ 111.19 µs ±   1.69 µs   108.92 µs … 114.14 µs  in 10 ×    911 runs
+Total tests: 2, passed: 2, failed: 0.
