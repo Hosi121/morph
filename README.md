@@ -48,7 +48,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 正規表現 | [Brzozowski微分](src/regex/derivative.mbt)・[Thompson NFA](src/regex/thompson.mbt) |
 | 構文解析 | [CNF文法のCYK・構文木と導出検査](src/cyk/cyk.mbt) |
 | 複数語検索 | [Aho–Corasick・failure遷移・チャンクをまたぐ検索](src/aho/aho.mbt) |
-| 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt) |
+| 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt)・[LZ78・辞書番号とliteralのビット符号](src/lz78/lz78.mbt) |
 | ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](src/polynomial/polynomial.mbt) |
 | 計算代数 | [再開可能なBuchberger・既約Gröbner基底](src/groebner/groebner.mbt) |

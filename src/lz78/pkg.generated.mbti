@@ -1,0 +1,37 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/lz78"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn compress(@core.Chain[Bool]) -> @core.Chain[Token]
+
+pub fn decode(@core.Chain[Bool]) -> @core.Chain[Bool]?
+
+pub fn decompress(@core.Chain[Token]) -> @core.Chain[Bool]?
+
+pub fn encode(@core.Chain[Bool]) -> @core.Chain[Bool]
+
+pub fn pack(@core.Chain[Token]) -> @core.Chain[Bool]
+
+pub fn unpack(@core.Chain[Bool]) -> @core.Chain[Token]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Token {
+  prefix : @binary.Binary
+  literal : Bool?
+}
+pub fn Token::equal(Self, Self) -> Bool
+pub fn Token::not_equal(Self, Self) -> Bool
+pub fn Token::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
