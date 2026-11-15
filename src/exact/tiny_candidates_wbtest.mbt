@@ -633,6 +633,1769 @@ fn candidate_gcd_table(
 }
 
 ///|
+fn candidate_gcd_direct(
+  a : @binary.Binary,
+  b : @binary.Binary,
+) -> @binary.Binary {
+  match (@binary.bits(a), @binary.bits(b)) {
+    (@core.Nil, @core.Nil) => candidate_gcd_value_zero
+    (@core.Cons(true, @core.Nil), @core.Nil) => candidate_gcd_value_one
+    (@core.Cons(false, @core.Cons(true, @core.Nil)), @core.Nil) =>
+      candidate_gcd_value_two
+    (@core.Cons(true, @core.Cons(true, @core.Nil)), @core.Nil) =>
+      candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Nil,
+    ) => candidate_gcd_value_four
+    (@core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))), @core.Nil
+    ) => candidate_gcd_value_five
+    (@core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))), @core.Nil
+    ) => candidate_gcd_value_six
+    (@core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))), @core.Nil) =>
+      candidate_gcd_value_seven
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_eight
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_nine
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_ten
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_eleven
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_twelve
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_thirteen
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_fourteen
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Nil,
+    ) => candidate_gcd_value_fifteen
+    (@core.Nil, @core.Cons(true, @core.Nil)) => candidate_gcd_value_one
+    (@core.Cons(true, @core.Nil), @core.Cons(true, @core.Nil)) =>
+      candidate_gcd_value_one
+    (@core.Cons(false, @core.Cons(true, @core.Nil)), @core.Cons(true, @core.Nil)
+    ) => candidate_gcd_value_one
+    (@core.Cons(true, @core.Cons(true, @core.Nil)), @core.Cons(true, @core.Nil)) =>
+      candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Nil),
+    ) => candidate_gcd_value_one
+    (@core.Nil, @core.Cons(false, @core.Cons(true, @core.Nil))) =>
+      candidate_gcd_value_two
+    (@core.Cons(true, @core.Nil), @core.Cons(false, @core.Cons(true, @core.Nil))
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (@core.Nil, @core.Cons(true, @core.Cons(true, @core.Nil))) =>
+      candidate_gcd_value_three
+    (@core.Cons(true, @core.Nil), @core.Cons(true, @core.Cons(true, @core.Nil))) =>
+      candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+    ) => candidate_gcd_value_three
+    (
+      @core.Nil,
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (@core.Nil, @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_five
+    (@core.Nil, @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+    ) => candidate_gcd_value_six
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_six
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_six
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_three
+    (@core.Nil, @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))) =>
+      candidate_gcd_value_seven
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_seven
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_seven
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+    ) => candidate_gcd_value_one
+    (
+      @core.Nil,
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_eight
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_eight
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Nil,
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_nine
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_nine
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Nil,
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_ten
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_ten
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_five
+    (
+      @core.Nil,
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_eleven
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_eleven
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Nil,
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_twelve
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_six
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_four
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_twelve
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Nil,
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_thirteen
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_thirteen
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Nil,
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_fourteen
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_seven
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_two
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_fourteen
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Nil,
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_fifteen
+    (
+      @core.Cons(true, @core.Nil),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(false, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(true, @core.Nil)),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil))),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_five
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(false, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_three
+    (
+      @core.Cons(
+        true,
+        @core.Cons(false, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        false,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_one
+    (
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+      @core.Cons(
+        true,
+        @core.Cons(true, @core.Cons(true, @core.Cons(true, @core.Nil)))
+      ),
+    ) => candidate_gcd_value_fifteen
+    _ => @binary.gcd(a, b)
+  }
+}
+
+///|
 fn candidate_gcd_first_node_16(b_next : Bool) -> @binary.Binary {
   match b_next {
     false => candidate_gcd_value_zero
