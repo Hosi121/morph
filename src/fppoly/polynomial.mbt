@@ -79,7 +79,13 @@ pub fn polynomial(
   field : @primefield.Field,
   coefficients : @core.Chain[@binary.Binary],
 ) -> Polynomial {
-  { field, coefficients: trim(@primefield.modulus(field), coefficients), }
+  {
+    field,
+    coefficients: match characteristic_two(field) {
+      true => char_two_trim(coefficients, @binary.zero(), @binary.one())
+      false => trim(@primefield.modulus(field), coefficients)
+    },
+  }
 }
 
 ///|
@@ -162,6 +168,18 @@ fn add_coefficients(
 
 ///|
 fn add_raw(a : Polynomial, b : Polynomial) -> Polynomial {
+  match characteristic_two(a.field) {
+    true =>
+      return {
+        field: a.field,
+        coefficients: char_two_add(
+          a.coefficients,
+          b.coefficients,
+          @binary.zero(),
+        ),
+      }
+    false => ()
+  }
   polynomial(
     a.field,
     add_coefficients(
@@ -182,6 +200,10 @@ pub fn add(a : Polynomial, b : Polynomial) -> Result[Polynomial, PolyError] {
 
 ///|
 pub fn negate(value : Polynomial) -> Polynomial {
+  match characteristic_two(value.field) {
+    true => return value
+    false => ()
+  }
   let modulus = @primefield.modulus(value.field)
   polynomial(
     value.field,
@@ -209,6 +231,14 @@ pub fn subtract(
 
 ///|
 pub fn scale(value : Polynomial, scalar : @binary.Binary) -> Polynomial {
+  match characteristic_two(value.field) {
+    true =>
+      return match @binary.odd(scalar) {
+        true => value
+        false => zero(value.field)
+      }
+    false => ()
+  }
   let modulus = @primefield.modulus(value.field)
   polynomial(
     value.field,
@@ -239,6 +269,18 @@ fn multiply_coefficients(
 
 ///|
 fn multiply_raw(a : Polynomial, b : Polynomial) -> Polynomial {
+  match characteristic_two(a.field) {
+    true =>
+      return {
+        field: a.field,
+        coefficients: char_two_multiply(
+          a.coefficients,
+          b.coefficients,
+          @binary.zero(),
+        ),
+      }
+    false => ()
+  }
   polynomial(
     a.field,
     multiply_coefficients(
@@ -314,18 +356,27 @@ pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
     true =>
       match leading(b) {
         None => Err(ZeroDivisor)
-        Some(coefficient) =>
+        Some(coefficient) => {
+          match characteristic_two(b.field) {
+            true => return Ok(divide_loop(a, b, @binary.one(), zero(a.field)))
+            false => ()
+          }
           match @modular.inverse(@primefield.modulus(b.field), coefficient) {
             None => Err(InternalInvariant)
             Some(inverse_leading) =>
               Ok(divide_loop(a, b, inverse_leading, zero(a.field)))
           }
+        }
       }
   }
 }
 
 ///|
 pub fn monic(value : Polynomial) -> Result[Polynomial, PolyError] {
+  match characteristic_two(value.field) {
+    true => return Ok(value)
+    false => ()
+  }
   match leading(value) {
     None => Ok(value)
     Some(coefficient) =>
@@ -365,7 +416,11 @@ fn euclid(
     true =>
       match leading(a) {
         None => Ok({ gcd: a, left: zero(a.field), right: zero(a.field), })
-        Some(coefficient) =>
+        Some(coefficient) => {
+          match characteristic_two(a.field) {
+            true => return Ok({ gcd: a, left: u, right: s, })
+            false => ()
+          }
           match @modular.inverse(@primefield.modulus(a.field), coefficient) {
             None => Err(InternalInvariant)
             Some(inverse_leading) =>
@@ -375,6 +430,7 @@ fn euclid(
                 right: scale(s, inverse_leading),
               })
           }
+        }
       }
     false =>
       match divide(a, b) {
