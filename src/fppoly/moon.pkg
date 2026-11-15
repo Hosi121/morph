@@ -3,6 +3,8 @@ import {
   "Hosi121/morph/binary",
   "Hosi121/morph/modular",
   "Hosi121/morph/primefield",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/rowreduce",
 }
 
 import {

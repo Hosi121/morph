@@ -11,7 +11,15 @@ import {
 // Values
 pub fn add(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
 
+pub fn berlekamp_basis(Polynomial) -> Result[@core.Chain[Polynomial], PolyError]
+
 pub fn characteristic(Polynomial) -> @binary.Binary
+
+pub fn check_bezout(Polynomial, Polynomial, Bezout) -> Bool
+
+pub fn check_factorization(Polynomial, Factorization, @core.Chain[IrreducibilityCertificate]) -> Bool
+
+pub fn check_irreducible(Polynomial, IrreducibilityCertificate) -> Bool
 
 pub fn coefficients(Polynomial) -> @core.Chain[@binary.Binary]
 
@@ -27,11 +35,15 @@ pub fn evaluate(Polynomial, @binary.Binary) -> @binary.Binary
 
 pub fn extended_gcd(Polynomial, Polynomial) -> Result[Bezout, PolyError]
 
+pub fn factor(Polynomial) -> Result[Factorization, PolyError]
+
 pub fn field_of(Polynomial) -> @primefield.Field
 
 pub fn gcd(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
 
 pub fn indeterminate(@primefield.Field) -> Polynomial
+
+pub fn irreducibility(Polynomial) -> Result[IrreducibilityCertificate?, PolyError]
 
 pub fn is_zero(Polynomial) -> Bool
 
@@ -76,6 +88,33 @@ pub(all) struct Division {
 pub fn Division::equal(Self, Self) -> Bool
 pub fn Division::not_equal(Self, Self) -> Bool
 pub fn Division::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Factor {
+  polynomial : Polynomial
+  multiplicity : @core.Nat
+}
+pub fn Factor::equal(Self, Self) -> Bool
+pub fn Factor::not_equal(Self, Self) -> Bool
+pub fn Factor::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Factorization {
+  unit : @binary.Binary
+  factors : @core.Chain[Factor]
+}
+pub fn Factorization::equal(Self, Self) -> Bool
+pub fn Factorization::not_equal(Self, Self) -> Bool
+pub fn Factorization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct IrreducibilityCertificate {
+  frobenius : @core.Chain[Polynomial]
+  coprime : @core.Chain[Bezout]
+}
+pub fn IrreducibilityCertificate::equal(Self, Self) -> Bool
+pub fn IrreducibilityCertificate::not_equal(Self, Self) -> Bool
+pub fn IrreducibilityCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) enum PolyError {
