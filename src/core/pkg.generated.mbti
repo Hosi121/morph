@@ -1,0 +1,84 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/core"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Nat, Nat) -> Nat
+
+pub fn[A] alternating(Chain[A]) -> (Chain[A], Chain[A])
+
+pub fn[A] append(Chain[A], Chain[A]) -> Chain[A]
+
+pub fn compare(Nat, Nat) -> Ordering
+
+pub fn divmod(Nat, Nat) -> (Nat, Nat)?
+
+pub fn[A] drop(Nat, Chain[A]) -> Chain[A]
+
+pub fn[A, B] fold_left(Chain[A], B, (B, A) -> B) -> B
+
+pub fn gcd(Nat, Nat) -> Nat
+
+pub fn[A] interleave(Chain[A], Chain[A]) -> Chain[A]
+
+pub fn is_zero(Nat) -> Bool
+
+pub fn[A] length(Chain[A]) -> Nat
+
+pub fn[A, B] map(Chain[A], (A) -> B) -> Chain[B]
+
+pub fn minimum(Nat, Nat) -> Nat
+
+pub fn multiply(Nat, Nat) -> Nat
+
+pub fn[A] nth(Chain[A], Nat) -> A?
+
+pub fn[A] replicate(Nat, A) -> Chain[A]
+
+pub fn[A] reverse(Chain[A]) -> Chain[A]
+
+pub fn[A] reverse_onto(Chain[A], Chain[A]) -> Chain[A]
+
+pub fn subtract(Nat, Nat) -> Nat
+
+pub fn[A] take(Nat, Chain[A]) -> Chain[A]
+
+pub fn[A, B] zip(Chain[A], Chain[B]) -> Chain[(A, B)]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Chain[A] {
+  Nil
+  Cons(A, Chain[A])
+}
+pub fn[A : Eq] Chain::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Chain::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Chain::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Nat {
+  Zero
+  Succ(Nat)
+}
+pub fn Nat::equal(Self, Self) -> Bool
+pub fn Nat::not_equal(Self, Self) -> Bool
+pub fn Nat::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Ordering {
+  Less
+  Equal
+  Greater
+}
+pub fn Ordering::equal(Self, Self) -> Bool
+pub fn Ordering::not_equal(Self, Self) -> Bool
+pub fn Ordering::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

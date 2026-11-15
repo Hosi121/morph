@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+version=${1:-latest}
+case "$(uname -ms)" in
+  'Linux x86_64') platform=linux-x86_64 ;;
+  'Linux aarch64') platform=linux-aarch64 ;;
+  'Darwin arm64') platform=darwin-aarch64 ;;
+  *) echo 'Unsupported platform' >&2; exit 1 ;;
+esac
+mkdir -p "$root/.tools/moon/lib"
+curl -fsSL "https://cli.moonbitlang.com/binaries/$version/moonbit-$platform.tar.gz" -o "$root/.tools/moonbit.tar.gz"
+tar xf "$root/.tools/moonbit.tar.gz" -C "$root/.tools/moon"
+curl -fsSL "https://cli.moonbitlang.com/cores/core-$version.tar.gz" -o "$root/.tools/core.tar.gz"
+tar xf "$root/.tools/core.tar.gz" -C "$root/.tools/moon/lib"
+chmod +x "$root"/.tools/moon/bin/* "$root/.tools/moon/bin/internal/tcc"
+"$root/tools/moon" -C "$root/.tools/moon/lib/core" bundle --all --warn-list -a
+"$root/tools/moon" version --all

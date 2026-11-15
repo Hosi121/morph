@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+if [[ -x "$root/.tools/moon/bin/moon" ]]; then
+  export MOON_HOME="$root/.tools/moon"
+  export PATH="$MOON_HOME/bin:$PATH"
+fi
+exec moon "$@"
