@@ -130,3 +130,50 @@ taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --rel
 taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release -i 4
 taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release -i 5
 ```
+
+## 外部text adapterと独立checker
+
+`tools/generate_ruplog.py` はopt-inのnumeric/JSONテストadapterを実行し、**実際にkernelが
+生成・検査した**certificateをDIMACS CNF、ASCII LRAT、hintを消したDRUPへ書き出す。
+Python側で証拠を作り直してはいない。Nat変数ラベル0をDIMACSの1へずらす。
+原節の重複literalだけは除き、tautologyと全原節の位置・IDは保つ。raw CNFも別ファイルに保存する。
+
+固定した外部実装:
+
+- [LRAT-TRIM](https://github.com/arminbiere/lrat-trim) 0.2.0、commit
+  `b30f400f4ee5c32b77ee566a7c006081b521534f`。`--forward --no-trim` で全追加を検査する。
+- [DRAT-trim](https://github.com/marijnheule/drat-trim)、commit
+  `2e3b2dc0ecf938addbd779d42877b6ed69d9a985`。eraseした節列の内容を別方式で検査する。
+
+両builderのunits、unit chain、duplicate/tautology、原空節、branching cube、pigeonhole、
+8bit/64bit miter、合計16証拠が**両方の外部checkerで受理**された。
+偽のSAT→空節、hint順序の破壊、必須hint除去、self参照、削除した原節の参照、最終空節の
+切り詰め、計7つのnegative controlsが受理されないことも確認した。
+DRAT検査はhintそのものを検査しないため、LRAT検査とは役割を区別する。
+
+64bitの両builderでは、duplicate除去は0個で、同じCNF・同じerase節列を検査した。
+
+```text
+CNF SHA256   81791c0eaf39a0faa927490662747272f98213455eb61fa011dd30ef303184b8
+DRUP SHA256  17d3c80302c403309b2a5a6159d3ea7ebc443fccbc3df24219474f06ff88f7ec
+```
+
+出力の `manifest.json` に各証拠のhash、ID/節/hint数、checkerの固定revisionと実行binary hash、
+negative controlsの結果を残す。これらの外部実装も、本実装の形式的soundness証明ではない。
+
+### 外部checkerのnegative controlで判明した制約
+
+同じDRAT-trim repoの古い `lrat-check.c` は、SATな入力 `p cnf 1 1` / `1 0` に対する偽の
+`2 0 0` を `c VERIFIED`・exit 0で受理した。この最小例を実際に再現し、
+[既報のregression #42](https://github.com/marijnheule/drat-trim/issues/42) と一致したため、
+このbinaryはadapterの検査器に使わない。LRAT-TRIMとDRAT-trimは同じnegative controlを拒否した。
+また、固定版DRAT-trimは原CNFが空節を含むtrivial UNSAT時にVERIFIEDでもexit 1を返す。
+adapterは入力に実際の空節がある場合だけ、この終了値を認める。
+
+```sh
+# 通常はローカルへexportするだけ。--check時に固定sourceを取得・buildする。
+python3 tools/generate_ruplog.py --check --miter64 --cpu 10
+```
+
+成果物は既定で `.tools/ruplog-export/`、外部checkerのcacheは `.tools/ruplog-checkers/` に置く。
+環境変数 `MORPH_RUPLOG_EXPORT` はテストadapterだけが読み、通常のテストではexportしない。

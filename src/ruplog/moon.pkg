@@ -9,4 +9,6 @@ import {
   "Hosi121/morph/testsupport" @oracle,
   "Hosi121/morph/circuit",
   "moonbitlang/core/bench",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
 } for "wbtest"
