@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/smith"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> Decomposition?
+
+pub fn diagonal(Decomposition) -> @matrix.Matrix[@exact.Integer]
+
+pub fn invariant_factors(Decomposition) -> @core.Chain[@binary.Binary]
+
+pub fn left(Decomposition) -> @matrix.Matrix[@exact.Integer]
+
+pub fn original(Decomposition) -> @matrix.Matrix[@exact.Integer]
+
+pub fn rank(Decomposition) -> @core.Nat
+
+pub fn right(Decomposition) -> @matrix.Matrix[@exact.Integer]
+
+pub fn run(Machine, @core.Nat) -> Status
+
+pub fn start(@matrix.Matrix[@exact.Integer]) -> Machine
+
+pub fn step(Machine) -> Status
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Decomposition {
+  input : @matrix.Matrix[@exact.Integer]
+  left : @matrix.Matrix[@exact.Integer]
+  diagonal : @matrix.Matrix[@exact.Integer]
+  right : @matrix.Matrix[@exact.Integer]
+}
+pub fn Decomposition::equal(Self, Self) -> Bool
+pub fn Decomposition::not_equal(Self, Self) -> Bool
+pub fn Decomposition::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  input : @matrix.Matrix[@exact.Integer]
+  current : @matrix.Matrix[@exact.Integer]
+  left : @matrix.Matrix[@exact.Integer]
+  right : @matrix.Matrix[@exact.Integer]
+  pivot : @core.Nat
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Done(Decomposition)
+  Paused(Machine)
+  Fault(Machine)
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
