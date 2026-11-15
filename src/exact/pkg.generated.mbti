@@ -1,0 +1,74 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/exact"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Integer, Integer) -> Integer
+
+pub fn compare(Integer, Integer) -> @core.Ordering
+
+pub fn denominator(Rational) -> @binary.Binary
+
+pub fn magnitude(Integer) -> @binary.Binary
+
+pub fn multiply(Integer, Integer) -> Integer
+
+pub fn negate(Integer) -> Integer
+
+pub fn negative(Integer) -> Bool
+
+pub fn numerator(Rational) -> Integer
+
+pub fn positive(@binary.Binary) -> Integer
+
+pub fn ratio(Integer, @binary.Binary) -> Rational?
+
+pub fn rational_add(Rational, Rational) -> Rational
+
+pub fn rational_compare(Rational, Rational) -> @core.Ordering
+
+pub fn rational_divide(Rational, Rational) -> Rational?
+
+pub fn rational_multiply(Rational, Rational) -> Rational
+
+pub fn rational_negate(Rational) -> Rational
+
+pub fn rational_one() -> Rational
+
+pub fn rational_subtract(Rational, Rational) -> Rational
+
+pub fn rational_zero() -> Rational
+
+pub fn subtract(Integer, Integer) -> Integer
+
+pub fn whole(Integer) -> Rational
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Integer {
+  negative : Bool
+  magnitude : @binary.Binary
+}
+pub fn Integer::equal(Self, Self) -> Bool
+pub fn Integer::not_equal(Self, Self) -> Bool
+pub fn Integer::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Rational {
+  numerator : Integer
+  denominator : @binary.Binary
+}
+pub fn Rational::equal(Self, Self) -> Bool
+pub fn Rational::not_equal(Self, Self) -> Bool
+pub fn Rational::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
