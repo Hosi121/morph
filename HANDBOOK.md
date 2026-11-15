@@ -352,3 +352,24 @@ NFA 実行は微分のコードを使わない。
 既知の「末尾が true,false」言語、空言語、空語、nullable loop も確認した。
 微分版には ACI 正規化やメモ化を入れていないため、長い入力では式が膨らみ得る。
 NFA 版もリスト集合なので、通常のbitset実装と同じ実時間モデルではない。
+
+原典：[Brzozowski (1964)](https://www.oilshell.org/archive/1964_JACM_Brzozowski.pdf)、
+[Thompson (1968)](https://www.jmeiners.com/efficient-programming-with-components/papers/regular-expressions.pdf)。
+
+## CEK 機械：評価の途中もデータ型にする
+
+型推論と同じ AST を、call-by-value の CEK 抽象機械で評価する。
+Control、字句的 Environment、Continuation の各要素が ADT。
+関数は環境を捕捉する Closure、継続は Argument/Function/Binding/Pair/Project/Branch のリストで表す。
+ホスト言語の評価の再帰へ丸投げせず、一回の遷移を `step` で取り出した。
+
+`run(machine,fuel)` は全体で fuel 回までの遷移を行う。燃料は Nat。
+終了の認識自体も一遷移として数える。ゼロ燃料なら現在状態をそのまま Suspended で返し、
+次の run で正確に続けられる。Fault と無限計算の途中の Suspended を混同しない。
+これは停止判定器ではなく、利用者が計算予算を渡せる実行器である。
+
+字句スコープと shadowing、積・分岐、一遷移ずつの再開、各型エラーを検査した。
+omega の自己適用は1000遷移で Suspended に戻る。
+小さい式108個と、それを組み合わせた計972式について、型推論が受理した式は
+十分な燃料で Fault なく終わり、結果の外形が推論型と一致することを確認した。
+この有限試験を型安全性の一般証明と呼ぶことはしない。

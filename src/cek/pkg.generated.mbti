@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cek"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/infer",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn evaluate(@infer.Expr, @core.Nat) -> Status
+
+pub fn run(Machine, @core.Nat) -> Status
+
+pub fn start(@infer.Expr) -> Machine
+
+pub fn step(Machine) -> Status
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub enum Control {
+  Evaluate(@infer.Expr, @core.Chain[(@core.Nat, Value)])
+  Return(Value)
+}
+pub fn Control::equal(Self, Self) -> Bool
+pub fn Control::not_equal(Self, Self) -> Bool
+pub fn Control::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum Frame {
+  Argument(@infer.Expr, @core.Chain[(@core.Nat, Value)])
+  Function(Value)
+  Binding(@core.Nat, @infer.Expr, @core.Chain[(@core.Nat, Value)])
+  PairLeft(@infer.Expr, @core.Chain[(@core.Nat, Value)])
+  PairRight(Value)
+  Project(Bool)
+  Branch(@infer.Expr, @infer.Expr, @core.Chain[(@core.Nat, Value)])
+}
+pub fn Frame::equal(Self, Self) -> Bool
+pub fn Frame::not_equal(Self, Self) -> Bool
+pub fn Frame::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  control : Control
+  continuation : @core.Chain[Frame]
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum RuntimeError {
+  Unbound(@core.Nat)
+  NotFunction
+  NotPair
+  NotBoolean
+}
+pub fn RuntimeError::equal(Self, Self) -> Bool
+pub fn RuntimeError::not_equal(Self, Self) -> Bool
+pub fn RuntimeError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Done(Value)
+  Suspended(Machine)
+  Fault(RuntimeError)
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Value {
+  BoolValue(Bool)
+  PairValue(Value, Value)
+  Closure(@core.Nat, @infer.Expr, @core.Chain[(@core.Nat, Value)])
+}
+pub fn Value::equal(Self, Self) -> Bool
+pub fn Value::not_equal(Self, Self) -> Bool
+pub fn Value::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
