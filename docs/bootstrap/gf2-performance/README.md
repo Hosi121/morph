@@ -114,3 +114,37 @@ GMON_OUT_PREFIX=.tools/gfperf/gmon-baseline-rs taskset -c 6 \
   .tools/gfperf/baseline.profile.exe perf_wbtest.mbt:1-2
 gprof .tools/gfperf/baseline.profile.exe .tools/gfperf/gmon-baseline-rs.* > report.txt
 ```
+
+## Reusing reduced coefficients
+
+Candidate `1b3fee3` keeps the same frozen Binary base and removes repeated public
+normalization after private modular arithmetic. Such coefficients are already
+reduced; only high zeros need trimming. Negation preserves nonzero leading
+coefficients, and shifting a nonzero polynomial preserves normalization. Public
+construction still reduces arbitrary input. The new huge-scalar regression
+checks residues of 2^1000 in Fp3/Fp5/Fp7 with an independent repeated native
+modular-power oracle, cancellation, zero products, and shifted division.
+All 57 tests pass on native, Wasm GC, and JavaScript; purity and public API
+snapshots remain unchanged.
+
+`reduced-control-*` reruns `62676b3`; `reduced-*` runs `1b3fee3`, in alternating
+order with three independent processes each. Compiler, affinity, harness, and
+inputs match the earlier comparison. Medians of process means are:
+
+| Workload | Characteristic-two candidate µs | Reduced-result candidate µs | Ratio |
+| --- | ---: | ---: | ---: |
+| Fp2 multiply 64×32 | 10.783 | 10.416 | 1.04× |
+| Fp2 divide 95/32 | 143.574 | 130.230 | 1.10× |
+| Fp2 extended Euclid 16/14 | 8.352 | 7.818 | 1.07× |
+| Fp5 multiply, control | 594.338 | 618.080 | 0.96× |
+| GF256 multiply 83×202 | 4.510 | 4.267 | 1.06× |
+| GF256 inverse 83 | 5.216 | 4.888 | 1.07× |
+| GF9 multiply, control | 3.057 | 2.509 | 1.22× |
+| RS15 two-error decode | 191.870 | 177.640 | 1.08× |
+| RS255 two-error decode | 5559.954 | 5235.609 | 1.06× |
+
+GF9 improves beyond the small regression in the first change. Fp5 is 4% slower
+by this median; candidate process means span 575.688–624.327µs, so this experiment
+does not establish a general-prime polynomial throughput improvement. The
+control slowdown is retained as a limitation. See `reduced-summary.json` and all
+raw reports instead of treating the small ratios as universal speedups.
