@@ -284,3 +284,21 @@ Warshall は各pivotで全行列を転置し、その一列だけを使ってい
 詳細条件と生ログは [計測記録](docs/MEASUREMENTS.md) を参照。
 有理数除算も、非ゼロの証拠と逆数の共通APIへ寄せ、消去法と重複する符号処理を減らした。
 型検査とソース制約の全検証は30テストの時点で再通過。
+
+## DPLL SAT と反証を検査する小さな核
+
+Literal は Nat の変数と Bool の極性、Clause と CNF はリストの入れ子。
+DPLL は unit propagation、pure literal elimination、二分岐を使う。
+節が空になれば矛盾、CNF が空なら充足。戻り値は部分モデルまたは反証木。
+反証木も Conflict / UnitStep / PureStep / Split という ADT で表せる。
+
+`check_refutation` はソルバを呼ばず、各ステップの前提と両分岐を再検査する。
+ただし制限操作 restrict は共有しているので、完全に別実装の形式証明ではない。
+`check_model` は矛盾する代入を拒否して全節を確認する。外部から来た証拠も検査できる。
+
+3変数について、各変数を不在・正・負とする全27節から作る3節の式全19683通りを、
+8代入の真理値表と照合。さらに3リテラル全8極性節の部分集合全256通りを調べた。
+分岐が必要な充足不能例、重複リテラル、恒真節、偽造証拠も検証した。
+最悪は指数時間であり、watched literals や CDCL 学習は実装していない。
+
+原典：[Davis–Logemann–Loveland, A Machine Program for Theorem-Proving (1962)](https://cs.stanford.edu/content/contacting-donald-knuth/siam-final.pdf)。

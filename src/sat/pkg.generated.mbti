@@ -1,0 +1,59 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/sat"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_model(@core.Chain[@core.Chain[Literal]], @core.Chain[Literal]) -> Bool
+
+pub fn check_refutation(@core.Chain[@core.Chain[Literal]], Refutation) -> Bool
+
+pub fn negate(Literal) -> Literal
+
+pub fn restrict(@core.Chain[@core.Chain[Literal]], Literal) -> @core.Chain[@core.Chain[Literal]]
+
+pub fn solve(@core.Chain[@core.Chain[Literal]]) -> Outcome
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Literal {
+  variable : @core.Nat
+  positive : Bool
+}
+pub fn Literal::equal(Self, Self) -> Bool
+pub fn Literal::not_equal(Self, Self) -> Bool
+pub fn Literal::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Outcome {
+  Satisfiable(@core.Chain[Literal])
+  Unsatisfiable(Refutation)
+}
+pub fn Outcome::equal(Self, Self) -> Bool
+pub fn Outcome::not_equal(Self, Self) -> Bool
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Refutation {
+  Conflict
+  UnitStep(Literal, Refutation)
+  PureStep(Literal, Refutation)
+  Split(Literal, Refutation, Refutation)
+}
+pub fn Refutation::equal(Self, Self) -> Bool
+pub fn Refutation::not_equal(Self, Self) -> Bool
+pub fn Refutation::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Clause = @core.Chain[Literal]
+
+pub type Cnf = @core.Chain[@core.Chain[Literal]]
+
+pub type Model = @core.Chain[Literal]
+
+// Traits
