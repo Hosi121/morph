@@ -1,0 +1,37 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/ntt"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/modular",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn convolve(Plan, @core.Chain[@binary.Binary], @core.Chain[@binary.Binary]) -> @core.Chain[@binary.Binary]?
+
+pub fn inverse(Plan, @core.Chain[@binary.Binary]) -> @core.Chain[@binary.Binary]?
+
+pub fn plan(@modular.Modulus, @binary.Binary, @core.Nat) -> Plan?
+
+pub fn transform(Plan, @core.Chain[@binary.Binary]) -> @core.Chain[@binary.Binary]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  modulus : @modular.Modulus
+  size : @core.Nat
+  root : @binary.Binary
+  inverse_root : @binary.Binary
+  inverse_size : @binary.Binary
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
