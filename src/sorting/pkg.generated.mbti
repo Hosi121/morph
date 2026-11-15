@@ -1,0 +1,25 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/sorting"
+
+import {
+  "Hosi121/morph/core",
+}
+
+// Values
+pub fn[A] insertion_sort(@core.Chain[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+pub fn[A] merge(@core.Chain[A], @core.Chain[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+pub fn[A] merge_sort(@core.Chain[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+pub fn[A] quick_sort(@core.Chain[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+pub fn[A] split(@core.Chain[A]) -> (@core.Chain[A], @core.Chain[A])
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
