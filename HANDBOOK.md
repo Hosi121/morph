@@ -514,3 +514,16 @@ source/sink の流量、カットの妥当性、カット容量＝流量を検�
 リスト走査、グラフの再構成、二進演算のコストを含むので、通常の配列版と同じ実時間は主張しない。
 
 原典：[Edmonds–Karp (1972)](https://web.eecs.umich.edu/~pettie/matching/Edmonds-Karp-network-flow.pdf)。
+
+## Karatsuba：二進リストの分割統治
+
+a=a_low+2^m*a_high と分ける。low と high の積に加えて、
+`(a_low+a_high)(b_low+b_high)−low−high` を計算すれば、四回の半分乗算を三回にできる。
+桁シフトは false のリスト連結。負にならない中間減算をチェックし、万一失敗したら
+正確な学校式へ戻す。短い・極端に不均衡な入力は学校式へ切り替える。
+
+65..1023桁の複数パターン、全桁trueの繰り上がり、ゼロ、不均衡な入力を学校式と完全一致で比較。
+小さい法で還元した積も機械整数の独立オラクルで確認した。
+実測では128桁の差は小さく、512桁で約1.78倍、2048桁で約3.09倍だった（native release）。
+短い値の既存 multiply を変更せず、karatsuba を別入口にした。
+条件と生ログは [計測記録](docs/MEASUREMENTS.md) にある。

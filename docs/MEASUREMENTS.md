@@ -66,3 +66,25 @@ tools/moon bench src/benchmarks/unify_test.mbt --target native --release
 ```sh
 tools/moon bench src/benchmarks/groebner_test.mbt --target native --release
 ```
+
+## 2026-11-15：学校式と Karatsuba の二進乗算
+
+同じ canonical Bool リスト、native release、各10サンプル。
+入力構築を除外し、生成された積を保持する。Karatsuba は64ビット以下の片方の入力が
+あれば学校式へ切り替える。入力のビットパターンは benchmark ソースに固定。
+
+| 桁数 | 学校式 | Karatsuba |
+| --- | ---: | ---: |
+| 128 | 155.45 ± 4.67 µs | 151.66 ± 2.58 µs |
+| 512 | 2.63 ± 0.03 ms | 1.48 ± 0.04 ms |
+| 2048 | 41.57 ± 0.71 ms | 13.45 ± 0.24 ms |
+
+128桁では差が小さく、明確な優位とは判定しない。この入力では512桁で約1.78倍、
+2048桁で約3.09倍。短い整数の標準 API はそのままにし、大きい値には `karatsuba` を明示して選べる。
+他backendや疎なビット列で同じ比率になるという主張ではない。
+
+生ログ：[比較](measurements/karatsuba.txt)。
+
+```sh
+tools/moon bench src/benchmarks/multiply_test.mbt --target native --release
+```

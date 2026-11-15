@@ -31,6 +31,8 @@ pub fn half(Binary) -> Binary
 
 pub fn is_zero(Binary) -> Bool
 
+pub fn karatsuba(Binary, Binary) -> Binary
+
 pub fn multiply(Binary, Binary) -> Binary
 
 pub fn odd(Binary) -> Bool
