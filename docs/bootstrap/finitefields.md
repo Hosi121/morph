@@ -111,9 +111,63 @@ fixtureの再生成：
 
 ```sh
 python3 tools/generate_fppoly.py
-tools/moon fmt src/fppoly
+tools/moon fmt src/fppoly src/galois
 ```
 
 追加のPython依存はない。決定的な分裂ではp個のスカラーを列挙し、
 Berlekamp行列を密に構成するため、大きな標数・次数への高速実装ではない。
 返却する証拠とcheckerも通常の実装として有限例で検証したもので、形式検証済みcheckerという主張はしない。
+
+## 既約多項式からGF(p^m)へ
+
+`src/galois` の `extension(modulus, certificate)` は `fppoly.check_irreducible` を通してから
+体を構築する。法はmonic・正次数に限り、可約・定数・ゼロ・偽造証拠を拒否する。
+証拠の具体的なBézout係数は体の同一性に含めない。検査後は法と次数だけを保持する。
+
+体の元は法で剰余化した `fppoly.Polynomial`。次数m未満の正規形により、同じ提示内の等値を厳密に比較する。
+
+- `element`・`constant`・`zero`・`one`：元を構成する。
+- `generator`：xの剰余類を返す。
+- `add`・`subtract`・`multiply`・`divide`・`negate`・`inverse`・`power`：体の演算。
+- `modulus`・`prime_field`・`degree`・`characteristic`・`cardinality`・`field_of`・`representative`：読み取り。
+- `frobenius`：`a ↦ a^p`。
+- `trace`・`norm`：m個のFrobenius共役の和・積を求め、素数体の係数 `Binary` で返す。
+
+逆元は代表多項式と法の拡張Euclidで得たBézout係数を再度剰余化する。
+ゼロの逆元は `ZeroDivisor`、異なる拡大体の提示の混合は `FieldMismatch`。
+係数体が異なる多項式入力では、fppolyのエラーを `PolynomialError` に包む。
+非負整数冪は `0^0=1` とする。
+
+同じ位数の有限体は同型だが、異なる既約多項式を法とした提示を自動的に混合しない。
+明示的な同型写像・部分体埋め込みはまだ構成していない。
+`generator` は**代数の生成元**であり、乗法群の原始元であるとは限らない。
+例えば `GF(3)[x]/(x²+1)` は位数9だが、xの剰余類の乗法位数は4である。
+次数1の法 `x` では代数の生成元はゼロになるが、商体自体は通常の素数体として機能する。
+
+例：`GF(2)[x]/(x²+x+1)` の元αは `α²=α+1`、`α⁻¹=α+1`、
+`trace(α)=1`、`norm(α)=1` を満たす。
+
+## 拡大体の独立検証
+
+```sh
+tools/moon fmt --check src/galois
+tools/moon check --deny-warn src/galois
+tools/moon test src/galois --target wasm-gc
+tools/moon test src/galois --target js
+tools/moon test src/galois --target native
+tools/moon info src/galois
+```
+
+16テストが3バックエンドですべて成功。fppolyと合わせて33テスト。
+
+- `GF(4), GF(8), GF(9), GF(16), GF(25), GF(27), GF(49)` の**全4,172対**で加減乗除を比較。
+  逆元のオラクルは拡張Euclidを使わず、各体の全元から積が1になる元を試行する。
+- 全元について `a^q=a`、非ゼロ元の `a^(q−1)=1`、Frobenius、trace、normを確認。
+  trace/normのオラクルも機械整数の商環上で共役を直接計算する。
+- 同じ法に対する異なる有効なBézout証拠で、同じ体が構成されることを確認。
+- 偽造・不足・別の法の証拠、非monic法、混合、ゼロ除算、次数1の特例を確認。
+- Pythonの機械整数・全元試行による12 fixtureで、`GF(256), GF(81), GF(125), GF(343)` の
+  積・逆元・trace・normを比較。各法の既約性は別途、monic除数の全試行で検査している。
+
+拡大体内の多項式因数分解、乗法群の原始元探索、離散対数、異なる提示間の同型写像は含めない。
+大きな体の全列挙や暗号実装向けの性能・サイドチャネル特性も主張しない。

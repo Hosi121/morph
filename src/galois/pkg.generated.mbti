@@ -1,0 +1,95 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/galois"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/fppoly",
+  "Hosi121/morph/primefield",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Element, Element) -> Result[Element, FieldError]
+
+pub fn cardinality(Field) -> @binary.Binary
+
+pub fn characteristic(Field) -> @binary.Binary
+
+pub fn constant(Field, @binary.Binary) -> Element
+
+pub fn degree(Field) -> @core.Nat
+
+pub fn divide(Element, Element) -> Result[Element, FieldError]
+
+pub fn element(Field, @fppoly.Polynomial) -> Result[Element, FieldError]
+
+pub fn extension(@fppoly.Polynomial, @fppoly.IrreducibilityCertificate) -> Field?
+
+pub fn field_of(Element) -> Field
+
+pub fn frobenius(Element) -> Result[Element, FieldError]
+
+pub fn generator(Field) -> Result[Element, FieldError]
+
+pub fn inverse(Element) -> Result[Element, FieldError]
+
+pub fn is_zero(Element) -> Bool
+
+pub fn modulus(Field) -> @fppoly.Polynomial
+
+pub fn multiply(Element, Element) -> Result[Element, FieldError]
+
+pub fn negate(Element) -> Element
+
+pub fn norm(Element) -> Result[@binary.Binary, FieldError]
+
+pub fn one(Field) -> Element
+
+pub fn power(Element, @binary.Binary) -> Result[Element, FieldError]
+
+pub fn prime_field(Field) -> @primefield.Field
+
+pub fn representative(Element) -> @fppoly.Polynomial
+
+pub fn subtract(Element, Element) -> Result[Element, FieldError]
+
+pub fn trace(Element) -> Result[@binary.Binary, FieldError]
+
+pub fn zero(Field) -> Element
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Element {
+  field : Field
+  representative : @fppoly.Polynomial
+}
+pub fn Element::equal(Self, Self) -> Bool
+pub fn Element::not_equal(Self, Self) -> Bool
+pub fn Element::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Field {
+  modulus : @fppoly.Polynomial
+  degree : @core.Nat
+}
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FieldError {
+  FieldMismatch
+  ZeroDivisor
+  PolynomialError(@fppoly.PolyError)
+  InternalInvariant
+}
+pub fn FieldError::equal(Self, Self) -> Bool
+pub fn FieldError::not_equal(Self, Self) -> Bool
+pub fn FieldError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
