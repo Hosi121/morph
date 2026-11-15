@@ -28,3 +28,20 @@ test "twenty thousand clauses do not consume one stack frame per CNF clause" {
     }
   }
 }
+
+///|
+test "sparse variable identifier 65535 survives startup model and proof checking" {
+  let variable = fuel(65535)
+  let positive : @sat.Literal = { variable, positive: true, }
+  let negative : @sat.Literal = { variable, positive: false, }
+  let satisfiable = cnf([[positive]])
+  match run(start(satisfiable), fuel(10)) {
+    Satisfiable(model) => assert_true(@sat.check_model(satisfiable, model))
+    _ => fail("a high-identifier unit must be satisfiable")
+  }
+  let contradictory = cnf([[positive], [negative]])
+  match run(start(contradictory), fuel(10)) {
+    Unsatisfiable(proof) => assert_true(check_refutation(contradictory, proof))
+    _ => fail("opposite high-identifier units must be refuted")
+  }
+}

@@ -161,8 +161,8 @@ with the old conversion for every ID from zero through 2048 and with the numeric
 test oracle at 4095, 4096, 4097, 10000, and 16384. In a direct same-run comparison
 on all chain literal occurrences, the old conversion measured
 7.46 ms ± 298.98 µs and the candidate 513.90 µs ± 20.89 µs. This candidate
-has not been adopted into `atom`: the root task is also improving the shared
-Binary increment/conversion, which must be compared before selecting one.
+was not adopted into `atom` at this stage: the root task was also improving the
+shared Binary increment/conversion, which needed comparison before selection.
 
 Reproduction commands:
 
@@ -258,3 +258,41 @@ checked RUP refutation, and repeated binary clauses for both scan and watched
 engines. It passes native, JS, and Wasm GC. Existing miter and search-statistics
 snapshots remain unchanged. This addresses stack growth with CNF clause count;
 it does not establish a resource bound for every nested input representation.
+
+## Structural key conversion selection
+
+After the root's shared Binary improvement (`c379435`), direct same-run atom
+conversion over the 256-link chain measured 1.38 ms ± 32.07 µs for the shared
+tail-recursive `from_nat`, against 506.00 µs ± 14.96 µs for structural halving.
+The private `binary_key` implementation is therefore now used by CDCL input
+conversion. The shared Binary package remains unchanged by this task, and the
+stage benchmark retains both conversion candidates.
+
+The private conversion removes pairs of unary successors to form a quotient,
+emits the Bool remainder, and recurses on that quotient. Quotient construction
+is tail recursive, and bit construction recurses with logarithmic depth. It
+agrees with the shared conversion on all IDs through 2048 and with independent
+integer-built Binary values at the larger test IDs listed above. A new end-to-end
+regression checks both a satisfiable model and an unsatisfiable certificate with
+source variable ID 65535 on all three backends.
+
+Native release before/after, both after the root Binary improvement:
+
+| Stage | Shared converter | Private halving converter |
+| --- | ---: | ---: |
+| Chain 256 normalization | 1.42 ms ± 33.79 µs | 546.70 µs ± 19.80 µs |
+| Chain 256 variable collection | 1.71 ms ± 57.26 µs | 814.74 µs ± 23.60 µs |
+| Chain 256 indexed certificate checker | 2.85 ms ± 72.37 µs | 1.92 ms ± 31.05 µs |
+| Width-16 miter startup | 6.10 ms ± 411.15 µs | 2.99 ms ± 294.69 µs |
+| Width-16 search without startup | 28.68 ms ± 567.17 µs | 29.64 ms ± 1.16 ms |
+| Width-16 certificate checker | 74.11 ms ± 1.11 ms | 72.00 ms ± 1.65 ms |
+
+The startup benefit is clear on these inputs; search is unchanged by design and
+its measurements overlap. The larger certificate-checker difference is small
+relative to variation, so the adoption is based on startup and direct conversion
+results. This does not make the full width-16 check twice as fast.
+
+A separate equality microbenchmark over 16,384 normalized key pairs measured
+ordering equality at 339.59 µs ± 29.54 µs and structural `Eq` at
+315.43 µs ± 14.46 µs. That small, overlapping result did not justify changing
+production key equality.

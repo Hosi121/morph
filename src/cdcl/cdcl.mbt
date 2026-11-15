@@ -118,7 +118,7 @@ fn empty_statistics() -> Statistics {
 ///|
 fn atom(literal : @sat.Literal) -> Atom {
   {
-    key: @binary.from_nat(literal.variable),
+    key: binary_key(literal.variable),
     source: literal.variable,
     positive: literal.positive,
   }

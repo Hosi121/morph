@@ -37,12 +37,22 @@ test "stage watched search implication chain 256 without start" (b : @bench.T) {
 }
 
 ///|
-test "stage unary to binary key conversion all implication chain 256 occurrences" (
+test "shared unary to binary key conversion all implication chain 256 occurrences" (
   b : @bench.T,
 ) {
   let formula = stage_chain(256)
   b.bench(fn() {
-    b.keep(@core.map(formula, fn(clause) { @core.map(clause, atom) }))
+    b.keep(
+      @core.map(formula, fn(clause) {
+        @core.map(clause, fn(literal) {
+          Atom::{
+            key: @binary.from_nat(literal.variable),
+            source: literal.variable,
+            positive: literal.positive,
+          }
+        })
+      }),
+    )
   })
 }
 
@@ -119,4 +129,42 @@ test "stage ripple adder miter width sixteen RUP checker" (b : @bench.T) {
     _ => fail("equivalent adder miter must be refuted")
   }
   b.bench(fn() { b.keep(check_refutation(formula, proof)) })
+}
+
+///|
+fn stage_keys() -> @core.Chain[@binary.Binary] {
+  @oracle.chain([ for value in 0..<128 => @oracle.binary(value) ])
+}
+
+///|
+test "candidate key equality via ordering over 16384 binary pairs" (
+  b : @bench.T,
+) {
+  let keys = stage_keys()
+  b.bench(fn() {
+    b.keep(
+      @core.map(keys, fn(left) {
+        @core.map(keys, fn(right) {
+          match @binary.compare(left, right) {
+            Equal => true
+            _ => false
+          }
+        })
+      }),
+    )
+  })
+}
+
+///|
+test "candidate key equality via structural Eq over 16384 binary pairs" (
+  b : @bench.T,
+) {
+  let keys = stage_keys()
+  b.bench(fn() {
+    b.keep(
+      @core.map(keys, fn(left) {
+        @core.map(keys, fn(right) { left.equal(right) })
+      }),
+    )
+  })
 }
