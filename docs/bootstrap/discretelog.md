@@ -88,3 +88,30 @@ naive 65537: 24.51 ms ± 658.56 µs; 23.64 ms … 25.55 ms; 10 × 5 runs
 BSGS 998244353: 7.39 ms ± 266.45 µs; 7.08 ms … 7.88 ms; 10 × 14 runs
 naive 998244353: 318.49 ms ± 8.77 ms; 307.37 ms … 332.99 ms; 10 × 1 runs
 ```
+
+## 最小位数の証拠と部分群全体の境界
+
+`exact_order(field,g,factors)` は候補dの完全な検査済み素因数分解を受け取り、
+`d | p−1`、`g^d=1`、すべての素因数qに対する `g^(d/q) != 1` を再累乗で確認する。
+位数がdの真の約数なら、いずれかのqについて最後の条件が破れるので、
+受理したopaque `Order` は最小の正の位数を表す。
+根拠は [HAC §4.6, Algorithm 4.79/4.80](https://cacr.uwaterloo.ca/hac/about/chap4.pdf)
+と同じ素因数ごとの位数条件である。ここでも因数や証明の探索は行わない。
+
+```moonbit
+pub fn exact_order(@primefield.Field, @binary.Binary, @factor.Factorization) -> Order?
+pub fn order_value(Order) -> @binary.Binary
+pub fn order_base(Order) -> @binary.Binary
+pub fn order_field(Order) -> @primefield.Field
+pub fn order_factorization(Order) -> @factor.Factorization
+pub fn subgroup_problem(Order, @binary.Binary) -> Problem?
+```
+
+`subgroup_problem` はB=dを使うため、探索区間はgが生成する部分群を一周分覆う。
+このProblemの完全な探索で未発見なら、目標はその生成部分群に属さない。
+それでもgが全乗法群の生成元だとは限らない。GF(7)のg=2は検査済み位数3で、
+h=4は指数2を持つ一方、h=3は同じ体の非零元であってもその部分群には属さない。
+
+小素数のすべての底と候補位数を整数の最小反復回数と照合する。
+真の位数の倍数、根拠のない候補位数、零元を拒否し、
+GF(2)の位数1と65537上の底3の位数65536も検査する。
