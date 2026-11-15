@@ -1,0 +1,15 @@
+{
+  "baseline_library_commit": "88c967b3913ba2bc5d59b995b865402e6b687e23",
+  "benchmark_commit": "d3894844d1133d9fbd47fe27f0d2e2bbc85f178c",
+  "characteristic_two_commit": "62676b3626389f773802c59535ec1890830368e1",
+  "backend": "native release",
+  "c_flags": "-O2 -fwrapv -fno-strict-aliasing -ffp-contract=off -DMOONBIT_ALLOCATOR=MOONBIT_ALLOCATOR_MIMALLOC",
+  "cpu_pin": 6,
+  "cpu_model": "Intel Core Ultra 7 255H",
+  "parallelism": "one benchmark process at a time, root benchmarks independently pinned to CPU4; no own compilation overlaps recorded timed runs; other system activity not stopped",
+  "kernel": "6.6.87.2-microsoft-standard-WSL2",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "moon": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "aggregation": "median of three independent process means; each process summary uses five benchmark batches with 100ms target and warm-up/calibration; standard core/bench summarizes and winsorizes inner samples",
+  "profile": "gprof -pg diagnostic only; excluded from timing ratios"
+}

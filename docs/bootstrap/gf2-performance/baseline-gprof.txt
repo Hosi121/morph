@@ -1,0 +1,1389 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 34.88      0.30     0.30                             moonbit_drop_object
+ 16.28      0.44     0.14                             mi_free
+ 13.95      0.56     0.12 19043173     0.00     0.00  _M0FP37Hosi1215morph6binary12divide__bits
+ 11.63      0.66     0.10                             _mi_page_malloc_zero
+  3.49      0.69     0.03  1430535     0.00     0.00  _M0FP37Hosi1215morph6fppoly4trim
+  3.49      0.72     0.03                             mi_malloc
+  2.33      0.74     0.02 11188422     0.00     0.00  _M0FP37Hosi1215morph6binary13compare__bits
+  2.33      0.76     0.02  4346331     0.00     0.00  _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232
+  1.16      0.77     0.01 10776224     0.00     0.00  _M0MPC13int3Int18to__string_2einner.constprop.0
+  1.16      0.78     0.01  3061705     0.00     0.00  _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE
+  1.16      0.79     0.01  1344622     0.00     0.00  _M0FP37Hosi1215morph6fppoly17add__coefficients
+  1.16      0.80     0.01   935426     0.00     0.00  _M0FPB32string__trim__end__ascii__scalar
+  1.16      0.81     0.01   438952     0.00     0.00  _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE
+  1.16      0.82     0.01   332678     0.00     0.00  _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE
+  1.16      0.83     0.01   288111     0.00     0.00  _M0FP37Hosi1215morph4core7compare
+  1.16      0.84     0.01   183435     0.00     0.00  _M0FP37Hosi1215morph6galois3add
+  1.16      0.85     0.01   158517     0.00     0.00  _M0FP37Hosi1215morph4core8subtract
+  1.16      0.86     0.01   139344     0.00     0.00  _M0FP37Hosi1215morph6fppoly6divide
+  0.00      0.86     0.00  7946091     0.00     0.00  _M0FP37Hosi1215morph6binary9add__bits
+  0.00      0.86     0.00  5673518     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryEC8708l82
+  0.00      0.86     0.00  4811016     0.00     0.00  _M0FP37Hosi1215morph6binary14multiply__bits
+  0.00      0.86     0.00  3096759     0.00     0.00  _M0FP37Hosi1215morph6binary11full__adder
+  0.00      0.86     0.00  2626823     0.00     0.00  _M0FP37Hosi1215morph6binary9from__natN7convertS3195
+  0.00      0.86     0.00  1993004     0.00     0.00  _M0FP37Hosi1215morph6binary4trim
+  0.00      0.86     0.00  1287516     0.00     0.00  _M0FP37Hosi1215morph6fppoly6negateC8879l188
+  0.00      0.86     0.00  1287516     0.00     0.00  _M0FP37Hosi1215morph7modular8subtract
+  0.00      0.86     0.00   862984     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE
+  0.00      0.86     0.00   561352     0.00     0.00  _M0FP37Hosi1215morph6binary15increment__bits
+  0.00      0.86     0.00   328781     0.00     0.00  _M0IP37Hosi1215morph4core3NatPB2Eq5equal
+  0.00      0.86     0.00   305049     0.00     0.00  _M0FP37Hosi1215morph6fppoly22multiply__coefficients
+  0.00      0.86     0.00   284806     0.00     0.00  _M0FP37Hosi1215morph5exact6negate
+  0.00      0.86     0.00   251974     0.00     0.00  _M0FP37Hosi1215morph6fppoly13indeterminate
+  0.00      0.86     0.00   183441     0.00     0.00  _M0FP37Hosi1215morph6fppoly3add
+  0.00      0.86     0.00   157269     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementEC8704l82
+  0.00      0.86     0.00   157201     0.00     0.00  _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE
+  0.00      0.86     0.00   157201     0.00     0.00  _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE
+  0.00      0.86     0.00   142403     0.00     0.00  _M0FP37Hosi1215morph7modular13extended__gcd
+  0.00      0.86     0.00   142403     0.00     0.00  _M0FP37Hosi1215morph7modular7inverse
+  0.00      0.86     0.00   127357     0.00     0.00  _M0FP37Hosi1215morph6galois7element
+  0.00      0.86     0.00   124050     0.00     0.00  _M0FP37Hosi1215morph6fppoly8multiply
+  0.00      0.86     0.00   124038     0.00     0.00  _M0FP37Hosi1215morph6galois8multiply
+  0.00      0.86     0.00    78195     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs4trim
+  0.00      0.86     0.00    64796     0.00     0.00  _M0FP37Hosi1215morph6galois16negate_2edyncall
+  0.00      0.86     0.00    22672     0.00     0.00  _M0FP37Hosi1215morph6fppoly5scaleC8888l215
+  0.00      0.86     0.00    19694     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392
+  0.00      0.86     0.00    18879     0.00     0.00  _M0FP37Hosi1215morph6galois8constant
+  0.00      0.86     0.00    15937     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00    15880     0.00     0.00  _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00    14079     0.00     0.01  _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate
+  0.00      0.86     0.00     9971     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437
+  0.00      0.86     0.00     9207     0.00     0.00  _M0FP37Hosi1215morph6fppoly3one
+  0.00      0.86     0.00     8472     0.00     0.00  _M0FP37Hosi1215morph6galois18multiply_2edyncall
+  0.00      0.86     0.00     4244     0.00     0.01  _M0FP37Hosi1215morph6galois7inverse
+  0.00      0.86     0.00     3970     0.00     0.00  _M0FP37Hosi1215morph6galois13add_2edyncall
+  0.00      0.86     0.00     3704     0.00     0.00  _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00     3698     0.00     0.00  _M0FPB21capacity__for__length
+  0.00      0.86     0.00     3684     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00     3573     0.00     0.00  _M0FP37Hosi1215morph6galois18subtract_2edyncall
+  0.00      0.86     0.00     3176     0.00     0.00  _M0FP37Hosi1215morph10recurrence4liftGORP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00     3176     0.00     0.01  _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438
+  0.00      0.86     0.00     3059     0.00     0.01  _M0FP37Hosi1215morph6fppoly13extended__gcd
+  0.00      0.86     0.00     2128     0.00     0.00  _M0FP37Hosi1215morph11testsupport6binary
+  0.00      0.86     0.00     2128     0.00     0.01  _M0FP37Hosi1215morph8cyclicrs15polynomial__add
+  0.00      0.86     0.00     1989     0.00     0.00  _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00     1600     0.00     0.00  _M0FP37Hosi1215morph4core3add
+  0.00      0.86     0.00     1588     0.00     0.01  _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00     1588     0.00     0.00  _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00     1588     0.00     0.00  _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00     1588     0.00     0.00  _M0FP37Hosi1215morph6galois18is__zero_2edyncall
+  0.00      0.86     0.00     1205     0.00     0.00  _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00     1191     0.00     0.00  _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00      925     0.00     0.00  _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00      802     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs11check__word
+  0.00      0.86     0.00      794     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph8cyclicrs8LocationEC8712l82
+  0.00      0.86     0.00      794     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs6decodeC9594l713
+  0.00      0.86     0.00      794     0.00     0.06  _M0FP37Hosi1215morph8cyclicrs8syndrome
+  0.00      0.86     0.00      794     0.00     0.06  _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411
+  0.00      0.86     0.00      794     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs9bm__field
+  0.00      0.86     0.00      539     0.00     0.00  _M0FP37Hosi1215morph6galois16perf__polynomial
+  0.00      0.86     0.00      524     0.00     0.02  _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00      461     0.00     0.00  _M0IPC16double6DoublePC14json6ToJson8to__json
+  0.00      0.86     0.00      413     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE
+  0.00      0.86     0.00      397     0.00     0.10  _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE
+  0.00      0.86     0.00      397     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469
+  0.00      0.86     0.00      397     0.00     0.00  _M0FP37Hosi1215morph8cyclicrs17apply__correction
+  0.00      0.86     0.00      397     0.00     0.33  _M0FP37Hosi1215morph8cyclicrs5chien
+  0.00      0.86     0.00      397     0.00     0.69  _M0FP37Hosi1215morph8cyclicrs6decode
+  0.00      0.86     0.00      397     0.00     0.08  _M0FP37Hosi1215morph8cyclicrs6forney
+  0.00      0.86     0.00      395     0.00     0.69  _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__1C9175l104
+  0.00      0.86     0.00      266     0.00     0.00  _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6binary6BinaryE
+  0.00      0.86     0.00      264     0.00     0.00  _M0FP37Hosi1215morph6galois12perf__symbol
+  0.00      0.86     0.00      264     0.00     0.00  _M0FP37Hosi1215morph6galois13test__element
+  0.00      0.86     0.00      264     0.00     0.00  _M0FPC15debug13render__delta.constprop.0
+  0.00      0.86     0.00      186     0.00     0.00  _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger
+  0.00      0.86     0.00      133     0.00     0.00  _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0
+  0.00      0.86     0.00      112     0.00     0.00  _M0FPB7umul128
+  0.00      0.86     0.00      110     0.00     0.00  _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger
+  0.00      0.86     0.00       69     0.00     0.00  _M0MPC16string6String21clamped__view_2einner
+  0.00      0.86     0.00       52     0.00     0.00  _M0FP37Hosi1215morph6binary4half
+  0.00      0.86     0.00       51     0.00     0.00  _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882
+  0.00      0.86     0.00       36     0.00     0.00  _M0FP37Hosi1215morph6galois11test__prime
+  0.00      0.86     0.00       32     0.00     0.00  _M0FPB15ryu__to__string
+  0.00      0.86     0.00       32     0.00     0.00  _M0IPC16string6StringPB4Hash4hash
+  0.00      0.86     0.00       32     0.00     0.00  _M0MPB3Map4iterGsRPC14json4JsonEC7240l818
+  0.00      0.86     0.00       32     0.00     0.00  _M0MPC14byte4Byte7to__hex
+  0.00      0.86     0.00       28     0.00     0.00  _M0FPB13mulShiftAll64
+  0.00      0.86     0.00       24     0.00     0.01  _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59
+  0.00      0.86     0.00       19     0.00     0.00  _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899
+  0.00      0.86     0.00        9     0.00     0.00  _M0MPC16string6String17unsafe__substring
+  0.00      0.86     0.00        8     0.00     0.00  _M0FPB12dec__count32
+  0.00      0.86     0.00        8     0.00     0.00  moonbit_decref_cycle_free_inlined
+  0.00      0.86     0.00        6     0.00     0.01  _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00        4     0.00     0.00  _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6galois7ElementE
+  0.00      0.86     0.00        4     0.00     0.00  _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE
+  0.00      0.86     0.00        4     0.00     0.00  _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph4core3NatEC8700l82
+  0.00      0.86     0.00        4     0.00     0.00  _M0FP37Hosi1215morph6galois11cardinality
+  0.00      0.86     0.00        4     0.00     3.60  _M0FP37Hosi1215morph8cyclicrs6encode
+  0.00      0.86     0.00        4     0.00     0.00  _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521
+  0.00      0.86     0.00        3     0.00     0.00  _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json
+  0.00      0.86     0.00        3     0.00     0.00  _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820
+  0.00      0.86     0.00        2     0.00     0.04  _M0FP37Hosi1215morph6fppoly16frobenius__chain
+  0.00      0.86     0.00        2     0.00     0.03  _M0FP37Hosi1215morph6fppoly18coprime__witnesses
+  0.00      0.86     0.00        2     0.00     0.12  _M0FP37Hosi1215morph6galois11test__field
+  0.00      0.86     0.00        2     0.00     0.05  _M0FP37Hosi1215morph8cyclicrs11differences
+  0.00      0.86     0.00        2     0.00     1.04  _M0FP37Hosi1215morph8cyclicrs11invert__all
+  0.00      0.86     0.00        2     0.00     0.01  _M0FP37Hosi1215morph8cyclicrs18generator__product
+  0.00      0.86     0.00        2     0.00     0.00  _M0FPC15debug24compact__lines_2edyncall
+  0.00      0.86     0.00        2     0.00     0.00  _M0MPC15array9ArrayView4iterGsEC6870l959
+  0.00      0.86     0.00        2     0.00   135.44  _M0MPC15bench5Bench13bench_2einner.constprop.0
+  0.00      0.86     0.00        1     0.00     0.00  _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894
+  0.00      0.86     0.00        1     0.00   290.00  _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall
+  0.00      0.86     0.00        1     0.00     0.00  _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517
+  0.00      0.86     0.00        1     0.00     0.00  _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9359l516
+  0.00      0.86     0.00        1     0.00     0.00  _M0MPC15array9ArrayView4iterGsE
+  0.00      0.86     0.00        1     0.00     0.00  moonbit_init
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 1.16% of 0.86 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     34.9    0.30    0.00                 moonbit_drop_object [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     33.7    0.00    0.29                 main [2]
+                0.00    0.29       1/1           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00       1/1           moonbit_init [76]
+                0.00    0.00       1/1           _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       1/1           _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00       3/3           _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820 [83]
+                0.00    0.00       1/539         _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00      21/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+                0.00    0.00       8/8           moonbit_decref_cycle_free_inlined [84]
+                0.00    0.00       2/2           _M0MPC15array9ArrayView4iterGsEC6870l959 [439]
+                0.00    0.00       1/32          _M0IPC16string6StringPB4Hash4hash [428]
+                0.00    0.00       1/1           _M0MPC15array9ArrayView4iterGsE [441]
+                0.00    0.00       1/1           _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9359l516 [440]
+-----------------------------------------------
+                0.00    0.29       1/1           main [2]
+[3]     33.7    0.00    0.29       1         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.27       2/2           _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.01       4/4           _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph8cyclicrs11invert__all [51]
+                0.00    0.00       2/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00     270/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00     264/264         _M0FP37Hosi1215morph6galois12perf__symbol [62]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00       6/6           _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE [71]
+                0.00    0.00     542/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00     276/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00       4/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00       4/802         _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+                0.00    0.00       2/127357      _M0FP37Hosi1215morph6galois7element [10]
+                0.00    0.00     542/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00       4/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00       2/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00       6/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00       2/158517      _M0FP37Hosi1215morph4core8subtract [43]
+                0.00    0.00       4/4           _M0FP37Hosi1215morph6galois11cardinality [77]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00       2/11188422     _M0FP37Hosi1215morph6binary13compare__bits [34]
+                0.00    0.00       2/4           _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00     532/539         _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00     276/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+                0.00    0.00       8/413         _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE [418]
+                0.00    0.00       4/4           _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6galois7ElementE [434]
+                0.00    0.00       4/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00       4/4           _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph4core3NatEC8700l82 [436]
+                0.00    0.00       2/1600        _M0FP37Hosi1215morph4core3add [411]
+                0.00    0.00       2/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                0.00    0.00       2/397         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.27     395/397         _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__1C9175l104 [6]
+[4]     31.7    0.00    0.27     397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.13     397/397         _M0FP37Hosi1215morph8cyclicrs5chien [13]
+                0.00    0.05     794/794         _M0FP37Hosi1215morph8cyclicrs8syndrome [21]
+                0.00    0.04     397/397         _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.03     397/397         _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.01    1191/3176        _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438 [30]
+                0.00    0.01    2779/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00    2382/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00     397/397         _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00     397/397         _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00    2382/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00     397/1205        _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                0.00    0.00     397/3573        _M0FP37Hosi1215morph6galois18subtract_2edyncall [54]
+                0.00    0.00     794/794         _M0FP37Hosi1215morph8cyclicrs9bm__field [69]
+                0.00    0.00    1588/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00    5161/15880       _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+                0.00    0.00    2382/3970        _M0FP37Hosi1215morph6galois13add_2edyncall [404]
+                0.00    0.00    1191/3176        _M0FP37Hosi1215morph10recurrence4liftGORP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [408]
+                0.00    0.00    1191/1191        _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE [413]
+                0.00    0.00     794/3684        _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [407]
+                0.00    0.00     794/794         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph8cyclicrs8LocationEC8712l82 [415]
+                0.00    0.00     397/925         _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6galois7ElementE [414]
+                0.00    0.00     397/413         _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE [418]
+                0.00    0.00     397/1989        _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+                0.00    0.00     397/461         _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+-----------------------------------------------
+                0.00    0.27       2/2           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[5]     31.5    0.00    0.27       2         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.27     395/395         _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__1C9175l104 [6]
+                0.00    0.00      34/36          _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00      44/51          _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       4/10776224     _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00       1/539         _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00      77/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+                0.00    0.00      64/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00      32/32          _M0MPC14byte4Byte7to__hex [430]
+                0.00    0.00      32/32          _M0MPB3Map4iterGsRPC14json4JsonEC7240l818 [429]
+                0.00    0.00      32/32          _M0FPB15ryu__to__string [427]
+                0.00    0.00      32/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00      30/32          _M0IPC16string6StringPB4Hash4hash [428]
+                0.00    0.00      28/461         _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+                0.00    0.00       2/2           _M0FPC15debug24compact__lines_2edyncall [438]
+-----------------------------------------------
+                0.00    0.27     395/395         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[6]     31.5    0.00    0.27     395         _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__1C9175l104 [6]
+                0.00    0.27     395/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+-----------------------------------------------
+                0.00    0.00     270/124038      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     520/124038      _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     794/124038      _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00     794/124038      _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00    1985/124038      _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.00    2382/124038      _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.01    3176/124038      _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.01    7682/124038      _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.18  106435/124038      _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+[7]     24.1    0.00    0.21  124038         _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.15  124038/127357      _M0FP37Hosi1215morph6galois7element [10]
+                0.00    0.05  124038/124050      _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.00  124038/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00  124038/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00  124038/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+-----------------------------------------------
+                              106435             _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+                0.00    0.02    1588/14079       _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.05    3176/14079       _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+                0.00    0.13    9315/14079       _M0FP37Hosi1215morph8cyclicrs5chien [13]
+[8]     23.3    0.00    0.20   14079+106435  _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+                0.00    0.18  106435/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.01    0.02  106435/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00   14079/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                              106435             _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+-----------------------------------------------
+                0.00    0.00       4/139344      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00     120/139344      _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.01   11863/139344      _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.01    0.15  127357/139344      _M0FP37Hosi1215morph6galois7element [10]
+[9]     19.9    0.01    0.16  139344         _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.05  157201/305049      _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.02    0.03  786005/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.02  157201/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.01  314402/1344622     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                0.01    0.00  435889/438952      _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE [41]
+                0.01    0.00  157201/158517      _M0FP37Hosi1215morph4core8subtract [43]
+                0.01    0.00  274288/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00  139344/142403      _M0FP37Hosi1215morph7modular7inverse [47]
+                0.00    0.00  157201/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00  139344/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00  157201/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00  862978/862984      _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+                0.00    0.00  157201/157201      _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE [400]
+                0.00    0.00  157201/157201      _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE [399]
+-----------------------------------------------
+                0.00    0.00       2/127357      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     264/127357      _M0FP37Hosi1215morph6galois13test__element [63]
+                0.00    0.00    3053/127357      _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.15  124038/127357      _M0FP37Hosi1215morph6galois8multiply [7]
+[10]    18.2    0.00    0.16  127357         _M0FP37Hosi1215morph6galois7element [10]
+                0.01    0.15  127357/139344      _M0FP37Hosi1215morph6fppoly6divide [9]
+-----------------------------------------------
+                             27880923             _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00   22672/19043173     _M0FP37Hosi1215morph6fppoly5scaleC8888l215 [65]
+                0.00    0.00  142403/19043173     _M0FP37Hosi1215morph7modular7inverse [47]
+                0.00    0.00  157201/19043173     _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.00  284806/19043173     _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.02    0.00 2575032/19043173     _M0FP37Hosi1215morph7modular8subtract [33]
+                0.03    0.01 4346331/19043173     _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232 [18]
+                0.03    0.01 4810761/19043173     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                0.04    0.01 6703967/19043173     _M0FP37Hosi1215morph6fppoly4trim [17]
+[11]    16.9    0.12    0.03 19043173+27880923 _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.02    0.00 9122556/11188422     _M0FP37Hosi1215morph6binary13compare__bits [34]
+                0.01    0.00 8419198/10776224     _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00  703358/2626823     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00  703358/1993004     _M0FP37Hosi1215morph6binary4trim [393]
+                             27880923             _M0FP37Hosi1215morph6binary12divide__bits [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]    16.3    0.14    0.00                 mi_free [12]
+-----------------------------------------------
+                                9315             _M0FP37Hosi1215morph8cyclicrs5chien [13]
+                0.00    0.13     397/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[13]    15.4    0.00    0.13     397+9315    _M0FP37Hosi1215morph8cyclicrs5chien [13]
+                0.00    0.13    9315/14079       _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+                0.00    0.00    9315/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                                9315             _M0FP37Hosi1215morph8cyclicrs5chien [13]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]    11.6    0.10    0.00                 _mi_page_malloc_zero [14]
+-----------------------------------------------
+                              823041             _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.00    0.00      72/305049      _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.01   23726/305049      _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.04  124050/305049      _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.05  157201/305049      _M0FP37Hosi1215morph6fppoly6divide [9]
+[15]    11.4    0.00    0.10  305049+823041  _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.01    0.06  748015/935426      _M0FPB32string__trim__end__ascii__scalar [16]
+                0.01    0.02  823041/1344622     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                              823041             _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+-----------------------------------------------
+                             4721093             _M0FPB32string__trim__end__ascii__scalar [16]
+                0.00    0.00    8773/935426      _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.01  178638/935426      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.01    0.06  748015/935426      _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+[16]    10.2    0.01    0.08  935426+4721093 _M0FPB32string__trim__end__ascii__scalar [16]
+                0.02    0.04 4346331/4346331     _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232 [18]
+                0.00    0.02 1287516/1287516     _M0FP37Hosi1215morph6fppoly6negateC8879l188 [32]
+                0.00    0.00   22672/22672       _M0FP37Hosi1215morph6fppoly5scaleC8888l215 [65]
+                             4721093             _M0FPB32string__trim__end__ascii__scalar [16]
+-----------------------------------------------
+                             6703967             _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00       2/1430535     _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00      72/1430535     _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00     264/1430535     _M0FP37Hosi1215morph6galois13test__element [63]
+                0.00    0.00    9177/1430535     _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.00    9207/1430535     _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00   18879/1430535     _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00   23726/1430535     _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.00  124050/1430535     _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.01  183441/1430535     _M0FP37Hosi1215morph6fppoly3add [36]
+                0.01    0.01  275712/1430535     _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.02    0.03  786005/1430535     _M0FP37Hosi1215morph6fppoly6divide [9]
+[17]     9.4    0.03    0.05 1430535+6703967 _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.04    0.01 6703967/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                             6703967             _M0FP37Hosi1215morph6fppoly4trim [17]
+-----------------------------------------------
+                0.02    0.04 4346331/4346331     _M0FPB32string__trim__end__ascii__scalar [16]
+[18]     6.4    0.02    0.04 4346331         _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232 [18]
+                0.03    0.01 4346331/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00 4346331/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+-----------------------------------------------
+                0.00    0.00      12/124050      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.05  124038/124050      _M0FP37Hosi1215morph6galois8multiply [7]
+[19]     5.5    0.00    0.05  124050         _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.04  124050/305049      _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.00    0.00  124050/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00  124050/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                             4810761             _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                0.00    0.00   23738/1344622     _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00  183441/1344622     _M0FP37Hosi1215morph6fppoly3add [36]
+                0.00    0.01  314402/1344622     _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.01    0.02  823041/1344622     _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+[20]     5.4    0.01    0.04 1344622+4810761 _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                0.03    0.01 4810761/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00 4810761/7946091     _M0FP37Hosi1215morph6binary9add__bits [390]
+                             4810761             _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+-----------------------------------------------
+                0.00    0.05     794/794         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[21]     5.3    0.00    0.05     794         _M0FP37Hosi1215morph8cyclicrs8syndrome [21]
+                0.00    0.05     794/794         _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+                0.00    0.00     794/802         _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+-----------------------------------------------
+                                3176             _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+                0.00    0.05     794/794         _M0FP37Hosi1215morph8cyclicrs8syndrome [21]
+[22]     5.3    0.00    0.05     794+3176    _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+                0.00    0.05    3176/14079       _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+                0.00    0.00    3176/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                                3176             _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+-----------------------------------------------
+                0.00    0.04     397/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[23]     4.6    0.00    0.04     397         _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.02    1985/3176        _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438 [30]
+                0.00    0.01    1588/1588        _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.01    3176/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.01    3176/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+                0.00    0.00    1588/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00    1588/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00     794/158517      _M0FP37Hosi1215morph4core8subtract [43]
+                0.00    0.00    4764/15880       _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+                0.00    0.00    3176/3704        _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [405]
+                0.00    0.00    3176/3698        _M0FPB21capacity__for__length [406]
+                0.00    0.00    1985/3176        _M0FP37Hosi1215morph10recurrence4liftGORP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [408]
+                0.00    0.00    1588/3970        _M0FP37Hosi1215morph6galois13add_2edyncall [404]
+                0.00    0.00    1588/1600        _M0FP37Hosi1215morph4core3add [411]
+                0.00    0.00    1588/1989        _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+-----------------------------------------------
+                0.00    0.00       4/183435      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     270/183435      _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00     794/183435      _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00    1588/183435      _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.00    2382/183435      _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00    3573/183435      _M0FP37Hosi1215morph6galois18subtract_2edyncall [54]
+                0.00    0.01   68389/183435      _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+                0.01    0.02  106435/183435      _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+[24]     4.4    0.01    0.03  183435         _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.02  183435/183441      _M0FP37Hosi1215morph6fppoly3add [36]
+                0.01    0.00  183435/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00  183435/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00  183435/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+-----------------------------------------------
+                               23738             _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00       2/251974      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00       6/251974      _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00       8/251974      _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00      10/251974      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00     270/251974      _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00    3573/251974      _M0FP37Hosi1215morph6galois18subtract_2edyncall [54]
+                0.00    0.00   23726/251974      _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.01   64796/251974      _M0FP37Hosi1215morph6galois16negate_2edyncall [45]
+                0.00    0.02  157201/251974      _M0FP37Hosi1215morph6fppoly6divide [9]
+[25]     3.9    0.00    0.03  251974+23738   _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.01  178638/935426      _M0FPB32string__trim__end__ascii__scalar [16]
+                0.01    0.01  275712/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00   23738/1344622     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                               23738             _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+-----------------------------------------------
+                0.00    0.00       4/4244        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     270/4244        _M0FP37Hosi1215morph8cyclicrs11invert__all [51]
+                0.00    0.01     794/4244        _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.02    3176/4244        _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438 [30]
+[26]     3.8    0.00    0.03    4244         _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.03    3053/3059        _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.00    3053/127357      _M0FP37Hosi1215morph6galois7element [10]
+                0.00    0.00    3053/9207        _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00    3053/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00    3053/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                                 794             _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.03     397/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[27]     3.5    0.00    0.03     397+794     _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.02    1588/14079       _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+                0.00    0.01     794/4244        _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.00     794/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00     794/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00     794/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00    1588/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                0.00    0.00     794/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+                                 794             _M0FP37Hosi1215morph8cyclicrs6forney [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     3.5    0.03    0.00                 mi_malloc [28]
+-----------------------------------------------
+                0.00    0.00       6/3059        _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.03    3053/3059        _M0FP37Hosi1215morph6galois7inverse [26]
+[29]     3.3    0.00    0.03    3059         _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.01   11863/139344      _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.01   23726/305049      _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.00    0.00   23726/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00   23726/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00    9177/9971        _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.00    6118/9207        _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00    3059/142403      _M0FP37Hosi1215morph7modular7inverse [47]
+                0.00    0.00    3059/438952      _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE [41]
+                0.00    0.00    3059/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                0.00    0.01    1191/3176        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.02    1985/3176        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[30]     2.8    0.00    0.02    3176         _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438 [30]
+                0.00    0.02    3176/4244        _M0FP37Hosi1215morph6galois7inverse [26]
+-----------------------------------------------
+                                8357             _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00       4/8472        _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00       8/8472        _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00     520/8472        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.01    1985/8472        _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.01    2779/8472        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.01    3176/8472        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[31]     2.7    0.00    0.02    8472+8357    _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.01    7682/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.01    1604/2128        _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+                0.00    0.00    1604/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00    9008/78195       _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                                8357             _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+-----------------------------------------------
+                0.00    0.02 1287516/1287516     _M0FPB32string__trim__end__ascii__scalar [16]
+[32]     2.6    0.00    0.02 1287516         _M0FP37Hosi1215morph6fppoly6negateC8879l188 [32]
+                0.00    0.02 1287516/1287516     _M0FP37Hosi1215morph7modular8subtract [33]
+-----------------------------------------------
+                0.00    0.02 1287516/1287516     _M0FP37Hosi1215morph6fppoly6negateC8879l188 [32]
+[33]     2.6    0.00    0.02 1287516         _M0FP37Hosi1215morph7modular8subtract [33]
+                0.02    0.00 2575032/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00 1923453/2626823     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00  635937/7946091     _M0FP37Hosi1215morph6binary9add__bits [390]
+-----------------------------------------------
+                             10319470             _M0FP37Hosi1215morph6binary13compare__bits [34]
+                0.00    0.00       2/11188422     _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00       6/11188422     _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00  142403/11188422     _M0FP37Hosi1215morph7modular7inverse [47]
+                0.00    0.00 1923455/11188422     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.02    0.00 9122556/11188422     _M0FP37Hosi1215morph6binary12divide__bits [11]
+[34]     2.3    0.02    0.00 11188422+10319470 _M0FP37Hosi1215morph6binary13compare__bits [34]
+                             10319470             _M0FP37Hosi1215morph6binary13compare__bits [34]
+-----------------------------------------------
+                0.00    0.00       6/332678      _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00      28/332678      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00     542/332678      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     794/332678      _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00    1088/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE [71]
+                0.00    0.00    3053/332678      _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.00   19694/332678      _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392 [56]
+                0.00    0.00  124038/332678      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.01    0.00  183435/332678      _M0FP37Hosi1215morph6galois3add [24]
+[35]     2.0    0.01    0.01  332678         _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.01    0.00 2279105/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                0.00    0.00       6/183441      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.02  183435/183441      _M0FP37Hosi1215morph6galois3add [24]
+[36]     2.0    0.00    0.02  183441         _M0FP37Hosi1215morph6fppoly3add [36]
+                0.00    0.01  183441/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00  183441/1344622     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+                0.00    0.00  183441/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                0.00    0.01       4/4           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[37]     1.7    0.00    0.01       4         _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.01     524/524         _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [46]
+                0.00    0.00     524/2128        _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+                0.00    0.00     520/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00     520/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00     520/158517      _M0FP37Hosi1215morph4core8subtract [43]
+                0.00    0.00       4/4244        _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.00     528/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00     524/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00       4/802         _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+                0.00    0.00    2088/3684        _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [407]
+                0.00    0.00     528/3704        _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [405]
+                0.00    0.00     528/925         _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6galois7ElementE [414]
+                0.00    0.00     520/3698        _M0FPB21capacity__for__length [406]
+                0.00    0.00       8/413         _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE [418]
+                0.00    0.00       4/78195       _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                0.00    0.00       4/1989        _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+-----------------------------------------------
+                               68389             _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+                0.00    0.00     524/2128        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.01    1604/2128        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+[38]     1.6    0.00    0.01    2128+68389   _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+                0.00    0.01   68389/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00   68389/78195       _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                               68389             _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+-----------------------------------------------
+                0.00    0.00       2/10776224     _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00       4/10776224     _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00       4/10776224     _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.00 2357016/10776224     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.01    0.00 8419198/10776224     _M0FP37Hosi1215morph6binary12divide__bits [11]
+[39]     1.2    0.01    0.00 10776224         _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00       8/8           _M0FPB12dec__count32 [433]
+                0.00    0.00       8/461         _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+-----------------------------------------------
+                              449918             _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00       6/3061705     _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00      12/3061705     _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+                0.00    0.00      44/3061705     _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00     542/3061705     _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     794/3061705     _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00    1088/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE [71]
+                0.00    0.00    3053/3061705     _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.00    3059/3061705     _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.00   19694/3061705     _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392 [56]
+                0.00    0.00  124038/3061705     _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00  124050/3061705     _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.00  139344/3061705     _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.00  183435/3061705     _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00  183441/3061705     _M0FP37Hosi1215morph6fppoly3add [36]
+                0.01    0.00 2279105/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+[40]     1.2    0.01    0.00 3061705+449918  _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                              449918             _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                0.00    0.00       4/438952      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00    3059/438952      _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.01    0.00  435889/438952      _M0FP37Hosi1215morph6fppoly6divide [9]
+[41]     1.2    0.01    0.00  438952         _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE [41]
+-----------------------------------------------
+                0.00    0.00       6/288111      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     524/288111      _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     802/288111      _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+                0.00    0.00    1588/288111      _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.00    1588/288111      _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00    9315/288111      _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.01    0.00  274288/288111      _M0FP37Hosi1215morph6fppoly6divide [9]
+[42]     1.2    0.01    0.00  288111         _M0FP37Hosi1215morph4core7compare [42]
+-----------------------------------------------
+                0.00    0.00       2/158517      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     520/158517      _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     794/158517      _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.01    0.00  157201/158517      _M0FP37Hosi1215morph6fppoly6divide [9]
+[43]     1.2    0.01    0.00  158517         _M0FP37Hosi1215morph4core8subtract [43]
+-----------------------------------------------
+                                1985             _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.01    1588/1588        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[44]     1.0    0.00    0.01    1588+1985    _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.01    1985/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00    1985/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00    1985/15880       _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+                                1985             _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+-----------------------------------------------
+                0.00    0.01   64796/64796       _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [46]
+[45]     1.0    0.00    0.01   64796         _M0FP37Hosi1215morph6galois16negate_2edyncall [45]
+                0.00    0.01   64796/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+-----------------------------------------------
+                               64796             _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [46]
+                0.00    0.01     524/524         _M0FP37Hosi1215morph8cyclicrs6encode [37]
+[46]     1.0    0.00    0.01     524+64796   _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [46]
+                0.00    0.01   64796/64796       _M0FP37Hosi1215morph6galois16negate_2edyncall [45]
+                               64796             _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [46]
+-----------------------------------------------
+                0.00    0.00    3059/142403      _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.00  139344/142403      _M0FP37Hosi1215morph6fppoly6divide [9]
+[47]     0.4    0.00    0.00  142403         _M0FP37Hosi1215morph7modular7inverse [47]
+                0.00    0.00  142403/142403      _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.00    0.00  142403/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00  142403/11188422     _M0FP37Hosi1215morph6binary13compare__bits [34]
+-----------------------------------------------
+                             1832883             _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6galois11cardinality [77]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00  703358/2626823     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00 1923453/2626823     _M0FP37Hosi1215morph7modular8subtract [33]
+[48]     0.4    0.00    0.00 2626823+1832883 _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00 1923455/11188422     _M0FP37Hosi1215morph6binary13compare__bits [34]
+                0.00    0.00 2536201/3096759     _M0FP37Hosi1215morph6binary11full__adder [392]
+                0.00    0.00 1287518/1993004     _M0FP37Hosi1215morph6binary4trim [393]
+                             1832883             _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+-----------------------------------------------
+                              284806             _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.00    0.00  142403/142403      _M0FP37Hosi1215morph7modular7inverse [47]
+[49]     0.3    0.00    0.00  142403+284806  _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.00    0.00  284806/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00  284806/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00  284806/284806      _M0FP37Hosi1215morph5exact6negate [397]
+                0.00    0.00  284806/7946091     _M0FP37Hosi1215morph6binary9add__bits [390]
+                              284806             _M0FP37Hosi1215morph7modular13extended__gcd [49]
+-----------------------------------------------
+                             2357048             _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00       2/4811016     _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00       4/4811016     _M0FP37Hosi1215morph6galois11cardinality [77]
+                0.00    0.00   22672/4811016     _M0FP37Hosi1215morph6fppoly5scaleC8888l215 [65]
+                0.00    0.00  157201/4811016     _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.00  284806/4811016     _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.00    0.00 4346331/4811016     _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232 [18]
+[50]     0.3    0.00    0.00 4811016+2357048 _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00 2357016/10776224     _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00 2214587/7946091     _M0FP37Hosi1215morph6binary9add__bits [390]
+                             2357048             _M0FP37Hosi1215morph6binary14multiply__bits [50]
+-----------------------------------------------
+                                 270             _M0FP37Hosi1215morph8cyclicrs11invert__all [51]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[51]     0.2    0.00    0.00       2+270     _M0FP37Hosi1215morph8cyclicrs11invert__all [51]
+                0.00    0.00     270/4244        _M0FP37Hosi1215morph6galois7inverse [26]
+                                 270             _M0FP37Hosi1215morph8cyclicrs11invert__all [51]
+-----------------------------------------------
+                0.00    0.00     794/9971        _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+                0.00    0.00    9177/9971        _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+[52]     0.2    0.00    0.00    9971         _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.00    8773/935426      _M0FPB32string__trim__end__ascii__scalar [16]
+                0.00    0.00    9177/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+-----------------------------------------------
+                                 794             _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00     397/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[53]     0.2    0.00    0.00     397+794     _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00     794/124038      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00     794/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00     794/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                0.00    0.00     794/561352      _M0FP37Hosi1215morph6binary15increment__bits [395]
+                0.00    0.00     794/78195       _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                                 794             _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+-----------------------------------------------
+                0.00    0.00     397/3573        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00    3176/3573        _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+[54]     0.1    0.00    0.00    3573         _M0FP37Hosi1215morph6galois18subtract_2edyncall [54]
+                0.00    0.00    3573/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00    3573/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+-----------------------------------------------
+                                3176             _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[55]     0.1    0.00    0.00    1588+3176    _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+                0.00    0.00    3176/3573        _M0FP37Hosi1215morph6galois18subtract_2edyncall [54]
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+                0.00    0.00    3176/15880       _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+                                3176             _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+-----------------------------------------------
+                0.00    0.00   19694/19694       _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+[56]     0.1    0.00    0.00   19694         _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392 [56]
+                0.00    0.00   19694/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00   19694/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+-----------------------------------------------
+                0.00    0.00       2/1205        _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       4/1205        _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00     397/1205        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00     802/1205        _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+[57]     0.1    0.00    0.00    1205         _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                0.00    0.00   19694/19694       _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392 [56]
+                0.00    0.00   19694/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph6galois18is__zero_2edyncall [412]
+-----------------------------------------------
+                0.00    0.00      10/18879       _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00     276/18879       _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     528/18879       _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     794/18879       _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00    1588/18879       _M0FP37Hosi1215morph8cyclicrs9bm__field [69]
+                0.00    0.00    1604/18879       _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00   14079/18879       _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [8]
+[58]     0.1    0.00    0.00   18879         _M0FP37Hosi1215morph6galois8constant [58]
+                0.00    0.00   18879/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+-----------------------------------------------
+                0.00    0.00       4/802         _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00       4/802         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     794/802         _M0FP37Hosi1215morph8cyclicrs8syndrome [21]
+[59]     0.1    0.00    0.00     802         _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+                0.00    0.00     802/1205        _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                0.00    0.00     802/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00     802/3684        _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [407]
+-----------------------------------------------
+                                9315             _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00     397/397         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[60]     0.1    0.00    0.00     397+9315    _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00    9315/288111      _M0FP37Hosi1215morph4core7compare [42]
+                0.00    0.00     794/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00     794/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00     794/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                                9315             _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+-----------------------------------------------
+                0.00    0.00       6/9207        _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00       6/9207        _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00      24/9207        _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00    3053/9207        _M0FP37Hosi1215morph6galois7inverse [26]
+                0.00    0.00    6118/9207        _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+[61]     0.1    0.00    0.00    9207         _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00    9207/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+-----------------------------------------------
+                0.00    0.00     264/264         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[62]     0.0    0.00    0.00     264         _M0FP37Hosi1215morph6galois12perf__symbol [62]
+                0.00    0.00     264/264         _M0FP37Hosi1215morph6galois13test__element [63]
+                0.00    0.00     264/264         _M0FPC15debug13render__delta.constprop.0 [420]
+-----------------------------------------------
+                0.00    0.00     264/264         _M0FP37Hosi1215morph6galois12perf__symbol [62]
+[63]     0.0    0.00    0.00     264         _M0FP37Hosi1215morph6galois13test__element [63]
+                0.00    0.00     264/127357      _M0FP37Hosi1215morph6galois7element [10]
+                0.00    0.00     264/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00    2112/2128        _M0FP37Hosi1215morph11testsupport6binary [409]
+                0.00    0.00     264/266         _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6binary6BinaryE [419]
+-----------------------------------------------
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[64]     0.0    0.00    0.00       2         _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+                0.00    0.00      12/24          _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00       4/139344      _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.00      12/124050      _M0FP37Hosi1215morph6fppoly8multiply [19]
+                0.00    0.00      28/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00      10/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00       6/183441      _M0FP37Hosi1215morph6fppoly3add [36]
+                0.00    0.00       6/9207        _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00       2/36          _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00      44/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00       2/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00       4/438952      _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE [41]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00      14/2128        _M0FP37Hosi1215morph11testsupport6binary [409]
+                0.00    0.00       6/862984      _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+                0.00    0.00       4/52          _M0FP37Hosi1215morph6binary4half [426]
+                0.00    0.00       4/9           _M0MPC16string6String17unsafe__substring [432]
+                0.00    0.00       4/4           _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE [435]
+                0.00    0.00       2/266         _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6binary6BinaryE [419]
+-----------------------------------------------
+                0.00    0.00   22672/22672       _M0FPB32string__trim__end__ascii__scalar [16]
+[65]     0.0    0.00    0.00   22672         _M0FP37Hosi1215morph6fppoly5scaleC8888l215 [65]
+                0.00    0.00   22672/19043173     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00   22672/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+-----------------------------------------------
+                                  72             _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00      12/24          _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+                0.00    0.00      12/24          _M0FP37Hosi1215morph6galois11test__field [64]
+[66]     0.0    0.00    0.00      24+72      _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00     120/139344      _M0FP37Hosi1215morph6fppoly6divide [9]
+                0.00    0.00      72/305049      _M0FP37Hosi1215morph6fppoly22multiply__coefficients [15]
+                0.00    0.00      72/1430535     _M0FP37Hosi1215morph6fppoly4trim [17]
+                0.00    0.00      24/9207        _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00      48/52          _M0FP37Hosi1215morph6binary4half [426]
+                                  72             _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+-----------------------------------------------
+                                 794             _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+[67]     0.0    0.00    0.00    1588+794     _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+                0.00    0.00     794/9971        _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437 [52]
+                0.00    0.00     794/15880       _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+                                 794             _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+-----------------------------------------------
+                                 270             _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[68]     0.0    0.00    0.00       2+270     _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00     270/183435      _M0FP37Hosi1215morph6galois3add [24]
+                0.00    0.00     270/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00     270/15937       _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+                                 270             _M0FP37Hosi1215morph8cyclicrs11differences [68]
+-----------------------------------------------
+                0.00    0.00     794/794         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[69]     0.0    0.00    0.00     794         _M0FP37Hosi1215morph8cyclicrs9bm__field [69]
+                0.00    0.00    1588/18879       _M0FP37Hosi1215morph6galois8constant [58]
+-----------------------------------------------
+                                  12             _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois11test__field [64]
+[70]     0.0    0.00    0.00       2+12      _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+                0.00    0.00      12/24          _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+                0.00    0.00      12/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                                  12             _M0FP37Hosi1215morph6fppoly16frobenius__chain [70]
+-----------------------------------------------
+                0.00    0.00       6/6           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[71]     0.0    0.00    0.00       6         _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE [71]
+                0.00    0.00    1088/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00    1088/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                0.00    0.00     544/328781      _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+-----------------------------------------------
+                                   6             _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois11test__field [64]
+[72]     0.0    0.00    0.00       2+6       _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+                0.00    0.00       6/3059        _M0FP37Hosi1215morph6fppoly13extended__gcd [29]
+                0.00    0.00       6/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00       6/9207        _M0FP37Hosi1215morph6fppoly3one [61]
+                0.00    0.00       6/332678      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE [35]
+                0.00    0.00       6/3061705     _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE [40]
+                                   6             _M0FP37Hosi1215morph6fppoly18coprime__witnesses [72]
+-----------------------------------------------
+                                   8             _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00       2/2           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[73]     0.0    0.00    0.00       2+8       _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+                0.00    0.00       8/8472        _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00       8/251974      _M0FP37Hosi1215morph6fppoly13indeterminate [25]
+                0.00    0.00      10/18879       _M0FP37Hosi1215morph6galois8constant [58]
+                                   8             _M0FP37Hosi1215morph8cyclicrs18generator__product [73]
+-----------------------------------------------
+                                   4             _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00       2/36          _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00      34/36          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[74]     0.0    0.00    0.00      36+4       _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00       4/1205        _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                0.00    0.00       4/51          _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       6/11188422     _M0FP37Hosi1215morph6binary13compare__bits [34]
+                0.00    0.00       2/10776224     _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00       2/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00       2/2128        _M0FP37Hosi1215morph11testsupport6binary [409]
+                                   4             _M0FP37Hosi1215morph6galois11test__prime [74]
+-----------------------------------------------
+                                  38             _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       3/51          moonbit_init [76]
+                0.00    0.00       4/51          _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00      44/51          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[75]     0.0    0.00    0.00      51+38      _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       2/1205        _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                                  38             _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[76]     0.0    0.00    0.00       1         moonbit_init [76]
+                0.00    0.00       3/51          _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [75]
+                0.00    0.00       2/3698        _M0FPB21capacity__for__length [406]
+                0.00    0.00       1/32          _M0IPC16string6StringPB4Hash4hash [428]
+-----------------------------------------------
+                0.00    0.00       4/4           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[77]     0.0    0.00    0.00       4         _M0FP37Hosi1215morph6galois11cardinality [77]
+                0.00    0.00       4/2626823     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+                0.00    0.00       4/4811016     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+-----------------------------------------------
+                0.00    0.00       1/4           _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       1/4           _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       2/4           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[78]     0.0    0.00    0.00       4         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00       4/10776224     _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00       4/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+-----------------------------------------------
+                0.00    0.00       1/19          _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00      18/19          _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+[79]     0.0    0.00    0.00      19         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       1/4           _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00       4/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00       2/3           _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+                0.00    0.00       2/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00       1/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[80]     0.0    0.00    0.00       1         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       1/4           _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00       3/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00       1/3           _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+                0.00    0.00       1/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00       1/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                                  22             _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00       1/539         main [2]
+                0.00    0.00       1/539         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.00       5/539         _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820 [83]
+                0.00    0.00     532/539         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[81]     0.0    0.00    0.00     539+22      _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00      18/19          _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                                  22             _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[82]     0.0    0.00    0.00       1         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00       1/19          _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       4/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00       3/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+                0.00    0.00       2/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+-----------------------------------------------
+                0.00    0.00       3/3           main [2]
+[83]     0.0    0.00    0.00       3         _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820 [83]
+                0.00    0.00       5/539         _M0FP37Hosi1215morph6galois16perf__polynomial [81]
+                0.00    0.00       5/9           _M0MPC16string6String17unsafe__substring [432]
+-----------------------------------------------
+                0.00    0.00       8/8           main [2]
+[84]     0.0    0.00    0.00       8         moonbit_decref_cycle_free_inlined [84]
+-----------------------------------------------
+                              560558             _M0FP37Hosi1215morph6binary9add__bits [390]
+                0.00    0.00  284806/7946091     _M0FP37Hosi1215morph7modular13extended__gcd [49]
+                0.00    0.00  635937/7946091     _M0FP37Hosi1215morph7modular8subtract [33]
+                0.00    0.00 2214587/7946091     _M0FP37Hosi1215morph6binary14multiply__bits [50]
+                0.00    0.00 4810761/7946091     _M0FP37Hosi1215morph6fppoly17add__coefficients [20]
+[390]    0.0    0.00    0.00 7946091+560558  _M0FP37Hosi1215morph6binary9add__bits [390]
+                0.00    0.00  560558/561352      _M0FP37Hosi1215morph6binary15increment__bits [395]
+                0.00    0.00  560558/3096759     _M0FP37Hosi1215morph6binary11full__adder [392]
+                              560558             _M0FP37Hosi1215morph6binary9add__bits [390]
+-----------------------------------------------
+                0.00    0.00 5673518/5673518     _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+[391]    0.0    0.00    0.00 5673518         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryEC8708l82 [391]
+-----------------------------------------------
+                0.00    0.00  560558/3096759     _M0FP37Hosi1215morph6binary9add__bits [390]
+                0.00    0.00 2536201/3096759     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+[392]    0.0    0.00    0.00 3096759         _M0FP37Hosi1215morph6binary11full__adder [392]
+-----------------------------------------------
+                             2537381             _M0FP37Hosi1215morph6binary4trim [393]
+                0.00    0.00    2128/1993004     _M0FP37Hosi1215morph11testsupport6binary [409]
+                0.00    0.00  703358/1993004     _M0FP37Hosi1215morph6binary12divide__bits [11]
+                0.00    0.00 1287518/1993004     _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [48]
+[393]    0.0    0.00    0.00 1993004+2537381 _M0FP37Hosi1215morph6binary4trim [393]
+                             2537381             _M0FP37Hosi1215morph6binary4trim [393]
+-----------------------------------------------
+                                   6             _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+                0.00    0.00       6/862984      _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00  862978/862984      _M0FP37Hosi1215morph6fppoly6divide [9]
+[394]    0.0    0.00    0.00  862984+6       _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+                0.00    0.00 5673518/5673518     _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryEC8708l82 [391]
+                                   6             _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [394]
+-----------------------------------------------
+                                 397             _M0FP37Hosi1215morph6binary15increment__bits [395]
+                0.00    0.00     794/561352      _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00  560558/561352      _M0FP37Hosi1215morph6binary9add__bits [390]
+[395]    0.0    0.00    0.00  561352+397     _M0FP37Hosi1215morph6binary15increment__bits [395]
+                                 397             _M0FP37Hosi1215morph6binary15increment__bits [395]
+-----------------------------------------------
+                0.00    0.00     276/328781      _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     544/328781      _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE [71]
+                0.00    0.00     794/328781      _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00   19694/328781      _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+                0.00    0.00  124038/328781      _M0FP37Hosi1215morph6galois8multiply [7]
+                0.00    0.00  183435/328781      _M0FP37Hosi1215morph6galois3add [24]
+[396]    0.0    0.00    0.00  328781         _M0IP37Hosi1215morph4core3NatPB2Eq5equal [396]
+-----------------------------------------------
+                0.00    0.00  284806/284806      _M0FP37Hosi1215morph7modular13extended__gcd [49]
+[397]    0.0    0.00    0.00  284806         _M0FP37Hosi1215morph5exact6negate [397]
+-----------------------------------------------
+                0.00    0.00  157269/157269      _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [407]
+[398]    0.0    0.00    0.00  157269         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementEC8704l82 [398]
+-----------------------------------------------
+                              192551             _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE [399]
+                0.00    0.00  157201/157201      _M0FP37Hosi1215morph6fppoly6divide [9]
+[399]    0.0    0.00    0.00  157201+192551  _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE [399]
+                              192551             _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE [399]
+-----------------------------------------------
+                              192551             _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE [400]
+                0.00    0.00  157201/157201      _M0FP37Hosi1215morph6fppoly6divide [9]
+[400]    0.0    0.00    0.00  157201+192551  _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE [400]
+                              192551             _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE [400]
+-----------------------------------------------
+                             5508212             _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                0.00    0.00       4/78195       _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     794/78195       _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00    9008/78195       _M0FP37Hosi1215morph6galois18multiply_2edyncall [31]
+                0.00    0.00   68389/78195       _M0FP37Hosi1215morph8cyclicrs15polynomial__add [38]
+[401]    0.0    0.00    0.00   78195+5508212 _M0FP37Hosi1215morph8cyclicrs4trim [401]
+                             5508212             _M0FP37Hosi1215morph8cyclicrs4trim [401]
+-----------------------------------------------
+                0.00    0.00     270/15937       _M0FP37Hosi1215morph8cyclicrs11differences [68]
+                0.00    0.00     794/15937       _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [53]
+                0.00    0.00     794/15937       _M0FP37Hosi1215morph8cyclicrs17apply__correction [60]
+                0.00    0.00    1588/15937       _M0FP37Hosi1215morph8cyclicrs6forney [27]
+                0.00    0.00    3176/15937       _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411 [22]
+                0.00    0.00    9315/15937       _M0FP37Hosi1215morph8cyclicrs5chien [13]
+[402]    0.0    0.00    0.00   15937         _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [402]
+-----------------------------------------------
+                0.00    0.00     794/15880       _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [67]
+                0.00    0.00    1985/15880       _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [44]
+                0.00    0.00    3176/15880       _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [55]
+                0.00    0.00    4764/15880       _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.00    5161/15880       _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[403]    0.0    0.00    0.00   15880         _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [403]
+-----------------------------------------------
+                0.00    0.00    1588/3970        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+                0.00    0.00    2382/3970        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[404]    0.0    0.00    0.00    3970         _M0FP37Hosi1215morph6galois13add_2edyncall [404]
+-----------------------------------------------
+                               68691             _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [405]
+                0.00    0.00     528/3704        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00    3176/3704        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[405]    0.0    0.00    0.00    3704+68691   _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [405]
+                               68691             _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [405]
+-----------------------------------------------
+                               64479             _M0FPB21capacity__for__length [406]
+                0.00    0.00       2/3698        moonbit_init [76]
+                0.00    0.00     520/3698        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00    3176/3698        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[406]    0.0    0.00    0.00    3698+64479   _M0FPB21capacity__for__length [406]
+                               64479             _M0FPB21capacity__for__length [406]
+-----------------------------------------------
+                0.00    0.00     794/3684        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00     802/3684        _M0FP37Hosi1215morph8cyclicrs11check__word [59]
+                0.00    0.00    2088/3684        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+[407]    0.0    0.00    0.00    3684         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [407]
+                0.00    0.00  157269/157269      _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementEC8704l82 [398]
+-----------------------------------------------
+                0.00    0.00    1191/3176        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00    1985/3176        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[408]    0.0    0.00    0.00    3176         _M0FP37Hosi1215morph10recurrence4liftGORP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [408]
+-----------------------------------------------
+                0.00    0.00       2/2128        _M0FP37Hosi1215morph6galois11test__prime [74]
+                0.00    0.00      14/2128        _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00    2112/2128        _M0FP37Hosi1215morph6galois13test__element [63]
+[409]    0.0    0.00    0.00    2128         _M0FP37Hosi1215morph11testsupport6binary [409]
+                0.00    0.00    2128/1993004     _M0FP37Hosi1215morph6binary4trim [393]
+-----------------------------------------------
+                                6098             _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+                0.00    0.00       4/1989        _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00     397/1989        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00    1588/1989        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[410]    0.0    0.00    0.00    1989+6098    _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+                                6098             _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [410]
+-----------------------------------------------
+                0.00    0.00       2/1600        _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00      10/1600        _M0MPC16string6String17unsafe__substring [432]
+                0.00    0.00    1588/1600        _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [23]
+[411]    0.0    0.00    0.00    1600         _M0FP37Hosi1215morph4core3add [411]
+-----------------------------------------------
+                0.00    0.00    1588/1588        _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [57]
+[412]    0.0    0.00    0.00    1588         _M0FP37Hosi1215morph6galois18is__zero_2edyncall [412]
+-----------------------------------------------
+                                3176             _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE [413]
+                0.00    0.00    1191/1191        _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[413]    0.0    0.00    0.00    1191+3176    _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE [413]
+                                3176             _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE [413]
+-----------------------------------------------
+                0.00    0.00     397/925         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+                0.00    0.00     528/925         _M0FP37Hosi1215morph8cyclicrs6encode [37]
+[414]    0.0    0.00    0.00     925         _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6galois7ElementE [414]
+-----------------------------------------------
+                0.00    0.00     794/794         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[415]    0.0    0.00    0.00     794         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph8cyclicrs8LocationEC8712l82 [415]
+-----------------------------------------------
+                0.00    0.00     794/794         _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+[416]    0.0    0.00    0.00     794         _M0FP37Hosi1215morph8cyclicrs6decodeC9594l713 [416]
+-----------------------------------------------
+                                 794             _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+                0.00    0.00       8/461         _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+                0.00    0.00      28/461         _M0FPB15ryu__to__string [427]
+                0.00    0.00      28/461         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.00     397/461         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[417]    0.0    0.00    0.00     461+794     _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+                0.00    0.00     794/794         _M0FP37Hosi1215morph8cyclicrs6decodeC9594l713 [416]
+                                 794             _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+-----------------------------------------------
+                0.00    0.00       8/413         _M0FP37Hosi1215morph8cyclicrs6encode [37]
+                0.00    0.00       8/413         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00     397/413         _M0FP37Hosi1215morph8cyclicrs6decode [4]
+[418]    0.0    0.00    0.00     413         _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE [418]
+-----------------------------------------------
+                0.00    0.00       2/266         _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00     264/266         _M0FP37Hosi1215morph6galois13test__element [63]
+[419]    0.0    0.00    0.00     266         _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6binary6BinaryE [419]
+-----------------------------------------------
+                0.00    0.00     264/264         _M0FP37Hosi1215morph6galois12perf__symbol [62]
+[420]    0.0    0.00    0.00     264         _M0FPC15debug13render__delta.constprop.0 [420]
+-----------------------------------------------
+                0.00    0.00       3/186         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       4/186         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00       4/186         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       4/186         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00      41/186         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00      64/186         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.00      66/186         _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+[421]    0.0    0.00    0.00     186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00      19/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                                  39             _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+                0.00    0.00       1/133         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       1/133         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       2/133         _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+                0.00    0.00       3/133         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00       9/133         _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+                0.00    0.00      19/133         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00      21/133         main [2]
+                0.00    0.00      77/133         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[422]    0.0    0.00    0.00     133+39      _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+                                  39             _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                0.00    0.00      56/112         _M0FPB13mulShiftAll64 [431]
+                0.00    0.00      56/112         _M0FPB15ryu__to__string [427]
+[423]    0.0    0.00    0.00     112         _M0FPB7umul128 [423]
+-----------------------------------------------
+                0.00    0.00       1/110         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       2/110         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517 [82]
+                0.00    0.00       2/110         _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+                0.00    0.00       4/110         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521 [78]
+                0.00    0.00      32/110         _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+                0.00    0.00      69/110         _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+[424]    0.0    0.00    0.00     110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00      41/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+-----------------------------------------------
+                0.00    0.00      69/69          _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+[425]    0.0    0.00    0.00      69         _M0MPC16string6String21clamped__view_2einner [425]
+-----------------------------------------------
+                0.00    0.00       4/52          _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00      48/52          _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [66]
+[426]    0.0    0.00    0.00      52         _M0FP37Hosi1215morph6binary4half [426]
+-----------------------------------------------
+                0.00    0.00      32/32          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[427]    0.0    0.00    0.00      32         _M0FPB15ryu__to__string [427]
+                0.00    0.00      56/112         _M0FPB7umul128 [423]
+                0.00    0.00      28/461         _M0IPC16double6DoublePC14json6ToJson8to__json [417]
+                0.00    0.00      28/28          _M0FPB13mulShiftAll64 [431]
+-----------------------------------------------
+                0.00    0.00       1/32          main [2]
+                0.00    0.00       1/32          moonbit_init [76]
+                0.00    0.00      30/32          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[428]    0.0    0.00    0.00      32         _M0IPC16string6StringPB4Hash4hash [428]
+-----------------------------------------------
+                0.00    0.00      32/32          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[429]    0.0    0.00    0.00      32         _M0MPB3Map4iterGsRPC14json4JsonEC7240l818 [429]
+-----------------------------------------------
+                0.00    0.00      32/32          _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[430]    0.0    0.00    0.00      32         _M0MPC14byte4Byte7to__hex [430]
+-----------------------------------------------
+                0.00    0.00      28/28          _M0FPB15ryu__to__string [427]
+[431]    0.0    0.00    0.00      28         _M0FPB13mulShiftAll64 [431]
+                0.00    0.00      56/112         _M0FPB7umul128 [423]
+-----------------------------------------------
+                                  10             _M0MPC16string6String17unsafe__substring [432]
+                0.00    0.00       4/9           _M0FP37Hosi1215morph6galois11test__field [64]
+                0.00    0.00       5/9           _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820 [83]
+[432]    0.0    0.00    0.00       9+10      _M0MPC16string6String17unsafe__substring [432]
+                0.00    0.00      10/1600        _M0FP37Hosi1215morph4core3add [411]
+                                  10             _M0MPC16string6String17unsafe__substring [432]
+-----------------------------------------------
+                0.00    0.00       8/8           _M0MPC13int3Int18to__string_2einner.constprop.0 [39]
+[433]    0.0    0.00    0.00       8         _M0FPB12dec__count32 [433]
+-----------------------------------------------
+                0.00    0.00       4/4           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[434]    0.0    0.00    0.00       4         _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6galois7ElementE [434]
+-----------------------------------------------
+                                  12             _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE [435]
+                0.00    0.00       4/4           _M0FP37Hosi1215morph6galois11test__field [64]
+[435]    0.0    0.00    0.00       4+12      _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE [435]
+                                  12             _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE [435]
+-----------------------------------------------
+                0.00    0.00       4/4           _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [3]
+[436]    0.0    0.00    0.00       4         _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph4core3NatEC8700l82 [436]
+-----------------------------------------------
+                0.00    0.00       1/3           _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [80]
+                0.00    0.00       2/3           _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [79]
+[437]    0.0    0.00    0.00       3         _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [437]
+                0.00    0.00      69/69          _M0MPC16string6String21clamped__view_2einner [425]
+                0.00    0.00      69/110         _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [424]
+                0.00    0.00      66/186         _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger [421]
+                0.00    0.00       9/133         _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0 [422]
+-----------------------------------------------
+                0.00    0.00       2/2           _M0MPC15bench5Bench13bench_2einner.constprop.0 [5]
+[438]    0.0    0.00    0.00       2         _M0FPC15debug24compact__lines_2edyncall [438]
+-----------------------------------------------
+                0.00    0.00       2/2           main [2]
+[439]    0.0    0.00    0.00       2         _M0MPC15array9ArrayView4iterGsEC6870l959 [439]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[440]    0.0    0.00    0.00       1         _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9359l516 [440]
+-----------------------------------------------
+                0.00    0.00       1/1           main [2]
+[441]    0.0    0.00    0.00       1         _M0MPC15array9ArrayView4iterGsE [441]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [44] _M0FP37Hosi1215morph10recurrence14checked__scaleGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [36] _M0FP37Hosi1215morph6fppoly3add [401] _M0FP37Hosi1215morph8cyclicrs4trim
+  [67] _M0FP37Hosi1215morph10recurrence15checked__negateGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [61] _M0FP37Hosi1215morph6fppoly3one [13] _M0FP37Hosi1215morph8cyclicrs5chien
+  [23] _M0FP37Hosi1215morph10recurrence26checked__berlekamp__masseyGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [17] _M0FP37Hosi1215morph6fppoly4trim [4] _M0FP37Hosi1215morph8cyclicrs6decode
+  [55] _M0FP37Hosi1215morph10recurrence29checked__polynomial__subtractGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [65] _M0FP37Hosi1215morph6fppoly5scaleC8888l215 [416] _M0FP37Hosi1215morph8cyclicrs6decodeC9594l713
+ [408] _M0FP37Hosi1215morph10recurrence4liftGORP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [9] _M0FP37Hosi1215morph6fppoly6divide [37] _M0FP37Hosi1215morph8cyclicrs6encode
+ [403] _M0FP37Hosi1215morph10recurrence4liftGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois10FieldErrorE [32] _M0FP37Hosi1215morph6fppoly6negateC8879l188 [27] _M0FP37Hosi1215morph8cyclicrs6forney
+ [419] _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6binary6BinaryE [19] _M0FP37Hosi1215morph6fppoly8multiply [21] _M0FP37Hosi1215morph8cyclicrs8syndrome
+ [434] _M0FP37Hosi1215morph11testsupport5chainGRP37Hosi1215morph6galois7ElementE [77] _M0FP37Hosi1215morph6galois11cardinality [22] _M0FP37Hosi1215morph8cyclicrs8syndromeN4binsS4411
+ [409] _M0FP37Hosi1215morph11testsupport6binary [64] _M0FP37Hosi1215morph6galois11test__field [69] _M0FP37Hosi1215morph8cyclicrs9bm__field
+ [413] _M0FP37Hosi1215morph4core12split__exactGRP37Hosi1215morph6galois7ElementE [74] _M0FP37Hosi1215morph6galois11test__prime [52] _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4437
+ [411] _M0FP37Hosi1215morph4core3add [62] _M0FP37Hosi1215morph6galois12perf__symbol [30] _M0FP37Hosi1215morph8cyclicrs9bm__fieldN17_2abind_2edyncallS4438
+  [57] _M0FP37Hosi1215morph4core3allGRP37Hosi1215morph6galois7ElementE [404] _M0FP37Hosi1215morph6galois13add_2edyncall [433] _M0FPB12dec__count32
+  [46] _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph6galois7ElementRP37Hosi1215morph6galois7ElementE [63] _M0FP37Hosi1215morph6galois13test__element [431] _M0FPB13mulShiftAll64
+  [41] _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6binary6BinaryE [45] _M0FP37Hosi1215morph6galois16negate_2edyncall [427] _M0FPB15ryu__to__string
+ [414] _M0FP37Hosi1215morph4core4lastGRP37Hosi1215morph6galois7ElementE [81] _M0FP37Hosi1215morph6galois16perf__polynomial [406] _M0FPB21capacity__for__length
+ [435] _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6fppoly10PolynomialE [412] _M0FP37Hosi1215morph6galois18is__zero_2edyncall [16] _M0FPB32string__trim__end__ascii__scalar
+ [410] _M0FP37Hosi1215morph4core4takeGRP37Hosi1215morph6galois7ElementE [31] _M0FP37Hosi1215morph6galois18multiply_2edyncall [423] _M0FPB7umul128
+ [399] _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6binary6BinaryE [54] _M0FP37Hosi1215morph6galois18subtract_2edyncall [420] _M0FPC15debug13render__delta.constprop.0
+ [405] _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph6galois7ElementE [24] _M0FP37Hosi1215morph6galois3add [438] _M0FPC15debug24compact__lines_2edyncall
+ [436] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph4core3NatEC8700l82 [66] _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__0C9094l59 [396] _M0IP37Hosi1215morph4core3NatPB2Eq5equal
+ [394] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryE [6] _M0FP37Hosi1215morph6galois43____test__706572665f7762746573742e6d6274__1C9175l104 [35] _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6binary6BinaryE
+ [391] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6binary6BinaryEC8708l82 [80] _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN13handle__startS3894 [71] _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph6galois7ElementE
+ [407] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementE [79] _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN14handle__resultS3899 [40] _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE
+ [398] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph6galois7ElementEC8704l82 [75] _M0FP37Hosi1215morph6galois44moonbit__test__driver__internal__do__executeN27error__to__string_2edyncallS3882 [78] _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9351l521
+ [415] _M0FP37Hosi1215morph4core6lengthGRP37Hosi1215morph8cyclicrs8LocationEC8712l82 [437] _M0FP37Hosi1215morph6galois45moonbit__test__driver__internal__escape__json [82] _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9355l517
+  [42] _M0FP37Hosi1215morph4core7compare [83] _M0FP37Hosi1215morph6galois52moonbit__test__driver__internal__native__parse__argsN51moonbit__test__driver__internal__split__mbt__stringS3820 [440] _M0IP37Hosi1215morph6galois50MoonBit__Test__Driver__Internal__With__Bench__ArgsP37Hosi1215morph6galois21MoonBit__Test__Driver9run__testC9359l516
+  [43] _M0FP37Hosi1215morph4core8subtract [3] _M0FP37Hosi1215morph6galois53____test__706572665f7762746573742e6d6274__1_2edyncall [421] _M0IPB13StringBuilderPB6Logger67write__char_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger
+ [400] _M0FP37Hosi1215morph4core9replicateGRP37Hosi1215morph6binary6BinaryE [10] _M0FP37Hosi1215morph6galois7element [424] _M0IPB13StringBuilderPB6Logger69write__string_2edyncall__as___40moonbitlang_2fcore_2fbuiltin_2eLogger
+ [397] _M0FP37Hosi1215morph5exact6negate [26] _M0FP37Hosi1215morph6galois7inverse [417] _M0IPC16double6DoublePC14json6ToJson8to__json
+ [392] _M0FP37Hosi1215morph6binary11full__adder [58] _M0FP37Hosi1215morph6galois8constant [428] _M0IPC16string6StringPB4Hash4hash
+  [11] _M0FP37Hosi1215morph6binary12divide__bits [7] _M0FP37Hosi1215morph6galois8multiply [422] _M0MPB18UninitializedArray23make__and__blit_2einnerGkE.constprop.0
+  [34] _M0FP37Hosi1215morph6binary13compare__bits [49] _M0FP37Hosi1215morph7modular13extended__gcd [429] _M0MPB3Map4iterGsRPC14json4JsonEC7240l818
+  [50] _M0FP37Hosi1215morph6binary14multiply__bits [47] _M0FP37Hosi1215morph7modular7inverse [39] _M0MPC13int3Int18to__string_2einner.constprop.0
+ [395] _M0FP37Hosi1215morph6binary15increment__bits [33] _M0FP37Hosi1215morph7modular8subtract [430] _M0MPC14byte4Byte7to__hex
+ [426] _M0FP37Hosi1215morph6binary4half [418] _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph6galois7ElementEE [441] _M0MPC15array9ArrayView4iterGsE
+ [393] _M0FP37Hosi1215morph6binary4trim [402] _M0FP37Hosi1215morph8cyclicrs10arithmeticGRP37Hosi1215morph6galois7ElementE [439] _M0MPC15array9ArrayView4iterGsEC6870l959
+ [390] _M0FP37Hosi1215morph6binary9add__bits [53] _M0FP37Hosi1215morph8cyclicrs10derivativeN5visitS4469 [5] _M0MPC15bench5Bench13bench_2einner.constprop.0
+  [48] _M0FP37Hosi1215morph6binary9from__natN7convertS3195 [59] _M0FP37Hosi1215morph8cyclicrs11check__word [432] _M0MPC16string6String17unsafe__substring
+  [29] _M0FP37Hosi1215morph6fppoly13extended__gcd [56] _M0FP37Hosi1215morph8cyclicrs11check__wordC9515l392 [425] _M0MPC16string6String21clamped__view_2einner
+  [25] _M0FP37Hosi1215morph6fppoly13indeterminate [68] _M0FP37Hosi1215morph8cyclicrs11differences [14] _mi_page_malloc_zero
+  [70] _M0FP37Hosi1215morph6fppoly16frobenius__chain [51] _M0FP37Hosi1215morph8cyclicrs11invert__all [12] mi_free
+  [20] _M0FP37Hosi1215morph6fppoly17add__coefficients [38] _M0FP37Hosi1215morph8cyclicrs15polynomial__add [28] mi_malloc
+  [72] _M0FP37Hosi1215morph6fppoly18coprime__witnesses [60] _M0FP37Hosi1215morph8cyclicrs17apply__correction [84] moonbit_decref_cycle_free_inlined
+  [15] _M0FP37Hosi1215morph6fppoly22multiply__coefficients [73] _M0FP37Hosi1215morph8cyclicrs18generator__product [1] moonbit_drop_object
+  [18] _M0FP37Hosi1215morph6fppoly22multiply__coefficientsC8896l232 [8] _M0FP37Hosi1215morph8cyclicrs20polynomial__evaluate [76] moonbit_init
