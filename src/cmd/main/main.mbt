@@ -113,4 +113,6 @@ fn main {
   println(
     "Huffman: \{@oracle.int_of_nat(@core.length(word))} symbols -> \{@oracle.int_of_nat(@core.length(encoded))} bits; 復号一致 = \{required(@huffman.decode(code,encoded)) == word}",
   )
+  arithmetic_and_algebra()
+  search_and_geometry()
 }

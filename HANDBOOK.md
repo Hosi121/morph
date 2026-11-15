@@ -1,5 +1,35 @@
 # 純記号アルゴリズム・ハンドブック
 
+## 読み始める順序
+
+まず `tools/moon run src/cmd/main` を実行すると、後述のアルゴリズムの結果をまとめて見られる。
+[保存した出力](docs/TOUR.txt)もある。核のソースだけを読む場合は次の経路が分かりやすい。
+
+1. **画像との対応**：coreのChainを読み、fftへ進む。FFTはBinaryもRationalも必要としない。
+2. **連結から数へ**：binaryのfull_adderとpair、bitcodecのgamma、modular、NTT、SHA-256へ進む。
+3. **木の意味を変える**：unifyの置換とoccurs check、inferのlet多相、cekの評価状態を読む。
+4. **厳密計算を積む**：exactからpolynomial、Gröbner/Sturm、またはmatrix/linear/simplexへ進む。
+
+```mermaid
+flowchart LR
+  C[Chain・Nat] --> F[矢印FFT]
+  C --> B[Bool二進数]
+  B --> R[整数・有理数]
+  B --> M[剰余算術・NTT]
+  R --> P[疎多項式]
+  P --> G[Gröbner基底・Sturm]
+  R --> L[行列・線形代数・単体法]
+  C --> U[単一化]
+  U --> I[HM型推論]
+  I --> E[CEK評価機械]
+  C --> X[exact cover]
+  X --> Q[クイーン・数独]
+```
+
+矢印は考え方の依存を示す。正確なimportと公開APIは各moon.pkgとpkg.generated.mbtiが正本。
+各話題の検証は同じディレクトリのwbtest.mbtに置く。
+性能上の比較は[計測記録](docs/MEASUREMENTS.md)、具体的な検証範囲と限界は以下の各節を参照する。
+
 ## 目的と実験の境界
 
 2026-11-15、画像に示された12本の等式による FFT を出発点に、MoonBit の
