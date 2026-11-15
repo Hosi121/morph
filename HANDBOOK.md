@@ -403,3 +403,25 @@ tree を送らず bits だけ保存するファイル形式や、canonical Huffm
 これは値域参照だけの microbenchmark で、置換構築や型推論全体の速度比ではない。
 型推論・CEKとの組合せを含む45テストを両backendで再検証した。
 条件と生ログは [計測記録](docs/MEASUREMENTS.md) に残す。
+
+## Bool リストだけで SHA-256
+
+固定長32ビットの Word を不変 Bool リストで表し、回転はリストの分割・連結、
+シフトは false の補充、XOR/Ch/Maj は真理値表、加算は全加算器の再帰で行う。
+最後の桁上がりを捨てることで法2^32を実現する。64 round の schedule もリストで保持する。
+メッセージは big endian のビット列で受け取り、ビット単位の長さを64ビットで符号化して pad する。
+2^64ビット以上の入力は仕様の範囲外として None。実用的な最大長まで処理した試験ではない。
+
+定数は [NIST FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf)
+§4.2.2 と §5.3.3 の値を Bool のデータとして持つ。
+`tools/generate_sha256.py` がそのデータと独立した hashlib fixture を作るが、
+アルゴリズム実行時に Python、数値リテラル、平方根・立方根の演算は必要ない。
+初期値の第五・第六語の転記順を一度間違え、hashlib が最初の空メッセージで検出した。
+仕様の原表で順序を直し、他実装のコメントだけを定数表の正本にしないことを確認した。
+
+検証は標準例3件、hashlib による137系列、
+[NIST CAVP のビット単位テスト](https://csrc.nist.gov/Projects/cryptographic-algorithm-validation-program/Secure-Hashing)
+の ShortMsg 全513件（長さ0..512ビット）の計653照合。
+byte 境界に合わないメッセージ、447/448/449ビット、ブロック末尾、複数ブロックも含む。
+fixture の生成器には出典と元データのハッシュを残した。
+これは検証用の実装であり、CAVP認証・定時間性・実用品の性能を得たという主張ではない。

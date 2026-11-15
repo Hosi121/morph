@@ -40,6 +40,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 評価機械 | [燃料付き・再開可能なCEK](src/cek/cek.mbt) |
 | 正規表現 | [Brzozowski微分](src/regex/derivative.mbt)・[Thompson NFA](src/regex/thompson.mbt) |
 | 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt) |
+| ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
 
 設計、検証範囲、表現コスト、採用理由、限界は [ハンドブック](HANDBOOK.md) に記録する。
 性能比較の条件と生ログは [計測記録](docs/MEASUREMENTS.md) にある。
