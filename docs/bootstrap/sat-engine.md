@@ -242,3 +242,19 @@ Separate **width-sixteen** stage benchmarks:
 The single-transition watch-invariant tests now also check each newly learned
 clause immediately with both RUP evaluators, including learned clauses from
 eventually satisfiable runs.
+
+## Clause-count stack regression
+
+A separate JavaScript failure was reproduced without large variable IDs:
+20,000 identical positive unit clauses overflowed the call stack in recursive
+database construction. After that construction was repaired, 20,000 identical
+binary clauses overflowed the decision scan while all clauses were open.
+
+Database construction now folds into a reversed accumulator and restores input
+order once. Both engine decision scans carry the first candidate through a tail
+recursive traversal, preserving the previous unit/conflict priority and branch
+order. The regression covers satisfiable repeated units, opposite units with a
+checked RUP refutation, and repeated binary clauses for both scan and watched
+engines. It passes native, JS, and Wasm GC. Existing miter and search-statistics
+snapshots remain unchanged. This addresses stack growth with CNF clause count;
+it does not establish a resource bound for every nested input representation.

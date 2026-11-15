@@ -180,14 +180,14 @@ fn normalize(clause : @sat.Clause) -> Lits? {
 
 ///|
 fn database(cnf : @sat.Cnf) -> Database {
-  match cnf {
-    Nil => Nil
-    Cons(clause, rest) =>
+  @core.reverse(
+    @core.fold_left(cnf, Nil, fn(result, clause) {
       match normalize(clause) {
-        None => database(rest)
-        Some(clause) => Cons(clause, database(rest))
+        None => result
+        Some(clause) => Cons(clause, result)
       }
-  }
+    }),
+  )
 }
 
 ///|
@@ -296,20 +296,27 @@ priv enum Inspection {
 
 ///|
 fn inspect_database(db : Database, trail : Trail) -> Inspection {
-  match db {
-    Nil => Complete
-    Cons(clause, rest) =>
-      match inspect_clause(clause, trail) {
-        Conflict => Contradiction(clause)
-        Unit(literal) => Propagate(literal, clause)
-        Satisfied => inspect_database(rest, trail)
-        Open(candidate) =>
-          match inspect_database(rest, trail) {
-            Complete | Decide(_) => Decide(candidate)
-            other => other
-          }
-      }
+  fn visit(db : Database, candidate : Atom?) -> Inspection {
+    match db {
+      Nil =>
+        match candidate {
+          None => Complete
+          Some(literal) => Decide(literal)
+        }
+      Cons(clause, rest) =>
+        match inspect_clause(clause, trail) {
+          Conflict => Contradiction(clause)
+          Unit(literal) => Propagate(literal, clause)
+          Satisfied => visit(rest, candidate)
+          Open(literal) =>
+            match candidate {
+              None => visit(rest, Some(literal))
+              Some(_) => visit(rest, candidate)
+            }
+        }
+    }
   }
+  visit(db, None)
 }
 
 ///|

@@ -204,19 +204,26 @@ fn indexed_clause(clause : Lits, values : Index[Assignment]) -> ClauseState {
 
 ///|
 fn watch_decision(db : Database, values : Index[Assignment]) -> Inspection {
-  match db {
-    Nil => Complete
-    Cons(clause, rest) =>
-      match indexed_clause(clause, values) {
-        Satisfied => watch_decision(rest, values)
-        Open(literal) =>
-          match watch_decision(rest, values) {
-            Complete | Decide(_) => Decide(literal)
-            _ => Broken
-          }
-        Unit(_) | Conflict => Broken
-      }
+  fn visit(db : Database, candidate : Atom?) -> Inspection {
+    match db {
+      Nil =>
+        match candidate {
+          None => Complete
+          Some(literal) => Decide(literal)
+        }
+      Cons(clause, rest) =>
+        match indexed_clause(clause, values) {
+          Satisfied => visit(rest, candidate)
+          Open(literal) =>
+            match candidate {
+              None => visit(rest, Some(literal))
+              Some(_) => visit(rest, candidate)
+            }
+          Unit(_) | Conflict => Broken
+        }
+    }
   }
+  visit(db, None)
 }
 
 ///|
