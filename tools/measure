@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ ${1-} != --cpu || $# -lt 3 ]]; then
+  echo 'Usage: tools/measure --cpu CPU command [arguments...]' >&2
+  exit 2
+fi
+measurement_cpu=$2
+shift 2
+if [[ ! "$measurement_cpu" =~ ^[0-9]+$ || $# -eq 0 ]]; then
+  echo 'Choose one numeric CPU and a command to measure.' >&2
+  exit 2
+fi
+workspace=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+shared_git=$(git -C "$workspace" rev-parse --path-format=absolute --git-common-dir)
+# A common Git directory gives every linked worktree the same lock. Keep cwd,
+# so the measured command uses its own worktree and frozen executables.
+exec flock -x "$shared_git/morph-performance.lock" taskset -c "$measurement_cpu" "$@"
