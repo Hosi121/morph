@@ -12,6 +12,14 @@ pub fn candidate(Certificate) -> @binary.Binary
 
 pub fn check(Certificate) -> Prime?
 
+pub fn check_composite(@binary.Binary, CompositeWitness) -> CompositeProof?
+
+pub fn composite_value(CompositeProof) -> @binary.Binary
+
+pub fn composite_witness(CompositeProof) -> CompositeWitness
+
+pub fn screen(@binary.Binary, @core.Chain[@binary.Binary]) -> Screening
+
 pub fn value(Prime) -> @binary.Binary
 
 // Errors
@@ -27,12 +35,39 @@ pub fn Certificate::not_equal(Self, Self) -> Bool
 pub fn Certificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+pub struct CompositeProof {
+  number : @binary.Binary
+  witness : CompositeWitness
+}
+pub fn CompositeProof::equal(Self, Self) -> Bool
+pub fn CompositeProof::not_equal(Self, Self) -> Bool
+pub fn CompositeProof::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CompositeWitness {
+  Divisor(@binary.Binary)
+  Strong(@binary.Binary)
+}
+pub fn CompositeWitness::equal(Self, Self) -> Bool
+pub fn CompositeWitness::not_equal(Self, Self) -> Bool
+pub fn CompositeWitness::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub struct Prime {
   value : @binary.Binary
 }
 pub fn Prime::equal(Self, Self) -> Bool
 pub fn Prime::not_equal(Self, Self) -> Bool
 pub fn Prime::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Screening {
+  Composite(CompositeProof)
+  Inconclusive
+}
+pub fn Screening::equal(Self, Self) -> Bool
+pub fn Screening::not_equal(Self, Self) -> Bool
+pub fn Screening::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

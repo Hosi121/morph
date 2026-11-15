@@ -143,3 +143,34 @@ trial 1022117: 4.67 ms ± 264.61 µs; 4.30 ms … 5.16 ms; 10 × 24 runs
 rho 100160063: 4.15 ms ± 209.46 µs; 3.92 ms … 4.50 ms; 10 × 28 runs
 trial 100160063: 68.93 ms ± 6.45 ms; 62.30 ms … 78.59 ms; 10 × 2 runs
 ```
+
+## 合成数witnessとしてのMiller–Rabin
+
+`@primality.check_composite(n,witness)` は、非自明因子 `Divisor(d)` または
+強いMiller–Rabinの失敗を示す `Strong(base)` を受け取る。
+受理した `CompositeProof` の値と証拠は `composite_value`、`composite_witness` で取り出す。
+`Strong` は奇数 `n>2` と `1<=base<n` に限る。範囲外のbaseは受理しない。
+
+```moonbit
+pub(all) enum CompositeWitness { Divisor(@binary.Binary); Strong(@binary.Binary) }
+pub fn check_composite(@binary.Binary, CompositeWitness) -> CompositeProof?
+pub(all) enum Screening { Composite(CompositeProof); Inconclusive }
+pub fn screen(@binary.Binary, @core.Chain[@binary.Binary]) -> Screening
+```
+
+`n−1=2^s*d`（dは奇数）とし、`base^d` が1でもなく、
+`base^(2^j*d)` が `0<=j<s` のどこでも−1にならないことを検査する。
+奇素数ではこの失敗は起きないので、受理は合成数の証拠になる。
+根拠は [HAC Fact 4.20、Definition 4.21、Algorithm 4.24](https://cacr.uwaterloo.ca/hac/about/chap4.pdf)。
+この実装は固定baseで確率や誤判定率を主張せず、失敗の片方向だけを使う。
+
+`screen` はまず偶数の非自明因子2を調べ、次に指定baseを順に検査する。
+すべて通過、空のbase列、0や1、素数候補は `Inconclusive` を返す。
+`Inconclusive` は素数の確定ではなく、`Prime` を構築できない。
+例えば2047はbase2、1373653はbase2と3を通過するが、
+それぞれbase3、base5を加えると合成数witnessが得られる。
+
+0〜127とbase 0〜`n+1` の全組合せを、独立した整数の直接累乗で照合する。
+受理されたものはすべて整数試し割りで合成数となる。
+真の素数、範囲外base、空base、Carmichael数561、上記の強い擬素数も検査する。
+素数の確定に使う入口は引き続きLucas/Prattの完全なcertificate検査だけである。
