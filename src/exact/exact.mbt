@@ -189,13 +189,19 @@ pub fn denominator(r : Rational) -> @binary.Binary {
 }
 
 ///|
+let canonical_rational_zero : Rational = whole(positive(@binary.zero()))
+
+///|
+let canonical_rational_one : Rational = whole(positive(@binary.one()))
+
+///|
 pub fn rational_zero() -> Rational {
-  whole(positive(@binary.zero()))
+  canonical_rational_zero
 }
 
 ///|
 pub fn rational_one() -> Rational {
-  whole(positive(@binary.one()))
+  canonical_rational_one
 }
 
 ///|

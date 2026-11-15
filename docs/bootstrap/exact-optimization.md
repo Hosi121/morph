@@ -267,3 +267,38 @@ before 155.87/137.41 ns、after 26.63/26.88 nsだった。
 [batch統計とELF SHA256](../measurements/exact-zero-product.json)を残す。
 これは零の2演算だけの費用であり、任意のRational積や上位算法の倍率とは呼ばない。
 既存の独立Rational積oracleとtiny候補検査を含むexact 11 testsがnative/js/wasm-gcで通過した。
+
+## Rational零・一定数の共有
+
+Core `17c206d`、Binary `b21222b`、tiny表 `b7f48d3` を固定基準とし、
+この比較には後発のNat末尾共有 `ce5f494` を混ぜない。
+Rational零/一factoryの生成CはBinary→positive→wholeの呼出しを残し、
+closed Bool tupleのようには自動hoistされていなかった。
+そこで既存と同じ式をprivateな不変globalへ一度だけ評価し、factoryはその値を返す。
+公開APIとcanonical形は変わらず、可変cacheやmachine数値は導入しない。
+
+旧式と同じfactoryをWB対照として残し、同一ELFで新旧を順/逆/順に測った。
+零/一の2呼出しをまとめた平均は、新21.01/23.83/21.49 nsに対し、
+旧120.05/149.29/137.07 ns。Cの旧対照にも実際の再構築呼出しが残ることを確認した。
+新globalの一度限りの初期化はこの値に含めない。factoryを使わない場合にも
+2定数を初期化する費用があるため、import/startup全体の高速化とは呼ばない。
+
+保存したbefore/after ELFをCPU8+共通mutexでABBA順に測ると：
+
+| 固定fixture（各欄2実行、平均µs） | before | after |
+| --- | --- | --- |
+| LLL 3x3 | 322.59 / 304.36 | 295.12 / 323.41 |
+| LLL checker | 23.04 / 22.81 | 21.13 / 22.04 |
+| LLL 3x4 | 345.76 / 348.66 | 331.64 / 333.95 |
+| Smith+LLL依存3x4 | 351.79 / 363.58 | 337.67 / 339.36 |
+| Smith 3x3 | 53.67 / 50.92 | 51.70 / 50.01 |
+| Smith checker | 20.33 / 21.01 | 19.14 / 19.04 |
+| simplex | 34.58 / 32.41 | 28.38 / 28.53 |
+
+simplexで短縮を観測し、他は小さな差または範囲の重なりがあるため大きな改善を主張しない。
+同一afterのLLL 3x3にも295→323 µsの変動があり、精密な全体倍率へ使わない。
+[batch統計、ELF SHA256、wall/CPU秒](../measurements/exact-rational-constants.json)を保存する。
+
+既存の独立Rational整数oracleとLLL/Smith/simplex証拠checkerを含む32testsが
+native/js/wasm-gcで通過。--deny-warn、pure95 kernel files、formal drift10領域も通過した。
+通常testは不変値とコミット済みfixtureを使い、Pythonの構築oracleは実行しない。
