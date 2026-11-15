@@ -344,3 +344,17 @@ measured 2.58 ms ± 111.62 µs, search 29.78 ms ± 1.63 ms, and certificate chec
 73.21 ms ± 2.46 ms. No performance regression was detected relative to the
 private implementation's checkpoint above. All normalization, model/proof,
 large-ID, resumption, and trace-statistics tests are retained.
+
+## Indexed-value candidate retained only as an experiment
+
+A polarity-only lookup prototype avoids comparing the Binary key a second time
+after the assignment trie has already found it. On 256 assigned queries the
+same-run microbenchmark measured the existing lookup at 6.40 µs ± 373.06 ns and
+the prototype at 4.28 µs ± 161.57 ns. The prototype agrees on assigned positive,
+assigned negative, and absent-variable values in the test fixture.
+
+However, temporarily using it in the complete width-16 engine gave search time
+29.55 ms ± 1.91 ms, compared with the preceding 29.78 ms ± 1.63 ms. The unchanged
+certificate checker measured 72.48 ms ± 2.47 ms. An engine-level improvement was
+not established, so production lookup remains unchanged. The test-only prototype
+and microbenchmark remain available for a later profile-led investigation.
