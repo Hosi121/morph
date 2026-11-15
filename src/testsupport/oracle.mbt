@@ -4,18 +4,20 @@ pub fn nat(n : Int32) -> @core.Nat {
   if n < 0 {
     abort("negative test natural")
   }
-  if n == 0 {
-    Zero
-  } else {
-    Succ(nat(n - 1))
+  for remaining = n, found = @core.Zero; remaining > 0; {
+    continue remaining - 1, @core.Succ(found)
+  } nobreak {
+    found
   }
 }
 
 ///|
 pub fn int_of_nat(n : @core.Nat) -> Int32 {
-  match n {
-    Zero => 0
-    Succ(rest) => 1 + int_of_nat(rest)
+  for remaining = n, found = 0 {
+    match remaining {
+      Zero => break found
+      Succ(rest) => continue rest, found + 1
+    }
   }
 }
 
