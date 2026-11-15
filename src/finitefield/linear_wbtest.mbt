@@ -55,3 +55,55 @@ test "shared field Gaussian solver versus all assignments over the field of thre
     }
   }
 }
+
+///|
+test "finite-field determinant and inverse versus two-by-two integer formulas" {
+  for p in [3, 5] {
+    let context = field(@oracle.binary(p)).unwrap()
+    for code in 0..<(p * p * p * p) {
+      let values = [
+        code % p,
+        code / p % p,
+        code / (p * p) % p,
+        code / (p * p * p),
+      ]
+      let matrix = @matrix.matrix(
+        @oracle.nat(2),
+        @oracle.chain([
+          @oracle.chain(values[:2].to_owned().map(@oracle.binary)),
+          @oracle.chain(values[2:].to_owned().map(@oracle.binary)),
+        ]),
+      ).unwrap()
+      let determinant = (
+          (values[0] * values[3] - values[1] * values[2]) % p + p
+        ) %
+        p
+      assert_eq(
+        @rowreduce.determinant(arithmetic(context), matrix),
+        Some(@oracle.binary(determinant)),
+      )
+      match @rowreduce.inverse(arithmetic(context), matrix) {
+        None => assert_eq(determinant, 0)
+        Some(inverse) => {
+          assert_true(determinant != 0)
+          let mut reciprocal = 0
+          for candidate in 1..<p {
+            if candidate * determinant % p == 1 {
+              reciprocal = candidate
+            }
+          }
+          let expected = [[values[3], -values[1]], [-values[2], values[0]]].map(fn(
+              row,
+            ) {
+              row.map(fn(x) { (x * reciprocal % p + p) % p })
+            },
+          )
+          let actual = @oracle.array(@matrix.rows(inverse)).map(fn(row) {
+            @oracle.array(row).map(@oracle.int_of_binary)
+          })
+          assert_eq(actual, expected)
+        }
+      }
+    }
+  }
+}

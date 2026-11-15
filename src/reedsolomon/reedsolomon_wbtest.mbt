@@ -172,6 +172,21 @@ test "shape, point distinctness, correction reports and forged results" {
     }),
   )
   let field = @finitefield.field(@oracle.binary(7)).unwrap()
+  let message = @oracle.chain([2, 3, 4].map(@oracle.binary))
+  let encoded = encode(context, message).unwrap()
+  let representatives = @core.map(encoded, fn(value) {
+    @binary.add(value, @oracle.binary(7))
+  })
+  let normalized = decode(context, representatives).unwrap()
+  assert_eq(normalized.message, message)
+  assert_eq(normalized.error_positions, Nil)
+  assert_true(
+    check(
+      context,
+      @core.map(representatives, fn(value) { Some(value) }),
+      normalized,
+    ),
+  )
   assert_eq(plan(field, @oracle.nat(3), @oracle.nat(2), context.points), None)
   assert_eq(plan(field, Zero, Zero, context.points), None)
   assert_eq(
