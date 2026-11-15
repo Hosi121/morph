@@ -1,0 +1,13 @@
+[Hosi121/morph] bench benchmarks/rational_test.mbt:2 ("rational reciprocal product with 128-bit factors") ok
+time (mean ± σ)         range (min … max) 
+ 112.98 µs ±   2.93 µs   109.27 µs … 117.36 µs  in 10 ×    877 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:12 ("rational sum with a shared 127-bit denominator") ok
+time (mean ± σ)         range (min … max) 
+  65.99 µs ± 307.38 ns    65.45 µs …  66.46 µs  in 10 ×   1504 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:23 ("two-phase simplex rational optimum including tableau initialization") ok
+time (mean ± σ)         range (min … max) 
+ 203.59 µs ±   6.73 µs   198.80 µs … 220.59 µs  in 10 ×    490 runs
+[Hosi121/morph] bench benchmarks/rational_test.mbt:40 ("Sturm quintic squarefree sequence and full root isolation") ok
+time (mean ± σ)         range (min … max) 
+ 177.63 µs ±   7.44 µs   171.13 µs … 191.68 µs  in 10 ×    573 runs
+Total tests: 4, passed: 4, failed: 0.

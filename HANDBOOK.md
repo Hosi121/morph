@@ -795,3 +795,15 @@ refineは根数1の区間だけを指定回数二分し、検査器は各区間�
 
 半開区間の定理の参考：[Isabelle AFP, Sturm Sequences](https://isa-afp.org/entries/Sturm_Sequences.html)。
 実装上の符号と係数成長の参考：[FLINTの実根計数・隔離](https://flintlib.org/doc/algorithms/polynomials/real-roots-integers.html)。
+
+## 整理の記録：上位へ進んだら共通算術を測り直す
+
+多項式、最適化、微分、幾何がすべてexact.Rationalを共有する段階で、
+分母を掛けてから全体をgcdで約分する方式を見直した。
+和は分母のgcdを共有し、積は互いの分子・分母を先に約分する。
+既約入力から既約結果が得られるので、最後の巨大な正規化は要らない。
+ゼロ、±1、除数1も同じ核で扱い、既存の表現と結果を保った。
+
+交差約分だけでは大きな共通因子の例は改善したが、小さな分数の多い単体法は悪化した。
+恒等則を合わせて初めて、今回の単体法は131.72→40.81µs、Sturmは220.82→92.28µsになった。
+小分数23409組と既存の上位オラクルを維持した。詳細は[計測記録](docs/MEASUREMENTS.md)。

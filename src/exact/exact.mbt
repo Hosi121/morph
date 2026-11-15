@@ -94,7 +94,15 @@ pub extend Rational with Debug::{to_repr}
 
 ///|
 fn normalize(numerator : Integer, denominator : @binary.Binary) -> Rational {
-  let common = @binary.gcd(numerator.magnitude, denominator)
+  match @binary.is_zero(numerator.magnitude) {
+    true => return rational_zero()
+    false => ()
+  }
+  match is_one(denominator) || is_one(numerator.magnitude) {
+    true => return { numerator, denominator, }
+    false => ()
+  }
+  let common = common_factor(numerator.magnitude, denominator)
   match
     (
       @binary.divmod(numerator.magnitude, common),
@@ -155,13 +163,31 @@ pub fn rational_negate(r : Rational) -> Rational {
 
 ///|
 pub fn rational_add(a : Rational, b : Rational) -> Rational {
-  normalize(
-    add(
-      multiply(a.numerator, positive(b.denominator)),
-      multiply(b.numerator, positive(a.denominator)),
-    ),
-    @binary.multiply(a.denominator, b.denominator),
+  match
+    (
+      @binary.is_zero(a.numerator.magnitude),
+      @binary.is_zero(b.numerator.magnitude),
+    ) {
+    (true, _) => return b
+    (_, true) => return a
+    _ => ()
+  }
+  let common = common_factor(a.denominator, b.denominator)
+  let left = exact_quotient(a.denominator, common)
+  let right = exact_quotient(b.denominator, common)
+  let numerator = add(
+    multiply(a.numerator, positive(right)),
+    multiply(b.numerator, positive(left)),
   )
+  // Reduced inputs imply any remaining common factor divides common.
+  let remaining = common_factor(numerator.magnitude, common)
+  {
+    numerator: integer_quotient(numerator, remaining),
+    denominator: @binary.multiply(
+      left,
+      exact_quotient(b.denominator, remaining),
+    ),
+  }
 }
 
 ///|
@@ -171,10 +197,86 @@ pub fn rational_subtract(a : Rational, b : Rational) -> Rational {
 
 ///|
 pub fn rational_multiply(a : Rational, b : Rational) -> Rational {
-  normalize(
-    multiply(a.numerator, b.numerator),
-    @binary.multiply(a.denominator, b.denominator),
-  )
+  match
+    @binary.is_zero(a.numerator.magnitude) ||
+    @binary.is_zero(b.numerator.magnitude) {
+    true => return rational_zero()
+    false => ()
+  }
+  match is_one(a.numerator.magnitude) && is_one(a.denominator) {
+    true =>
+      return match a.numerator.negative {
+        true => rational_negate(b)
+        false => b
+      }
+    false => ()
+  }
+  match is_one(b.numerator.magnitude) && is_one(b.denominator) {
+    true =>
+      return match b.numerator.negative {
+        true => rational_negate(a)
+        false => a
+      }
+    false => ()
+  }
+  let left = common_factor(a.numerator.magnitude, b.denominator)
+  let right = common_factor(b.numerator.magnitude, a.denominator)
+  {
+    numerator: multiply(
+      integer_quotient(a.numerator, left),
+      integer_quotient(b.numerator, right),
+    ),
+    denominator: @binary.multiply(
+      exact_quotient(a.denominator, right),
+      exact_quotient(b.denominator, left),
+    ),
+  }
+}
+
+///|
+/// All callers supply a positive divisor known to divide the magnitude exactly.
+fn exact_quotient(
+  value : @binary.Binary,
+  divisor : @binary.Binary,
+) -> @binary.Binary {
+  match is_one(divisor) {
+    true => return value
+    false => ()
+  }
+  match @binary.divmod(value, divisor) {
+    Some((quotient, _)) => quotient
+    None => value
+  }
+}
+
+///|
+fn is_one(value : @binary.Binary) -> Bool {
+  match @binary.bits(value) {
+    Cons(true, Nil) => true
+    _ => false
+  }
+}
+
+///|
+fn common_factor(a : @binary.Binary, b : @binary.Binary) -> @binary.Binary {
+  match is_one(a) || is_one(b) {
+    true => @binary.one()
+    false =>
+      match (@binary.is_zero(a), @binary.is_zero(b)) {
+        (true, _) => b
+        (_, true) => a
+        _ => @binary.gcd(a, b)
+      }
+  }
+}
+
+///|
+fn integer_quotient(value : Integer, divisor : @binary.Binary) -> Integer {
+  let quotient = positive(exact_quotient(value.magnitude, divisor))
+  match value.negative {
+    true => negate(quotient)
+    false => quotient
+  }
 }
 
 ///|
