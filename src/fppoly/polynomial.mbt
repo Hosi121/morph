@@ -383,6 +383,23 @@ fn divide_loop(
 }
 
 ///|
+fn divide_by_constant(
+  value : Polynomial,
+  coefficient : @binary.Binary,
+) -> Result[Division, PolyError] {
+  let remainder = zero(value.field)
+  match @binary.bits(coefficient) {
+    Cons(true, Nil) => Ok({ quotient: value, remainder, })
+    _ =>
+      match @modular.inverse(@primefield.modulus(value.field), coefficient) {
+        None => Err(InternalInvariant)
+        Some(reciprocal) =>
+          Ok({ quotient: scale(value, reciprocal), remainder, })
+      }
+  }
+}
+
+///|
 /// Euclidean quotient and remainder; degree(remainder) is below degree(divisor).
 pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
   match compatible(a, b) {
@@ -391,6 +408,14 @@ pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
       match leading(b) {
         None => Err(ZeroDivisor)
         Some(coefficient) => {
+          match is_zero(a) {
+            true => return Ok({ quotient: a, remainder: a, })
+            false => ()
+          }
+          match b.coefficients {
+            Cons(_, Nil) => return divide_by_constant(a, coefficient)
+            _ => ()
+          }
           let divisor_width = @core.length(b.coefficients)
           match characteristic_two(b.field) {
             true =>
