@@ -5,19 +5,26 @@ import {
   "Hosi121/morph/binary",
   "Hosi121/morph/core",
   "Hosi121/morph/modular",
+  "Hosi121/morph/primality",
   "moonbitlang/core/debug",
 }
 
 // Values
 pub fn check_factor(@binary.Binary, @binary.Binary) -> Split?
 
+pub fn check_factorization(@binary.Binary, @core.Chain[@primality.Certificate]) -> Factorization?
+
 pub fn cofactor(Split) -> @binary.Binary
 
 pub fn divisor(Split) -> @binary.Binary
 
+pub fn factorization_value(Factorization) -> @binary.Binary
+
 pub fn iterations(Machine) -> @core.Nat
 
 pub fn number(Split) -> @binary.Binary
+
+pub fn prime_factors(Factorization) -> @core.Chain[@primality.Prime]
 
 pub fn run(Machine, @core.Nat) -> Status
 
@@ -30,6 +37,15 @@ pub fn target(Machine) -> @binary.Binary
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Factorization {
+  number : @binary.Binary
+  primes : @core.Chain[@primality.Prime]
+}
+pub fn Factorization::equal(Self, Self) -> Bool
+pub fn Factorization::not_equal(Self, Self) -> Bool
+pub fn Factorization::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Machine {
   modulus : @modular.Modulus

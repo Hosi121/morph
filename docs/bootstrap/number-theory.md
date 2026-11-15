@@ -222,3 +222,31 @@ after trial 65537: 737.72 µs ± 28.66 µs; 701.91 µs … 773.53 µs; 10 × 127
 after Lucas 998244353: 2.47 ms ± 103.22 µs; 2.37 ms … 2.68 ms; 10 × 41 runs
 after trial 998244353: 239.30 ms ± 5.55 ms; 232.66 ms … 250.73 ms; 10 × 1 runs
 ```
+
+## 完全素因数分解の証拠境界
+
+`@factor.check_factorization(n,certificates)` は素数証明の列を検査し、
+その重複込みの積がちょうど `n` である場合だけ `Factorization` を返す。
+`factorization_value` で元の値、`prime_factors` で検査済み `Prime` の列を得る。
+並び替えは行わず、渡した順序と重複を保つ。
+1の空分解は受理し、0には完全素因数分解を与えない。
+
+```moonbit
+pub fn check_factorization(
+  @binary.Binary,
+  @core.Chain[@primality.Certificate],
+) -> Factorization?
+pub fn factorization_value(Factorization) -> @binary.Binary
+pub fn prime_factors(Factorization) -> @core.Chain[@primality.Prime]
+```
+
+ここにも探索は含まない。各certificateをLucas/Prattで検査し、残りの商を
+その素数で割り切れることを確認し、最後が1かを確認する。
+`Split` や強いMiller–Rabinの全通過だけでは、この型は構築できない。
+因子不足、余分な因子、割り切れない因子、積だけは合う合成数の偽証明を拒否する。
+
+小さな重複・順序を含む積、0と1、不正証拠を検査するほか、rhoが得た大きい三つの
+分割にも各leafの再帰素数証明を付け、完全分解として検査する。
+これにより281479271350267についても、単なる二数への分割から
+65537と4294967291の**確定した素数**への分解へ進める。
+通常テストはコミット済みfixtureを使い、その再生成も同じPythonツールで行う。
