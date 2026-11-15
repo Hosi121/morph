@@ -327,20 +327,24 @@ priv enum Count {
 }
 
 ///|
-fn at_level(clause : Lits, trail : Trail, level : @core.Nat) -> Count {
+fn at_level(
+  clause : Lits,
+  lookup : (Atom) -> Assignment?,
+  level : @core.Nat,
+) -> Count {
   match clause {
     Nil => Absent
     Cons(literal, rest) =>
-      match assignment(trail, literal) {
-        None => at_level(rest, trail, level)
+      match lookup(literal) {
+        None => at_level(rest, lookup, level)
         Some(entry) =>
           match @core.compare(entry.level, level) {
             Equal =>
-              match at_level(rest, trail, level) {
+              match at_level(rest, lookup, level) {
                 Absent => Once
                 Once | Several => Several
               }
-            _ => at_level(rest, trail, level)
+            _ => at_level(rest, lookup, level)
           }
       }
   }
@@ -355,13 +359,13 @@ fn maximum(left : @core.Nat, right : @core.Nat) -> @core.Nat {
 }
 
 ///|
-fn highest_level(clause : Lits, trail : Trail) -> @core.Nat {
+fn highest_level(clause : Lits, lookup : (Atom) -> Assignment?) -> @core.Nat {
   match clause {
     Nil => Zero
     Cons(literal, rest) =>
-      match assignment(trail, literal) {
-        None => highest_level(rest, trail)
-        Some(entry) => maximum(entry.level, highest_level(rest, trail))
+      match lookup(literal) {
+        None => highest_level(rest, lookup)
+        Some(entry) => maximum(entry.level, highest_level(rest, lookup))
       }
   }
 }
@@ -379,9 +383,14 @@ fn resolve(left : Lits, right : Lits, pivot : Atom) -> Lits {
 
 ///|
 /// Resolve the most recent implied literals until a first UIP remains.
-fn analyze(clause : Lits, trail : Trail, level : @core.Nat) -> Lits? {
+fn analyze(
+  clause : Lits,
+  trail : Trail,
+  lookup : (Atom) -> Assignment?,
+  level : @core.Nat,
+) -> Lits? {
   fn visit(clause : Lits, remaining : Trail) -> Lits? {
-    match at_level(clause, trail, level) {
+    match at_level(clause, lookup, level) {
       Absent => None
       Once => Some(clause)
       Several =>
@@ -406,15 +415,60 @@ fn analyze(clause : Lits, trail : Trail, level : @core.Nat) -> Lits? {
 }
 
 ///|
-fn asserting(clause : Lits, trail : Trail, level : @core.Nat) -> Atom? {
+/// Assignments do not change during resolution. After finding several literals
+/// at the conflict level, skip irrelevant trail entries without recounting the
+/// same clause. Recount only after resolving a pivot.
+fn analyze_pivot_count(
+  clause : Lits,
+  trail : Trail,
+  lookup : (Atom) -> Assignment?,
+  level : @core.Nat,
+) -> Lits? {
+  fn next_pivot(clause : Lits, remaining : Trail) -> (Lits, Trail)? {
+    match remaining {
+      Nil => None
+      Cons(entry, rest) =>
+        match
+          @core.compare(entry.level, level) is Equal &&
+          contains(clause, opposite(entry.literal)) {
+          false => next_pivot(clause, rest)
+          true =>
+            match entry.reason {
+              None => None
+              Some(reason) =>
+                Some((resolve(clause, reason, entry.literal), rest))
+            }
+        }
+    }
+  }
+  fn visit(clause : Lits, remaining : Trail) -> Lits? {
+    match at_level(clause, lookup, level) {
+      Absent => None
+      Once => Some(clause)
+      Several =>
+        match next_pivot(clause, remaining) {
+          None => None
+          Some((resolved, rest)) => visit(resolved, rest)
+        }
+    }
+  }
+  visit(clause, trail)
+}
+
+///|
+fn asserting(
+  clause : Lits,
+  lookup : (Atom) -> Assignment?,
+  level : @core.Nat,
+) -> Atom? {
   match clause {
     Nil => None
     Cons(literal, rest) =>
-      match assignment(trail, literal) {
+      match lookup(literal) {
         Some(entry) =>
           match @core.compare(entry.level, level) {
             Equal => Some(literal)
-            _ => asserting(rest, trail, level)
+            _ => asserting(rest, lookup, level)
           }
         None => None
       }
@@ -422,10 +476,14 @@ fn asserting(clause : Lits, trail : Trail, level : @core.Nat) -> Atom? {
 }
 
 ///|
-fn backjump_level(clause : Lits, trail : Trail, asserting : Atom) -> @core.Nat {
+fn backjump_level(
+  clause : Lits,
+  lookup : (Atom) -> Assignment?,
+  asserting : Atom,
+) -> @core.Nat {
   highest_level(
     @core.filter(clause, fn(literal) { !same_key(literal, asserting) }),
-    trail,
+    lookup,
   )
 }
 
@@ -450,7 +508,12 @@ fn model(trail : Trail, variables : Lits) -> @sat.Model {
 }
 
 ///|
-fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) {
+fn transition_using(
+  search : Search,
+  inspection : Inspection,
+  indexed : Bool,
+  skip_recount : Bool,
+) -> (Status, Statistics) {
   let stats = {
     ..search.statistics,
     transitions: Succ(search.statistics.transitions),
@@ -493,7 +556,14 @@ fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) 
     }
     Contradiction(conflict) => {
       let stats = { ..stats, conflicts: Succ(stats.conflicts), }
-      let conflict_level = highest_level(conflict, search.trail)
+      let lookup = match (indexed, search.watch) {
+        (true, Some(watched)) =>
+          fn(literal : Atom) {
+            index_get(watched.values, @binary.bits(literal.key))
+          }
+        _ => fn(literal : Atom) { assignment(search.trail, literal) }
+      }
+      let conflict_level = highest_level(conflict, lookup)
       match conflict_level {
         Zero =>
           (
@@ -501,13 +571,23 @@ fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) 
             stats,
           )
         Succ(_) =>
-          match analyze(conflict, search.trail, conflict_level) {
+          match
+            (match skip_recount {
+              true =>
+                analyze_pivot_count(
+                  conflict,
+                  search.trail,
+                  lookup,
+                  conflict_level,
+                )
+              false => analyze(conflict, search.trail, lookup, conflict_level)
+            }) {
             None => (InvariantViolation, stats)
             Some(learned) =>
-              match asserting(learned, search.trail, conflict_level) {
+              match asserting(learned, lookup, conflict_level) {
                 None => (InvariantViolation, stats)
                 Some(literal) => {
-                  let level = backjump_level(learned, search.trail, literal)
+                  let level = backjump_level(learned, lookup, literal)
                   let trail : Trail = Cons(
                     { literal, level, reason: Some(learned), },
                     backjump(search.trail, level),
@@ -543,6 +623,11 @@ fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) 
       }
     }
   }
+}
+
+///|
+fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) {
+  transition_using(search, inspection, true, false)
 }
 
 ///|

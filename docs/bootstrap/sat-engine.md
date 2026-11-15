@@ -435,3 +435,85 @@ The same batch passes all 21 CDCL tests on native, JS, and Wasm GC and the
 ```sh
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/profile_wbtest.mbt --target native --release -i 3
 ```
+
+## Phase profile after first-open decisions
+
+With the first-open decision mode, the next CPU-10/mutex sample was:
+
+| Transition kind | Count | Inspection | Transition handling |
+| --- | ---: | ---: | ---: |
+| Propagation | 18,174 | 93.99 ms | 28.37 ms |
+| Decision | 3,276 | 206.23 ms | 8.94 ms |
+| Conflict | 478 | 1.67 ms | 508.81 ms |
+
+Conflict handling is now about 60% of this instrumented observation. The
+uninstrumented search measured 947.56 ms ± 45.85 ms, range 894.80 ms–1.03 s.
+An unchanged prepared hinted-checker control on the resulting certificate
+measured 43.57 ms ± 3.03 ms, range 40.33–49.87 ms. These are ten samples, with
+three checker calls per sample. The source has not yet changed shared Binary
+from `e717649`; the different absolute phase times above are separate runs and
+must not be interpreted as the before/after comparison by themselves.
+
+The next experiment separates two conflict costs: linear reverse-trail
+assignment lookup versus the already maintained assignment trie, and recounting
+the unchanged conflict clause while skipping irrelevant trail entries versus
+recounting only after resolving a pivot. Both operations preserve assignments,
+resolution order, and the learned clause; the comparison checks those claims
+against the complete resumable state and proof.
+
+## Reuse the assignment trie during conflict analysis
+
+Conflict analysis now obtains assignments from the watched engine's existing
+persistent trie. Scan mode keeps reverse-trail lookup. The same lookup callback
+is passed to conflict-level selection, current-level counting, first-UIP
+resolution, asserting-literal selection, and backjump-level selection. No
+assignment index is rebuilt for analysis. Normalization, resolution order,
+learned clauses, and the public API are unchanged.
+
+A separate candidate avoids recounting an unchanged clause when scanning past
+an irrelevant trail entry. It remains a private selectable ablation. The normal
+engine keeps the original recounting algorithm because a complete-search gain
+for that candidate was not established.
+
+The four modes below used one native release ELF, CPU 10, the measurement mutex,
+the same prepared 64-bit miter and 200,000-transition budget, and shared Binary
+`e717649`. Ten samples per case:
+
+| Assignment lookup | Clause count policy | Mean ± standard deviation | Range |
+| --- | --- | ---: | ---: |
+| Reverse trail | Recount on every visited entry | 950.83 ms ± 52.89 ms | 878.61 ms–1.02 s |
+| Existing trie | Recount on every visited entry | 517.81 ms ± 27.17 ms | 482.41–558.07 ms |
+| Reverse trail | Recount only after a resolved pivot | 927.72 ms ± 46.36 ms | 870.64 ms–1.03 s |
+| Existing trie | Recount only after a resolved pivot | 535.63 ms ± 27.59 ms | 504.00–586.40 ms |
+
+The lookup change improves complete search in this comparison; the count-policy
+intervals overlap and do not establish an additional improvement. The baseline
+uses the same callback interface as the indexed path. The immutable initial
+state, proof checking, work counters, CNF generation, and startup are outside
+the timed closures.
+
+Deterministic work counters cover analysis lookup, excluding learned-watch
+selection and final SAT model construction:
+
+| Count policy | Queries | Reverse-trail entries examined | Trie nodes examined |
+| --- | ---: | ---: | ---: |
+| Original recount | 79,907 | 9,483,200 | 821,337 |
+| Pivot-only recount | 66,694 | 8,556,638 | 687,648 |
+
+Every counted query compares the actual trail and trie results. All four modes
+return the exact same final `Status` and `Statistics`, including the complete
+proof, on the 64-bit miter. A separate regression compares all four complete
+paused states and final statistics at every transition of pigeonhole 4/3 and a
+four-bit miter. The independent hinted checker accepts the shared proof.
+
+The unchanged prepared hinted-checker control measured 43.37 ms ± 3.93 ms,
+range 37.18–49.39 ms, compared with the immediately preceding 43.57 ms ±
+3.03 ms. The benchmark invocation, including untimed setup and counters, used
+38.91 s elapsed, 39.51 s user, and 0.05 s system time. This aggregate process
+control does not remove CPU-frequency variation or provide per-case CPU time.
+The four-mode ELF SHA-256 was
+`5025dca38ed19fbc333752a4b2e965e4f2e96468d43988bb9df8db80aba1d639`.
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/analysis_wbtest.mbt --target native --release -i 1
+```

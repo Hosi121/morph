@@ -48,10 +48,12 @@ fn measure_phases(width : Int32, b : @bench.T) -> Unit raise {
   let (outcome, counts, inspection_time, transition_time) = sample_phases(
     initial,
   )
-  match outcome {
+  let (input, logged) = match outcome {
     Unsatisfiable(proof) => {
-      let logged = @ruplog.build(cnf, proof).unwrap()
-      assert_true(@ruplog.check(cnf, logged))
+      let input = @ruplog.prepare(cnf)
+      let logged = @ruplog.build_prepared(input, proof).unwrap()
+      assert_true(@ruplog.check_prepared(input, logged))
+      (input, logged)
     }
     _ => fail("profiled equivalent miter must be refuted")
   }
@@ -64,6 +66,10 @@ fn measure_phases(width : Int32, b : @bench.T) -> Unit raise {
   b.bench(
     fn() { b.keep(run(initial, budget)) },
     name="uninstrumented search without startup",
+  )
+  b.bench(
+    fn() { b.keep(@ruplog.check_prepared(input, logged)) },
+    name="unchanged prepared hinted checker control",
   )
 }
 
