@@ -123,6 +123,15 @@ pub fn inverse(m : Modulus, a : @binary.Binary) -> @binary.Binary? {
 }
 
 ///|
+pub fn signed_reduce(m : Modulus, a : @exact.Integer) -> @binary.Binary {
+  let remainder = reduce(m, @exact.magnitude(a))
+  match @exact.negative(a) {
+    false => remainder
+    true => subtract(m, @binary.zero(), remainder)
+  }
+}
+
+///|
 /// Exact trial division, suitable for small symbolic experiments.
 pub fn is_prime(n : @binary.Binary) -> Bool {
   fn trial(divisor : @binary.Binary) -> Bool {

@@ -4,12 +4,19 @@ package "Hosi121/morph/modular"
 import {
   "Hosi121/morph/algebra",
   "Hosi121/morph/binary",
+  "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "moonbitlang/core/debug",
 }
 
 // Values
 pub fn add(Modulus, @binary.Binary, @binary.Binary) -> @binary.Binary
+
+pub fn chinese_remainder(Congruence, Congruence) -> Congruence?
+
+pub fn chinese_remainders(@core.Chain[Congruence]) -> Congruence?
+
+pub fn congruence(Modulus, @binary.Binary) -> Congruence
 
 pub fn extended_gcd(@binary.Binary, @binary.Binary) -> (@binary.Binary, @exact.Integer, @exact.Integer)
 
@@ -21,11 +28,17 @@ pub fn modulus(@binary.Binary) -> Modulus?
 
 pub fn multiply(Modulus, @binary.Binary, @binary.Binary) -> @binary.Binary
 
+pub fn period(Congruence) -> Modulus
+
 pub fn power(Modulus, @binary.Binary, @binary.Binary) -> @binary.Binary
 
 pub fn reduce(Modulus, @binary.Binary) -> @binary.Binary
 
+pub fn residue(Congruence) -> @binary.Binary
+
 pub fn semiring(Modulus) -> @algebra.Semiring[@binary.Binary]
+
+pub fn signed_reduce(Modulus, @exact.Integer) -> @binary.Binary
 
 pub fn subtract(Modulus, @binary.Binary, @binary.Binary) -> @binary.Binary
 
@@ -34,6 +47,15 @@ pub fn value(Modulus) -> @binary.Binary
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Congruence {
+  modulus : Modulus
+  residue : @binary.Binary
+}
+pub fn Congruence::equal(Self, Self) -> Bool
+pub fn Congruence::not_equal(Self, Self) -> Bool
+pub fn Congruence::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Modulus {
   value : @binary.Binary
