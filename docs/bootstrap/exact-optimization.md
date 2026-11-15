@@ -39,7 +39,7 @@ node --cpu-prof --cpu-prof-dir=/tmp/morph-exact-profile-before \
   '{"package":"Hosi121/morph/lll","file_and_index":[["bench_wbtest.mbt",[{"start":0,"end":4}]]]}'
 ```
 
-## nativeの変更前baseline
+## nativeの予備baseline（affinity未固定）
 
 2026-11-15、Intel Core Ultra 7 255H、x86_64、moonc v0.10.20。
 入力の構築を除外し、同じ固定fixtureとrelease設定を変更後にも使う。
@@ -67,3 +67,39 @@ node --cpu-prof --cpu-prof-dir=/tmp/morph-exact-profile-before \
 
 専用の `src/exactbench` はbenchmarkだけを持ち、共有する上位算法を変更しない。
 Smith/simplexの固定ケースもここから同じ形で計測する。
+
+## 採用比較用CPU8 baseline
+
+rootのbinary計測をCPU4へ分離する指示に合わせ、exact核を変更する前に
+全比較対象を `taskset -c 8` で取り直した。変更後も同じCPU8を使い、
+この表を採用比較のbeforeとする。binaryの変更とは分離して測る。
+affinityは固定したが、周波数・共有キャッシュ・他CPUの同時負荷は固定していない。
+
+```sh
+taskset -c 8 tools/moon bench src/exact --target native --release
+taskset -c 8 tools/moon bench src/lll --target native --release
+taskset -c 8 tools/moon bench src/exactbench --target native --release
+```
+
+| CPU8の固定microbenchmark | before平均±標準偏差 |
+| --- | --- |
+| coprime normalize | 40.96 µs ± 5.21 µs |
+| shared factor normalize | 151.92 µs ± 5.00 µs |
+| even half | 75.38 µs ± 11.40 µs |
+| odd half | 90.50 µs ± 2.86 µs |
+| common denominator add | 72.77 µs ± 3.11 µs |
+| coprime add control | 255.42 µs ± 4.08 µs |
+| opposite sign compare | 8.03 µs ± 282.14 ns |
+| common denominator compare | 11.23 µs ± 815.85 ns |
+| reciprocal product | 123.60 µs ± 6.57 µs |
+| signed corpus | 21.06 µs ± 2.10 µs |
+
+| CPU8の上位同入力 | before平均±標準偏差 |
+| --- | --- |
+| LLL 3x3 | 367.58 µs ± 15.31 µs |
+| LLL checker | 29.14 µs ± 2.38 µs |
+| LLL 3x4 | 451.30 µs ± 30.22 µs |
+| Smith+LLL依存3x4 | 322.86 µs ± 12.04 µs |
+| Smith 3x3 | 41.25 µs ± 1.37 µs |
+| Smith checker | 17.49 µs ± 585.55 ns |
+| simplex | 44.89 µs ± 3.32 µs |
