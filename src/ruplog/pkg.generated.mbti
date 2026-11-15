@@ -14,6 +14,10 @@ pub fn build(@core.Chain[@core.Chain[@sat.Literal]], @cdcl.Proof) -> Certificate
 
 pub fn build_prepared(Input, @cdcl.Proof) -> Certificate?
 
+pub fn build_scanning(@core.Chain[@core.Chain[@sat.Literal]], @cdcl.Proof) -> Certificate?
+
+pub fn build_scanning_prepared(Input, @cdcl.Proof) -> Certificate?
+
 pub fn check(@core.Chain[@core.Chain[@sat.Literal]], Certificate) -> Bool
 
 pub fn check_prepared(Input, Certificate) -> Bool

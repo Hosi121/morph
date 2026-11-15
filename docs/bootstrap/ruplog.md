@@ -22,6 +22,8 @@ prepare(Cnf) -> Input
 first_derived_id(Input) -> Binary
 build(Cnf, @cdcl.Proof) -> Certificate?
 build_prepared(Input, @cdcl.Proof) -> Certificate?
+build_scanning(Cnf, @cdcl.Proof) -> Certificate?
+build_scanning_prepared(Input, @cdcl.Proof) -> Certificate?
 check(Cnf, Certificate) -> Bool
 check_prepared(Input, Certificate) -> Bool
 erase(Certificate) -> @cdcl.Proof
@@ -85,5 +87,46 @@ tools/moon test src/ruplog --target wasm-gc
 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release
 ```
 
-次は全DB走査を避けるbuilder候補を同条件で比較し、SAT query・証拠生成・検査を含む
-一回の総時間への効果を別に確認する。
+## Occurrence indexによるbuilder改善
+
+現行の `build` / `build_prepared` は、signed literalからそれを含む節ID列への不変indexを
+一度構築する。仮定またはunit伝播でliteralが偽になると、そのliteralを含む節だけをqueueへ
+積む。ID列はchunkとして共有し、毎回コピーしない。初期unit節と空節は別に保持する。
+追加lemmaはindexとunit一覧へ追記する。旧scan builderは `build_scanning` 系に残す。
+checkerは変更していない。
+
+伝播順が変わるため、生成hintsの列も変わる。元のRUP追加節・追加ID・canonicalなerase結果は
+同じである。既存の有限照合を両builderへ通し、追加の1,000個の6変数3SATを真理値全探索・
+両builder・独立checkerで照合した。ラベル65535とclause IDの分離も確認する。
+全11テストがnative、JavaScript、Wasm GCで通過する。
+
+以下は全て `taskset -c 10` で同一process、同じprebuilt CNFと元RUP列を比較した。
+共有Binaryの基盤は `e717649` に固定し、builder変更と混ぜていない。
+
+| 処理 | 16bit | 64bit |
+| --- | ---: | ---: |
+| scan hints / occurrence hints | 3,280 / 2,940 | 31,960 / 21,132 |
+| scan builder、準備込み | 98.16 ms ± 5.08 ms | 5.87 s ± 267.11 ms |
+| occurrence builder、準備込み | 7.46 ms ± 361.22 µs | 110.65 ms ± 10.77 ms |
+| checker、scan hints | 3.15 ms ± 89.87 µs | 41.51 ms ± 3.86 ms |
+| checker、occurrence hints | 2.97 ms ± 296.23 µs | 38.60 ms ± 2.78 ms |
+
+64bitのbuilderはこの条件で約53倍軽くなった。hint列が短くなる効果も含むため、同一伝播列の
+データ構造だけの速度差とは呼ばない。
+
+同じCPU10固定で、prebuilt 64bit CNFから毎回新しくSAT探索・証拠生成・検査まで行った比較：
+
+| 一回の全処理 | 平均 ± 標準偏差 | min〜max |
+| --- | ---: | ---: |
+| solve + 既存RUP検査 | 7.32 s ± 1.40 s | 6.08〜9.69 s |
+| solve + occurrence builder + hint検査 | 1.82 s ± 41.09 ms | 1.76〜1.90 s |
+
+各10回。CNF構築と200,000遷移のfuel構築は両者とも計測外、solverのstart・RUP生成・builder・
+checkerの入力準備は計測内である。baselineの分散は大きいが範囲は分離し、単発の全処理でも
+改善を確認できた。この入力では平均約4倍であり、全CNFについての一般的な速度保証ではない。
+
+```sh
+taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release -i 3
+taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release -i 4
+taskset -c 10 tools/moon bench src/ruplog/bench_wbtest.mbt --target native --release -i 5
+```

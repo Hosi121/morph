@@ -84,17 +84,22 @@ fn builder_hints(
 /// Enrich an existing RUP list without invoking SAT search. Source tautological
 /// lemmas are omitted. Other clauses are sorted and deduplicated. An empty
 /// clause is required exactly at the end.
-pub fn build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
+fn build_using(
+  input : Input,
+  proof : @cdcl.Proof,
+  occurrences : Occurrences?,
+) -> Certificate? {
   fn visit(
     rest : @core.Chain[@sat.Clause],
     database : Database,
     reversed : @core.Chain[Step],
+    occurrences : Occurrences?,
   ) -> Certificate? {
     match rest {
       Nil => None
       Cons(source, tail) =>
         match normalize(source) {
-          Tautology => visit(tail, database, reversed)
+          Tautology => visit(tail, database, reversed, occurrences)
           Terms(clause) => {
             let last_step = match (clause, tail) {
               (Nil, Nil) => Some(true)
@@ -104,7 +109,11 @@ pub fn build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
             match last_step {
               None => None
               Some(last_step) =>
-                match builder_hints(database, clause) {
+                match
+                  (match occurrences {
+                    None => builder_hints(database, clause)
+                    Some(indexed) => occurrence_hints(database, clause, indexed)
+                  }) {
                   None => None
                   Some(hints) => {
                     let step = Step::{
@@ -115,12 +124,21 @@ pub fn build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
                     match last_step {
                       true =>
                         Some({ steps: @core.reverse(Cons(step, reversed)), })
-                      false =>
+                      false => {
+                        let occurrences = match occurrences {
+                          None => None
+                          Some(indexed) =>
+                            Some(
+                              occurrence_add(indexed, step.id, Terms(clause)),
+                            )
+                        }
                         visit(
                           tail,
                           add(database, step.id, Terms(clause)),
                           Cons(step, reversed),
+                          occurrences,
                         )
+                      }
                     }
                   }
                 }
@@ -130,8 +148,28 @@ pub fn build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
     }
   }
   match proof {
-    Rup(steps) => visit(steps, input.database, Nil)
+    Rup(steps) => visit(steps, input.database, Nil, occurrences)
   }
+}
+
+///|
+pub fn build_scanning_prepared(
+  input : Input,
+  proof : @cdcl.Proof,
+) -> Certificate? {
+  build_using(input, proof, None)
+}
+
+///|
+pub fn build_scanning(cnf : @sat.Cnf, proof : @cdcl.Proof) -> Certificate? {
+  build_scanning_prepared(prepare(cnf), proof)
+}
+
+///|
+/// Use an immutable signed-literal occurrence index and a queue of affected
+/// clause-ID chunks. The independent checker is unchanged.
+pub fn build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
+  build_using(input, proof, Some(occurrence_prepare(input.database)))
 }
 
 ///|

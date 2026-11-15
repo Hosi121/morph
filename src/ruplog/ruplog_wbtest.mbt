@@ -96,6 +96,12 @@ test "all nonempty small candidate lemma lists agree with the unhinted RUP check
       for candidate in 1..<27 {
         let proof = @cdcl.Rup(@oracle.chain([ternary(candidate), @core.Nil]))
         let expected = @cdcl.check_refutation(cnf, proof)
+        let scanned = build_scanning_prepared(input, proof)
+        assert_eq(scanned is Some(_), expected)
+        match scanned {
+          None => ()
+          Some(logged) => assert_true(check_prepared(input, logged))
+        }
         match build_prepared(input, proof) {
           None => assert_false(expected)
           Some(logged) => {
@@ -120,7 +126,10 @@ test "clause IDs and order-sensitive unit hints reject corrupt certificates" {
   let proof = @cdcl.Rup(@core.Cons(@core.Nil, Nil))
   let expected = certificate(4, [], [1, 2, 3])
   assert_eq(first_derived_id(prepare(cnf)), @oracle.binary(4))
-  assert_eq(build(cnf, proof), Some(expected))
+  assert_eq(build_scanning(cnf, proof), Some(expected))
+  let indexed = build(cnf, proof).unwrap()
+  assert_true(check(cnf, indexed))
+  assert_eq(@oracle.int_of_nat(hint_count(indexed)), 3)
   assert_eq(@oracle.int_of_nat(hint_count(expected)), 3)
   assert_true(check(cnf, expected))
   for bad_id in [0, 1, 3, 5, 99] {
@@ -314,4 +323,64 @@ test "learned pigeonhole proofs enrich without changing the old SAT API" {
       _ => fail("pigeonhole input must be refuted")
     }
   }
+}
+
+///|
+test "occurrence and scanning builders agree on a thousand six-variable clause families" {
+  let mut state = 49217
+  for _ in 0..<1000 {
+    let clauses = []
+    for _ in 0..<24 {
+      let values = []
+      for _ in 0..<3 {
+        state = (state * 61 + 17) % 65521
+        let variable = state % 6
+        state = (state * 61 + 17) % 65521
+        values.push(lit(variable, state % 2 == 1))
+      }
+      clauses.push(values)
+    }
+    let cnf = formula(clauses)
+    let expected = [
+      for mask in 0..<64 => mask
+    ].any(fn(mask) {
+      clauses.all(fn(clause) {
+        clause.any(fn(value) {
+          ((mask & (1 << @oracle.int_of_nat(value.variable))) != 0) ==
+          value.positive
+        })
+      })
+    })
+    match @cdcl.run(@cdcl.start(cnf), @oracle.nat(10000)) {
+      Satisfiable(model) => {
+        assert_true(expected)
+        assert_true(@sat.check_model(cnf, model))
+      }
+      Unsatisfiable(proof) => {
+        assert_false(expected)
+        let input = prepare(cnf)
+        let indexed = build_prepared(input, proof).unwrap()
+        let scanned = build_scanning_prepared(input, proof).unwrap()
+        assert_true(check_prepared(input, indexed))
+        assert_true(check_prepared(input, scanned))
+        assert_eq(erase(indexed), erase(scanned))
+        assert_true(@cdcl.check_refutation(cnf, erase(indexed)))
+      }
+      _ => fail("six-variable review instance must finish")
+    }
+  }
+}
+
+///|
+test "large variable labels remain separate from positive clause identifiers" {
+  let variable = @oracle.nat(65535)
+  let cnf = formula([
+    [{ variable, positive: true, }],
+    [{ variable, positive: false, }],
+  ])
+  let proof = @cdcl.Rup(@core.Cons(@core.Nil, Nil))
+  let logged = build(cnf, proof).unwrap()
+  assert_eq(logged, certificate(3, [], [1, 2]))
+  assert_true(check(cnf, logged))
+  assert_true(@cdcl.check_refutation(cnf, erase(logged)))
 }
