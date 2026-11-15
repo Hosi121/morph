@@ -1,0 +1,39 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/primality"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn candidate(Certificate) -> @binary.Binary
+
+pub fn check(Certificate) -> Prime?
+
+pub fn value(Prime) -> @binary.Binary
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Certificate {
+  Two
+  Lucas(@binary.Binary, @binary.Binary, @core.Chain[Certificate])
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Prime {
+  value : @binary.Binary
+}
+pub fn Prime::equal(Self, Self) -> Bool
+pub fn Prime::not_equal(Self, Self) -> Bool
+pub fn Prime::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
