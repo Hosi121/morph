@@ -28,6 +28,8 @@ pub fn[A, B] fold_left(Chain[A], B, (B, A) -> B) -> B
 
 pub fn gcd(Nat, Nat) -> Nat
 
+pub fn indices(Nat) -> Chain[Nat]
+
 pub fn[A] interleave(Chain[A], Chain[A]) -> Chain[A]
 
 pub fn is_zero(Nat) -> Bool

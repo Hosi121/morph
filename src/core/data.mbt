@@ -139,6 +139,18 @@ pub fn[A] split_exact(n : Nat, xs : Chain[A]) -> (Chain[A], Chain[A])? {
 }
 
 ///|
+/// The naturals from zero up to (but excluding) n, constructed structurally.
+pub fn indices(n : Nat) -> Chain[Nat] {
+  fn go(todo : Nat, next : Nat) -> Chain[Nat] {
+    match todo {
+      Zero => Nil
+      Succ(rest) => Cons(next, go(rest, Succ(next)))
+    }
+  }
+  go(n, Zero)
+}
+
+///|
 pub fn[A] filter(xs : Chain[A], keep : (A) -> Bool) -> Chain[A] {
   match xs {
     Nil => Nil

@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/exactcover"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Problem, @core.Chain[@core.Nat]) -> Bool
+
+pub fn problem(@core.Chain[@core.Nat], @core.Chain[@core.Nat], @core.Chain[Row]) -> Problem?
+
+pub fn solve(Problem) -> @core.Chain[@core.Nat]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  primary : @core.Chain[@core.Nat]
+  secondary : @core.Chain[@core.Nat]
+  rows : @core.Chain[Row]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Row {
+  label : @core.Nat
+  columns : @core.Chain[@core.Nat]
+}
+pub fn Row::equal(Self, Self) -> Bool
+pub fn Row::not_equal(Self, Self) -> Bool
+pub fn Row::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

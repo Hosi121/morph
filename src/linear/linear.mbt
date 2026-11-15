@@ -162,14 +162,6 @@ pub fn determinant(input : @matrix.Matrix[@exact.Rational]) -> @exact.Rational? 
 }
 
 ///|
-fn indices(n : @core.Nat, start : @core.Nat) -> @core.Chain[@core.Nat] {
-  match n {
-    Zero => Nil
-    Succ(rest) => Cons(start, indices(rest, Succ(start)))
-  }
-}
-
-///|
 #derive(Eq, Debug)
 pub(all) enum Solution {
   Unique(@core.Chain[@exact.Rational])
@@ -254,7 +246,7 @@ pub fn solve(
                         }
                         find(pivot_pairs)
                       }
-                      let columns = indices(n, Zero)
+                      let columns = @core.indices(n)
                       let free = @core.filter(columns, fn(column) {
                         match row_for(column) {
                           None => true
@@ -310,7 +302,7 @@ pub fn inverse(
   let n = @matrix.width(input)
   match @core.compare(@matrix.height(input), n) {
     Equal => {
-      let columns = indices(n, Zero)
+      let columns = @core.indices(n)
       let identities = @core.map(columns, fn(i) {
         @core.map(columns, fn(j) {
           match @core.compare(i, j) {
