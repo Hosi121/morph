@@ -1,0 +1,94 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/polynomial"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
+
+pub fn compare_monomial(@core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> @core.Ordering
+
+pub fn constant(@core.Nat, @exact.Rational) -> Polynomial
+
+pub fn derivative(Polynomial, @core.Nat) -> Polynomial?
+
+pub fn divide(Polynomial, @core.Chain[Polynomial]) -> Result[Division, PolyError]
+
+pub fn divides(@core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> Bool
+
+pub fn evaluate(Polynomial, @core.Chain[@exact.Rational]) -> @exact.Rational?
+
+pub fn is_zero(Polynomial) -> Bool
+
+pub fn monic(Polynomial) -> Polynomial
+
+pub fn monomial_lcm(@core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> @core.Chain[@core.Nat]?
+
+pub fn monomial_quotient(@core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> @core.Chain[@core.Nat]?
+
+pub fn multiply(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
+
+pub fn negate(Polynomial) -> Polynomial
+
+pub fn normal_form(Polynomial, @core.Chain[Polynomial]) -> Result[Polynomial, PolyError]
+
+pub fn polynomial(@core.Nat, @core.Chain[Term]) -> Result[Polynomial, PolyError]
+
+pub fn scale(Polynomial, Term) -> Result[Polynomial, PolyError]
+
+pub fn subtract(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
+
+pub fn terms(Polynomial) -> @core.Chain[Term]
+
+pub fn univariate_gcd(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
+
+pub fn variables(Polynomial) -> @core.Nat
+
+pub fn zero(@core.Nat) -> Polynomial
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Division {
+  quotients : @core.Chain[Polynomial]
+  remainder : Polynomial
+}
+pub fn Division::equal(Self, Self) -> Bool
+pub fn Division::not_equal(Self, Self) -> Bool
+pub fn Division::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PolyError {
+  DimensionMismatch
+  ZeroDivisor
+}
+pub fn PolyError::equal(Self, Self) -> Bool
+pub fn PolyError::not_equal(Self, Self) -> Bool
+pub fn PolyError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Polynomial {
+  variables : @core.Nat
+  terms : @core.Chain[Term]
+}
+pub fn Polynomial::equal(Self, Self) -> Bool
+pub fn Polynomial::not_equal(Self, Self) -> Bool
+pub fn Polynomial::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Term {
+  coefficient : @exact.Rational
+  exponents : @core.Chain[@core.Nat]
+}
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
