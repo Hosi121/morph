@@ -1,9 +1,40 @@
 ///|
-test "halving conversion agrees with independent repeated-increment conversion" {
+/// Structural division by a pair of successors. The accumulator stores the
+/// unary quotient, and the Bool is the remainder.
+fn prototype_halve_nat(value : @core.Nat) -> (@core.Nat, Bool) {
+  fn visit(value : @core.Nat, quotient : @core.Nat) -> (@core.Nat, Bool) {
+    match value {
+      Zero => (quotient, false)
+      Succ(Zero) => (quotient, true)
+      Succ(Succ(rest)) => visit(rest, Succ(quotient))
+    }
+  }
+  visit(value, Zero)
+}
+
+///|
+fn prototype_nat_bits(value : @core.Nat) -> @core.Chain[Bool] {
+  match value {
+    Zero => Nil
+    Succ(_) => {
+      let (half, low) = prototype_halve_nat(value)
+      Cons(low, prototype_nat_bits(half))
+    }
+  }
+}
+
+///|
+fn prototype_binary_key(value : @core.Nat) -> @binary.Binary {
+  @binary.from_bits(prototype_nat_bits(value))
+}
+
+///|
+test "shared key conversion agrees with halving prototype and numeric oracle" {
   for value in 0..<=2048 {
     let unary = fuel(value)
-    assert_eq(binary_key(unary), @binary.from_nat(unary))
-    let (half, odd) = halve_nat(unary)
+    assert_eq(binary_key(unary), @oracle.binary(value))
+    assert_eq(prototype_binary_key(unary), @oracle.binary(value))
+    let (half, odd) = prototype_halve_nat(unary)
     assert_eq(@oracle.int_of_nat(half), value / 2)
     assert_eq(odd, value % 2 == 1)
   }

@@ -66,7 +66,7 @@ test "candidate halving binary key conversion all implication chain 256 occurren
       @core.map(formula, fn(clause) {
         @core.map(clause, fn(literal) {
           Atom::{
-            key: binary_key(literal.variable),
+            key: prototype_binary_key(literal.variable),
             source: literal.variable,
             positive: literal.positive,
           }

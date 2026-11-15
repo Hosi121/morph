@@ -327,3 +327,20 @@ initial carry with false. The solver returns a SAT model, the old CNF model
 checker accepts it, projection to source variables succeeds, the source miter
 re-evaluates to true, and the projected initial carry is true. This covers a
 larger counterexample path as well as the larger UNSAT certificate path.
+
+## Shared conversion cleanup
+
+Root commit `e717649` moved structural halving into the shared
+`@binary.from_nat`. CDCL's production `binary_key` now delegates to that
+function, removing its duplicate halving implementation. The original private
+prototype remains only in white-box tests and the conversion benchmark. The
+key tests now compare both implementations with the numeric test oracle rather
+than describing the shared implementation as repeated increment.
+
+After delegation, a same-run direct comparison on all chain-256 occurrences
+measured shared conversion at 522.58 µs ± 20.64 µs and the retained private
+prototype at 518.57 µs ± 21.43 µs. These measurements overlap. Width-16 startup
+measured 2.58 ms ± 111.62 µs, search 29.78 ms ± 1.63 ms, and certificate checking
+73.21 ms ± 2.46 ms. No performance regression was detected relative to the
+private implementation's checkpoint above. All normalization, model/proof,
+large-ID, resumption, and trace-statistics tests are retained.
