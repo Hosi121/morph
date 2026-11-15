@@ -1,0 +1,58 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/ruplog"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/cdcl",
+  "Hosi121/morph/core",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn build(@core.Chain[@core.Chain[@sat.Literal]], @cdcl.Proof) -> Certificate?
+
+pub fn build_prepared(Input, @cdcl.Proof) -> Certificate?
+
+pub fn check(@core.Chain[@core.Chain[@sat.Literal]], Certificate) -> Bool
+
+pub fn check_prepared(Input, Certificate) -> Bool
+
+pub fn erase(Certificate) -> @cdcl.Proof
+
+pub fn first_derived_id(Input) -> @binary.Binary
+
+pub fn hint_count(Certificate) -> @core.Nat
+
+pub fn prepare(@core.Chain[@core.Chain[@sat.Literal]]) -> Input
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  steps : @core.Chain[Step]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+type Database
+
+pub struct Input {
+  database : Database
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Step {
+  id : @binary.Binary
+  clause : @core.Chain[@sat.Literal]
+  hints : @core.Chain[@binary.Binary]
+}
+pub fn Step::equal(Self, Self) -> Bool
+pub fn Step::not_equal(Self, Self) -> Bool
+pub fn Step::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
