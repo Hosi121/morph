@@ -1,0 +1,90 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/lll"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn basis(Reduction) -> @matrix.Matrix[@exact.Integer]
+
+pub fn check(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> Reduction?
+
+pub fn check_gram(@matrix.Matrix[@exact.Integer], GramSchmidt) -> Bool
+
+pub fn check_with_gram(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], GramSchmidt) -> Reduction?
+
+pub fn gram(Reduction) -> GramSchmidt
+
+pub fn gram_schmidt(@matrix.Matrix[@exact.Integer]) -> GramSchmidt?
+
+pub fn original(Reduction) -> @matrix.Matrix[@exact.Integer]
+
+pub fn run(Machine, @core.Nat) -> Status
+
+pub fn start(@matrix.Matrix[@exact.Integer]) -> Machine?
+
+pub fn step(Machine) -> Status
+
+pub fn transform(Reduction) -> @matrix.Matrix[@exact.Integer]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct GramSchmidt {
+  orthogonal : @core.Chain[@core.Chain[@exact.Rational]]
+  coefficients : @core.Chain[@core.Chain[@exact.Rational]]
+  norms : @core.Chain[@exact.Rational]
+}
+pub fn GramSchmidt::equal(Self, Self) -> Bool
+pub fn GramSchmidt::not_equal(Self, Self) -> Bool
+pub fn GramSchmidt::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  input : @matrix.Matrix[@exact.Integer]
+  basis : @matrix.Matrix[@exact.Integer]
+  transform : @matrix.Matrix[@exact.Integer]
+  phase : Phase
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum Phase {
+  Reducing(@core.Nat, @core.Nat)
+  Testing(@core.Nat)
+}
+pub fn Phase::equal(Self, Self) -> Bool
+pub fn Phase::not_equal(Self, Self) -> Bool
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Reduction {
+  input : @matrix.Matrix[@exact.Integer]
+  transform : @matrix.Matrix[@exact.Integer]
+  basis : @matrix.Matrix[@exact.Integer]
+  gram : GramSchmidt
+}
+pub fn Reduction::equal(Self, Self) -> Bool
+pub fn Reduction::not_equal(Self, Self) -> Bool
+pub fn Reduction::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Done(Reduction)
+  Paused(Machine)
+  Fault(Machine)
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
