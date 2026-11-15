@@ -635,3 +635,80 @@ JS, and Wasm GC, the warning-denying check, and the unchanged purity gate.
 ```sh
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/maintenance_wbtest.mbt --target native --release
 ```
+
+## Share backjump suffixes and surviving assignment paths
+
+The reverse trail has nonincreasing decision levels. Backjumping can therefore
+return the unchanged suffix as soon as it reaches a surviving level. Watch
+learning now removes only abandoned assignments from its existing value trie,
+prunes empty paths, and inserts the new asserting assignment. The trie remains
+canonical, so the full paused state still equals the rebuilding version
+structurally. Watch positions, propagation order, and second-watch selection
+are preserved. The old filtering/rebuilding path remains a private selector.
+
+The trail-order invariant is checked after every paused transition in the
+existing pigeonhole and thousand-instance three-SAT invariant families. New
+regressions compare every paused state and final statistics/proof for all
+three maintenance modes in both scan and watch engines. Trie removal is checked
+against fresh construction for all 256 subsets of eight prefix-related keys
+and nine possible removed keys, including an absent key. Sparse sequential
+removal includes Binary keys 255, 256, 257, and 65535, and the fully removed trie
+must be exactly `Empty`. Sorted-trail cutoff regressions compare suffix sharing
+with the previous filter at every tested level.
+
+Same native release ELF, CPU 10, shared mutex, fixed `e717649` Binary and old
+Core, ten samples per search case:
+
+| Maintenance | Mean ± standard deviation | Range |
+| --- | ---: | ---: |
+| Filter trail and rebuild value trie | 501.18 ms ± 20.43 ms | 478.48–545.97 ms |
+| Share trail suffix and rebuild value trie | 487.10 ms ± 40.32 ms | 423.51–547.50 ms |
+| Share trail suffix and value trie | 423.63 ms ± 31.64 ms | 390.46–492.86 ms |
+
+The isolated suffix-only effect overlaps variation; the combined change is
+selected. The unchanged prepared hinted-checker control was 43.17 ms ± 3.72 ms.
+For the measured proof, fresh rebuilding inserts 169,747 assignment entries;
+the incremental path instead removes 21,659 abandoned entries and inserts
+477 asserting entries. This reduces assignment-index update calls from 169,747
+to 22,136, about 7.67 times. This is an operation count, not an allocation or
+complete-query speedup claim.
+
+A second experiment alternates execution order across 20 complete-query pairs,
+including startup, preparation, hinted building, and independent checking:
+
+| Mode | Mean ± standard deviation |
+| --- | ---: |
+| Filter and rebuild | 892.05 ms ± 40.38 ms |
+| Shared suffix and trie | 796.96 ms ± 35.96 ms |
+
+Sharing is quicker in all 20 pairs. The paired difference averages 95.09 ms,
+standard deviation 46.89 ms; the speed ratio median is 1.1208, range
+1.0195–1.2497. Each execution-order group has ten wins in ten pairs. This
+establishes about 10.7% lower complete-query mean for this miter experiment.
+The unchanged checker control was 43.90 ms ± 2.81 ms. The invocation used
+35.86 s elapsed, 35.65 s user, and 0.06 s system time.
+
+Other complete-query families return identical final statistics, models, and
+proofs between the selectors, and every timed query also checks its model or
+hinted certificate:
+
+| Family | Rebuild | Shared |
+| --- | ---: | ---: |
+| Pigeonhole six into five | 34.74 ms ± 1.45 ms | 35.73 ms ± 2.62 ms |
+| Fixed thousand six-variable three-SAT cohort | 112.13 ms ± 3.80 ms | 113.48 ms ± 5.88 ms |
+
+Those intervals overlap. No improvement or regression is established on these
+small families. Their input generation is outside timing; the cohort uses the
+same seed 31415 and generator as the invariant test. The comparison ELF hash was
+`4b4e8fc46aab8a086052d44ac57261dad86c1df8aeeb9c17cb5642400578f970`.
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/maintenance_modes_wbtest.mbt --target native --release -i 0
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/maintenance_modes_wbtest.mbt --target native --release -i 4
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/maintenance_modes_wbtest.mbt --target native --release -i 5
+```
+
+After selecting sharing by default, all 26 CDCL tests pass native, JS, and
+Wasm GC, together with the warning-denying check and purity gate. Fresh exports
+again pass both pinned external checkers for all 16 positive cases, and all
+seven negative controls reject. The 64-bit CNF/DRUP hashes above are unchanged.

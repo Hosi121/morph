@@ -1,3 +1,5 @@
+// Profile retained baseline helpers; actual transitions use the current engine.
+
 ///|
 fn sample_maintenance(
   initial : Search,

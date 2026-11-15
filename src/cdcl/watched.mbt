@@ -43,6 +43,27 @@ fn[A] index_put(
 }
 
 ///|
+fn[A] index_branch(value : A?, left : Index[A], right : Index[A]) -> Index[A] {
+  match (value, left, right) {
+    (None, Empty, Empty) => Empty
+    _ => Branch(value, left, right)
+  }
+}
+
+///|
+/// Remove one value and prune empty paths, preserving the canonical trie shape.
+fn[A] index_remove(index : Index[A], key : @core.Chain[Bool]) -> Index[A] {
+  match (index, key) {
+    (Empty, _) => Empty
+    (Branch(_, left, right), Nil) => index_branch(None, left, right)
+    (Branch(value, left, right), Cons(false, rest)) =>
+      index_branch(value, index_remove(left, rest), right)
+    (Branch(value, left, right), Cons(true, rest)) =>
+      index_branch(value, left, index_remove(right, rest))
+  }
+}
+
+///|
 #derive(Eq, Debug)
 struct WatchedClause {
   id : @binary.Binary
@@ -432,6 +453,55 @@ fn watch_learn(
       let values = @core.fold_left(trail, Empty, fn(values, entry) {
         index_put(values, @binary.bits(entry.literal.key), entry)
       })
+      let state = {
+        ..state,
+        values,
+        active: None,
+        pending: @core.enqueue(@core.queue(), first),
+      }
+      Some(
+        watch_insert(state, clause, first, second_watch(clause, first, trail)),
+      )
+    }
+  }
+}
+
+///|
+fn watch_forget_above(
+  values : Index[Assignment],
+  trail : Trail,
+  level : @core.Nat,
+) -> Index[Assignment] {
+  match trail {
+    Nil => values
+    Cons(entry, rest) =>
+      match @core.compare(entry.level, level) {
+        Greater =>
+          watch_forget_above(
+            index_remove(values, @binary.bits(entry.literal.key)),
+            rest,
+            level,
+          )
+        _ => values
+      }
+  }
+}
+
+///|
+/// Keep surviving assignment paths and remove only the abandoned trail prefix.
+fn watch_learn_shared(
+  watch : WatchState?,
+  clause : Lits,
+  first : Atom,
+  trail : Trail,
+  previous : Trail,
+) -> WatchState? {
+  match (watch, trail) {
+    (None, _) => None
+    (Some(_), Nil) => watch_learn(watch, clause, first, trail)
+    (Some(state), Cons(entry, _)) => {
+      let values = watch_forget_above(state.values, previous, entry.level)
+      let values = index_put(values, @binary.bits(entry.literal.key), entry)
       let state = {
         ..state,
         values,

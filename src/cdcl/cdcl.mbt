@@ -498,6 +498,35 @@ fn backjump(trail : Trail, level : @core.Nat) -> Trail {
 }
 
 ///|
+/// Reverse chronological trails have nonincreasing decision levels.
+fn backjump_shared(trail : Trail, level : @core.Nat) -> Trail {
+  match trail {
+    Nil => Nil
+    Cons(entry, rest) =>
+      match @core.compare(entry.level, level) {
+        Greater => backjump_shared(rest, level)
+        _ => trail
+      }
+  }
+}
+
+///|
+priv enum Maintenance {
+  FlatRebuild
+  SharedSuffix
+  SharedValues
+}
+
+///|
+fn maintenance_mode(share_suffix : Bool, share_values : Bool) -> Maintenance {
+  match (share_suffix, share_values) {
+    (_, true) => SharedValues
+    (true, false) => SharedSuffix
+    (false, false) => FlatRebuild
+  }
+}
+
+///|
 fn model(trail : Trail, variables : Lits) -> @sat.Model {
   @core.map(variables, fn(literal) {
     match assignment(trail, literal) {
@@ -508,11 +537,12 @@ fn model(trail : Trail, variables : Lits) -> @sat.Model {
 }
 
 ///|
-fn transition_using(
+fn transition_maintaining(
   search : Search,
   inspection : Inspection,
   indexed : Bool,
   skip_recount : Bool,
+  maintenance : Maintenance,
 ) -> (Status, Statistics) {
   let stats = {
     ..search.statistics,
@@ -590,7 +620,11 @@ fn transition_using(
                   let level = backjump_level(learned, lookup, literal)
                   let trail : Trail = Cons(
                     { literal, level, reason: Some(learned), },
-                    backjump(search.trail, level),
+                    match maintenance {
+                      FlatRebuild => backjump(search.trail, level)
+                      SharedSuffix | SharedValues =>
+                        backjump_shared(search.trail, level)
+                    },
                   )
                   let stats = {
                     ..stats,
@@ -606,7 +640,18 @@ fn transition_using(
                     Paused({
                       database: Cons(learned, search.database),
                       variables: search.variables,
-                      watch: watch_learn(search.watch, learned, literal, trail),
+                      watch: match maintenance {
+                        FlatRebuild | SharedSuffix =>
+                          watch_learn(search.watch, learned, literal, trail)
+                        SharedValues =>
+                          watch_learn_shared(
+                            search.watch,
+                            learned,
+                            literal,
+                            trail,
+                            search.trail,
+                          )
+                      },
                       trail,
                       level,
                       proof_rev: Cons(
@@ -623,6 +668,22 @@ fn transition_using(
       }
     }
   }
+}
+
+///|
+fn transition_using(
+  search : Search,
+  inspection : Inspection,
+  indexed : Bool,
+  skip_recount : Bool,
+) -> (Status, Statistics) {
+  transition_maintaining(
+    search,
+    inspection,
+    indexed,
+    skip_recount,
+    maintenance_mode(true, true),
+  )
 }
 
 ///|

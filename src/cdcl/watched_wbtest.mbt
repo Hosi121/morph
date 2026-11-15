@@ -15,6 +15,11 @@ fn assert_trail(trail : Trail) -> Unit raise {
     Nil => ()
     Cons(entry, rest) => {
       assert_true(assignment(rest, entry.literal) is None)
+      match rest {
+        Nil => ()
+        Cons(previous, _) =>
+          assert_false(@core.compare(entry.level, previous.level) is Less)
+      }
       match entry.reason {
         None => assert_false(@core.is_zero(entry.level))
         Some(reason) =>
