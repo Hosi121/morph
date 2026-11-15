@@ -1,0 +1,82 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/circuit"
+
+import {
+  "Hosi121/morph/boolean",
+  "Hosi121/morph/core",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adder_miter(@core.Nat, AdderStyle, AdderStyle) -> Encoding?
+
+pub fn adder_outputs(@core.Nat, AdderStyle) -> @core.Chain[Expr]
+
+pub fn algebra() -> @boolean.Algebra[Expr]
+
+pub fn check_source_model(Encoding, @core.Chain[@sat.Literal]) -> Bool
+
+pub fn cnf(Encoding) -> @core.Chain[@core.Chain[@sat.Literal]]
+
+pub fn compile(@core.Chain[Expr]) -> Encoding
+
+pub fn conjunction(Expr, Expr) -> Expr
+
+pub fn disjunction(Expr, Expr) -> Expr
+
+pub fn evaluate(Expr, @core.Chain[@sat.Literal]) -> Bool?
+
+pub fn exclusive(Expr, Expr) -> Expr
+
+pub fn gates(Encoding) -> @core.Nat
+
+pub fn miter(@core.Chain[Expr], @core.Chain[Expr]) -> Encoding?
+
+pub fn negate(Expr) -> Expr
+
+pub fn select(Expr, Expr, Expr) -> Expr
+
+pub fn source_model(Encoding, @core.Chain[@sat.Literal]) -> @core.Chain[@sat.Literal]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum AdderStyle {
+  Minterms
+  Propagate
+  Multiplexer
+}
+pub fn AdderStyle::equal(Self, Self) -> Bool
+pub fn AdderStyle::not_equal(Self, Self) -> Bool
+pub fn AdderStyle::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Encoding {
+  cnf : @core.Chain[@core.Chain[@sat.Literal]]
+  assertions : @core.Chain[Expr]
+  source_variables : @core.Chain[@core.Nat]
+  gates : @core.Nat
+}
+pub fn Encoding::equal(Self, Self) -> Bool
+pub fn Encoding::not_equal(Self, Self) -> Bool
+pub fn Encoding::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Expr {
+  Constant(Bool)
+  Variable(@core.Nat)
+  Negation(Expr)
+  Conjunction(Expr, Expr)
+  Disjunction(Expr, Expr)
+  Exclusive(Expr, Expr)
+  Select(Expr, Expr, Expr)
+}
+pub fn Expr::equal(Self, Self) -> Bool
+pub fn Expr::not_equal(Self, Self) -> Bool
+pub fn Expr::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

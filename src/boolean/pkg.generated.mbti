@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/boolean"
+
+import {
+  "Hosi121/morph/core",
+}
+
+// Values
+pub fn[A] add_words((A, A, A) -> (A, A), @core.Chain[A], @core.Chain[A], A) -> (@core.Chain[A], A)?
+
+pub fn algebra() -> Algebra[Bool]
+
+pub fn exclusive(Bool, Bool) -> Bool
+
+pub fn[A] full_adder_minterms(Algebra[A], A, A, A) -> (A, A)
+
+pub fn[A] full_adder_mux(Algebra[A], A, A, A) -> (A, A)
+
+pub fn[A] full_adder_propagate(Algebra[A], A, A, A) -> (A, A)
+
+// Errors
+
+// Types and methods
+pub(all) struct Algebra[A] {
+  zero : A
+  one : A
+  negate : (A) -> A
+  conjunction : (A, A) -> A
+  disjunction : (A, A) -> A
+  exclusive : (A, A) -> A
+  select : (A, A, A) -> A
+}
+
+// Type aliases
+
+// Traits
