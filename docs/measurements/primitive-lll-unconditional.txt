@@ -1,0 +1,13 @@
+[Hosi121/morph] bench lll/bench_wbtest.mbt:13 ("exact LLL three square including rank validation and final checker") ok
+time (mean ± σ)         range (min … max) 
+ 371.14 µs ±  72.62 µs   275.93 µs … 473.91 µs  in 10 ×    338 runs
+[Hosi121/morph] bench lll/bench_wbtest.mbt:22 ("exact LLL three square independent checker only") ok
+time (mean ± σ)         range (min … max) 
+  43.69 µs ±   9.80 µs    34.52 µs …  63.68 µs  in 10 ×   2859 runs
+[Hosi121/morph] bench lll/bench_wbtest.mbt:29 ("exact LLL three by four including rank validation and final checker") ok
+time (mean ± σ)         range (min … max) 
+ 586.33 µs ±  44.09 µs   532.32 µs … 677.10 µs  in 10 ×    103 runs
+[Hosi121/morph] bench lll/bench_wbtest.mbt:38 ("Smith then exact LLL dependent three by four including both certificate checks") ok
+time (mean ± σ)         range (min … max) 
+ 623.04 µs ± 110.80 µs   513.31 µs … 819.93 µs  in 10 ×    193 runs
+Total tests: 4, passed: 4, failed: 0.

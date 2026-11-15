@@ -1,0 +1,22 @@
+[Hosi121/morph] bench benchmarks/primitive_test.mbt:11 ("binary multiplication identity operands") ok
+name            time (mean ± σ)         range (min … max) 
+long times zero   12.05 ns ±   1.54 ns    10.30 ns …  14.41 ns  in 10 × 100000 runs
+zero times long   13.57 ns ±   4.42 ns    10.06 ns …  23.66 ns  in 10 × 100000 runs
+long times one     7.99 ns ±   0.43 ns     7.36 ns …   8.49 ns  in 10 × 100000 runs
+one times long     8.40 ns ±   1.16 ns     7.17 ns …  10.60 ns  in 10 × 100000 runs
+long times two    17.54 ns ±   1.38 ns    15.91 ns …  19.19 ns  in 10 × 100000 runs
+two times long    17.45 ns ±   1.14 ns    15.79 ns …  19.32 ns  in 10 × 100000 runs
+[Hosi121/morph] bench benchmarks/primitive_test.mbt:25 ("binary division and gcd identities") ok
+name                   time (mean ± σ)         range (min … max) 
+long divided by one      14.65 ns ±   0.70 ns    13.83 ns …  15.82 ns  in 10 × 100000 runs
+long divided by itself    6.19 µs ±  79.40 ns     6.07 µs …   6.34 µs  in 10 ×  16278 runs
+small divided by long    19.31 ns ±   1.84 ns    17.64 ns …  23.20 ns  in 10 × 100000 runs
+gcd long one             15.87 ns ±   1.13 ns    14.48 ns …  18.35 ns  in 10 × 100000 runs
+gcd long itself          15.60 µs ±   8.62 µs     6.10 µs …  29.95 µs  in 10 ×  14970 runs
+gcd zero long            11.90 ns ±   4.20 ns     9.34 ns …  22.31 ns  in 10 × 100000 runs
+[Hosi121/morph] bench benchmarks/primitive_test.mbt:44 ("binary compare equal and different words") ok
+name             time (mean ± σ)         range (min … max) 
+equal 2048 bits    12.45 µs ±   9.25 µs     7.67 µs …  37.57 µs  in 10 ×   1691 runs
+changed low bits   30.68 µs ±  13.79 µs    17.89 µs …  55.22 µs  in 10 ×   3379 runs
+different width    18.33 µs ±   7.48 µs    10.48 µs …  31.99 µs  in 10 ×   5443 runs
+Total tests: 3, passed: 3, failed: 0.

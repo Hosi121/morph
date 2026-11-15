@@ -1,0 +1,7 @@
+[Hosi121/morph] bench benchmarks/division_distribution_test.mbt:2 ("normal short and 128-bit division distribution") ok
+name                time (mean ± σ)         range (min … max) 
+64 short divisions    77.08 µs ±   1.99 µs    74.64 µs …  80.25 µs  in 10 ×   1234 runs
+64 short gcd         144.09 µs ±   8.10 µs   134.86 µs … 157.60 µs  in 10 ×    786 runs
+128 by 64 bits        59.97 µs ±   1.21 µs    58.41 µs …  61.96 µs  in 10 ×   1647 runs
+gcd 128 and 64 bits  202.30 µs ±  13.87 µs   187.50 µs … 223.45 µs  in 10 ×    473 runs
+Total tests: 1, passed: 1, failed: 0.

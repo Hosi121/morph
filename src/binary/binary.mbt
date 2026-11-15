@@ -211,7 +211,14 @@ fn multiply_bits(xs : @core.Chain[Bool], b : Binary) -> Binary {
 
 ///|
 pub fn multiply(a : Binary, b : Binary) -> Binary {
-  multiply_bits(a.bits, b)
+  match (a.bits, b.bits) {
+    (Nil, _) | (_, Nil) => zero()
+    (Cons(true, Nil), _) => b
+    (_, Cons(true, Nil)) => a
+    (Cons(false, Cons(true, Nil)), _) => double(b)
+    (_, Cons(false, Cons(true, Nil))) => double(a)
+    _ => multiply_bits(a.bits, b)
+  }
 }
 
 ///|
@@ -234,21 +241,77 @@ fn divide_bits(xs : @core.Chain[Bool], divisor : Binary) -> (Binary, Binary) {
 }
 
 ///|
+fn same_bit(a : Bool, b : Bool) -> Bool {
+  match a {
+    false => !b
+    true => b
+  }
+}
+
+///|
+// A necessary, inexpensive condition for equality. An unequal low prefix lets
+// ordinary division proceed without an extra full-word comparison.
+fn equal_prefix(xs : @core.Chain[Bool], ys : @core.Chain[Bool]) -> Bool {
+  match (xs, ys) {
+    (
+      Cons(a, Cons(b, Cons(c, Cons(d, _)))),
+      Cons(w, Cons(x, Cons(y, Cons(z, _)))),
+    ) => same_bit(a, w) && same_bit(b, x) && same_bit(c, y) && same_bit(d, z)
+    _ => true
+  }
+}
+
+///|
 pub fn divmod(a : Binary, b : Binary) -> (Binary, Binary)? {
-  match b.bits {
-    Nil => None
-    Cons(_, _) => Some(divide_bits(a.bits, b))
+  match (a.bits, b.bits) {
+    (_, Nil) => None
+    (Nil, _) => Some((zero(), zero()))
+    (_, Cons(true, Nil)) => Some((a, zero()))
+    (_, Cons(false, Cons(true, Nil))) =>
+      Some(
+        (
+          half(a),
+          match odd(a) {
+            true => one()
+            false => zero()
+          },
+        ),
+      )
+    _ =>
+      match equal_prefix(a.bits, b.bits) {
+        false => Some(divide_bits(a.bits, b))
+        true =>
+          match compare(a, b) {
+            Less => Some((zero(), a))
+            Equal => Some((one(), zero()))
+            Greater => Some(divide_bits(a.bits, b))
+          }
+      }
   }
 }
 
 ///|
 pub fn gcd(a : Binary, b : Binary) -> Binary {
-  match b.bits {
-    Nil => a
-    Cons(_, _) => {
-      let (_, r) = divide_bits(a.bits, b)
-      gcd(b, r)
-    }
+  match (a.bits, b.bits) {
+    (Nil, _) => b
+    (_, Nil) => a
+    (Cons(true, Nil), _) | (_, Cons(true, Nil)) => one()
+    _ =>
+      match equal_prefix(a.bits, b.bits) {
+        false => {
+          let (_, r) = divide_bits(a.bits, b)
+          gcd(b, r)
+        }
+        true =>
+          match compare(a, b) {
+            Equal => a
+            Less => gcd(b, a)
+            Greater => {
+              let (_, r) = divide_bits(a.bits, b)
+              gcd(b, r)
+            }
+          }
+      }
   }
 }
 
