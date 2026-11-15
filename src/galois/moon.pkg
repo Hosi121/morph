@@ -7,4 +7,6 @@ import {
 
 import {
   "Hosi121/morph/testsupport" @oracle,
+  "Hosi121/morph/cyclicrs",
+  "moonbitlang/core/bench",
 } for "wbtest"
