@@ -336,3 +336,19 @@ lambda の引数には全称変数を持たない scheme を入れ、勝手な�
 主型算法の実装であり、このコード全体の健全性・完全性を形式証明したという主張ではない。
 
 原典：[Damas–Milner, Principal Type-Schemes for Functional Programs (1982)](https://www.cs.tufts.edu/comp/150FP/archive/robin-milner/damas-milner-original.pdf)。
+
+## 正規表現を二通りの意味で実行する
+
+Regex は空言語・空語・一記号・和・連接・Kleene star の ADT。
+Brzozowski 微分は一記号を読んだ後の残りの言語を Regex として作り、
+最後に nullable を調べる。空言語・空語の単位則と吸収則を smart constructor で簡約する。
+文字列検索ではなく**語全体**とのマッチを実装する。アルファベットも型パラメータ。
+
+別実装として Thompson NFA を構成した。状態番号は Nat、遷移は無音または一記号消費の ADT。
+無音閉包は訪問集合で循環を止めるため、nullable な式の star でも停止する。
+NFA 実行は微分のコードを使わない。
+
+深さ2以下の構文を構成する全3244式、長さ0..4の全31二進語について両実装を照合。
+既知の「末尾が true,false」言語、空言語、空語、nullable loop も確認した。
+微分版には ACI 正規化やメモ化を入れていないため、長い入力では式が膨らみ得る。
+NFA 版もリスト集合なので、通常のbitset実装と同じ実時間モデルではない。

@@ -1,0 +1,55 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/regex"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] choice(Regex[A], Regex[A]) -> Regex[A]
+
+pub fn[A] compile(Regex[A]) -> Nfa[A]
+
+pub fn[A] derivative(Regex[A], A, (A, A) -> Bool) -> Regex[A]
+
+pub fn[A] matches(Regex[A], @core.Chain[A], (A, A) -> Bool) -> Bool
+
+pub fn[A] nfa_matches(Nfa[A], @core.Chain[A], (A, A) -> Bool) -> Bool
+
+pub fn[A] nullable(Regex[A]) -> Bool
+
+pub fn[A] repeat(Regex[A]) -> Regex[A]
+
+pub fn[A] sequence(Regex[A], Regex[A]) -> Regex[A]
+
+// Errors
+
+// Types and methods
+pub struct Nfa[A] {
+  start : @core.Nat
+  accept : @core.Nat
+  transitions : @core.Chain[Transition[A]]
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Regex[A] {
+  Empty
+  Epsilon
+  Atom(A)
+  Choice(Regex[A], Regex[A])
+  Sequence(Regex[A], Regex[A])
+  Repeat(Regex[A])
+}
+pub fn[A : Eq] Regex::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Regex::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Regex::to_repr(Self[A]) -> @debug.Repr
+
+pub enum Transition[A] {
+  Silent(@core.Nat, @core.Nat)
+  Consume(@core.Nat, A, @core.Nat)
+}
+
+// Type aliases
+
+// Traits
