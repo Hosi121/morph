@@ -103,23 +103,13 @@ fn normalize(numerator : Integer, denominator : @binary.Binary) -> Rational {
     false => ()
   }
   let common = common_factor(numerator.magnitude, denominator)
-  match
-    (
-      @binary.divmod(numerator.magnitude, common),
-      @binary.divmod(denominator, common),
-    ) {
-    (Some((n, _)), Some((d, _))) => {
-      let num = positive(n)
+  match is_one(common) {
+    true => { numerator, denominator, }
+    false =>
       {
-        numerator: match numerator.negative {
-          true => negate(num)
-          false => num
-        },
-        denominator: d,
+        numerator: integer_quotient(numerator, common),
+        denominator: exact_quotient(denominator, common),
       }
-    }
-    // Unreachable for our nonzero denominators; retaining the fraction is sound.
-    _ => { numerator, denominator, }
   }
 }
 
@@ -158,7 +148,10 @@ pub fn rational_one() -> Rational {
 
 ///|
 pub fn rational_negate(r : Rational) -> Rational {
-  { numerator: negate(r.numerator), denominator: r.denominator, }
+  match @binary.is_zero(r.numerator.magnitude) {
+    true => r
+    false => { numerator: negate(r.numerator), denominator: r.denominator, }
+  }
 }
 
 ///|
@@ -171,6 +164,10 @@ pub fn rational_add(a : Rational, b : Rational) -> Rational {
     (true, _) => return b
     (_, true) => return a
     _ => ()
+  }
+  match a.denominator.equal(b.denominator) {
+    true => return normalize(add(a.numerator, b.numerator), a.denominator)
+    false => ()
   }
   let common = common_factor(a.denominator, b.denominator)
   let left = exact_quotient(a.denominator, common)
@@ -243,6 +240,14 @@ fn exact_quotient(
     true => return value
     false => ()
   }
+  match @binary.is_zero(value) {
+    true => return value
+    false => ()
+  }
+  match value.equal(divisor) {
+    true => return @binary.one()
+    false => ()
+  }
   match @binary.divmod(value, divisor) {
     Some((quotient, _)) => quotient
     None => value
@@ -265,13 +270,21 @@ fn common_factor(a : @binary.Binary, b : @binary.Binary) -> @binary.Binary {
       match (@binary.is_zero(a), @binary.is_zero(b)) {
         (true, _) => b
         (_, true) => a
-        _ => @binary.gcd(a, b)
+        _ =>
+          match a.equal(b) {
+            true => a
+            false => @binary.gcd(a, b)
+          }
       }
   }
 }
 
 ///|
 fn integer_quotient(value : Integer, divisor : @binary.Binary) -> Integer {
+  match is_one(divisor) {
+    true => return value
+    false => ()
+  }
   let quotient = positive(exact_quotient(value.magnitude, divisor))
   match value.negative {
     true => negate(quotient)
@@ -282,7 +295,26 @@ fn integer_quotient(value : Integer, divisor : @binary.Binary) -> Integer {
 ///|
 /// Halve using the nonzero denominator invariant, without a partial division API.
 pub fn rational_half(value : Rational) -> Rational {
-  normalize(value.numerator, @binary.double(value.denominator))
+  match @binary.is_zero(value.numerator.magnitude) {
+    true => return value
+    false => ()
+  }
+  // Coprimality is already known. Only a factor two can be introduced by half.
+  match @binary.odd(value.numerator.magnitude) {
+    true =>
+      {
+        numerator: value.numerator,
+        denominator: @binary.double(value.denominator),
+      }
+    false =>
+      {
+        numerator: {
+          negative: value.numerator.negative,
+          magnitude: @binary.half(value.numerator.magnitude),
+        },
+        denominator: value.denominator,
+      }
+  }
 }
 
 ///|
@@ -295,6 +327,18 @@ pub fn rational_divide(a : Rational, b : Rational) -> Rational? {
 
 ///|
 pub fn rational_compare(a : Rational, b : Rational) -> @core.Ordering {
+  match (a.numerator.negative, b.numerator.negative) {
+    (true, false) => return Less
+    (false, true) => return Greater
+    _ => ()
+  }
+  match
+    @binary.is_zero(a.numerator.magnitude) ||
+    @binary.is_zero(b.numerator.magnitude) ||
+    a.denominator.equal(b.denominator) {
+    true => return compare(a.numerator, b.numerator)
+    false => ()
+  }
   compare(
     multiply(a.numerator, positive(b.denominator)),
     multiply(b.numerator, positive(a.denominator)),

@@ -103,3 +103,47 @@ taskset -c 8 tools/moon bench src/exactbench --target native --release
 | Smith 3x3 | 41.25 µs ± 1.37 µs |
 | Smith checker | 17.49 µs ± 585.55 ns |
 | simplex | 44.89 µs ± 3.32 µs |
+
+## 第一段：既約性と同値/符号を使うfast path
+
+次の変形だけを加え、交差約分の一般経路と0/±1恒等則を維持した。
+
+- normalizeでGCD=1なら、分子と分母を1で長除算せずそのまま保持する。
+- 正確な商でdivisor=1、value=0、value=divisorを直接扱い、gcd(a,a)=aも直接使う。
+- 同じ分母の加算は分子を足して一度normalizeする。
+- 既約n/dのhalfは、nが偶数ならn/2、奇数なら分母を2倍にする。新たに共通し得る因子は2だけなのでGCDは不要。
+- 比較は符号・零・同じ分母から判断できる場合に交差積を作らない。
+- 零の符号反転とdivisor=1のInteger quotientは既存値を再利用する。
+
+| CPU8のmicrobenchmark | before | 第一段after |
+| --- | --- | --- |
+| coprime normalize | 40.96 µs | 28.03 µs ± 955.62 ns |
+| shared factor normalize | 151.92 µs | 138.36 µs ± 6.87 µs |
+| even half | 75.38 µs | 25.73 ns ± 1.97 ns |
+| odd half | 90.50 µs | 28.52 ns ± 14.24 ns |
+| common denominator add | 72.77 µs | 6.51 µs ± 294.73 ns |
+| coprime add control | 255.42 µs | 244.12 µs ± 5.99 µs |
+| opposite sign compare | 8.03 µs | 5.28 ns ± 0.63 ns |
+| common denominator compare | 11.23 µs | 525.34 ns ± 15.30 ns |
+| reciprocal product | 123.60 µs | 1.47 µs ± 28.78 ns |
+| signed corpus | 21.06 µs | 20.06 µs ± 799.81 ns |
+
+| CPU8の上位同入力 | before | 第一段after |
+| --- | --- | --- |
+| LLL 3x3 | 367.58 µs | 299.38 µs ± 6.15 µs |
+| LLL checker | 29.14 µs | 19.53 µs ± 527.72 ns |
+| LLL 3x4 | 451.30 µs | 336.65 µs ± 9.90 µs |
+| Smith+LLL依存3x4 | 322.86 µs | 276.39 µs ± 8.64 µs |
+| Smith 3x3 | 41.25 µs | 36.26 µs ± 1.35 µs |
+| Smith checker | 17.49 µs | 14.82 µs ± 368.75 ns |
+| simplex | 44.89 µs | 30.72 µs ± 624.51 ns |
+
+halfと符号比較の小さい値は、その定数的な構造操作だけの費用であり、一般のRational演算の時間とは呼ばない。
+odd halfのσも大きいためns比率の精密さを主張しない。
+coprime addやsigned corpusは大きな改善とは扱わず、一般経路のcontrolとして残す。
+上位ではLLL、Smith、simplexでも同じ値と証拠条件を保って短縮した。
+
+normalize/halfは分子−256〜256・分母1〜128を独立整数gcdから正規形まで確認する。
+比較は分子−8〜8・分母1〜9の全組合せを符号付き整数の交差積と比較する。
+既存の交差約分全探索に加えて、符号・零・長い相殺の回帰も確認する。
+この段階のbefore/afterにはrootの新しいbinary最適化を混ぜていない。
