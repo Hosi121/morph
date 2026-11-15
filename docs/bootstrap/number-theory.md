@@ -78,3 +78,68 @@ trial 65537: 692.30 µs ± 20.47 µs; 665.63 µs … 723.14 µs; 10 × 149 runs
 Lucas 998244353: 17.28 ms ± 751.96 µs; 16.23 ms … 18.27 ms; 10 × 6 runs
 trial 998244353: 250.94 ms ± 9.55 ms; 236.47 ms … 268.24 ms; 10 × 1 runs
 ```
+
+## 燃料付きPollard rhoと因子の検査
+
+`src/factor` は非自明因子を探す処理と、その積を確認する境界を持つ。
+`check_factor(n,d)` は `1<d<n` と割り切れることを検査し、
+外から構築できない `Split` を返す。`number`、`divisor`、`cofactor` で値を取り出せる。
+どちらの因子も素数とは限らず、`Split` を `Prime` の代用にはできない。
+
+```moonbit
+pub fn check_factor(@binary.Binary, @binary.Binary) -> Split?
+pub fn start(@binary.Binary, @binary.Binary, @binary.Binary) -> Machine?
+pub fn step(Machine) -> Status
+pub fn run(Machine, @core.Nat) -> Status
+pub(all) enum Status {
+  Found(Split)
+  Suspended(Machine)
+  Failed(Machine)
+}
+```
+
+`start(n,seed,c)` は `n>1` を要求する。二つの点を `seed mod n` から始め、
+`f(x)=x²+c mod n` に対してFloydの遅い点を1回、速い点を2回進め、
+差と `n` のGCDを調べる。`1<gcd<n` のとき `check_factor` を通して返す。
+GCDが `n` なら `Failed`、1なら次の不変状態を返す。偶数 `n>2` は2で分割する。
+これは [HAC Algorithm 3.9 と Note 3.12](https://cacr.uwaterloo.ca/hac/about/chap3.pdf)
+の探索を、seedと定数を明示する形で表す。
+
+燃料1は `step` 1回であり、最大Floyd1反復（剰余多項式評価3回とGCD）を行う。
+偶数の直接分割も1ステップとして扱う。燃料0では一切進めず、同じ機械を返す。
+燃料はビット演算数・メモリ・実時間の上限ではない。
+`iterations` は実際に行ったFloyd反復数で、偶数の直接分割は含まない。
+分割が見つかる前の状態を `run` に再投入すると、分割実行と一括実行は同じ結果になる。
+
+`Failed` はその軌道が衝突したことだけを示す。素数の確定や因数の不存在は意味しない。
+呼出側が同じ `n` と別の `seed,c` で `start` し直す。
+固定seedで全合成数の分割を保証せず、暗黙の乱数や無制限の再試行はない。
+例えば `n=21, seed=2, c=1` は失敗するが、`c=2` なら因子3を得る。
+退化する `c=0` 等も入力として許し、失敗の再現と検査に使う。
+完全な素因数分解を得る再帰driverは、このmilestoneでは含めない。
+
+検証は0〜127の候補と0〜131の因子主張の全組合せ、
+2〜63の候補・seed 0〜3・定数0〜3のFloyd状態を整数モデルと照合する。
+燃料0、分割再開、一括実行との同一性、退化seed、素数での非受理を調べる。
+通常テストにはPython `math.gcd` で独立生成した大きな軌道のfixtureも置く。
+100160063を40反復で10007×10009、281479271350267を172反復で
+65537×4294967291、1000036000099を478反復で1000033×1000003へ分割し、
+直前の燃料では未完了、次の1ステップで該当因子を返すことを照合する。
+再生成は同じ `tools/generate_primality.py`、その後 `tools/moon fmt src/primality src/factor`。
+
+同じ環境で `tools/moon bench src/factor --target native --release` を実行した。
+入力・機械・燃料の構築を計測外に置き、両方式とも非自明因子の検査まで含む。
+比較する試し割りはテスト内の同じ二進算術による素朴な探索。
+rhoは固定 `seed=2,c=1`、燃料256であり、この二つで成功した条件の比較である。
+
+| 候補 | rho（平均±標準偏差） | 試し割り（平均±標準偏差） |
+| --- | --- | --- |
+| 1022117 | 920.43 µs ± 33.30 µs | 4.67 ms ± 264.61 µs |
+| 100160063 | 4.15 ms ± 209.46 µs | 68.93 ms ± 6.45 ms |
+
+```text
+rho 1022117: 920.43 µs ± 33.30 µs; 862.92 µs … 961.48 µs; 10 × 117 runs
+trial 1022117: 4.67 ms ± 264.61 µs; 4.30 ms … 5.16 ms; 10 × 24 runs
+rho 100160063: 4.15 ms ± 209.46 µs; 3.92 ms … 4.50 ms; 10 × 28 runs
+trial 100160063: 68.93 ms ± 6.45 ms; 62.30 ms … 78.59 ms; 10 × 2 runs
+```

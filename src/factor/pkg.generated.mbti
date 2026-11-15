@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/factor"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/modular",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_factor(@binary.Binary, @binary.Binary) -> Split?
+
+pub fn cofactor(Split) -> @binary.Binary
+
+pub fn divisor(Split) -> @binary.Binary
+
+pub fn iterations(Machine) -> @core.Nat
+
+pub fn number(Split) -> @binary.Binary
+
+pub fn run(Machine, @core.Nat) -> Status
+
+pub fn start(@binary.Binary, @binary.Binary, @binary.Binary) -> Machine?
+
+pub fn step(Machine) -> Status
+
+pub fn target(Machine) -> @binary.Binary
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  modulus : @modular.Modulus
+  constant : @binary.Binary
+  slow : @binary.Binary
+  fast : @binary.Binary
+  iterations : @core.Nat
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Split {
+  number : @binary.Binary
+  divisor : @binary.Binary
+  cofactor : @binary.Binary
+}
+pub fn Split::equal(Self, Self) -> Bool
+pub fn Split::not_equal(Self, Self) -> Bool
+pub fn Split::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Found(Split)
+  Suspended(Machine)
+  Failed(Machine)
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
