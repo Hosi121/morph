@@ -1,0 +1,10 @@
+[Hosi121/morph] bench benchmarks/natural_test.mbt:2 ("Nat to Binary 4096, input construction excluded") ok
+time (mean ± σ)         range (min … max) 
+  20.58 µs ± 705.68 ns    19.85 µs …  22.05 µs  in 10 ×   5105 runs
+[Hosi121/morph] bench benchmarks/natural_test.mbt:8 ("successor of an even 2048-bit value") ok
+time (mean ± σ)         range (min … max) 
+  13.42 ns ±   0.51 ns    12.94 ns …  14.39 ns  in 10 × 100000 runs
+[Hosi121/morph] bench benchmarks/natural_test.mbt:14 ("successor of 2048 low one bits") ok
+time (mean ± σ)         range (min … max) 
+  19.04 µs ± 448.32 ns    18.53 µs …  19.87 µs  in 10 ×   5171 runs
+Total tests: 3, passed: 3, failed: 0.

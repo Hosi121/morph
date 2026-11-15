@@ -1,0 +1,11 @@
+[Hosi121/morph] bench benchmarks/addition_test.mbt:2 ("addition with zero and a much shorter operand") ok
+name               time (mean ± σ)         range (min … max) 
+2048-bit plus zero   16.81 ns ±   4.14 ns    14.12 ns …  25.55 ns  in 10 × 100000 runs
+2048-bit plus 5      42.93 ns ±   7.35 ns    37.52 ns …  60.01 ns  in 10 × 100000 runs
+[Hosi121/morph] bench benchmarks/addition_test.mbt:12 ("addition through a long carry chain") ok
+time (mean ± σ)         range (min … max) 
+  18.87 µs ± 570.78 ns    18.28 µs …  20.09 µs  in 10 ×   5387 runs
+[Hosi121/morph] bench benchmarks/addition_test.mbt:21 ("same-width dense 512-bit addition") ok
+time (mean ± σ)         range (min … max) 
+   6.61 µs ± 275.83 ns     6.23 µs …   7.00 µs  in 10 ×  16254 runs
+Total tests: 3, passed: 3, failed: 0.

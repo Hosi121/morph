@@ -25,3 +25,16 @@
 これは有限例の結果で、全入力の帰納的形式証明ではない。
 Peanoの値に比例する読取りは残るため、二進IDを直接受け取る上位APIや構造的半分化は
 別の比較候補として扱う。
+
+## 構造的半分化を共通APIへ戻す
+
+CDCL担当のprivateな二進ID変換では、Succを二個ずつ読み、商のNatと余りのBoolへ
+分ける案が、改善済みincrement版より同一入力で速かった。
+同じ構成を`Binary.from_nat`へ戻した。各levelの走査量はおよそn, n/2, n/4,...で、
+値に対して線形、非末尾再帰の深さはbit数に比例する。
+increment版の81µsから20.58±0.71µsへ改善した（同じ4096、native release、10標本）。
+初期811.69µsと比べるだけでなく、直前の採用版も比較対象として残す。
+生ログ：`docs/measurements/natural-bootstrap-halving.txt`。
+
+新APIや数値primitiveは追加していない。0〜4096と100000までの境界回帰を維持し、
+CDCL側の重複private converterは次の共通化対象とする。

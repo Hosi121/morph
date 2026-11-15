@@ -1,0 +1,9 @@
+[Hosi121/morph] bench benchmarks/multiply_test.mbt:2 ("School versus Karatsuba exact binary multiplication") ok
+name                time (mean ± σ)         range (min … max) 
+school 128 bits      121.51 µs ±   3.03 µs   117.49 µs … 125.78 µs  in 10 ×    799 runs
+karatsuba 128 bits   121.24 µs ±   6.35 µs   113.17 µs … 131.06 µs  in 10 ×    823 runs
+school 512 bits        2.31 ms ± 115.51 µs     2.13 ms …   2.52 ms  in 10 ×     42 runs
+karatsuba 512 bits     1.25 ms ±  16.03 µs     1.23 ms …   1.29 ms  in 10 ×     78 runs
+school 2048 bits      37.97 ms ± 725.05 µs    37.14 ms …  39.23 ms  in 10 ×      3 runs
+karatsuba 2048 bits   12.31 ms ± 517.06 µs    11.66 ms …  13.13 ms  in 10 ×      9 runs
+Total tests: 1, passed: 1, failed: 0.

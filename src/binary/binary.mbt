@@ -71,17 +71,16 @@ fn add_bits(
   ys : @core.Chain[Bool],
   carry : Bool,
 ) -> @core.Chain[Bool] {
-  match (xs, ys, carry) {
-    (Nil, Nil, false) => Nil
-    (Nil, Nil, true) => Cons(true, Nil)
-    (Cons(x, xt), Nil, c) | (Nil, Cons(x, xt), c) => {
-      let (s, next) = full_adder(x, false, c)
-      Cons(s, add_bits(xt, Nil, next))
-    }
-    (Cons(x, xt), Cons(y, yt), c) => {
-      let (s, next) = full_adder(x, y, c)
+  match (xs, ys) {
+    (Cons(x, xt), Cons(y, yt)) => {
+      let (s, next) = full_adder(x, y, carry)
       Cons(s, add_bits(xt, yt, next))
     }
+    (rest, Nil) | (Nil, rest) =>
+      match carry {
+        false => rest
+        true => increment_bits(rest)
+      }
   }
 }
 
@@ -92,14 +91,16 @@ pub fn add(a : Binary, b : Binary) -> Binary {
 
 ///|
 pub fn successor(n : Binary) -> Binary {
-  fn carry(bits : @core.Chain[Bool]) -> @core.Chain[Bool] {
-    match bits {
-      Nil => Cons(true, Nil)
-      Cons(false, rest) => Cons(true, rest)
-      Cons(true, rest) => Cons(false, carry(rest))
-    }
+  { bits: increment_bits(n.bits), }
+}
+
+///|
+fn increment_bits(bits : @core.Chain[Bool]) -> @core.Chain[Bool] {
+  match bits {
+    Nil => Cons(true, Nil)
+    Cons(false, rest) => Cons(true, rest)
+    Cons(true, rest) => Cons(false, increment_bits(rest))
   }
-  { bits: carry(n.bits), }
 }
 
 ///|
@@ -269,13 +270,23 @@ pub fn power(base : Binary, exponent : Binary) -> Binary {
 
 ///|
 pub fn from_nat(n : @core.Nat) -> Binary {
-  fn walk(rest : @core.Nat, value : Binary) -> Binary {
-    match rest {
-      Zero => value
-      Succ(rest) => walk(rest, successor(value))
+  fn split(value : @core.Nat, half : @core.Nat) -> (@core.Nat, Bool) {
+    match value {
+      Zero => (half, false)
+      Succ(Zero) => (half, true)
+      Succ(Succ(rest)) => split(rest, Succ(half))
     }
   }
-  walk(n, zero())
+  fn convert(value : @core.Nat) -> @core.Chain[Bool] {
+    match value {
+      Zero => Nil
+      Succ(_) => {
+        let (half, low) = split(value, Zero)
+        Cons(low, convert(half))
+      }
+    }
+  }
+  { bits: convert(n), }
 }
 
 ///|
