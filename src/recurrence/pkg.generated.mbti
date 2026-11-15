@@ -12,11 +12,35 @@ pub fn[A] berlekamp_massey(@rowreduce.Field[A], @core.Chain[A]) -> Recurrence[A]
 
 pub fn[A] check(@rowreduce.Field[A], @core.Chain[A], Recurrence[A]) -> Bool
 
+pub fn[A, E] checked_berlekamp_massey(CheckedField[A, E], @core.Chain[A]) -> Result[Recurrence[A], CheckedError[E]]
+
+pub fn[A, E] checked_check(CheckedField[A, E], @core.Chain[A], Recurrence[A]) -> Result[Bool, CheckedError[E]]
+
 pub fn[A] predict(@rowreduce.Field[A], Recurrence[A], @core.Chain[A]) -> A?
 
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum CheckedError[E] {
+  Arithmetic(E)
+  InvalidField
+  InternalInvariant
+}
+pub fn[E : Eq] CheckedError::equal(Self[E], Self[E]) -> Bool
+pub fn[E : Eq] CheckedError::not_equal(Self[E], Self[E]) -> Bool
+pub fn[E : @debug.Debug] CheckedError::to_repr(Self[E]) -> @debug.Repr
+
+pub(all) struct CheckedField[A, E] {
+  zero : A
+  one : A
+  add : (A, A) -> Result[A, E]
+  subtract : (A, A) -> Result[A, E]
+  negate : (A) -> Result[A, E]
+  multiply : (A, A) -> Result[A, E]
+  inverse : (A) -> Result[A?, E]
+}
+
 #derive(Eq, @debug.Debug)
 pub(all) struct Recurrence[A] {
   length : @core.Nat

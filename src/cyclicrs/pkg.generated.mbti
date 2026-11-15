@@ -1,0 +1,82 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cyclicrs"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/galois",
+  "Hosi121/morph/recurrence",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Plan, @core.Chain[@galois.Element], Decoded) -> Bool
+
+pub fn decode(Plan, @core.Chain[@galois.Element]) -> Result[Decoded, CodeError]
+
+pub fn encode(Plan, @core.Chain[@galois.Element]) -> Result[@core.Chain[@galois.Element], CodeError]
+
+pub fn field_of(Plan) -> @galois.Field
+
+pub fn generator_polynomial(Plan) -> @core.Chain[@galois.Element]
+
+pub fn length(Plan) -> @core.Nat
+
+pub fn message_size(Plan) -> @core.Nat
+
+pub fn plan(@galois.Field, @galois.Element, @core.Nat, @core.Nat, @core.Nat) -> Result[Plan, CodeError]
+
+pub fn radius(Plan) -> @core.Nat
+
+pub fn root(Plan) -> @galois.Element
+
+pub fn root_order(Plan) -> @core.Nat
+
+pub fn syndrome(Plan, @core.Chain[@galois.Element]) -> Result[@core.Chain[@galois.Element], CodeError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum CodeError {
+  InvalidPlan
+  LengthMismatch
+  FieldMismatch
+  Uncorrectable
+  Arithmetic(@galois.FieldError)
+  Recurrence(@recurrence.CheckedError[@galois.FieldError])
+}
+pub fn CodeError::equal(Self, Self) -> Bool
+pub fn CodeError::not_equal(Self, Self) -> Bool
+pub fn CodeError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Decoded {
+  message : @core.Chain[@galois.Element]
+  corrected : @core.Chain[@galois.Element]
+  error_positions : @core.Chain[@core.Nat]
+  error_values : @core.Chain[@galois.Element]
+}
+pub fn Decoded::equal(Self, Self) -> Bool
+pub fn Decoded::not_equal(Self, Self) -> Bool
+pub fn Decoded::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  field : @galois.Field
+  root : @galois.Element
+  order : @core.Nat
+  length : @core.Nat
+  errors : @core.Nat
+  parity : @core.Nat
+  message_size : @core.Nat
+  generator : @core.Chain[@galois.Element]
+  roots : @core.Chain[@galois.Element]
+  inverse_points : @core.Chain[@galois.Element]
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
