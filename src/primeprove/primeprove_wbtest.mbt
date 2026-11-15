@@ -112,3 +112,14 @@ test "passing a strong pseudoprime screen never becomes a prime verdict" {
     Suspended(_) | Inconclusive(_, _) => ()
   }
 }
+
+///|
+test "exhausting Lucas witnesses without a root witness is inconclusive" {
+  let base = defaults()
+  let no_screen : Config = { ..base, bases: Nil, }
+  match run(begun(9, no_screen), @oracle.nat(2000)) {
+    Inconclusive(reason, _) => assert_eq(reason, NoWitness(@oracle.binary(9)))
+    _ =>
+      abort("failure of all Lucas witnesses is not a supplied composite proof")
+  }
+}
