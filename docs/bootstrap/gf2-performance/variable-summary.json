@@ -1,0 +1,439 @@
+[
+  {
+    "name": "fp2-multiply-64x32",
+    "control_median_us": 19.258182581934456,
+    "control_process_means_us": [
+      19.258182581934456,
+      17.91835581094332,
+      20.052039340148703
+    ],
+    "fixed_median_us": 20.34625178167641,
+    "fixed_process_means_us": [
+      20.08435498725574,
+      20.34625178167641,
+      20.838298443488462
+    ],
+    "variable_median_us": 20.575795776397516,
+    "variable_process_means_us": [
+      20.575795776397516,
+      21.039535920066612,
+      19.807547721148218
+    ],
+    "control_to_fixed": 0.94652237613997,
+    "control_to_variable": 0.9359629533272052
+  },
+  {
+    "name": "fp2-divide-95by32",
+    "control_median_us": 168.31919534569982,
+    "control_process_means_us": [
+      181.8455443830571,
+      157.20267943661975,
+      168.31919534569982
+    ],
+    "fixed_median_us": 164.4700887707641,
+    "fixed_process_means_us": [
+      164.4700887707641,
+      176.7067696369637,
+      161.6891152079867
+    ],
+    "variable_median_us": 160.67374053882727,
+    "variable_process_means_us": [
+      165.54771922807018,
+      160.6051018476499,
+      160.67374053882727
+    ],
+    "control_to_fixed": 1.0234030795733353,
+    "control_to_variable": 1.0475837232719742
+  },
+  {
+    "name": "fp2-bezout-16x14",
+    "control_median_us": 10.666412443604582,
+    "control_process_means_us": [
+      10.867507616861436,
+      10.666412443604582,
+      10.598425948047359
+    ],
+    "fixed_median_us": 10.210074058883247,
+    "fixed_process_means_us": [
+      9.859626937094616,
+      10.642172031864046,
+      10.210074058883247
+    ],
+    "variable_median_us": 10.182269910222994,
+    "variable_process_means_us": [
+      10.182269910222994,
+      10.712721489878543,
+      9.973781239817205
+    ],
+    "control_to_fixed": 1.044694914266983,
+    "control_to_variable": 1.0475476035943134
+  },
+  {
+    "name": "fp5-multiply-64x32-control",
+    "control_median_us": 780.8403827692307,
+    "control_process_means_us": [
+      851.2754102399998,
+      767.4684299999999,
+      780.8403827692307
+    ],
+    "fixed_median_us": 794.1491206504065,
+    "fixed_process_means_us": [
+      794.1491206504065,
+      802.5560768965515,
+      786.2800978947369
+    ],
+    "variable_median_us": 824.5903938461539,
+    "variable_process_means_us": [
+      841.9860277419353,
+      824.5903938461539,
+      758.2513855118111
+    ],
+    "control_to_fixed": 0.9832415127900966,
+    "control_to_variable": 0.946943341320217
+  },
+  {
+    "name": "gf256-multiply-83x202",
+    "control_median_us": 5.225497290583187,
+    "control_process_means_us": [
+      5.302153107923497,
+      5.225497290583187,
+      4.762815690058758
+    ],
+    "fixed_median_us": 3.595748796866655,
+    "fixed_process_means_us": [
+      3.478394550496323,
+      3.595748796866655,
+      3.646517549499479
+    ],
+    "variable_median_us": 0.9423001508000001,
+    "variable_process_means_us": [
+      1.0233032128,
+      0.9423001508000001,
+      0.9377202248
+    ],
+    "control_to_fixed": 1.453243145109775,
+    "control_to_variable": 5.545470077816299
+  },
+  {
+    "name": "gf256-inverse-83",
+    "control_median_us": 7.021447193640318,
+    "control_process_means_us": [
+      7.021447193640318,
+      6.67415057108466,
+      7.0394798728667185
+    ],
+    "fixed_median_us": 6.799641039627355,
+    "fixed_process_means_us": [
+      6.479194152684565,
+      7.1594047385718556,
+      6.799641039627355
+    ],
+    "variable_median_us": 7.540148485964783,
+    "variable_process_means_us": [
+      7.818525154785573,
+      7.540148485964783,
+      6.87573021893815
+    ],
+    "control_to_fixed": 1.0326202740292183,
+    "control_to_variable": 0.9312080798819845
+  },
+  {
+    "name": "gf9-multiply-control",
+    "control_median_us": 2.472797523573674,
+    "control_process_means_us": [
+      2.472797523573674,
+      2.5364871476104796,
+      2.427493789173789
+    ],
+    "fixed_median_us": 2.4368048426774775,
+    "fixed_process_means_us": [
+      2.4368048426774775,
+      2.5262104926455775,
+      2.3891475204086285
+    ],
+    "variable_median_us": 2.420375402411125,
+    "variable_process_means_us": [
+      2.414851379559678,
+      2.6906688341876874,
+      2.420375402411125
+    ],
+    "control_to_fixed": 1.014770440482484,
+    "control_to_variable": 1.0216586737372755
+  },
+  {
+    "name": "rs-length-15-t2-decode",
+    "control_median_us": 261.3771393794749,
+    "control_process_means_us": [
+      261.3771393794749,
+      250.00681666666668,
+      264.1218332816537
+    ],
+    "fixed_median_us": 248.44577674876845,
+    "fixed_process_means_us": [
+      241.26986944785276,
+      254.49390749326145,
+      248.44577674876845
+    ],
+    "variable_median_us": 148.76697277227726,
+    "variable_process_means_us": [
+      144.92548742759794,
+      160.86958383458645,
+      148.76697277227726
+    ],
+    "control_to_fixed": 1.0520490337969512,
+    "control_to_variable": 1.7569567660664436
+  },
+  {
+    "name": "rs-length-255-t2-decode",
+    "control_median_us": 7510.017316666666,
+    "control_process_means_us": [
+      7510.017316666666,
+      7178.486097142857,
+      7985.0682799999995
+    ],
+    "fixed_median_us": 11088.167739999999,
+    "fixed_process_means_us": [
+      11743.529822222223,
+      10751.566235,
+      11088.167739999999
+    ],
+    "variable_median_us": 5000.204497391304,
+    "variable_process_means_us": [
+      5000.204497391304,
+      4885.6868444444435,
+      5240.195511578947
+    ],
+    "control_to_fixed": 0.6773001178160989,
+    "control_to_variable": 1.5019420346877366
+  },
+  {
+    "name": "aes-tables-generated",
+    "control_median_us": 4051.2717984615388,
+    "control_process_means_us": [
+      4051.2717984615388,
+      3966.4834424999995,
+      4121.87206
+    ],
+    "fixed_median_us": 3876.5262353846147,
+    "fixed_process_means_us": [
+      3703.554943076923,
+      3876.5262353846147,
+      3917.3205523076927
+    ],
+    "variable_median_us": 3919.9474133333338,
+    "variable_process_means_us": [
+      3894.616449230769,
+      3919.9474133333338,
+      4234.3603472
+    ],
+    "control_to_fixed": 1.0450778744851152,
+    "control_to_variable": 1.0335015680775506
+  },
+  {
+    "name": "aes-128-key-expand",
+    "control_median_us": 26.18822116625983,
+    "control_process_means_us": [
+      26.18822116625983,
+      24.58653725637584,
+      27.029827709738335
+    ],
+    "fixed_median_us": 27.66633216129968,
+    "fixed_process_means_us": [
+      26.686071892885273,
+      27.66633216129968,
+      28.224567446918694
+    ],
+    "variable_median_us": 26.040198571044858,
+    "variable_process_means_us": [
+      24.450758535378526,
+      26.443735108695655,
+      26.040198571044858
+    ],
+    "control_to_fixed": 0.9465736554299211,
+    "control_to_variable": 1.0056843881129065
+  },
+  {
+    "name": "aes-128-encrypt",
+    "control_median_us": 61.321334126040426,
+    "control_process_means_us": [
+      61.321334126040426,
+      61.2668472614622,
+      62.83038510721248
+    ],
+    "fixed_median_us": 61.57836156574924,
+    "fixed_process_means_us": [
+      59.80558146645866,
+      61.57836156574924,
+      64.22718352941176
+    ],
+    "variable_median_us": 60.962583535108955,
+    "variable_process_means_us": [
+      60.962583535108955,
+      60.979628101265824,
+      59.62868282267793
+    ],
+    "control_to_fixed": 0.9958260104170784,
+    "control_to_variable": 1.0058847668541617
+  },
+  {
+    "name": "aes-128-decrypt",
+    "control_median_us": 71.98897831325301,
+    "control_process_means_us": [
+      71.98897831325301,
+      73.72905421124828,
+      68.99620705370101
+    ],
+    "fixed_median_us": 70.05948712694878,
+    "fixed_process_means_us": [
+      76.23295312900925,
+      70.05948712694878,
+      70.054287920511
+    ],
+    "variable_median_us": 71.91331787412588,
+    "variable_process_means_us": [
+      72.06644482809072,
+      71.91331787412588,
+      68.34039653472739
+    ],
+    "control_to_fixed": 1.027540755227168,
+    "control_to_variable": 1.0010521060822082
+  },
+  {
+    "name": "aes-192-key-expand",
+    "control_median_us": 28.473321728677735,
+    "control_process_means_us": [
+      31.067056171825648,
+      28.473321728677735,
+      27.937765990440788
+    ],
+    "fixed_median_us": 29.340025735294113,
+    "fixed_process_means_us": [
+      29.340025735294113,
+      30.083275479256077,
+      28.106729383938386
+    ],
+    "variable_median_us": 30.192970088903525,
+    "variable_process_means_us": [
+      26.54330339792193,
+      30.192970088903525,
+      30.379764244562022
+    ],
+    "control_to_fixed": 0.9704600120519393,
+    "control_to_variable": 0.9430447433570707
+  },
+  {
+    "name": "aes-192-encrypt",
+    "control_median_us": 72.3617088098918,
+    "control_process_means_us": [
+      72.3617088098918,
+      80.58645540983608,
+      69.1980858698941
+    ],
+    "fixed_median_us": 73.36024130464955,
+    "fixed_process_means_us": [
+      80.9621370118577,
+      73.36024130464955,
+      70.0234987037037
+    ],
+    "variable_median_us": 72.91612815752461,
+    "variable_process_means_us": [
+      72.91612815752461,
+      78.15160277439023,
+      69.89969654374548
+    ],
+    "control_to_fixed": 0.98638864217184,
+    "control_to_variable": 0.9923964785069899
+  },
+  {
+    "name": "aes-192-decrypt",
+    "control_median_us": 90.59095459749553,
+    "control_process_means_us": [
+      90.59095459749553,
+      92.33279366438356,
+      87.8509334906588
+    ],
+    "fixed_median_us": 82.15932379637619,
+    "fixed_process_means_us": [
+      89.74859715736041,
+      82.15932379637619,
+      80.39007295368262
+    ],
+    "variable_median_us": 83.23473391014974,
+    "variable_process_means_us": [
+      83.23473391014974,
+      90.32879302605211,
+      83.23296100869565
+    ],
+    "control_to_fixed": 1.1026253675360853,
+    "control_to_variable": 1.0883792179270577
+  },
+  {
+    "name": "aes-256-key-expand",
+    "control_median_us": 50.21289996937214,
+    "control_process_means_us": [
+      50.21289996937214,
+      50.353194869264925,
+      49.15734640949555
+    ],
+    "fixed_median_us": 50.57280038318254,
+    "fixed_process_means_us": [
+      52.110518520935294,
+      50.57280038318254,
+      46.859541353930034
+    ],
+    "variable_median_us": 52.13078619451371,
+    "variable_process_means_us": [
+      46.262913165735576,
+      52.13078619451371,
+      52.14863590729226
+    ],
+    "control_to_fixed": 0.9928835181939009,
+    "control_to_variable": 0.96321010356557
+  },
+  {
+    "name": "aes-256-encrypt",
+    "control_median_us": 86.92975700288184,
+    "control_process_means_us": [
+      87.50444007181329,
+      86.92975700288184,
+      86.29818676351897
+    ],
+    "fixed_median_us": 89.23544920556921,
+    "fixed_process_means_us": [
+      90.97516758409785,
+      82.71610267234043,
+      89.23544920556921
+    ],
+    "variable_median_us": 87.76495487557604,
+    "variable_process_means_us": [
+      86.50996533834588,
+      87.76495487557604,
+      93.2448766835187
+    ],
+    "control_to_fixed": 0.9741617011712934,
+    "control_to_variable": 0.9904836973496055
+  },
+  {
+    "name": "aes-256-decrypt",
+    "control_median_us": 100.3055717012448,
+    "control_process_means_us": [
+      97.8576434422658,
+      100.3055717012448,
+      105.36814481355933
+    ],
+    "fixed_median_us": 97.65782857651246,
+    "fixed_process_means_us": [
+      105.53661133997784,
+      97.65782857651246,
+      89.21118715596332
+    ],
+    "variable_median_us": 100.93745943661972,
+    "variable_process_means_us": [
+      93.57123552542372,
+      106.70675123343526,
+      100.93745943661972
+    ],
+    "control_to_fixed": 1.0271124513346916,
+    "control_to_variable": 0.9937398093938387
+  }
+]

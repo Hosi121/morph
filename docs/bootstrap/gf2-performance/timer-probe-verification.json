@@ -1,0 +1,22 @@
+{
+  "clock_adapter_sha256": "e7e817471351d6cd33d1139baec70103d5a8771cd578b09c64213f5d4ef18566",
+  "old_and_verified_width_cpu_elf_sha256": "405697d5e9288be6fa5d16829af3932b353574717b12294c86ebe8f627d7925f",
+  "sleep_probes": [
+    {
+      "cpu_seconds": 5.496e-05,
+      "wall_seconds": 0.019593658
+    },
+    {
+      "cpu_seconds": 6.2481e-05,
+      "wall_seconds": 0.019816166
+    },
+    {
+      "cpu_seconds": 3.738e-05,
+      "wall_seconds": 0.019645941
+    }
+  ],
+  "old_and_verified_clock_object_identical": true,
+  "old_and_verified_width_cpu_elf_identical": true,
+  "baseline_worktree_clean_removed": true,
+  "baseline_branch_retained": "bootstrap/gfperf-baseline"
+}

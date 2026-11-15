@@ -309,3 +309,63 @@ python3 docs/bootstrap/gf2-performance/measure.py .tools/cpu.exe label SOURCE_SH
 
 Wrap the entire build/run batch in `tools/measure`; do not compare these thread
 CPU-time values directly with stock wall-clock values from another interval.
+
+## Fusing extension-field multiplication
+
+The fixed-width Bool candidate `43fcc5d` passes 73 correctness tests on all
+three backends, including the added small-field/degree-ten oracle coverage, but
+is **rejected for performance**. In a three-pair CPU-time comparison it improves
+the fixed GF256 product from 4.948 to 3.548µs while making RS255 decode slower:
+7748.647→11413.153µs. Cached AES controls remain close. The fixed-width conversion
+and padding lose on short products, such as the low-degree monomial points used
+by RS syndromes. A faster isolated product is insufficient to select this change.
+
+`c4b84e61efee450e759353f7c99800b0b925b1b0` replaces the fixed-width implementation
+with a variable-width streaming product over existing canonical zero/one
+coefficients. Multiplication by x shares a low-zero prefix when no carry occurs,
+and XORs against the full monic modulus only when the value fills the field
+width. Width comparison walks coefficient spans directly without constructing
+Nat lengths or converting between Nat and Binary. Accumulation is canonical
+XOR, and only the final representative passes through public normalization.
+No heuristic threshold or new public interface is introduced. Zero/unit values
+are shared after the existing field-compatibility check.
+
+The same 19 workloads are compared in A/B/C, B/C/A, C/A/B order under one mutex
+hold: A is unfused `a1a4f40`, B is rejected fixed-width `43fcc5d`, C is the
+variable-width candidate. The base remains Binary `b21222b`, CPU6, identical
+native flags and thread-CPU-time adapter. Medians of three process means are:
+
+| Workload | Unfused µs | Fixed width µs | Variable width µs |
+| --- | ---: | ---: | ---: |
+| GF256 multiply 83×202 | 5.225 | 3.596 | 0.942 |
+| GF256 inverse 83, control | 7.021 | 6.800 | 7.540 |
+| GF9 multiply, control | 2.473 | 2.437 | 2.420 |
+| RS15 two-error decode | 261.377 | 248.446 | 148.767 |
+| RS255 two-error decode | 7510.017 | 11088.168 | 5000.204 |
+| AES generated tables, control | 4051.272 | 3876.526 | 3919.947 |
+
+Select the variable-width implementation: the measured GF256 product is 5.55×
+faster than the unfused control, RS15 is 1.76×, and RS255 is 1.50×. The unchanged
+inverse is about 7% slower in this interval, which remains a limitation/control
+signal. AES table generation uses inverses rather than the changed multiplication
+and is a control for this step. These ratios apply to the recorded native
+CPU-time workload; they must not be multiplied with previous ratios or presented
+as universal backend or host speedups. `carryless-summary.json` preserves the
+rejected comparison and `variable-summary.json` the three-way comparison, with
+all process means and raw summaries.
+
+Both variants pass 73 tests on native, Wasm GC, and JavaScript. The new tests
+exhaust all 7064 products across every binary irreducible presentation through
+degree five, including both degree-one presentations. Direct private-kernel
+checks and public-operation checks each use a native full-product/top-degree
+division oracle. GF1024 adds 128 pairs and four Fermat inverse checks. Existing
+GF256 exhaustive tests cover both 0x11b and 0x11d moduli and now cross-check two
+independent native multiplication methods for all 131072 pairs. Field mismatch
+before zero/unit reuse, zero inverse, general primes, and existing RS/AES oracles
+remain covered. Purity passes 108 kernel files, and public API snapshots are
+unchanged. These finite checks are not a formal proof.
+
+The timer sleep probes pass. The reprobed width-control ELF and clock object are
+byte-identical to those used in the first CPU diagnostic; hashes and probe
+values are in `timer-probe-verification.json`. The temporary generic-baseline
+worktree was clean and removed after preserving its branch, ELF/C, and provenance.
