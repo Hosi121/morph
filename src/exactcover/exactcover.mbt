@@ -18,6 +18,8 @@ pub struct Problem {
   primary : @core.Chain[@core.Nat]
   secondary : @core.Chain[@core.Nat]
   rows : @core.Chain[Row]
+  indexed_primary : @core.Chain[@binary.Binary]
+  indexed_rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])]
 }
 
 ///|
@@ -49,25 +51,53 @@ fn unique(xs : @core.Chain[@core.Nat]) -> Bool {
 }
 
 ///|
+/// IDs are encoded once at the checked boundary; searches use their bit width.
+fn key_member(keys : @core.Chain[@binary.Binary], key : @binary.Binary) -> Bool {
+  @core.any(keys, fn(other) {
+    match @binary.compare(key, other) {
+      Equal => true
+      _ => false
+    }
+  })
+}
+
+///|
+fn keys_unique(keys : @core.Chain[@binary.Binary]) -> Bool {
+  match keys {
+    Nil => true
+    Cons(key, rest) =>
+      match key_member(rest, key) {
+        true => false
+        false => keys_unique(rest)
+      }
+  }
+}
+
+///|
 pub fn problem(
   primary : @core.Chain[@core.Nat],
   secondary : @core.Chain[@core.Nat],
   rows : @core.Chain[Row],
 ) -> Problem? {
-  let columns = @core.append(primary, secondary)
-  let valid_rows = @core.all(rows, fn(row) {
-    match unique(row.columns) {
+  let indexed_primary = @core.map(primary, @binary.from_nat)
+  let indexed_rows = @core.map(rows, fn(row) {
+    (row.label, @core.map(row.columns, @binary.from_nat))
+  })
+  let columns = @core.append(
+    indexed_primary,
+    @core.map(secondary, @binary.from_nat),
+  )
+  let labels = @core.map(rows, fn(row) { @binary.from_nat(row.label) })
+  let valid_rows = @core.all(indexed_rows, fn(row) {
+    let (_, covered) = row
+    match keys_unique(covered) {
       false => false
-      true => @core.all(row.columns, fn(column) { contains(columns, column) })
+      true => @core.all(covered, fn(column) { key_member(columns, column) })
     }
   })
-  match
-    (
-      unique(columns),
-      unique(@core.map(rows, fn(row) { row.label })),
-      valid_rows,
-    ) {
-    (true, true, true) => Some({ primary, secondary, rows, })
+  match (keys_unique(columns), keys_unique(labels), valid_rows) {
+    (true, true, true) =>
+      Some({ primary, secondary, rows, indexed_primary, indexed_rows, })
     _ => None
   }
 }
@@ -86,59 +116,75 @@ fn occurrences(column : @core.Nat, rows : @core.Chain[Row]) -> @core.Nat {
 /// Algorithm X with the smallest-column heuristic, implemented by immutable
 /// filtering rather than mutable dancing links. Returns one solution.
 pub fn solve(problem : Problem) -> @core.Chain[@core.Nat]? {
+  fn count(
+    column : @binary.Binary,
+    rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
+  ) -> @core.Nat {
+    @core.fold_left(rows, @core.Zero, fn(count, row) {
+      let (_, columns) = row
+      match key_member(columns, column) {
+        true => Succ(count)
+        false => count
+      }
+    })
+  }
   fn search(
-    primary : @core.Chain[@core.Nat],
-    rows : @core.Chain[Row],
+    primary : @core.Chain[@binary.Binary],
+    rows : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
   ) -> @core.Chain[@core.Nat]? {
     match primary {
       Nil => Some(Nil)
       Cons(first, rest) => {
-        let initial = (first, occurrences(first, rows))
-        let (column, count) = @core.fold_left(rest, initial, fn(best, column) {
+        let initial = (first, count(first, rows))
+        let (column, number) = @core.fold_left(rest, initial, fn(best, column) {
           let (_, smallest) = best
-          let count = occurrences(column, rows)
-          match @core.compare(count, smallest) {
-            Less => (column, count)
+          let number = count(column, rows)
+          match @core.compare(number, smallest) {
+            Less => (column, number)
             _ => best
           }
         })
-        fn choose(candidates : @core.Chain[Row]) -> @core.Chain[@core.Nat]? {
+        fn choose(
+          candidates : @core.Chain[(@core.Nat, @core.Chain[@binary.Binary])],
+        ) -> @core.Chain[@core.Nat]? {
           match candidates {
             Nil => None
-            Cons(row, rest) => {
+            Cons((label, covered), rest) => {
               let remaining_columns = @core.filter(primary, fn(column) {
-                match contains(row.columns, column) {
+                match key_member(covered, column) {
                   true => false
                   false => true
                 }
               })
               let remaining_rows = @core.filter(rows, fn(other) {
+                let (_, columns) = other
                 match
-                  @core.any(other.columns, fn(column) {
-                    contains(row.columns, column)
-                  }) {
+                  @core.any(columns, fn(column) { key_member(covered, column) }) {
                   true => false
                   false => true
                 }
               })
               match search(remaining_columns, remaining_rows) {
-                Some(solution) => Some(Cons(row.label, solution))
+                Some(solution) => Some(Cons(label, solution))
                 None => choose(rest)
               }
             }
           }
         }
-        match count {
+        match number {
           Zero => None
           Succ(_) =>
             choose(
-              @core.filter(rows, fn(row) { contains(row.columns, column) }),
+              @core.filter(rows, fn(row) {
+                let (_, columns) = row
+                key_member(columns, column)
+              }),
             )
         }
       }
     }
   }
-  search(problem.primary, problem.rows)
+  search(problem.indexed_primary, problem.indexed_rows)
 }
 
 ///|

@@ -88,3 +88,27 @@ tools/moon bench src/benchmarks/groebner_test.mbt --target native --release
 ```sh
 tools/moon bench src/benchmarks/multiply_test.mbt --target native --release
 ```
+
+## 2026-11-15：exact cover の制約IDを二進表現へキャッシュ
+
+同じ9×9数独、native release、各10サンプル。
+手掛かりの表示アダプターからNatへの変換は範囲外。
+候補の生成・入力検査・ID変換・探索・座標復元・整列まで、`puzzles.sudoku` 全体を測る。
+前の核は `5705ce7`。
+
+| 内部の制約ID | 平均 | 標準偏差 |
+| --- | ---: | ---: |
+| 比較のたびにPeanoの値を走査 | 1.07 s | 9.65 ms |
+| 探索用に二進IDをキャッシュ | 139.55 ms | 1.86 ms |
+| 入力検査もキャッシュされたIDで共通化 | 121.81 ms | 2.90 ms |
+
+最終版はこの問題で約8.8倍、約88.6%短縮。公開のNat型・問題・返る解は同じで、
+整数型や配列への置換はない。二進IDの生成コストも測定に含む。
+検査器は元のNat制約で被覆回数を調べ、キャッシュ表現に依存させていない。
+キャッシュ分のメモリは追加している。一般のパズルの速度比ではない。
+
+生ログ：[前](measurements/sudoku-before.txt)、[探索だけ変更](measurements/sudoku-search-cache.txt)、[最終](measurements/sudoku-after.txt)。
+
+```sh
+tools/moon bench src/benchmarks/sudoku_test.mbt --target native --release
+```

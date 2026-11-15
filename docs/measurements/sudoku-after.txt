@@ -1,0 +1,4 @@
+[Hosi121/morph] bench benchmarks/sudoku_test.mbt:2 ("Sudoku nine by nine symbolic encoding and search") ok
+time (mean ± σ)         range (min … max) 
+ 121.81 ms ±   2.90 ms   116.27 ms … 124.87 ms  in 10 ×      1 runs
+Total tests: 1, passed: 1, failed: 0.
