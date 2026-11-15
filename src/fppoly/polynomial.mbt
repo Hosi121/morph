@@ -363,14 +363,18 @@ fn divide_loop(
             @core.length(remainder.coefficients),
             @core.length(divisor.coefficients),
           )
-          let scalar = @modular.multiply(
-            @primefield.modulus(remainder.field),
-            coefficient,
-            inverse_leading,
-          )
+          let scalar = match characteristic_two(remainder.field) {
+            true => coefficient
+            false =>
+              @modular.multiply(
+                @primefield.modulus(remainder.field),
+                coefficient,
+                inverse_leading,
+              )
+          }
           let term = shifted(constant(remainder.field, scalar), exponent)
           divide_loop(
-            subtract_raw(remainder, multiply_raw(term, divisor)),
+            subtract_raw(remainder, shifted(scale(divisor, scalar), exponent)),
             divisor,
             inverse_leading,
             add_raw(quotient, term),
