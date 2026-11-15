@@ -548,7 +548,7 @@ fn dot(
 }
 
 ///|
-fn feasible(p : Problem, x : @core.Chain[@exact.Rational]) -> Bool {
+pub fn feasible(p : Problem, x : @core.Chain[@exact.Rational]) -> Bool {
   match @core.compare(@core.length(x), @matrix.width(p.a)) {
     Equal =>
       match @core.zip(@matrix.rows(p.a), p.b) {

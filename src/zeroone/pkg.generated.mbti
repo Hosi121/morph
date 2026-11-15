@@ -1,0 +1,85 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/zeroone"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/simplex",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_infeasible(Problem, Proof) -> Bool
+
+pub fn check_optimal(Problem, Candidate, Proof) -> Bool
+
+pub fn problem(@matrix.Matrix[@exact.Rational], @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Problem?
+
+pub fn run(Search, @core.Nat) -> Progress
+
+pub fn start(Problem) -> Search
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Candidate {
+  assignment : @core.Chain[Bool]
+  value : @exact.Rational
+}
+pub fn Candidate::equal(Self, Self) -> Bool
+pub fn Candidate::not_equal(Self, Self) -> Bool
+pub fn Candidate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  a : @matrix.Matrix[@exact.Rational]
+  b : @core.Chain[@exact.Rational]
+  c : @core.Chain[@exact.Rational]
+  relaxation : @simplex.Problem
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Candidate, Proof)
+  Infeasible(Proof)
+  Paused(Search)
+  InvariantViolation
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Proof {
+  Excluded(@core.Chain[@exact.Rational])
+  Bounded(@simplex.Optimum)
+  Split(@core.Nat, Proof, Proof)
+}
+pub fn Proof::equal(Self, Self) -> Bool
+pub fn Proof::not_equal(Self, Self) -> Bool
+pub fn Proof::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Search {
+  tasks : @core.Chain[Task]
+  proofs : @core.Chain[Proof]
+  incumbent : Candidate?
+}
+pub fn Search::equal(Self, Self) -> Bool
+pub fn Search::not_equal(Self, Self) -> Bool
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Task
+pub fn Task::equal(Self, Self) -> Bool
+pub fn Task::not_equal(Self, Self) -> Bool
+pub fn Task::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
