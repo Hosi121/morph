@@ -1,0 +1,16 @@
+{
+  "shared_binary_commit": "b21222bef6073a07c1f4d5e9bcaf053d53b8a334",
+  "generic_source": "6dfb1d2014c74dd2fb480ff9772e23cc0e5290cc",
+  "optimized_source": "72fd4579f9e8bc5c43944162abb9aacf3e531216",
+  "width_cache_source": "a1a4f40d1dda68704d63a5943d7f9d3184396f10",
+  "timer": "CLOCK_THREAD_CPUTIME_ID through GNU ld --wrap=clock_gettime",
+  "clock_adapter_sha256": "93325bd02d21cc587ec7df626a8493c718d86be635becbfa0c6c3562c86f5968",
+  "kernel_generated_C_edited": false,
+  "cpu_pin": 6,
+  "mutex": "fbe64ee tools/measure, shared Git directory flock held across whole build and 9-process batch",
+  "cpu_flags": "-O2 -fwrapv -fno-strict-aliasing -ffp-contract=off -DMOONBIT_ALLOCATOR=MOONBIT_ALLOCATOR_MIMALLOC",
+  "stock_wall_runs": "combined-* and combined-near-* diagnostic only; unrelated host CPU processes observed; no unrelated processes stopped",
+  "cpu_runs": "cpu-control/optimized/width, A/B/C B/C/A C/A/B, 3 processes per variant; batch_size and runs saved in every summary",
+  "cpu_time_limitations": "Linux descheduling excluded; WSL hypervisor scheduling and frequency/cache variation remain",
+  "probe_note": "Sleep-based probe was added to builder after first CPU batch; timer adapter C source unchanged. Subsequent probed relinks validate the same adapter."
+}

@@ -1,0 +1,306 @@
+[
+  {
+    "name": "fp2-multiply-64x32",
+    "control_median_us": 289.5734383847981,
+    "candidate_median_us": 21.14735743827915,
+    "speedup": 13.693126397941185,
+    "control_process_means_us": [
+      161.28678163822525,
+      289.5734383847981,
+      348.34102640000003
+    ],
+    "candidate_process_means_us": [
+      11.05041850866929,
+      21.14735743827915,
+      22.337395153374235
+    ]
+  },
+  {
+    "name": "fp2-divide-95by32",
+    "control_median_us": 6564.61274,
+    "candidate_median_us": 195.73857574074074,
+    "speedup": 33.537654574001536,
+    "control_process_means_us": [
+      3515.3164079999997,
+      6564.61274,
+      7860.333575384616
+    ],
+    "candidate_process_means_us": [
+      127.97551793357934,
+      195.73857574074074,
+      262.7802370833333
+    ]
+  },
+  {
+    "name": "fp2-bezout-16x14",
+    "control_median_us": 163.93469753246754,
+    "candidate_median_us": 12.9767781006516,
+    "speedup": 12.63292754649445,
+    "control_process_means_us": [
+      78.2955019983753,
+      163.93469753246754,
+      174.41377463414636
+    ],
+    "candidate_process_means_us": [
+      8.075225475819034,
+      12.9767781006516,
+      16.340063896920178
+    ]
+  },
+  {
+    "name": "fp5-multiply-64x32-control",
+    "control_median_us": 820.6734333333334,
+    "candidate_median_us": 738.385489924812,
+    "speedup": 1.1114430667061193,
+    "control_process_means_us": [
+      389.8794436363636,
+      820.6734333333334,
+      984.0485320754717
+    ],
+    "candidate_process_means_us": [
+      433.28342578512394,
+      738.385489924812,
+      887.6067658252426
+    ]
+  },
+  {
+    "name": "gf256-multiply-83x202",
+    "control_median_us": 66.99135355762347,
+    "candidate_median_us": 6.559769064702522,
+    "speedup": 10.212456093629488,
+    "control_process_means_us": [
+      33.33697329048843,
+      66.99135355762347,
+      68.11242663900416
+    ],
+    "candidate_process_means_us": [
+      4.60173375751765,
+      6.559769064702522,
+      8.242302595904722
+    ]
+  },
+  {
+    "name": "gf256-inverse-83",
+    "control_median_us": 68.49802739460954,
+    "candidate_median_us": 7.86958260812902,
+    "speedup": 8.704149991875468,
+    "control_process_means_us": [
+      33.4057840390244,
+      70.16607737748345,
+      68.49802739460954
+    ],
+    "candidate_process_means_us": [
+      5.156251485089759,
+      7.86958260812902,
+      8.954746589433034
+    ]
+  },
+  {
+    "name": "gf9-multiply-control",
+    "control_median_us": 2.775544334396174,
+    "candidate_median_us": 2.6844758027682554,
+    "speedup": 1.0339241395038867,
+    "control_process_means_us": [
+      1.6168990404622452,
+      2.775544334396174,
+      3.397689317486795
+    ],
+    "candidate_process_means_us": [
+      1.4504281625887256,
+      2.6844758027682554,
+      2.9794528448357473
+    ]
+  },
+  {
+    "name": "rs-length-15-t2-decode",
+    "control_median_us": 1755.3557461818186,
+    "candidate_median_us": 296.27301341040464,
+    "speedup": 5.924791211915939,
+    "control_process_means_us": [
+      861.098625210084,
+      1755.3557461818186,
+      2026.1278705454545
+    ],
+    "candidate_process_means_us": [
+      170.79468633730835,
+      296.27301341040464,
+      337.8600084137931
+    ]
+  },
+  {
+    "name": "rs-length-255-t2-decode",
+    "control_median_us": 69013.08184,
+    "candidate_median_us": 9600.970712,
+    "speedup": 7.18813585731934,
+    "control_process_means_us": [
+      31375.287920000002,
+      70522.03486,
+      69013.08184
+    ],
+    "candidate_process_means_us": [
+      5138.632201999999,
+      9600.970712,
+      11240.963991999999
+    ]
+  },
+  {
+    "name": "aes-tables-generated",
+    "control_median_us": 24161.414784000004,
+    "candidate_median_us": 4491.709607619048,
+    "speedup": 5.379113276382846,
+    "control_process_means_us": [
+      12327.819405,
+      26604.40517,
+      24161.414784000004
+    ],
+    "candidate_process_means_us": [
+      2638.280002051282,
+      4491.709607619048,
+      5186.597854736841
+    ]
+  },
+  {
+    "name": "aes-128-key-expand",
+    "control_median_us": 27.880662824858756,
+    "candidate_median_us": 24.520038137691927,
+    "speedup": 1.137056258570859,
+    "control_process_means_us": [
+      13.722326603306863,
+      33.218600773075636,
+      27.880662824858756
+    ],
+    "candidate_process_means_us": [
+      15.884918224486086,
+      24.520038137691927,
+      29.63627031465388
+    ]
+  },
+  {
+    "name": "aes-128-encrypt",
+    "control_median_us": 68.16887780784846,
+    "candidate_median_us": 67.18663927648578,
+    "speedup": 1.0146195514754144,
+    "control_process_means_us": [
+      34.97767296837811,
+      68.88895286843996,
+      68.16887780784846
+    ],
+    "candidate_process_means_us": [
+      52.310298280166435,
+      67.18663927648578,
+      68.12840757780785
+    ]
+  },
+  {
+    "name": "aes-128-decrypt",
+    "control_median_us": 68.44408013793102,
+    "candidate_median_us": 71.61762661442006,
+    "speedup": 0.9556876340851813,
+    "control_process_means_us": [
+      40.62301227002448,
+      85.22627236773634,
+      68.44408013793102
+    ],
+    "candidate_process_means_us": [
+      50.826255145631066,
+      71.61762661442006,
+      74.70730812943961
+    ]
+  },
+  {
+    "name": "aes-192-key-expand",
+    "control_median_us": 29.885199156540388,
+    "candidate_median_us": 30.407469965675055,
+    "speedup": 0.9828242596400087,
+    "control_process_means_us": [
+      16.17088055930569,
+      29.885199156540388,
+      35.55488940952381
+    ],
+    "candidate_process_means_us": [
+      30.12159762986166,
+      30.407469965675055,
+      32.73073332830189
+    ]
+  },
+  {
+    "name": "aes-192-encrypt",
+    "control_median_us": 85.48723042345277,
+    "candidate_median_us": 74.79301204204202,
+    "speedup": 1.1429841918306407,
+    "control_process_means_us": [
+      41.39545550755939,
+      85.48723042345277,
+      86.06483797160243
+    ],
+    "candidate_process_means_us": [
+      72.19423871271584,
+      74.79301204204202,
+      83.72241944680852
+    ]
+  },
+  {
+    "name": "aes-192-decrypt",
+    "control_median_us": 77.89651852596316,
+    "candidate_median_us": 94.01450243366881,
+    "speedup": 0.8285585362845741,
+    "control_process_means_us": [
+      45.01922408310751,
+      77.89651852596316,
+      93.51773660989456
+    ],
+    "candidate_process_means_us": [
+      94.01450243366881,
+      87.20659324,
+      101.9473013430127
+    ]
+  },
+  {
+    "name": "aes-256-key-expand",
+    "control_median_us": 55.65522280542986,
+    "candidate_median_us": 52.90720604528699,
+    "speedup": 1.0519403114538055,
+    "control_process_means_us": [
+      27.50225206771463,
+      55.65522280542986,
+      56.83776969696969
+    ],
+    "candidate_process_means_us": [
+      52.90720604528699,
+      52.04192354554358,
+      60.00666144177448
+    ]
+  },
+  {
+    "name": "aes-256-encrypt",
+    "control_median_us": 90.13746622268471,
+    "candidate_median_us": 97.47385411320755,
+    "speedup": 0.924734812660611,
+    "control_process_means_us": [
+      47.60766652336448,
+      90.13746622268471,
+      90.87584723809525
+    ],
+    "candidate_process_means_us": [
+      97.47385411320755,
+      85.5059884703434,
+      106.19980032989693
+    ]
+  },
+  {
+    "name": "aes-256-decrypt",
+    "control_median_us": 116.57243967413442,
+    "candidate_median_us": 114.80642393203884,
+    "speedup": 1.0153825516169808,
+    "control_process_means_us": [
+      54.388161978947366,
+      130.98453625692136,
+      116.57243967413442
+    ],
+    "candidate_process_means_us": [
+      114.80642393203884,
+      105.82808818965518,
+      122.89748221954164
+    ]
+  }
+]

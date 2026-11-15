@@ -196,3 +196,116 @@ ranges are in each `*-summary.json`. Source revision `HEAD` in the first noisy
 attempt was expanded afterward to the unchanged `17bf360` revision, with that
 metadata correction recorded in the JSON. The runner now resolves revisions
 before timing and accepts explicit test selections/counts for later AES controls.
+
+## Shared Binary composition and AES controls
+
+The next experiment freezes shared Binary at
+`b21222bef6073a07c1f4d5e9bcaf053d53b8a334` for both variants. The generic control
+is `6dfb1d2014c74dd2fb480ff9772e23cc0e5290cc`: this shared commit plus benchmark
+commits only. The characteristic-two/reduced-result/one-pass-shift candidate is
+`72fd4579f9e8bc5c43944162abb9aacf3e531216`. Its harness adds ten AES workloads:
+table generation, and key expansion/encrypt/decrypt for each key length. Fixed
+FIPS inputs and expected ciphertexts are checked outside timed closures. The
+original nine primitive/RS inputs remain identical. Polynomial/extension-field/
+RS/AES correctness passes 71 tests on all three backends at this composition.
+
+AES table generation calls the extension-field inverse and can benefit from
+these changes. Cached AES key expansion and block operations use the immutable
+Sbox tries and Boolean octet operations; they do not call Galois arithmetic and
+are controls. No AES implementation code is changed by this optimization.
+
+Baseline ELF SHA256 is
+`5f1a32bbac279bfc105b0d29b6c2eb6906a1dd523a1a3314772d040beb9e29a4`;
+candidate ELF SHA256 is
+`91b3340fa5af75061cab7e13e165eebe3ada28ed7c6c869982f815af1e38a4e8`.
+`combined-*` preserves a first noisy A/B/B/A/A/B attempt. `combined-near-*` is
+the second attempt with a third width-cache candidate (`a1a4f40`), in
+A/B/C, B/C/A, C/A/B order. Both experiments use CPU6 and identical native flags.
+
+Project agents stopped heavy jobs for 15:22:30–15:25:10 UTC during the second
+attempt, and all nine processes completed by 15:25:05 UTC. Nevertheless unrelated
+`chrome-headless`, `dnf`, and other host processes were active. They were observed
+read-only and were not stopped. The cgroup reports no throttling and CPUs 0–15;
+WSL host scheduling/frequency and these unrelated workloads are uncontrolled.
+The same unchanged AES control ELF varied substantially. These are **diagnostic
+measurements**, not evidence for small speed differences or a clean composed
+speedup claim. All adaptive batch sizes and run counts are retained in each raw
+summary. `combined-noisy-summary.json` and `combined-near-summary.json` preserve
+the process means and ranges; the large characteristic-two advantage remains
+visible, including table generation, but this host interval does not isolate
+the width-cache benefit. Its adoption remains pending.
+
+The separate `combined-gprof.txt` diagnostic identifies `core.length` and Nat
+comparison after the first optimization, while Binary division no longer has a
+major sampled self-time share. This motivates caching the divisor width across
+long division and computing the remainder width once per iteration. The
+candidate changes only private arguments; its native 71 tests, purity audit,
+and public API snapshots pass. Profile call counts must not be compared directly
+with the earlier profile: adaptive batch counts differ, and both Binary and
+polynomial implementations changed between these profiles.
+
+Subsequent heavy builds/tests/timing batches use the shared repository mutex,
+introduced by `fbe64ee`, for example:
+
+```sh
+/home/hosi/morph/tools/measure --cpu 6 bash measurement-batch.sh
+```
+
+This serializes project agents across worktrees but does not reserve the host.
+The runner now records child user/system CPU time and CPU/elapsed ratio as an
+additional descheduling diagnostic. `build_cpu_timer.py` and `thread_clock.c`
+provide a separate, explicitly labeled thread-CPU-time benchmark adapter through
+GNU ld wrapping of `clock_gettime`. Generated kernel C is unchanged. Thread CPU
+time excludes descheduled wall time; it still includes frequency/cache/hypervisor
+effects, so this metric is not interchangeable with the stock wall-clock data.
+
+## Thread CPU time diagnostic
+
+`cpu-*` records three processes each for the original generic polynomial
+implementation, the first combined candidate (`72fd457`), and the private-width
+cache (`a1a4f40`). Order is A/B/C, B/C/A, C/A/B under one shared mutex hold.
+The timer adapter is applied identically to all three generated native C files;
+no generated kernel code is edited. Means are microseconds of thread CPU time
+per operation, and medians below aggregate the three process means.
+
+| Workload | Generic µs | Fp2 candidate µs | Width cache µs |
+| --- | ---: | ---: | ---: |
+| Fp2 multiply 64×32 | 284.353 | 20.284 | 21.104 |
+| Fp2 divide 95/32 | 7548.070 | 241.668 | 174.048 |
+| Fp2 extended Euclid 16/14 | 168.666 | 14.321 | 10.804 |
+| Fp5 multiply, control | 804.412 | 817.882 | 835.351 |
+| GF256 multiply 83×202 | 69.865 | 7.589 | 5.289 |
+| GF256 inverse 83 | 68.368 | 8.533 | 7.478 |
+| GF9 multiply, control | 3.297 | 2.819 | 2.717 |
+| RS15 two-error decode | 1696.257 | 331.115 | 283.337 |
+| RS255 two-error decode | 62649.545 | 9671.952 | 7840.497 |
+| AES generated tables | 23877.662 | 4888.078 | 4170.976 |
+
+Whole-process child CPU/elapsed ratios are 0.967–0.972, indicating little Linux
+descheduling in this interval. This does not account for all WSL hypervisor or
+CPU-frequency effects. Cached AES controls still differ: AES192 encryption is
+74.901→83.034µs between the latter two variants although its implementation does
+not use the changed arithmetic. Fp2 multiplication is also an unchanged control
+for the width change and differs by about 4%. All controls and run/batch counts
+are retained in `cpu-summary.json` and raw output.
+
+The 28% time reduction in Fp2 division, 25% in extended Euclid, and 19% in RS255
+are larger than most control differences in this run. This supports the width
+cache as a bounded native CPU-time improvement; it does not establish the same
+wall-latency change on other hosts or backends. All 71 correctness tests pass on
+native, Wasm GC, and JavaScript for this candidate. A zero dividend now pays one
+cached divisor-width construction; zero/unit early exits are a further candidate
+and must preserve field-mismatch and zero-divisor precedence.
+
+The adapter builder also performs a sleep-based timer probe: the wrapped
+monotonic clock must advance much less than the real wall clock during a 20ms
+sleep. This validates timer selection, not kernel performance. Reproduction:
+
+```sh
+python3 docs/bootstrap/gf2-performance/build_cpu_timer.py GENERATED.c .tools/cpu.exe
+python3 docs/bootstrap/gf2-performance/measure.py .tools/cpu.exe label SOURCE_SHA \
+  --tests perf_wbtest.mbt:0-3 --cases 19 --timer thread-cpu
+```
+
+Wrap the entire build/run batch in `tools/measure`; do not compare these thread
+CPU-time values directly with stock wall-clock values from another interval.
