@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/spanning"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/graph",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(@graph.Graph, Forest) -> Bool
+
+pub fn kruskal(@graph.Graph) -> Forest
+
+pub fn prim(@graph.Graph) -> Forest
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Forest {
+  edges : @core.Chain[@graph.Edge]
+  total : @binary.Binary
+}
+pub fn Forest::equal(Self, Self) -> Bool
+pub fn Forest::not_equal(Self, Self) -> Bool
+pub fn Forest::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
