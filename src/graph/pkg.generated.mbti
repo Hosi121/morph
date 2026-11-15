@@ -1,0 +1,59 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/graph"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bfs(Graph, @core.Nat) -> @core.Chain[Visit]?
+
+pub fn dijkstra(Graph, @core.Nat) -> @core.Chain[Visit]?
+
+pub fn edges(Graph) -> @core.Chain[Edge]
+
+pub fn graph(@core.Chain[@core.Nat], @core.Chain[Edge]) -> Graph?
+
+pub fn lookup(@core.Chain[Visit], @core.Nat) -> Visit?
+
+pub fn path(@core.Chain[Visit], @core.Nat) -> @core.Chain[@core.Nat]?
+
+pub fn vertices(Graph) -> @core.Chain[@core.Nat]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Edge {
+  from : @core.Nat
+  to : @core.Nat
+  weight : @binary.Binary
+}
+pub fn Edge::equal(Self, Self) -> Bool
+pub fn Edge::not_equal(Self, Self) -> Bool
+pub fn Edge::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Graph {
+  vertices : @core.Chain[@core.Nat]
+  edges : @core.Chain[Edge]
+}
+pub fn Graph::equal(Self, Self) -> Bool
+pub fn Graph::not_equal(Self, Self) -> Bool
+pub fn Graph::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Visit {
+  vertex : @core.Nat
+  distance : @binary.Binary
+  predecessor : @core.Nat?
+}
+pub fn Visit::equal(Self, Self) -> Bool
+pub fn Visit::not_equal(Self, Self) -> Bool
+pub fn Visit::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
