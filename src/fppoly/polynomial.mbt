@@ -328,15 +328,28 @@ pub fn multiply(
 }
 
 ///|
+fn prepend_zeros(
+  coefficients : @core.Chain[@binary.Binary],
+  exponent : @core.Nat,
+  zero : @binary.Binary,
+) -> @core.Chain[@binary.Binary] {
+  match exponent {
+    Zero => coefficients
+    Succ(rest) => Cons(zero, prepend_zeros(coefficients, rest, zero))
+  }
+}
+
+///|
 fn shifted(value : Polynomial, exponent : @core.Nat) -> Polynomial {
   match is_zero(value) {
     true => value
     false =>
       {
         field: value.field,
-        coefficients: @core.append(
-          @core.replicate(exponent, @binary.zero()),
+        coefficients: prepend_zeros(
           value.coefficients,
+          exponent,
+          @binary.zero(),
         ),
       }
   }
