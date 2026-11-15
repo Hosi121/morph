@@ -105,8 +105,9 @@ enqueues the asserting literal. Decisions still scan clauses, and conflict
 analysis still searches the reverse trail. There is no activity heuristic,
 restart policy, or learned-clause deletion.
 
-At propagation quiescence the engine scans for a decision and reports
-`InvariantViolation` if any unit or false clause was missed by the watch index.
+At this milestone, propagation quiescence scanned the entire database for a
+decision and reported `InvariantViolation` for a missed unit or false clause.
+The later first-open optimization below retains that full diagnostic in tests.
 White-box tests additionally check both directions of watch membership, absence
 of duplicate bucket membership, assignment-index correspondence to the trail,
 and the unit justification of every stored implication. These checks run after
@@ -388,4 +389,49 @@ against it in white-box tests.
 
 ```sh
 taskset -c 10 tools/moon bench src/cdcl/profile_wbtest.mbt --target native --release -i 1
+```
+
+## Stop decision inspection at the first open clause
+
+The normal watched engine now scans the satisfied prefix and stops at the first
+open clause after its propagation queue and active watch bucket are exhausted.
+The earlier full-database diagnostic remains as `watch_decision_checked` and
+can be selected in the same executable. A correct quiescent watch index excludes
+pending units and conflicts; the optimization uses that invariant. It still
+reports an unexpected unit/conflict in the inspected prefix. Detection beyond
+the selected open clause is performed by the full white-box diagnostic.
+
+The existing per-transition invariant families additionally compare every fast
+quiescent candidate with the full diagnostic. A separate pigeonhole regression
+compares the complete `Status`, including every immutable paused `Search`,
+between both modes and the public one-transition runner. On the 64-bit miter,
+both modes return the exact same complete proof, and the independent hinted
+checker accepts it. Original decisions, learned clauses, and backjump behavior
+are preserved.
+
+CPU 10, native release, shared Binary fixed at `e717649`, same ELF for both
+selectors, ten samples per case under the repository measurement mutex:
+
+| Mode | Mean ± standard deviation | Range |
+| --- | ---: | ---: |
+| Full quiescence diagnostic | 3.60 s ± 80.40 ms | 3.46–3.70 s |
+| First open clause | 862.97 ms ± 25.49 ms | 807.61–886.28 ms |
+
+The test-only deterministic counter records 3,276 decisions, with 7,663,873
+clause inspections for the full diagnostic and 680,556 for the first-open
+prefix. These counts establish an 11.26-fold reduction in decision clause
+visits; the measured complete search is about 4.17 times faster in this run.
+The timed closures include search from the same prepared initial state and
+prebuilt 200,000-transition fuel, excluding CNF generation, startup, and proof
+checking. Proof equality, work counting, and hinted checking occur before the
+timing. This does not estimate the speedup of the complete query pipeline.
+Host scheduling and CPU-frequency variation remain possible; older unpaired
+measurements above must not be compared as if they used these conditions.
+
+The same batch passes all 21 CDCL tests on native, JS, and Wasm GC and the
+73-file purity gate. The benchmark ELF SHA-256 was
+`55d511a79432d5a39f1759323e69a6f3f0c853920ce5a86b86170b7553d8cf74`.
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/profile_wbtest.mbt --target native --release -i 3
 ```

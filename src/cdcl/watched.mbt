@@ -203,7 +203,10 @@ fn indexed_clause(clause : Lits, values : Index[Assignment]) -> ClauseState {
 }
 
 ///|
-fn watch_decision(db : Database, values : Index[Assignment]) -> Inspection {
+fn watch_decision_checked(
+  db : Database,
+  values : Index[Assignment],
+) -> Inspection {
   fn visit(db : Database, candidate : Atom?) -> Inspection {
     match db {
       Nil =>
@@ -224,6 +227,21 @@ fn watch_decision(db : Database, values : Index[Assignment]) -> Inspection {
     }
   }
   visit(db, None)
+}
+
+///|
+/// At quiescence the watch invariant excludes pending units and conflicts.
+/// Keep the full database diagnostic in watch_decision_checked for tests.
+fn watch_decision(db : Database, values : Index[Assignment]) -> Inspection {
+  match db {
+    Nil => Complete
+    Cons(clause, rest) =>
+      match indexed_clause(clause, values) {
+        Satisfied => watch_decision(rest, values)
+        Open(literal) => Decide(literal)
+        Unit(_) | Conflict => Broken
+      }
+  }
 }
 
 ///|
@@ -270,7 +288,11 @@ fn watch_move(
 ///|
 /// Finish a bucket incrementally, retaining the remaining IDs when a new
 /// implied literal is returned. Clause moves remain valid after unassignment.
-fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) {
+fn watch_inspect_using(
+  state : WatchState,
+  db : Database,
+  check_rest : Bool,
+) -> (Inspection, WatchState) {
   match state.empty {
     true => (Contradiction(Nil), state)
     false =>
@@ -278,7 +300,7 @@ fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) 
         Cons((literal, reason), rest) => {
           let state = { ..state, units: rest, }
           match index_value(literal, state.values) {
-            True => watch_inspect(state, db)
+            True => watch_inspect_using(state, db, check_rest)
             False => (Contradiction(reason), state)
             Unassigned => (Propagate(literal, reason), state)
           }
@@ -287,20 +309,28 @@ fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) 
           match state.active {
             None =>
               match @core.dequeue(state.pending) {
-                None => (watch_decision(db, state.values), state)
+                None => {
+                  let decision = match check_rest {
+                    true => watch_decision_checked(db, state.values)
+                    false => watch_decision(db, state.values)
+                  }
+                  (decision, state)
+                }
                 Some((literal, pending)) => {
                   let literal = opposite(literal)
-                  watch_inspect(
+                  watch_inspect_using(
                     {
                       ..state,
                       pending,
                       active: Some((literal, bucket(state, literal))),
                     },
                     db,
+                    check_rest,
                   )
                 }
               }
-            Some((_, Nil)) => watch_inspect({ ..state, active: None, }, db)
+            Some((_, Nil)) =>
+              watch_inspect_using({ ..state, active: None, }, db, check_rest)
             Some((false_watch, Cons(id, rest))) => {
               let state = { ..state, active: Some((false_watch, rest)), }
               match index_get(state.clauses, @binary.bits(id)) {
@@ -314,7 +344,7 @@ fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) 
                     None => (Contradiction(clause.literals), state)
                     Some(other) =>
                       match index_value(other, state.values) {
-                        True => watch_inspect(state, db)
+                        True => watch_inspect_using(state, db, check_rest)
                         _ =>
                           match
                             replacement(
@@ -324,11 +354,12 @@ fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) 
                               state.values,
                             ) {
                             Some(next) =>
-                              watch_inspect(
+                              watch_inspect_using(
                                 watch_move(
                                   state, clause, false_watch, next, other,
                                 ),
                                 db,
+                                check_rest,
                               )
                             None =>
                               match index_value(other, state.values) {
@@ -346,6 +377,11 @@ fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) 
           }
       }
   }
+}
+
+///|
+fn watch_inspect(state : WatchState, db : Database) -> (Inspection, WatchState) {
+  watch_inspect_using(state, db, false)
 }
 
 ///|

@@ -94,6 +94,27 @@ fn run_checked(formula : @sat.Cnf) -> Status raise {
   for state = start(formula), count = 0 {
     assert_true(count < 20000)
     assert_watch(state)
+    match state.watch {
+      None => fail("watch invariant test requires the watched engine")
+      Some(watched) => {
+        let (inspection, quiescent) = watch_inspect(watched, state.database)
+        match inspection {
+          Decide(candidate) =>
+            match watch_decision_checked(state.database, quiescent.values) {
+              Decide(expected) => assert_true(same(candidate, expected))
+              _ =>
+                fail("quiescent fast decision disagrees with full diagnostic")
+            }
+          Complete =>
+            assert_true(
+              watch_decision_checked(state.database, quiescent.values)
+              is Complete,
+            )
+          Broken => fail("watch invariant failed before a transition")
+          Propagate(_, _) | Contradiction(_) => ()
+        }
+      }
+    }
     match run(state, fuel(1)) {
       Paused(next) => {
         match @core.compare(next.statistics.learned, state.statistics.learned) {
