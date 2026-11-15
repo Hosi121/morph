@@ -66,6 +66,12 @@ test "finite term pairs preserve equations and substitutions are idempotent" {
         Err(_) => ()
         Ok(s) => {
           assert_eq(apply(s, a), apply(s, b))
+          let entries = @oracle.array(bindings(s))
+          for domain in entries {
+            for range in entries {
+              assert_false(occurs(domain.0, range.1))
+            }
+          }
           for term in atoms {
             assert_eq(apply(s, apply(s, term)), apply(s, term))
           }

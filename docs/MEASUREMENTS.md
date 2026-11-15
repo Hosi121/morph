@@ -22,3 +22,26 @@
 ```sh
 tools/moon bench src/benchmarks --target native --release
 ```
+
+## 2026-11-15：冪等置換の値域を共有する
+
+同じ native release 環境。深さ6の共有された二分項（木として展開すると127ノード）へ
+一変数を束縛した置換を、事前に作成しておく。その変数への apply だけを計測した。
+置換作成・値域の正規化は計測範囲外。各10サンプル。
+
+| 実装 | 平均 | 標準偏差 |
+| --- | ---: | ---: |
+| 束縛値を再帰走査して再構築 | 2.69 µs | 41.22 ns |
+| 正規化済みの束縛値を共有 | 9.08 ns | 1.11 ns |
+
+この参照操作だけでは約300倍。型推論全体や単一化全体の速度比ではない。
+前提は、置換のどの値域にも置換の定義域の変数が残っていないこと。
+bind が新しい束縛を全既存値域へ合成するため、値域の再走査を省ける。
+この不変条件を、単一化が成功する全有限項ペアのテストで明示的に確認した。
+
+生ログ：[変更前](measurements/unify-before.txt)、[変更後](measurements/unify-after.txt)。
+変更前の核は `d96d4f9`。再現：
+
+```sh
+tools/moon bench src/benchmarks/unify_test.mbt --target native --release
+```

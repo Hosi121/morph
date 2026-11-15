@@ -1,0 +1,4 @@
+[Hosi121/morph] bench benchmarks/unify_test.mbt:2 ("Apply idempotent substitution to bound shared term") ok
+time (mean ± σ)         range (min … max) 
+   2.69 µs ±  41.22 ns     2.63 µs …   2.75 µs  in 10 ×  38046 runs
+Total tests: 1, passed: 1, failed: 0.

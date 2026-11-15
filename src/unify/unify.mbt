@@ -56,7 +56,8 @@ pub fn[S] apply(substitution : Substitution[S], term : Term[S]) -> Term[S] {
     Variable(variable) =>
       match lookup(substitution.bindings, variable) {
         None => term
-        Some(value) => apply(substitution, value)
+        // bind composes every range eagerly; no domain variable remains here.
+        Some(value) => value
       }
     Node(symbol, children) =>
       Node(
