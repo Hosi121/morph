@@ -1,0 +1,47 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/finitefield"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/modular",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn character(Field, @binary.Binary) -> Character
+
+pub fn field(@binary.Binary) -> Field?
+
+pub fn modulus(Field) -> @modular.Modulus
+
+pub fn sqrt(Field, @binary.Binary) -> @binary.Binary?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Character {
+  Zero
+  Residue
+  Nonresidue
+}
+pub fn Character::equal(Self, Self) -> Bool
+pub fn Character::not_equal(Self, Self) -> Bool
+pub fn Character::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Field {
+  modulus : @modular.Modulus
+  odd_part : @binary.Binary
+  two_power : @core.Nat
+  euler_exponent : @binary.Binary
+  nonresidue : @binary.Binary
+}
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
