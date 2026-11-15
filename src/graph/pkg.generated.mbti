@@ -20,6 +20,12 @@ pub fn lookup(@core.Chain[Visit], @core.Nat) -> Visit?
 
 pub fn path(@core.Chain[Visit], @core.Nat) -> @core.Chain[@core.Nat]?
 
+pub fn strongly_connected(Graph) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn topological(Graph) -> @core.Chain[@core.Nat]?
+
+pub fn transpose(Graph) -> Graph
+
 pub fn vertices(Graph) -> @core.Chain[@core.Nat]
 
 // Errors
