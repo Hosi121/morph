@@ -1,0 +1,103 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/difference"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_cycle(Problem, Cycle) -> Bool
+
+pub fn check_solution(Problem, Solution) -> Bool
+
+pub fn check_values(Problem, @core.Chain[(@core.Nat, @exact.Integer)]) -> Solution?
+
+pub fn constraints(Problem) -> @core.Chain[Constraint]
+
+pub fn holds(Constraint, @core.Chain[(@core.Nat, @exact.Integer)]) -> Bool
+
+pub fn negate(Constraint) -> Constraint
+
+pub fn problem(@core.Chain[Constraint]) -> Problem
+
+pub fn solve(Problem) -> Outcome
+
+pub fn value(Solution, @core.Nat) -> @exact.Integer?
+
+pub fn values(Solution) -> @core.Chain[(@core.Nat, @exact.Integer)]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Constraint {
+  left : @core.Nat
+  right : @core.Nat
+  bound : @exact.Integer
+}
+pub fn Constraint::equal(Self, Self) -> Bool
+pub fn Constraint::not_equal(Self, Self) -> Bool
+pub fn Constraint::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Cycle {
+  indices : @core.Chain[@core.Nat]
+}
+pub fn Cycle::equal(Self, Self) -> Bool
+pub fn Cycle::not_equal(Self, Self) -> Bool
+pub fn Cycle::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Edge {
+  index : @core.Nat
+  from : Vertex
+  to : Vertex
+  bound : @exact.Integer
+}
+pub fn Edge::equal(Self, Self) -> Bool
+pub fn Edge::not_equal(Self, Self) -> Bool
+pub fn Edge::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Outcome {
+  Feasible(Solution)
+  Infeasible(Cycle)
+  InvariantViolation
+}
+pub fn Outcome::equal(Self, Self) -> Bool
+pub fn Outcome::not_equal(Self, Self) -> Bool
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  constraints : @core.Chain[Constraint]
+  vertices : @core.Chain[Vertex]
+  edges : @core.Chain[Edge]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Solution {
+  values : @core.Chain[(@core.Nat, @exact.Integer)]
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Vertex {
+  source : @core.Nat
+  key : @binary.Binary
+}
+pub fn Vertex::equal(Self, Self) -> Bool
+pub fn Vertex::not_equal(Self, Self) -> Bool
+pub fn Vertex::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
