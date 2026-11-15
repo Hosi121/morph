@@ -1,0 +1,69 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/autodiff"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn differentiate(Expr, @core.Nat) -> Expr
+
+pub fn evaluate(Expr, @core.Chain[(@core.Nat, @exact.Rational)]) -> @exact.Rational?
+
+pub fn[A] evaluate_in(Expr, @core.Chain[(@core.Nat, A)], @algebra.Semiring[A], (@exact.Rational) -> A, (A) -> A) -> A?
+
+pub fn forward(Expr, @core.Chain[(@core.Nat, @exact.Rational)], @core.Nat) -> Dual?
+
+pub fn negative(Expr) -> Expr
+
+pub fn partial(Gradient, @core.Nat) -> @exact.Rational
+
+pub fn power(Expr, @core.Nat) -> Expr
+
+pub fn product(Expr, Expr) -> Expr
+
+pub fn reverse(Expr, @core.Chain[(@core.Nat, @exact.Rational)]) -> Gradient?
+
+pub fn sum(Expr, Expr) -> Expr
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Dual {
+  value : @exact.Rational
+  tangent : @exact.Rational
+}
+pub fn Dual::equal(Self, Self) -> Bool
+pub fn Dual::not_equal(Self, Self) -> Bool
+pub fn Dual::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Expr {
+  Constant(@exact.Rational)
+  Variable(@core.Nat)
+  Sum(Expr, Expr)
+  Product(Expr, Expr)
+  Negative(Expr)
+  Power(Expr, @core.Nat)
+}
+pub fn Expr::equal(Self, Self) -> Bool
+pub fn Expr::not_equal(Self, Self) -> Bool
+pub fn Expr::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Gradient {
+  value : @exact.Rational
+  partials : @core.Chain[(@core.Nat, @exact.Rational)]
+}
+pub fn Gradient::equal(Self, Self) -> Bool
+pub fn Gradient::not_equal(Self, Self) -> Bool
+pub fn Gradient::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Contributions = @core.Chain[(@core.Nat, @exact.Rational)]
+
+// Traits
