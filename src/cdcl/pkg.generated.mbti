@@ -1,0 +1,84 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cdcl"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_refutation(@core.Chain[@core.Chain[@sat.Literal]], Proof) -> Bool
+
+pub fn run(Search, @core.Nat) -> Status
+
+pub fn run_measured(Search, @core.Nat) -> (Status, Statistics)
+
+pub fn start(@core.Chain[@core.Chain[@sat.Literal]]) -> Search
+
+pub fn statistics(Search) -> Statistics
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type Assignment
+pub fn Assignment::equal(Self, Self) -> Bool
+pub fn Assignment::not_equal(Self, Self) -> Bool
+pub fn Assignment::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Atom
+pub fn Atom::equal(Self, Self) -> Bool
+pub fn Atom::not_equal(Self, Self) -> Bool
+pub fn Atom::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Proof {
+  Rup(@core.Chain[@core.Chain[@sat.Literal]])
+}
+pub fn Proof::equal(Self, Self) -> Bool
+pub fn Proof::not_equal(Self, Self) -> Bool
+pub fn Proof::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Search {
+  database : @core.Chain[@core.Chain[Atom]]
+  variables : @core.Chain[Atom]
+  trail : @core.Chain[Assignment]
+  level : @core.Nat
+  proof_rev : @core.Chain[@core.Chain[@sat.Literal]]
+  statistics : Statistics
+}
+pub fn Search::equal(Self, Self) -> Bool
+pub fn Search::not_equal(Self, Self) -> Bool
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Statistics {
+  transitions : @core.Nat
+  decisions : @core.Nat
+  propagations : @core.Nat
+  conflicts : @core.Nat
+  learned : @core.Nat
+  backjumps : @core.Nat
+  nonchronological : @core.Nat
+}
+pub fn Statistics::equal(Self, Self) -> Bool
+pub fn Statistics::not_equal(Self, Self) -> Bool
+pub fn Statistics::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Satisfiable(@core.Chain[@sat.Literal])
+  Unsatisfiable(Proof)
+  Paused(Search)
+  InvariantViolation
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
