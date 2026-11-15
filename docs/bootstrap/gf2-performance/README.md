@@ -369,3 +369,72 @@ The timer sleep probes pass. The reprobed width-control ELF and clock object are
 byte-identical to those used in the first CPU diagnostic; hashes and probe
 values are in `timer-probe-verification.json`. The temporary generic-baseline
 worktree was clean and removed after preserving its branch, ELF/C, and provenance.
+
+The integration-only source commit is `af4a1de`: it contains the final four-file
+Galois delta against `a1a4f40` without requiring the rejected fixed-width source
+commit. Its complete `src` tree was compared byte-for-byte with `c4b84e6`.
+
+## Stock wall-clock confirmation
+
+The nine original primitive/RS workloads were rerun with the saved stock native
+ELFs, excluding the custom timer adapter. The source remains frozen at Binary
+`b21222b`, unfused `a1a4f40` versus variable-width `c4b84e6`. This experiment does
+not mix subsequent Core changes into either ELF. CPU6, one shared mutex hold,
+A/B/B/A/A/B, three processes per variant:
+
+| Workload | Unfused wall µs | Variable-width wall µs | Ratio |
+| --- | ---: | ---: | ---: |
+| GF256 multiply 83×202 | 5.570 | 0.992 | 5.62× |
+| RS15 two-error decode | 275.203 | 160.285 | 1.72× |
+| RS255 two-error decode | 8038.691 | 5371.939 | 1.50× |
+| GF9 multiply, control | 2.583 | 2.717 | 0.95× |
+| Fp2 divide, control | 167.794 | 179.528 | 0.93× |
+
+These confirm the large product and RS gains with the standard wall-clock
+runner. The unchanged division control is 7% slower and GF9 is 5% slower in this
+interval; their causes are not established. All nine cases, process means, run
+counts, resource usage, and fault/context-switch diagnostics are retained in
+`wall-summary.json` and `wall-*` raw records. Small cross-workload differences
+remain subject to compiler-layout and shared-host effects; no improvement for
+every operation or backend is claimed.
+
+Separately, Core `17c206d` was merged and the local
+polynomial prefix constructor was replaced with `core.replicate_onto` in
+`5036234`. This removes duplicate implementation using the reviewed generic
+prefix law. All 73 polynomial/field/RS/AES tests pass on native, Wasm GC, and
+JavaScript, purity passes 113 kernel files, and their public API snapshots are
+unchanged. No extra speedup is attributed to this refactoring.
+
+## Zero and constant polynomial division
+
+Harness `b4d626e` adds 21 fixed workloads for zero/unit/general/constant division
+and scalar controls at 64 coefficients. Inputs, including 2^1000, are built
+outside timed closures. Candidate `972964c` checks field compatibility and zero
+divisors first, then shares a zero dividend or returns division by one directly.
+A nonzero constant divisor uses one scalar inverse and a single scale rather
+than repeated polynomial long division. Public errors and normalization remain
+unchanged. The negative-input regression explicitly checks mixed-field units
+and mixed-field zero dividends as well as zero-over-zero.
+
+The source base is the separately composed Core `17c206d`, with shared prefix
+refactoring `5036234`, rather than the earlier frozen Binary-only comparison.
+Both variants use this same base. Under one mutex, CPU6, thread-CPU timer,
+A/B/B/A/A/B, and three independent processes, the median microseconds are:
+
+| Workload | Baseline µs | Direct-division µs |
+| --- | ---: | ---: |
+| Zero / nonzero, Fp2 | 1.133 | 0.237 |
+| Unit divisor, Fp2 | 112.479 | 0.053 |
+| Unit divisor, Fp3 | 471.389 | 0.056 |
+| Unit divisor, Fp5 | 703.510 | 0.057 |
+| Nonunit constant, Fp3 | 484.904 | 10.331 |
+| Nonunit constant, Fp5 | 713.306 | 27.262 |
+
+The Fp3 general-division control is 410.991→447.719µs (9% slower), while
+the Fp5 control is 812.153→810.186µs. These countertrends remain recorded.
+Complete values, including both nonunit constant divisors, general-division
+controls, and unchanged scalar workloads, are in `unit-summary.json` and the
+raw `unit-*` reports. Large scalar costs are recorded as controls and are not
+optimized in this milestone. All 74 correctness tests pass on native, Wasm GC,
+and JavaScript; purity and public API snapshots remain unchanged. This completes
+the current polynomial tuning phase before the separate Nat radix work.

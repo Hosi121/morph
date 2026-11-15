@@ -1,0 +1,338 @@
+[
+  {
+    "name": "poly-zero-div-p2",
+    "baseline_median_us": 1.1325883379804154,
+    "candidate_median_us": 0.23745862199999998,
+    "speedup": 4.769623980974738,
+    "baseline_process_means_us": [
+      1.1658347327183118,
+      1.1325883379804154,
+      1.107688821876351
+    ],
+    "candidate_process_means_us": [
+      0.23745862199999998,
+      0.2369496152,
+      0.2514823192
+    ]
+  },
+  {
+    "name": "poly-unit-div-p2",
+    "baseline_median_us": 112.47878571127504,
+    "candidate_median_us": 0.052922116,
+    "speedup": 2125.3644829937457,
+    "baseline_process_means_us": [
+      101.79889441711231,
+      115.24031533333334,
+      112.47878571127504
+    ],
+    "candidate_process_means_us": [
+      0.052922116,
+      0.053753534400000004,
+      0.05213135320000001
+    ]
+  },
+  {
+    "name": "poly-general-div-p2-control",
+    "baseline_median_us": 46.27682385990515,
+    "candidate_median_us": 46.93639170515098,
+    "speedup": 0.9859476235542527,
+    "baseline_process_means_us": [
+      46.27682385990515,
+      47.7180044608101,
+      45.684057372924
+    ],
+    "candidate_process_means_us": [
+      49.92967870967742,
+      46.93639170515098,
+      45.55431926199262
+    ]
+  },
+  {
+    "name": "poly-scale-unit-p2-control",
+    "baseline_median_us": 0.014852710799999998,
+    "candidate_median_us": 0.0160725692,
+    "speedup": 0.9241030861450574,
+    "baseline_process_means_us": [
+      0.0165746948,
+      0.014852710799999998,
+      0.0146783784
+    ],
+    "candidate_process_means_us": [
+      0.014797312000000002,
+      0.0167918328,
+      0.0160725692
+    ]
+  },
+  {
+    "name": "poly-scale-zero-p2-control",
+    "baseline_median_us": 0.028113148800000005,
+    "candidate_median_us": 0.022964398000000004,
+    "speedup": 1.2242057814883718,
+    "baseline_process_means_us": [
+      0.0290711388,
+      0.022832835599999997,
+      0.028113148800000005
+    ],
+    "candidate_process_means_us": [
+      0.022964398000000004,
+      0.024561912800000002,
+      0.0227494824
+    ]
+  },
+  {
+    "name": "poly-scale-huge-p2-control",
+    "baseline_median_us": 0.022918645600000002,
+    "candidate_median_us": 0.0219607684,
+    "speedup": 1.0436176541072215,
+    "baseline_process_means_us": [
+      0.021406218400000003,
+      0.023026202000000003,
+      0.022918645600000002
+    ],
+    "candidate_process_means_us": [
+      0.0219607684,
+      0.022092859200000002,
+      0.0213742464
+    ]
+  },
+  {
+    "name": "poly-zero-div-p3",
+    "baseline_median_us": 1.2223407588739292,
+    "candidate_median_us": 0.23918379480000002,
+    "speedup": 5.110466450689197,
+    "baseline_process_means_us": [
+      1.1462089144678105,
+      1.2433589389142208,
+      1.2223407588739292
+    ],
+    "candidate_process_means_us": [
+      0.23918379480000002,
+      0.25819799,
+      0.23468778760000003
+    ]
+  },
+  {
+    "name": "poly-unit-div-p3",
+    "baseline_median_us": 471.389257051282,
+    "candidate_median_us": 0.05561941640000001,
+    "speedup": 8475.264351232601,
+    "baseline_process_means_us": [
+      471.389257051282,
+      432.43278274509805,
+      472.9565541552512
+    ],
+    "candidate_process_means_us": [
+      0.0640307224,
+      0.05561941640000001,
+      0.0547058724
+    ]
+  },
+  {
+    "name": "poly-general-div-p3-control",
+    "baseline_median_us": 410.99106976,
+    "candidate_median_us": 447.718811402715,
+    "speedup": 0.9179669455307317,
+    "baseline_process_means_us": [
+      405.2754266666667,
+      410.99106976,
+      426.23279965367965
+    ],
+    "candidate_process_means_us": [
+      449.92031009345794,
+      415.914268503937,
+      447.718811402715
+    ]
+  },
+  {
+    "name": "poly-constant-div-p3",
+    "baseline_median_us": 484.9043153623189,
+    "candidate_median_us": 10.330984988481676,
+    "speedup": 46.93689090662248,
+    "baseline_process_means_us": [
+      472.32856187234046,
+      484.9043153623189,
+      506.7970671219511
+    ],
+    "candidate_process_means_us": [
+      10.751159042228991,
+      10.330984988481676,
+      10.043301456847182
+    ]
+  },
+  {
+    "name": "poly-scale-unit-p3-control",
+    "baseline_median_us": 3.949417391506871,
+    "candidate_median_us": 3.882954973586078,
+    "speedup": 1.0171164534157375,
+    "baseline_process_means_us": [
+      3.8156771113340016,
+      3.949417391506871,
+      4.145844877514941
+    ],
+    "candidate_process_means_us": [
+      4.231978450754214,
+      3.882954973586078,
+      3.709037554740469
+    ]
+  },
+  {
+    "name": "poly-scale-zero-p3-control",
+    "baseline_median_us": 3.5268053506026256,
+    "candidate_median_us": 3.746101040923052,
+    "speedup": 0.9414602841928708,
+    "baseline_process_means_us": [
+      3.5268053506026256,
+      3.435300632503883,
+      4.0109316652108316
+    ],
+    "candidate_process_means_us": [
+      4.010840061947571,
+      3.663662136943907,
+      3.746101040923052
+    ]
+  },
+  {
+    "name": "poly-scale-huge-p3-control",
+    "baseline_median_us": 4327.501898181818,
+    "candidate_median_us": 4440.279783333333,
+    "speedup": 0.974601175904539,
+    "baseline_process_means_us": [
+      4249.130020869566,
+      4352.90532,
+      4327.501898181818
+    ],
+    "candidate_process_means_us": [
+      4042.9526576000003,
+      4440.279783333333,
+      4440.5781866666675
+    ]
+  },
+  {
+    "name": "poly-zero-div-p5",
+    "baseline_median_us": 1.3035448745653717,
+    "candidate_median_us": 0.26468810519999997,
+    "speedup": 4.924833602100877,
+    "baseline_process_means_us": [
+      1.2776749642322862,
+      1.3035448745653717,
+      1.3074230216000675
+    ],
+    "candidate_process_means_us": [
+      0.26468810519999997,
+      0.291881362,
+      0.2595140844
+    ]
+  },
+  {
+    "name": "poly-unit-div-p5",
+    "baseline_median_us": 703.509875231788,
+    "candidate_median_us": 0.0573211728,
+    "speedup": 12273.1242378172,
+    "baseline_process_means_us": [
+      670.2765093641617,
+      703.509875231788,
+      708.7349168345324
+    ],
+    "candidate_process_means_us": [
+      0.06779313440000001,
+      0.0573211728,
+      0.0550734072
+    ]
+  },
+  {
+    "name": "poly-general-div-p5-control",
+    "baseline_median_us": 812.1534088135593,
+    "candidate_median_us": 810.1859863247864,
+    "speedup": 1.00242835907061,
+    "baseline_process_means_us": [
+      795.6054953383459,
+      812.1534088135593,
+      821.8623483760684
+    ],
+    "candidate_process_means_us": [
+      878.377502184874,
+      810.1859863247864,
+      757.8703039999999
+    ]
+  },
+  {
+    "name": "poly-constant-div-p5",
+    "baseline_median_us": 713.3063556834531,
+    "candidate_median_us": 27.262301238645744,
+    "speedup": 26.164568773537866,
+    "baseline_process_means_us": [
+      713.3063556834531,
+      743.8136816551724,
+      710.1748908823529
+    ],
+    "candidate_process_means_us": [
+      25.525691730376426,
+      28.730717964347328,
+      27.262301238645744
+    ]
+  },
+  {
+    "name": "poly-scale-unit-p5-control",
+    "baseline_median_us": 3.6005815987154426,
+    "candidate_median_us": 3.7295943090167656,
+    "speedup": 0.9654083796756611,
+    "baseline_process_means_us": [
+      3.808176006975933,
+      3.5984382323932804,
+      3.6005815987154426
+    ],
+    "candidate_process_means_us": [
+      3.5941393353033453,
+      3.7295943090167656,
+      3.8403695769380604
+    ]
+  },
+  {
+    "name": "poly-scale-zero-p5-control",
+    "baseline_median_us": 3.654184561922887,
+    "candidate_median_us": 3.728748109511627,
+    "speedup": 0.9800030612423145,
+    "baseline_process_means_us": [
+      3.654184561922887,
+      3.5933312910318227,
+      4.110041435673579
+    ],
+    "candidate_process_means_us": [
+      4.179258424148606,
+      3.7150421699491964,
+      3.728748109511627
+    ]
+  },
+  {
+    "name": "poly-scale-huge-p5-control",
+    "baseline_median_us": 8255.920693333333,
+    "candidate_median_us": 8278.484853333332,
+    "speedup": 0.9972743611421947,
+    "baseline_process_means_us": [
+      8255.920693333333,
+      7794.289953333333,
+      8456.470033333331
+    ],
+    "candidate_process_means_us": [
+      8429.73761,
+      8278.484853333332,
+      7949.494926153845
+    ]
+  },
+  {
+    "name": "poly-scale-huge-p7-control",
+    "baseline_median_us": 7524.243456666666,
+    "candidate_median_us": 7504.220301538461,
+    "speedup": 1.0026682525730355,
+    "baseline_process_means_us": [
+      7037.3704,
+      7524.243456666666,
+      7715.441197142858
+    ],
+    "candidate_process_means_us": [
+      8610.673677142859,
+      7491.436655384615,
+      7504.220301538461
+    ]
+  }
+]
