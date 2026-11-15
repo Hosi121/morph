@@ -9,6 +9,8 @@ import {
 }
 
 // Values
+pub fn check_infeasible(Problem, @core.Chain[@exact.Rational]) -> Bool
+
 pub fn check_optimum(Problem, Optimum) -> Bool
 
 pub fn check_ray(Problem, Ray) -> Bool
@@ -33,6 +35,12 @@ pub fn Optimum::not_equal(Self, Self) -> Bool
 pub fn Optimum::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+type Phase
+pub fn Phase::equal(Self, Self) -> Bool
+pub fn Phase::not_equal(Self, Self) -> Bool
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub struct Problem {
   a : @matrix.Matrix[@exact.Rational]
   b : @core.Chain[@exact.Rational]
@@ -46,7 +54,9 @@ pub fn Problem::to_repr(Self) -> @debug.Repr
 pub(all) enum Progress {
   Optimal(Optimum)
   Unbounded(Ray)
+  Infeasible(@core.Chain[@exact.Rational])
   Paused(State)
+  InvariantViolation
 }
 pub fn Progress::equal(Self, Self) -> Bool
 pub fn Progress::not_equal(Self, Self) -> Bool
@@ -69,6 +79,7 @@ pub fn Row::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct State {
+  phase : Phase
   problem : Problem
   rows : @core.Chain[Row]
   objective : @core.Chain[@exact.Rational]

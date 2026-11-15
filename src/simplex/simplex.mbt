@@ -1,6 +1,6 @@
 ///|
-/// Maximize c*x subject to A*x <= b and x >= 0. Requires b >= 0.
-/// This checked domain starts feasible at the origin; no Phase I is needed.
+/// Maximize c*x subject to A*x <= b and x >= 0, with arbitrary rational b.
+/// Two-phase simplex constructs a feasible basis or a Farkas certificate.
 #derive(Eq, Debug)
 pub struct Problem {
   a : @matrix.Matrix[@exact.Rational]
@@ -49,9 +49,8 @@ pub fn problem(
     (
       same_length(@matrix.rows(a), b),
       @core.compare(@matrix.width(a), @core.length(c)),
-      @core.all(b, nonnegative),
     ) {
-    (true, Equal, true) => Some({ a, b, c, })
+    (true, Equal) => Some({ a, b, c, })
     _ => None
   }
 }
@@ -72,7 +71,22 @@ pub extend Row with Debug::{to_repr}
 
 ///|
 #derive(Eq, Debug)
+enum Phase {
+  PhaseOne
+  Cleanup
+  PhaseTwo
+}
+
+///|
+pub extend Phase with Eq::{equal, not_equal}
+
+///|
+pub extend Phase with Debug::{to_repr}
+
+///|
+#derive(Eq, Debug)
 pub struct State {
+  phase : Phase
   problem : Problem
   rows : @core.Chain[Row]
   objective : @core.Chain[@exact.Rational]
@@ -117,7 +131,9 @@ pub extend Ray with Debug::{to_repr}
 pub(all) enum Progress {
   Optimal(Optimum)
   Unbounded(Ray)
+  Infeasible(@core.Chain[@exact.Rational])
   Paused(State)
+  InvariantViolation
 }
 
 ///|
@@ -130,6 +146,7 @@ pub extend Progress with Debug::{to_repr}
 pub fn start(p : Problem) -> State {
   let n = @matrix.width(p.a)
   let m = @matrix.height(p.a)
+  let first_phase = !@core.all(p.b, nonnegative)
   fn build(
     a : @core.Chain[@core.Chain[@exact.Rational]],
     b : @core.Chain[@exact.Rational],
@@ -137,33 +154,89 @@ pub fn start(p : Problem) -> State {
   ) -> @core.Chain[Row] {
     match (a, b) {
       (Cons(coefficients, a), Cons(value, b)) => {
+        let reversed = !nonnegative(value)
         let unit = @core.map(@core.indices(m), fn(i) {
           match @core.compare(i, row) {
             Equal => @exact.rational_one()
             _ => @exact.rational_zero()
           }
         })
+        let coefficients = @core.append(coefficients, unit)
+        let coefficients = match reversed {
+          true => @core.map(coefficients, @exact.rational_negate)
+          false => coefficients
+        }
+        let coefficients = match first_phase {
+          false => coefficients
+          true =>
+            @core.append(
+              coefficients,
+              match reversed {
+                true => unit
+                false => @core.replicate(m, @exact.rational_zero())
+              },
+            )
+        }
+        let value = match reversed {
+          true => @exact.rational_negate(value)
+          false => value
+        }
+        let offset = match reversed {
+          true => @core.add(n, m)
+          false => n
+        }
         Cons(
-          {
-            basic: @core.add(n, row),
-            coefficients: @core.append(coefficients, unit),
-            value,
-          },
+          { basic: @core.add(offset, row), coefficients, value, },
           build(a, b, Succ(row)),
         )
       }
       _ => Nil
     }
   }
-  {
+  let rows = build(@matrix.rows(p.a), p.b, Zero)
+  let objective = match first_phase {
+    false =>
+      @core.append(
+        @core.map(p.c, @exact.rational_negate),
+        @core.replicate(m, @exact.rational_zero()),
+      )
+    true =>
+      @core.append(
+        @core.replicate(@core.add(n, m), @exact.rational_zero()),
+        @core.replicate(m, @exact.rational_one()),
+      )
+  }
+  let state = State::{
+    phase: match first_phase {
+      true => PhaseOne
+      false => PhaseTwo
+    },
     problem: p,
-    rows: build(@matrix.rows(p.a), p.b, Zero),
-    objective: @core.append(
-      @core.map(p.c, @exact.rational_negate),
-      @core.replicate(m, @exact.rational_zero()),
-    ),
+    rows,
+    objective,
     value: @exact.rational_zero(),
   }
+  canonical_objective(state)
+}
+
+///|
+fn canonical_objective(state : State) -> State {
+  let (objective, value) = @core.fold_left(
+    state.rows,
+    (state.objective, state.value),
+    fn(acc, row) {
+      let (objective, value) = acc
+      let factor = entry(objective, row.basic)
+      (
+        eliminate(objective, row.coefficients, factor),
+        @exact.rational_subtract(
+          value,
+          @exact.rational_multiply(factor, row.value),
+        ),
+      )
+    },
+  )
+  { ..state, objective, value, }
 }
 
 ///|
@@ -272,6 +345,7 @@ fn pivot(state : State, column : @core.Nat, selected : Pivot) -> State {
   })
   let factor = entry(state.objective, column)
   {
+    phase: state.phase,
     problem: state.problem,
     rows,
     objective: eliminate(state.objective, normalized.coefficients, factor),
@@ -329,23 +403,134 @@ fn unbounded_ray(state : State, column : @core.Nat) -> Ray {
 
 ///|
 /// Bland's least-index entering rule and least-basic-index minimum-ratio tie break.
-/// Fuel counts pivots, and a paused tableau can be resumed exactly.
+/// Fuel counts pivots and artificial-basic cleanup steps, not elapsed time.
 pub fn run(state : State, fuel : @core.Nat) -> Progress {
-  match entering(state.objective, Zero) {
-    None =>
-      Optimal({
-        primal: primal(state),
-        dual: @core.drop(@matrix.width(state.problem.a), state.objective),
-        value: state.value,
+  match state.phase {
+    Cleanup => cleanup(state, fuel)
+    PhaseOne | PhaseTwo =>
+      match entering(state.objective, Zero) {
+        None =>
+          match state.phase {
+            PhaseOne =>
+              match
+                @exact.rational_compare(state.value, @exact.rational_zero()) {
+                Less =>
+                  Infeasible(
+                    @core.take(
+                      @matrix.height(state.problem.a),
+                      @core.drop(
+                        @matrix.width(state.problem.a),
+                        state.objective,
+                      ),
+                    ),
+                  )
+                Equal => run({ ..state, phase: Cleanup, }, fuel)
+                Greater => InvariantViolation
+              }
+            PhaseTwo =>
+              Optimal({
+                primal: primal(state),
+                dual: @core.drop(
+                  @matrix.width(state.problem.a),
+                  state.objective,
+                ),
+                value: state.value,
+              })
+            Cleanup => InvariantViolation
+          }
+        Some(column) =>
+          match leaving(state.rows, column) {
+            None =>
+              match state.phase {
+                PhaseTwo => Unbounded(unbounded_ray(state, column))
+                _ => InvariantViolation
+              }
+            Some(selected) =>
+              match fuel {
+                Zero => Paused(state)
+                Succ(rest) => run(pivot(state, column, selected), rest)
+              }
+          }
+      }
+  }
+}
+
+///|
+fn cleanup(state : State, fuel : @core.Nat) -> Progress {
+  let n = @matrix.width(state.problem.a)
+  let m = @matrix.height(state.problem.a)
+  let ordinary = @core.add(n, m)
+  fn artificial(rows : @core.Chain[Row]) -> Row? {
+    match rows {
+      Nil => None
+      Cons(row, rest) =>
+        match @core.compare(row.basic, ordinary) {
+          Less => artificial(rest)
+          _ => Some(row)
+        }
+    }
+  }
+  fn replacement(
+    xs : @core.Chain[@exact.Rational],
+    index : @core.Nat,
+  ) -> (@core.Nat, @exact.Rational)? {
+    match xs {
+      Nil => None
+      Cons(x, rest) =>
+        match @exact.nonzero(x) {
+          Some(proof) => Some((index, @exact.reciprocal(proof)))
+          None => replacement(rest, Succ(index))
+        }
+    }
+  }
+  match artificial(state.rows) {
+    None => {
+      let rows = @core.map(state.rows, fn(row) {
+        Row::{ ..row, coefficients: @core.take(ordinary, row.coefficients), }
       })
-    Some(column) =>
-      match leaving(state.rows, column) {
-        None => Unbounded(unbounded_ray(state, column))
-        Some(selected) =>
+      let objective = @core.append(
+        @core.map(state.problem.c, @exact.rational_negate),
+        @core.replicate(m, @exact.rational_zero()),
+      )
+      run(
+        canonical_objective({
+          ..state,
+          phase: PhaseTwo,
+          rows,
+          objective,
+          value: @exact.rational_zero(),
+        }),
+        fuel,
+      )
+    }
+    Some(row) =>
+      match @exact.rational_compare(row.value, @exact.rational_zero()) {
+        Equal =>
           match fuel {
             Zero => Paused(state)
-            Succ(rest) => run(pivot(state, column, selected), rest)
+            Succ(rest) =>
+              match replacement(@core.take(ordinary, row.coefficients), Zero) {
+                Some((column, reciprocal)) =>
+                  run(
+                    pivot(state, column, {
+                      row,
+                      reciprocal,
+                      ratio: @exact.rational_zero(),
+                    }),
+                    rest,
+                  )
+                None => {
+                  let rows = @core.filter(state.rows, fn(other) {
+                    match @core.compare(row.basic, other.basic) {
+                      Equal => false
+                      _ => true
+                    }
+                  })
+                  run({ ..state, rows, }, rest)
+                }
+              }
           }
+        _ => InvariantViolation
       }
   }
 }
@@ -417,4 +602,15 @@ pub fn check_ray(p : Problem, ray : Ray) -> Bool {
     nonnegative(@exact.rational_negate(dot(row, ray.direction)))
   }) &&
   positive(dot(p.c, ray.direction))
+}
+
+///|
+/// Farkas contradiction: y>=0, A^T*y>=0, b*y<0 rules out any feasible x>=0.
+pub fn check_infeasible(p : Problem, y : @core.Chain[@exact.Rational]) -> Bool {
+  same_length(y, p.b) &&
+  @core.all(y, nonnegative) &&
+  @core.all(@matrix.rows(@matrix.transpose(p.a)), fn(column) {
+    nonnegative(dot(column, y))
+  }) &&
+  !nonnegative(dot(p.b, y))
 }

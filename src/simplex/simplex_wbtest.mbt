@@ -124,14 +124,15 @@ test "unbounded after a pivot, zero dimensions and checked domain" {
     @oracle.nat(1),
     @oracle.chain([@oracle.chain([@oracle.rational(1, 1)])]),
   ).unwrap()
-  assert_eq(
-    problem(
-      a,
-      @oracle.chain([@oracle.rational(-1, 1)]),
-      @oracle.chain([@oracle.rational(1, 1)]),
-    ),
-    None,
-  )
+  let impossible = problem(
+    a,
+    @oracle.chain([@oracle.rational(-1, 1)]),
+    @oracle.chain([@oracle.rational(1, 1)]),
+  ).unwrap()
+  match finish(impossible) {
+    Infeasible(proof) => assert_true(check_infeasible(impossible, proof))
+    _ => fail("x<=-1 contradicts nonnegativity")
+  }
   assert_eq(problem(a, Nil, @oracle.chain([@oracle.rational(1, 1)])), None)
   assert_eq(problem(a, @oracle.chain([@oracle.rational(1, 1)]), Nil), None)
 }
