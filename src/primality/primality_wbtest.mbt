@@ -59,6 +59,17 @@ test "missing excess nondividing and composite child factors are rejected" {
 
 ///|
 test "invalid candidate and wrong witnesses are rejected while multiplicities matter" {
+  let fake_two = Lucas(@oracle.binary(2), @oracle.binary(0), Nil)
+  assert_eq(
+    check(
+      Lucas(
+        @oracle.binary(5),
+        @oracle.binary(2),
+        Cons(cert_2(), Cons(fake_two, Nil)),
+      ),
+    ),
+    None,
+  )
   for n in 0..<2 {
     assert_eq(check(Lucas(@oracle.binary(n), @oracle.binary(1), Nil)), None)
   }

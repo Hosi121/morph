@@ -52,6 +52,7 @@ pub fn check(certificate : Certificate) -> Prime? {
           fn check_factors(
             remaining : @binary.Binary,
             factors : @core.Chain[Certificate],
+            tested : @core.Chain[@binary.Binary],
           ) -> Bool {
             match factors {
               Nil => @binary.compare(remaining, @binary.one()) is Equal
@@ -59,20 +60,38 @@ pub fn check(certificate : Certificate) -> Prime? {
                 match check(child) {
                   None => false
                   Some(prime) =>
-                    match
-                      (
-                        @binary.divmod(remaining, prime.value),
-                        @binary.divmod(predecessor, prime.value),
-                      ) {
-                      (Some((remaining, remainder)), Some((exponent, _))) =>
+                    match @binary.divmod(remaining, prime.value) {
+                      Some((remaining, remainder)) => {
+                        // Repeated factors still need valid child proofs and
+                        // exact division. Their Lucas equality is unchanged.
+                        let already_tested = @core.any(tested, fn(other) {
+                          @binary.compare(prime.value, other) is Equal
+                        })
+                        let order_checked = match already_tested {
+                          true => true
+                          false =>
+                            match @binary.divmod(predecessor, prime.value) {
+                              Some((exponent, _)) =>
+                                !(@binary.compare(
+                                  @modular.power(modulus, witness, exponent),
+                                  @binary.one(),
+                                )
+                                is Equal)
+                              None => false
+                            }
+                        }
                         @binary.is_zero(remainder) &&
-                        !(@binary.compare(
-                          @modular.power(modulus, witness, exponent),
-                          @binary.one(),
+                        order_checked &&
+                        check_factors(
+                          remaining,
+                          rest,
+                          match already_tested {
+                            true => tested
+                            false => Cons(prime.value, tested)
+                          },
                         )
-                        is Equal) &&
-                        check_factors(remaining, rest)
-                      _ => false
+                      }
+                      None => false
                     }
                 }
             }
@@ -83,7 +102,7 @@ pub fn check(certificate : Certificate) -> Prime? {
               @binary.one(),
             ) {
             Equal =>
-              match check_factors(predecessor, factors) {
+              match check_factors(predecessor, factors, Nil) {
                 true => Some({ value: n, })
                 false => None
               }
