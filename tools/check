@@ -8,4 +8,4 @@ tools/moon fmt --check
 tools/moon check --deny-warn
 tools/moon test --target wasm-gc
 tools/moon test --target js
-tools/moon info
+python3 tools/check_interfaces.py

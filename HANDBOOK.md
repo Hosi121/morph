@@ -1102,12 +1102,12 @@ MoonBitでは、例えば `let xs : @core.Chain[Bool] = Cons(true,Nil)` のよ�
 タプルは分解パターンを使い、関数を持つrecordの呼び出しは `(field.multiply)(a,b)` とする。
 公開APIの記録は `tools/moon info` で再生成し、pkg.generated.mbtiを手編集しない。
 
-## 検証と引き継ぎの到達点
+## 第1回探索の検証と引き継ぎ
 
 42パッケージの核（定数データを含む56ファイル）を実装し、
 166テストをWasm GC・JavaScript・nativeで確認した。
 ソース制約検査にもPythonの3テストがあり、通常の `tools/check` で一緒に実行する。
-データの全組合せを一つのテスト内で走査するものもあるので、164は比較例の総数ではない。
+データの全組合せを一つのテスト内で走査するものもあるので、166は比較例の総数ではない。
 実行ツアーの29行は三つのbackendで完全一致した。
 全13ベンチグループと、5スクリプトによる期待値再生成の無差分も確認した。
 
@@ -1115,3 +1115,34 @@ MoonBitでは、例えば `let xs : @core.Chain[Bool] = Cons(true,Nil)` のよ�
 ツールチェーンとビルドキャッシュは次にすぐ実行できるように保持する。
 一時的な出力・不要な原資料アーカイブは取り除き、参照したRSPとツールチェーンの取得物は再現用に残す。
 アルゴリズムごとの限界は上の各節、実測の条件は[計測記録](docs/MEASUREMENTS.md)が正本である。
+
+## SATから基礎へ戻すbootstrap
+
+第2回は「既存SATを検証・合成に使い、基礎を最適化して上位へ戻す」という
+ユーザーの追加方針で、4時間を上限に探索する。[全体記録](docs/bootstrap/TRACE.md)を入口とする。
+
+- [円分体と厳密FFT](docs/bootstrap/cyclotomic.md)：矢印を延々と展開する代わりに、
+  円分多項式による正規形と逆元を使う。原FFTの意味を失わず、逆FFTまで合成できる。
+- [証拠付きCDCL](docs/bootstrap/sat-engine.md)：first-UIP・watch・backjumpを不変構造だけで実装。
+  問題によってDPLLより遅い例も残し、[独立レビュー](docs/bootstrap/review-cdcl.md)で証拠と境界を調べる。
+- [回路検査](docs/bootstrap/circuits.md)と[NAND合成](docs/bootstrap/synthesis.md)：
+  同じBoolean代数のプログラムをBoolでも式ADTでも解釈し、miterと合成CNFへ渡す。
+- [素数証明と分解](docs/bootstrap/number-theory.md)：Lucas/Pratt、部分Pocklington、合成数の証拠、
+  Pollard rhoの分割、完全分解を別の型で表す。MR通過を素数の証明へ昇格しない。
+- [有限体](docs/bootstrap/finitefields.md)：検査済み素数→Fp多項式→Berlekamp分解→
+  既約性証拠→GF(p^m)という順に積む。[離散対数](docs/bootstrap/discretelog.md)もこの境界を使う。
+
+SATの独立レビューでは、変数番号65535だけのunit節からJS/Wasmのstack overflowが見つかった。
+profileでも同じNat→二進ID変換が入口を支配していた。
+[末尾再帰・incrementのsuffix共有・構造的半分化](docs/bootstrap/naturals.md)を段階比較し、
+SAT専用の改善候補を共通のBinaryへ戻す。これは上位の算法が基礎の問題を発見する例になった。
+
+[加算のsuffix共有](docs/bootstrap/addition.md)も上位の乗算を改善したが、
+同じ幅のdense加算には悪化が残った。さらにcarry-mux式は等価でも実測で遅く、核への採用を見送った。
+「証拠があるので意味は同じ」と「このbackendで速い」は別の判断である。
+
+定型作業は`tools/check`へまとめる。純粋性の字句検査、警告禁止、整形、2backendのテストに加え、
+コンパイラが生成する公開API snapshotの差分を検出する。
+`python3 tools/inventory.py`は[算法・依存・テスト宣言の一覧](docs/INVENTORY.md)を生成する。
+宣言数と実行成功数、有限検査と形式証明を混同しない。
+主要な主張と信頼境界は[検証台帳](docs/bootstrap/verification-ledger.md)で対応付ける。
