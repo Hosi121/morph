@@ -2,6 +2,9 @@
 
 ## Scan CDCL milestone
 
+Historical first milestone: commit `e52f521`. The current `start` selects the
+watched engine described below; `start_scanning` retains this milestone.
+
 `src/cdcl` adds an independent immutable CDCL solver over the existing
 `@sat.Cnf`, `@sat.Literal`, and `@sat.Model` boundary. It uses first UIP
 resolution, learned clauses, and nonchronological backjumping. The first
@@ -83,3 +86,46 @@ as well as old DPLL while adding an immutable watch index and faster assignment
 lookup. Larger circuit miters are needed before choosing a default engine.
 
 No push or deployment is part of this work.
+
+## Watched-literal milestone
+
+The current `start` adds two watched literals per non-unit clause, an immutable
+watch-bucket index, and an indexed assignment map. All three indices are
+persistent tries over structural Bool words: clause ID to watch state, signed
+variable key to watching clause IDs, and variable key to assignment. Pending
+assignments and an unfinished bucket traversal remain inside `Search` when the
+fuel runs out. `start_scanning` retains the earlier implementation for direct
+comparisons. The external CNF, model, proof, and status types are unchanged.
+
+A learned clause watches its asserting literal and a highest-level remaining
+literal. Backjumping preserves valid watch moves, clears propagation work from
+the abandoned decision level, rebuilds the surviving assignment index, and
+enqueues the asserting literal. Decisions still scan clauses, and conflict
+analysis still searches the reverse trail. There is no activity heuristic,
+restart policy, or learned-clause deletion.
+
+At propagation quiescence the engine scans for a decision and reports
+`InvariantViolation` if any unit or false clause was missed by the watch index.
+White-box tests additionally check both directions of watch membership, absence
+of duplicate bucket membership, assignment-index correspondence to the trail,
+and the unit justification of every stored implication. These checks run after
+every single-transition pause for pigeonhole families through six into five and
+1,000 six-variable three-SAT formulas. The latter formulas are also compared
+with truth tables, scan CDCL, and old DPLL. All earlier small-CNF checks now run
+both CDCL engines. The package has eleven tests passing native, JS, and Wasm GC.
+
+Same-process native release comparison, Intel Core Ultra 7 255H under WSL2,
+MoonBit v0.10.20; benchmark scope is the same as the first measurements:
+
+| Input | Old DPLL | Scan CDCL | Watched CDCL |
+| --- | ---: | ---: | ---: |
+| Pigeonhole 5 into 4 | 812.81 µs ± 93.15 µs | 2.82 ms ± 554.14 µs | 1.14 ms ± 98.71 µs |
+| Pigeonhole 6 into 5 | 7.56 ms ± 737.68 µs | 44.53 ms ± 3.39 ms | 12.72 ms ± 616.95 µs |
+
+The watched version is faster than scan CDCL on these inputs but still slower
+than old DPLL. Propagation ordering also changes: five into four now takes 267
+transitions, 24 decisions, 221 propagations, 22 conflicts, 21 learned clauses,
+and three nonchronological backjumps. Consequently the timings measure the
+whole engine change, rather than isolating the index's cost on an identical
+search trace. These tiny pigeonhole inputs do not establish performance on
+larger circuit-equivalence problems.

@@ -49,7 +49,7 @@ test "DPLL pigeonhole five into four" (b : @bench.T) {
 test "scan CDCL pigeonhole five into four including start" (b : @bench.T) {
   let formula = bench_pigeonhole(5, 4)
   let fuel = bench_fuel()
-  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start(formula), fuel)) })
+  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start_scanning(formula), fuel)) })
 }
 
 ///|
@@ -60,6 +60,20 @@ test "DPLL pigeonhole six into five" (b : @bench.T) {
 
 ///|
 test "scan CDCL pigeonhole six into five including start" (b : @bench.T) {
+  let formula = bench_pigeonhole(6, 5)
+  let fuel = bench_fuel()
+  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start_scanning(formula), fuel)) })
+}
+
+///|
+test "watched CDCL pigeonhole five into four including start" (b : @bench.T) {
+  let formula = bench_pigeonhole(5, 4)
+  let fuel = bench_fuel()
+  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start(formula), fuel)) })
+}
+
+///|
+test "watched CDCL pigeonhole six into five including start" (b : @bench.T) {
   let formula = bench_pigeonhole(6, 5)
   let fuel = bench_fuel()
   b.bench(fn() { b.keep(@cdcl.run(@cdcl.start(formula), fuel)) })

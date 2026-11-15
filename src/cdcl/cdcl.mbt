@@ -74,6 +74,7 @@ type Trail = @core.Chain[Assignment]
 pub struct Search {
   database : Database
   variables : Lits
+  watch : WatchState?
   trail : Trail
   level : @core.Nat
   proof_rev : @core.Chain[@sat.Clause]
@@ -204,9 +205,17 @@ fn variables(cnf : @sat.Cnf) -> Lits {
 
 ///|
 pub fn start(cnf : @sat.Cnf) -> Search {
+  let search = start_scanning(cnf)
+  { ..search, watch: Some(watch_start(search.database)), }
+}
+
+///|
+/// Retain the original scan engine for controlled comparisons.
+pub fn start_scanning(cnf : @sat.Cnf) -> Search {
   {
     database: database(cnf),
     variables: variables(cnf),
+    watch: None,
     trail: Nil,
     level: Zero,
     proof_rev: Nil,
@@ -282,6 +291,7 @@ priv enum Inspection {
   Contradiction(Lits)
   Propagate(Atom, Lits)
   Decide(Atom)
+  Broken
 }
 
 ///|
@@ -433,12 +443,13 @@ fn model(trail : Trail, variables : Lits) -> @sat.Model {
 }
 
 ///|
-fn step(search : Search) -> (Status, Statistics) {
+fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) {
   let stats = {
     ..search.statistics,
     transitions: Succ(search.statistics.transitions),
   }
-  match inspect_database(search.database, search.trail) {
+  match inspection {
+    Broken => (InvariantViolation, stats)
     Complete => (Satisfiable(model(search.trail, search.variables)), stats)
     Propagate(literal, reason) => {
       let stats = { ..stats, propagations: Succ(stats.propagations), }
@@ -450,6 +461,11 @@ fn step(search : Search) -> (Status, Statistics) {
             search.trail,
           ),
           statistics: stats,
+          watch: watch_assign(search.watch, {
+            literal,
+            level: search.level,
+            reason: Some(reason),
+          }),
         }),
         stats,
       )
@@ -462,6 +478,7 @@ fn step(search : Search) -> (Status, Statistics) {
           ..search,
           level,
           trail: Cons({ literal, level, reason: None, }, search.trail),
+          watch: watch_assign(search.watch, { literal, level, reason: None, }),
           statistics: stats,
         }),
         stats,
@@ -484,6 +501,10 @@ fn step(search : Search) -> (Status, Statistics) {
                 None => (InvariantViolation, stats)
                 Some(literal) => {
                   let level = backjump_level(learned, search.trail, literal)
+                  let trail : Trail = Cons(
+                    { literal, level, reason: Some(learned), },
+                    backjump(search.trail, level),
+                  )
                   let stats = {
                     ..stats,
                     learned: Succ(stats.learned),
@@ -498,10 +519,8 @@ fn step(search : Search) -> (Status, Statistics) {
                     Paused({
                       database: Cons(learned, search.database),
                       variables: search.variables,
-                      trail: Cons(
-                        { literal, level, reason: Some(learned), },
-                        backjump(search.trail, level),
-                      ),
+                      watch: watch_learn(search.watch, learned, literal, trail),
+                      trail,
                       level,
                       proof_rev: Cons(
                         @core.map(learned, external),
@@ -515,6 +534,17 @@ fn step(search : Search) -> (Status, Statistics) {
               }
           }
       }
+    }
+  }
+}
+
+///|
+fn step(search : Search) -> (Status, Statistics) {
+  match search.watch {
+    None => transition(search, inspect_database(search.database, search.trail))
+    Some(watch) => {
+      let (inspection, watch) = watch_inspect(watch, search.database)
+      transition({ ..search, watch: Some(watch), }, inspection)
     }
   }
 }
@@ -548,7 +578,7 @@ fn unit_conflict(db : Database, trail : Trail) -> Bool {
         db,
         Cons({ literal, level: Zero, reason: Some(reason), }, trail),
       )
-    Complete | Decide(_) => false
+    Complete | Decide(_) | Broken => false
   }
 }
 

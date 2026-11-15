@@ -16,6 +16,8 @@ pub fn run_measured(Search, @core.Nat) -> (Status, Statistics)
 
 pub fn start(@core.Chain[@core.Chain[@sat.Literal]]) -> Search
 
+pub fn start_scanning(@core.Chain[@core.Chain[@sat.Literal]]) -> Search
+
 pub fn statistics(Search) -> Statistics
 
 // Errors
@@ -34,6 +36,12 @@ pub fn Atom::not_equal(Self, Self) -> Bool
 pub fn Atom::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+type Index[A]
+pub fn[A : Eq] Index::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Index::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Index::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub(all) enum Proof {
   Rup(@core.Chain[@core.Chain[@sat.Literal]])
 }
@@ -45,6 +53,7 @@ pub fn Proof::to_repr(Self) -> @debug.Repr
 pub struct Search {
   database : @core.Chain[@core.Chain[Atom]]
   variables : @core.Chain[Atom]
+  watch : WatchState?
   trail : @core.Chain[Assignment]
   level : @core.Nat
   proof_rev : @core.Chain[@core.Chain[@sat.Literal]]
@@ -78,6 +87,18 @@ pub(all) enum Status {
 pub fn Status::equal(Self, Self) -> Bool
 pub fn Status::not_equal(Self, Self) -> Bool
 pub fn Status::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type WatchState
+pub fn WatchState::equal(Self, Self) -> Bool
+pub fn WatchState::not_equal(Self, Self) -> Bool
+pub fn WatchState::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type WatchedClause
+pub fn WatchedClause::equal(Self, Self) -> Bool
+pub fn WatchedClause::not_equal(Self, Self) -> Bool
+pub fn WatchedClause::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

@@ -61,17 +61,19 @@ fn validate(formula : @sat.Cnf, variables : Int32) -> Unit raise {
     }
   }
   assert_eq(old, expected)
-  match run(start(formula), @oracle.nat(1000)) {
-    Satisfiable(model) => {
-      assert_true(expected)
-      assert_true(@sat.check_model(formula, model))
+  for initial in [start(formula), start_scanning(formula)] {
+    match run(initial, @oracle.nat(1000)) {
+      Satisfiable(model) => {
+        assert_true(expected)
+        assert_true(@sat.check_model(formula, model))
+      }
+      Unsatisfiable(proof) => {
+        assert_false(expected)
+        assert_true(check_refutation(formula, proof))
+      }
+      Paused(_) => fail("small formula exhausted transition budget")
+      InvariantViolation => fail("CDCL invariant violated")
     }
-    Unsatisfiable(proof) => {
-      assert_false(expected)
-      assert_true(check_refutation(formula, proof))
-    }
-    Paused(_) => fail("small formula exhausted transition budget")
-    InvariantViolation => fail("CDCL invariant violated")
   }
 }
 
@@ -256,7 +258,7 @@ test "pigeonhole family exercises learned refutations" {
           @oracle.int_of_nat(stats.nonchronological),
         ],
         content=(
-          #|[355, 29, 296, 30, 29, 29, 0]
+          #|[267, 24, 221, 22, 21, 21, 3]
         ),
       )
     }
