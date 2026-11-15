@@ -2,8 +2,10 @@ import {
   "Hosi121/morph/core",
   "Hosi121/morph/binary",
   "Hosi121/morph/modular",
+  "Hosi121/morph/rowreduce",
 }
 
 import {
   "Hosi121/morph/testsupport" @oracle,
+  "Hosi121/morph/matrix",
 } for "wbtest"

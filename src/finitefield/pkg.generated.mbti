@@ -5,10 +5,13 @@ import {
   "Hosi121/morph/binary",
   "Hosi121/morph/core",
   "Hosi121/morph/modular",
+  "Hosi121/morph/rowreduce",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn arithmetic(Field) -> @rowreduce.Field[@binary.Binary]
+
 pub fn character(Field, @binary.Binary) -> Character
 
 pub fn field(@binary.Binary) -> Field?

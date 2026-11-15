@@ -1,5 +1,19 @@
 # 計測記録
 
+## 2026-11-15：有理数と有限体の行基本変形の共有
+
+比較前の核は `d80424d`。同じnative release環境、各10サンプル、
+行列 `[[3,1,0,2],[1,4,1,0],[0,1,5,1],[2,0,1,6]]` の厳密逆行列全体を測る。
+行列の入力構築は除外。有理数専用版119.50±2.13µs、Field辞書を渡す共有版118.47±2.27µs。
+範囲が重なっており、速度差を成果として主張しない。
+共通化の目的は、同じpivot・行消去を有限体にも使い、実装の分岐を避けること。
+
+生ログ：[前](measurements/field-linear-before.txt)、[後](measurements/field-linear-after.txt)。再現：
+
+```sh
+tools/moon bench src/benchmarks/linear_test.mbt --target native --release
+```
+
 ## 2026-11-15：連想リストと永続AVLの同じ検索
 
 native release、各10サンプル。キー0..1023をBinaryへ変換し、値はその平方。

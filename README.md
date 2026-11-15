@@ -32,7 +32,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](src/elliptic/elliptic.mbt) |
 | NTT | [有限体変換・逆変換・線形畳み込み](src/ntt/ntt.mbt) |
 | 行列 | [半環](src/algebra/algebra.mbt)・[行列積・累乗・Warshall](src/matrix/matrix.mbt) |
-| 線形代数 | [Gauss–Jordan・行列式・逆行列・解空間](src/linear/linear.mbt) |
+| 線形代数 | [有理数の行列式・逆行列・解空間](src/linear/linear.mbt)・[体で共通化したGauss–Jordan](src/rowreduce/rowreduce.mbt) |
 | 線形最適化 | [二段階単体法・Bland規則・双対解/非有界/Farkas証拠](src/simplex/simplex.mbt) |
 | 整数最適化 | [0/1分枝限定法・再開可能なLP緩和・最適性の証拠木](src/zeroone/zeroone.mbt) |
 | ソート | [安定merge/insertion/quick sort](src/sorting/sorting.mbt) |

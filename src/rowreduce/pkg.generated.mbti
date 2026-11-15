@@ -1,0 +1,54 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/rowreduce"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] determinant(Field[A], @matrix.Matrix[A]) -> A?
+
+pub fn[A] inverse(Field[A], @matrix.Matrix[A]) -> @matrix.Matrix[A]?
+
+pub fn[A] rref(Field[A], @matrix.Matrix[A]) -> Reduction[A]?
+
+pub fn[A] solve(Field[A], @matrix.Matrix[A], @core.Chain[A]) -> Solution[A]?
+
+// Errors
+
+// Types and methods
+pub(all) struct Field[A] {
+  zero : A
+  one : A
+  add : (A, A) -> A
+  subtract : (A, A) -> A
+  negate : (A) -> A
+  multiply : (A, A) -> A
+  inverse : (A) -> A?
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Reduction[A] {
+  matrix : @matrix.Matrix[A]
+  pivots : @core.Chain[@core.Nat]
+  factor : A
+}
+pub fn[A : Eq] Reduction::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Reduction::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Reduction::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Solution[A] {
+  Unique(@core.Chain[A])
+  Affine(@core.Chain[A], @core.Chain[@core.Chain[A]])
+  Inconsistent
+}
+pub fn[A : Eq] Solution::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Solution::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Solution::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits

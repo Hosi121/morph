@@ -1,0 +1,4 @@
+[Hosi121/morph] bench benchmarks/linear_test.mbt:2 ("exact rational four-by-four inverse including Gauss-Jordan") ok
+time (mean ± σ)         range (min … max) 
+ 119.50 µs ±   2.13 µs   116.61 µs … 122.64 µs  in 10 ×    824 runs
+Total tests: 1, passed: 1, failed: 0.
