@@ -1,0 +1,69 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/runbinary"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Number, Number) -> Number
+
+pub fn compare(Number, Number) -> @core.Ordering
+
+pub fn expand(Number, @binary.Binary) -> @binary.Binary?
+
+pub fn from_binary(@binary.Binary) -> Number
+
+pub fn from_runs(@core.Chain[Run]) -> Number
+
+pub fn is_zero(Number) -> Bool
+
+pub fn multiply(Number, Number) -> Number
+
+pub fn one() -> Number
+
+pub fn pair(@binary.Binary, Number) -> Number
+
+pub fn power_of_two(@binary.Binary) -> Number
+
+pub fn runs(Number) -> @core.Chain[Run]
+
+pub fn shift_left(Number, @binary.Binary) -> Number
+
+pub fn shift_right(Number, @binary.Binary) -> Number
+
+pub fn subtract(Number, Number) -> Number?
+
+pub fn successor(Number) -> Number
+
+pub fn unpair(Number) -> (@binary.Binary, Number)?
+
+pub fn width(Number) -> @binary.Binary
+
+pub fn zero() -> Number
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Number {
+  runs : @core.Chain[Run]
+}
+pub fn Number::equal(Self, Self) -> Bool
+pub fn Number::not_equal(Self, Self) -> Bool
+pub fn Number::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Run {
+  bit : Bool
+  length : @binary.Binary
+}
+pub fn Run::equal(Self, Self) -> Bool
+pub fn Run::not_equal(Self, Self) -> Bool
+pub fn Run::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,9 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/binary",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/bench",
+} for "wbtest"

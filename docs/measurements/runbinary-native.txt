@@ -1,0 +1,17 @@
+[Hosi121/morph] bench runbinary/bench_wbtest.mbt:2 ("run arithmetic versus bit lists on a long homogeneous block") ok
+name                  time (mean ± σ)         range (min … max) 
+bits add one            20.10 µs ± 926.01 ns    19.25 µs …  22.16 µs  in 10 ×   4733 runs
+runs add one             1.18 µs ±  16.90 ns     1.16 µs …   1.21 µs  in 10 ×  85651 runs
+bits school square      64.88 ms ±   2.53 ms    60.93 ms …  68.72 ms  in 10 ×      2 runs
+bits Karatsuba square   17.32 ms ± 555.63 µs    16.75 ms …  18.39 ms  in 10 ×      6 runs
+runs square              2.90 µs ±  90.13 ns     2.83 µs …   3.10 µs  in 10 ×  34685 runs
+[Hosi121/morph] bench runbinary/bench_wbtest.mbt:24 ("run arithmetic versus bit lists on alternating inputs") ok
+name          time (mean ± σ)         range (min … max) 
+bits add         3.01 µs ± 123.71 ns     2.85 µs …   3.20 µs  in 10 ×  34328 runs
+runs add        39.11 µs ±   2.09 µs    36.30 µs …  42.01 µs  in 10 ×   2633 runs
+bits multiply  384.50 µs ±  11.33 µs   371.32 µs … 407.80 µs  in 10 ×    241 runs
+runs multiply    4.65 ms ± 196.63 µs     4.44 ms …   5.02 ms  in 10 ×     21 runs
+[Hosi121/morph] bench runbinary/bench_wbtest.mbt:40 ("square a block whose length is two to the thousandth") ok
+time (mean ± σ)         range (min … max) 
+ 206.13 µs ±   9.45 µs   200.12 µs … 230.20 µs  in 10 ×    500 runs
+Total tests: 3, passed: 3, failed: 0.
