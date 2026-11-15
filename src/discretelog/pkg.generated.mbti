@@ -1,0 +1,56 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/discretelog"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/primefield",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn baby_step_giant_step(Problem) -> Logarithm?
+
+pub fn base(Problem) -> @binary.Binary
+
+pub fn check(Problem, @binary.Binary) -> Logarithm?
+
+pub fn exponent(Logarithm) -> @binary.Binary
+
+pub fn field(Problem) -> @primefield.Field
+
+pub fn instance(Logarithm) -> Problem
+
+pub fn limit(Problem) -> @binary.Binary
+
+pub fn naive(Problem) -> Logarithm?
+
+pub fn problem(@primefield.Field, @binary.Binary, @binary.Binary, @binary.Binary) -> Problem?
+
+pub fn target(Problem) -> @binary.Binary
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Logarithm {
+  problem : Problem
+  exponent : @binary.Binary
+}
+pub fn Logarithm::equal(Self, Self) -> Bool
+pub fn Logarithm::not_equal(Self, Self) -> Bool
+pub fn Logarithm::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  field : @primefield.Field
+  base : @binary.Binary
+  target : @binary.Binary
+  limit : @binary.Binary
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
