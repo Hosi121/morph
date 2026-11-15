@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/puzzles"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_queens(@core.Nat, @core.Chain[Queen]) -> Bool
+
+pub fn n_queens(@core.Nat) -> @core.Chain[Queen]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Queen {
+  row : @core.Nat
+  column : @core.Nat
+}
+pub fn Queen::equal(Self, Self) -> Bool
+pub fn Queen::not_equal(Self, Self) -> Bool
+pub fn Queen::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
