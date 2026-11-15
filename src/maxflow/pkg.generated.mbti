@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/maxflow"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/graph",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(@graph.Graph, @core.Nat, @core.Nat, MaxFlow) -> Bool
+
+pub fn max_flow(@graph.Graph, @core.Nat, @core.Nat) -> MaxFlow?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct EdgeFlow {
+  edge : @graph.Edge
+  flow : @binary.Binary
+}
+pub fn EdgeFlow::equal(Self, Self) -> Bool
+pub fn EdgeFlow::not_equal(Self, Self) -> Bool
+pub fn EdgeFlow::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct MaxFlow {
+  value : @binary.Binary
+  edges : @core.Chain[EdgeFlow]
+  cut : @core.Chain[@core.Nat]
+}
+pub fn MaxFlow::equal(Self, Self) -> Bool
+pub fn MaxFlow::not_equal(Self, Self) -> Bool
+pub fn MaxFlow::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
