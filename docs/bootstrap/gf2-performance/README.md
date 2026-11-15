@@ -148,3 +148,51 @@ by this median; candidate process means span 575.688–624.327µs, so this exper
 does not establish a general-prime polynomial throughput improvement. The
 control slowdown is retained as a limitation. See `reduced-summary.json` and all
 raw reports instead of treating the small ratios as universal speedups.
+
+## Monomial cancellation and one-pass shifts
+
+Long division originally forms a monomial and multiplies the divisor by it.
+`17bf360` instead scales the divisor and shifts it directly, and omits multiplying
+the leading one in characteristic two. This candidate alone is **not selected**:
+in a quiet three-pair comparison, Fp2 division becomes 125.482→139.683µs (11%
+slower), although GF256 inversion becomes 4.828→4.434µs. The existing shift uses
+`append(replicate(n, zero), tail)`, allocating the low-zero prefix twice. The
+characteristic-two monomial multiplier had allocated that prefix once.
+
+`f898e42`, applied after `17bf360`, constructs the prefix in one recursive pass,
+sharing the immutable coefficient tail. Both changes together remove the
+division regression. Comparison below uses the same `1b3fee3` control, same
+Binary base, same nine workloads, and three independent processes per ELF.
+Order is A/B/B/A/A/B. Root and other project agents withheld heavy CPU jobs for
+the recorded quiet window ending 15:17 UTC; all these measurements completed
+before 15:16:25 UTC. Other host activity remains uncontrolled.
+
+| Workload | Reduced-result control µs | One-pass cancellation candidate µs | Ratio |
+| --- | ---: | ---: | ---: |
+| Fp2 multiply 64×32 | 11.042 | 10.277 | 1.07× |
+| Fp2 divide 95/32 | 131.475 | 119.966 | 1.10× |
+| Fp2 extended Euclid 16/14 | 7.964 | 7.163 | 1.11× |
+| Fp5 multiply, control | 606.322 | 604.968 | 1.00× |
+| GF256 multiply 83×202 | 4.120 | 3.806 | 1.08× |
+| GF256 inverse 83 | 4.831 | 4.234 | 1.14× |
+| GF9 multiply, control | 2.545 | 2.404 | 1.06× |
+| RS15 two-error decode | 176.262 | 163.880 | 1.08× |
+| RS255 two-error decode | 5136.306 | 4853.231 | 1.06× |
+
+Select the pair of changes together. The Fp5 median is effectively unchanged;
+its candidate process means span 599.521–661.348µs. Fp2 multiplication does not
+call the changed division/shift path, so its 7% difference is a useful warning
+against attributing every small ratio to the mechanism. The division and inverse
+improvements are modest, CPU-specific evidence; the large first-step
+characteristic-two gain is the stronger result.
+The selected pair passes all 57 polynomial/extension-field/RS tests on native,
+Wasm GC, and JavaScript; purity and public API snapshots remain unchanged.
+
+`shift-quiet-*` records the rejected candidate alone; `prefix-*` records the
+selected pair. `shift-*` and `shift-recheck-*` retain the earlier noisy attempts:
+the same Fp5 control ELF varied from about 0.6ms to 2.8ms. Those two attempts are
+diagnostic only and are excluded from the adoption table. Complete means and
+ranges are in each `*-summary.json`. Source revision `HEAD` in the first noisy
+attempt was expanded afterward to the unchanged `17bf360` revision, with that
+metadata correction recorded in the JSON. The runner now resolves revisions
+before timing and accepts explicit test selections/counts for later AES controls.
