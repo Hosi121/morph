@@ -1,0 +1,111 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/synthesis"
+
+import {
+  "Hosi121/morph/cdcl",
+  "Hosi121/morph/core",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn assignments(@core.Nat) -> @core.Chain[@core.Chain[Bool]]
+
+pub fn bound(Problem) -> @core.Nat
+
+pub fn check_impossibility(Problem, @cdcl.Proof) -> Bool
+
+pub fn check_network(Table, Network) -> Bool
+
+pub fn cnf(Problem) -> @core.Chain[@core.Chain[@sat.Literal]]
+
+pub fn decode(Problem, @core.Chain[@sat.Literal]) -> Network?
+
+pub fn evaluate(Network, @core.Chain[Bool]) -> Bool?
+
+pub fn gates(Network) -> @core.Chain[Nand]
+
+pub fn input_count(Network) -> @core.Nat
+
+pub fn network(@core.Nat, @core.Chain[Nand], Wire) -> Network?
+
+pub fn output(Network) -> Wire
+
+pub fn problem(Table, @core.Nat) -> Problem
+
+pub fn run(Search, @core.Nat) -> Outcome
+
+pub fn start(Problem) -> Search
+
+pub fn table(@core.Nat, @core.Chain[Bool]) -> Table?
+
+pub fn truth_table(Table) -> @core.Chain[Bool]
+
+// Errors
+
+// Types and methods
+pub struct Choice {
+  literal : @sat.Literal
+  gate : Nand
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Nand {
+  left : Wire
+  right : Wire
+}
+pub fn Nand::equal(Self, Self) -> Bool
+pub fn Nand::not_equal(Self, Self) -> Bool
+pub fn Nand::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Network {
+  inputs : @core.Nat
+  gates : @core.Chain[Nand]
+  output : Wire
+}
+pub fn Network::equal(Self, Self) -> Bool
+pub fn Network::not_equal(Self, Self) -> Bool
+pub fn Network::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Outcome {
+  Found(Network)
+  Impossible(@cdcl.Proof)
+  Paused(Search)
+  InvariantViolation
+}
+
+pub struct Problem {
+  spec : Table
+  bound : @core.Nat
+  stages : @core.Chain[@core.Chain[Choice]]
+  outputs : @core.Chain[(@sat.Literal, Wire)]
+  cnf : @core.Chain[@core.Chain[@sat.Literal]]
+}
+
+pub struct Search {
+  problem : Problem
+  solver : @cdcl.Search
+}
+
+#derive(Eq, @debug.Debug)
+pub struct Table {
+  inputs : @core.Nat
+  outputs : @core.Chain[Bool]
+}
+pub fn Table::equal(Self, Self) -> Bool
+pub fn Table::not_equal(Self, Self) -> Bool
+pub fn Table::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Wire {
+  Input(@core.Nat)
+  Gate(@core.Nat)
+}
+pub fn Wire::equal(Self, Self) -> Bool
+pub fn Wire::not_equal(Self, Self) -> Bool
+pub fn Wire::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
