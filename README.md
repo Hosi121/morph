@@ -8,6 +8,7 @@ Bool、Unit、独自の不変リスト、直和型・直積型から構成する
 tools/bootstrap             # 初回：既存のグローバル環境には触れず公式配布を取得
 tools/moon test
 tools/moon test --target js
+tools/check                 # 純記号制約・整形・型検査・Wasm GC/JS の全検証
 ```
 
 設計、検証範囲、計算量と表現コストの区別は [ハンドブック](HANDBOOK.md) に記録する。

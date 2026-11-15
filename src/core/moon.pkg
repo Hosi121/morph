@@ -1,1 +1,3 @@
-
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"

@@ -1,0 +1,35 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/testsupport"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+}
+
+// Values
+pub fn[A] array(@core.Chain[A]) -> Array[A]
+
+pub fn binary(Int32) -> @binary.Binary
+
+pub fn[A] chain(Array[A]) -> @core.Chain[A]
+
+pub fn int_of_binary(@binary.Binary) -> Int32
+
+pub fn int_of_integer(@exact.Integer) -> Int32
+
+pub fn int_of_nat(@core.Nat) -> Int32
+
+pub fn integer(Int32) -> @exact.Integer
+
+pub fn nat(Int32) -> @core.Nat
+
+pub fn rational(Int32, Int32) -> @exact.Rational
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
