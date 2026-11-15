@@ -1,0 +1,49 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/reedsolomon"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/finitefield",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Plan, @core.Chain[@binary.Binary?], Decoded) -> Bool
+
+pub fn decode(Plan, @core.Chain[@binary.Binary]) -> Decoded?
+
+pub fn decode_erasures(Plan, @core.Chain[@binary.Binary?]) -> Decoded?
+
+pub fn encode(Plan, @core.Chain[@binary.Binary]) -> @core.Chain[@binary.Binary]?
+
+pub fn plan(@finitefield.Field, @core.Nat, @core.Nat, @core.Chain[@binary.Binary]) -> Plan?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Decoded {
+  message : @core.Chain[@binary.Binary]
+  corrected : @core.Chain[@binary.Binary]
+  error_positions : @core.Chain[@core.Nat]
+  erasure_positions : @core.Chain[@core.Nat]
+}
+pub fn Decoded::equal(Self, Self) -> Bool
+pub fn Decoded::not_equal(Self, Self) -> Bool
+pub fn Decoded::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  field : @finitefield.Field
+  message_size : @core.Nat
+  errors : @core.Nat
+  points : @core.Chain[@binary.Binary]
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

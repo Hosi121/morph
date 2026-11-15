@@ -1,7 +1,7 @@
 # morph
 
 MoonBit の代数的データ型・パターンマッチ・再帰でアルゴリズムを組み立てる実験。
-12本の等式による記号FFTを出発点に、二進算術から型推論まで進める。
+12本の等式による記号FFTを出発点に、二進算術、型推論、計算代数、証拠付き最適化、誤り訂正へ進める。
 
 手書きの核では、組み込み数値型・数値リテラル・数値演算・配列・可変状態・FFI を使わない。
 Bool、Unit、独自の不変リスト、直和型・直積型から構成する。
@@ -54,6 +54,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 複数語検索 | [Aho–Corasick・failure遷移・チャンクをまたぐ検索](src/aho/aho.mbt) |
 | 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt)・[LZ78・辞書番号とliteralのビット符号](src/lz78/lz78.mbt) |
 | ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
+| 誤り訂正 | [Reed–Solomon評価符号・Berlekamp–Welch・消失訂正](src/reedsolomon/reedsolomon.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](src/polynomial/polynomial.mbt) |
 | 計算代数 | [再開可能なBuchberger・既約Gröbner基底](src/groebner/groebner.mbt) |
 | 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](src/sturm/sturm.mbt) |
