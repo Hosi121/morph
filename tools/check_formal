@@ -12,6 +12,12 @@ if [[ "$version" != 'Lean (version 4.19.0,'* ]]; then
   echo "Unexpected Lean checker version: $version" >&2
   exit 1
 fi
-for model in formal/*.lean; do
-  .tools/lean/bin/lean -DwarningAsError=true "$model"
+checker="$root/.tools/lean/bin/lean"
+mkdir -p .tools/formal
+export LEAN_PATH="$root/.tools/formal${LEAN_PATH:+:$LEAN_PATH}"
+cd formal
+"$checker" -DwarningAsError=true -o "$root/.tools/formal/Core.olean" Core.lean
+for model in *.lean; do
+  [[ "$model" == Core.lean ]] && continue
+  "$checker" -DwarningAsError=true "$model"
 done

@@ -8,13 +8,13 @@
     "src/core/data.mbt::replicate": "5db036392179652009ddc6d25495c704c412b24689145a42aa16c5b2cf628993",
     "src/core/data.mbt::replicate_onto": "de01c1d00a55360bfdbb3d17e5c8b992d442e47b8a360cf26080adccab9a051f",
     "src/core/natural.mbt::half_nat": "e96a4d05289a4be6d46f0fd26342c7362a24a3c2fd1981d0bdeafdead25f4314",
-    "src/core/natural.mbt::halve_nat": "23177bbd082020d5b2314d3695e87febca877f94a25458046c5e7b2fe12eef26",
+    "src/core/natural.mbt::halve_nat": "d2febb887c00c0795eaf95cce8eb658bf822b96de6f106f45d0217314dd47a9d",
     "src/runbinary/runbinary.mbt::digit": "241cfa7ec3ab623b4441d0c7f42618b46c4973b2aeb7e98819d282b611050898"
   },
   "lean_version": "4.19.0",
   "models": {
     "formal/AdderCandidates.lean": "ce139fab804e46e8f95507d69af6a89736f6554e99052bfae59907217af8cfe2",
-    "formal/Binary.lean": "9defd1bf7ab943973a894c2eb018e0104d93a53e080ea9da57dba244775d6aca",
-    "formal/Core.lean": "1941d942ed87cb2e9e877873e7d0b4a6f80c2d8794135d68d352136067f318d5"
+    "formal/Binary.lean": "132f2ee19f8ccce3951b3eb7a185077144934d11bb0426da600e2d6359b7239d",
+    "formal/Core.lean": "d244a1e399202a2a10bde9b78152640ba048d90f4d430f6e17530a87c9aea20f"
   }
 }

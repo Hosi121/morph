@@ -1,14 +1,17 @@
 ///|
 /// Structural division by two. The Boolean is the remainder, without a binary numeral.
 pub fn halve_nat(n : Nat) -> (Nat, Bool) {
-  fn walk(rest : Nat, quotient : Nat) -> (Nat, Bool) {
-    match rest {
-      Zero => (quotient, false)
-      Succ(Zero) => (quotient, true)
-      Succ(Succ(tail)) => walk(tail, Succ(quotient))
+  fn walk(fast : Nat, slow : Nat) -> (Nat, Bool) {
+    match (fast, slow) {
+      (Zero, _) => (slow, false)
+      (Succ(Zero), Succ(tail)) => (tail, true)
+      (Succ(Succ(rest)), Succ(tail)) => walk(rest, tail)
+      // Initially fast=slow, and consuming two/one preserves fast <= slow.
+      // Thus a positive fast with zero slow is unreachable.
+      _ => (Zero, false)
     }
   }
-  walk(n, Zero)
+  walk(n, n)
 }
 
 ///|

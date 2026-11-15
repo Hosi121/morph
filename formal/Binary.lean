@@ -1,4 +1,4 @@
-import Std.Tactic
+import Core
 
 namespace Morph.Binary
 
@@ -76,36 +76,24 @@ theorem borrow_stabilizes (a b borrow : Bool) :
     (borrowStep a b (borrowStep a b borrow).2).2 = (borrowStep a b borrow).2 := by
   cases a <;> cases b <;> cases borrow <;> decide
 
--- Model of the shared core.halve_nat accumulator used by binary.from_nat.
-def split : Nat → Nat → Nat × Bool
-  | 0, half => (half, false)
-  | 1, half => (half, true)
-  | n + 2, half => split n (half + 1)
+-- Reuse the checked Core helper rather than model a second halving algorithm.
+def split (n : Nat) : Nat × Bool := Morph.Core.halveNat n
 
-theorem split_sound (n half : Nat) :
-    2 * (split n half).1 + bitValue (split n half).2 = n + 2 * half := by
-  induction n using Nat.strongRecOn generalizing half with
-  | ind n ih =>
-    cases n with
-    | zero => simp [split, bitValue]
-    | succ n =>
-      cases n with
-      | zero => simp [split, bitValue]; omega
-      | succ n =>
-        have h := ih n (by omega) (half + 1)
-        simpa [split, Nat.mul_add, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using h
+theorem split_sound (n : Nat) :
+    2 * (split n).1 + bitValue (split n).2 = n := by
+  simpa [split, bitValue, Morph.Core.remainderValue] using Morph.Core.halveNat_sound n
 
-theorem split_lt {n : Nat} (positive : 0 < n) : (split n 0).1 < n := by
-  have h := split_sound n 0
-  have bound : bitValue (split n 0).2 ≤ 1 := by
-    cases (split n 0).2 <;> decide
+theorem split_lt {n : Nat} (positive : 0 < n) : (split n).1 < n := by
+  have h := split_sound n
+  have bound : bitValue (split n).2 ≤ 1 := by
+    cases (split n).2 <;> decide
   omega
 
 def fromNat (n : Nat) : Chain :=
   match n with
   | 0 => .nil
   | n + 1 =>
-    let divided := split (n + 1) 0
+    let divided := split (n + 1)
     .cons divided.2 (fromNat divided.1)
 termination_by n
 decreasing_by exact split_lt (Nat.zero_lt_succ _)
@@ -116,8 +104,8 @@ theorem fromNat_sound (n : Nat) : value (fromNat n) = n := by
     cases n with
     | zero => simp [fromNat, value]
     | succ n =>
-      have h := ih (split (n + 1) 0).1 (split_lt (by omega))
-      have hs := split_sound (n + 1) 0
+      have h := ih (split (n + 1)).1 (split_lt (by omega))
+      have hs := split_sound (n + 1)
       rw [fromNat]
       simp only [value]
       omega

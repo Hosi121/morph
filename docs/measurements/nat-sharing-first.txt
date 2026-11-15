@@ -1,0 +1,20 @@
+Finished. moon: ran 358 tasks, now up to date
+Total tests: 22, passed: 22, failed: 0.
+[Hosi121/morph] bench binary/nat_sharing_wbtest.mbt:54 ("shared Nat tails compared with rebuilding the quotient") ok
+name                     time (mean ± σ)         range (min … max) 
+rebuild half 64           533.52 ns ±  33.04 ns   500.23 ns … 595.73 ns  in 10 × 100000 runs
+shared tuple half 64      191.68 ns ±  12.40 ns   178.64 ns … 217.26 ns  in 10 × 100000 runs
+shared bare half 64       171.73 ns ±   9.08 ns   161.07 ns … 186.54 ns  in 10 × 100000 runs
+rebuild from_nat 64         1.12 µs ±  38.33 ns     1.07 µs …   1.18 µs  in 10 ×  87488 runs
+shared from_nat 64        580.81 ns ±  47.52 ns   489.39 ns … 654.08 ns  in 10 × 100000 runs
+rebuild half 4096          23.52 µs ± 988.94 ns    22.21 µs …  25.10 µs  in 10 ×   4544 runs
+shared tuple half 4096     10.15 µs ± 539.91 ns     9.53 µs …  11.10 µs  in 10 ×   9273 runs
+shared bare half 4096       9.93 µs ± 431.16 ns     9.44 µs …  10.63 µs  in 10 ×   9570 runs
+rebuild from_nat 4096      46.11 µs ±   1.61 µs    44.32 µs …  49.76 µs  in 10 ×   1904 runs
+shared from_nat 4096       20.57 µs ±   1.12 µs    19.35 µs …  22.39 µs  in 10 ×   4792 runs
+rebuild half 100000       554.34 µs ±  19.78 µs   530.20 µs … 583.18 µs  in 10 ×    166 runs
+shared tuple half 100000  265.99 µs ±   3.10 µs   261.25 µs … 272.38 µs  in 10 ×    384 runs
+shared bare half 100000   291.78 µs ±  22.28 µs   261.80 µs … 323.92 µs  in 10 ×    334 runs
+rebuild from_nat 100000     1.18 ms ±  48.64 µs     1.13 ms …   1.26 ms  in 10 ×     81 runs
+shared from_nat 100000    554.60 µs ±  23.04 µs   528.64 µs … 598.12 µs  in 10 ×    173 runs
+Total tests: 1, passed: 1, failed: 0.

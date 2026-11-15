@@ -48,29 +48,39 @@ theorem replicateOnto_nil (n : Nat) (x : α) : replicateOnto n x .nil = replicat
 def remainderValue (bit : Bool) : Nat := if bit then 1 else 0
 
 def halveLoop : Nat → Nat → Nat × Bool
-  | 0, quotient => (quotient, false)
-  | 1, quotient => (quotient, true)
-  | n + 2, quotient => halveLoop n (quotient + 1)
+  | 0, slow => (slow, false)
+  | 1, slow + 1 => (slow, true)
+  | n + 2, slow + 1 => halveLoop n slow
+  | _, 0 => (0, false)
 
-def halveNat (n : Nat) : Nat × Bool := halveLoop n 0
+def halveNat (n : Nat) : Nat × Bool := halveLoop n n
 def halfNat (n : Nat) : Nat := (halveNat n).1
 
-theorem halveLoop_sound (n quotient : Nat) :
-    2 * (halveLoop n quotient).1 + remainderValue (halveLoop n quotient).2 = n + 2 * quotient := by
-  induction n using Nat.strongRecOn generalizing quotient with
-  | ind n ih =>
-    cases n with
+theorem halveLoop_sound (fast slow : Nat) (bound : fast ≤ slow) :
+    2 * (halveLoop fast slow).1 + remainderValue (halveLoop fast slow).2 = 2 * slow - fast := by
+  induction fast using Nat.strongRecOn generalizing slow with
+  | ind fast ih =>
+    cases fast with
     | zero => simp [halveLoop, remainderValue]
-    | succ n =>
-      cases n with
-      | zero => simp [halveLoop, remainderValue]; omega
-      | succ n =>
-        have h := ih n (by omega) (quotient + 1)
-        simpa [halveLoop, Nat.mul_add, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using h
+    | succ fast =>
+      cases fast with
+      | zero =>
+        cases slow with
+        | zero => omega
+        | succ slow => simp [halveLoop, remainderValue]; omega
+      | succ fast =>
+        cases slow with
+        | zero => omega
+        | succ slow =>
+          have h := ih fast (by omega) slow (by omega)
+          simp only [halveLoop]
+          omega
 
 theorem halveNat_sound (n : Nat) :
     2 * (halveNat n).1 + remainderValue (halveNat n).2 = n := by
-  simpa [halveNat] using halveLoop_sound n 0
+  have h := halveLoop_sound n n (by omega)
+  dsimp [halveNat]
+  omega
 
 theorem halfNat_floor (n : Nat) : halfNat n = n / 2 := by
   have h := halveNat_sound n

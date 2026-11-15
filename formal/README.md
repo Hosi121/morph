@@ -59,11 +59,16 @@ Coreの追加分は[別のレビュー](REVIEW-core.md)に範囲と限界を残�
 
 ## Natを別表現へ変換しない半分化
 
-`core.halve_nat`は二つずつSuccを消費し、商へ一つずつSuccを積む末尾再帰である。
+`core.halve_nat`はfastで二つずつ、slowで一つずつSuccを消費し、既存tailを返す。
+`fast≤slow`の不変条件でfallbackを除外し、初期状態fast=slow=nから商を得る。
 `halveNat_sound`は、任意のnに対する`2*商+Boolの余り=n`を示し、
 `halfNat_floor`は商が`n/2`と等しいことを示す。
 MoonBit側では0〜4096の商・余りと、200001の大きなNatを別に検査する。
 Binary converter自身もこの関数を呼び、円分体とFp多項式の半分化はBinary往復を作らない。
+BinaryモデルもCoreをimportして同じhelperを使う。
+`tools/check_formal`はCoreをローカルの`.tools/formal/Core.olean`へ先に再生成し、
+そのディレクトリをLEAN_PATHの先頭に置く。別の古いCore artifactを前提にしない。
+末尾共有への変更の[独立レビューと実測](../docs/bootstrap/nat-tail-sharing.md)も残す。
 
 公式配布：[Lean v4.19.0](https://github.com/leanprover/lean4/releases/tag/v4.19.0)。
 zipのSHA256：`4e09ca16ff782f51f58b409e7bf983591a3fa17b85aa18d56feddca4398b7f29`。
