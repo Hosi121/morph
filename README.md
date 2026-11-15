@@ -42,6 +42,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 圧縮 | [Huffman符号・復号](src/huffman/huffman.mbt) |
 | ハッシュ | [BoolリストだけのSHA-256](src/sha256/sha256.mbt)・[固定幅ビット演算](src/sha256/word.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](src/polynomial/polynomial.mbt) |
+| 計算代数 | [再開可能なBuchberger・既約Gröbner基底](src/groebner/groebner.mbt) |
 
 設計、検証範囲、表現コスト、採用理由、限界は [ハンドブック](HANDBOOK.md) に記録する。
 性能比較の条件と生ログは [計測記録](docs/MEASUREMENTS.md) にある。

@@ -1,0 +1,62 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/groebner"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn buchberger(@core.Nat, @core.Chain[@polynomial.Polynomial], @core.Nat) -> Result[Progress, @polynomial.PolyError]
+
+pub fn normal_form(Basis, @polynomial.Polynomial) -> Result[@polynomial.Polynomial, @polynomial.PolyError]
+
+pub fn pending(State) -> @core.Nat
+
+pub fn polynomials(Basis) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn run(State, @core.Nat) -> Result[Progress, @polynomial.PolyError]
+
+pub fn s_polynomial(@polynomial.Polynomial, @polynomial.Polynomial) -> Result[@polynomial.Polynomial, @polynomial.PolyError]
+
+pub fn start(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[State, @polynomial.PolyError]
+
+pub fn step(State) -> Result[Progress, @polynomial.PolyError]
+
+pub fn verify(Basis) -> Result[Bool, @polynomial.PolyError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Basis {
+  variables : @core.Nat
+  polynomials : @core.Chain[@polynomial.Polynomial]
+}
+pub fn Basis::equal(Self, Self) -> Bool
+pub fn Basis::not_equal(Self, Self) -> Bool
+pub fn Basis::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Basis)
+  Paused(State)
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  variables : @core.Nat
+  candidates : @core.Chain[@polynomial.Polynomial]
+  pairs : @core.Chain[(@polynomial.Polynomial, @polynomial.Polynomial)]
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
