@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/binary"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Binary, Binary) -> Binary
+
+pub fn bits(Binary) -> @core.Chain[Bool]
+
+pub fn compare(Binary, Binary) -> @core.Ordering
+
+pub fn concat_words(@core.Chain[Bool], @core.Chain[Bool]) -> @core.Chain[Bool]
+
+pub fn divmod(Binary, Binary) -> (Binary, Binary)?
+
+pub fn double(Binary) -> Binary
+
+pub fn from_bits(@core.Chain[Bool]) -> Binary
+
+pub fn from_nat(@core.Nat) -> Binary
+
+pub fn full_adder(Bool, Bool, Bool) -> (Bool, Bool)
+
+pub fn gcd(Binary, Binary) -> Binary
+
+pub fn half(Binary) -> Binary
+
+pub fn is_zero(Binary) -> Bool
+
+pub fn multiply(Binary, Binary) -> Binary
+
+pub fn odd(Binary) -> Bool
+
+pub fn one() -> Binary
+
+pub fn pair(@core.Nat, Binary) -> Binary
+
+pub fn power(Binary, Binary) -> Binary
+
+pub fn subtract(Binary, Binary) -> Binary?
+
+pub fn successor(Binary) -> Binary
+
+pub fn to_nat(Binary) -> @core.Nat
+
+pub fn unpair(Binary) -> (@core.Nat, Binary)?
+
+pub fn zero() -> Binary
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Binary {
+  bits : @core.Chain[Bool]
+}
+pub fn Binary::equal(Self, Self) -> Bool
+pub fn Binary::not_equal(Self, Self) -> Bool
+pub fn Binary::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

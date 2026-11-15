@@ -5,6 +5,7 @@ MoonBit の代数的データ型・パターンマッチ・再帰でアルゴリ
 Bool、Unit、独自の不変リスト、直和型・直積型から構成する。
 
 ```sh
+tools/bootstrap             # 初回：既存のグローバル環境には触れず公式配布を取得
 tools/moon test
 tools/moon test --target js
 ```
