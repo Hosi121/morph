@@ -65,3 +65,25 @@ test "candidate halving binary key conversion all implication chain 256 occurren
     )
   })
 }
+
+///|
+test "stage previous scan RUP checker implication chain 256" (b : @bench.T) {
+  let formula = stage_chain(256)
+  let proof = match run(start(formula), fuel(20000)) {
+    Unsatisfiable(proof) => proof
+    _ => fail("benchmark chain must be refuted")
+  }
+  b.bench(fn() { b.keep(check_refutation_scanning(formula, proof)) })
+}
+
+///|
+test "stage independent indexed RUP checker implication chain 256" (
+  b : @bench.T,
+) {
+  let formula = stage_chain(256)
+  let proof = match run(start(formula), fuel(20000)) {
+    Unsatisfiable(proof) => proof
+    _ => fail("benchmark chain must be refuted")
+  }
+  b.bench(fn() { b.keep(check_refutation(formula, proof)) })
+}

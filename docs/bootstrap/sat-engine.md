@@ -41,10 +41,11 @@ For every addition, the checker assumes the negation of its literals and runs
 deterministic unit propagation over the input plus earlier additions. It does
 not call the solver, make decisions, or perform conflict analysis. It rejects
 missing final empty clauses and non-RUP additions. Repeated valid lemmas and
-tautological lemmas are sound and accepted. Proof checking currently uses the
+tautological lemmas are sound and accepted. This milestone's checker used the
 same clause normalization and unit-status evaluator as the solver; its search
 and conflict-analysis logic are independent, but this is not an independently
-implemented trusted kernel or a formal soundness proof.
+implemented trusted kernel or a formal soundness proof. The current checker is
+separated further in the indexed-checker milestone below.
 
 Validation on MoonBit v0.10.20, native, JavaScript, and Wasm GC:
 
@@ -169,3 +170,32 @@ Reproduction commands:
 tools/moon bench src/cdcl/bench_test.mbt --target native --release
 tools/moon bench src/cdcl/stages_wbtest.mbt --target native --release
 ```
+
+## Independent indexed RUP checker
+
+The current checker has its own clause evaluator and unit-propagation loop,
+with an immutable `Index[Bool]` assignment map. It does not use the solver's
+clause evaluator, watch states, propagation queue, decision selection, trail,
+reasons, or conflict analysis. It shares the generic key/index functions and
+input clause normalization. The previous scan checker is retained only in
+white-box tests as an additional differential oracle.
+
+All 19,683 combinations of two three-variable clauses and one candidate RUP
+lemma agree between the two checkers. Every accepted lemma also passes a
+truth-table entailment check. Another 1,458 ordered two-lemma-plus-empty
+certificates over satisfiable and unsatisfiable three-variable cubes agree
+between checkers; accepted complete certificates are truth-table unsatisfiable.
+Every generated proof in the existing exhaustive solver comparison is checked
+by both implementations. Fourteen package tests pass native, JS, and Wasm GC.
+
+On the same prebuilt 256-link-chain certificate, native release comparison:
+
+| Checker | Mean ± standard deviation |
+| --- | ---: |
+| Previous trail-scanning checker | 62.06 ms ± 2.30 ms |
+| Independent indexed checker | 8.80 ms ± 536.43 µs |
+
+This reduces checker cost on that input while leaving the certificate format
+and checked property unchanged. Input key conversion still accounts for most
+of the new checker's time. No learned-proof compression or external proof
+format has been introduced.

@@ -70,6 +70,7 @@ fn validate(formula : @sat.Cnf, variables : Int32) -> Unit raise {
       Unsatisfiable(proof) => {
         assert_false(expected)
         assert_true(check_refutation(formula, proof))
+        assert_true(check_refutation_scanning(formula, proof))
       }
       Paused(_) => fail("small formula exhausted transition budget")
       InvariantViolation => fail("CDCL invariant violated")
