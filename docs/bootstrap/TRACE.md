@@ -14,3 +14,7 @@
 - 14:44 UTC：ユーザーがカーネルの高速化を明示的に優先。後半の分担を共通部品へ再配置。
 - 14:48 UTC：AES全鍵長・LLL/Smithの応用まで統合。ユーザーがGitHub public repoへのuploadを許可。
 - 14:50 UTC：全体430テストを3backend、Leanを再検証。公開前snapshotを整える。
+- 14:57 UTC：Hosi121/morphをpublicで作成し、検証済み2eb67baまでの119コミットを初回upload。履歴のSHA集合を照合。
+- 15時台：Binary恒等元、exactの小商・Stein・符号共有、Fp(2)の係数と除算の共通基礎を段階統合。全称モデルとは別に実測を記録。
+- 16:06 UTC：利用経路のユーザー監査を受け、指定された三箇所のNat/Binary往復を共有Coreのhalf_natへ置換。67テストを全3backend、Leanのfloorとprefix定理を検査。
+- 同時点：内部参照のない公開APIと独立runbinaryを区別する静的一覧、直接の変換往復を拒否する保守ゲートを追加。

@@ -19,5 +19,8 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | RUN-2 | 圧縮演算は通常の自然数算術と一致する | 全16384小対、Python任意精度fixture、巨大値の圧縮恒等式 | 有限照合と恒等式のsanity check。一般のrun数に対する形式証明なし |
 | BIN-ADD-1 | 加算とincrementが値を保存する | Leanの全称定理・source差分lock・MoonBit全小例 | 任意の有限列のモデルに対する帰納的証明。MoonBitへの翻訳は手動対応 |
 | NAT-2 | 構造的半分化によるNat→二進数が値を保存する | Lean split_sound/fromNat_sound | 任意の自然数のモデル定理。MoonBitのstack/メモリ上限を保証しない |
+| CORE-HALF-1 | Natの商と余り、floor(n/2)を直接構成する | Lean halveNat_sound/halfNat_floor、0〜4096と200001の実行検査 | モデルは全称、実装への対応は手動レビューとsource lock |
+| CORE-PREFIX-1 | replicate_ontoはreplicate→appendと同じ列を返す | Lean generic Chainの等式、100000 prefixとpair | 任意型のモデル定理。backendの速度・資源保証とは別 |
+| PATH-1 | 代表的な直接往復を再導入しない | tools/audit_paths.pyと陽性/陰性のPython検査 | 字句ゲート。変数を介する経路やプログラム全体の到達可能性は証明しない |
 
 定理の全入力の正しさ、固定幅の完全なBoolean検査、有限の生成例の一致を同一視しない。

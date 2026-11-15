@@ -4,8 +4,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：64パッケージ、106ソース。
-核のテスト宣言：429、bench group：81。
+算法の核：65パッケージ、112ソース。
+核のテスト宣言：457、bench group：106。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -16,14 +16,14 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [autodiff](../src/autodiff) | 2 | 2 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [avl](../src/avl) | 1 | 2 | 0 | `binary`, `core` |
 | [bdd](../src/bdd) | 4 | 13 | 4 | `binary`, `circuit`, `core`, `sat` |
-| [binary](../src/binary) | 3 | 13 | 0 | `core` |
+| [binary](../src/binary) | 3 | 19 | 6 | `core` |
 | [bipartite](../src/bipartite) | 1 | 3 | 0 | `core` |
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
 | [cdcl](../src/cdcl) | 4 | 27 | 36 | `binary`, `core`, `sat` |
 | [cek](../src/cek) | 1 | 3 | 0 | `core`, `infer` |
 | [circuit](../src/circuit) | 2 | 3 | 0 | `boolean`, `core`, `sat` |
-| [core](../src/core) | 2 | 2 | 0 | — |
+| [core](../src/core) | 3 | 4 | 0 | — |
 | [cyclicrs](../src/cyclicrs) | 1 | 21 | 0 | `binary`, `core`, `galois`, `recurrence` |
 | [cyclotomic](../src/cyclotomic) | 1 | 10 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [cyk](../src/cyk) | 1 | 3 | 0 | `core` |
@@ -31,14 +31,14 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [discretelog](../src/discretelog) | 2 | 7 | 4 | `binary`, `core`, `factor`, `modular`, `primality`, `primefield`, `trie` |
 | [dp](../src/dp) | 2 | 2 | 0 | `binary`, `core` |
 | [elliptic](../src/elliptic) | 1 | 2 | 0 | `binary`, `core`, `finitefield`, `modular` |
-| [exact](../src/exact) | 1 | 4 | 0 | `binary`, `core` |
+| [exact](../src/exact) | 1 | 10 | 12 | `binary`, `core` |
 | [exactcover](../src/exactcover) | 2 | 4 | 0 | `binary`, `core` |
 | [exactfft](../src/exactfft) | 1 | 15 | 0 | `binary`, `core`, `cyclotomic`, `exact`, `fft` |
 | [factor](../src/factor) | 3 | 17 | 4 | `binary`, `core`, `modular`, `primality` |
 | [fft](../src/fft) | 1 | 3 | 0 | `core` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
-| [fppoly](../src/fppoly) | 3 | 17 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
-| [galois](../src/galois) | 1 | 16 | 0 | `binary`, `core`, `fppoly`, `primefield` |
+| [fppoly](../src/fppoly) | 4 | 19 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
+| [galois](../src/galois) | 1 | 17 | 2 | `binary`, `core`, `fppoly`, `primefield` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
 | [groebner](../src/groebner) | 1 | 46 | 0 | `core`, `exact`, `polynomial`, `sorting` |
@@ -62,6 +62,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |
 | [rowreduce](../src/rowreduce) | 1 | 0 | 0 | `core`, `matrix` |
 | [runbinary](../src/runbinary) | 2 | 13 | 3 | `binary`, `core` |
+| [ruplog](../src/ruplog) | 4 | 11 | 5 | `binary`, `cdcl`, `core`, `sat` |
 | [sat](../src/sat) | 1 | 2 | 0 | `core` |
 | [sha256](../src/sha256) | 3 | 3 | 0 | `binary`, `core` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |

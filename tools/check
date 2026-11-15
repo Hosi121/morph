@@ -4,6 +4,7 @@ root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$root"
 python3 -m unittest discover -s tools -p 'test_*.py' -q
 python3 tools/audit_purity.py
+python3 tools/audit_paths.py --check
 python3 tools/check_model_drift.py
 tools/moon fmt --check
 tools/moon check --deny-warn
