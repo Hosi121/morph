@@ -1,0 +1,75 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/infer"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/unify",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn arrow(@unify.Term[Head], @unify.Term[Head]) -> @unify.Term[Head]
+
+pub fn body(Scheme) -> @unify.Term[Head]
+
+pub fn boolean_type() -> @unify.Term[Head]
+
+pub fn canonical(@unify.Term[Head]) -> @unify.Term[Head]
+
+pub fn infer(Expr) -> Result[Scheme, TypeError]
+
+pub fn product(@unify.Term[Head], @unify.Term[Head]) -> @unify.Term[Head]
+
+pub fn quantified(Scheme) -> @core.Chain[@core.Nat]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Expr {
+  Reference(@core.Nat)
+  Lambda(@core.Nat, Expr)
+  Apply(Expr, Expr)
+  Let(@core.Nat, Expr, Expr)
+  Boolean(Bool)
+  Tuple(Expr, Expr)
+  First(Expr)
+  Second(Expr)
+  Conditional(Expr, Expr, Expr)
+}
+pub fn Expr::equal(Self, Self) -> Bool
+pub fn Expr::not_equal(Self, Self) -> Bool
+pub fn Expr::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Head {
+  BoolType
+  FunctionType
+  ProductType
+}
+pub fn Head::equal(Self, Self) -> Bool
+pub fn Head::not_equal(Self, Self) -> Bool
+pub fn Head::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Scheme {
+  quantified : @core.Chain[@core.Nat]
+  body : @unify.Term[Head]
+}
+pub fn Scheme::equal(Self, Self) -> Bool
+pub fn Scheme::not_equal(Self, Self) -> Bool
+pub fn Scheme::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum TypeError {
+  UnboundVariable(@core.Nat)
+  Unification(@unify.UnifyError[Head])
+}
+pub fn TypeError::equal(Self, Self) -> Bool
+pub fn TypeError::not_equal(Self, Self) -> Bool
+pub fn TypeError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Type = @unify.Term[Head]
+
+// Traits

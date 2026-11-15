@@ -317,3 +317,22 @@ DPLL は unit propagation、pure literal elimination、二分岐を使う。
 等式を満たし、二度適用しても変わらないことを確認した。
 このテストは最汎性の形式証明ではない。算法は分解・束縛による通常の一階単一化で、
 高階単一化や rational tree の循環項は対象にしていない。
+
+## Hindley–Milner 型推論：let 多相まで
+
+一階単一化の構成子を Bool / 関数 / 積へ具体化し、置換と fresh 変数を明示的に渡す
+Algorithm W の変形を実装した。入力は Reference/Lambda/Apply/Let/Boolean/Tuple/
+First/Second/Conditional という AST。変数名も型変数も Nat なので、文字列や hash table は不要。
+
+let の定義を推論したら、**現在の置換を反映した環境**に自由でない型変数だけを一般化する。
+参照時には全称変数へ毎回新しい変数を割り当てる。
+lambda の引数には全称変数を持たない scheme を入れ、勝手な多相利用を許さない。
+最終結果は量化変数と本体を持つ Scheme。`canonical` が初出順に変数名を整えて比較を助ける。
+
+恒等・定数・合成関数の主型、積と射影、let の異なる型での使用、shadowing を確認した。
+一方、lambda 引数の多相使用、外側の変数に依存する let の不正な一般化、自己適用、
+未定義名、条件分岐の型不一致は拒否する専用テストを置いた。
+パーサ、再帰 let、高階多相、型クラス、効果・可変参照は対象外。
+主型算法の実装であり、このコード全体の健全性・完全性を形式証明したという主張ではない。
+
+原典：[Damas–Milner, Principal Type-Schemes for Functional Programs (1982)](https://www.cs.tufts.edu/comp/150FP/archive/robin-milner/damas-milner-original.pdf)。
