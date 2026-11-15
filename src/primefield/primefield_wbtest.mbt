@@ -9,6 +9,33 @@ fn certificate(p : Int32) -> @primality.Certificate {
         @oracle.binary(2),
         Cons(certificate(2), Cons(certificate(2), Nil)),
       )
+    7 =>
+      Lucas(
+        @oracle.binary(7),
+        @oracle.binary(3),
+        Cons(certificate(2), Cons(certificate(3), Nil)),
+      )
+    17 =>
+      Lucas(
+        @oracle.binary(17),
+        @oracle.binary(3),
+        @core.replicate(@oracle.nat(4), certificate(2)),
+      )
+    65537 =>
+      Lucas(
+        @oracle.binary(65537),
+        @oracle.binary(3),
+        @core.replicate(@oracle.nat(16), certificate(2)),
+      )
+    998244353 =>
+      Lucas(
+        @oracle.binary(998244353),
+        @oracle.binary(3),
+        @core.append(
+          @core.replicate(@oracle.nat(23), certificate(2)),
+          Cons(certificate(7), Cons(certificate(17), Nil)),
+        ),
+      )
     _ => abort("small prime certificate")
   }
 }
@@ -34,10 +61,15 @@ test "general prime field validates all small candidates including two" {
 
 ///|
 test "checked prime and exact trial entry points construct the same field" {
-  for p in [2, 3, 5] {
+  for p in [2, 3, 5, 65537] {
     let prime = @primality.check(certificate(p)).unwrap()
     assert_eq(from_prime(prime), field(@oracle.binary(p)))
   }
+  let large = @primality.check(certificate(998244353)).unwrap()
+  assert_eq(
+    @modular.value(modulus(from_prime(large).unwrap())),
+    @oracle.binary(998244353),
+  )
   for n in [0, 1, 4, 6, 8, 9, 15, 21, 25, 49] {
     assert_eq(field(@oracle.binary(n)), None)
   }
