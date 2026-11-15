@@ -62,6 +62,10 @@ test "all GF256 products and inverses match native carryless reduction for AES a
     for a in 0..<256 {
       for b in 0..<256 {
         assert_eq(
+          char_two_native_product(a, b, modulus),
+          carryless_native_multiply(a, b, modulus),
+        )
+        assert_eq(
           char_two_native(required(multiply(values[a], values[b]))),
           char_two_native_product(a, b, modulus),
         )

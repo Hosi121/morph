@@ -155,11 +155,16 @@ pub fn subtract(a : Element, b : Element) -> Result[Element, FieldError] {
 pub fn multiply(a : Element, b : Element) -> Result[Element, FieldError] {
   match a.field.equal(b.field) {
     false => Err(FieldMismatch)
-    true =>
+    true => {
+      match is_binary_field(a.field) {
+        true => return Ok(binary_field_product(a, b))
+        false => ()
+      }
       match @fppoly.multiply(a.representative, b.representative) {
         Err(error) => Err(PolynomialError(error))
         Ok(product) => element(a.field, product)
       }
+    }
   }
 }
 
