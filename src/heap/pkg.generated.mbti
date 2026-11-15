@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/heap"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] drain(Heap[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+pub fn[A] empty() -> Heap[A]
+
+pub fn[A] from_chain(@core.Chain[A], (A, A) -> @core.Ordering) -> Heap[A]
+
+pub fn[A] insert(Heap[A], A, (A, A) -> @core.Ordering) -> Heap[A]
+
+pub fn[A] merge(Heap[A], Heap[A], (A, A) -> @core.Ordering) -> Heap[A]
+
+pub fn[A] pop(Heap[A], (A, A) -> @core.Ordering) -> (A, Heap[A])?
+
+pub fn[A] singleton(A) -> Heap[A]
+
+pub fn[A] sort(@core.Chain[A], (A, A) -> @core.Ordering) -> @core.Chain[A]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub enum Heap[A] {
+  Empty
+  Node(@core.Nat, A, Heap[A], Heap[A])
+}
+pub fn[A : Eq] Heap::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Heap::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Heap::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
