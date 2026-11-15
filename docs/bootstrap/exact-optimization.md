@@ -254,3 +254,16 @@ JS driverのJSON引数をnative driverへ渡さない（nativeは上記file:star
 0〜256の全GCD対を独立Int32 Euclidと比較し、選択境界の256も検査する。
 大きい近接奇数、共有factor、2冪と奇数のcontrolも厳密な期待値で確認する。
 この選択は現在のbinary `b21222b` に対する判断であり、共有除算/GCD変更後は再比較する。
+
+## 第五段：Rationalの零の積を共有
+
+Rationalは既約で零の分母は1なので、零の積には零である入力をそのまま返せる。
+rational_multiplyで新しいrational_zeroを構築する経路をこの恒等則へ置き換えた。
+直接減算とreciprocalの候補はこの変更へ含めない。
+
+同じ基盤・同一fixtureで保存したbefore/after ELFをCPU8+共通mutexでABBA順に実行した。
+large value×zeroとzero×large valueの2演算をまとめた時間は、
+before 155.87/137.41 ns、after 26.63/26.88 nsだった。
+[batch統計とELF SHA256](../measurements/exact-zero-product.json)を残す。
+これは零の2演算だけの費用であり、任意のRational積や上位算法の倍率とは呼ばない。
+既存の独立Rational積oracleとtiny候補検査を含むexact 11 testsがnative/js/wasm-gcで通過した。

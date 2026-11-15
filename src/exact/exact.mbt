@@ -247,10 +247,13 @@ pub fn rational_subtract(a : Rational, b : Rational) -> Rational {
 ///|
 pub fn rational_multiply(a : Rational, b : Rational) -> Rational {
   match
-    @binary.is_zero(a.numerator.magnitude) ||
-    @binary.is_zero(b.numerator.magnitude) {
-    true => return rational_zero()
-    false => ()
+    (
+      @binary.is_zero(a.numerator.magnitude),
+      @binary.is_zero(b.numerator.magnitude),
+    ) {
+    (true, _) => return a
+    (_, true) => return b
+    _ => ()
   }
   match is_one(a.numerator.magnitude) && is_one(a.denominator) {
     true =>
