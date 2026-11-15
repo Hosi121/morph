@@ -1,0 +1,45 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/linear"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn determinant(@matrix.Matrix[@exact.Rational]) -> @exact.Rational?
+
+pub fn inverse(@matrix.Matrix[@exact.Rational]) -> @matrix.Matrix[@exact.Rational]?
+
+pub fn rref(@matrix.Matrix[@exact.Rational]) -> Reduction?
+
+pub fn solve(@matrix.Matrix[@exact.Rational], @core.Chain[@exact.Rational]) -> Solution?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Reduction {
+  matrix : @matrix.Matrix[@exact.Rational]
+  pivots : @core.Chain[@core.Nat]
+  factor : @exact.Rational
+}
+pub fn Reduction::equal(Self, Self) -> Bool
+pub fn Reduction::not_equal(Self, Self) -> Bool
+pub fn Reduction::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Solution {
+  Unique(@core.Chain[@exact.Rational])
+  Affine(@core.Chain[@exact.Rational], @core.Chain[@core.Chain[@exact.Rational]])
+  Inconsistent
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

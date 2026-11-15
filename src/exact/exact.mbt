@@ -204,3 +204,36 @@ pub fn rational_compare(a : Rational, b : Rational) -> @core.Ordering {
     multiply(b.numerator, positive(a.denominator)),
   )
 }
+
+///|
+/// Evidence that a rational is nonzero, for total pivot inversion.
+pub struct Nonzero {
+  value : Rational
+}
+
+///|
+pub fn nonzero(value : Rational) -> Nonzero? {
+  match @binary.is_zero(value.numerator.magnitude) {
+    true => None
+    false => Some({ value, })
+  }
+}
+
+///|
+pub fn nonzero_value(value : Nonzero) -> Rational {
+  value.value
+}
+
+///|
+/// Total because the only constructor is the checked nonzero function.
+pub fn reciprocal(nonzero : Nonzero) -> Rational {
+  let r = nonzero.value
+  let n = positive(r.denominator)
+  {
+    numerator: match r.numerator.negative {
+      true => negate(n)
+      false => n
+    },
+    denominator: r.numerator.magnitude,
+  }
+}
