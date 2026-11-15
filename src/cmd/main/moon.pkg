@@ -1,0 +1,18 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/fft",
+  "Hosi121/morph/modular",
+  "Hosi121/morph/ntt",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/linear",
+  "Hosi121/morph/dp",
+  "Hosi121/morph/sat",
+  "Hosi121/morph/infer",
+  "Hosi121/morph/huffman",
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/debug",
+}
+
+pkgtype(kind: "executable")
