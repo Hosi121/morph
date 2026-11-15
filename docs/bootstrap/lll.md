@@ -100,11 +100,47 @@ python3 tools/audit_purity.py
 
 生成と検査の費用の記録で、別実装に対する性能優位の比較ではない。
 Gram–Schmidtを各遷移で再計算するため、小次元の成立確認を優先した実装である。
-依存行の整備、大次元の係数増大対策、実メモリ量、最短vectorの最適性証明は含めない。
+大次元の係数増大対策、実メモリ量、最短vectorの最適性証明は含めない。
 全入力の終了時間やMoonBit実装の多項式bit計算量を形式証明していない。
 
 ```text
 reduce/check 3x3: 353.92 µs ± 20.09 µs; 329.40 µs … 391.73 µs; 10 × 280 runs
 check 3x3: 25.88 µs ± 847.94 ns; 24.88 µs … 27.15 µs; 10 × 3702 runs
 reduce/check 3x4: 368.00 µs ± 3.58 µs; 363.40 µs … 373.47 µs; 10 × 252 runs
+```
+
+## Smithから依存した生成集合を整備する
+
+`start` のfull-row-rank境界を維持したまま、別入口 `from_smith(form)` で
+任意の整数生成行列を整備できる。検査済み `U*B*V=D` からU*Bを再計算し、
+rank以降の行が厳密に零であることを確認してから、その零行だけを落とす。
+残った先頭rank行はGram–Schmidtでも独立性を再検査する。
+Uが整数unimodularなので、元と同じ**整数**row latticeを張る。
+単に有理数で独立な元の行を選ぶ処理ではない。
+例えば(2,0)と(3,0)を並べた入力では、(1,0)を張る基底を得る必要がある。
+
+```moonbit
+pub fn from_smith(@smith.Decomposition) -> IndependentBasis?
+pub fn independent_basis(IndependentBasis) -> @matrix.Matrix[@exact.Integer]
+pub fn combine(IndependentBasis, Reduction) -> LatticeReduction?
+pub fn check_lattice(input, square_transform, reduced) -> LatticeReduction?
+```
+
+呼出側はSmithのfuel付き実行、`from_smith`、得られた基底へのLLLのfuel付き実行を順に行う。
+`combine` はその基底に対するLLL証拠だけを受け取り、rank×rankのLLL変換Wを
+`diag(W,I)` へ拡大してSmithのUへ合成する。
+最終の正方整数変換Cは `C*B=(reduced_basis; zero_rows)` を満たす。
+
+`check_lattice` はSmith証明を受け取らず、この等式、det(C)=±1、末尾の全零行、
+先頭の基底のGram–Schmidtと全LLL条件を直接検査する。
+これにより依存入力にも同じ整数格子を保証し、行を落として部分格子に変える候補を拒否する。
+受理したopaque結果には `lattice_original/lattice_transform/lattice_basis/lattice_gram` でアクセスする。
+全零、0行/0列、矩形と全小2×2依存入力について、内容gcdも整数oracleで照合する。
+
+同じnative release環境で、固定した依存3×4入力のSmith生成・証明検査・
+基底整備・LLL・最終の格子checkerまでを計測すると325.94 µs ± 19.66 µs。
+入力の構築だけを除外した構成例のコストであり、full-rank例と直接の優位比較はしない。
+
+```text
+Smith plus LLL 3x4: 325.94 µs ± 19.66 µs; 306.94 µs … 359.87 µs; 10 × 289 runs
 ```

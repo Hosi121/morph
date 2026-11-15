@@ -33,3 +33,11 @@ test "exact LLL three by four including rank validation and final checker" (
   let fuel = @oracle.nat(2000)
   b.bench(fn() { b.keep(reduce_input(input, fuel)) })
 }
+
+///|
+test "Smith then exact LLL dependent three by four including both certificate checks" (
+  b : @bench.T,
+) {
+  let input = imat(4, [[2, 0, 0, 2], [0, 3, 3, 0], [2, 3, 3, 2]])
+  b.bench(fn() { b.keep(arbitrary(input)) })
+}

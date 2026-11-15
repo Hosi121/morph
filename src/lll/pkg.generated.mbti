@@ -5,6 +5,7 @@ import {
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
+  "Hosi121/morph/smith",
   "moonbitlang/core/debug",
 }
 
@@ -15,15 +16,33 @@ pub fn check(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @ma
 
 pub fn check_gram(@matrix.Matrix[@exact.Integer], GramSchmidt) -> Bool
 
+pub fn check_lattice(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> LatticeReduction?
+
 pub fn check_with_gram(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], GramSchmidt) -> Reduction?
+
+pub fn combine(IndependentBasis, Reduction) -> LatticeReduction?
+
+pub fn from_smith(@smith.Decomposition) -> IndependentBasis?
 
 pub fn gram(Reduction) -> GramSchmidt
 
 pub fn gram_schmidt(@matrix.Matrix[@exact.Integer]) -> GramSchmidt?
 
+pub fn independent_basis(IndependentBasis) -> @matrix.Matrix[@exact.Integer]
+
+pub fn lattice_basis(LatticeReduction) -> @matrix.Matrix[@exact.Integer]
+
+pub fn lattice_gram(LatticeReduction) -> GramSchmidt
+
+pub fn lattice_original(LatticeReduction) -> @matrix.Matrix[@exact.Integer]
+
+pub fn lattice_transform(LatticeReduction) -> @matrix.Matrix[@exact.Integer]
+
 pub fn original(Reduction) -> @matrix.Matrix[@exact.Integer]
 
 pub fn run(Machine, @core.Nat) -> Status
+
+pub fn smith_certificate(IndependentBasis) -> @smith.Decomposition
 
 pub fn start(@matrix.Matrix[@exact.Integer]) -> Machine?
 
@@ -43,6 +62,26 @@ pub(all) struct GramSchmidt {
 pub fn GramSchmidt::equal(Self, Self) -> Bool
 pub fn GramSchmidt::not_equal(Self, Self) -> Bool
 pub fn GramSchmidt::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct IndependentBasis {
+  smith : @smith.Decomposition
+  basis : @matrix.Matrix[@exact.Integer]
+}
+pub fn IndependentBasis::equal(Self, Self) -> Bool
+pub fn IndependentBasis::not_equal(Self, Self) -> Bool
+pub fn IndependentBasis::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct LatticeReduction {
+  input : @matrix.Matrix[@exact.Integer]
+  transform : @matrix.Matrix[@exact.Integer]
+  basis : @matrix.Matrix[@exact.Integer]
+  gram : GramSchmidt
+}
+pub fn LatticeReduction::equal(Self, Self) -> Bool
+pub fn LatticeReduction::not_equal(Self, Self) -> Bool
+pub fn LatticeReduction::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Machine {
