@@ -102,3 +102,26 @@ test "nontrivial exact quotients preserve canonical sign and large reciprocal ca
   )
   assert_eq(rational_add(positive_value, negative_value), rational_zero())
 }
+
+///|
+test "short quotient specialization matches every bounded exact product including powers of two" {
+  for d in 1..<257 {
+    for q in 0..<129 {
+      assert_eq(
+        exact_quotient(@oracle.binary(d * q), @oracle.binary(d)),
+        @oracle.binary(q),
+      )
+    }
+  }
+  let (odd, _) = large_pair()
+  for shift in 0..<8 {
+    let divisor = @binary.multiply(
+      odd,
+      @binary.power(@oracle.binary(2), @oracle.binary(shift)),
+    )
+    for q in 0..<34 {
+      let value = @binary.multiply(divisor, @oracle.binary(q))
+      assert_eq(exact_quotient(value, divisor), @oracle.binary(q))
+    }
+  }
+}

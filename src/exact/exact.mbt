@@ -231,6 +231,54 @@ pub fn rational_multiply(a : Rational, b : Rational) -> Rational {
 }
 
 ///|
+fn close_widths(a : @core.Chain[Bool], b : @core.Chain[Bool]) -> Bool {
+  match (a, b) {
+    (_, Nil) =>
+      match a {
+        Nil
+        | Cons(_, Nil)
+        | Cons(_, Cons(_, Nil))
+        | Cons(_, Cons(_, Cons(_, Nil))) => true
+        _ => false
+      }
+    (Cons(_, a), Cons(_, b)) => close_widths(a, b)
+    _ => false
+  }
+}
+
+///|
+/// Exact division with a short quotient. Strip the divisor's powers of two;
+/// for odd d, q's low bit is a's low bit and the remaining quotient is halved.
+fn short_exact_quotient(
+  a : @binary.Binary,
+  d : @binary.Binary,
+) -> @binary.Binary {
+  match @binary.is_zero(a) || is_one(d) {
+    true => return a
+    false => ()
+  }
+  match a.equal(d) {
+    true => return @binary.one()
+    false => ()
+  }
+  match @binary.odd(d) {
+    false => short_exact_quotient(@binary.half(a), @binary.half(d))
+    true =>
+      match @binary.odd(a) {
+        false => @binary.double(short_exact_quotient(@binary.half(a), d))
+        true =>
+          match @binary.subtract(a, d) {
+            Some(rest) =>
+              @binary.successor(
+                @binary.double(short_exact_quotient(@binary.half(rest), d)),
+              )
+            None => @binary.zero()
+          }
+      }
+  }
+}
+
+///|
 /// All callers supply a positive divisor known to divide the magnitude exactly.
 fn exact_quotient(
   value : @binary.Binary,
@@ -246,6 +294,12 @@ fn exact_quotient(
   }
   match value.equal(divisor) {
     true => return @binary.one()
+    false => ()
+  }
+  match
+    !@binary.is_zero(divisor) &&
+    close_widths(@binary.bits(value), @binary.bits(divisor)) {
+    true => return short_exact_quotient(value, divisor)
     false => ()
   }
   match @binary.divmod(value, divisor) {
