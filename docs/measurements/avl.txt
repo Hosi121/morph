@@ -1,0 +1,7 @@
+[Hosi121/morph] bench benchmarks/avl_test.mbt:17 ("five fixed lookups on a 1024-entry association list") ok
+time (mean ± σ)         range (min … max) 
+  36.84 µs ±   1.03 µs    35.70 µs …  38.60 µs  in 10 ×   2722 runs
+[Hosi121/morph] bench benchmarks/avl_test.mbt:30 ("same five lookups on a persistent AVL with binary keys") ok
+time (mean ± σ)         range (min … max) 
+ 411.00 ns ±  10.73 ns   399.53 ns … 434.73 ns  in 10 × 100000 runs
+Total tests: 2, passed: 2, failed: 0.

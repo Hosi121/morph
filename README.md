@@ -36,7 +36,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | 線形最適化 | [二段階単体法・Bland規則・双対解/非有界/Farkas証拠](src/simplex/simplex.mbt) |
 | ソート | [安定merge/insertion/quick sort](src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](src/heap/heap.mbt) |
-| 辞書 | [Boolワードの永続trie・最長prefix・union](src/trie/trie.mbt) |
+| 辞書 | [Boolワードの永続trie・最長prefix・union](src/trie/trie.mbt)・[永続AVL・削除・順位と選択](src/avl/avl.mbt) |
 | グラフ | [BFS・Dijkstra・経路](src/graph/graph.mbt)・[topological・SCC](src/graph/structure.mbt) |
 | 全域森 | [Kruskal・Prim・最小性の証拠検査](src/spanning/spanning.mbt) |
 | ネットワーク | [Edmonds–Karp最大流・最小カット・証拠検査](src/maxflow/maxflow.mbt) |

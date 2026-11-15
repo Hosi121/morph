@@ -1,0 +1,48 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/avl"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[K, V] between(OrderedMap[K, V], K, K, (K, K) -> @core.Ordering) -> @core.Chain[(K, V)]
+
+pub fn[K, V] empty() -> OrderedMap[K, V]
+
+pub fn[K, V] entries(OrderedMap[K, V]) -> @core.Chain[(K, V)]
+
+pub fn[K, V] lookup(OrderedMap[K, V], K, (K, K) -> @core.Ordering) -> V?
+
+pub fn[K, V] put(OrderedMap[K, V], K, V, (K, K) -> @core.Ordering) -> OrderedMap[K, V]
+
+pub fn[K, V] rank(OrderedMap[K, V], K, (K, K) -> @core.Ordering) -> @binary.Binary
+
+pub fn[K, V] remove(OrderedMap[K, V], K, (K, K) -> @core.Ordering) -> OrderedMap[K, V]
+
+pub fn[K, V] select(OrderedMap[K, V], @binary.Binary) -> (K, V)?
+
+pub fn[K, V] size(OrderedMap[K, V]) -> @binary.Binary
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct OrderedMap[K, V] {
+  tree : Tree[K, V]
+}
+pub fn[K : Eq, V : Eq] OrderedMap::equal(Self[K, V], Self[K, V]) -> Bool
+pub fn[K : Eq, V : Eq] OrderedMap::not_equal(Self[K, V], Self[K, V]) -> Bool
+pub fn[K : @debug.Debug, V : @debug.Debug] OrderedMap::to_repr(Self[K, V]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Tree[K, V]
+pub fn[K : Eq, V : Eq] Tree::equal(Self[K, V], Self[K, V]) -> Bool
+pub fn[K : Eq, V : Eq] Tree::not_equal(Self[K, V], Self[K, V]) -> Bool
+pub fn[K : @debug.Debug, V : @debug.Debug] Tree::to_repr(Self[K, V]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
