@@ -199,3 +199,46 @@ This reduces checker cost on that input while leaving the certificate format
 and checked property unchanged. Input key conversion still accounts for most
 of the new checker's time. No learned-proof compression or external proof
 format has been introduced.
+
+## Ripple-adder miter integration
+
+The root task's `@circuit.adder_miter(width, Propagate, Multiplexer)` supplies
+the same external Tseitin CNF to all engines. The two implementations retain
+the final carry, and the asserted miter asks whether any output bit differs.
+Watched CDCL refutes widths 2, 4, 8, and 16 within a 20,000-transition budget;
+every resulting RUP certificate passes the independent checker. These are
+specific finite-width certificates, not an arbitrary-width equivalence theorem.
+
+| Width | Gates | CNF clauses | Transitions | Decisions | Conflicts | Learned |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2 | 15 | 54 | 145 | 15 | 15 | 14 |
+| 4 | 33 | 118 | 382 | 30 | 27 | 26 |
+| 8 | 69 | 246 | 1,040 | 84 | 58 | 57 |
+| 16 | 141 | 502 | 2,680 | 252 | 118 | 117 |
+
+Same-run native release benchmark for the prebuilt **width-four** miter,
+including CDCL startup and each solver's proof production, excluding circuit
+construction and certificate checking:
+
+| Engine | Mean ± standard deviation |
+| --- | ---: |
+| Old DPLL | 85.18 ms ± 1.82 ms |
+| Scan CDCL | 9.87 ms ± 491.62 µs |
+| Watched CDCL | 2.49 ms ± 55.13 µs |
+
+The watched engine is about 34 times faster than old DPLL on this input. The
+pigeonhole results above favor old DPLL, so this is a workload-specific result.
+No larger-width DPLL timing is inferred from it.
+
+Separate **width-sixteen** stage benchmarks:
+
+| Stage | Mean ± standard deviation |
+| --- | ---: |
+| Circuit construction and Tseitin compilation | 383.49 µs ± 6.17 µs |
+| Watched startup on prebuilt CNF | 24.75 ms ± 652.44 µs |
+| Watched search on prebuilt continuation | 29.09 ms ± 540.28 µs |
+| Independent RUP checker on prebuilt certificate | 92.72 ms ± 876.57 µs |
+
+The single-transition watch-invariant tests now also check each newly learned
+clause immediately with both RUP evaluators, including learned clauses from
+eventually satisfiable runs.

@@ -87,3 +87,36 @@ test "stage independent indexed RUP checker implication chain 256" (
   }
   b.bench(fn() { b.keep(check_refutation(formula, proof)) })
 }
+
+///|
+test "stage ripple adder miter width sixteen circuit construction" (
+  b : @bench.T,
+) {
+  let width = @oracle.nat(16)
+  b.bench(fn() { b.keep(@circuit.adder_miter(width, Propagate, Multiplexer)) })
+}
+
+///|
+test "stage ripple adder miter width sixteen start alone" (b : @bench.T) {
+  let formula = @circuit.cnf(miter_formula(16))
+  b.bench(fn() { b.keep(start(formula)) })
+}
+
+///|
+test "stage ripple adder miter width sixteen watched search without start" (
+  b : @bench.T,
+) {
+  let initial = start(@circuit.cnf(miter_formula(16)))
+  let budget = fuel(20000)
+  b.bench(fn() { b.keep(run(initial, budget)) })
+}
+
+///|
+test "stage ripple adder miter width sixteen RUP checker" (b : @bench.T) {
+  let formula = @circuit.cnf(miter_formula(16))
+  let proof = match run(start(formula), fuel(20000)) {
+    Unsatisfiable(proof) => proof
+    _ => fail("equivalent adder miter must be refuted")
+  }
+  b.bench(fn() { b.keep(check_refutation(formula, proof)) })
+}

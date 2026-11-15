@@ -95,7 +95,27 @@ fn run_checked(formula : @sat.Cnf) -> Status raise {
     assert_true(count < 20000)
     assert_watch(state)
     match run(state, fuel(1)) {
-      Paused(next) => continue next, count + 1
+      Paused(next) => {
+        match @core.compare(next.statistics.learned, state.statistics.learned) {
+          Equal => ()
+          Greater => {
+            assert_eq(
+              next.statistics.learned,
+              @core.Succ(state.statistics.learned),
+            )
+            match (next.proof_rev, next.database) {
+              (Cons(lemma, _), Cons(learned, previous)) => {
+                assert_eq(lemma, @core.map(learned, external))
+                assert_true(checking_rup(previous, lemma))
+                assert_true(rup(previous, lemma))
+              }
+              _ => fail("a learned clause must extend both database and proof")
+            }
+          }
+          Less => fail("learned clause count must be monotone")
+        }
+        continue next, count + 1
+      }
       InvariantViolation => fail("watched propagation invariant violated")
       outcome => break outcome
     }

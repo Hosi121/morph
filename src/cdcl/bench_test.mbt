@@ -165,3 +165,31 @@ test "watched CDCL pigeonhole five into four start alone IDs offset 1024" (
   let formula = bench_offset(bench_pigeonhole(5, 4), 1024)
   b.bench(fn() { b.keep(@cdcl.start(formula)) })
 }
+
+///|
+fn bench_miter(width : Int32) -> @sat.Cnf raise {
+  match @circuit.adder_miter(@oracle.nat(width), Propagate, Multiplexer) {
+    None => fail("equal-width adder miter construction must succeed")
+    Some(encoding) => @circuit.cnf(encoding)
+  }
+}
+
+///|
+test "DPLL ripple adder miter width four" (b : @bench.T) {
+  let formula = bench_miter(4)
+  b.bench(fn() { b.keep(@sat.solve(formula)) })
+}
+
+///|
+test "scan CDCL ripple adder miter width four including start" (b : @bench.T) {
+  let formula = bench_miter(4)
+  let budget = bench_fuel()
+  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start_scanning(formula), budget)) })
+}
+
+///|
+test "watched CDCL ripple adder miter width four including start" (b : @bench.T) {
+  let formula = bench_miter(4)
+  let budget = bench_fuel()
+  b.bench(fn() { b.keep(@cdcl.run(@cdcl.start(formula), budget)) })
+}
