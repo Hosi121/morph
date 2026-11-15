@@ -2,7 +2,7 @@
 """A conservative source gate for the handwritten symbolic kernel.
 
 Not a compiler proof: derived code, runtime and termination are outside its scope.
-Comments and string literals are lexed out before checking tokens.
+Comments are lexed out; literal data are marked before checking tokens.
 """
 from pathlib import Path
 import re
@@ -10,10 +10,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 FORBIDDEN = re.compile(
-    r"\b(?:Int(?:16|64)?|UInt(?:16|64)?|Double|Float|BigInt|Byte|Char|"
+    r"\b(?:Int(?:8|16|32|64|128)?|UInt(?:8|16|32|64|128)?|Double|Float(?:32|64)?|BigInt|Byte|Char|"
     r"Array|FixedArray|ReadOnlyArray|Bytes|Map|Set|String|"
-    r"mut|while|for|extern|unsafe|abort|panic)\b"
-    r"|\b\d[\w.]*|<<|>>|==|!=|\+|(?<![>-])-(?!>)|\*|/|%"
+    r"mut|while|for|extern|unsafe|abort|panic|__MORPH_LITERAL__)\b"
+    r"|\b\d[\w.]*|<<|>>|==|!=|\+|(?<![>-])-(?!>)|\*|/|%|\^|(?<!&)&(?!&)"
 )
 
 
@@ -22,7 +22,7 @@ def code_only(source: str) -> str:
     out = list(source)
     i = 0
     depth = 0
-    in_string = False
+    quote = None
     while i < len(source):
         if depth:
             if source.startswith("/*", i):
@@ -37,13 +37,13 @@ def code_only(source: str) -> str:
                 if source[i] != "\n":
                     out[i] = " "
                 i += 1
-        elif in_string:
+        elif quote:
             if source[i] == "\\":
                 out[i:i+2] = "  "
                 i += 2
             else:
-                if source[i] == '"':
-                    in_string = False
+                if source[i] == quote:
+                    quote = None
                 if source[i] != "\n":
                     out[i] = " "
                 i += 1
@@ -56,9 +56,9 @@ def code_only(source: str) -> str:
             depth = 1
             out[i:i+2] = "  "
             i += 2
-        elif source[i] == '"':
-            in_string = True
-            out[i] = " "
+        elif source[i] in {'"', "'"}:
+            quote = source[i]
+            out[i] = " __MORPH_LITERAL__ "
             i += 1
         else:
             i += 1
@@ -79,7 +79,7 @@ def main() -> int:
             failures.append(f"{rel}:{line}: forbidden token {match.group()!r}")
     # The independent numeric oracle may only be imported by tests or examples.
     for path in sorted((ROOT / "src").rglob("moon.pkg")):
-        if path.parent.name in {"testsupport", "main"}:
+        if path.relative_to(ROOT).parts[1] in {"testsupport", "cmd"}:
             continue
         source = path.read_text()
         for block in re.finditer(r"import\s*\{([^}]+)\}([^\n]*)", source):

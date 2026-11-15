@@ -2,6 +2,7 @@
 set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$root"
+python3 -m unittest discover -s tools -p 'test_*.py' -q
 python3 tools/audit_purity.py
 tools/moon fmt --check
 tools/moon check --deny-warn

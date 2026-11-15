@@ -111,13 +111,7 @@ pub fn extended_gcd(
 pub fn inverse(m : Modulus, a : @binary.Binary) -> @binary.Binary? {
   let (g, x, _) = extended_gcd(a, m.value)
   match @binary.compare(g, @binary.one()) {
-    Equal => {
-      let r = reduce(m, @exact.magnitude(x))
-      match @exact.negative(x) {
-        false => Some(r)
-        true => Some(subtract(m, @binary.zero(), r))
-      }
-    }
+    Equal => Some(signed_reduce(m, x))
     _ => None
   }
 }
