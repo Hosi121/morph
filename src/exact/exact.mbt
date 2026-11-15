@@ -369,6 +369,17 @@ fn is_one(value : @binary.Binary) -> Bool {
 }
 
 ///|
+fn small_gcd_magnitude(value : @binary.Binary) -> Bool {
+  match @binary.bits(value) {
+    Cons(
+      _,
+      Cons(_, Cons(_, Cons(_, Cons(_, Cons(_, Cons(_, Cons(_, Cons(_, _))))))))
+    ) => false
+    _ => true
+  }
+}
+
+///|
 fn common_factor(a : @binary.Binary, b : @binary.Binary) -> @binary.Binary {
   match is_one(a) || is_one(b) {
     true => @binary.one()
@@ -379,7 +390,11 @@ fn common_factor(a : @binary.Binary, b : @binary.Binary) -> @binary.Binary {
         _ =>
           match a.equal(b) {
             true => a
-            false => @binary.gcd(a, b)
+            false =>
+              match small_gcd_magnitude(a) && small_gcd_magnitude(b) {
+                true => @binary.stein_gcd(a, b)
+                false => @binary.gcd(a, b)
+              }
           }
       }
   }

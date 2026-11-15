@@ -158,3 +158,32 @@ test "signed direct operations preserve value and unique zero on every small pai
     assert_eq(multiply(signed, zero), zero)
   }
 }
+
+///|
+test "common factor backend choice agrees with independent small integer gcd" {
+  for a in 0..<257 {
+    for b in 0..<257 {
+      assert_eq(
+        common_factor(@oracle.binary(a), @oracle.binary(b)),
+        @oracle.binary(gcd_integer(a, b)),
+      )
+    }
+  }
+  for width in [16, 32, 64, 128] {
+    let power = @binary.power(@oracle.binary(2), @oracle.binary(width))
+    let below = @binary.subtract(power, @binary.one()).unwrap()
+    let above = @binary.successor(power)
+    assert_eq(common_factor(below, above), @binary.one())
+    assert_eq(
+      common_factor(
+        @binary.multiply(below, @oracle.binary(6)),
+        @binary.multiply(below, @oracle.binary(10)),
+      ),
+      @binary.double(below),
+    )
+    assert_eq(
+      common_factor(power, @binary.add(above, @oracle.binary(42))),
+      @binary.one(),
+    )
+  }
+}

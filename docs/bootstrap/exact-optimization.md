@@ -212,3 +212,45 @@ coprime addはafterのばらつきが大きく、一般経路の改善を主張�
 全ての符号付き入力−64〜64の和・差・積を独立Int32演算と比較し、
 negativeフラグも負値の時だけ立つことを確認する。127bit値の零/±1恒等則と
 相殺を別途検査し、既存のRational正規形全探索、LLL/Smith/simplexの証拠検査を継続する。
+
+## 第四段：小係数のGCD選択とquiet再比較
+
+LLLのJS profileでは第三段後もGCD/長除算が主な残存費用だった。
+common_factorの既存0/1/同値の経路の後、両magnitudeが256未満の場合だけ
+既存binary.stein_gcdを選び、それ以外はbinary.gcdを維持する。
+境界は数値primitiveを使わずBool Chainの長さ9以上を拒否するmatchで判定する。
+大きな近接奇数に対するSteinの減算反復を、この選択で避ける。
+
+最初の通常測定は小GCD128対218.30→83.97 µs、LLL 3x3 235.62→184.27 µsだったが、
+同じ保存ELFでもcontrolが330.38→563.10 µsと変動したため、その精密な倍率は採用しない。
+担当全員のheavy処理を止めた窓で、共通mutexの下、保存ELFをCPU8でABBA順に再実行した。
+再buildは挟んでいない。mutex外のchrome-headless/dnf等のhost負荷、CPU周波数は制御していない。
+
+| quiet保存ELFの平均µs（各2実行、各実行内10batch） | before | after |
+| --- | --- | --- |
+| small GCD128対 | 509.49 / 464.86 | 174.97 / 195.31 |
+| 16/32/64/128bit GCD control12対 | 649.02 / 669.85 | 650.10 / 605.61 |
+| LLL 3x3 | 542.46 / 521.20 | 372.26 / 455.51 |
+| LLL checker | 38.03 / 32.80 | 26.78 / 33.95 |
+| LLL 3x4 | 533.31 / 532.47 | 386.86 / 493.94 |
+| Smith+LLL依存3x4 | 428.30 / 485.11 | 423.18 / 452.29 |
+
+小GCDで大きな改善が残り、LLL 3x3/3x4でも短縮を観測する。
+同一ELFのafter LLL 3x3にも372→456 µsの変動があるため、精密な倍率は主張しない。
+checkerと依存LLLは範囲が重なるため、この試行からの改善を主張しない。
+一般幅controlはほぼ重なる。これらを理由に、小係数に限る選択を採用する。
+
+全16実行を含むbatchは65.47秒。各子processのwall/CPU比は約1.02〜1.04だった。
+待機だけでは説明できない速度変動があり、CPU速度や外部host負荷の影響を排除できない。
+[生の各batch統計とELF SHA256](../measurements/exact-smallgcd-quiet.json)には
+このうちGCD候補の8実行を記録する。
+
+再現時は `tools/moon bench ... --target native --release --build-only` で各exeを保存し、
+同じ共通lock/affinityでnative driverのfilterを渡す。例えば
+`tools/measure --cpu 8 /tmp/exact-before.exe gcd_bench_wbtest.mbt:0-2`、
+LLLは `bench_wbtest.mbt:0-4`。before/after/after/beforeの同一入力比較にし、
+JS driverのJSON引数をnative driverへ渡さない（nativeは上記file:start-end形式）。
+
+0〜256の全GCD対を独立Int32 Euclidと比較し、選択境界の256も検査する。
+大きい近接奇数、共有factor、2冪と奇数のcontrolも厳密な期待値で確認する。
+この選択は現在のbinary `b21222b` に対する判断であり、共有除算/GCD変更後は再比較する。
