@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bipartite"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Problem, Solution) -> Bool
+
+pub fn maximum(Problem) -> Solution?
+
+pub fn problem(@core.Chain[@core.Nat], @core.Chain[@core.Nat], @core.Chain[(@core.Nat, @core.Nat)]) -> Problem?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  left : @core.Chain[@core.Nat]
+  right : @core.Chain[@core.Nat]
+  edges : @core.Chain[(@core.Nat, @core.Nat)]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Solution {
+  pairs : @core.Chain[(@core.Nat, @core.Nat)]
+  cover_left : @core.Chain[@core.Nat]
+  cover_right : @core.Chain[@core.Nat]
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
