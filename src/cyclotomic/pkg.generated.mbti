@@ -1,0 +1,89 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cyclotomic"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Element, Element) -> Result[Element, CyclotomicError]
+
+pub fn conjugate(Element) -> Result[Element, CyclotomicError]
+
+pub fn defining_polynomial(Field) -> @polynomial.Polynomial
+
+pub fn degree(Field) -> @core.Nat
+
+pub fn divide(Element, Element) -> Result[Element, CyclotomicError]
+
+pub fn element(Field, @polynomial.Polynomial) -> Result[Element, CyclotomicError]
+
+pub fn field(@core.Nat) -> Field?
+
+pub fn field_of(Element) -> Field
+
+pub fn generator(Field) -> Element
+
+pub fn inverse(Element) -> Result[Element, CyclotomicError]
+
+pub fn is_zero(Element) -> Bool
+
+pub fn multiply(Element, Element) -> Result[Element, CyclotomicError]
+
+pub fn negate(Element) -> Element
+
+pub fn one(Field) -> Element
+
+pub fn order(Field) -> @core.Nat
+
+pub fn power(Element, @binary.Binary) -> Result[Element, CyclotomicError]
+
+pub fn rational(Field, @exact.Rational) -> Element
+
+pub fn representative(Element) -> @polynomial.Polynomial
+
+pub fn subtract(Element, Element) -> Result[Element, CyclotomicError]
+
+pub fn zero(Field) -> Element
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum CyclotomicError {
+  FieldMismatch
+  ZeroDivisor
+  PolynomialError(@polynomial.PolyError)
+  InternalInvariant
+}
+pub fn CyclotomicError::equal(Self, Self) -> Bool
+pub fn CyclotomicError::not_equal(Self, Self) -> Bool
+pub fn CyclotomicError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Element {
+  field : Field
+  representative : @polynomial.Polynomial
+}
+pub fn Element::equal(Self, Self) -> Bool
+pub fn Element::not_equal(Self, Self) -> Bool
+pub fn Element::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Field {
+  order : @core.Nat
+  degree : @core.Nat
+  modulus : @polynomial.Polynomial
+  root : @polynomial.Polynomial
+}
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
