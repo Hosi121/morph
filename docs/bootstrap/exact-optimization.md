@@ -181,3 +181,34 @@ divisorに含まれる共通の2の冪はtail recursionで外す。商が大き�
 divisor1〜256、商0〜128の全積、および127bit奇数に0〜7bitの2の冪を掛けた
 divisorと商0〜33の全積を独立整数値・既存Binary積と比較する。
 これにより専用範囲とdivmodへのfallbackの境界の双方を検査する。
+
+## Binary改善との合算と第三段：符号付き整数
+
+第二段commit `e6dc28c` の後、rootのBinary改善 `b21222b` を取り込み、
+ここから次の比較を行った。Binaryだけの効果とexactの効果はそれまでの表で分離している。
+第三段ではIntegerの零・±1を直接返し、負の和と非零の積の符号を直接構築する。
+subtractは一度negateしてaddへ送る形から、符号に応じた和/差へ直接分岐する。
+差だけは零になり得るため、negative zeroを作らない検査を残す。
+既知整除によるinteger_quotientも符号を保持して構築し、不要な正数wrapper/negateを省く。
+
+| CPU8の固定入力 | 合算基盤（第三段before） | 第三段after |
+| --- | --- | --- |
+| signed corpus | 18.29 µs ± 619.64 ns | 14.19 µs ± 377.13 ns |
+| coprime add control | 245.14 µs ± 8.71 µs | 265.25 µs ± 28.29 µs |
+| LLL 3x3 | 247.42 µs ± 8.63 µs | 241.40 µs ± 7.97 µs |
+| LLL checker | 16.61 µs ± 634.45 ns | 15.07 µs ± 319.43 ns |
+| LLL 3x4 | 247.53 µs ± 8.11 µs | 235.99 µs ± 5.19 µs |
+| Smith+LLL依存3x4 | 227.28 µs ± 8.90 µs | 209.98 µs ± 5.09 µs |
+| Smith 3x3 | 30.98 µs ± 1.09 µs | 26.85 µs ± 1.38 µs |
+| Smith checker | 13.95 µs ± 589.13 ns | 10.81 µs ± 327.84 ns |
+| simplex | 25.21 µs ± 717.96 ns | 25.36 µs ± 1.06 µs |
+
+符号付きcorpusとSmith、依存LLLで改善を観測し、simplexは同等とする。
+coprime addはafterのばらつきが大きく、一般経路の改善を主張しない。
+元の旧binary/旧exactからの合算では、LLL 3x3は367.58→241.40 µs、
+3x4は451.30→235.99 µs、Smithは41.25→26.85 µs、simplexは44.89→25.36 µs。
+これらはCPU8・同一fixture・native releaseの値であり、任意行列や他backendへの倍率ではない。
+
+全ての符号付き入力−64〜64の和・差・積を独立Int32演算と比較し、
+negativeフラグも負値の時だけ立つことを確認する。127bit値の零/±1恒等則と
+相殺を別途検査し、既存のRational正規形全探索、LLL/Smith/simplexの証拠検査を継続する。

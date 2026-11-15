@@ -38,33 +38,85 @@ pub fn negate(n : Integer) -> Integer {
 
 ///|
 pub fn add(a : Integer, b : Integer) -> Integer {
+  match (@binary.is_zero(a.magnitude), @binary.is_zero(b.magnitude)) {
+    (true, _) => return b
+    (_, true) => return a
+    _ => ()
+  }
   match (a.negative, b.negative) {
     (false, false) => positive(@binary.add(a.magnitude, b.magnitude))
-    (true, true) => negate(positive(@binary.add(a.magnitude, b.magnitude)))
-    (true, false) => add(b, a)
-    (false, true) =>
-      match @binary.subtract(a.magnitude, b.magnitude) {
-        Some(difference) => positive(difference)
-        None =>
-          match @binary.subtract(b.magnitude, a.magnitude) {
-            Some(difference) => negate(positive(difference))
-            None => positive(@binary.zero())
-          }
+    (true, true) =>
+      { negative: true, magnitude: @binary.add(a.magnitude, b.magnitude), }
+    _ => signed_difference(a.magnitude, b.magnitude, a.negative)
+  }
+}
+
+///|
+fn signed_difference(
+  a : @binary.Binary,
+  b : @binary.Binary,
+  negative : Bool,
+) -> Integer {
+  match @binary.subtract(a, b) {
+    Some(difference) =>
+      {
+        negative: negative && !@binary.is_zero(difference),
+        magnitude: difference,
+      }
+    None =>
+      match @binary.subtract(b, a) {
+        Some(difference) => { negative: !negative, magnitude: difference, }
+        None => positive(@binary.zero())
       }
   }
 }
 
 ///|
 pub fn subtract(a : Integer, b : Integer) -> Integer {
-  add(a, negate(b))
+  match (@binary.is_zero(a.magnitude), @binary.is_zero(b.magnitude)) {
+    (_, true) => return a
+    (true, _) => return negate(b)
+    _ => ()
+  }
+  match (a.negative, b.negative) {
+    (true, false) | (false, true) =>
+      {
+        negative: a.negative,
+        magnitude: @binary.add(a.magnitude, b.magnitude),
+      }
+    _ => signed_difference(a.magnitude, b.magnitude, a.negative)
+  }
 }
 
 ///|
 pub fn multiply(a : Integer, b : Integer) -> Integer {
-  let product = positive(@binary.multiply(a.magnitude, b.magnitude))
-  match (a.negative, b.negative) {
-    (true, false) | (false, true) => negate(product)
-    _ => product
+  match (@binary.is_zero(a.magnitude), @binary.is_zero(b.magnitude)) {
+    (true, _) => return a
+    (_, true) => return b
+    _ => ()
+  }
+  match is_one(a.magnitude) {
+    true =>
+      return match a.negative {
+        true => negate(b)
+        false => b
+      }
+    false => ()
+  }
+  match is_one(b.magnitude) {
+    true =>
+      return match b.negative {
+        true => negate(a)
+        false => a
+      }
+    false => ()
+  }
+  {
+    negative: match (a.negative, b.negative) {
+      (true, false) | (false, true) => true
+      _ => false
+    },
+    magnitude: @binary.multiply(a.magnitude, b.magnitude),
   }
 }
 
@@ -339,10 +391,9 @@ fn integer_quotient(value : Integer, divisor : @binary.Binary) -> Integer {
     true => return value
     false => ()
   }
-  let quotient = positive(exact_quotient(value.magnitude, divisor))
-  match value.negative {
-    true => negate(quotient)
-    false => quotient
+  {
+    negative: value.negative,
+    magnitude: exact_quotient(value.magnitude, divisor),
   }
 }
 

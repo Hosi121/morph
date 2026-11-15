@@ -125,3 +125,36 @@ test "short quotient specialization matches every bounded exact product includin
     }
   }
 }
+
+///|
+test "signed direct operations preserve value and unique zero on every small pair" {
+  for a in -64..<65 {
+    for b in -64..<65 {
+      let left = @oracle.integer(a)
+      let right = @oracle.integer(b)
+      for
+        pair in [
+          (add(left, right), a + b),
+          (subtract(left, right), a - b),
+          (multiply(left, right), a * b),
+        ] {
+        assert_eq(@oracle.int_of_integer(pair.0), pair.1)
+        assert_eq(negative(pair.0), pair.1 < 0)
+      }
+    }
+  }
+  let (large, _) = large_pair()
+  let value = positive(large)
+  let negative_value = negate(value)
+  let zero = positive(@binary.zero())
+  let one = positive(@binary.one())
+  for signed in [value, negative_value] {
+    assert_eq(add(zero, signed), signed)
+    assert_eq(subtract(signed, zero), signed)
+    assert_eq(multiply(signed, one), signed)
+    assert_eq(multiply(signed, negate(one)), negate(signed))
+    assert_eq(subtract(signed, signed), zero)
+    assert_eq(add(signed, negate(signed)), zero)
+    assert_eq(multiply(signed, zero), zero)
+  }
+}
