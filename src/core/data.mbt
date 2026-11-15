@@ -84,9 +84,15 @@ pub fn[A] length(xs : Chain[A]) -> Nat {
 
 ///|
 pub fn[A] replicate(n : Nat, value : A) -> Chain[A] {
+  replicate_onto(n, value, Nil)
+}
+
+///|
+/// Add a constant prefix in one tail-recursive pass, sharing the given tail.
+pub fn[A] replicate_onto(n : Nat, value : A, tail : Chain[A]) -> Chain[A] {
   match n {
-    Zero => Nil
-    Succ(rest) => Cons(value, replicate(rest, value))
+    Zero => tail
+    Succ(rest) => replicate_onto(rest, value, Cons(value, tail))
   }
 }
 

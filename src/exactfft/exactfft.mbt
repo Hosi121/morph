@@ -34,13 +34,11 @@ pub extend TransformError with Debug::{to_repr}
 /// Choose omega = zeta_M^(M/N), where M is the field order and N is the size.
 /// This is the positive-exponent DFT convention; inverse uses omega^(-1)/N.
 pub fn plan(field : @cyclotomic.Field, size : @core.Nat) -> Plan? {
+  let binary_size = @binary.from_nat(size)
   match
     (
-      @fft.valid_length(@core.replicate(size, ())),
-      @binary.divmod(
-        @binary.from_nat(@cyclotomic.order(field)),
-        @binary.from_nat(size),
-      ),
+      @core.is_power_of_two_nat(size),
+      @binary.divmod(@binary.from_nat(@cyclotomic.order(field)), binary_size),
     ) {
     (true, Some((step, remainder))) =>
       match @binary.is_zero(remainder) {
@@ -49,10 +47,7 @@ pub fn plan(field : @cyclotomic.Field, size : @core.Nat) -> Plan? {
           match
             (
               @cyclotomic.power(@cyclotomic.generator(field), step),
-              @exact.ratio(
-                @exact.positive(@binary.one()),
-                @binary.from_nat(size),
-              ),
+              @exact.ratio(@exact.positive(@binary.one()), binary_size),
             ) {
             (Ok(root), Some(scale)) =>
               match @cyclotomic.conjugate(root) {

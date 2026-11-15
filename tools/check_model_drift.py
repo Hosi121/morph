@@ -16,6 +16,8 @@ from audit_purity import code_only
 ROOT = Path(__file__).resolve().parent.parent
 LOCK = ROOT / "formal/source-map.json"
 REGIONS = {
+    "src/core/data.mbt": ["replicate", "replicate_onto"],
+    "src/core/natural.mbt": ["halve_nat", "half_nat"],
     "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "from_nat"],
     "src/runbinary/runbinary.mbt": ["digit"],
 }
@@ -23,7 +25,7 @@ REGIONS = {
 
 def function_tokens(path, name):
     source = code_only(path.read_text())
-    match = re.search(r"\b(?:pub\s+)?fn\s+" + re.escape(name) + r"\s*\(", source)
+    match = re.search(r"\b(?:pub\s+)?fn(?:\[[^\]]+\])?\s+" + re.escape(name) + r"\s*\(", source)
     if not match:
         raise ValueError(f"Missing mapped function: {path}:{name}")
     opening = source.index("{", match.end())
@@ -43,8 +45,8 @@ def snapshot():
         for name in names:
             functions[f"{relative}::{name}"] = hashlib.sha256(function_tokens(ROOT / relative, name)).hexdigest()
     return {
-        "model": "formal/Binary.lean",
-        "model_sha256": hashlib.sha256((ROOT / "formal/Binary.lean").read_bytes()).hexdigest(),
+        "models": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                   for p in sorted((ROOT / "formal").glob("*.lean"))},
         "lean_version": "4.19.0",
         "functions": functions,
     }
@@ -68,8 +70,9 @@ def main():
         for name in current["functions"].keys() | expected.get("functions", {}).keys():
             if current["functions"].get(name) != expected.get("functions", {}).get(name):
                 print(f"  code-drift: {name}", file=sys.stderr)
-        if current["model_sha256"] != expected.get("model_sha256"):
-            print("  model-drift: formal/Binary.lean", file=sys.stderr)
+        for name in current["models"].keys() | expected.get("models", {}).keys():
+            if current["models"].get(name) != expected.get("models", {}).get(name):
+                print(f"  model-drift: {name}", file=sys.stderr)
         return 1
     print(f"Formal drift gate passed: {len(current['functions'])} reviewed source regions; not a translation proof.")
     return 0

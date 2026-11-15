@@ -93,9 +93,7 @@ pub fn irreducibility(
                       match last.equal(x) {
                         false => Ok(None)
                         true => {
-                          let half = @binary.to_nat(
-                            @binary.half(@binary.from_nat(n)),
-                          )
+                          let half = @core.half_nat(n)
                           match
                             coprime_witnesses(
                               value,
@@ -164,7 +162,7 @@ pub fn check_irreducible(
           match divide(indeterminate(value.field), value) {
             Err(_) => false
             Ok({ remainder: x, .. }) => {
-              let half = @binary.to_nat(@binary.half(@binary.from_nat(n)))
+              let half = @core.half_nat(n)
               check_powers(x, certificate.frobenius, n, x) &&
               check_witnesses(
                 @core.take(half, certificate.frobenius),

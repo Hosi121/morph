@@ -13,5 +13,5 @@ if [[ "$version" != 'Lean (version 4.19.0,'* ]]; then
   exit 1
 fi
 for model in formal/*.lean; do
-  .tools/lean/bin/lean "$model"
+  .tools/lean/bin/lean -DwarningAsError=true "$model"
 done

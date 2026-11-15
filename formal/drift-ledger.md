@@ -56,3 +56,21 @@ recommended_fix_target: full_adderやdigitの意味を変えたら局所定理�
 lock_update: source-map.jsonとverification-ledger.md
 epistemic_status: 局所モデルはmachine-confirmed、run算術全体は有限oracle検査
 ```
+
+```yaml
+claim_id: CORE-HALF-1 / CORE-PREFIX-1
+source_of_truth: 純記号の制約と厳密な値を保ち、共有基礎を高速化するユーザー指示
+spec_delta: floor(n/2)とreplicate-prefixの値を維持
+code_delta: core.halve_nat/half_nat/replicate_ontoを共有し、三箇所のBinary往復を除去
+model_delta: 商余り・floor・任意型のprefix融合の全称定理
+check_command: tools/check_formal
+previous_machine_result: 元の関数の有限検査のみ
+current_machine_result: halveNat_sound/halfNat_floor/replicateOnto_eq_append/replicateOnto_nil成立
+drift_class: coverage-gap (共有化の対応モデルを追加)
+witness: 0〜4096、Nat200001、prefix100000、三backendの実行検査はモデルとは別
+domain_wording: 同じ値を、別表現への変換や二重prefix走査なしで構築する
+domain_question: なし。Karatsubaへのprefix融合は速度差が曖昧なので採用保留
+recommended_fix_target: 構造と停止条件を維持し、MoonBit/Leanの両方を検査
+lock_update: source-map.jsonの10領域と全Leanファイル
+epistemic_status: モデル定理はmachine-confirmed、MoonBitへの翻訳の形式証明なし
+```

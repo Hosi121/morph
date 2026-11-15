@@ -1,0 +1,17 @@
+[Hosi121/morph] bench binary/prefix_bench_wbtest.mbt:61 ("constant prefix composition and fused construction") ok
+name                       time (mean ± σ)         range (min … max) 
+replicate then append 4     147.00 ns ±  10.49 ns   137.06 ns … 165.15 ns  in 10 × 100000 runs
+replicate onto 4            108.04 ns ±  12.59 ns    90.98 ns … 121.55 ns  in 10 × 100000 runs
+replicate then append 256    10.41 µs ± 474.72 ns     9.74 µs …  11.23 µs  in 10 ×   9370 runs
+replicate onto 256            4.84 µs ± 161.89 ns     4.66 µs …   5.12 µs  in 10 ×  21178 runs
+replicate then append 8192  396.56 µs ±  36.61 µs   362.69 µs … 465.82 µs  in 10 ×    243 runs
+replicate onto 8192         167.55 µs ±   8.23 µs   158.27 µs … 179.69 µs  in 10 ×    578 runs
+[Hosi121/morph] bench binary/prefix_bench_wbtest.mbt:75 ("fused shift inside the same Karatsuba algorithm") ok
+name             time (mean ± σ)         range (min … max) 
+old shift 128     244.07 µs ±   8.64 µs   231.79 µs … 261.64 µs  in 10 ×    439 runs
+fused shift 128   235.14 µs ±  10.14 µs   220.31 µs … 257.19 µs  in 10 ×    429 runs
+old shift 512       2.59 ms ± 121.48 µs     2.34 ms …   2.74 ms  in 10 ×     37 runs
+fused shift 512     2.57 ms ± 102.07 µs     2.42 ms …   2.70 ms  in 10 ×     38 runs
+old shift 2048     25.51 ms ±   1.48 ms    24.10 ms …  27.94 ms  in 10 ×      4 runs
+fused shift 2048   24.57 ms ±   1.48 ms    22.67 ms …  26.98 ms  in 10 ×      4 runs
+Total tests: 2, passed: 2, failed: 0.

@@ -46,26 +46,16 @@ pub extend CyclotomicError with Eq::{equal, not_equal}
 pub extend CyclotomicError with Debug::{to_repr}
 
 ///|
-fn power_of_two(bits : @core.Chain[Bool]) -> Bool {
-  match bits {
-    Cons(true, Nil) => true
-    Cons(false, rest) => power_of_two(rest)
-    _ => false
-  }
-}
-
-///|
 /// Reject zero and all orders that are not powers of two.
 /// N=1 and N=2 both present QQ, but remain distinct tagged presentations.
 pub fn field(order : @core.Nat) -> Field? {
-  let binary_order = @binary.from_nat(order)
-  match power_of_two(@binary.bits(binary_order)) {
+  match @core.is_power_of_two_nat(order) {
     false => None
     true => {
       let (degree, constant) : (@core.Nat, @exact.Rational) = match order {
         Succ(Zero) =>
           (Succ(Zero), @exact.rational_negate(@exact.rational_one()))
-        _ => (@binary.to_nat(@binary.half(binary_order)), @exact.rational_one())
+        _ => (@core.half_nat(order), @exact.rational_one())
       }
       match
         @polynomial.polynomial(

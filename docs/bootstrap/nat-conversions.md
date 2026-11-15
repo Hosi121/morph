@@ -1,0 +1,28 @@
+# Natを直接処理する共有基礎
+
+ユーザー監査の`fppoly/irreducibility.mbt`二箇所と`cyclotomic/cyclotomic.mbt`では、
+floor(n/2)のためにNat→Binary→Natを作っていた。
+この経路を`core.half_nat`へ置き換えた。
+
+`halve_nat(n)`はSuccを二つずつ消費して商へ一つずつ積み、最後のBoolを余りとする。
+同じ構造的半分化をBinary.from_natの私的helperからCoreへ移し、実装を共有する。
+このためBigIntも組み込み整数も必要ない。商の値だけなら`half_nat`を呼ぶ。
+末尾再帰なので、ユーザー例の自然な再帰式と同じ値を継続stackを増やさず構築する。
+
+2冪判定もNat自身の半分化で実施する。円分体の構成と厳密FFTのplanで利用し、
+FFT長の検査だけのためのUnit列や、判定用の二進表現を作らない。
+FFTの根の指数・有理数の分母に必要なBinaryは計算境界で一度だけ作り、共有する。
+
+Core・Binary・円分体・厳密FFT・Fp多項式、計67テストをnative/JS/Wasm GCで検査した。
+0〜4096の半分化と余りを整数oracleに照合し、Nat200001の末尾再帰も実行した。
+Leanモデルでは任意のnに対する商余りの保存とfloor(n/2)の一致を検査する。
+モデルからMoonBitへの構造対応は人手のレビューであり、コンパイラの正しさは証明しない。
+
+呼び出し状況は[静的一覧](../CALL_PATHS.md)へ記録する。
+`core.gcd`と`interleave`は内部利用がない公開APIで、削除も不自然な強制利用もしない。
+`runbinary`は別の表現を持つ独立実装で、通常Binaryの既定backendにしたとは扱わない。
+`binary.karatsuba`は平方根・Fibonacciから実際に利用される。
+`binary.stein_gcd`は小さい有理数の約分に接続した。
+
+直接の数値変換往復は保守ゲートで検出する。ID cacheや圧縮表現の明示的展開は
+異なる役割を持つため、`to_nat`という名前だけで一括削除しない。

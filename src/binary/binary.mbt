@@ -333,18 +333,11 @@ pub fn power(base : Binary, exponent : Binary) -> Binary {
 
 ///|
 pub fn from_nat(n : @core.Nat) -> Binary {
-  fn split(value : @core.Nat, half : @core.Nat) -> (@core.Nat, Bool) {
-    match value {
-      Zero => (half, false)
-      Succ(Zero) => (half, true)
-      Succ(Succ(rest)) => split(rest, Succ(half))
-    }
-  }
   fn convert(value : @core.Nat) -> @core.Chain[Bool] {
     match value {
       Zero => Nil
       Succ(_) => {
-        let (half, low) = split(value, Zero)
+        let (half, low) = @core.halve_nat(value)
         Cons(low, convert(half))
       }
     }
@@ -381,7 +374,7 @@ pub fn concat_words(
 ///|
 /// A bijection N x N -> positive N: pair(a,b) = 2^a * (2*b+1).
 pub fn pair(a : @core.Nat, b : Binary) -> Binary {
-  { bits: @core.append(@core.replicate(a, false), Cons(true, b.bits)), }
+  { bits: @core.replicate_onto(a, false, Cons(true, b.bits)), }
 }
 
 ///|

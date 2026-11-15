@@ -76,7 +76,7 @@ theorem borrow_stabilizes (a b borrow : Bool) :
     (borrowStep a b (borrowStep a b borrow).2).2 = (borrowStep a b borrow).2 := by
   cases a <;> cases b <;> cases borrow <;> decide
 
--- The accumulator follows the production pair-of-Succ traversal exactly.
+-- Model of the shared core.halve_nat accumulator used by binary.from_nat.
 def split : Nat → Nat → Nat × Bool
   | 0, half => (half, false)
   | 1, half => (half, true)

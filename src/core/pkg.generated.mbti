@@ -32,9 +32,15 @@ pub fn[A, B] fold_left(Chain[A], B, (B, A) -> B) -> B
 
 pub fn gcd(Nat, Nat) -> Nat
 
+pub fn half_nat(Nat) -> Nat
+
+pub fn halve_nat(Nat) -> (Nat, Bool)
+
 pub fn indices(Nat) -> Chain[Nat]
 
 pub fn[A] interleave(Chain[A], Chain[A]) -> Chain[A]
+
+pub fn is_power_of_two_nat(Nat) -> Bool
 
 pub fn is_zero(Nat) -> Bool
 
@@ -53,6 +59,8 @@ pub fn[A] nth(Chain[A], Nat) -> A?
 pub fn[A] queue() -> Queue[A]
 
 pub fn[A] replicate(Nat, A) -> Chain[A]
+
+pub fn[A] replicate_onto(Nat, A, Chain[A]) -> Chain[A]
 
 pub fn[A] reverse(Chain[A]) -> Chain[A]
 
