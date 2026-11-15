@@ -106,3 +106,73 @@ test "cyclic RS fixed two-error public workloads" (b : @bench.T) {
     })
   }
 }
+
+///|
+fn[A] perf_aes(result : Result[A, @aes.AesError]) -> A {
+  match result {
+    Ok(value) => value
+    Err(_) => abort("performance AES operation")
+  }
+}
+
+///|
+fn perf_octet(value : Int32) -> @aes.Octet {
+  match @aes.from_binary(@oracle.binary(value)) {
+    Some(value) => value
+    None => abort("performance AES octet")
+  }
+}
+
+///|
+fn perf_block(values : Array[Int32]) -> @aes.Block {
+  match @aes.block(@oracle.chain(values.map(perf_octet))) {
+    Some(value) => value
+    None => abort("performance AES block")
+  }
+}
+
+///|
+test "AES generated tables and fixed FIPS block controls" (b : @bench.T) {
+  let tables = perf_aes(@aes.tables())
+  let plaintext = perf_block([ for i in 0..<16 => i * 17 ])
+  b.bench(name="aes-tables-generated", count=5, fn() { b.keep(@aes.tables()) })
+  for
+    (width, expected) in [
+      (
+        16,
+        [
+          0x69, 0xc4, 0xe0, 0xd8, 0x6a, 0x7b, 0x04, 0x30, 0xd8, 0xcd, 0xb7, 0x80,
+          0x70, 0xb4, 0xc5, 0x5a,
+        ],
+      ),
+      (
+        24,
+        [
+          0xdd, 0xa9, 0x7c, 0xa4, 0x86, 0x4c, 0xdf, 0xe0, 0x6e, 0xaf, 0x70, 0xa0,
+          0xec, 0x0d, 0x71, 0x91,
+        ],
+      ),
+      (
+        32,
+        [
+          0x8e, 0xa2, 0xb7, 0xca, 0x51, 0x67, 0x45, 0xbf, 0xea, 0xfc, 0x49, 0x90,
+          0x4b, 0x49, 0x60, 0x89,
+        ],
+      ),
+    ] {
+    let key = @oracle.chain([ for i in 0..<width => perf_octet(i) ])
+    let cipher = perf_aes(@aes.cipher(tables, key))
+    let encrypted = perf_aes(@aes.encrypt(cipher, plaintext))
+    assert_eq(encrypted, perf_block(expected))
+    assert_eq(perf_aes(@aes.decrypt(cipher, encrypted)), plaintext)
+    b.bench(name="aes-\{width * 8}-key-expand", count=5, fn() {
+      b.keep(@aes.cipher(tables, key))
+    })
+    b.bench(name="aes-\{width * 8}-encrypt", count=5, fn() {
+      b.keep(@aes.encrypt(cipher, plaintext))
+    })
+    b.bench(name="aes-\{width * 8}-decrypt", count=5, fn() {
+      b.keep(@aes.decrypt(cipher, encrypted))
+    })
+  }
+}
