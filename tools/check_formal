@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$root"
+python3 tools/check_model_drift.py
+if [[ ! -x .tools/lean/bin/lean ]]; then
+  echo 'Lean is missing: run python3 tools/bootstrap_lean.py' >&2
+  exit 1
+fi
+version=$(.tools/lean/bin/lean --version)
+if [[ "$version" != 'Lean (version 4.19.0,'* ]]; then
+  echo "Unexpected Lean checker version: $version" >&2
+  exit 1
+fi
+.tools/lean/bin/lean formal/Binary.lean

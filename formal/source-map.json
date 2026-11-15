@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "src/binary/binary.mbt::add": "4f2f9ad98fd5e6f232e07dfffbec9f3e75998cf736c4c937395787e4752b33a7",
+    "src/binary/binary.mbt::add_bits": "f52e761c1788c6833ee2f5c955452ddd9bf469a39b43a7aa29c20254500670ec",
+    "src/binary/binary.mbt::from_nat": "e991c7b52142170dc12250811381ed1654fc40692835f505d27ba9bf3356f139",
+    "src/binary/binary.mbt::full_adder": "b2e8100e900b910f89e18359653d6f97d6ef317e299f9ecdf1c162a6945893cd",
+    "src/binary/binary.mbt::increment_bits": "3d9fde65116cd4ebfa2664e635ca2cce2d26ef3cdd6a14a3dbc2e9d14108d076",
+    "src/runbinary/runbinary.mbt::digit": "241cfa7ec3ab623b4441d0c7f42618b46c4973b2aeb7e98819d282b611050898"
+  },
+  "lean_version": "4.19.0",
+  "model": "formal/Binary.lean",
+  "model_sha256": "61424ebd75d1c1f2b387231550b7a13f153244b4a462cc8f579f0ab730a137d0"
+}

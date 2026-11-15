@@ -1,0 +1,8 @@
+Formal drift gate passed: 6 reviewed source regions; not a translation proof.
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]

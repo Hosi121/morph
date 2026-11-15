@@ -15,7 +15,9 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | SYN-1 | NAND選択CNFは指定上限内の回路を表す | 2入力全16関数×0〜5gate、CNFを使わない全プログラム列挙との照合 | 有限問題の符号化検査。一般の入力数・gate数に対する形式証明なし |
 | SYN-2 | 合成結果は元の関数を計算する | model検査→selector復号→全真理値表の直接評価 | 全行を列挙できる問題に限定 |
 | SYN-3 | 下限証拠と上限の取り違えを拒否する | XORの3gate不可能証拠を4gate問題へ流用すると拒否 | 個別CNFに対するRUP受理。gate最小化と実時間最小化は異なる |
-| RUN-1 | 同じbitのblockではcarry/borrowが一桁後に安定する | 各操作の全Bool条件を列挙 | この局所命題は有限の全条件。全run算術の帰納的証明とは別 |
+| RUN-1 | 同じbitのblockではcarry/borrowが一桁後に安定する | 各操作の全Bool条件、Leanのcarry/borrow_stabilizes | 局所モデルの定理。全run算術の帰納的証明とは別 |
 | RUN-2 | 圧縮演算は通常の自然数算術と一致する | 全16384小対、Python任意精度fixture、巨大値の圧縮恒等式 | 有限照合と恒等式のsanity check。一般のrun数に対する形式証明なし |
+| BIN-ADD-1 | 加算とincrementが値を保存する | Leanの全称定理・source差分lock・MoonBit全小例 | 任意の有限列のモデルに対する帰納的証明。MoonBitへの翻訳は手動対応 |
+| NAT-2 | 構造的半分化によるNat→二進数が値を保存する | Lean split_sound/fromNat_sound | 任意の自然数のモデル定理。MoonBitのstack/メモリ上限を保証しない |
 
 定理の全入力の正しさ、固定幅の完全なBoolean検査、有限の生成例の一致を同一視しない。
