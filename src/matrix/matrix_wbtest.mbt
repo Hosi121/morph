@@ -11,6 +11,8 @@ fn bool_matrix(xs : Array[Array[Bool]]) -> Matrix[Bool] {
 test "matrix dimensions, transpose, zero dimensions and identity" {
   let a = bool_matrix([[true, false, true], [false, true, false]])
   assert_eq(transpose(transpose(a)), a)
+  assert_eq(column(a, @oracle.nat(1)), Some(@oracle.chain([false, true])))
+  assert_eq(column(a, @oracle.nat(3)), None)
   assert_eq(
     multiply(
       a,

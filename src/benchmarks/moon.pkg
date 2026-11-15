@@ -1,0 +1,6 @@
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/bench",
+} for "test"

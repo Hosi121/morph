@@ -325,7 +325,10 @@ pub fn inverse(
           match
             @matrix.matrix(
               @core.add(n, n),
-              @core.map(pairs, fn(pair) { @core.append(pair.0, pair.1) }),
+              @core.map(pairs, fn(pair) {
+                let (row, identity) = pair
+                @core.append(row, identity)
+              }),
             ) {
             None => None
             Some(augmented) =>
@@ -337,7 +340,8 @@ pub fn inverse(
                     Some(pivots) =>
                       match
                         @core.all(pivots, fn(pair) {
-                          match @core.compare(pair.0, pair.1) {
+                          let (actual, expected) = pair
+                          match @core.compare(actual, expected) {
                             Equal => true
                             _ => false
                           }

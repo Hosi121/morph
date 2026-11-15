@@ -179,21 +179,9 @@ pub fn rational_multiply(a : Rational, b : Rational) -> Rational {
 
 ///|
 pub fn rational_divide(a : Rational, b : Rational) -> Rational? {
-  match @binary.is_zero(b.numerator.magnitude) {
-    true => None
-    false => {
-      let n = multiply(a.numerator, positive(b.denominator))
-      let signed = match b.numerator.negative {
-        true => negate(n)
-        false => n
-      }
-      Some(
-        normalize(
-          signed,
-          @binary.multiply(a.denominator, b.numerator.magnitude),
-        ),
-      )
-    }
+  match nonzero(b) {
+    None => None
+    Some(value) => Some(rational_multiply(a, reciprocal(value)))
   }
 }
 

@@ -83,6 +83,25 @@ pub fn[A] transpose(m : Matrix[A]) -> Matrix[A] {
 }
 
 ///|
+/// Extract just one column, instead of allocating a complete transpose.
+pub fn[A] column(m : Matrix[A], index : @core.Nat) -> @core.Chain[A]? {
+  fn collect(rows : @core.Chain[@core.Chain[A]]) -> @core.Chain[A]? {
+    match rows {
+      Nil => Some(Nil)
+      Cons(row, rest) =>
+        match (@core.nth(row, index), collect(rest)) {
+          (Some(value), Some(tail)) => Some(Cons(value, tail))
+          _ => None
+        }
+    }
+  }
+  match @core.compare(index, m.width) {
+    Less => collect(m.rows)
+    _ => None
+  }
+}
+
+///|
 fn[A] dot(
   xs : @core.Chain[A],
   ys : @core.Chain[A],
@@ -180,11 +199,7 @@ pub fn[A] warshall(m : Matrix[A], ops : @algebra.Semiring[A]) -> Matrix[A]? {
     match todo {
       Zero => Some(current)
       Succ(rest) =>
-        match
-          (
-            @core.nth(current.rows, k),
-            @core.nth(columns(current.width, current.rows), k),
-          ) {
+        match (@core.nth(current.rows, k), column(current, k)) {
           (Some(pivot), Some(col)) =>
             match @core.zip(current.rows, col) {
               Some(pairs) => {

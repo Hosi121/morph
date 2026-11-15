@@ -1,0 +1,11 @@
+Warning: [0029]
+   ╭─[ /home/hosi/morph/src/benchmarks/moon.pkg:2:3 ]
+   │
+ 2 │   "Hosi121/morph/core",
+   │   ──────────┬─────────  
+   │             ╰─────────── Warning (unused_package): Unused package 'Hosi121/morph/core'
+───╯
+[Hosi121/morph] bench benchmarks/matrix_test.mbt:2 ("Warshall Bool 24 vertices") ok
+time (mean ± σ)         range (min … max) 
+ 665.55 µs ±  19.98 µs   645.09 µs … 704.07 µs  in 10 ×    153 runs
+Total tests: 1, passed: 1, failed: 0.

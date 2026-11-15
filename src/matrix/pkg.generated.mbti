@@ -9,6 +9,8 @@ import {
 }
 
 // Values
+pub fn[A] column(Matrix[A], @core.Nat) -> @core.Chain[A]?
+
 pub fn[A] height(Matrix[A]) -> @core.Nat
 
 pub fn[A] identity(@core.Nat, @algebra.Semiring[A]) -> Matrix[A]
