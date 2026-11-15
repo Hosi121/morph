@@ -1,0 +1,24 @@
+Total tests: 22, passed: 22, failed: 0.
+[Hosi121/morph] bench binary/remainder_trial_wbtest.mbt:131 ("quotient-free remainder and gcd with wide and short controls") ok
+name                     time (mean ± σ)         range (min … max) 
+divmod remainder near      53.10 µs ±   2.52 µs    50.28 µs …  58.01 µs  in 10 ×   1978 runs
+remainder only near        13.87 µs ± 698.58 ns    13.14 µs …  15.24 µs  in 10 ×   7556 runs
+gcd reference near          1.59 ms ±  35.06 µs     1.54 ms …   1.64 ms  in 10 ×     64 runs
+gcd remainder only near   581.96 µs ±  37.41 µs   527.06 µs … 626.22 µs  in 10 ×    183 runs
+gcd remainder two near    554.58 µs ±  24.19 µs   533.74 µs … 606.20 µs  in 10 ×    181 runs
+divmod remainder wide     110.25 µs ±   4.78 µs   101.26 µs … 116.47 µs  in 10 ×    921 runs
+remainder only wide       110.43 µs ±  10.10 µs    95.59 µs … 126.62 µs  in 10 ×    999 runs
+gcd reference wide        387.93 µs ±  16.42 µs   371.89 µs … 419.16 µs  in 10 ×    257 runs
+gcd remainder only wide   233.05 µs ±   8.45 µs   222.74 µs … 249.36 µs  in 10 ×    389 runs
+gcd remainder two wide    229.76 µs ±  19.71 µs   195.64 µs … 260.77 µs  in 10 ×    409 runs
+divmod remainder small    963.48 ns ±  57.31 ns   889.86 ns …   1.09 µs  in 10 × 100000 runs
+remainder only small      867.66 ns ±  37.82 ns   797.74 ns … 917.67 ns  in 10 × 100000 runs
+gcd reference small         1.28 µs ±  41.39 ns     1.21 µs …   1.34 µs  in 10 ×  83376 runs
+gcd remainder only small    1.22 µs ±  91.08 ns     1.07 µs …   1.34 µs  in 10 ×  79971 runs
+gcd remainder two small     1.35 µs ±  70.03 ns     1.27 µs …   1.48 µs  in 10 ×  73484 runs
+divmod remainder tiny      55.71 ns ±   4.13 ns    51.20 ns …  65.30 ns  in 10 × 100000 runs
+remainder only tiny        27.53 ns ±   1.76 ns    26.13 ns …  31.18 ns  in 10 × 100000 runs
+gcd reference tiny        247.76 ns ±  18.90 ns   230.04 ns … 292.59 ns  in 10 × 100000 runs
+gcd remainder only tiny   150.08 ns ±   4.00 ns   145.60 ns … 159.09 ns  in 10 × 100000 runs
+gcd remainder two tiny     31.77 ns ±   1.12 ns    30.06 ns …  33.34 ns  in 10 × 100000 runs
+Total tests: 1, passed: 1, failed: 0.
