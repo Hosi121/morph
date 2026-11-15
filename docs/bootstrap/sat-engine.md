@@ -129,3 +129,43 @@ and three nonchronological backjumps. Consequently the timings measure the
 whole engine change, rather than isolating the index's cost on an identical
 search trace. These tiny pigeonhole inputs do not establish performance on
 larger circuit-equivalence problems.
+
+## Startup diagnosis before changing key conversion
+
+The propagation-only contradiction `[v0]`, `[¬vi, v(i+1)]` for 256 links,
+`[¬v256]` gives a different cost profile. The complete watched solve took
+15.75 ms ± 643.70 µs, old DPLL 18.94 ms ± 1.15 ms, and scan CDCL
+72.42 ms ± 1.38 ms. Startup alone took 15.39 ms ± 227.78 µs. Separate
+stage benchmarks then measured:
+
+| Stage | Native release time |
+| --- | ---: |
+| Database normalization | 7.36 ms ± 324.66 µs |
+| Variable collection | 7.45 ms ± 228.54 µs |
+| Watch-index construction, normalized database prebuilt | 189.65 µs ± 7.58 µs |
+| Watched search, complete initial state prebuilt | 171.56 µs ± 12.68 µs |
+| Atom/key conversion over every input literal occurrence | 7.81 ms ± 252.52 µs |
+
+These are separate benchmark closures rather than an additive in-process
+profiler, but identify repeated unary-to-binary conversion as the dominant
+startup operation. Renaming the twenty variables in the five-into-four input
+by adding 1024 changes watched startup from 124.83 µs ± 9.36 µs to
+33.85 ms ± 703.71 µs, without changing its Boolean problem. The old
+`@binary.from_nat` recursively calls general addition at every unary successor.
+The unchanged scanning RUP checker takes 63.00 ms ± 2.29 ms on the chain.
+
+A private, test-only candidate structurally halves the unary number, records
+the remainder as a Bool bit, and recursively converts the quotient. It agrees
+with the old conversion for every ID from zero through 2048 and with the numeric
+test oracle at 4095, 4096, 4097, 10000, and 16384. In a direct same-run comparison
+on all chain literal occurrences, the old conversion measured
+7.46 ms ± 298.98 µs and the candidate 513.90 µs ± 20.89 µs. This candidate
+has not been adopted into `atom`: the root task is also improving the shared
+Binary increment/conversion, which must be compared before selecting one.
+
+Reproduction commands:
+
+```sh
+tools/moon bench src/cdcl/bench_test.mbt --target native --release
+tools/moon bench src/cdcl/stages_wbtest.mbt --target native --release
+```
