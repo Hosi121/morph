@@ -7,6 +7,7 @@ import {
 import {
   "Hosi121/morph/testsupport" @oracle,
   "Hosi121/morph/circuit",
+  "Hosi121/morph/boolean",
   "moonbitlang/core/bench",
 } for "wbtest"
 

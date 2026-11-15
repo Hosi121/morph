@@ -296,3 +296,34 @@ A separate equality microbenchmark over 16,384 normalized key pairs measured
 ordering equality at 339.59 µs ± 29.54 µs and structural `Eq` at
 315.43 µs ± 14.46 µs. That small, overlapping result did not justify changing
 production key equality.
+
+## 32- and 64-bit scaling checkpoint
+
+Native release benchmarks after the shared Binary and private key changes
+checked every measured miter's certificate before timing. The larger benchmark
+uses an explicit 200,000-transition budget, outside the timed closure.
+
+| Width | Clauses | Transitions | Decisions | Conflicts | Learned | Solve including start | RUP checker |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 32 | 1,014 | 7,304 | 876 | 238 | 237 | 198.27 ms ± 4.64 ms | 463.73 ms ± 15.68 ms |
+| 64 | 2,038 | 21,928 | 3,276 | 478 | 477 | 1.61 s ± 22.96 ms | 3.66 s ± 126.85 ms |
+
+These means and standard deviations use ten single-run samples per case. CNF
+generation and the correctness check are outside the solve timing; the checker
+timing receives the same prebuilt certificate on every sample. The environment
+was the same WSL2/native toolchain above, without CPU pinning. The growth shows
+that propagation/decision scans and repeated RUP propagation remain material
+costs after input conversion; no linear-scaling claim is made.
+
+The larger cases are benchmark tests, so ordinary `moon test` does not repeat
+these measurements. Reproduce with:
+
+```sh
+tools/moon bench src/cdcl/scaling_test.mbt --target native --release
+```
+
+A separate ordinary regression builds a wrong 32-bit adder by replacing its
+initial carry with false. The solver returns a SAT model, the old CNF model
+checker accepts it, projection to source variables succeeds, the source miter
+re-evaluates to true, and the projected initial carry is true. This covers a
+larger counterexample path as well as the larger UNSAT certificate path.
