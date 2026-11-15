@@ -1,0 +1,20 @@
+Total tests: 23, passed: 23, failed: 0.
+[Hosi121/morph] bench binary/nat_radix_wbtest.mbt:410 ("grouping unary input into several bits at a time") ok
+name                    time (mean ± σ)         range (min … max) 
+two shared 4096           19.99 µs ± 986.92 ns    18.70 µs …  21.96 µs  in 10 ×   5086 runs
+two rebuild 4096          47.15 µs ±   3.25 µs    42.88 µs …  52.49 µs  in 10 ×   2246 runs
+radix_4_shared 4096       15.20 µs ± 454.53 ns    14.48 µs …  15.84 µs  in 10 ×   7257 runs
+radix_4_rebuild 4096      24.24 µs ±   1.25 µs    22.47 µs …  25.97 µs  in 10 ×   4001 runs
+radix_8_shared 4096       11.68 µs ± 942.42 ns    10.63 µs …  13.12 µs  in 10 ×   8382 runs
+radix_8_rebuild 4096      15.95 µs ± 780.47 ns    14.63 µs …  16.89 µs  in 10 ×   6027 runs
+radix_16_shared 4096      13.76 µs ± 617.69 ns    12.53 µs …  14.58 µs  in 10 ×   7664 runs
+radix_16_rebuild 4096     13.31 µs ± 358.05 ns    12.92 µs …  13.94 µs  in 10 ×   7228 runs
+two shared 100000        535.11 µs ±  19.75 µs   490.42 µs … 561.20 µs  in 10 ×    184 runs
+two rebuild 100000         1.17 ms ±  34.45 µs     1.13 ms …   1.24 ms  in 10 ×     87 runs
+radix_4_shared 100000    377.38 µs ±   6.18 µs   369.50 µs … 386.47 µs  in 10 ×    272 runs
+radix_4_rebuild 100000   606.99 µs ±  17.25 µs   584.28 µs … 641.47 µs  in 10 ×    169 runs
+radix_8_shared 100000    350.44 µs ±  22.15 µs   324.52 µs … 377.92 µs  in 10 ×    293 runs
+radix_8_rebuild 100000   403.34 µs ±  32.02 µs   354.00 µs … 446.32 µs  in 10 ×    254 runs
+radix_16_shared 100000   358.57 µs ±  16.79 µs   342.93 µs … 394.52 µs  in 10 ×    311 runs
+radix_16_rebuild 100000  331.80 µs ±  13.83 µs   313.77 µs … 350.99 µs  in 10 ×    318 runs
+Total tests: 1, passed: 1, failed: 0.
