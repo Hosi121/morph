@@ -517,3 +517,50 @@ The four-mode ELF SHA-256 was
 ```sh
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/analysis_wbtest.mbt --target native --release -i 1
 ```
+
+## Complete hinted-query comparison
+
+The complete pipeline benchmark uses one native release executable and the same
+prebuilt 64-bit miter for all three selectors. It includes solver startup,
+search, RUP-to-hinted-certificate building, and independent hinted checking.
+`ruplog.prepare` is shared by the builder and checker inside each query. CNF
+generation and the prebuilt 200,000-transition fuel are outside timing. Every
+selector returns identical final statistics and proof before timing.
+
+CPU 10, shared measurement mutex, shared Binary still `e717649`, ten samples:
+
+| Query mode | Mean ± standard deviation | Range |
+| --- | ---: | ---: |
+| Full decision diagnostic, reverse-trail analysis | 4.39 s ± 136.69 ms | 4.18–4.55 s |
+| First-open decision, reverse-trail analysis | 1.34 s ± 55.33 ms | 1.28–1.43 s |
+| First-open decision, indexed analysis | 825.91 ms ± 18.90 ms | 789.86–850.90 ms |
+
+The combined changes improve this complete query by about 5.31 times in this
+run. The result applies to this formula family, not all SAT inputs. Unchanged
+controls in the same executable measured solver startup at 78.11 ms ± 4.31 ms,
+prepared hinted building at 168.58 ms ± 6.42 ms, and prepared hinted checking at
+44.41 ms ± 2.59 ms. Their ranges were 73.24–85.83 ms, 157.60–176.43 ms, and
+40.93–48.62 ms respectively. The full benchmark invocation used 86.25 s elapsed,
+86.43 s user, and 0.05 s system time, including correctness setup and controls.
+
+The next phase sample with indexed analysis recorded 84.45 ms propagation
+inspection, 192.80 ms decision inspection, and 150.54 ms conflict handling.
+Uninstrumented search measured 513.19 ms ± 34.92 ms, range 482.52–583.69 ms;
+the unchanged prepared checker control was 43.51 ms ± 1.43 ms. This profile
+identifies decision evaluation and residual conflict work as the next costs;
+it does not support treating every source-level operation reduction as a
+complete-query improvement.
+
+After both changes, freshly generated certificates again passed both pinned
+LRAT-TRIM and DRAT-trim for all 16 positive exports, and all seven negative
+controls were rejected. The 64-bit occurrence certificate still has 478
+additions and 21,132 hints. Its CNF and erased DRUP hashes remain exactly the
+pre-optimization hashes recorded in `ruplog.md`:
+
+- CNF: `81791c0eaf39a0faa927490662747272f98213455eb61fa011dd30ef303184b8`
+- DRUP: `17d3c80302c403309b2a5a6159d3ea7ebc443fccbc3df24219474f06ff88f7ec`
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/pipeline_wbtest.mbt --target native --release
+/home/hosi/morph/tools/measure --cpu 10 python3 tools/generate_ruplog.py --check --miter64 --cpu 10
+```
