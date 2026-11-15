@@ -1,0 +1,31 @@
+[Hosi121/morph] bench binary/adder_candidates_wbtest.mbt:577 ("cofactor addition candidates at 256 bits") ok
+name              time (mean ± σ)         range (min … max) 
+reference            2.91 µs ±  99.14 ns     2.75 µs …   3.08 µs  in 10 ×  33391 runs
+candidate 0: 011     3.64 µs ± 161.93 ns     3.47 µs …   3.87 µs  in 10 ×  27602 runs
+candidate 1: 012     3.61 µs ± 121.33 ns     3.42 µs …   3.77 µs  in 10 ×  26110 runs
+candidate 2: 021     3.64 µs ± 226.96 ns     3.41 µs …   4.20 µs  in 10 ×  27586 runs
+candidate 3: 022     3.94 µs ± 219.15 ns     3.63 µs …   4.24 µs  in 10 ×  28240 runs
+candidate 4: 100     3.70 µs ± 138.27 ns     3.45 µs …   3.88 µs  in 10 ×  25500 runs
+candidate 5: 102     3.72 µs ± 135.79 ns     3.55 µs …   3.93 µs  in 10 ×  26844 runs
+candidate 6: 120     3.65 µs ± 137.85 ns     3.50 µs …   3.92 µs  in 10 ×  29668 runs
+candidate 7: 122     3.94 µs ± 171.17 ns     3.70 µs …   4.25 µs  in 10 ×  27081 runs
+candidate 8: 200     3.75 µs ±  68.27 ns     3.68 µs …   3.88 µs  in 10 ×  26143 runs
+candidate 9: 201     4.02 µs ± 374.41 ns     3.80 µs …   4.81 µs  in 10 ×  27107 runs
+candidate 10: 210    3.68 µs ± 137.00 ns     3.47 µs …   3.90 µs  in 10 ×  26966 runs
+candidate 11: 211    3.91 µs ± 166.56 ns     3.75 µs …   4.21 µs  in 10 ×  25552 runs
+[Hosi121/morph] bench binary/adder_candidates_wbtest.mbt:624 ("cofactor addition candidates at 2048 bits") ok
+name              time (mean ± σ)         range (min … max) 
+reference           25.60 µs ±   2.64 µs    23.33 µs …  32.44 µs  in 10 ×   3965 runs
+candidate 0: 011    29.47 µs ±   1.11 µs    28.29 µs …  31.39 µs  in 10 ×   3559 runs
+candidate 1: 012    29.59 µs ±   1.31 µs    28.03 µs …  31.38 µs  in 10 ×   3511 runs
+candidate 2: 021    30.76 µs ±   1.60 µs    28.14 µs …  33.37 µs  in 10 ×   3343 runs
+candidate 3: 022    31.23 µs ±   1.01 µs    29.68 µs …  33.26 µs  in 10 ×   3284 runs
+candidate 4: 100    30.20 µs ± 762.06 ns    29.34 µs …  31.88 µs  in 10 ×   3302 runs
+candidate 5: 102    30.99 µs ± 970.35 ns    29.67 µs …  32.87 µs  in 10 ×   3288 runs
+candidate 6: 120    29.91 µs ±   1.03 µs    29.01 µs …  31.71 µs  in 10 ×   3330 runs
+candidate 7: 122    37.09 µs ±   4.35 µs    31.05 µs …  43.16 µs  in 10 ×   3329 runs
+candidate 8: 200    33.35 µs ± 695.87 ns    32.29 µs …  34.28 µs  in 10 ×   2941 runs
+candidate 9: 201    33.80 µs ±   1.63 µs    31.51 µs …  36.32 µs  in 10 ×   2826 runs
+candidate 10: 210   31.81 µs ±   1.87 µs    29.23 µs …  34.54 µs  in 10 ×   2960 runs
+candidate 11: 211   30.53 µs ±   1.43 µs    29.01 µs …  32.81 µs  in 10 ×   2940 runs
+Total tests: 2, passed: 2, failed: 0.

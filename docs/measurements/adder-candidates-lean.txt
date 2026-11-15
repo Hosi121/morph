@@ -1,0 +1,12 @@
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
