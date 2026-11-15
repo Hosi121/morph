@@ -5,7 +5,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：65パッケージ、114ソース。
-核のテスト宣言：464、bench group：129。
+核のテスト宣言：467、bench group：131。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -16,7 +16,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [autodiff](../src/autodiff) | 2 | 2 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [avl](../src/avl) | 1 | 2 | 0 | `binary`, `core` |
 | [bdd](../src/bdd) | 4 | 13 | 4 | `binary`, `circuit`, `core`, `sat` |
-| [binary](../src/binary) | 3 | 19 | 6 | `core` |
+| [binary](../src/binary) | 3 | 22 | 8 | `core` |
 | [bipartite](../src/bipartite) | 1 | 3 | 0 | `core` |
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
