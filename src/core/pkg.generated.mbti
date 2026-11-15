@@ -18,9 +18,13 @@ pub fn[A] append(Chain[A], Chain[A]) -> Chain[A]
 
 pub fn compare(Nat, Nat) -> Ordering
 
+pub fn[A] dequeue(Queue[A]) -> (A, Queue[A])?
+
 pub fn divmod(Nat, Nat) -> (Nat, Nat)?
 
 pub fn[A] drop(Nat, Chain[A]) -> Chain[A]
+
+pub fn[A] enqueue(Queue[A], A) -> Queue[A]
 
 pub fn[A] filter(Chain[A], (A) -> Bool) -> Chain[A]
 
@@ -45,6 +49,8 @@ pub fn minimum(Nat, Nat) -> Nat
 pub fn multiply(Nat, Nat) -> Nat
 
 pub fn[A] nth(Chain[A], Nat) -> A?
+
+pub fn[A] queue() -> Queue[A]
 
 pub fn[A] replicate(Nat, A) -> Chain[A]
 
@@ -90,6 +96,15 @@ pub(all) enum Ordering {
 pub fn Ordering::equal(Self, Self) -> Bool
 pub fn Ordering::not_equal(Self, Self) -> Bool
 pub fn Ordering::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Queue[A] {
+  front : Chain[A]
+  back : Chain[A]
+}
+pub fn[A : Eq] Queue::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Queue::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Queue::to_repr(Self[A]) -> @debug.Repr
 
 // Type aliases
 

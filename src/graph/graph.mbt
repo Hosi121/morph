@@ -106,35 +106,14 @@ pub fn lookup(visits : @core.Chain[Visit], vertex : @core.Nat) -> Visit? {
 }
 
 ///|
-/// Strict two-list queue. Its amortized argument assumes a linear usage history.
-priv struct Queue[A] {
-  front : @core.Chain[A]
-  back : @core.Chain[A]
-}
-
-///|
-fn[A] enqueue(q : Queue[A], x : A) -> Queue[A] {
-  { front: q.front, back: Cons(x, q.back), }
-}
-
-///|
-fn[A] dequeue(q : Queue[A]) -> (A, Queue[A])? {
-  match (q.front, q.back) {
-    (Nil, Nil) => None
-    (Cons(x, rest), _) => Some((x, { front: rest, back: q.back, }))
-    (Nil, _) => dequeue({ front: @core.reverse(q.back), back: Nil, })
-  }
-}
-
-///|
 /// Breadth-first search counts edges, ignoring stored weights.
 pub fn bfs(g : Graph, source : @core.Nat) -> @core.Chain[Visit]? {
   fn expand(
     es : @core.Chain[Edge],
     visit : Visit,
-    queue : Queue[Visit],
+    queue : @core.Queue[Visit],
     seen : @core.Chain[Visit],
-  ) -> (Queue[Visit], @core.Chain[Visit]) {
+  ) -> (@core.Queue[Visit], @core.Chain[Visit]) {
     match es {
       Nil => (queue, seen)
       Cons(edge, rest) =>
@@ -145,18 +124,18 @@ pub fn bfs(g : Graph, source : @core.Nat) -> @core.Chain[Visit]? {
               distance: @binary.successor(visit.distance),
               predecessor: Some(visit.vertex),
             }
-            expand(rest, visit, enqueue(queue, next), Cons(next, seen))
+            expand(rest, visit, @core.enqueue(queue, next), Cons(next, seen))
           }
           _ => expand(rest, visit, queue, seen)
         }
     }
   }
   fn walk(
-    queue : Queue[Visit],
+    queue : @core.Queue[Visit],
     seen : @core.Chain[Visit],
     output : @core.Chain[Visit],
   ) -> @core.Chain[Visit] {
-    match dequeue(queue) {
+    match @core.dequeue(queue) {
       None => @core.reverse(output)
       Some((visit, rest)) => {
         let (next_queue, next_seen) = expand(g.edges, visit, rest, seen)
@@ -172,7 +151,7 @@ pub fn bfs(g : Graph, source : @core.Nat) -> @core.Chain[Visit]? {
         distance: @binary.zero(),
         predecessor: None,
       }
-      Some(walk({ front: Cons(first, Nil), back: Nil, }, Cons(first, Nil), Nil))
+      Some(walk(@core.enqueue(@core.queue(), first), Cons(first, Nil), Nil))
     }
   }
 }
