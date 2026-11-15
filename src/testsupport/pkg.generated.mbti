@@ -12,7 +12,13 @@ pub fn[A] array(@core.Chain[A]) -> Array[A]
 
 pub fn binary(Int32) -> @binary.Binary
 
+pub fn binary_from_hex(String) -> @binary.Binary
+
+pub fn bits_from_bytes(Bytes) -> @core.Chain[Bool]
+
 pub fn[A] chain(Array[A]) -> @core.Chain[A]
+
+pub fn hex_bits(@core.Chain[Bool]) -> String
 
 pub fn int_of_binary(@binary.Binary) -> Int32
 

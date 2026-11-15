@@ -19,6 +19,8 @@ pub fn divmod(Binary, Binary) -> (Binary, Binary)?
 
 pub fn double(Binary) -> Binary
 
+pub fn fibonacci_pair(Binary) -> (Binary, Binary)
+
 pub fn from_bits(@core.Chain[Bool]) -> Binary
 
 pub fn from_nat(@core.Nat) -> Binary
@@ -42,6 +44,10 @@ pub fn one() -> Binary
 pub fn pair(@core.Nat, Binary) -> Binary
 
 pub fn power(Binary, Binary) -> Binary
+
+pub fn sqrt_rem(Binary) -> (Binary, Binary)
+
+pub fn stein_gcd(Binary, Binary) -> Binary
 
 pub fn subtract(Binary, Binary) -> Binary?
 

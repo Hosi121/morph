@@ -96,3 +96,62 @@ pub fn[A] array(xs : @core.Chain[A]) -> Array[A] {
   visit(xs)
   result
 }
+
+///|
+/// Arbitrary-size numeric oracle fixtures, without truncating through Int32.
+pub fn binary_from_hex(text : String) -> @binary.Binary {
+  let bits = []
+  for character in text {
+    let digit = match character {
+      '0' => 0
+      '1' => 1
+      '2' => 2
+      '3' => 3
+      '4' => 4
+      '5' => 5
+      '6' => 6
+      '7' => 7
+      '8' => 8
+      '9' => 9
+      'a' | 'A' => 10
+      'b' | 'B' => 11
+      'c' | 'C' => 12
+      'd' | 'D' => 13
+      'e' | 'E' => 14
+      'f' | 'F' => 15
+      _ => abort("bad oracle hex")
+    }
+    for bit in 0..<4 {
+      bits.push((digit & (1 << (3 - bit))) != 0)
+    }
+  }
+  @binary.from_bits(@core.reverse(chain(bits)))
+}
+
+///|
+pub fn bits_from_bytes(data : Bytes) -> @core.Chain[Bool] {
+  let bits = []
+  for byte in data {
+    for bit in 0..<8 {
+      bits.push((byte.to_int() & (1 << (7 - bit))) != 0)
+    }
+  }
+  chain(bits)
+}
+
+///|
+pub fn hex_bits(bits : @core.Chain[Bool]) -> String {
+  let data = array(bits)
+  let alphabet = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+  ]
+  let result = StringBuilder()
+  for i in 0..<(data.length() / 4) {
+    let mut digit = 0
+    for j in 0..<4 {
+      digit = digit * 2 + (if data[i * 4 + j] { 1 } else { 0 })
+    }
+    result.write_char(alphabet[digit])
+  }
+  result.to_string()
+}

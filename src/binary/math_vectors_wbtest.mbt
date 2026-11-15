@@ -1,0 +1,95 @@
+// Generated independently by tools/generate_binary_math.py using Python integers.
+
+///|
+test "fast doubling large exact Python integer fixtures" {
+  assert_eq(
+    fibonacci_pair(@oracle.binary(100)),
+    (
+      @oracle.binary_from_hex("1333db76a7c594bfc3"),
+      @oracle.binary_from_hex("1f12062f76909038c5"),
+    ),
+  )
+  assert_eq(
+    fibonacci_pair(@oracle.binary(200)),
+    (
+      @oracle.binary_from_hex("338864a5c1caeb07d0ef067cb83df17e395"),
+      @oracle.binary_from_hex("5361bd927dc58766e6533a576b3f1535622"),
+    ),
+  )
+  assert_eq(
+    fibonacci_pair(@oracle.binary(1000)),
+    (
+      @oracle.binary_from_hex(
+        "21d8cb07b572c25732bb116f2c33bab0e83d0c699bad1a727a736a7e42ca93b697ad224d55398373062f18ff62b99c28068131a3fab0c12e3510283c1d60b00930b7e8803c312b4c8e6d5286805fc70b594dc75cc0604b",
+      ),
+      @oracle.binary_from_hex(
+        "36c3ee02148d55118f245bbee480b639da51df96ac7d0d58fa120935aa00003c2ae958eae1e603a27fa9588dfe351172ece95fe7b0f7caa96faceaa3284f2b2549f1ca6ebf4d77d85b9b419aabe59f7e0118524e9560ed",
+      ),
+    ),
+  )
+}
+
+///|
+test "large non-square roots match Python math.isqrt" {
+  assert_eq(
+    sqrt_rem(@oracle.binary_from_hex("7fffffffffffffffffffffffffffffff")),
+    (
+      @oracle.binary_from_hex("b504f333f9de6484"),
+      @oracle.binary_from_hex("7e8efaacbb989bef"),
+    ),
+  )
+  assert_eq(
+    sqrt_rem(
+      @oracle.binary_from_hex(
+        "10000000000000000000000000000000000000000000000000123456789abcdef",
+      ),
+    ),
+    (
+      @oracle.binary_from_hex("100000000000000000000000000000000"),
+      @oracle.binary_from_hex("123456789abcdef"),
+    ),
+  )
+  assert_eq(
+    sqrt_rem(
+      @oracle.binary_from_hex(
+        "1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      ),
+    ),
+    (
+      @oracle.binary_from_hex(
+        "16a09e667f3bcc908b2fb1366ea957d3e3adec17512775099da2f590b0667322a",
+      ),
+      @oracle.binary_from_hex(
+        "1a82fde879b8a9b2fc7e74415057ac8d80fd65b06b653038abeab7c70a05f911b",
+      ),
+    ),
+  )
+}
+
+///|
+test "large Stein GCD matches Python math.gcd" {
+  assert_eq(
+    stein_gcd(
+      @oracle.binary_from_hex(
+        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      ),
+      @oracle.binary_from_hex(
+        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      ),
+    ),
+    @oracle.binary_from_hex(
+      "ffffffffffffffffffffffffffffffffffffffffffffffffff",
+    ),
+  )
+  assert_eq(
+    stein_gcd(
+      @oracle.binary_from_hex(
+        "80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003039",
+      ),
+      @oracle.binary_from_hex(
+        "800000000000000000000000000000000000000000000000000000000000d431",
+      ),
+    ),
+    @oracle.binary_from_hex("1"),
+  )
+}

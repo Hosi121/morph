@@ -1,29 +1,11 @@
 ///|
 fn bit_message(data : Bytes) -> @core.Chain[Bool] {
-  let bits = []
-  for byte in data {
-    for i in 0..<8 {
-      bits.push((byte.to_int() & (1 << (7 - i))) != 0)
-    }
-  }
-  @oracle.chain(bits)
+  @oracle.bits_from_bytes(data)
 }
 
 ///|
 fn hex(bits : @core.Chain[Bool]) -> String {
-  let data = @oracle.array(bits)
-  let alphabet = [
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
-  ]
-  let result = StringBuilder()
-  for i in 0..<(data.length() / 4) {
-    let mut digit = 0
-    for j in 0..<4 {
-      digit = digit * 2 + (if data[i * 4 + j] { 1 } else { 0 })
-    }
-    result.write_char(alphabet[digit])
-  }
-  result.to_string()
+  @oracle.hex_bits(bits)
 }
 
 ///|
