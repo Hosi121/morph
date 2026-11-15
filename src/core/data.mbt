@@ -125,6 +125,20 @@ pub fn[A] last(xs : Chain[A]) -> A? {
 }
 
 ///|
+/// Consume exactly n constructors in one pass; retain the untouched suffix.
+pub fn[A] split_exact(n : Nat, xs : Chain[A]) -> (Chain[A], Chain[A])? {
+  match (n, xs) {
+    (Zero, _) => Some((Nil, xs))
+    (Succ(_), Nil) => None
+    (Succ(rest), Cons(x, xt)) =>
+      match split_exact(rest, xt) {
+        None => None
+        Some((prefix, suffix)) => Some((Cons(x, prefix), suffix))
+      }
+  }
+}
+
+///|
 pub fn[A] filter(xs : Chain[A], keep : (A) -> Bool) -> Chain[A] {
   match xs {
     Nil => Nil

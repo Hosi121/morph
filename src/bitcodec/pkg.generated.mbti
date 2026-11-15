@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bitcodec"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+}
+
+// Values
+pub fn decode_pair(@core.Chain[Bool]) -> (@binary.Binary, @binary.Binary)?
+
+pub fn gamma_encode(@binary.Binary) -> @core.Chain[Bool]?
+
+pub fn gamma_read(@core.Chain[Bool]) -> (@binary.Binary, @core.Chain[Bool])?
+
+pub fn pair_word(@binary.Binary, @binary.Binary) -> @core.Chain[Bool]
+
+pub fn read_pair(@core.Chain[Bool]) -> ((@binary.Binary, @binary.Binary), @core.Chain[Bool])?
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

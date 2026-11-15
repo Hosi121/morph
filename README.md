@@ -24,6 +24,7 @@ Mooncakes の追加依存はない。外部公開はしていない。
 | --- | --- |
 | 基礎 | [不変リスト・Peano算術・Euclid](src/core/data.mbt) |
 | 二進表現 | [算術・連結・pair/unpair](src/binary/binary.mbt)・[Karatsuba](src/binary/karatsuba.mbt)・[Stein GCD・整数平方根・Fibonacci](src/binary/number_theory.mbt) |
+| ビット符号 | [Elias gamma・任意精度ペアの自己区切り符号](src/bitcodec/bitcodec.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](src/exact/exact.mbt) |
 | FFT | [画像の12等式に対応するFFTと直接DFT](src/fft/fft.mbt) |
 | 剰余算術 | [平方反復・拡張Euclid・逆元・素数判定](src/modular/modular.mbt)・[一般化CRT](src/modular/crt.mbt)・[小さなRSA](src/modular/rsa.mbt) |

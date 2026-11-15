@@ -11,23 +11,6 @@ priv struct State {
 }
 
 ///|
-/// Split by consuming constructors, with an explicit short-input result.
-fn[A] split_exact(
-  n : @core.Nat,
-  xs : @core.Chain[A],
-) -> (@core.Chain[A], @core.Chain[A])? {
-  match (n, xs) {
-    (Zero, _) => Some((Nil, xs))
-    (Succ(_), Nil) => None
-    (Succ(rest), Cons(x, xt)) =>
-      match split_exact(rest, xt) {
-        None => None
-        Some((prefix, suffix)) => Some((Cons(x, prefix), suffix))
-      }
-  }
-}
-
-///|
 fn pad(message : @core.Chain[Bool]) -> @core.Chain[Bool]? {
   let length = @core.fold_left(message, @binary.zero(), fn(length, _) {
     @binary.successor(length)
@@ -82,7 +65,7 @@ fn block_words(bits : @core.Chain[Bool]) -> @core.Chain[Word]? {
       (Zero, Nil) => Some(Nil)
       (Zero, _) => None
       (Succ(rest), _) =>
-        match split_exact(n_thirtytwo, bits) {
+        match @core.split_exact(n_thirtytwo, bits) {
           None => None
           Some((bits, tail)) =>
             match go(rest, tail) {
@@ -187,7 +170,7 @@ pub fn hash(message : @core.Chain[Bool]) -> @core.Chain[Bool]? {
     match bits {
       Nil => Some(state)
       _ =>
-        match split_exact(n_fivehundredtwelve, bits) {
+        match @core.split_exact(n_fivehundredtwelve, bits) {
           None => None
           Some((block, rest)) =>
             match block_words(block) {

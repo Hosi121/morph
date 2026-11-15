@@ -50,6 +50,8 @@ pub fn[A] reverse(Chain[A]) -> Chain[A]
 
 pub fn[A] reverse_onto(Chain[A], Chain[A]) -> Chain[A]
 
+pub fn[A] split_exact(Nat, Chain[A]) -> (Chain[A], Chain[A])?
+
 pub fn subtract(Nat, Nat) -> Nat
 
 pub fn[A] take(Nat, Chain[A]) -> Chain[A]
