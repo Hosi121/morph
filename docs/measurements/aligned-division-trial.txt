@@ -1,0 +1,27 @@
+[Hosi121/morph] bench binary/division_trial_wbtest.mbt:160 ("aligned division cutoffs and general gcd workloads") ok
+name                        time (mean ± σ)         range (min … max) 
+reference near quotient       53.56 µs ±   2.74 µs    50.54 µs …  58.43 µs  in 10 ×   1926 runs
+reference wide quotient      115.22 µs ±   4.53 µs   109.54 µs … 122.37 µs  in 10 ×    925 runs
+reference gcd                345.20 µs ±   9.76 µs   335.64 µs … 364.23 µs  in 10 ×    210 runs
+reference gcd smaller first  175.53 µs ±   6.02 µs   167.66 µs … 184.05 µs  in 10 ×    561 runs
+near quotient limit 0         58.46 µs ±   4.31 µs    51.84 µs …  64.19 µs  in 10 ×   1752 runs
+wide quotient limit 0        123.89 µs ±   6.69 µs   115.63 µs … 132.32 µs  in 10 ×    862 runs
+gcd limit 0                  355.38 µs ±  33.44 µs   293.84 µs … 397.79 µs  in 10 ×    263 runs
+gcd smaller first limit 0    142.14 µs ±   5.79 µs   135.55 µs … 152.48 µs  in 10 ×    761 runs
+near quotient limit 1         51.61 µs ±   2.28 µs    47.99 µs …  55.58 µs  in 10 ×   1979 runs
+wide quotient limit 1        118.55 µs ±   2.95 µs   114.32 µs … 122.71 µs  in 10 ×    858 runs
+gcd limit 1                  302.34 µs ±   9.44 µs   287.14 µs … 314.78 µs  in 10 ×    317 runs
+gcd smaller first limit 1     17.25 µs ± 598.98 ns    16.48 µs …  18.07 µs  in 10 ×   6034 runs
+near quotient limit 3         14.57 µs ± 739.22 ns    13.92 µs …  16.33 µs  in 10 ×   6850 runs
+wide quotient limit 3        123.14 µs ±  11.07 µs   109.44 µs … 140.16 µs  in 10 ×    783 runs
+gcd limit 3                  274.08 µs ±  17.66 µs   251.09 µs … 300.84 µs  in 10 ×    358 runs
+gcd smaller first limit 3     17.58 µs ± 571.65 ns    16.77 µs …  18.43 µs  in 10 ×   5710 runs
+near quotient limit 5         14.53 µs ± 703.35 ns    13.45 µs …  15.33 µs  in 10 ×   6873 runs
+wide quotient limit 5        115.10 µs ±   7.91 µs   101.82 µs … 132.75 µs  in 10 ×    920 runs
+gcd limit 5                  256.14 µs ±  12.28 µs   239.66 µs … 281.47 µs  in 10 ×    407 runs
+gcd smaller first limit 5     17.40 µs ±   1.45 µs    15.12 µs …  19.51 µs  in 10 ×   5609 runs
+near quotient limit 8         14.34 µs ±   1.00 µs    12.59 µs …  15.76 µs  in 10 ×   7788 runs
+wide quotient limit 8        107.89 µs ±  10.83 µs    90.54 µs … 121.70 µs  in 10 ×    863 runs
+gcd limit 8                  235.31 µs ±  14.69 µs   214.22 µs … 256.56 µs  in 10 ×    367 runs
+gcd smaller first limit 8     16.94 µs ± 953.94 ns    15.02 µs …  18.32 µs  in 10 ×   5461 runs
+Total tests: 1, passed: 1, failed: 0.

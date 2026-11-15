@@ -1,0 +1,7 @@
+[Hosi121/morph] bench binary/prefix_bench_wbtest.mbt:75 ("direct Nat half versus a Binary roundtrip") ok
+name                       time (mean ± σ)         range (min … max) 
+Binary roundtrip half 64      1.41 µs ±  55.79 ns     1.30 µs …   1.48 µs  in 10 ×  69379 runs
+structural Nat half 64      499.25 ns ±  40.90 ns   418.52 ns … 539.20 ns  in 10 × 100000 runs
+Binary roundtrip half 4096   67.70 µs ±   2.59 µs    63.53 µs …  71.20 µs  in 10 ×   1433 runs
+structural Nat half 4096     22.72 µs ±   1.62 µs    19.29 µs …  24.32 µs  in 10 ×   4088 runs
+Total tests: 1, passed: 1, failed: 0.

@@ -18,6 +18,11 @@ Core・Binary・円分体・厳密FFT・Fp多項式、計67テストをnative/JS
 Leanモデルでは任意のnに対する商余りの保存とfloor(n/2)の一致を検査する。
 モデルからMoonBitへの構造対応は人手のレビューであり、コンパイラの正しさは証明しない。
 
+同一native releaseの実行ファイル・CPU4・入力構築除外で、64の半分化はBinary往復
+1.41±0.06 µsから直接処理0.499±0.041 µs、4096は67.70±2.59 µsから
+22.72±1.62 µsだった。各10標本。これはこの操作単体の比較で、既約性検査全体の速度比ではない。
+生ログは[direct-nat-half-native.txt](../measurements/direct-nat-half-native.txt)。
+
 呼び出し状況は[静的一覧](../CALL_PATHS.md)へ記録する。
 `core.gcd`と`interleave`は内部利用がない公開APIで、削除も不自然な強制利用もしない。
 `runbinary`は別の表現を持つ独立実装で、通常Binaryの既定backendにしたとは扱わない。
