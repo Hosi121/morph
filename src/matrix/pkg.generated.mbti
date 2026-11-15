@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/matrix"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] height(Matrix[A]) -> @core.Nat
+
+pub fn[A] identity(@core.Nat, @algebra.Semiring[A]) -> Matrix[A]
+
+pub fn[A] matrix(@core.Nat, @core.Chain[@core.Chain[A]]) -> Matrix[A]?
+
+pub fn[A] multiply(Matrix[A], Matrix[A], @algebra.Semiring[A]) -> Matrix[A]?
+
+pub fn[A] power(Matrix[A], @binary.Binary, @algebra.Semiring[A]) -> Matrix[A]?
+
+pub fn[A] rows(Matrix[A]) -> @core.Chain[@core.Chain[A]]
+
+pub fn[A] transpose(Matrix[A]) -> Matrix[A]
+
+pub fn[A] warshall(Matrix[A], @algebra.Semiring[A]) -> Matrix[A]?
+
+pub fn[A] width(Matrix[A]) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Matrix[A] {
+  width : @core.Nat
+  rows : @core.Chain[@core.Chain[A]]
+}
+pub fn[A : Eq] Matrix::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Matrix::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Matrix::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits

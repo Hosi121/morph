@@ -1,0 +1,40 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/algebra"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn booleans() -> Semiring[Bool]
+
+pub fn naturals() -> Semiring[@binary.Binary]
+
+pub fn rationals() -> Semiring[@exact.Rational]
+
+pub fn tropical() -> Semiring[Distance]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Distance {
+  Infinity
+  Finite(@binary.Binary)
+}
+pub fn Distance::equal(Self, Self) -> Bool
+pub fn Distance::not_equal(Self, Self) -> Bool
+pub fn Distance::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Semiring[A] {
+  zero : A
+  one : A
+  plus : (A, A) -> A
+  times : (A, A) -> A
+}
+
+// Type aliases
+
+// Traits
