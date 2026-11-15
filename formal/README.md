@@ -23,9 +23,10 @@ tools/check_formal
 加算の定理は最上位の0を含む非正規形の列にも成立する。
 証明は帰納法と算術を使い、特定の桁数の総当たりへ切り詰めていない。
 `#print axioms`で、Bool全条件の三定理は追加公理なし、
-帰納・算術の四定理はLean標準の`propext`/`Quot.sound`のみと確認した。
+Binary.leanの帰納・算術の四定理はLean標準の`propext`/`Quot.sound`のみと確認した。
 `sorry`や独自の正しさ公理を導入していない。
 実行ログ：[formal-lean.txt](../docs/measurements/formal-lean.txt)。
+Core追加後の10領域と各モデル定理は[nat-path-validation.txt](../docs/measurements/nat-path-validation.txt)に記録する。
 
 ## 信頼する境界と変更検出
 
@@ -54,6 +55,7 @@ Leanはwarningをerrorとして実行し、`sorry`のnegative controlも拒否�
 これはBoolの有限全条件を越えたgenericな構造の定理で、標準`propext`だけを使う。
 対応領域にcore.replicate/replicate_ontoを追加した。
 最初の[独立レビュー](REVIEW.md)は追加前の6領域を対象とした記録である。
+Coreの追加分は[別のレビュー](REVIEW-core.md)に範囲と限界を残した。
 
 ## Natを別表現へ変換しない半分化
 
