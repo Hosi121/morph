@@ -1,0 +1,42 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/huffman"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] build(@core.Chain[A], (A, A) -> Bool) -> Code[A]?
+
+pub fn[A] codeword(Code[A], A, (A, A) -> Bool) -> @core.Chain[Bool]?
+
+pub fn[A] decode(Code[A], @core.Chain[Bool]) -> @core.Chain[A]?
+
+pub fn[A] encode(Code[A], @core.Chain[A], (A, A) -> Bool) -> @core.Chain[Bool]?
+
+pub fn[A] tree(Code[A]) -> CodeTree[A]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Code[A] {
+  tree : CodeTree[A]
+}
+pub fn[A : Eq] Code::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Code::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Code::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CodeTree[A] {
+  Leaf(A)
+  Fork(CodeTree[A], CodeTree[A])
+}
+pub fn[A : Eq] CodeTree::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] CodeTree::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] CodeTree::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
