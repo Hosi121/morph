@@ -67,3 +67,81 @@ python3 tools/audit_purity.py
 [`smith_normal_form(...,domain=ZZ)`](https://docs.sympy.org/latest/modules/matrices/normalforms.html)。
 核の整数は独自Binaryに基づき、配列・機械整数・可変状態・FFIを使わない。
 有限の検査であり、すべての整数行列の終了・実時間・係数サイズの形式証明ではない。
+
+## 整数方程式と独立した不可能証拠
+
+`solve(form,b)` は整数の `A*x=b` を扱う。検査済み `UAV=D` から
+`D*z=U*b`、`x=V*z` と変換し、非零対角の位置は割り切れることを要求し、
+零行の位置は右辺も零であることを要求する。
+
+```moonbit
+pub fn solve(Decomposition, @core.Chain[@exact.Integer]) -> SolveResult?
+pub(all) enum SolveResult { Solved(IntegralSolution); Impossible(Obstruction) }
+pub fn particular(IntegralSolution) -> @core.Chain[@exact.Integer]
+pub fn kernel_basis(IntegralSolution) -> @core.Chain[@core.Chain[@exact.Integer]]
+```
+
+解は特解と、Vのrank以降の列を基底とする完全な整数kernelを持つ。
+すべての解は `particular + Σ t_j*basis_j`（t_jは任意の整数）。
+`check_solution` はA*x=bと各kernel vectorの零像を直接確認し、
+基底が検査済みVの自由列そのものであることも確認する。
+単にkernelに入るだけの真の部分格子を、完全な整数解族とは認めない。
+
+不可能性は二種類のrawな `Obstruction` で表す。
+`Congruence(y,d)` はd>1、y*Aの全係数がdの倍数、y*bがdの倍数でないことを示す。
+`Annihilator(y)` はy*A=0なのにy*bが非零であることを示す。
+`check_obstruction(A,b,witness)` はSmith生成器やDecompositionを受け取らず、
+元の整数の内積と割り切れだけで検査するため、独立して不可能性を確認できる。
+有理数なら解ける `2*x=1` も、整数では最初の証拠で拒否する。
+
+全scalar係数/右辺−4〜4、2×2係数−1〜1と右辺−2〜2の2025組を調べる。
+返された解は整数式で直接検査し、不可能証拠を再検査する。
+不可能の例ではさらに−4〜4の全候補解にも反例がないことを確認する。
+この有限の候補探索だけを一般の不可能証明の代用にはしていない。
+長方形、空の制約、変数0個、整合しない右辺長、偽の基底・不可能証拠も検査する。
+
+## 有限生成アーベル群の入口
+
+整数m×n行列Aを関係写像 `Z^n -> Z^m` とし、`cokernel(form)` は
+`Z^m/image(A)` の自由rankと、1より大きいtorsion invariant factorsを返す。
+これは [William Stein, §2.1, Theorem 2.1.2とProposition 2.1.6](https://wstein.org/books/ant/ant/Ch2.html)
+に述べられるSmith形による分類に対応する。
+
+```moonbit
+pub fn cokernel(Decomposition) -> Cokernel
+pub fn free_rank(Cokernel) -> @core.Nat
+pub fn torsion_factors(Cokernel) -> @core.Chain[@binary.Binary]
+pub fn finite_order(Cokernel) -> @binary.Binary?
+pub fn class_coordinates(Cokernel, @core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?
+pub fn equivalent(Cokernel, @core.Chain[@exact.Integer], @core.Chain[@exact.Integer]) -> Bool
+```
+
+自由rankはm−rank(A)。自由部分がなければ `finite_order` はtorsion factorsの積、
+自由部分があれば `None` を返す。空のtorsion積は1。
+`class_coordinates` はUを適用した後、非零対角では正の剰余へ、自由位置では
+符号付き整数のままにする。元の座標系のvectorそのものではなくSmith座標である。
+`equivalent` は二つのvectorが同じ剰余類かをこの正規座標で判定する。
+例えばdiag(4,6)のcokernelは `Z/2 ⊕ Z/12`、要素数24となる。
+零行を一つ加えたdiag(2,6)なら自由rank1とtorsion 2/6を持ち、無限群となる。
+
+## 生成と検査の計測
+
+2026-11-15、Intel Core Ultra 7 255H、x86_64、moonc v0.10.20、
+`tools/moon bench src/smith --target native --release`。
+入力・初期identity・燃料の構築を除外する。生成側は全変形と最終独立checkerを含む。
+共有ホストの同時負荷や周波数は固定していない。
+
+| 処理 | 平均±標準偏差 |
+| --- | --- |
+| 固定3×3の生成とchecker | 41.21 µs ± 2.04 µs |
+| 同じ3×3の既存証拠をcheckerで再検査 | 18.97 µs ± 706.37 ns |
+| 固定4×4の生成とchecker | 247.73 µs ± 5.80 µs |
+
+生成と再検査のコストの記録であり、異なる結果を返す処理の性能優位を示す比較ではない。
+他の整数行列ライブラリとの比較や、中間整数の最大bit量・メモリ量の測定は行っていない。
+
+```text
+generate/check 3x3: 41.21 µs ± 2.04 µs; 38.63 µs … 44.06 µs; 10 × 2391 runs
+check 3x3: 18.97 µs ± 706.37 ns; 17.81 µs … 19.80 µs; 10 × 5564 runs
+generate/check 4x4: 247.73 µs ± 5.80 µs; 242.82 µs … 261.82 µs; 10 × 402 runs
+```

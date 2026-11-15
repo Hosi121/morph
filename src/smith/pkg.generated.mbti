@@ -12,13 +12,31 @@ import {
 // Values
 pub fn check(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> Decomposition?
 
+pub fn check_obstruction(@matrix.Matrix[@exact.Integer], @core.Chain[@exact.Integer], Obstruction) -> Bool
+
+pub fn check_solution(Decomposition, @core.Chain[@exact.Integer], @core.Chain[@exact.Integer], @core.Chain[@core.Chain[@exact.Integer]]) -> IntegralSolution?
+
+pub fn class_coordinates(Cokernel, @core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?
+
+pub fn cokernel(Decomposition) -> Cokernel
+
 pub fn diagonal(Decomposition) -> @matrix.Matrix[@exact.Integer]
 
+pub fn equivalent(Cokernel, @core.Chain[@exact.Integer], @core.Chain[@exact.Integer]) -> Bool
+
+pub fn finite_order(Cokernel) -> @binary.Binary?
+
+pub fn free_rank(Cokernel) -> @core.Nat
+
 pub fn invariant_factors(Decomposition) -> @core.Chain[@binary.Binary]
+
+pub fn kernel_basis(IntegralSolution) -> @core.Chain[@core.Chain[@exact.Integer]]
 
 pub fn left(Decomposition) -> @matrix.Matrix[@exact.Integer]
 
 pub fn original(Decomposition) -> @matrix.Matrix[@exact.Integer]
+
+pub fn particular(IntegralSolution) -> @core.Chain[@exact.Integer]
 
 pub fn rank(Decomposition) -> @core.Nat
 
@@ -26,13 +44,31 @@ pub fn right(Decomposition) -> @matrix.Matrix[@exact.Integer]
 
 pub fn run(Machine, @core.Nat) -> Status
 
+pub fn solution_form(IntegralSolution) -> Decomposition
+
+pub fn solution_rhs(IntegralSolution) -> @core.Chain[@exact.Integer]
+
+pub fn solve(Decomposition, @core.Chain[@exact.Integer]) -> SolveResult?
+
 pub fn start(@matrix.Matrix[@exact.Integer]) -> Machine
 
 pub fn step(Machine) -> Status
 
+pub fn torsion_factors(Cokernel) -> @core.Chain[@binary.Binary]
+
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Cokernel {
+  form : Decomposition
+  free : @core.Nat
+  torsion : @core.Chain[@binary.Binary]
+}
+pub fn Cokernel::equal(Self, Self) -> Bool
+pub fn Cokernel::not_equal(Self, Self) -> Bool
+pub fn Cokernel::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Decomposition {
   input : @matrix.Matrix[@exact.Integer]
@@ -45,6 +81,17 @@ pub fn Decomposition::not_equal(Self, Self) -> Bool
 pub fn Decomposition::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+pub struct IntegralSolution {
+  form : Decomposition
+  rhs : @core.Chain[@exact.Integer]
+  particular : @core.Chain[@exact.Integer]
+  basis : @core.Chain[@core.Chain[@exact.Integer]]
+}
+pub fn IntegralSolution::equal(Self, Self) -> Bool
+pub fn IntegralSolution::not_equal(Self, Self) -> Bool
+pub fn IntegralSolution::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub struct Machine {
   input : @matrix.Matrix[@exact.Integer]
   current : @matrix.Matrix[@exact.Integer]
@@ -55,6 +102,24 @@ pub struct Machine {
 pub fn Machine::equal(Self, Self) -> Bool
 pub fn Machine::not_equal(Self, Self) -> Bool
 pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Obstruction {
+  Congruence(@core.Chain[@exact.Integer], @binary.Binary)
+  Annihilator(@core.Chain[@exact.Integer])
+}
+pub fn Obstruction::equal(Self, Self) -> Bool
+pub fn Obstruction::not_equal(Self, Self) -> Bool
+pub fn Obstruction::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SolveResult {
+  Solved(IntegralSolution)
+  Impossible(Obstruction)
+}
+pub fn SolveResult::equal(Self, Self) -> Bool
+pub fn SolveResult::not_equal(Self, Self) -> Bool
+pub fn SolveResult::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) enum Status {
