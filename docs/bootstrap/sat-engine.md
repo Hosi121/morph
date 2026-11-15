@@ -358,3 +358,34 @@ However, temporarily using it in the complete width-16 engine gave search time
 certificate checker measured 72.48 ms ± 2.47 ms. An engine-level improvement was
 not established, so production lookup remains unchanged. The test-only prototype
 and microbenchmark remain available for a later profile-led investigation.
+
+## Native CDCL phase profile
+
+The environment has no `perf` executable. A test-only sampler therefore times
+`watch_inspect` and `transition` separately with the native monotonic clock,
+classifies every transition, and checks the resulting proof with `ruplog`.
+No clocks or mutable counters enter production code.
+
+One CPU-10-pinned instrumented 64-bit miter run, before the next optimization:
+
+| Transition kind | Count | Inspection | Transition handling |
+| --- | ---: | ---: | ---: |
+| Propagation | 18,174 | 56.15 ms | 15.36 ms |
+| Decision | 3,276 | 1,403.31 ms | 8.54 ms |
+| Conflict | 478 | 1.12 ms | 269.05 ms |
+
+The decision inspection accounts for about 80% of this sampled run. It scans
+the entire database to diagnose a unit clause missed by the watch index, even
+after finding the first open clause. A correct quiescent watch index already
+guarantees no pending unit/conflict. This identifies the full diagnostic scan
+as the first candidate, ahead of conflict-analysis trail lookup.
+
+The separate uninstrumented search benchmark measured 2.83 s ± 657.11 ms over
+ten runs, range 1.85–3.40 s. The instrumented breakdown is one observation,
+not a statistical timing claim. The next comparison will retain the full
+diagnostic helper in the same executable and validate quiescent fast decisions
+against it in white-box tests.
+
+```sh
+taskset -c 10 tools/moon bench src/cdcl/profile_wbtest.mbt --target native --release -i 1
+```
