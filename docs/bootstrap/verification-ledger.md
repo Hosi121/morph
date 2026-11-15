@@ -10,7 +10,7 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | CIR-3 | 同じ幅の加算回路が同じ出力を返す | miterのUNSAT、RUP検査、Bool側の整数oracle | 個別の有限幅に対する等価性証拠 |
 | CIR-4 | 壊れた最適化は検査に落ちる | ANDをORへ変えたmiterの反例を元の式で再評価 | 陽性・陰性のsanity case |
 | SAT-1 | RUP受理は探索とは別に検査する | 独立レビュー、偽造列、整数固定点oracle | checker自体の形式証明なし |
-| NAT-1 | 大きなNatラベルでも変換を開始できる | ID65535の単一unit節、JS/Wasm/native回帰 | 旧from_natでstack overflowが再現。基礎修正待ち |
+| NAT-1 | 大きなNatラベルでも変換を開始できる | ID65535の単一unit節、JS/Wasm/native回帰、Nat変換100000まで | from_natを末尾再帰化して全3backendで回帰を解消。任意の大きさに対する資源上限の証明ではない |
 | PURE-1 | 核に数値型・配列・可変状態・FFIが混入しない | Pythonソースゲートとコンパイラの警告禁止 | 保守的な字句検査であり、コンパイラ証明ではない |
 
 定理の全入力の正しさ、固定幅の完全なBoolean検査、有限の生成例の一致を同一視しない。

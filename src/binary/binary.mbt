@@ -92,7 +92,14 @@ pub fn add(a : Binary, b : Binary) -> Binary {
 
 ///|
 pub fn successor(n : Binary) -> Binary {
-  add(n, one())
+  fn carry(bits : @core.Chain[Bool]) -> @core.Chain[Bool] {
+    match bits {
+      Nil => Cons(true, Nil)
+      Cons(false, rest) => Cons(true, rest)
+      Cons(true, rest) => Cons(false, carry(rest))
+    }
+  }
+  { bits: carry(n.bits), }
 }
 
 ///|
@@ -262,10 +269,13 @@ pub fn power(base : Binary, exponent : Binary) -> Binary {
 
 ///|
 pub fn from_nat(n : @core.Nat) -> Binary {
-  match n {
-    Zero => zero()
-    Succ(rest) => successor(from_nat(rest))
+  fn walk(rest : @core.Nat, value : Binary) -> Binary {
+    match rest {
+      Zero => value
+      Succ(rest) => walk(rest, successor(value))
+    }
   }
+  walk(n, zero())
 }
 
 ///|
