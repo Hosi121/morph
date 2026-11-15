@@ -4,8 +4,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：65パッケージ、113ソース。
-核のテスト宣言：463、bench group：123。
+算法の核：65パッケージ、114ソース。
+核のテスト宣言：463、bench group：126。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -31,7 +31,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [discretelog](../src/discretelog) | 2 | 7 | 4 | `binary`, `core`, `factor`, `modular`, `primality`, `primefield`, `trie` |
 | [dp](../src/dp) | 2 | 2 | 0 | `binary`, `core` |
 | [elliptic](../src/elliptic) | 1 | 2 | 0 | `binary`, `core`, `finitefield`, `modular` |
-| [exact](../src/exact) | 1 | 11 | 21 | `binary`, `core` |
+| [exact](../src/exact) | 2 | 11 | 24 | `binary`, `core` |
 | [exactcover](../src/exactcover) | 2 | 4 | 0 | `binary`, `core` |
 | [exactfft](../src/exactfft) | 1 | 15 | 0 | `binary`, `core`, `cyclotomic`, `exact`, `fft` |
 | [factor](../src/factor) | 3 | 17 | 4 | `binary`, `core`, `modular`, `primality` |

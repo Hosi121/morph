@@ -9,7 +9,7 @@
 | --- | ---: | ---: | --- |
 | `core.gcd` | 0 | 1 | 公開API・内部の呼出しなし |
 | `core.interleave` | 0 | 1 | 公開API・内部の呼出しなし |
-| `binary.stein_gcd` | 1 | 4 | 本体から参照あり |
+| `binary.stein_gcd` | 1 | 5 | 本体から参照あり |
 | `binary.karatsuba` | 4 | 10 | 本体から参照あり |
 | `core.half_nat` | 3 | 2 | 本体から参照あり |
 | `core.halve_nat` | 3 | 2 | 本体から参照あり |
@@ -20,7 +20,7 @@
 
 ## 本体の参照位置
 
-- `binary.stein_gcd`: [src/exact/exact.mbt:398](../src/exact/exact.mbt#L398)
+- `binary.stein_gcd`: [src/exact/exact.mbt:409](../src/exact/exact.mbt#L409)
 - `binary.karatsuba`: [src/binary/number_theory.mbt:40](../src/binary/number_theory.mbt#L40), [src/binary/number_theory.mbt:48](../src/binary/number_theory.mbt#L48), [src/binary/number_theory.mbt:63](../src/binary/number_theory.mbt#L63), [src/binary/number_theory.mbt:64](../src/binary/number_theory.mbt#L64)
 - `core.half_nat`: [src/cyclotomic/cyclotomic.mbt:58](../src/cyclotomic/cyclotomic.mbt#L58), [src/fppoly/irreducibility.mbt:96](../src/fppoly/irreducibility.mbt#L96), [src/fppoly/irreducibility.mbt:165](../src/fppoly/irreducibility.mbt#L165)
 - `core.halve_nat`: [src/binary/binary.mbt:340](../src/binary/binary.mbt#L340), [src/core/natural.mbt:16](../src/core/natural.mbt#L16), [src/core/natural.mbt:26](../src/core/natural.mbt#L26)
