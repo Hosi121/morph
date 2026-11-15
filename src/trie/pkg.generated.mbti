@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/trie"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] below(Trie[A], @core.Chain[Bool]) -> Trie[A]
+
+pub fn[A] empty() -> Trie[A]
+
+pub fn[A] entries(Trie[A]) -> @core.Chain[(@core.Chain[Bool], A)]
+
+pub fn[A] longest_prefix(Trie[A], @core.Chain[Bool]) -> (@core.Nat, A)?
+
+pub fn[A] lookup(Trie[A], @core.Chain[Bool]) -> A?
+
+pub fn[A, B] map(Trie[A], (A) -> B) -> Trie[B]
+
+pub fn[A] put(Trie[A], @core.Chain[Bool], A) -> Trie[A]
+
+pub fn[A] remove(Trie[A], @core.Chain[Bool]) -> Trie[A]
+
+pub fn[A] size(Trie[A]) -> @core.Nat
+
+pub fn[A] union(Trie[A], Trie[A], (A, A) -> A) -> Trie[A]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub enum Trie[A] {
+  Empty
+  Branch(A?, Trie[A], Trie[A])
+}
+pub fn[A : Eq] Trie::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Trie::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Trie::to_repr(Self[A]) -> @debug.Repr
+
+// Type aliases
+
+// Traits
