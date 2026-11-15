@@ -1146,3 +1146,21 @@ SAT専用の改善候補を共通のBinaryへ戻す。これは上位の算法�
 `python3 tools/inventory.py`は[算法・依存・テスト宣言の一覧](docs/INVENTORY.md)を生成する。
 宣言数と実行成功数、有限検査と形式証明を混同しない。
 主要な主張と信頼境界は[検証台帳](docs/bootstrap/verification-ledger.md)で対応付ける。
+
+その後、[Berlekamp–Masseyと巡回RS](docs/bootstrap/cyclic-rs.md)をGF(256)・255長まで接続し、
+[AES](docs/bootstrap/aes.md)はSboxを有限体逆元から生成して全3鍵長のblock暗号・復号を構成した。
+NISTの中間状態やOpenSSLの別実装と照合する。
+[Smith標準形](docs/bootstrap/smith.md)から整数方程式とアーベル群へ進み、
+[LLL](docs/bootstrap/lll.md)は近似を使わず、同じ整数格子を表す証拠と簡約条件を検査する。
+[BDD](docs/bootstrap/bdd.md)と[SMT](docs/bootstrap/smt.md)も、SATと異なる意味の層を往復するための部品になった。
+
+[圧縮二進算術](docs/bootstrap/runbinary.md)では、長い同一bit列をrun単位で扱い、
+通常のbit列を作れない巨大値でも加減乗算・pair・限定した除算を行う。
+一方で交互bitの多い入力は遅くなるため、通常のBinaryと使い分ける。
+[独立レビュー](docs/bootstrap/review-runbinary.md)で巨大値の境界も追試した。
+
+ユーザーの追加指示で、以降は共有カーネルの高速化を最優先にする。
+新しい上位算法の追加は一度区切り、binary、exact、有限体/多項式、SAT証拠検査を分担して
+profile・候補探索・同入力比較・上位算法への再計測を行う。
+必要な候補にはSAT/BDDや[Leanモデル](formal/README.md)も使う。
+モデル定理とMoonBitへの手動の構造対応は、[別担当のレビュー](formal/REVIEW.md)でも区別した。

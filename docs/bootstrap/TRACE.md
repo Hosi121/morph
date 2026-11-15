@@ -8,3 +8,9 @@
 - 14:09 UTC：一般GF(p)・Berlekamp多項式分解・GF(p^m)まで接続。離散対数と最小位数の検査も統合。
 - 14:12 UTC：共有Binaryを再整理。構造半分化とsuffix共有を上位乗算まで比較。carry-mux直接式は遅いため棄却。
 - 14:12 UTC：全体305テストをWasm GC/JS/nativeで検証。型APIの生成差分ゲートとソース一覧の生成を追加。
+- 14:24 UTC：Leanで任意長の加算・構造半分化によるNat変換とcarry/borrow固定点を検査。実装との対応の差分ゲートを追加。
+- 14:32 UTC：run算術の独立レビュー、燃料付き除算、Mersenne指数のGCDへ接続。
+- 14:38 UTC：差分制約の整数potential/負閉路checkerを追加し、lazy SMTへ接続。
+- 14:44 UTC：ユーザーがカーネルの高速化を明示的に優先。後半の分担を共通部品へ再配置。
+- 14:48 UTC：AES全鍵長・LLL/Smithの応用まで統合。ユーザーがGitHub public repoへのuploadを許可。
+- 14:50 UTC：全体430テストを3backend、Leanを再検証。公開前snapshotを整える。
