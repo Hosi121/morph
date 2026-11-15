@@ -1,0 +1,12 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/primefield",
+  "Hosi121/morph/fppoly",
+  "Hosi121/morph/galois",
+  "Hosi121/morph/trie",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"

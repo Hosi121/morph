@@ -1,0 +1,125 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/aes"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/fppoly",
+  "Hosi121/morph/galois",
+  "Hosi121/morph/trie",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add_round_key(Block, Block) -> Block
+
+pub fn binary(Octet) -> @binary.Binary
+
+pub fn bits(Octet) -> @core.Chain[Bool]
+
+pub fn block(@core.Chain[Octet]) -> Block?
+
+pub fn byte_field(Tables) -> @galois.Field
+
+pub fn calculate_sbox(Tables, Octet) -> Result[Octet, AesError]
+
+pub fn from_binary(@binary.Binary) -> Octet?
+
+pub fn from_galois(Tables, @galois.Element) -> Result[Octet, AesError]
+
+pub fn inverse_mix_columns(Block) -> Block
+
+pub fn inverse_sbox(Tables, Octet) -> Result[Octet, AesError]
+
+pub fn inverse_shift_rows(Block) -> Block
+
+pub fn inverse_sub_bytes(Tables, Block) -> Result[Block, AesError]
+
+pub fn mix_columns(Block) -> Block
+
+pub fn multiply(Octet, Octet) -> Octet
+
+pub fn octet(@core.Chain[Bool]) -> Octet?
+
+pub fn octets(Block) -> @core.Chain[Octet]
+
+pub fn one() -> Octet
+
+pub fn sbox(Tables, Octet) -> Result[Octet, AesError]
+
+pub fn shift_rows(Block) -> Block
+
+pub fn sub_bytes(Tables, Block) -> Result[Block, AesError]
+
+pub fn tables() -> Result[Tables, AesError]
+
+pub fn to_galois(Tables, Octet) -> Result[@galois.Element, AesError]
+
+pub fn xor(Octet, Octet) -> Octet
+
+pub fn xtime(Octet) -> Octet
+
+pub fn zero() -> Octet
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum AesError {
+  InvalidKeyLength
+  Algebra(@galois.FieldError)
+  Polynomial(@fppoly.PolyError)
+  InternalInvariant
+}
+pub fn AesError::equal(Self, Self) -> Bool
+pub fn AesError::not_equal(Self, Self) -> Bool
+pub fn AesError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Block {
+  columns : Four[Four[Octet]]
+}
+pub fn Block::equal(Self, Self) -> Bool
+pub fn Block::not_equal(Self, Self) -> Bool
+pub fn Block::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Four[A] {
+  a : A
+  b : A
+  c : A
+  d : A
+}
+pub fn[A : Eq] Four::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Four::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Four::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Octet {
+  a : Bool
+  b : Bool
+  c : Bool
+  d : Bool
+  e : Bool
+  f : Bool
+  g : Bool
+  h : Bool
+}
+pub fn Octet::equal(Self, Self) -> Bool
+pub fn Octet::not_equal(Self, Self) -> Bool
+pub fn Octet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Tables {
+  field : @galois.Field
+  forward : @trie.Trie[Octet]
+  inverse : @trie.Trie[Octet]
+}
+pub fn Tables::equal(Self, Self) -> Bool
+pub fn Tables::not_equal(Self, Self) -> Bool
+pub fn Tables::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Word = Four[Octet]
+
+// Traits
