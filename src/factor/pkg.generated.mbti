@@ -18,6 +18,8 @@ pub fn cofactor(Split) -> @binary.Binary
 
 pub fn divisor(Split) -> @binary.Binary
 
+pub fn factor_search(@binary.Binary, @core.Chain[@primality.Certificate], @core.Chain[(@binary.Binary, @binary.Binary)]) -> Search?
+
 pub fn factorization_value(Factorization) -> @binary.Binary
 
 pub fn iterations(Machine) -> @core.Nat
@@ -26,13 +28,25 @@ pub fn number(Split) -> @binary.Binary
 
 pub fn prime_factors(Factorization) -> @core.Chain[@primality.Prime]
 
+pub fn proven_certificates(Search) -> @core.Chain[@primality.Certificate]
+
+pub fn retry_search(Search, @core.Chain[@primality.Certificate], @core.Chain[(@binary.Binary, @binary.Binary)]) -> Search
+
 pub fn run(Machine, @core.Nat) -> Status
+
+pub fn search_run(Search, @core.Nat) -> SearchStatus
+
+pub fn search_step(Search) -> SearchStatus
+
+pub fn search_value(Search) -> @binary.Binary
 
 pub fn start(@binary.Binary, @binary.Binary, @binary.Binary) -> Machine?
 
 pub fn step(Machine) -> Status
 
 pub fn target(Machine) -> @binary.Binary
+
+pub fn unresolved(Search) -> @core.Chain[@binary.Binary]
 
 // Errors
 
@@ -57,6 +71,39 @@ pub struct Machine {
 pub fn Machine::equal(Self, Self) -> Bool
 pub fn Machine::not_equal(Self, Self) -> Bool
 pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Search {
+  number : @binary.Binary
+  pending : @core.Chain[@binary.Binary]
+  proven : @core.Chain[@primality.Certificate]
+  bank : @core.Chain[@primality.Certificate]
+  seeds : @core.Chain[(@binary.Binary, @binary.Binary)]
+  phase : SearchPhase
+}
+pub fn Search::equal(Self, Self) -> Bool
+pub fn Search::not_equal(Self, Self) -> Bool
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum SearchPhase {
+  Select
+  Walk(Machine, @core.Chain[(@binary.Binary, @binary.Binary)])
+  Blocked
+}
+pub fn SearchPhase::equal(Self, Self) -> Bool
+pub fn SearchPhase::not_equal(Self, Self) -> Bool
+pub fn SearchPhase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SearchStatus {
+  Complete(Factorization)
+  Searching(Search)
+  Exhausted(Search)
+}
+pub fn SearchStatus::equal(Self, Self) -> Bool
+pub fn SearchStatus::not_equal(Self, Self) -> Bool
+pub fn SearchStatus::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Split {

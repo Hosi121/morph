@@ -432,3 +432,61 @@ test "complete large factorizations require certified prime leaves" {
     ),
   )
 }
+
+///|
+test "budgeted recursive rho search completes only with certified leaves" {
+  let n = @oracle.binary_from_hex("5f8523f")
+  let certificates : @core.Chain[@primality.Certificate] = Cons(
+    factor_cert_10007(),
+    Cons(factor_cert_10009(), Nil),
+  )
+  let seeds : @core.Chain[(@binary.Binary, @binary.Binary)] = Cons(
+    (@oracle.binary_from_hex("2"), @oracle.binary_from_hex("1")),
+    Nil,
+  )
+  let search = factor_search(n, certificates, seeds).unwrap()
+  match search_run(search, @oracle.nat(512)) {
+    Complete(complete) => {
+      assert_eq(factorization_value(complete), n)
+      let factors = @core.map(prime_factors(complete), @primality.value)
+      assert_eq(@core.fold_left(factors, @binary.one(), @binary.multiply), n)
+    }
+    _ => abort("configured prime bank and rho schedule must complete")
+  }
+  let n = @oracle.binary_from_hex("10000fffafffb")
+  let certificates : @core.Chain[@primality.Certificate] = Cons(
+    factor_cert_65537(),
+    Cons(factor_cert_4294967291(), Nil),
+  )
+  let seeds : @core.Chain[(@binary.Binary, @binary.Binary)] = Cons(
+    (@oracle.binary_from_hex("2"), @oracle.binary_from_hex("1")),
+    Nil,
+  )
+  let search = factor_search(n, certificates, seeds).unwrap()
+  match search_run(search, @oracle.nat(512)) {
+    Complete(complete) => {
+      assert_eq(factorization_value(complete), n)
+      let factors = @core.map(prime_factors(complete), @primality.value)
+      assert_eq(@core.fold_left(factors, @binary.one(), @binary.multiply), n)
+    }
+    _ => abort("configured prime bank and rho schedule must complete")
+  }
+  let n = @oracle.binary_from_hex("e8d6ca6163")
+  let certificates : @core.Chain[@primality.Certificate] = Cons(
+    factor_cert_1000003(),
+    Cons(factor_cert_1000033(), Nil),
+  )
+  let seeds : @core.Chain[(@binary.Binary, @binary.Binary)] = Cons(
+    (@oracle.binary_from_hex("2"), @oracle.binary_from_hex("1")),
+    Nil,
+  )
+  let search = factor_search(n, certificates, seeds).unwrap()
+  match search_run(search, @oracle.nat(512)) {
+    Complete(complete) => {
+      assert_eq(factorization_value(complete), n)
+      let factors = @core.map(prime_factors(complete), @primality.value)
+      assert_eq(@core.fold_left(factors, @binary.one(), @binary.multiply), n)
+    }
+    _ => abort("configured prime bank and rho schedule must complete")
+  }
+}

@@ -128,6 +128,18 @@ def factor_vectors() -> None:
         out += '  assert_eq(factorization_value(complete), n)\n'
         out += f'  assert_eq(@core.map(prime_factors(complete), @primality.value), Cons({numeral(p)}, Cons({numeral(q)}, Nil)))\n'
     out += '}\n'
+    out += '///|\ntest "budgeted recursive rho search completes only with certified leaves" {\n'
+    for p, q in examples:
+        out += f'  let n = {numeral(p * q)}\n'
+        out += f'  let certificates : @core.Chain[@primality.Certificate] = Cons(factor_cert_{p}(), Cons(factor_cert_{q}(), Nil))\n'
+        out += f'  let seeds : @core.Chain[(@binary.Binary, @binary.Binary)] = Cons(({numeral(2)}, {numeral(1)}), Nil)\n'
+        out += '  let search = factor_search(n, certificates, seeds).unwrap()\n'
+        out += '  match search_run(search, @oracle.nat(512)) {\n'
+        out += '    Complete(complete) => {\n      assert_eq(factorization_value(complete), n)\n'
+        out += '      let factors = @core.map(prime_factors(complete), @primality.value)\n'
+        out += '      assert_eq(@core.fold_left(factors, @binary.one(), @binary.multiply), n)\n'
+        out += '    }\n    _ => abort("configured prime bank and rho schedule must complete")\n  }\n'
+    out += '}\n'
     (ROOT / 'src/factor/vectors_wbtest.mbt').write_text(out)
 
 

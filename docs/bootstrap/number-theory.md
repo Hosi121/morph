@@ -250,3 +250,46 @@ pub fn prime_factors(Factorization) -> @core.Chain[@primality.Prime]
 これにより281479271350267についても、単なる二数への分割から
 65537と4294967291の**確定した素数**への分解へ進める。
 通常テストはコミット済みfixtureを使い、その再生成も同じPythonツールで行う。
+
+## 有限の計画で再帰分割するdriver
+
+`factor_search(n,bank,seeds)` は、証明の候補列と有限の `(seed,c)` 列を受け取る。
+未処理の因子に合う素数証明がbankにあれば検査して確定し、なければrhoで分割する。
+rhoの失敗では、その因子について次の明示seedへ移る。
+全seedが失敗、または未証明の因子にseedを与えていない場合は `Exhausted` で止まる。
+次の因子には同じ有限seed列を最初から使う。
+
+```moonbit
+pub fn factor_search(
+  @binary.Binary,
+  @core.Chain[@primality.Certificate],
+  @core.Chain[(@binary.Binary, @binary.Binary)],
+) -> Search?
+pub fn search_step(Search) -> SearchStatus
+pub fn search_run(Search, @core.Nat) -> SearchStatus
+pub(all) enum SearchStatus {
+  Complete(Factorization)
+  Searching(Search)
+  Exhausted(Search)
+}
+```
+
+`Searching` は燃料切れの継続状態であり、同じ `search_run` でそのまま再開する。
+`Exhausted` は計画が尽きた状態なので、燃料だけ足しても進まない。
+`retry_search(search,additional_certificates,seeds)` で証拠を追加し、seed列を明示的に
+置き換える。完了した素数leafは保ち、動いていた軌道があればその対象だけ再初期化する。
+`unresolved` と `proven_certificates` から途中の未処理因子と検査済み証明を取り出せる。
+途中では「検査済みleafの積 × 未処理因子の積 = 元のn」を保つ。
+
+燃料1はschedulerの1処理（leaf選択・証明bankの照合・rho初期化・rho1反復・完了確認）。
+bankに含まれるcertificateを検査する内部コストは、燃料1で固定されるわけではない。
+`Complete` の直前には独立の `check_factorization` で全証明と積を再検査する。
+bankの誤証明、未証明の素数、Miller–Rabinを通過しただけの値は確定leafにしない。
+このdriver自身は新しい素数証明を発見しないため、任意入力の完全分解を保証しない。
+
+小さな分解では、複数seedへの移行、燃料の分割と一括実行の同一性、
+すべての途中境界での積の不変条件、枯渇状態の安定性、証拠とseedを追加した再開を検査する。
+例えば22を2×11へ分割しても、11の証明がなければ2の証明だけを保持して止まる。
+正しい11の証明を追加すると、先の進捗を保って完全分解へ進む。
+大きい三つのsemiprimeも、生成済みbankと `(2,1)` の計画・燃料512で再帰分割から
+両leafの素数証明まで到達することを検査する。
