@@ -14,6 +14,8 @@ pub fn check(Certificate) -> Prime?
 
 pub fn check_composite(@binary.Binary, CompositeWitness) -> CompositeProof?
 
+pub fn check_pocklington(@binary.Binary, @binary.Binary, @core.Chain[Certificate]) -> Prime?
+
 pub fn composite_value(CompositeProof) -> @binary.Binary
 
 pub fn composite_witness(CompositeProof) -> CompositeWitness

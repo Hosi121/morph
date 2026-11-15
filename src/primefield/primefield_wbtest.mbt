@@ -76,6 +76,17 @@ test "checked prime and exact trial entry points construct the same field" {
 }
 
 ///|
+test "general field accepts a checked partial Pocklington prime" {
+  let n = @oracle.binary(998244353)
+  let factors : @core.Chain[@primality.Certificate] = @core.replicate(
+    @oracle.nat(15),
+    @primality.Two,
+  )
+  let prime = @primality.check_pocklington(n, @oracle.binary(3), factors).unwrap()
+  assert_eq(@modular.value(modulus(from_prime(prime).unwrap())), n)
+}
+
+///|
 test "GF two three five arithmetic and all small inverse claims match integers" {
   for p in [2, 3, 5] {
     let f = field(@oracle.binary(p)).unwrap()

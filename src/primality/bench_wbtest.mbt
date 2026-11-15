@@ -55,3 +55,11 @@ test "trial composite decision 100160063 excluding input construction" (
   let n = @oracle.binary(100160063)
   b.bench(fn() { b.keep(@modular.is_prime(n)) })
 }
+
+///|
+test "Pocklington 998244353 partial factor two to fifteen" (b : @bench.T) {
+  let n = @oracle.binary(998244353)
+  let witness = @oracle.binary(3)
+  let factors = @core.replicate(@oracle.nat(15), Two)
+  b.bench(fn() { b.keep(check_pocklington(n, witness, factors)) })
+}
