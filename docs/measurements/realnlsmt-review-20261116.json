@@ -1,0 +1,368 @@
+{
+  "base": "ffa053efc9a5e09c635df95901db809449f536cb",
+  "required_fix": "612a159e26d28fc8753208564c50d286265f03b9",
+  "local_prerequisite_cherry_pick": "f597dc5",
+  "kernel_changed_by_review": false,
+  "cpu": "Intel Core Ultra 7 255H, fixed CPU 6, Git-common tools/measure lock",
+  "moon": "moon 0.1.20261104 (940aa18 2026-11-04)",
+  "initial_probe": {
+    "cases": 3,
+    "passed": 3,
+    "real": 2.17,
+    "user": 1.72,
+    "sys": 0.21,
+    "generation": "three hand-proved preflight cases, subsequently confirmed by Z3",
+    "log_sha256": "86073b15a15794ac749e8d4f2fc1191300590780fc67b59a87aa2c93bac9c65c"
+  },
+  "acceptance": {
+    "native": {
+      "command": "tools/measure --cpu 6 /usr/bin/time -p tools/moon test --deny-warn --target native src/realnlsmt -f 'independent Z3 review*'",
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "real": 12.22,
+      "user": 11.01,
+      "sys": 0.74,
+      "log_sha256": "36b4b31d32126513475e560d60455c4e2f8c530a703517f2cc7cf645144e5d04"
+    },
+    "wasm-gc": {
+      "command": "tools/measure --cpu 6 /usr/bin/time -p tools/moon test --deny-warn --target wasm-gc src/realnlsmt -f 'independent Z3 review*'",
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "real": 6.92,
+      "user": 6.1,
+      "sys": 0.96,
+      "log_sha256": "b8ed33a0dfbea6f538b71f7ef1b810b4c1074d7de1ddcb571a9c66d259547083"
+    },
+    "js": {
+      "command": "tools/measure --cpu 6 /usr/bin/time -p tools/moon test --deny-warn --target js src/realnlsmt -f 'independent Z3 review*'",
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "real": 11.62,
+      "user": 9.86,
+      "sys": 1.07,
+      "log_sha256": "b413811e4badb2acf11b759871f5c3b539ad6c62b160157fb754f8ce0b8dc7e4"
+    }
+  },
+  "candidate_native_profile": [
+    {
+      "index": 0,
+      "name": "probe dependent irrational diagonal",
+      "wall": 0.010583595000753121,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 1,
+      "name": "probe nullified product fibre",
+      "wall": 0.021977313999741455,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 2,
+      "name": "probe four variable shared product contradiction",
+      "wall": 0.10217540399935388,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 3,
+      "name": "bilinear nonzero product at zero factor",
+      "wall": 0.008853352000187442,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 4,
+      "name": "bilinear nullification with irrational other coordinate",
+      "wall": 0.01316691899955913,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 5,
+      "name": "bilinear negative product of positives",
+      "wall": 0.01928205800049909,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 6,
+      "name": "bilinear negative branch Boolean alternative",
+      "wall": 0.006574217999514076,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 7,
+      "name": "dependent irrational product exact",
+      "wall": 0.014478789000349934,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 8,
+      "name": "dependent irrational product disequality",
+      "wall": 0.08224811500076612,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 9,
+      "name": "conjugate roots exhaustive alternatives",
+      "wall": 0.1555757510004696,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 10,
+      "name": "conjugate roots neither alternative",
+      "wall": 0.25844815300024493,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 11,
+      "name": "square root over negative parent",
+      "wall": 0.024985983000078704,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 12,
+      "name": "repeated section excludes zero root",
+      "wall": 0.026946620000671828,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 13,
+      "name": "nested positive fourth root",
+      "wall": 0.025006903999383212,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 14,
+      "name": "circle rational external threshold",
+      "wall": 0.14441467500000726,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 15,
+      "name": "circle rational endpoint section",
+      "wall": 0.014820202000009886,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 16,
+      "name": "circle rational endpoint rejects off axis",
+      "wall": 0.05890199900022708,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 17,
+      "name": "annulus rational open bounds",
+      "wall": 0.05669168900021759,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 18,
+      "name": "incompatible concentric open bounds",
+      "wall": 0.32942519600055675,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 19,
+      "name": "CNF nonlinear disjunction excludes both branches",
+      "wall": 3.312658054000167,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 20,
+      "name": "CNF nonlinear surviving irrational branch",
+      "wall": 1.0125726800006305,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 21,
+      "name": "CNF separate nonlinear positive conflicts",
+      "wall": 0.08489241200004471,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 22,
+      "name": "CNF exactly one nonlinear boundary",
+      "wall": 0.0510050319999209,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 23,
+      "name": "CNF both nonlinear boundaries forbidden",
+      "wall": 0.09436482500041166,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 24,
+      "name": "negated nonlinear conjunction surviving branch",
+      "wall": 0.00748765799926332,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 25,
+      "name": "trilinear graph at nullified first factor",
+      "wall": 0.07458917099938844,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 26,
+      "name": "trilinear graph irrational nullification",
+      "wall": 0.042842556000323384,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 27,
+      "name": "dependent three coordinate irrational diagonal",
+      "wall": 12.019379974000003,
+      "status": "timed_out",
+      "budget_seconds": 12
+    },
+    {
+      "index": 28,
+      "name": "dependent three coordinate inconsistent square",
+      "wall": 12.019198607000362,
+      "status": "timed_out",
+      "budget_seconds": 12
+    },
+    {
+      "index": 29,
+      "name": "three squares zero with nonzero coordinate alternative",
+      "wall": 1.0214019659997575,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 30,
+      "name": "three coordinate sphere diagonal plane",
+      "wall": 0.3941963670004043,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 31,
+      "name": "three products nullified middle factor",
+      "wall": 0.013997031000144489,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 32,
+      "name": "three products require middle factor nonzero",
+      "wall": 0.053972743000485934,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 33,
+      "name": "four variable nullified factor with dependent irrational pair",
+      "wall": 0.15581236999969406,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 34,
+      "name": "four variable nonzero product with zero factor",
+      "wall": 0.11279545499928645,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 35,
+      "name": "four variable nonzero product and both factors",
+      "wall": 0.0404311130005226,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 36,
+      "name": "four variable sum of products nullified coefficients",
+      "wall": 0.016919372000302246,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 37,
+      "name": "four variable affine product graph contradiction",
+      "wall": 0.06979209299970535,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 38,
+      "name": "four coordinate irrational diagonal",
+      "wall": 0.27454484600002615,
+      "status": "passed",
+      "returncode": 0
+    },
+    {
+      "index": 39,
+      "name": "four coordinate irrational diagonal inconsistent square",
+      "wall": 12.017144274000202,
+      "status": "timed_out",
+      "budget_seconds": 12
+    },
+    {
+      "index": 40,
+      "name": "four weighted squares zero excludes last coordinate",
+      "wall": 0.5102214439993986,
+      "status": "passed",
+      "returncode": 0
+    }
+  ],
+  "stress_phase_probes": [
+    {
+      "name": "dependent three coordinate irrational diagonal",
+      "wall": 4.0181695040000704,
+      "status": "timed_out",
+      "budget_seconds": 4,
+      "output": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"independent_review_phase_probe_wbtest.mbt\",\"index\":0}\n----- END MOON TEST RESULT -----\nstage CAD projection prepare begin\nstage CAD projection prepare end; lifting begin\n"
+    },
+    {
+      "name": "dependent three coordinate inconsistent square",
+      "wall": 4.0121679419999055,
+      "status": "timed_out",
+      "budget_seconds": 4,
+      "output": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"independent_review_phase_probe_wbtest.mbt\",\"index\":1}\n----- END MOON TEST RESULT -----\nstage CAD projection prepare begin\nstage CAD projection prepare end; lifting begin\n"
+    },
+    {
+      "name": "four coordinate irrational diagonal inconsistent square",
+      "wall": 4.011590516000069,
+      "status": "timed_out",
+      "budget_seconds": 4,
+      "output": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"independent_review_phase_probe_wbtest.mbt\",\"index\":2}\n----- END MOON TEST RESULT -----\nstage CAD projection prepare begin\nstage CAD projection prepare end; lifting begin\n"
+    }
+  ],
+  "interpretation": "Per-case or whole-job timeout is censored timing only; no SAT/UNSAT/model/refutation conclusion is inferred. All three stress cases returned definite results in Z3. Default MoonBit cohort excludes them after the fixed finite timing profile. Phase markers distinguish projection prepare from lifting only; they do not localize individual lifting operations.",
+  "source_sha256": {
+    "src/realnlsmt/independent_review_helpers_wbtest.mbt": "db3480a8938d9e9b9514b26e0a54ac4cef0ceb96fd449d94d0a5349aba687218",
+    "src/realnlsmt/independent_review_adversarial_wbtest.mbt": "ab32e95f9eb213813eb38f2176c08fd3d5b9939e47ad0df4b41b333c50cac8ae",
+    "src/realnlsmt/independent_review_z3_wbtest.mbt": "c9549af5240eda41517e2a00ffdcdd1670f64dc8a62f33fbeb0b261ed262a210",
+    "tools/generate_realnlsmt_review.py": "8c676fc90cb5749d0cbf59058aa80e354ad76544d406e6f4ed9ef4b88a8f8645"
+  }
+}

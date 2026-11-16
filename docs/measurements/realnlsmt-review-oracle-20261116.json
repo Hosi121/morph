@@ -1,0 +1,379 @@
+{
+  "reference": "Z3 qfnra-nlsat",
+  "z3_version": "5.4.1.0",
+  "wheel_version": "5.4.1.0",
+  "libz3_sha256": "529c335663f5f3e9143fd98a963266090348052f0f9fd7bf5fe891aad6ca5b35",
+  "input_coefficients": "Fraction/QQ only; no Float, approximation, evalf, or oracle call in the MoonBit kernel",
+  "scope": "finite independent nonlinear SMT corpus",
+  "cases": [
+    {
+      "name": "probe dependent irrational diagonal",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=y=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (= (+ (* (- 1) x0) (* 1 x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "e668b878b3cc190a8799b758e98d315c927f6df2982c106f91434053f9f2b529",
+      "default_case": true
+    },
+    {
+      "name": "probe nullified product fibre",
+      "arity": 3,
+      "expected": "sat",
+      "hand_argument": "x=0, arbitrary y, z=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x0 x1)) 0) (= (+ (* 1 x2 x2) (* (- 2))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "223cfca5f70e1516af39e11d845a4de77beff41d6754643b79a2e6c5ef068a68",
+      "default_case": true
+    },
+    {
+      "name": "probe four variable shared product contradiction",
+      "arity": 4,
+      "expected": "unsat",
+      "hand_argument": "The identical product cannot be zero and positive.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0 x2) (* (- 1) x0 x3) (* (- 1) x1 x2) (* 1 x1 x3)) 0) (> (+ (* 1 x0 x2) (* (- 1) x0 x3) (* (- 1) x1 x2) (* 1 x1 x3)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "85a3b9964aeec7d2f3f2ddbc17a09b32758e613a6dabe1fdc58413e4acfd10ce",
+      "default_case": true
+    },
+    {
+      "name": "bilinear nonzero product at zero factor",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "x=0 forces x*y=0, contradicting x*y=1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* (- 1))) 0) (= (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "288f44095d2db2966e7f51f3c9ac4001bae58c32edc788187a1f10f381886b27",
+      "default_case": true
+    },
+    {
+      "name": "bilinear nullification with irrational other coordinate",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=0,y=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x1)) 0) (and (= (+ (* 1 x0)) 0) (= (+ (* 1 x1 x1) (* (- 2))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "24ec6ab95064cb104b10dffcff2d4f9ca719f1f1606f20f28b6c3dca06ead155",
+      "default_case": true
+    },
+    {
+      "name": "bilinear negative product of positives",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "A product of positive reals is positive, not -1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* 1)) 0) (and (> (+ (* 1 x0)) 0) (> (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "60abb6559fdc4ee7eb479ec40cbcbd322c485d4c28f4d055ede9dbac2dc1fd77",
+      "default_case": true
+    },
+    {
+      "name": "bilinear negative branch Boolean alternative",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=y=-1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* (- 1))) 0) (or (< (+ (* 1 x0)) 0) (< (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "4062737e0d8e94760de4b6c3910a0ef532c962bbba8b445f411393863b099046",
+      "default_case": true
+    },
+    {
+      "name": "dependent irrational product exact",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=y=sqrt(2), so x*y=2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* (- 1) x0) (* 1 x1)) 0) (= (+ (* 1 x0 x1) (* (- 2))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "90b2857b5e9a09114dc614c98a9bb4a2a1f3966d32ac9a0488cb6b87560100ed",
+      "default_case": true
+    },
+    {
+      "name": "dependent irrational product disequality",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "y=x and x*x=2 imply x*y=2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* (- 1) x0) (* 1 x1)) 0) (distinct (+ (* 1 x0 x1) (* (- 2))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "9219e50f6eed7d3d186656dccc02ca0dbdbb16cb789df5c2d39f95603477b3a9",
+      "default_case": true
+    },
+    {
+      "name": "conjugate roots exhaustive alternatives",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "The pair x=y=sqrt(2) satisfies the first alternative.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* 1 x1 x1) (* (- 2))) 0) (or (= (+ (* 1 x0) (* (- 1) x1)) 0) (= (+ (* 1 x0) (* 1 x1)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "b0d363beb719462143bd2056da432d5a88978255d6a79dbff4b9aae88e8713f5",
+      "default_case": true
+    },
+    {
+      "name": "conjugate roots neither alternative",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "Equal squares imply (x-y)*(x+y)=0 in a field.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* 1 x1 x1) (* (- 2))) 0) (and (distinct (+ (* 1 x0) (* (- 1) x1)) 0) (distinct (+ (* 1 x0) (* 1 x1)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "a4fe0bc477e0f7f1b6086d851c99e2dc9d42af91489346a9dc11169967d0796a",
+      "default_case": true
+    },
+    {
+      "name": "square root over negative parent",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "x=-1 would require y*y=-1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* (- 1) x0) (* 1 x1 x1)) 0) (= (+ (* 1 x0) (* 1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "76350951d65ee2735877f9caab163106a6a6d9977eb88d6dfe38144de96e9ce2",
+      "default_case": true
+    },
+    {
+      "name": "repeated section excludes zero root",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "x=0 implies y*y=0 and y=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* (- 1) x0) (* 1 x1 x1)) 0) (and (= (+ (* 1 x0)) 0) (distinct (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "58758fd99fd4e08af71fa9cf8192e8ead4f5433d04f2156a7ca8ad6833a43a4b",
+      "default_case": true
+    },
+    {
+      "name": "nested positive fourth root",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=sqrt(2),y=positive fourth root of 2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* (- 1) x0) (* 1 x1 x1)) 0) (and (> (+ (* 1 x0)) 0) (> (+ (* 1 x1)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "886147688e79c5f61fc682fc50f1c8d55bfa2aa12093ac564dbf3914a81321eb",
+      "default_case": true
+    },
+    {
+      "name": "circle rational external threshold",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "x*x<=1 on the circle, so x cannot exceed 3/2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0) (> (+ (* 1 x0) (* (/ (- 3) 2))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "7bedb85a0549772c8f6bd1b6f35210637a66c1f9a80b047774fdc784db0cc49c",
+      "default_case": true
+    },
+    {
+      "name": "circle rational endpoint section",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=1,y=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0) (and (= (+ (* 1 x0) (* (- 1))) 0) (= (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "0b8258da2f27e2599e1138bf7289d4928ba5273479daf016200ba1919503215e",
+      "default_case": true
+    },
+    {
+      "name": "circle rational endpoint rejects off axis",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "x=1 on this circle forces y=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0) (and (= (+ (* 1 x0) (* (- 1))) 0) (distinct (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "31164338eb4ee165d6268de0233fd93eecca8d6f96404688145d2fd086a254bf",
+      "default_case": true
+    },
+    {
+      "name": "annulus rational open bounds",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=3/4,y=0 gives squared radius 9/16.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (< (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0) (> (+ (* 1 x0 x0) (* 1 x1 x1) (* (/ (- 1) 4))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "f2e6b0e4faf273f007acaccaddd31b6edeccb719322308841f137ddd7e4f4dc3",
+      "default_case": true
+    },
+    {
+      "name": "incompatible concentric open bounds",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "The same squared radius cannot be less than 1 and greater than 4.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (< (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0) (> (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 4))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "9c55e7c35bd9996fa23332b279e9300c1dac11bf16a0d3d6f47b3f4bd0650634",
+      "default_case": true
+    },
+    {
+      "name": "CNF nonlinear disjunction excludes both branches",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "The first disjunction contradicts the two disequalities.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (or (= (+ (* 1 x0 x1)) 0) (= (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0)) (and (distinct (+ (* 1 x0 x1)) 0) (distinct (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "9a2fa72579b945c7aa0d8a8e801d9a43abd37808ad8366ea49821cc692dfaff5",
+      "default_case": true
+    },
+    {
+      "name": "CNF nonlinear surviving irrational branch",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=y=1/sqrt(2), so circle=0 and product=1/2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (or (= (+ (* 1 x0 x1)) 0) (= (+ (* 1 x0 x0) (* 1 x1 x1) (* (- 1))) 0)) (distinct (+ (* 1 x0 x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "10f6388d84dbdb87d4e80cd944268ff1e9ab4bec7318820fd17a17c123b58029",
+      "default_case": true
+    },
+    {
+      "name": "CNF separate nonlinear positive conflicts",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "Both alternatives contradict the asserted strict positives.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (or (<= (+ (* 1 x0 x0) (* (- 1))) 0) (<= (+ (* 1 x1 x1) (* (- 1))) 0)) (and (> (+ (* 1 x0 x0) (* (- 1))) 0) (> (+ (* 1 x1 x1) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "1bdf1ffe931ddcd3408087ab34f015a33c60d25b75d146f0078d78ae0780e9e4",
+      "default_case": true
+    },
+    {
+      "name": "CNF exactly one nonlinear boundary",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=1,y=0 makes exactly p zero.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (or (= (+ (* 1 x0 x0) (* (- 1))) 0) (= (+ (* 1 x1 x1) (* (- 1))) 0)) (or (distinct (+ (* 1 x0 x0) (* (- 1))) 0) (distinct (+ (* 1 x1 x1) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "0989b1a8dd045c1dcf8aff7ed6b315d48e3926bb93fa764e27d7a51abe1b1f30",
+      "default_case": true
+    },
+    {
+      "name": "CNF both nonlinear boundaries forbidden",
+      "arity": 2,
+      "expected": "unsat",
+      "hand_argument": "The disequality disjunction contradicts p=q=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (or (= (+ (* 1 x0 x0) (* (- 1))) 0) (= (+ (* 1 x1 x1) (* (- 1))) 0)) (and (or (distinct (+ (* 1 x0 x0) (* (- 1))) 0) (distinct (+ (* 1 x1 x1) (* (- 1))) 0)) (and (= (+ (* 1 x0 x0) (* (- 1))) 0) (= (+ (* 1 x1 x1) (* (- 1))) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "cd27d75c6644ecb97157ed4c6aa7402b11010b5c4c5e8f315253d99208703831",
+      "default_case": true
+    },
+    {
+      "name": "negated nonlinear conjunction surviving branch",
+      "arity": 2,
+      "expected": "sat",
+      "hand_argument": "x=1,y=0 makes p=0 and q nonzero.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (not (and (= (+ (* 1 x0 x0) (* (- 1))) 0) (= (+ (* 1 x1 x1) (* (- 1))) 0))) (= (+ (* 1 x0 x0) (* (- 1))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "240230996e987bfc5c65adf0564b3ad4397db58065bd29f1405e0d41ec82552e",
+      "default_case": true
+    },
+    {
+      "name": "trilinear graph at nullified first factor",
+      "arity": 3,
+      "expected": "unsat",
+      "hand_argument": "x=0 forces z=0 in z=x*y.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* (- 1) x2)) 0) (and (= (+ (* 1 x0)) 0) (= (+ (* 1 x2) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "4cd662883932dd964438f69987bb704019fe2e535c8ecaaa6768d2273bcff75a",
+      "default_case": true
+    },
+    {
+      "name": "trilinear graph irrational nullification",
+      "arity": 3,
+      "expected": "sat",
+      "hand_argument": "x=z=0,y=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* (- 1) x2)) 0) (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x2)) 0) (= (+ (* 1 x1 x1) (* (- 2))) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "f50a046049e589c829266ba33a73daeac5c5824801f6f5cfbc6afd20ddec6e0e",
+      "default_case": true
+    },
+    {
+      "name": "dependent three coordinate irrational diagonal",
+      "arity": 3,
+      "expected": "sat",
+      "hand_argument": "x=y=z=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* (- 1) x0) (* 1 x1)) 0) (and (= (+ (* (- 1) x1) (* 1 x2)) 0) (= (+ (* 1 x2 x2) (* (- 2))) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "c81f517adbc2bbc7b7bf6ebafab718e03b716edff36820d005c87594e923f988",
+      "default_case": false
+    },
+    {
+      "name": "dependent three coordinate inconsistent square",
+      "arity": 3,
+      "expected": "unsat",
+      "hand_argument": "All coordinates equal x, whose square is 2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (= (+ (* (- 1) x0) (* 1 x1)) 0) (and (= (+ (* (- 1) x1) (* 1 x2)) 0) (distinct (+ (* 1 x2 x2) (* (- 2))) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "d8a7a79d8994fd1a70d1889e94dd92f47787c9eab6d2a3ebc0f67accc93356eb",
+      "default_case": false
+    },
+    {
+      "name": "three squares zero with nonzero coordinate alternative",
+      "arity": 3,
+      "expected": "unsat",
+      "hand_argument": "A sum of real squares is zero only when all coordinates vanish.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 1 x1 x1) (* 1 x2 x2)) 0) (or (distinct (+ (* 1 x0)) 0) (or (distinct (+ (* 1 x1)) 0) (distinct (+ (* 1 x2)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "a8373ae2aff5eb9fcd7cbb0159dddc3d9f403f0001c68cab21fffaf9c2d7398f",
+      "default_case": true
+    },
+    {
+      "name": "three coordinate sphere diagonal plane",
+      "arity": 3,
+      "expected": "sat",
+      "hand_argument": "x=y=1,z=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 1 x1 x1) (* 1 x2 x2) (* (- 2))) 0) (and (= (+ (* 1 x0) (* (- 1) x1)) 0) (= (+ (* 1 x2)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "541ede21912d2a9ac909e6f03994e9da581d7ec2436f90a6b8226569f6aa1a42",
+      "default_case": true
+    },
+    {
+      "name": "three products nullified middle factor",
+      "arity": 3,
+      "expected": "sat",
+      "hand_argument": "x=z=1,y=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x1)) 0) (and (= (+ (* 1 x1 x2)) 0) (= (+ (* 1 x0 x2) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "88f9c25339526180e2e00015b7d11051363dbbb44be0d4943721cecded89e78c",
+      "default_case": true
+    },
+    {
+      "name": "three products require middle factor nonzero",
+      "arity": 3,
+      "expected": "unsat",
+      "hand_argument": "y nonzero forces x=z=0, contradicting x*z=1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0 x1)) 0) (and (= (+ (* 1 x1 x2)) 0) (and (= (+ (* 1 x0 x2) (* (- 1))) 0) (distinct (+ (* 1 x1)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "7c814f76fc7ac03d77c2068fb4aa10942cdb380c256d91791436a97b1d15fc31",
+      "default_case": true
+    },
+    {
+      "name": "four variable nullified factor with dependent irrational pair",
+      "arity": 4,
+      "expected": "sat",
+      "hand_argument": "x=y=0,z=w=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0 x2) (* (- 1) x0 x3) (* (- 1) x1 x2) (* 1 x1 x3)) 0) (and (= (+ (* 1 x0) (* (- 1) x1)) 0) (and (= (+ (* 1 x2 x2) (* (- 2))) 0) (= (+ (* (- 1) x2) (* 1 x3)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "b5bce8578712ad9ccfc8bc656d2ddd56065b9c24e45080513da0f3e7533bf76a",
+      "default_case": true
+    },
+    {
+      "name": "four variable nonzero product with zero factor",
+      "arity": 4,
+      "expected": "unsat",
+      "hand_argument": "The asserted zero factor makes the product zero.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (distinct (+ (* 1 x0 x2) (* (- 1) x0 x3) (* (- 1) x1 x2) (* 1 x1 x3)) 0) (= (+ (* 1 x0) (* (- 1) x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "5de730d46f28c280fc3a3b2ff0cd7f57f5ed22732a3d3b5abdb1826d5559e7c0",
+      "default_case": true
+    },
+    {
+      "name": "four variable nonzero product and both factors",
+      "arity": 4,
+      "expected": "sat",
+      "hand_argument": "x=z=1,y=w=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (distinct (+ (* 1 x0 x2) (* (- 1) x0 x3) (* (- 1) x1 x2) (* 1 x1 x3)) 0) (and (distinct (+ (* 1 x0) (* (- 1) x1)) 0) (distinct (+ (* 1 x2) (* (- 1) x3)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "5e7b6dc2a19534ee21bad7962431e3dc64ddd2a9c8717614404e634601179279",
+      "default_case": true
+    },
+    {
+      "name": "four variable sum of products nullified coefficients",
+      "arity": 4,
+      "expected": "sat",
+      "hand_argument": "x=z=0 and arbitrary y,w.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* 1 x2 x3)) 0) (and (= (+ (* 1 x0)) 0) (= (+ (* 1 x2)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "19b79254530128e60d03f94d006dcbeb3a13b6b13eae32dd59ebb70808cbba69",
+      "default_case": true
+    },
+    {
+      "name": "four variable affine product graph contradiction",
+      "arity": 4,
+      "expected": "unsat",
+      "hand_argument": "x=z=0 makes the sum of products zero, not one.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0 x1) (* 1 x2 x3) (* (- 1))) 0) (and (= (+ (* 1 x0)) 0) (= (+ (* 1 x2)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "0bbdd773d1d7afab1e62181725588f76d498ad7403e921651df434dbc375c317",
+      "default_case": true
+    },
+    {
+      "name": "four coordinate irrational diagonal",
+      "arity": 4,
+      "expected": "sat",
+      "hand_argument": "x=y=z=w=sqrt(2).",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 1) x1)) 0) (and (= (+ (* 1 x1) (* (- 1) x2)) 0) (and (= (+ (* 1 x2) (* (- 1) x3)) 0) (= (+ (* 1 x0 x0) (* (- 2))) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "a3b9ea62237afeba19f9ed3ae3d8df088b2c591d8c0008c2e28f581890879ce5",
+      "default_case": true
+    },
+    {
+      "name": "four coordinate irrational diagonal inconsistent square",
+      "arity": 4,
+      "expected": "unsat",
+      "hand_argument": "The diagonal equations make w*w=x*x=2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 1) x1)) 0) (and (= (+ (* 1 x1) (* (- 1) x2)) 0) (and (= (+ (* 1 x2) (* (- 1) x3)) 0) (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (distinct (+ (* 1 x3 x3) (* (- 2))) 0))))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "c4479b9b8e87f320cdeb9a9e53e45358fe86826bd0736df382b69dddaaf612fd",
+      "default_case": false
+    },
+    {
+      "name": "four weighted squares zero excludes last coordinate",
+      "arity": 4,
+      "expected": "unsat",
+      "hand_argument": "Every positive weighted square must vanish.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(declare-fun x3 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* 2 x1 x1) (* 3 x2 x2) (* (/ 1 2) x3 x3)) 0) (distinct (+ (* 1 x3)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "20d5ea1009bc4b07d1ec9a30da1ca22ea356985ab3108d42d7b170328b84b3c4",
+      "default_case": true
+    }
+  ]
+}
