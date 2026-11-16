@@ -24,6 +24,8 @@ bootstrapの既定値は公式のlatestです。後日の取得物が下記の�
 [実閉体ツアーの出力](REALCLOSED_TOUR.txt)も3バックエンドで照合しています。
 `tools/moon run src/cmd/complex` は複素数の四則演算・全複素根・重複度・因数分解・K(i) と一生成元への変換を実行します
 （[出力例](COMPLEX_TOUR.txt)）。
+`tools/moon run src/cmd/galois` は z⁴−2 の8自己同型・D4の関係・10中間体を検査して表示します
+（[対称性と中間体ツアー](GALOIS_TOUR.txt)）。
 
 ## 開発時のコマンド
 
@@ -135,6 +137,8 @@ uv pip install --python .tools/complex-oracle-venv/bin/python -r tools/requireme
 .tools/complex-oracle-venv/bin/python tools/generate_complex_fixtures.py --check
 .tools/complex-oracle-venv/bin/python tools/generate_complexfield_fixtures.py --check
 .tools/complex-oracle-venv/bin/python tools/generate_complexprimitive_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_complexautomorphism_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_fixedfield_fixtures.py --check
 ```
 
 生成対象と照合方法は[独立参照](research/complex-oracle-20261117.md)、

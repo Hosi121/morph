@@ -7,7 +7,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：103パッケージ、276ソース。
-核のテスト宣言：3972、bench group：212。
+核のテスト宣言：3975、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -56,7 +56,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [fft](../src/fft) | 1 | 3 | 0 | `core` |
 | [fglm](../src/fglm) | 4 | 89 | 0 | `core`, `exact`, `f4`, `heap`, `linear`, `matrix`, `polynomial`, `sorting` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
-| [fixedfield](../src/fixedfield) | 3 | 5 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
+| [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
 | [fppoly](../src/fppoly) | 4 | 20 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |

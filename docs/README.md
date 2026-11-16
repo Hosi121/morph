@@ -8,7 +8,7 @@
 | --- | --- |
 | 準備して実行する | [READMEの実行手順](../README.md#試す)・[開発・検証環境](ENVIRONMENT.md) |
 | 実装済みの算法とソースの入口 | [アルゴリズム一覧](ALGORITHMS.md) |
-| 実際に何が計算できるか | [基本ツアー](TOUR.txt)・[厳密代数とモデル検査](ADVANCED_TOUR.txt)・[実閉体と非線形SMT](REALCLOSED_TOUR.txt)・[複素代数](COMPLEX_TOUR.txt) |
+| 実際に何が計算できるか | [基本ツアー](TOUR.txt)・[厳密代数とモデル検査](ADVANCED_TOUR.txt)・[実閉体と非線形SMT](REALCLOSED_TOUR.txt)・[複素代数](COMPLEX_TOUR.txt)・[対称性と中間体](GALOIS_TOUR.txt) |
 
 ## 設計と限界を読む
 
@@ -18,6 +18,7 @@
 | 多項式、基底、実解、数体をつなぐ | [厳密代数の計算経路](handbook/algebraic-solving.md) |
 | 複素数を厳密に演算し、全根を取り出す | [複素代数的数と全複素根](handbook/complex-algebra.md) |
 | 複素数体の基底を固定して計算する | [複素数体と一生成元の表現](handbook/complex-fields.md) |
+| 体の対称性と中間体を計算する | [自己同型と固定体](handbook/galois-fixed-fields.md) |
 | 実数の厳密演算、CAD・量化消去、非線形SMTを使い分ける | [実数制約の章](handbook/real-constraints.md) |
 | 表現と証拠の違いを手元で試す | [小さな実験](handbook/exercises.md) |
 | テスト・証拠検査・形式証明の対象 | [検証ガイド](VALIDATION.md) |

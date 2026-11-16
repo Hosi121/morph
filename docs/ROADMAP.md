@@ -6,6 +6,7 @@
 量化なしの非線形実数SMTまで実装しています。
 複素代数的数の厳密演算と、有理係数多項式の全複素根・重複度の列挙も接続しています。
 実数体 K に i を加えた基底計算と、α+i による一生成元の表現も使えます。
+全根を同じ体で指定できる場合は、全自己同型と部分群の固定体も計算できます。
 部品の接続は[厳密代数の計算経路](handbook/algebraic-solving.md)、
 入力・出力・証拠の使い分けは[実数制約の章](handbook/real-constraints.md)、
 確認済みの検査と対象ソースは[検証ガイド](VALIDATION.md)を参照してください。
@@ -24,6 +25,7 @@
 | 量化なしの非線形実数SMT | CDCLと厳密な実数理論を接続し、SATの厳密モデル、UNSATのCAD理論補題と最終RUP反証を検査する | [実装](research/realnlsmt-20261116.md)・[独立レビュー](research/realnlsmt-independent-review-20261116.md) |
 | 複素代数と全複素根 | 実代数的な二座標の演算、QQ因数分解から各全根・元の重複度への復元 | [設計・同条件比較](research/complex-algebra-20261117.md)・[独立参照](research/complex-oracle-20261117.md) |
 | 基底を持つ複素数体 | K(i) の四則演算・trace/norm・最小多項式、α+i による絶対一生成元の双方向変換 | [設計](handbook/complex-fields.md)・[数体の独立参照](research/complexfield-oracle-20261117.md)・[変換の独立参照](research/complexprimitive-oracle-20261117.md) |
+| 明示分解した体の対称性 | 全自己同型・合成表、部分群の固定体の完全基底と座標。z⁴−2 では D4 と全10中間体 | [設計](handbook/galois-fixed-fields.md)・[群の参照](research/complexautomorphism-oracle-20261117.md)・[固定体の参照](research/fixedfield-oracle-20261117.md) |
 
 ## 現在の探索経路と残る課題
 
@@ -58,13 +60,14 @@
 
 | 目標 | 使える部品 | 大きな不足 |
 | --- | --- | --- |
-| 分解体・Galois群・根号可解性 | QQ既約分解、実数体の合成、LLL、[複素根](handbook/complex-algebra.md)、[K(i) と絶対一生成元](handbook/complex-fields.md) | 一般の複素拡大体の自動合成、置換群、resolvent。z⁴−2 の分解体は明示的な個別例 |
+| 一般の分解体・Galois群・根号可解性 | QQ既約分解、実数体の合成、LLL、[複素根](handbook/complex-algebra.md)、[自己同型と固定体](handbook/galois-fixed-fields.md) | 任意の複素拡大体の自動合成、分解体探索、一般の群分類・resolvent |
 | 実代数集合の連結成分と経路 | CAD、実根、実解の一変数表現 | 特異点、セルの接続関係、roadmap |
 | Schoof/SEAの楕円曲線点数計算 | 有限体、拡大体、多項式、楕円曲線、CRT | 除算多項式、torsion、Frobenius作用、traceの復元 |
 
 Galois群の参考は[Stauduhar](https://www.ams.org/mcom/1973-27-124/S0025-5718-1973-0327712-4/S0025-5718-1973-0327712-4.pdf)です。
 原典は根の高精度近似も使うため、今回の制約では厳密な根隔離・有理区間による別設計が必要です。
-既存の `galois` パッケージは有限拡大体を扱い、QQ多項式のGalois群計算は実装していません。
+既存の `galois` パッケージは有限拡大体を扱います。
+`complexautomorphism` は全根を指定した K(i) の自己同型群を扱い、任意のQQ多項式からの分解体探索は行いません。
 
 幾何の参考は[Basu–Royの実代数集合のroadmap](https://arxiv.org/abs/1305.3211)、
 点数計算は[Schoofの解説とAtkin–Elkiesの改善](https://www.numdam.org/item/JTNB_1995__7_1_219_0/)です。
