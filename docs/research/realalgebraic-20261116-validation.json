@@ -1,0 +1,95 @@
+{
+  "utc": "2026-11-16T07:53:57.268100+00:00",
+  "cpu": 8,
+  "serialization": "tools/measure shared git-common-dir lock",
+  "timing_scope": "incremental command wall time, not an algorithm benchmark",
+  "commands": [
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/realalgebraic",
+        "--target",
+        "native"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.212933,
+      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/realalgebraic",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.262419,
+      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/realalgebraic",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.149683,
+      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "check",
+        "src/realalgebraic",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.825003,
+      "output": "Finished. moon: ran 13 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "info",
+        "src/realalgebraic"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.538933,
+      "output": "Finished. moon: ran 10 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "fmt",
+        "src/realalgebraic",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.14357,
+      "output": "Finished. moon: ran 11 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.310879,
+      "output": "Purity gate passed: 131 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_realalgebraic_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.955535,
+      "output": "{\"arithmetic\": 30, \"resultants\": 14, \"unary\": 11}\n"
+    }
+  ]
+}

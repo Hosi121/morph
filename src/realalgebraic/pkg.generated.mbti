@@ -10,11 +10,23 @@ import {
 }
 
 // Values
+pub fn add(Number, Number, @core.Nat) -> Result[ArithmeticProgress, AlgebraError]
+
+pub fn arithmetic_advance(Arithmetic, @core.Nat) -> Result[ArithmeticProgress, AlgebraError]
+
+pub fn arithmetic_start(Number, Number, BinaryOperation) -> Result[Arithmetic, AlgebraError]
+
+pub fn check_arithmetic(ArithmeticCertificate) -> Bool
+
 pub fn check_comparison(ComparisonCertificate) -> Bool
+
+pub fn check_quotient(QuotientCertificate) -> Bool
 
 pub fn check_resultant(ResultantCertificate) -> Bool
 
 pub fn check_root(RootCertificate) -> Bool
+
+pub fn check_unary(UnaryCertificate) -> Bool
 
 pub fn compare(Number, Number, @core.Nat) -> Result[ComparisonProgress, AlgebraError]
 
@@ -24,7 +36,19 @@ pub fn comparison(Number, Number) -> Result[Comparison, AlgebraError]
 
 pub fn definition(Number) -> @polynomial.Polynomial
 
+pub fn divide(Number, Number, @core.Nat) -> Result[DivisionProgress, AlgebraError]
+
+pub fn division_advance(Division, @core.Nat) -> Result[DivisionProgress, AlgebraError]
+
+pub fn division_start(Number, Number) -> Result[Division, AlgebraError]
+
 pub fn interval(Number) -> @sturm.Interval
+
+pub fn inverse(Number, @core.Nat) -> Result[UnaryProgress, AlgebraError]
+
+pub fn multiply(Number, Number, @core.Nat) -> Result[ArithmeticProgress, AlgebraError]
+
+pub fn negate(Number, @core.Nat) -> Result[UnaryProgress, AlgebraError]
 
 pub fn number(RootCertificate) -> Result[Number, AlgebraError]
 
@@ -37,6 +61,10 @@ pub fn resultant_advance(Resultant, @core.Nat) -> Result[ResultantProgress, Alge
 pub fn resultant_start(@polynomial.Polynomial, @polynomial.Polynomial, BinaryOperation) -> Result[Resultant, AlgebraError]
 
 pub fn root_certificate(Number) -> RootCertificate
+
+pub fn unary_advance(Unary, @core.Nat) -> Result[UnaryProgress, AlgebraError]
+
+pub fn unary_start(Number, UnaryOperation) -> Result[Unary, AlgebraError]
 
 // Errors
 
@@ -51,6 +79,41 @@ pub(all) enum AlgebraError {
 pub fn AlgebraError::equal(Self, Self) -> Bool
 pub fn AlgebraError::not_equal(Self, Self) -> Bool
 pub fn AlgebraError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Arithmetic {
+  original_left : RootCertificate
+  original_right : RootCertificate
+  left : Number
+  right : Number
+  operation : BinaryOperation
+  phase : ArithmeticPhase
+}
+pub fn Arithmetic::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ArithmeticCertificate {
+  left : RootCertificate
+  right : RootCertificate
+  left_refined : @sturm.Interval
+  right_refined : @sturm.Interval
+  resultant : ResultantCertificate
+  result : RootCertificate
+}
+pub fn ArithmeticCertificate::equal(Self, Self) -> Bool
+pub fn ArithmeticCertificate::not_equal(Self, Self) -> Bool
+pub fn ArithmeticCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type ArithmeticPhase
+pub fn ArithmeticPhase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum ArithmeticProgress {
+  ArithmeticReady(Number, ArithmeticCertificate)
+  ArithmeticPaused(Arithmetic)
+}
+pub fn ArithmeticProgress::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) enum BinaryOperation {
@@ -91,11 +154,38 @@ pub(all) enum ComparisonProgress {
 pub fn ComparisonProgress::to_repr(Self) -> @debug.Repr
 
 #derive(@debug.Debug)
+pub struct Division {
+  left : Number
+  phase : DivisionPhase
+}
+pub fn Division::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type DivisionPhase
+pub fn DivisionPhase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum DivisionProgress {
+  DivisionReady(Number, QuotientCertificate)
+  DivisionPaused(Division)
+}
+pub fn DivisionProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
 pub struct Number {
   system : @sturm.System
   interval : @sturm.Interval
 }
 pub fn Number::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct QuotientCertificate {
+  reciprocal : UnaryCertificate
+  product : ArithmeticCertificate
+}
+pub fn QuotientCertificate::equal(Self, Self) -> Bool
+pub fn QuotientCertificate::not_equal(Self, Self) -> Bool
+pub fn QuotientCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Resultant {
@@ -145,6 +235,42 @@ pub(all) struct RootCertificate {
 pub fn RootCertificate::equal(Self, Self) -> Bool
 pub fn RootCertificate::not_equal(Self, Self) -> Bool
 pub fn RootCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Unary {
+  original : RootCertificate
+  current : Number
+  operation : UnaryOperation
+  output : @sturm.System
+}
+pub fn Unary::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct UnaryCertificate {
+  input : RootCertificate
+  refined : @sturm.Interval
+  operation : UnaryOperation
+  result : RootCertificate
+}
+pub fn UnaryCertificate::equal(Self, Self) -> Bool
+pub fn UnaryCertificate::not_equal(Self, Self) -> Bool
+pub fn UnaryCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum UnaryOperation {
+  Negation
+  Reciprocal
+}
+pub fn UnaryOperation::equal(Self, Self) -> Bool
+pub fn UnaryOperation::not_equal(Self, Self) -> Bool
+pub fn UnaryOperation::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum UnaryProgress {
+  UnaryReady(Number, UnaryCertificate)
+  UnaryPaused(Unary)
+}
+pub fn UnaryProgress::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
