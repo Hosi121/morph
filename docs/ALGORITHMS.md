@@ -1,0 +1,116 @@
+# アルゴリズム一覧
+
+[README](../README.md)のカテゴリごとに、実装の入口をまとめる。
+設計・表現コスト・検証範囲は[ハンドブック](../HANDBOOK.md)、
+パッケージ単位の依存関係は[生成一覧](INVENTORY.md)を参照。
+公開APIが他の算法から使われているかは[呼び出し経路](CALL_PATHS.md)で確認できる。
+
+<a id="foundations"></a>
+
+## 基礎算術・データ構造
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| リスト・自然数 | [不変リスト・Peano算術・Euclid](../src/core/data.mbt) |
+| Bool代数 | [演算辞書・full adderの構成](../src/boolean/boolean.mbt) |
+| 二進算術 | [算術・連結・pair/unpair](../src/binary/binary.mbt)・[Karatsuba](../src/binary/karatsuba.mbt)・[Stein GCD・整数平方根・Fibonacci](../src/binary/number_theory.mbt) |
+| 圧縮二進算術 | [runを展開しない加減乗算・shift・pair](../src/runbinary/runbinary.mbt)・[燃料付き除算](../src/runbinary/division.mbt) |
+| 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
+| ソート | [安定merge/insertion/quick sort](../src/sorting/sorting.mbt) |
+| 優先度キュー | [永続leftist heap・heap sort](../src/heap/heap.mbt) |
+| 辞書 | [Boolワードの永続trie・最長prefix・union](../src/trie/trie.mbt)・[永続AVL・削除・順位と選択](../src/avl/avl.mbt) |
+
+<a id="number-theory"></a>
+
+## 数論・有限体
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 剰余算術 | [平方反復・拡張Euclid・逆元・素数判定](../src/modular/modular.mbt)・[一般化CRT](../src/modular/crt.mbt)・[小さなRSA](../src/modular/rsa.mbt) |
+| 素数・因数分解 | [Lucas/Pratt・部分Pocklington証明と合成数証拠](../src/primality/primality.mbt)・[燃料付きPollard rho・完全分解検査](../src/factor/factor.mbt) |
+| 素数証明の生成 | [分解・再帰証明・Lucas witness探索](../src/primeprove/primeprove.mbt) |
+| 有限体・平方根 | [Euler判定・Tonelli–Shanks](../src/finitefield/sqrt.mbt) |
+| 有限拡大体 | [検査済み素数からGF(p)](../src/primefield/primefield.mbt)・[Berlekamp多項式分解・既約性証拠](../src/fppoly/factorization.mbt)・[GF(p^m)・trace/norm](../src/galois/galois.mbt) |
+| 離散対数 | [baby-step giant-step・最小位数と部分群境界](../src/discretelog/discretelog.mbt) |
+| 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](../src/elliptic/elliptic.mbt) |
+
+<a id="symbolic-computation"></a>
+
+## 変換・記号計算
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| FFT | [12等式に対応する記号FFTと直接DFT](../src/fft/fft.mbt) |
+| 円分体・厳密FFT | [円分多項式の正規形・逆元](../src/cyclotomic/cyclotomic.mbt)・[正規化されたFFT/逆FFT](../src/exactfft/exactfft.mbt) |
+| NTT | [有限体変換・逆変換・線形畳み込み](../src/ntt/ntt.mbt) |
+| 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](../src/polynomial/polynomial.mbt) |
+| Gröbner基底 | [再開可能なBuchberger・既約基底](../src/groebner/groebner.mbt) |
+| 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt) |
+| 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
+| 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
+
+<a id="linear-optimization"></a>
+
+## 線形代数・最適化
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 半環・行列 | [半環の演算辞書](../src/algebra/algebra.mbt)・[行列積・累乗・Warshall](../src/matrix/matrix.mbt) |
+| 線形代数 | [有理数の行列式・逆行列・解空間](../src/linear/linear.mbt)・[体で共通化したGauss–Jordan](../src/rowreduce/rowreduce.mbt) |
+| 整数線形代数 | [証拠付きSmith標準形](../src/smith/smith.mbt)・[整数解/不可能証拠](../src/smith/equations.mbt)・[有限生成アーベル群](../src/smith/cokernel.mbt) |
+| 格子 | [厳密有理数のLLL・依存基底の前処理・unimodular証拠](../src/lll/lll.mbt) |
+| 線形最適化 | [二段階単体法・Bland規則・双対解/非有界/Farkas証拠](../src/simplex/simplex.mbt) |
+| 整数最適化 | [0/1分枝限定法・再開可能なLP緩和・最適性の証拠木](../src/zeroone/zeroone.mbt) |
+
+<a id="graphs"></a>
+
+## グラフ
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 経路・構造 | [BFS・Dijkstra・経路](../src/graph/graph.mbt)・[topological・SCC](../src/graph/structure.mbt) |
+| 全域森 | [Kruskal・Prim・最小性の証拠検査](../src/spanning/spanning.mbt) |
+| ネットワーク | [Edmonds–Karp最大流・最小カット・証拠検査](../src/maxflow/maxflow.mbt) |
+| マッチング | [Hopcroft–Karp・最小頂点被覆・最適性検査](../src/bipartite/bipartite.mbt) |
+
+<a id="logic-constraints"></a>
+
+## 論理・制約解決
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| SAT | [DPLL・モデルと反証の検査](../src/sat/sat.mbt) |
+| CDCL | [first-UIP・watch・非時系列backjump・独立RUP検査](../src/cdcl/cdcl.mbt) |
+| SAT反証ログ | [RUP証拠の構築](../src/ruplog/build.mbt)・[ヒント付き証拠の検査](../src/ruplog/check.mbt) |
+| 回路の検証・合成 | [Bool式→CNF・等価性miter](../src/circuit/circuit.mbt)・[上限付きNAND合成](../src/synthesis/encoding.mbt) |
+| BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
+| SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
+| 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](../src/exactcover/exactcover.mbt)・[再開可能な全解列挙](../src/exactcover/enumerate.mbt) |
+| 制約のモデル化 | [Nクイーン](../src/puzzles/queens.mbt)・[4×4/9×9数独](../src/puzzles/sudoku.mbt) |
+
+<a id="languages-sequences"></a>
+
+## 言語・列アルゴリズム
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 単一化 | [occurs check・冪等置換](../src/unify/unify.mbt) |
+| 型推論 | [Hindley–Milner・let多相](../src/infer/infer.mbt) |
+| 評価機械 | [燃料付き・再開可能なCEK](../src/cek/cek.mbt) |
+| 正規表現 | [Brzozowski微分](../src/regex/derivative.mbt)・[Thompson NFA](../src/regex/thompson.mbt) |
+| 構文解析 | [CNF文法のCYK・構文木と導出検査](../src/cyk/cyk.mbt) |
+| 複数語検索 | [Aho–Corasick・failure遷移・チャンクをまたぐ検索](../src/aho/aho.mbt) |
+| 動的計画法 | [編集距離・編集手順・LCS](../src/dp/sequences.mbt)・[0/1 knapsack](../src/dp/knapsack.mbt) |
+
+<a id="coding-cryptography"></a>
+
+## 符号・圧縮・暗号
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| ビット符号 | [Elias gamma・任意精度ペアの自己区切り符号](../src/bitcodec/bitcodec.mbt) |
+| 圧縮 | [Huffman符号・復号](../src/huffman/huffman.mbt)・[LZ78・辞書番号とliteralのビット符号](../src/lz78/lz78.mbt) |
+| ハッシュ | [BoolリストだけのSHA-256](../src/sha256/sha256.mbt)・[固定幅ビット演算](../src/sha256/word.mbt) |
+| AES | [GF(256)からのSbox生成](../src/aes/sbox.mbt)・[128/192/256bit鍵のblock暗号・復号](../src/aes/cipher.mbt) |
+| 誤り訂正 | [Reed–Solomon評価符号・Berlekamp–Welch・消失訂正](../src/reedsolomon/reedsolomon.mbt) |
+| 漸化式と巡回符号 | [Berlekamp–Massey](../src/recurrence/recurrence.mbt)・[Chien/ForneyによるGF(p^m)のRS訂正](../src/cyclicrs/cyclicrs.mbt) |
