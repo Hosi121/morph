@@ -767,3 +767,35 @@ raw logsと両比較ELFは `.tools/cdcl-profile/preparation-*` に保存する�
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/preparation_wbtest.mbt --target native --release -i 3
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/preparation_wbtest.mbt --target native --release -i 5
 ```
+
+## decision節評価のtail化は速度改善なしとして保留
+
+`9c8cd69` の基盤で、decision節評価の最初の未割当literalと個数区分を引数で保持する
+候補を比較した。`Conflict`→`Unit(first)`→`Open(first)`と進め、二つ目より後の未割当で
+既存の `Open(first)` を共有する。満たすliteralに到達した場合は即座に `Satisfied` を返し、
+unit/conflict診断と最初のdecision literalを変えない。builderの早期終了とは別の候補で、
+decisionでは後続の満たすliteralを最後まで探す必要がある。
+
+同一native release ELF、CPU 10、共通mutex、各10サンプル、準備済み64bit Search：
+
+| 探索 | 平均 ± 標準偏差 |
+| --- | ---: |
+| 元の再帰、最初のcontrol | 197.86 ms ± 6.79 ms |
+| tail化 | 199.86 ms ± 3.66 ms |
+| tail化、繰り返しcontrol | 204.31 ms ± 8.51 ms |
+| 元の再帰、繰り返しcontrol | 198.48 ms ± 8.94 ms |
+| 未変更の準備済みhint checker | 15.37 ms ± 695.47 µs |
+
+区間が重なり、平均の方向も改善を示さない。この候補で全query比較を重ねず、productionを
+元へ戻した。`decision_tail_wbtest.mbt` にhelper、全engine selector、benchmarkを残す。
+三変数27節×27部分割当で完全な節分類が一致し、pigeonhole/4bit miterの全Paused状態と
+Statistics/proofも一致する。tail helper単独では20,000個の異なるキーのopen節を処理できる
+ことをnative/JS/Wasm GCで確認したが、入力準備を含む巨大CNF全体のstack保証とは扱わない。
+隔離後の2回帰が三backendで通過し、deny-warnも通過した。
+
+比較ELF SHA256は `344ae1c391d4b837ac69af74de40de7db594474316aae61db3c8a78f77a416cc`。
+ELFとraw logsは `.tools/cdcl-profile/decision-tail-*` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/decision_tail_wbtest.mbt --target native --release -i 2
+```
