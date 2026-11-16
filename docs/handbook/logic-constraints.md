@@ -17,6 +17,8 @@
 - [回路の検証と合成](#circuits)
 - [BDDと整数差分SMT](#bdd-smt)
 - [一変数の実数多項式制約](#real-polynomials)
+- [二変数CADと量化](#bivariate-cad)
+- [任意変数の実閉体と非線形SMT](#nonlinear-real-smt)
 - [パリティゲームと位置戦略](#parity-games)
 - [μ-calculusのモデル検査](#mu-calculus)
 
@@ -38,7 +40,8 @@ DPLL は unit propagation、pure literal elimination、二分岐を使う。
 3変数について、各変数を不在・正・負とする全27節から作る3節の式全19683通りを、
 8代入の真理値表と照合。さらに3リテラル全8極性節の部分集合全256通りを調べた。
 分岐が必要な充足不能例、重複リテラル、恒真節、偽造証拠も検証した。
-最悪は指数時間であり、watched literals や CDCL 学習は実装していない。
+このDPLLの最悪時間は指数的であり、watched literals や CDCL 学習は使わない。
+それらを使う別のエンジンは[CDCL](#cdcl)を参照。
 
 原典：[Davis–Logemann–Loveland, A Machine Program for Theorem-Proving (1962)](https://cs.stanford.edu/content/contacting-donald-knuth/siam-final.pdf)。
 
@@ -160,7 +163,28 @@ ADT側のチェックで全手掛かりが保たれることを確認した。
 無理数の点は問題の定義多項式と一根区間で表し、浮動小数点には変換しない。
 Sturmの根数で全根の被覆と符号を検査する証拠を返す。
 
-詳細: [設計・半開端点の規約・独立オラクル](../research/realcad-20261116.md)
+入口の使い分けは[実数制約と量化消去](real-constraints.md#入出力から入口を選ぶ)、
+半開端点の規約と独立オラクルは[設計・検証記録](../research/realcad-20261116.md)を参照。
+
+<a id="bivariate-cad"></a>
+
+## 二変数CADと量化
+
+[cad2](../../src/cad2)はxの射影セルに数体係数のy分割を積み上げる。
+∀x∃yと∃x∀yを区別し、量化したyの結果は[区間集合](../../src/semialgebraic)として取り出せる。
+共有因子、次数低下、nullification、厳密不等号の端点を含め、独立な族と照合した。
+区間集合と量化なしの式の使い分け、構成と証拠は[実数制約の章](real-constraints.md#one-two-variables)にまとめる。
+
+<a id="nonlinear-real-smt"></a>
+
+## 任意変数の実閉体と非線形SMT
+
+[realclosed](../../src/realclosed)は一階の実数多項式式から量化なしの有理多項式式を作る。
+[realnlsmt](../../src/realnlsmt)は量化なしのBoolean制約をCDCLで探索し、厳密モデルまたは検査可能な反証を返す。
+既定の経路はCDCL状態を保持し、元のCAD被覆で不可能性を証明できる範囲で理論衝突節を削減する。
+四つの探索経路、CAD理論節と最終RUPの検査、保証と限界は
+[非線形実数SMT](real-constraints.md#非線形実数smtへ接続する)を参照。
+量化順序と全セル被覆は[任意変数のCADと量化消去](real-constraints.md#任意変数のcadと実閉体の量化消去)で説明する。
 
 <a id="parity-games"></a>
 
@@ -189,19 +213,3 @@ SCC全体の最大優先度だけでは、内部の悪い小閉路を見逃す�
 後者は現状では構造レビューと有限オラクルで確認する。
 
 詳細: [式の意味・優先度・独立オラクル](../research/mucalc-20261116.md)
-
-
-## 二変数CADと量化
-
-[cad2](../../src/cad2)はxの射影セルに数体係数のy分割を積み上げる。
-∀x∃yと∃x∀yを区別し、量化したyの結果は[区間集合](../../src/semialgebraic)として取り出せる。
-共有因子、次数低下、nullification、厳密不等号の端点を含め、独立な族と照合した。
-構成・証拠・現在の次元制限は[厳密代数の計算経路](algebraic-solving.md)にまとめる。
-
-
-## 任意変数の実閉体と非線形SMT
-
-[realclosed](../../src/realclosed)は一階の実数多項式式から量化なしの有理多項式式を作る。
-[realnlsmt](../../src/realnlsmt)は量化なしのBoolean制約をCDCLで探索し、CADの理論節と最終RUPを別々に検査する。
-多段の実代数拡大、全セル被覆、量化順序、入力と返却値の束縛は
-[厳密代数の計算経路](algebraic-solving.md#任意変数のcadと実閉体の量化消去)にまとめた。
