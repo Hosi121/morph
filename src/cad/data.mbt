@@ -108,7 +108,7 @@ pub extend Point with Debug::{to_repr}
 struct Fibre {
   polynomials : @core.Chain[@tower.Polynomial]
   systems : @core.Chain[@tower.System?]
-  product : @tower.Polynomial
+  root_polynomial : @tower.Polynomial
   system : @tower.System
 }
 

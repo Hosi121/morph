@@ -620,3 +620,39 @@ test "independent CAD closed form 17 four_variable_parabola" {
     ],
   )
 }
+
+///|
+test "independent CAD closed form 18 shared_factor_higher_psc" {
+  review_qe_fixture(
+    2,
+    1,
+    @qf.Conjunction(
+      @qf.Atom(
+        review_poly(2, [(-1, 1, [1, 1]), (1, 1, [0, 2]), (-1, 1, [0, 1])]),
+        @qf.EqualZero,
+      ),
+      @qf.Conjunction(
+        @qf.Atom(
+          review_poly(2, [(-2, 1, [1, 1]), (1, 1, [0, 2]), (-3, 1, [0, 1])]),
+          @qf.EqualZero,
+        ),
+        @qf.Atom(review_poly(2, [(1, 1, [0, 1])]), @qf.NotZero),
+      ),
+    ),
+    @oracle.chain([@logic.Quantifier::Exists]),
+    [
+      ([(-3, 1)], false),
+      ([(-2, 1)], true),
+      ([(-1, 1)], false),
+      ([(0, 1)], false),
+      ([(1, 1)], false),
+      ([(2, 1)], false),
+      ([(3, 1)], false),
+      ([(1, 4)], false),
+      ([(-1, 4)], false),
+      ([(1, 2)], false),
+      ([(3, 2)], false),
+      ([(-3, 2)], false),
+    ],
+  )
+}

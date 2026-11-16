@@ -25,7 +25,7 @@ fn review_problem(arity : Int32, source : @qf.Formula) -> Problem {
 ///|
 fn review_solve(problem : Problem) -> Outcome raise {
   let mut search = start(problem)
-  for _ in 0..<20000 {
+  for _ in 0..<100000 {
     match step(search) {
       Ok(Paused(next)) => search = next
       Ok(outcome) => return outcome

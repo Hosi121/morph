@@ -532,6 +532,60 @@ test "independent Z3 review trilinear graph irrational nullification" {
 }
 
 ///|
+test "independent Z3 review dependent three coordinate irrational diagonal" {
+  let source = @qf.Conjunction(
+    @qf.Atom(
+      review_polynomial(3, [(1, 1, [2, 0, 0]), (-2, 1, [0, 0, 0])]),
+      @qf.EqualZero,
+    ),
+    @qf.Conjunction(
+      @qf.Atom(
+        review_polynomial(3, [(-1, 1, [1, 0, 0]), (1, 1, [0, 1, 0])]),
+        @qf.EqualZero,
+      ),
+      @qf.Conjunction(
+        @qf.Atom(
+          review_polynomial(3, [(-1, 1, [0, 1, 0]), (1, 1, [0, 0, 1])]),
+          @qf.EqualZero,
+        ),
+        @qf.Atom(
+          review_polynomial(3, [(1, 1, [0, 0, 2]), (-2, 1, [0, 0, 0])]),
+          @qf.EqualZero,
+        ),
+      ),
+    ),
+  )
+  review_expect(3, source, true)
+}
+
+///|
+test "independent Z3 review dependent three coordinate inconsistent square" {
+  let source = @qf.Conjunction(
+    @qf.Atom(
+      review_polynomial(3, [(1, 1, [2, 0, 0]), (-2, 1, [0, 0, 0])]),
+      @qf.EqualZero,
+    ),
+    @qf.Conjunction(
+      @qf.Atom(
+        review_polynomial(3, [(-1, 1, [1, 0, 0]), (1, 1, [0, 1, 0])]),
+        @qf.EqualZero,
+      ),
+      @qf.Conjunction(
+        @qf.Atom(
+          review_polynomial(3, [(-1, 1, [0, 1, 0]), (1, 1, [0, 0, 1])]),
+          @qf.EqualZero,
+        ),
+        @qf.Atom(
+          review_polynomial(3, [(1, 1, [0, 0, 2]), (-2, 1, [0, 0, 0])]),
+          @qf.NotZero,
+        ),
+      ),
+    ),
+  )
+  review_expect(3, source, false)
+}
+
+///|
 test "independent Z3 review three squares zero with nonzero coordinate alternative" {
   let source = @qf.Conjunction(
     @qf.Atom(
@@ -746,6 +800,39 @@ test "independent Z3 review four coordinate irrational diagonal" {
     ),
   )
   review_expect(4, source, true)
+}
+
+///|
+test "independent Z3 review four coordinate irrational diagonal inconsistent square" {
+  let source = @qf.Conjunction(
+    @qf.Atom(
+      review_polynomial(4, [(1, 1, [1, 0, 0, 0]), (-1, 1, [0, 1, 0, 0])]),
+      @qf.EqualZero,
+    ),
+    @qf.Conjunction(
+      @qf.Atom(
+        review_polynomial(4, [(1, 1, [0, 1, 0, 0]), (-1, 1, [0, 0, 1, 0])]),
+        @qf.EqualZero,
+      ),
+      @qf.Conjunction(
+        @qf.Atom(
+          review_polynomial(4, [(1, 1, [0, 0, 1, 0]), (-1, 1, [0, 0, 0, 1])]),
+          @qf.EqualZero,
+        ),
+        @qf.Conjunction(
+          @qf.Atom(
+            review_polynomial(4, [(1, 1, [2, 0, 0, 0]), (-2, 1, [0, 0, 0, 0])]),
+            @qf.EqualZero,
+          ),
+          @qf.Atom(
+            review_polynomial(4, [(1, 1, [0, 0, 0, 2]), (-2, 1, [0, 0, 0, 0])]),
+            @qf.NotZero,
+          ),
+        ),
+      ),
+    ),
+  )
+  review_expect(4, source, false)
 }
 
 ///|

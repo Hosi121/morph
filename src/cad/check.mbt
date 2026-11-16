@@ -15,7 +15,7 @@ fn check_node(
       match prepare_fibre(point, level.family) {
         Err(_) => false
         Ok(fibre) =>
-          if !@tower.check_isolation(fibre.product, isolation) {
+          if !@tower.check_isolation(fibre.root_polynomial, isolation) {
             false
           } else {
             fn walk(

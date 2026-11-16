@@ -127,8 +127,8 @@ def corpus():
     return cases
 
 
-# Fixed after the finite native timing probe: these are performance stress
-# inputs, never failures or UNSAT inferred from an exhausted execution budget.
+# These formerly censored cases now run in the default regression corpus after
+# certified root-union reduction. Keep their names as historical provenance.
 STRESS_NAMES = {
     'dependent three coordinate irrational diagonal',
     'dependent three coordinate inconsistent square',
@@ -194,7 +194,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--probe',action='store_true')
     parser.add_argument('--check',action='store_true')
-    parser.add_argument('--stress',action='store_true',help='also emit the three documented dependent-square timing outliers')
+    parser.add_argument('--stress',action='store_true',help='compatibility flag; all 41 cases now run by default')
+    parser.add_argument('--exclude-former-stress',action='store_true',help='reproduce the historical 38-case finite corpus')
     options=parser.parse_args()
     cases=corpus()
     if options.probe: cases=cases[:3]
@@ -212,8 +213,8 @@ def main():
         # Independently parse the emitted exact QQ SMT-LIB to check its translation.
         replay=z3.Tactic('qfnra-nlsat').solver(); replay.set(timeout=30000)
         replay.from_string(smt[:smt.index('(check-sat-using')]); assert replay.check()==result
-        evidence.append({'name':case.name,'arity':case.n,'expected':str(result),'hand_argument':case.proof,'smt2':smt,'sha256':hashlib.sha256(smt.encode()).hexdigest(),'default_case':case.name not in STRESS_NAMES})
-        if options.stress or case.name not in STRESS_NAMES:
+        evidence.append({'name':case.name,'arity':case.n,'expected':str(result),'hand_argument':case.proof,'smt2':smt,'sha256':hashlib.sha256(smt.encode()).hexdigest(),'default_case':True,'former_stress':case.name in STRESS_NAMES})
+        if not options.exclude_former_stress or case.name not in STRESS_NAMES:
             rows+=['','///|',f'test "independent Z3 review {case.name}" {{',f'  let source = {moonformula(case.formula)}',f'  review_expect({case.n}, source, {str(case.expected).lower()})','}']
     output=ROOT/'src/realnlsmt/independent_review_z3_wbtest.mbt'
     source='\n'.join(rows)+'\n'
@@ -225,7 +226,7 @@ def main():
         assert json.loads(report.read_text())==provenance,'provenance differs'
     else:
         output.write_text(source); report.write_text(json.dumps(provenance,indent=2)+'\n')
-    selected=[c for c in cases if options.stress or c.name not in STRESS_NAMES]
+    selected=[c for c in cases if not options.exclude_former_stress or c.name not in STRESS_NAMES]
     print(('Verified' if options.check else 'Generated')+f' {len(selected)} default/emitted cases; external exact Z3 reference validates {len(cases)} candidates: '+str(sum(c.expected for c in cases))+' SAT, '+str(sum(not c.expected for c in cases))+' UNSAT.')
 
 if __name__=='__main__': main()

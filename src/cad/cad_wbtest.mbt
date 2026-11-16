@@ -365,9 +365,9 @@ test "three nested radical coordinates are exact reusable tower values" {
 ///|
 test "complete stack and quantifier proof bundles stay bound to their original input" {
   let x = polynomial_fixture(1, [(1, [1])])
-  let two_x = polynomial_fixture(1, [(2, [1])])
+  let shifted_x = polynomial_fixture(1, [(1, [1]), (-1, [0])])
   let problem = make_problem(1, @qf.Atom(x, @qf.GreaterZero))
-  let other = make_problem(1, @qf.Atom(two_x, @qf.GreaterZero))
+  let other = make_problem(1, @qf.Atom(shifted_x, @qf.GreaterZero))
   let result = finish(problem, 300)
   let other_result = finish(other, 300)
   let proof = certificate(result)

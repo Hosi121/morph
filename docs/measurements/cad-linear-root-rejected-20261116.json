@@ -1,0 +1,9 @@
+{
+  "hypothesis": "avoid a new degree-one context by dividing the linear coefficients in the parent field",
+  "adopted": false,
+  "reason": "No benefit established: the native test command was censored at 60 seconds; the existing LCM implementation had completed the four-variable case in 25.27 seconds with the same 100,000-transition test bound. This is an end-to-end diagnostic, not a frozen artifact speed ratio.",
+  "candidate_sha256": "e395899b020da1ac6c0420939a99ba4d2c6c9700ad2d1a2de5b8b1a7fedb986f",
+  "restored_sha256": "da91d8fd3220850f84f53bd2e6bb95361db9ccef5757fb61b8741d8ac3fb0662",
+  "baseline_log": "Total tests: 1, passed: 1, failed: 0.\nreal 25.27\nuser 24.70\nsys 0.17\n",
+  "candidate_log": ""
+}

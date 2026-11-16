@@ -106,7 +106,7 @@ fn rational_sign(
 }
 
 ///|
-/// At a root of the union product, each atom either has that root or has no
+/// At a root of the certified nonzero-atom union, each atom either has that root or has no
 /// root in the one-root interval. In the latter case midpoint sign is exact.
 fn classify(
   fibre : Fibre,
@@ -201,7 +201,7 @@ fn defining_root(
         }
     }
   }
-  match @tower.root_from_certificate(fibre.product, proof) {
+  match @tower.root_from_certificate(fibre.root_polynomial, proof) {
     Err(error) => Err(TowerFailure(error))
     Ok(root) =>
       match @tower.degree(@tower.squarefree(fibre.system)) {
@@ -220,7 +220,7 @@ fn extend_point(
   match sample {
     RationalPoint(value) => Ok(append_rational(point, value))
     RootPoint(proof) =>
-      match rational_sign(fibre.product, proof.count.interval.upper) {
+      match rational_sign(fibre.root_polynomial, proof.count.interval.upper) {
         Err(error) => Err(error)
         Ok(Equal) => Ok(append_rational(point, proof.count.interval.upper))
         Ok(_) =>

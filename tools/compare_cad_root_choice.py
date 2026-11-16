@@ -20,7 +20,10 @@ def main():
     parser.add_argument('--after', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--selection', default='cad_wbtest.mbt:8-9')
+    parser.add_argument("--timeout-seconds", type=float, help="record a censored bound per artifact instead of waiting indefinitely")
     args = parser.parse_args()
+    if args.timeout_seconds is not None and args.timeout_seconds <= 0:
+        parser.error("timeout must be positive")
     affinity = sorted(os.sched_getaffinity(0))
     if len(affinity) != 1:
         parser.error('Run under tools/measure --cpu N to serialize and pin execution.')
@@ -30,14 +33,24 @@ def main():
         executable = executables[phase]
         digest = hashlib.sha256(executable.read_bytes()).hexdigest()
         start = time.perf_counter()
-        result = subprocess.run([str(executable), args.selection], capture_output=True, text=True)
+        try:
+            result = subprocess.run([str(executable), args.selection], capture_output=True,
+                                    text=True, timeout=args.timeout_seconds)
+        except subprocess.TimeoutExpired as error:
+            elapsed = time.perf_counter() - start
+            stdout = error.stdout.decode() if isinstance(error.stdout, bytes) else (error.stdout or '')
+            stderr = error.stderr.decode() if isinstance(error.stderr, bytes) else (error.stderr or '')
+            records.append({'phase': phase, 'seconds': elapsed, 'sha256': digest,
+                            'completed': False, 'timeout_seconds': args.timeout_seconds,
+                            'exit': 'timeout', 'stdout': stdout, 'stderr': stderr})
+            continue
         elapsed = time.perf_counter() - start
         # Moon's standalone runner can report failures in its JSON protocol.
         results = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{')]
         outcomes = [entry for entry in results if entry.get('type') == 'result']
         if result.returncode or not outcomes or any(entry.get('message') != '' for entry in outcomes):
             raise RuntimeError(f'Failed frozen artifact: {result.returncode}\n{result.stdout}\n{result.stderr}')
-        records.append({'phase': phase, 'seconds': elapsed, 'sha256': digest,
+        records.append({'phase': phase, 'seconds': elapsed, 'sha256': digest, 'completed': True,
                         'exit': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr})
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps({'cpu': affinity, 'order': 'ABBA', 'selection': args.selection,

@@ -94,3 +94,20 @@ moonbit-linux-x86_64.tar.gz
 core-latest.tar.gz
 8ec2a2c01335501d703867bb4eef5f92d3cd7e1ae1ee5f7f14d54d16d2c7c2b5
 ```
+
+
+## 実閉体・非線形SMTの独立fixtureを再生成する
+
+通常のテストはコミット済みの正確なfixtureを使い、Z3を実行しません。
+独立参照を再計算する場合だけ、SymPyとZ3のPython環境を用意します。
+
+```sh
+uv venv .tools/reference-venv
+uv pip install --python .tools/reference-venv/bin/python sympy==1.14.0 z3-solver==5.4.1.0
+.tools/reference-venv/bin/python tools/generate_cad_review.py --check
+.tools/reference-venv/bin/python tools/generate_realnlsmt_review.py --check
+```
+
+Z3はQF_NRAの41入力についてsat/unsatの正確な判定を要求し、unknownなら生成を止めます。
+参照コード、SMT-LIB、バイナリのSHA-256は[独立照合](research/realnlsmt-independent-review-20261116.md)を参照してください。
+MoonBitの計算核から外部solverを呼ぶ経路はありません。

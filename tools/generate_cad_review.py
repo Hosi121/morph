@@ -49,6 +49,7 @@ def cases():
  ('nonlinear_shared_forall',g3,2,['Forall'],disj(atom(h*(z-1),'EqualZero',g3),atom(h*(z+1),'EqualZero',g3)),lambda p:p[1]*p[1]==p[0],'y^2 = x'),
  ('four_variable_degenerate',g4,1,['Exists','Exists','Forall'],atom((x*y-1)*w+z,'EqualZero',g4),lambda p:p[0]!=0,'x != 0'),
  ('four_variable_parabola',g4,2,['Exists','Forall'],atom((x*x-y)*w+z,'EqualZero',g4),lambda p:p[0]*p[0]==p[1],'y = x^2'),
+ ('shared_factor_higher_psc',g,1,['Exists'],conj(atom(y*(y-x-1),'EqualZero',g),atom(y*(y-2*x-3),'EqualZero',g),atom(y,'NotZero',g)),lambda p:p[0]==-2,'x = -2; common zero factor alone is insufficient'),
  ]
 
 def points(free):
@@ -174,5 +175,5 @@ def main():
  (stress/'main.mbt').write_text(stress_source)
  data['optional_stress']={'matrix':'y*(y-x-1)=0 and y*(y-2*x-3)=0 and y!=0','closed_form':'x=-2','command':'tools/measure --cpu 8 .tools/moon/bin/moon -C .tools/cad-review-20261116 run comparison/stress --target native','default_suite':False,'observed_limit':'Initial implementation exceeded a 10-second diagnostic cap for the full QE/checker case; no semantic result inferred.'}
  (ART/'oracle.json').write_text(json.dumps(data,indent=2)+'\n')
- print(f"{'Checked' if args.check else 'Wrote'} 18 CAD and 6 FO closed-form cases, plus 4 old-CAD2 complete base-cell comparisons.")
+ print(f"{'Checked' if args.check else 'Wrote'} 19 CAD and 6 FO closed-form cases, plus 4 old-CAD2 complete base-cell comparisons.")
 if __name__=='__main__':main()

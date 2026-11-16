@@ -14,6 +14,9 @@
 | [任意変数のCADと量化消去](cad-20261116.md) | 再帰lifting、全木検査、複数自由変数のQQ式出力 | CAD・一階式15テスト×3 backend |
 | [実代数塔の独立レビュー](realtower-independent-review-20261116.md) | 可約・従属拡大・Fraction/SymPy・coherent証拠改竄 | opaque payload反例を修正し3 backend確認 |
 | [非線形実数SMT](realnlsmt-20261116.md) | CAD理論補題・厳密モデル・最終RUP反証 | 独立Fraction・126テスト×3 backend |
+| [CAD・量化消去の独立レビュー](cad-independent-review-20261116.md) | 327有理出力・代数的section・負の8次証人・旧cad2と照合 | 3 backendで検査 |
+| [非線形SMTの独立レビュー](realnlsmt-independent-review-20261116.md) | 2〜4変数の正確なZ3照合・coherent証拠差替え | 通常38例＋改竄4例を3 backendで検査 |
+| [CADの根集合を小さい次数で保つ](cad-root-union-20261116.md) | 除算恒等式で検査したmonic LCMと従属座標の比較 | 元の時間超過例を通常回帰へ復帰 |
 | [任意変数の実閉体ソルバ](realclosed-20261116.md) | 多段の実代数拡大から量化消去・非線形SMTへ | 実装・成立検証中 |
 | [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 全3 backend・公開同期・片付け完了 |
 | [一変数の実数制約](realcad-20261116.md) | 符号不変分割、無理数の証人、存在・全称と証拠検査 | 統合済み |
