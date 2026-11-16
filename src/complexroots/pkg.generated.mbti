@@ -1,0 +1,190 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexroots"
+
+import {
+  "Hosi121/morph/complexalgebraic",
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/realvariety",
+  "Hosi121/morph/tarski",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cartesian(@polynomial.Polynomial) -> Result[Cartesian, RootError]
+
+pub fn certificate(RootSet) -> Certificate
+
+pub fn check(@polynomial.Polynomial, Certificate) -> Bool
+
+pub fn check_materialization(Root, @complexalgebraic.Number, MaterializationCertificate) -> Bool
+
+pub fn check_result(@polynomial.Polynomial, RootSet, Certificate) -> Bool
+
+pub fn coordinate_expressions(Root) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn from_certificate(@polynomial.Polynomial, Certificate) -> Result[RootSet, RootError]
+
+pub fn materialize(Root, @core.Nat) -> Result[MaterializationProgress, RootError]
+
+pub fn materialize_advance(Materialization, @core.Nat) -> Result[MaterializationProgress, RootError]
+
+pub fn materialize_start(Root) -> Materialization
+
+pub fn multiplicity(Root) -> @core.Nat
+
+pub fn parameter(Root) -> @realalgebraic.Number
+
+pub fn prepare(@polynomial.Polynomial) -> Result[Problem, RootError]
+
+pub fn roots(RootSet) -> @core.Chain[Root]
+
+pub fn run(Search, @core.Nat, @core.Nat) -> Result[Progress, RootError]
+
+pub fn source(Problem) -> @polynomial.Polynomial
+
+pub fn squarefree(Problem) -> @polynomial.Polynomial
+
+pub fn start(Problem) -> Search
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Cartesian {
+  real : @polynomial.Polynomial
+  imaginary : @polynomial.Polynomial
+}
+pub fn Cartesian::equal(Self, Self) -> Bool
+pub fn Cartesian::not_equal(Self, Self) -> Bool
+pub fn Cartesian::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : @polynomial.Polynomial
+  separation : @realvariety.SeparationCertificate?
+  multiplicities : @core.Chain[MultiplicityCertificate]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct JetCertificate {
+  real : @tarski.RootSignCertificate
+  imaginary : @tarski.RootSignCertificate
+}
+pub fn JetCertificate::equal(Self, Self) -> Bool
+pub fn JetCertificate::not_equal(Self, Self) -> Bool
+pub fn JetCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Materialization {
+  root : Root
+  phase : MaterializationPhase
+}
+pub fn Materialization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct MaterializationCertificate {
+  source : @polynomial.Polynomial
+  point : @realvariety.ProjectedPointCertificate
+  real : @realvariety.CoordinateCertificate
+  imaginary : @realvariety.CoordinateCertificate
+}
+pub fn MaterializationCertificate::equal(Self, Self) -> Bool
+pub fn MaterializationCertificate::not_equal(Self, Self) -> Bool
+pub fn MaterializationCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type MaterializationPhase
+pub fn MaterializationPhase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum MaterializationProgress {
+  Materialized(@complexalgebraic.Number, MaterializationCertificate)
+  MaterializationPaused(Materialization)
+}
+pub fn MaterializationProgress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct MultiplicityCertificate {
+  parameter : @realalgebraic.RootCertificate
+  order : @core.Nat
+  jets : @core.Chain[JetCertificate]
+}
+pub fn MultiplicityCertificate::equal(Self, Self) -> Bool
+pub fn MultiplicityCertificate::not_equal(Self, Self) -> Bool
+pub fn MultiplicityCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PauseReason {
+  AttemptLimit
+  ComputationFuel
+}
+pub fn PauseReason::equal(Self, Self) -> Bool
+pub fn PauseReason::not_equal(Self, Self) -> Bool
+pub fn PauseReason::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  source : @polynomial.Polynomial
+  squarefree : @polynomial.Polynomial
+  cartesian : Cartesian
+  variety : @realvariety.Problem
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Complete(RootSet)
+  Paused(Search, PauseReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Root {
+  source : @polynomial.Polynomial
+  point : @realvariety.ProjectedPoint
+  multiplicity : MultiplicityCertificate
+}
+pub fn Root::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum RootError {
+  NotUnivariate
+  ZeroPolynomial
+  InvalidCertificate
+  PolynomialFailure
+  VarietyFailure(@realvariety.VarietyError)
+  InternalInvariant
+}
+pub fn RootError::equal(Self, Self) -> Bool
+pub fn RootError::not_equal(Self, Self) -> Bool
+pub fn RootError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct RootSet {
+  problem : Problem
+  proof : Certificate
+  roots : @core.Chain[Root]
+}
+pub fn RootSet::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  problem : Problem
+  phase : Phase
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
