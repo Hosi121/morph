@@ -1,0 +1,120 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexfield"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Element, Element) -> Result[Element, FieldError]
+
+pub fn check_inverse_result(Element, Element, InverseCertificate) -> Bool
+
+pub fn check_minimal_polynomial(Element, @polynomial.Polynomial) -> Bool
+
+pub fn check_norm(Element, @exact.Rational) -> Bool
+
+pub fn check_trace(Element, @exact.Rational) -> Bool
+
+pub fn conjugate(Element) -> Element
+
+pub fn degree(Field) -> @core.Nat
+
+pub fn divide(Element, Element) -> Result[Element?, FieldError]
+
+pub fn element(Field, @numberfield.Element, @numberfield.Element) -> Result[Element, FieldError]
+
+pub fn equal(Element, Element) -> Bool
+
+pub fn field(@numberfield.Field) -> Field
+
+pub fn imaginary_part(Element) -> @numberfield.Element
+
+pub fn imaginary_unit(Field) -> Element
+
+pub fn inverse(Element) -> Result[Element?, FieldError]
+
+pub fn inverse_with_certificate(Element) -> Result[Inverse?, FieldError]
+
+pub fn is_zero(Element) -> Bool
+
+pub fn minimal_polynomial(Element) -> Result[@polynomial.Polynomial, FieldError]
+
+pub fn multiplication_matrix(Element) -> Result[@matrix.Matrix[@exact.Rational], FieldError]
+
+pub fn multiply(Element, Element) -> Result[Element, FieldError]
+
+pub fn negate(Element) -> Element
+
+pub fn norm(Element) -> Result[@exact.Rational, FieldError]
+
+pub fn one(Field) -> Element
+
+pub fn parent(Element) -> Field
+
+pub fn rational(Field, @exact.Rational) -> Element
+
+pub fn real_field(Field) -> @numberfield.Field
+
+pub fn real_part(Element) -> @numberfield.Element
+
+pub fn relative_norm(Element) -> Result[@numberfield.Element, FieldError]
+
+pub fn relative_trace(Element) -> Result[@numberfield.Element, FieldError]
+
+pub fn same_field(Field, Field) -> Bool
+
+pub fn subtract(Element, Element) -> Result[Element, FieldError]
+
+pub fn trace(Element) -> Result[@exact.Rational, FieldError]
+
+pub fn zero(Field) -> Element
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Element {
+  // private fields
+}
+pub fn Element::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Field {
+  // private fields
+}
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FieldError {
+  DifferentField
+  InternalInvariant
+}
+pub fn FieldError::equal(Self, Self) -> Bool
+pub fn FieldError::not_equal(Self, Self) -> Bool
+pub fn FieldError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Inverse {
+  value : Element
+  certificate : InverseCertificate
+}
+pub fn Inverse::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct InverseCertificate {
+  input : Element
+  value : Element
+  denominator_inverse : @numberfield.Element
+  denominator_certificate : @numberfield.InverseCertificate
+}
+pub fn InverseCertificate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
