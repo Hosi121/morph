@@ -903,3 +903,54 @@ cp _build/native/release/bench/cdcl/cdcl.whitebox_test.exe .tools/before.exe
 # 変更後のbuildを .tools/after.exe として保存してから比較する。
 /home/hosi/morph/tools/measure --cpu 10 python3 tools/compare_cdcl_traces.py .tools/before.exe .tools/after.exe --output .tools/trace-comparison.json
 ```
+
+## lookupの分岐順・返り値融合はmicro改善、全queryでは保留
+
+native生成Cの `Index.get` を確認すると、indexを先に分解する元のtuple matchは、選ばない子と
+格納値にも参照カウント増減を行っていた。keyを先に分岐するとshared-nodeの通常経路から
+それらが消える。さらにgeneric lookupでAssignmentを返してからpolarityを読む代わりに、
+同じtrie traversal中で最終Valueまで返す候補を作った。kernel sourceはBool/ADT/recursionのままで、
+FFIやcompiler attributeは追加しない。
+
+同一native release ELF、CPU 10、共通mutex。prebuilt 512割当、1024 query（後半は未割当）：
+
+| 1024 queryの処理 | 最初のblock | 繰り返しblock |
+| --- | ---: | ---: |
+| index先行のgeneric value読取 | 31.96 µs ± 689.69 ns | 38.60 µs ± 882.88 ns |
+| key先行のgeneric value読取 | 26.84 µs ± 2.11 µs | 21.72 µs ± 1.54 µs |
+| key先行のValue融合 | 22.28 µs ± 1.29 µs | 21.02 µs ± 958.84 ns |
+
+512割当の構築・query構築は計測外。これはcacheに載った小さいlookupのmicroである。
+生成CのRC差やこの倍率を、全queryの速度倍率とは扱わない。
+
+元の全engineとValue融合を別々の固定ELFに保存し、同じ64bit全queryをABBA順に実行した。
+各blockは10サンプルで、入力構築だけを除きstartup・探索・hint生成・独立検査を含む。
+
+| block | 全query | 未変更のhint checker control |
+| --- | ---: | ---: |
+| 元のlookup、A前半 | 227.09 ms ± 3.72 ms | 13.43 ms ± 445.68 µs |
+| Value融合、B前半 | 220.55 ms ± 3.68 ms | 13.07 ms ± 245.33 µs |
+| Value融合、B後半 | 219.25 ms ± 6.19 ms | 13.34 ms ± 470.09 µs |
+| 元のlookup、A後半 | 227.18 ms ± 2.83 ms | 13.24 ms ± 387.66 µs |
+
+平均方向は改善だが約3.2%と小さく、control driftと範囲の重なりもある。小差を保留する方針で
+既定には入れず、`trie_order_wbtest.mbt` に候補とquery controlを保存した。元ELFと候補ELFは
+6 fixture、421 frames、74,247,151 bytesの完全なcontinuation dumpが一致した。
+trace SHA256は `9f59a641ff8c9c569d3ee9175df8fb6b30b6f70aa980251f74b524053a00ca12`。
+この候補の全16外部証拠再生成は採用前の残るgateであり、実施済みとは扱わない。
+
+二bitずつの融合読取、optional resultの再構築による非tail下降、失敗時に再走査する二bit版も
+試した。最初は一bit 20.80 µsに対して二bit 22.25 µs、非tail版は一bit 19.96/20.32 µsに対して
+25.52/25.34 µsだった。非tail版は生成Cの下降中RCを減らしたが速度には結び付かなかった。
+失敗時再走査版は外乱も大きく、追加改善を確定できない。いずれもproductionへ入れない。
+
+256 subsetのprefix/sparse keysを、Assignment・Bool・Some(Nil)を含むlist値と両polarityで比較する。
+この回帰がnative/JS/Wasm GCで通過し、deny-warnとpurityも通過した。
+元ELF SHA256は `cc7171655aa514d7a1840e4aaddf6e0bfdde1d8d360cdc72a9b7a904012aa6e4`、
+候補は `6b68fab4e1888030638e83ebe5b8c707a94c5de460c44dee26e7b99e1537cbb1`。
+ELF、C抜粋、候補の一時source、raw logsは `.tools/cdcl-profile/trie-*` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/trie_order_wbtest.mbt --target native --release -i 1
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/trie_order_wbtest.mbt --target native --release -i 3
+```
