@@ -7,25 +7,39 @@ priv enum Status {
 }
 
 ///|
-/// Builder-only clause scan. The checking kernel has its own evaluator.
-fn builder_clause(clause : Lits, values : Trie[Bool]) -> Status {
+/// Builder-only scan: two unassigned literals already exclude a unit/conflict.
+/// Open and Satisfied both mean no action; no remaining literal is needed.
+/// The checking kernel has its own complete evaluator.
+fn builder_clause_pending(
+  clause : Lits,
+  values : Trie[Bool],
+  pending : Literal?,
+) -> Status {
   match clause {
-    Nil => Conflict
+    Nil =>
+      match pending {
+        None => Conflict
+        Some(value) => Unit(value)
+      }
     Cons(value, tail) =>
       match get(values, @binary.bits(value.key)) {
         Some(assigned) =>
           match (assigned, value.source.positive) {
             (true, true) | (false, false) => Satisfied
-            _ => builder_clause(tail, values)
+            _ => builder_clause_pending(tail, values, pending)
           }
         None =>
-          match builder_clause(tail, values) {
-            Satisfied => Satisfied
-            Conflict => Unit(value)
-            Unit(_) | Open => Open
+          match pending {
+            None => builder_clause_pending(tail, values, Some(value))
+            Some(_) => Open
           }
       }
   }
+}
+
+///|
+fn builder_clause(clause : Lits, values : Trie[Bool]) -> Status {
+  builder_clause_pending(clause, values, None)
 }
 
 ///|
@@ -112,7 +126,7 @@ fn build_using(
                 match
                   (match occurrences {
                     None => builder_hints(database, clause)
-                    Some(indexed) => occurrence_hints(database, clause, indexed)
+                    Some(indexed) => occurrence_hints(clause, indexed)
                   }) {
                   None => None
                   Some(hints) => {

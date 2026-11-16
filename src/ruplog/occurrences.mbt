@@ -2,7 +2,7 @@
 /// A static signed-literal occurrence index. No watch positions or assignment
 /// state survive between lemmas; only this immutable index is extended.
 priv struct Occurrences {
-  indexed : Trie[@core.Chain[@binary.Binary]]
+  indexed : Trie[@core.Chain[Entry]]
   units : @core.Chain[(@binary.Binary, Literal)]
   empty : @binary.Binary?
 }
@@ -17,10 +17,10 @@ fn affected(
   occurrences : Occurrences,
   key : @binary.Binary,
   positive : Bool,
-) -> @core.Chain[@binary.Binary] {
+) -> @core.Chain[Entry] {
   match get(occurrences.indexed, signed_key(key, !positive)) {
     None => Nil
-    Some(ids) => ids
+    Some(entries) => entries
   }
 }
 
@@ -32,8 +32,9 @@ fn occurrence_add(
 ) -> Occurrences {
   match clause {
     Tautology => occurrences
-    Terms(clause) => {
-      let occurrences = match clause {
+    Terms(literals) => {
+      let entry = Entry::{ id, clause, }
+      let occurrences = match literals {
         Nil =>
           match occurrences.empty {
             None => { ..occurrences, empty: Some(id), }
@@ -43,16 +44,16 @@ fn occurrence_add(
           { ..occurrences, units: Cons((id, value), occurrences.units), }
         _ => occurrences
       }
-      @core.fold_left(clause, occurrences, fn(occurrences, value) {
+      @core.fold_left(literals, occurrences, fn(occurrences, value) {
         let key = signed_key(value.key, value.source.positive)
-        let previous : @core.Chain[@binary.Binary] = match
+        let previous : @core.Chain[Entry] = match
           get(occurrences.indexed, key) {
           None => Nil
-          Some(ids) => ids
+          Some(entries) => entries
         }
         {
           ..occurrences,
-          indexed: put(occurrences.indexed, key, Cons(id, previous)),
+          indexed: put(occurrences.indexed, key, Cons(entry, previous)),
         }
       })
     }
@@ -74,8 +75,8 @@ fn occurrence_prepare(database : Database) -> Occurrences {
 ///|
 priv struct Work {
   values : Trie[Bool]
-  chunks : @core.Queue[@core.Chain[@binary.Binary]]
-  active : @core.Chain[@binary.Binary]
+  chunks : @core.Queue[@core.Chain[Entry]]
+  active : @core.Chain[Entry]
   hints_rev : @core.Chain[@binary.Binary]
 }
 
@@ -128,9 +129,8 @@ fn seed(
 
 ///|
 /// Only clauses containing a newly falsified literal enter the work queue.
-/// Lists are enqueued as shared chunks rather than copied per occurrence.
+/// Shared chunks retain immutable clause references, avoiding repeated ID lookup.
 fn occurrence_hints(
-  database : Database,
   clause : Lits,
   occurrences : Occurrences,
 ) -> @core.Chain[@binary.Binary]? {
@@ -141,15 +141,14 @@ fn occurrence_hints(
           None => None
           Some((active, chunks)) => propagate({ ..work, active, chunks, })
         }
-      Cons(id, rest) => {
+      Cons(entry, rest) => {
         let work = { ..work, active: rest, }
-        match get(database.indexed, @binary.bits(id)) {
-          None => None
-          Some(Tautology) => propagate(work)
-          Some(Terms(clause)) =>
+        match entry.clause {
+          Tautology => propagate(work)
+          Terms(clause) =>
             match builder_clause(clause, work.values) {
               Satisfied | Open => propagate(work)
-              Conflict => Some(@core.reverse(Cons(id, work.hints_rev)))
+              Conflict => Some(@core.reverse(Cons(entry.id, work.hints_rev)))
               Unit(value) => {
                 let work = assign(
                   work,
@@ -157,7 +156,7 @@ fn occurrence_hints(
                   value.key,
                   value.source.positive,
                 )
-                propagate({ ..work, hints_rev: Cons(id, work.hints_rev), })
+                propagate({ ..work, hints_rev: Cons(entry.id, work.hints_rev), })
               }
             }
         }

@@ -178,12 +178,13 @@ python3 tools/generate_ruplog.py --check --miter64 --cpu 10
 成果物は既定で `.tools/ruplog-export/`、外部checkerのcacheは `.tools/ruplog-checkers/` に置く。
 環境変数 `MORPH_RUPLOG_EXPORT` はテストadapterだけが読み、通常のテストではexportしない。
 
-## 節ID再検索を除く候補は白箱へ隔離
+## 節ID再検索を除く単独候補を一度白箱へ隔離
 
 `1017d72` と同じ共有Core/Binary基盤で、occurrence indexとwork queueに節IDの代わりに
 不変の `Entry` 参照を保持する候補を比較した。各queue訪問でclause-ID trieを引く処理を除く。
 節もIDも順序も同じであり、候補が生成するcertificateはhint列を含めて元のbuilderと一致した。
-候補は `references_wbtest.mbt` に残し、productionは節ID再検索のままとした。
+この段階では候補を `references_wbtest.mbt` に残し、productionは節ID再検索のままとした。
+次節では別の改善と合成し、同じ全query比較を再実施している。
 
 同じnative release ELF、CPU 10、共通mutex、各10サンプルのABBA比較：
 
@@ -221,4 +222,61 @@ ELFとraw logsは `.tools/cdcl-profile/references-*` に保存した。
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 1
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 2
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 3
+```
+
+## 非unitの早期確定と節参照共有を合成して採用
+
+builderはunitまたはconflictだけに反応する。節中に二つの未割当literalが見つかれば、
+残りを検査せず非unitとして終了できる。最初の未割当literalを引数で保持し、偽literalを
+tail recursionで飛ばす。`Open` と `Satisfied` はともに「何も伝播しない」の内部状態であり、
+早期終了した `Open` には既に満たされた節も含み得る。checkerの完全な節評価は変更しない。
+この早期終了と、前節の不変節への直接参照を一緒に既定へ採用した。
+節・unit・queueの順序、生成する全hint、追加ID、eraseしたRUPは変わらない。
+
+同一native release ELF、CPU 10、共通mutex、各10サンプルのstage比較：
+
+| 準備済み64bit builder | 平均 ± 標準偏差 |
+| --- | ---: |
+| 完全評価＋節ID、最初のcontrol | 81.13 ms ± 4.19 ms |
+| 早期終了＋節ID | 63.73 ms ± 2.37 ms |
+| 早期終了＋節参照 | 52.23 ms ± 1.13 ms |
+| 早期終了＋節ID、繰り返しcontrol | 64.47 ms ± 2.77 ms |
+| 完全評価＋節ID、繰り返しcontrol | 75.10 ms ± 2.91 ms |
+| 未変更の準備済みhint checker | 16.49 ms ± 954.52 µs |
+
+20対の交互全query比較では、早期終了だけの変更は324.30 ms ± 28.83 ms対
+319.08 ms ± 69.78 ms、16/20勝だった。612.37 msのサンプルもあり、これだけでは
+全体改善を確定しない。合成候補を別の20対で比較した結果は次の通り。
+
+| 64bit全query | 完全評価＋節ID | 早期終了＋節参照 |
+| --- | ---: | ---: |
+| 同一ELF内、最初の20対 | 314.14 ms ± 7.41 ms | 284.44 ms ± 7.58 ms |
+| productionへ選択後の別ELF内、20対 | 325.55 ms ± 44.58 ms | 312.95 ms ± 53.29 ms |
+
+最初は20/20対で合成候補が速く、対差は29.70 ms ± 10.62 ms、比中央値1.0906、
+両実行順群とも10/10勝。平均全queryは約9.45%短縮した。未変更checkerは
+15.33 ms ± 553.09 µsだった。後の確認は17/20勝、対差12.60 ms ± 38.95 ms、
+比中央値1.0822、両実行順群の平均方向も同じだった。ただし両側に大きいサンプルがあり、
+後の平均短縮は約3.87%に留まる。どちらのログも残し、固定の9%改善とは主張しない。
+後のcheckerは15.88 ms ± 531.58 µs。異なるELF同士の生時間を採否の比較には使わない。
+
+選択後の同一ELFでpigeonhole 6 into 5の全queryは16.81 ms ± 459.62 µsから
+13.94 ms ± 385.28 µsへ短縮した。固定1,000個六変数cohortは43.21 ms ± 946.20 µs対
+43.27 ms ± 1.21 msで重なり、改善を主張しない。
+
+旧完全評価、早期終了＋節ID、早期終了＋節参照を白箱で再現できるようにした。
+三変数の全27節×27部分割当729組でunit/conflict actionを比較し、全19,683候補証拠列、
+64bit miter、固定cohortではhint列を含むcertificateの完全一致を要求する。
+採用後の15 RUPLOG testsがnative/JS/Wasm GC、deny-warn、purityを通過した。
+外部16 positive/7 negativeも再検査し、CNF/DRUP hashは前と同一だった。
+
+最初の全query比較ELFは `afcd046128ba5bd7abe39fc293aa7629a30f4067ca27948157da27b983e01e83`、
+選択後ELFは `23179bdf6852f817828b002695c63fa30e2d609f998f2f1005f216a9f04a438e`。
+ELFとraw logsを `.tools/cdcl-profile/early-open-*` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/early_open_wbtest.mbt --target native --release -i 1
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/early_open_wbtest.mbt --target native --release -i 2
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/early_open_wbtest.mbt --target native --release -i 3
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/early_open_wbtest.mbt --target native --release -i 5
 ```

@@ -1,41 +1,40 @@
-// Direct-reference candidate; production retains clause-ID lookup after inconclusive complete-query comparison.
+// Clause-ID baseline from fbcefc1; it uses the current unit evaluator.
 
 ///|
 /// A static signed-literal occurrence index. No watch positions or assignment
 /// state survive between lemmas; only this immutable index is extended.
-priv struct ReferenceOccurrences {
-  indexed : Trie[@core.Chain[Entry]]
+priv struct IdOccurrences {
+  indexed : Trie[@core.Chain[@binary.Binary]]
   units : @core.Chain[(@binary.Binary, Literal)]
   empty : @binary.Binary?
 }
 
 ///|
-fn ref_signed_key(key : @binary.Binary, positive : Bool) -> @core.Chain[Bool] {
+fn id_signed_key(key : @binary.Binary, positive : Bool) -> @core.Chain[Bool] {
   Cons(positive, @binary.bits(key))
 }
 
 ///|
-fn ref_affected(
-  occurrences : ReferenceOccurrences,
+fn id_affected(
+  occurrences : IdOccurrences,
   key : @binary.Binary,
   positive : Bool,
-) -> @core.Chain[Entry] {
-  match get(occurrences.indexed, ref_signed_key(key, !positive)) {
+) -> @core.Chain[@binary.Binary] {
+  match get(occurrences.indexed, id_signed_key(key, !positive)) {
     None => Nil
     Some(ids) => ids
   }
 }
 
 ///|
-fn ref_occurrence_add(
-  occurrences : ReferenceOccurrences,
+fn id_occurrence_add(
+  occurrences : IdOccurrences,
   id : @binary.Binary,
   clause : Clause,
-) -> ReferenceOccurrences {
+) -> IdOccurrences {
   match clause {
     Tautology => occurrences
     Terms(clause) => {
-      let entry = Entry::{ id, clause: Terms(clause), }
       let occurrences = match clause {
         Nil =>
           match occurrences.empty {
@@ -47,15 +46,15 @@ fn ref_occurrence_add(
         _ => occurrences
       }
       @core.fold_left(clause, occurrences, fn(occurrences, value) {
-        let key = ref_signed_key(value.key, value.source.positive)
-        let previous : @core.Chain[Entry] = match
+        let key = id_signed_key(value.key, value.source.positive)
+        let previous : @core.Chain[@binary.Binary] = match
           get(occurrences.indexed, key) {
           None => Nil
           Some(ids) => ids
         }
         {
           ..occurrences,
-          indexed: put(occurrences.indexed, key, Cons(entry, previous)),
+          indexed: put(occurrences.indexed, key, Cons(id, previous)),
         }
       })
     }
@@ -63,72 +62,68 @@ fn ref_occurrence_add(
 }
 
 ///|
-fn ref_occurrence_prepare(database : Database) -> ReferenceOccurrences {
-  let initial = ReferenceOccurrences::{
-    indexed: Empty,
-    units: Nil,
-    empty: None,
-  }
+fn id_occurrence_prepare(database : Database) -> IdOccurrences {
+  let initial = IdOccurrences::{ indexed: Empty, units: Nil, empty: None, }
   let result = @core.fold_left(database.entries, initial, fn(
     occurrences,
     entry,
   ) {
-    ref_occurrence_add(occurrences, entry.id, entry.clause)
+    id_occurrence_add(occurrences, entry.id, entry.clause)
   })
   { ..result, units: @core.reverse(result.units), }
 }
 
 ///|
-priv struct ReferenceWork {
+priv struct IdWork {
   values : Trie[Bool]
-  chunks : @core.Queue[@core.Chain[Entry]]
-  active : @core.Chain[Entry]
+  chunks : @core.Queue[@core.Chain[@binary.Binary]]
+  active : @core.Chain[@binary.Binary]
   hints_rev : @core.Chain[@binary.Binary]
 }
 
 ///|
-fn ref_assign(
-  work : ReferenceWork,
-  occurrences : ReferenceOccurrences,
+fn id_assign(
+  work : IdWork,
+  occurrences : IdOccurrences,
   key : @binary.Binary,
   positive : Bool,
-) -> ReferenceWork {
+) -> IdWork {
   {
     ..work,
     values: put(work.values, @binary.bits(key), positive),
-    chunks: @core.enqueue(work.chunks, ref_affected(occurrences, key, positive)),
+    chunks: @core.enqueue(work.chunks, id_affected(occurrences, key, positive)),
   }
 }
 
 ///|
-priv enum ReferenceSeeded {
-  Ready(ReferenceWork)
+priv enum IdSeeded {
+  Ready(IdWork)
   Immediate(@core.Chain[@binary.Binary])
 }
 
 ///|
-fn ref_seed(
+fn id_seed(
   units : @core.Chain[(@binary.Binary, Literal)],
-  work : ReferenceWork,
-  occurrences : ReferenceOccurrences,
-) -> ReferenceSeeded {
+  work : IdWork,
+  occurrences : IdOccurrences,
+) -> IdSeeded {
   match units {
     Nil => Ready(work)
     Cons((id, value), rest) =>
       match get(work.values, @binary.bits(value.key)) {
         Some(assigned) =>
           match (assigned, value.source.positive) {
-            (true, true) | (false, false) => ref_seed(rest, work, occurrences)
+            (true, true) | (false, false) => id_seed(rest, work, occurrences)
             _ => Immediate(@core.reverse(Cons(id, work.hints_rev)))
           }
         None => {
-          let work = ref_assign(
+          let work = id_assign(
             work,
             occurrences,
             value.key,
             value.source.positive,
           )
-          ref_seed(
+          id_seed(
             rest,
             { ..work, hints_rev: Cons(id, work.hints_rev), },
             occurrences,
@@ -141,36 +136,35 @@ fn ref_seed(
 ///|
 /// Only clauses containing a newly falsified literal enter the work queue.
 /// Lists are enqueued as shared chunks rather than copied per occurrence.
-fn ref_occurrence_hints(
+fn id_occurrence_hints(
+  database : Database,
   clause : Lits,
-  occurrences : ReferenceOccurrences,
+  occurrences : IdOccurrences,
 ) -> @core.Chain[@binary.Binary]? {
-  fn ref_propagate(work : ReferenceWork) -> @core.Chain[@binary.Binary]? {
+  fn id_propagate(work : IdWork) -> @core.Chain[@binary.Binary]? {
     match work.active {
       Nil =>
         match @core.dequeue(work.chunks) {
           None => None
-          Some((active, chunks)) => ref_propagate({ ..work, active, chunks, })
+          Some((active, chunks)) => id_propagate({ ..work, active, chunks, })
         }
-      Cons(entry, rest) => {
+      Cons(id, rest) => {
         let work = { ..work, active: rest, }
-        match entry.clause {
-          Tautology => ref_propagate(work)
-          Terms(clause) =>
+        match get(database.indexed, @binary.bits(id)) {
+          None => None
+          Some(Tautology) => id_propagate(work)
+          Some(Terms(clause)) =>
             match builder_clause(clause, work.values) {
-              Satisfied | Open => ref_propagate(work)
-              Conflict => Some(@core.reverse(Cons(entry.id, work.hints_rev)))
+              Satisfied | Open => id_propagate(work)
+              Conflict => Some(@core.reverse(Cons(id, work.hints_rev)))
               Unit(value) => {
-                let work = ref_assign(
+                let work = id_assign(
                   work,
                   occurrences,
                   value.key,
                   value.source.positive,
                 )
-                ref_propagate({
-                  ..work,
-                  hints_rev: Cons(entry.id, work.hints_rev),
-                })
+                id_propagate({ ..work, hints_rev: Cons(id, work.hints_rev), })
               }
             }
         }
@@ -180,18 +174,18 @@ fn ref_occurrence_hints(
   match occurrences.empty {
     Some(id) => Some(Cons(id, Nil))
     None => {
-      let initial = ReferenceWork::{
+      let initial = IdWork::{
         values: Empty,
         chunks: @core.queue(),
         active: Nil,
         hints_rev: Nil,
       }
       let work = @core.fold_left(clause, initial, fn(work, value) {
-        ref_assign(work, occurrences, value.key, !value.source.positive)
+        id_assign(work, occurrences, value.key, !value.source.positive)
       })
-      match ref_seed(occurrences.units, work, occurrences) {
+      match id_seed(occurrences.units, work, occurrences) {
         Immediate(hints) => Some(hints)
-        Ready(work) => ref_propagate(work)
+        Ready(work) => id_propagate(work)
       }
     }
   }
@@ -201,22 +195,22 @@ fn ref_occurrence_hints(
 /// Enrich an existing RUP list without invoking SAT search. Source tautological
 /// lemmas are omitted. Other clauses are sorted and deduplicated. An empty
 /// clause is required exactly at the end.
-fn ref_build_using(
+fn id_build_using(
   input : Input,
   proof : @cdcl.Proof,
-  occurrences : ReferenceOccurrences?,
+  occurrences : IdOccurrences?,
 ) -> Certificate? {
-  fn ref_visit(
+  fn id_visit(
     rest : @core.Chain[@sat.Clause],
     database : Database,
     reversed : @core.Chain[Step],
-    occurrences : ReferenceOccurrences?,
+    occurrences : IdOccurrences?,
   ) -> Certificate? {
     match rest {
       Nil => None
       Cons(source, tail) =>
         match normalize(source) {
-          Tautology => ref_visit(tail, database, reversed, occurrences)
+          Tautology => id_visit(tail, database, reversed, occurrences)
           Terms(clause) => {
             let last_step = match (clause, tail) {
               (Nil, Nil) => Some(true)
@@ -229,7 +223,8 @@ fn ref_build_using(
                 match
                   (match occurrences {
                     None => builder_hints(database, clause)
-                    Some(indexed) => ref_occurrence_hints(clause, indexed)
+                    Some(indexed) =>
+                      id_occurrence_hints(database, clause, indexed)
                   }) {
                   None => None
                   Some(hints) => {
@@ -246,14 +241,10 @@ fn ref_build_using(
                           None => None
                           Some(indexed) =>
                             Some(
-                              ref_occurrence_add(
-                                indexed,
-                                step.id,
-                                Terms(clause),
-                              ),
+                              id_occurrence_add(indexed, step.id, Terms(clause)),
                             )
                         }
-                        ref_visit(
+                        id_visit(
                           tail,
                           add(database, step.id, Terms(clause)),
                           Cons(step, reversed),
@@ -269,13 +260,13 @@ fn ref_build_using(
     }
   }
   match proof {
-    Rup(steps) => ref_visit(steps, input.database, Nil, occurrences)
+    Rup(steps) => id_visit(steps, input.database, Nil, occurrences)
   }
 }
 
 ///|
-fn ref_build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
-  ref_build_using(input, proof, Some(ref_occurrence_prepare(input.database)))
+fn id_build_prepared(input : Input, proof : @cdcl.Proof) -> Certificate? {
+  id_build_using(input, proof, Some(id_occurrence_prepare(input.database)))
 }
 
 ///|
@@ -286,8 +277,8 @@ test "direct clause references preserve every hint on small complete and rejecte
       let input = prepare(cnf)
       for candidate in 0..<27 {
         let proof = @cdcl.Rup(@oracle.chain([ternary(candidate), @core.Nil]))
-        let baseline = build_prepared(input, proof)
-        assert_eq(baseline, ref_build_prepared(input, proof))
+        let baseline = id_build_prepared(input, proof)
+        assert_eq(baseline, build_prepared(input, proof))
         match baseline {
           None => ()
           Some(logged) => assert_true(check_prepared(input, logged))
@@ -311,8 +302,8 @@ test "direct clause references preserve every hint on small complete and rejecte
       Unsatisfiable(proof) => proof
       _ => fail("reference examples must be refuted")
     }
-    let old = build_prepared(input, proof).unwrap()
-    assert_eq(old, ref_build_prepared(input, proof).unwrap())
+    let old = id_build_prepared(input, proof).unwrap()
+    assert_eq(old, build_prepared(input, proof).unwrap())
     assert_true(check_prepared(input, old))
   }
 }
@@ -321,23 +312,23 @@ test "direct clause references preserve every hint on small complete and rejecte
 test "same executable clause reference builder ABBA comparison" (b : @bench.T) {
   let (cnf, proof) = miter(64)
   let input = prepare(cnf)
-  let old = build_prepared(input, proof).unwrap()
-  assert_eq(old, ref_build_prepared(input, proof).unwrap())
+  let old = id_build_prepared(input, proof).unwrap()
+  assert_eq(old, build_prepared(input, proof).unwrap())
   assert_true(check_prepared(input, old))
   b.bench(
-    fn() { b.keep(build_prepared(input, proof)) },
+    fn() { b.keep(id_build_prepared(input, proof)) },
     name="clause IDs builder first control",
   )
   b.bench(
-    fn() { b.keep(ref_build_prepared(input, proof)) },
+    fn() { b.keep(build_prepared(input, proof)) },
     name="clause references builder",
   )
   b.bench(
-    fn() { b.keep(ref_build_prepared(input, proof)) },
+    fn() { b.keep(build_prepared(input, proof)) },
     name="clause references builder repeated control",
   )
   b.bench(
-    fn() { b.keep(build_prepared(input, proof)) },
+    fn() { b.keep(id_build_prepared(input, proof)) },
     name="clause IDs builder repeated control",
   )
   b.bench(
@@ -352,9 +343,9 @@ fn reference_query(cnf : @sat.Cnf, budget : @core.Nat, direct : Bool) -> Bool {
     Unsatisfiable(proof) => {
       let input = prepare(cnf)
       let certificate = if direct {
-        ref_build_prepared(input, proof)
-      } else {
         build_prepared(input, proof)
+      } else {
+        id_build_prepared(input, proof)
       }
       match certificate {
         None => false
@@ -372,8 +363,8 @@ test "paired complete queries compare clause references with clause IDs" (
 ) {
   let (cnf, proof) = miter(64)
   let input = prepare(cnf)
-  let old = build_prepared(input, proof).unwrap()
-  assert_eq(old, ref_build_prepared(input, proof).unwrap())
+  let old = id_build_prepared(input, proof).unwrap()
+  assert_eq(old, build_prepared(input, proof).unwrap())
   let budget = @oracle.nat(200000)
   for pair in 0..<20 {
     let ids_first = pair % 2 == 0
@@ -441,8 +432,8 @@ test "direct references retain certificates for deterministic six-variable queri
     match @cdcl.run(@cdcl.start(cnf), budget) {
       Unsatisfiable(proof) => {
         let input = prepare(cnf)
-        let old = build_prepared(input, proof).unwrap()
-        assert_eq(old, ref_build_prepared(input, proof).unwrap())
+        let old = id_build_prepared(input, proof).unwrap()
+        assert_eq(old, build_prepared(input, proof).unwrap())
         assert_true(check_prepared(input, old))
         unsat += 1
       }
@@ -473,7 +464,7 @@ test "proof normalization cost before changing canonicalization" (b : @bench.T) 
     name="normalize all learned proof clauses",
   )
   b.bench(
-    fn() { b.keep(ref_build_prepared(input, proof)) },
+    fn() { b.keep(build_prepared(input, proof)) },
     name="whole prepared direct-reference builder control",
   )
 }
