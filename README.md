@@ -1,25 +1,35 @@
-<h1>
-  <img src="assets/brand/morph-logo.png" alt="morph" width="360">
-</h1>
+<p align="center">
+  <img src="assets/brand/morph-logo.png" alt="morph" width="280">
+</p>
 
-MoonBit の代数的データ型・パターンマッチ・再帰でアルゴリズムを組み立てる実験。
+<p align="center">
+  <strong>データ型と再帰で計算する、MoonBitのアルゴリズム集。</strong>
+</p>
 
-計算の核は Bool・Unit・不変リストなどで構成し、組み込み数値型・数値リテラル・数値演算・配列・可変状態・FFI を使わない。
-入力変換・表示・テストと、MoonBit のランタイム・暗黙の prelude はこの制約の対象外。
+<p align="center">
+  <a href="docs/ALGORITHMS.md">アルゴリズム一覧</a> ·
+  <a href="HANDBOOK.md">ハンドブック</a> ·
+  <a href="docs/TOUR.txt">実行例</a>
+</p>
 
-## 動かす
+自然数は `Zero` と `Succ`、二進数は Bool の不変リストで表現します。
+値の構造をパターンマッチで分解し、再帰によって演算や探索を組み立てます。
+
+## 試す
+
+MoonBit と Python 3 を使用します。Mooncakes の追加依存はありません。
+初回は `tools/bootstrap` で公式の最新ツールチェーンを `.tools` に配置します。
 
 ```sh
-tools/bootstrap              # 初回：公式の最新ツールチェーンを .tools へ配置
-tools/moon run src/cmd/main   # 各算法を実行するツアー
-tools/check                  # 制約・整形・型・Wasm GC/JS テスト・公開API差分
+tools/bootstrap
+tools/moon run src/cmd/main
 ```
 
-Python 3 と MoonBit を使用する。Mooncakes の追加依存はない。
-確認済みのコンパイラは moonc v0.10.20。ツールチェーンの再現条件は[検証環境](docs/ENVIRONMENT.md)を参照。
-ツアーでは Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどを実行する（[実装](src/cmd/main/showcase.mbt)・[出力例](docs/TOUR.txt)）。
+Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどをまとめて試せます。
+表示と入力変換の実装は [cmd/main](src/cmd/main/showcase.mbt) にあります。
+確認済みのコンパイラは moonc v0.10.20 です。再現条件は[検証環境](docs/ENVIRONMENT.md)を参照してください。
 
-## 実装カテゴリ
+## アルゴリズム
 
 | カテゴリ | 主な実装 |
 | --- | --- |
@@ -32,25 +42,32 @@ Python 3 と MoonBit を使用する。Mooncakes の追加依存はない。
 | [言語・列アルゴリズム](docs/ALGORITHMS.md#languages-sequences) | 単一化、型推論、CEK、正規表現、CYK、文字列検索、動的計画法 |
 | [符号・圧縮・暗号](docs/ALGORITHMS.md#coding-cryptography) | 自己区切り符号、Huffman、LZ78、SHA-256、AES、Reed–Solomon |
 
-各カテゴリのリンク先に、個別の算法とソースへの入口をまとめている。
+各カテゴリから、個別のアルゴリズムとソースへ進めます。
 
-## 開発・検証
+## 実装方針と検証
+
+手書きの計算核は Bool・Unit・独自の不変リスト・代数的データ型で構成します。
+組み込み数値型・数値リテラル・数値演算・配列・可変状態・FFI は使いません。
+この制約は計算核に適用し、入力変換・表示・テスト、MoonBit のランタイムや暗黙の prelude は対象に含めません。
+
+`tools/check` で実装制約、整形、型、Wasm GC・JSのテスト、公開APIの差分を検査します。
 
 ```sh
-tools/moon test src/fft                                  # パッケージを指定
+tools/check
 tools/moon test --target native                          # nativeの全テスト
-tools/moon bench src/benchmarks --target native --release # ベンチマーク
+tools/moon test src/fft                                   # パッケージを指定
+tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 ```
 
-テストは有限の総当たり・独立オラクル・問題ごとの証拠検査を組み合わせる。
-基礎ADTには別途[Leanモデルの証明](formal/README.md)があり、対象・実行手順・実装との対応範囲を記録している。
+正しさは、有限の総当たり、独立した実装との照合、問題ごとの証拠検査で確かめます。
+一部の基礎演算は Lean モデルでも証明しています。[形式検証の資料](formal/README.md)に、対象・実行手順・実装との対応範囲をまとめています。
 
-## 設計と記録
+## 詳しく読む
 
 | 資料 | 内容 |
 | --- | --- |
-| [ハンドブック](HANDBOOK.md) | 算法の設計、表現コスト、考察、限界 |
+| [ハンドブック](HANDBOOK.md) | アルゴリズムの設計、表現コスト、考察、限界 |
 | [パッケージ一覧](docs/INVENTORY.md) | ソースから生成した依存関係・テスト宣言数 |
-| [共有kernel](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 基礎部品の採否、通常経路への統合状況 |
+| [基礎部品の最適化](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 改善の採否と、通常経路への統合状況 |
 | [計測記録](docs/MEASUREMENTS.md) | 性能比較の条件と生ログ |
-| [bootstrapの記録](docs/bootstrap/TRACE.md) | SATを検証・合成に使い、基礎と上位算法を改善する反復 |
+| [bootstrapの記録](docs/bootstrap/TRACE.md) | SATによる検証・合成を使った、基礎部品と上位アルゴリズムの改善 |
