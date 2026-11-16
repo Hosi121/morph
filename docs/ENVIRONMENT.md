@@ -22,7 +22,7 @@ bootstrapの既定値は公式のlatestです。後日の取得物が下記の�
 [出力例](ADVANCED_TOUR.txt)はnative・JS・WasmGCで完全一致を確認しています。
 `tools/moon run src/cmd/realclosed` は量化消去・球の射影・三段平方根・非線形実数SMTを実行します。
 [実閉体ツアーの出力](REALCLOSED_TOUR.txt)も3バックエンドで照合しています。
-`tools/moon run src/cmd/complex` は複素数の四則演算・全複素根・重複度・因数分解との接続を実行します
+`tools/moon run src/cmd/complex` は複素数の四則演算・全複素根・重複度・因数分解・K(i) と一生成元への変換を実行します
 （[出力例](COMPLEX_TOUR.txt)）。
 
 ## 開発時のコマンド
@@ -133,6 +133,8 @@ MoonBitの計算核から外部solverを呼ぶ経路はありません。
 uv venv .tools/complex-oracle-venv
 uv pip install --python .tools/complex-oracle-venv/bin/python -r tools/requirements-oracles.txt
 .tools/complex-oracle-venv/bin/python tools/generate_complex_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_complexfield_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_complexprimitive_fixtures.py --check
 ```
 
 生成対象と照合方法は[独立参照](research/complex-oracle-20261117.md)、

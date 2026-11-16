@@ -17,6 +17,7 @@
 | データ型から算法を組み立てる考え方 | [ハンドブック](../HANDBOOK.md) |
 | 多項式、基底、実解、数体をつなぐ | [厳密代数の計算経路](handbook/algebraic-solving.md) |
 | 複素数を厳密に演算し、全根を取り出す | [複素代数的数と全複素根](handbook/complex-algebra.md) |
+| 複素数体の基底を固定して計算する | [複素数体と一生成元の表現](handbook/complex-fields.md) |
 | 実数の厳密演算、CAD・量化消去、非線形SMTを使い分ける | [実数制約の章](handbook/real-constraints.md) |
 | 表現と証拠の違いを手元で試す | [小さな実験](handbook/exercises.md) |
 | テスト・証拠検査・形式証明の対象 | [検証ガイド](VALIDATION.md) |

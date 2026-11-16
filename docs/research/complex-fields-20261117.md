@@ -128,7 +128,44 @@ Python `Fraction` の独立な座標演算・行列式を用いて、演算、�
 有限の外部事例と実行時の証拠検査は役割が異なり、どちらも実装全体の形式証明には代わらない。
 
 通常の体演算に resultant と根隔離を使わず、基底の長さを維持できることが今回の表現上の到達点である。
-比較計測による性能向上はここでは主張しない。
+比較計測は次節の入力と環境に限る。
 係数のビット長、線形計算の中間式、実行時間とメモリは無制限に増え得る。
 任意の複素代数的入力からの自動 compositum、一般の分解体構成、Galois 群計算、
 最大整環・整数基底、`complexalgebraic.Number` への変換は、この二つの package の範囲外である。
+
+## 同じ入力・最終検査での比較
+
+一般の二座標演算と固定基底演算を、同じ native release artifact 内で比較した。
+どちらも `√2` の根証拠と実数体の準備、反復平方、数としての最終等号検査を含む。
+一般経路は各乗算の演算証拠を検査し、固定基底経路は既知の厳密値を体内で照合した後、
+`numberfield.realize` の両座標と選択埋込みの証拠を検査する。
+測る処理の違いは、この表現と検査経路の違いを含む。乗算関数だけの比較ではない。
+
+Linux/WSL2、Core Ultra 7 255H、CPU 4 に固定し、各入力の同じ artifact を ABBA 順で3巡、各方式6回実行した。
+MoonBit は `moonc v0.10.20+65efd5b93`、native release、GCC 13.3。
+コンパイルは除外し、プロセス起動は含む。
+
+| 入力 | 二座標の一般演算 | K(i) の固定基底 |
+| --- | ---: | ---: |
+| `(√2+i)² = 1+2i√2` | 6/6完了、中央値1.752ms | 6/6完了、中央値1.109ms |
+| `(√2+i)⁸ = 17−56i√2` | 6/6を各5秒で打切り | 6/6完了、中央値1.168ms |
+
+小さい例にはプロセス起動と測定の揺れも占めるため、一般的な速度比を主張しない。
+八乗の二座標経路には完了時間がないので、倍率は計算しない。
+固定基底では各平方後も二つの `K` の剰余に収まる一方、一般の座標演算では定義多項式と証拠が増え得る。
+今回の八乗は、その表現の選択が反復計算の費用へ大きく影響する具体例となった。
+
+ソース commit、artifact hash、全試行、打切りを
+[平方の生データ](../measurements/complex-field-square-native-20261117.json)と
+[八乗の生データ](../measurements/complex-field-native-20261117.json)に保存した。
+両入力の artifact は別の commit で生成しており、入力をまたいだ絶対時間の比較には使わない。
+
+```sh
+tools/measure --cpu 4 tools/moon build src/cmd/complexfieldbench --target native --release
+tools/measure --cpu 4 python3 tools/compare_complex_roots.py \
+  --case field-square --abba-repetitions 3 --timeout-seconds 5 \
+  --artifact _build/native/release/build/cmd/complexfieldbench/complexfieldbench.exe \
+  --output .tools/complex-field-square.json
+```
+
+八乗は `--case field-power` で再現する。

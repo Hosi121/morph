@@ -35,6 +35,15 @@
 未完了の時間を平均や速度倍率へ置き換えません。
 [試行順序・hash・生データ](measurements/complex-roots-native-20261117.json)を保存しています。
 
+## 複素数体での反復演算
+
+[二座標演算と K(i) の固定基底](research/complex-fields-20261117.md#同じ入力最終検査での比較)を、
+各入力の同じ native release artifact、CPU固定、入力準備と最終検査を含めて比較しました。
+平方では両方が6回完了し、中央値は1.752msと1.109ms。
+八乗では固定基底が6回完了して中央値1.168ms、一般演算は6回とも5秒で打ち切りました。
+短時間例の起動費用・揺れと、八乗の打切りを保った記録であり、一般的な倍率を示しません。
+[平方](measurements/complex-field-square-native-20261117.json)・[八乗](measurements/complex-field-native-20261117.json)に全試行があります。
+
 ## 再現する
 
 Linuxで、既存被覆による理論節削減を一つの入力について比較する例です。

@@ -1,0 +1,136 @@
+{
+  "utc": "2026-11-16T19:52:00.963947+00:00",
+  "backend": "native",
+  "source_commit": "ad84cebc30ef81f48e3d119749be5f28dcc0cb10",
+  "tracked_dirty": false,
+  "dirty_paths": [],
+  "code_dirty": false,
+  "artifact": "_build/native/release/build/cmd/complexfieldbench/complexfieldbench.exe",
+  "artifact_sha256": "a2195c5879dd78689ee847963b64c88b58240c60c28ec246e6e85464b83a89da",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "source": "(sqrt(2)+i)^8",
+  "case": "field-power",
+  "scope": "process startup, shared exact input/field preparation, three squarings, representation-specific validation/realization and numeric result equality; excludes compilation",
+  "timeout_seconds": 5.0,
+  "abba_repetitions": 3,
+  "runs": [
+    {
+      "repetition": 0,
+      "mode": "coordinate",
+      "seconds": 5.009508553997875,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 0,
+      "mode": "field",
+      "seconds": 0.0011359770032868255,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "field",
+      "seconds": 0.0010829670027305838,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "coordinate",
+      "seconds": 5.009060870001122,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "coordinate",
+      "seconds": 5.003654247000668,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "field",
+      "seconds": 0.0023878559986769687,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "field",
+      "seconds": 0.0010712719995353837,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "coordinate",
+      "seconds": 5.0078700490012125,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "coordinate",
+      "seconds": 5.011607880001975,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "field",
+      "seconds": 0.0012006819997623097,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "field",
+      "seconds": 0.002007795999816153,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "coordinate",
+      "seconds": 5.011483169000712,
+      "censored": true,
+      "checked": false
+    }
+  ],
+  "summary": {
+    "coordinate": {
+      "completed": 0,
+      "censored": 6,
+      "median_seconds_completed_only": null
+    },
+    "field": {
+      "completed": 6,
+      "censored": 0,
+      "median_seconds_completed_only": 0.0011683295015245676
+    }
+  }
+}

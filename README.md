@@ -31,7 +31,7 @@ tools/moon run src/cmd/main
 | Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーン | `tools/moon run src/cmd/main` | [基本ツアー](docs/TOUR.txt) |
 | 代数的数、数体、F4/FGLM、実解列挙、μ-calculus | `tools/moon run src/cmd/advanced` | [厳密代数とモデル検査](docs/ADVANCED_TOUR.txt) |
 | 実閉体の量化消去、球の射影、三段平方根、非線形SMT | `tools/moon run src/cmd/realclosed` | [実閉体と非線形SMT](docs/REALCLOSED_TOUR.txt) |
-| 複素数の厳密演算、全複素根、因数分解と重複度 | `tools/moon run src/cmd/complex` | [複素代数](docs/COMPLEX_TOUR.txt) |
+| 複素数の厳密演算、全根、複素数体と一生成元への変換 | `tools/moon run src/cmd/complex` | [複素代数](docs/COMPLEX_TOUR.txt) |
 
 準備・テストのコマンドと検証済みのツールチェーンは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
 表示と入力変換の例は [cmd/main](src/cmd/main/showcase.mbt) を参照してください。

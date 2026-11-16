@@ -15,6 +15,7 @@
 | 解と根拠を組み立てる | [SAT反証](docs/handbook/logic-constraints.md#sat) → [最大流・カット](docs/handbook/graphs.md#flow) → [LPの証拠](docs/handbook/linear-optimization.md#simplex) |
 | 厳密代数をつないで使う | [多項式](docs/handbook/symbolic-computation.md#polynomials) → [基底・全実点・最小多項式・数体](docs/handbook/algebraic-solving.md) |
 | 複素根を厳密に扱う | [複素代数的数と全複素根](docs/handbook/complex-algebra.md) |
+| 一つの複素数体で繰り返し計算する | [複素数体と一生成元の表現](docs/handbook/complex-fields.md) |
 | 実数の不等式と量化を扱う | [実数制約の入口](docs/handbook/real-constraints.md#入出力から入口を選ぶ) → [CAD・量化消去](docs/handbook/real-constraints.md#任意変数のcadと実閉体の量化消去) / [非線形SMT](docs/handbook/real-constraints.md#非線形実数smtへ接続する) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
@@ -66,6 +67,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | [変換と記号計算](docs/handbook/symbolic-computation.md) | FFT・NTT、多項式、Gröbner基底、実根隔離、微分、幾何 |
 | [厳密代数の計算経路](docs/handbook/algebraic-solving.md) | F4、FGLM、全実点、最小多項式、数体・共通体をつなぐ |
 | [複素代数的数と全複素根](docs/handbook/complex-algebra.md) | 厳密な四則演算・等号、実部と虚部への帰着、全根・重複度の検査 |
+| [複素数体と一生成元の表現](docs/handbook/complex-fields.md) | K(i) の基底演算、trace/norm、最小多項式、Q[t]/m への変換 |
 | [実数制約と量化消去](docs/handbook/real-constraints.md) | 実代数的数、多段拡大、CAD、一階の量化消去、量化なしの非線形SMT |
 | [線形代数と最適化](docs/handbook/linear-optimization.md) | 半環、Gauss–Jordan、Smith標準形、LLL、単体法、0/1最適化 |
 | [グラフ](docs/handbook/graphs.md) | BFS、Dijkstra、SCC、全域森、最大流、二部マッチング |

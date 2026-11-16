@@ -1,0 +1,164 @@
+{
+  "utc": "2026-11-16T19:54:35.819640+00:00",
+  "backend": "native",
+  "source_commit": "4982e9ce586e47f0fe61e6e7966912da2d87045f",
+  "tracked_dirty": true,
+  "dirty_paths": [
+    "HANDBOOK.md",
+    "README.md",
+    "docs/ALGORITHMS.md",
+    "docs/ENVIRONMENT.md",
+    "docs/README.md",
+    "docs/ROADMAP.md",
+    "docs/handbook/algebraic-solving.md",
+    "docs/handbook/complex-algebra.md",
+    "docs/research/README.md"
+  ],
+  "code_dirty": false,
+  "artifact": "_build/native/release/build/cmd/complexfieldbench/complexfieldbench.exe",
+  "artifact_sha256": "1c56c05e6518a84ce456d49195681f2dfe60ee16e6d68b54732273b89072cedc",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "source": "(sqrt(2)+i)^2",
+  "case": "field-square",
+  "scope": "process startup, shared exact input/field preparation, one squaring, representation-specific validation/realization and numeric result equality; excludes compilation",
+  "timeout_seconds": 5.0,
+  "abba_repetitions": 3,
+  "runs": [
+    {
+      "repetition": 0,
+      "mode": "coordinate-square",
+      "seconds": 0.0015036370023153722,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "field-square",
+      "seconds": 0.0009925980011757929,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "field-square",
+      "seconds": 0.0009343849997094367,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "coordinate-square",
+      "seconds": 0.0014733629977854434,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "coordinate-square",
+      "seconds": 0.00242802200227743,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "field-square",
+      "seconds": 0.0009740189998410642,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "field-square",
+      "seconds": 0.0015923600003588945,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "coordinate-square",
+      "seconds": 0.003753805998712778,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "coordinate-square",
+      "seconds": 0.0019908840004063677,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "field-square",
+      "seconds": 0.0014233010006137192,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "field-square",
+      "seconds": 0.0012244229983480182,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "coordinate-square",
+      "seconds": 0.0015138259986997582,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(sqrt(2)+i)^2\",\"field_degree\":4,\"numeric_equal\":true,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    }
+  ],
+  "summary": {
+    "coordinate-square": {
+      "completed": 6,
+      "censored": 0,
+      "median_seconds_completed_only": 0.001752354999553063
+    },
+    "field-square": {
+      "completed": 6,
+      "censored": 0,
+      "median_seconds_completed_only": 0.0011085104997619055
+    }
+  }
+}
