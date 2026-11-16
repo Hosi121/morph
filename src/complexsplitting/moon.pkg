@@ -1,0 +1,18 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/complexfield" @cf,
+  "Hosi121/morph/complexsubfield" @sub,
+  "Hosi121/morph/compositum" @comp,
+  "Hosi121/morph/complexcompositum" @cohort,
+  "Hosi121/morph/complexalgebraic" @cx,
+  "Hosi121/morph/complexfactor" @factor,
+  "Hosi121/morph/complexroots" @roots,
+  "Hosi121/morph/zassenhaus" @zass,
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+  "Hosi121/morph/numberfield" @nf,
+  "Hosi121/morph/realminimal" @minimal,
+} for "wbtest"

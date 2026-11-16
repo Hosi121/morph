@@ -1,0 +1,148 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexsplitting"
+
+import {
+  "Hosi121/morph/complexcompositum",
+  "Hosi121/morph/complexfactor",
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/complexroots",
+  "Hosi121/morph/complexsubfield",
+  "Hosi121/morph/compositum",
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Search, Budget) -> Result[Progress, SplittingError]
+
+pub fn ambient(Splitting) -> @complexfield.Field
+
+pub fn certificate(Splitting) -> Certificate
+
+pub fn check(@polynomial.Polynomial, @complexfield.Field, Certificate) -> Bool
+
+pub fn check_result(@polynomial.Polynomial, @complexfield.Field, Splitting, Certificate) -> Bool
+
+pub fn degree(Splitting) -> @core.Nat
+
+pub fn from_certificate(@polynomial.Polynomial, @complexfield.Field, Certificate) -> Result[Splitting, SplittingError]
+
+pub fn generated_field(Splitting) -> @complexsubfield.Field
+
+pub fn modulus(Splitting) -> @polynomial.Polynomial
+
+pub fn representation(Splitting) -> @complexsubfield.Representation
+
+pub fn root_images(Splitting) -> @core.Chain[RootImage]
+
+pub fn roots(Splitting) -> @core.Chain[Root]
+
+pub fn solve(@polynomial.Polynomial, Budget) -> Result[Progress, SplittingError]
+
+pub fn solve_from_roots(@polynomial.Polynomial, @complexfield.Field, @core.Chain[Root], Budget) -> Result[Progress, SplittingError]
+
+pub fn source(Splitting) -> @polynomial.Polynomial
+
+pub fn start(@polynomial.Polynomial) -> Result[Search, SplittingError]
+
+pub fn start_from_roots(@polynomial.Polynomial, @complexfield.Field, @core.Chain[Root]) -> Result[Search, SplittingError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Budget {
+  algebra : @compositum.Budget
+  primitive : @core.Nat
+}
+pub fn Budget::equal(Self, Self) -> Bool
+pub fn Budget::not_equal(Self, Self) -> Bool
+pub fn Budget::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @polynomial.Polynomial
+  ambient : @complexfield.Field
+  roots : @core.Chain[Root]
+  generated : @complexsubfield.Certificate
+  primitive : @complexsubfield.PrimitiveCertificate
+  images : @core.Chain[RootImage]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type NumberRoot
+pub fn NumberRoot::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PauseReason {
+  FactorizationBudget(@zassenhaus.StopReason)
+  FactorizationVerification
+  RootSearch(@complexroots.PauseReason)
+  RootVerification
+  RootMaterialization
+  CompositumBudget(@complexcompositum.StopReason)
+  CompositumVerification
+  PrimitiveTrials
+}
+pub fn PauseReason::equal(Self, Self) -> Bool
+pub fn PauseReason::not_equal(Self, Self) -> Bool
+pub fn PauseReason::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Ready(Splitting, Certificate)
+  Paused(Search, PauseReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Root {
+  value : @complexfield.Element
+  multiplicity : @core.Nat
+}
+pub fn Root::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct RootImage {
+  polynomial : @polynomial.Polynomial
+  multiplicity : @core.Nat
+  conversion : @complexsubfield.ConversionCertificate
+}
+pub fn RootImage::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  // private fields
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Splitting {
+  // private fields
+}
+pub fn Splitting::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum SplittingError {
+  NotUnivariate
+  ZeroPolynomial
+  InvalidRoots
+  InvalidCertificate
+  FactorFailure(@complexfactor.RootError)
+  RootFailure(@complexroots.RootError)
+  CompositumFailure(@complexcompositum.CompositumError)
+  SubfieldFailure(@complexsubfield.SubfieldError)
+  InternalInvariant
+}
+pub fn SplittingError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
