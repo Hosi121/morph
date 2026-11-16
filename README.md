@@ -12,24 +12,28 @@
   <a href="docs/TOUR.txt">実行例</a>
 </p>
 
-自然数は `Zero` と `Succ`、二進数は Bool の不変リストで表現します。
-値の構造をパターンマッチで分解し、再帰によって演算や探索を組み立てます。
+morph は、代数的データ型（ADT）と再帰で計算する MoonBit のアルゴリズム集です。
+自然数は `Zero` と `Succ`、二進数は Bool の不変リストで表し、
+値の構造をパターンマッチで分解して演算や探索を組み立てます。
 
 ## 試す
 
-MoonBit と Python 3 を使用します。Mooncakes の追加依存はありません。
-初回は `tools/bootstrap` で公式の最新ツールチェーンを `.tools` に配置します。
+MoonBit、Python 3、Bash を使用します。Mooncakes の追加依存はありません。
+初回は `tools/bootstrap` で公式配布のツールチェーンを `.tools` に配置します。
 
 ```sh
 tools/bootstrap
 tools/moon run src/cmd/main
 ```
 
-Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどをまとめて試せます。
-表示と入力変換の実装は [cmd/main](src/cmd/main/showcase.mbt) にあります。
-代数的数・数体・F4/FGLM・実解列挙・μ-calculusは `tools/moon run src/cmd/advanced` で試せます（[出力例](docs/ADVANCED_TOUR.txt)）。
-実閉体の量化消去、球の射影、三段平方根、非線形SMTは `tools/moon run src/cmd/realclosed` で試せます（[出力例](docs/REALCLOSED_TOUR.txt)）。
-確認済みのコンパイラは moonc v0.10.20 です。再現条件は[検証環境](docs/ENVIRONMENT.md)を参照してください。
+| 実行する内容 | コマンド | 出力例 |
+| --- | --- | --- |
+| Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーン | `tools/moon run src/cmd/main` | [基本ツアー](docs/TOUR.txt) |
+| 代数的数、数体、F4/FGLM、実解列挙、μ-calculus | `tools/moon run src/cmd/advanced` | [厳密代数とモデル検査](docs/ADVANCED_TOUR.txt) |
+| 実閉体の量化消去、球の射影、三段平方根、非線形SMT | `tools/moon run src/cmd/realclosed` | [実閉体と非線形SMT](docs/REALCLOSED_TOUR.txt) |
+
+準備・テストのコマンドと検証済みのツールチェーンは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
+表示と入力変換の例は [cmd/main](src/cmd/main/showcase.mbt) を参照してください。
 
 ## アルゴリズム
 
@@ -52,13 +56,11 @@ Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどを�
 組み込み数値型・数値リテラル・数値演算・配列・可変状態・FFI は使いません。
 この制約は計算核に適用し、入力変換・表示・テスト、MoonBit のランタイムや暗黙の prelude は対象に含めません。
 
-`tools/check` で実装制約、整形、型、Wasm GC・JSのテスト、公開APIの差分を検査します。
+`tools/check` で実装制約、整形、型、WasmGC・JSのテスト、公開APIの差分を検査します。
 
 ```sh
 tools/check
-tools/moon test --target native                          # nativeの全テスト
-tools/moon test src/fft                                   # パッケージを指定
-tools/moon bench src/benchmarks --target native --release  # ベンチマーク
+tools/moon test --target native  # nativeの全テスト
 ```
 
 正しさは、有限の総当たり、独立した実装との照合、問題ごとの証拠検査で確かめます。
@@ -68,9 +70,10 @@ tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 
 | 資料 | 内容 |
 | --- | --- |
-| [到達点と次の候補](docs/ROADMAP.md) | 実閉体ソルバの到達状況と、次に残る課題 |
 | [ハンドブック](HANDBOOK.md) | アルゴリズムの設計、表現コスト、考察、限界 |
+| [到達点と次の候補](docs/ROADMAP.md) | 実装済みの実数制約ソルバと、残る課題 |
 | [パッケージ一覧](docs/INVENTORY.md) | ソースから生成した依存関係・テスト宣言数 |
 | [基礎部品の最適化](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 改善の採否と、通常経路への統合状況 |
-| [計測記録](docs/MEASUREMENTS.md) | 性能比較の条件と生ログ |
-| [bootstrapの記録](docs/bootstrap/TRACE.md) | SATによる検証・合成を使った、基礎部品と上位アルゴリズムの改善 |
+| [計測記録](docs/MEASUREMENTS.md) | 性能比較の条件・生ログと、初期計測のアーカイブ |
+| [探索・改善記録](docs/bootstrap/README.md)・[時系列](docs/bootstrap/TRACE.md) | 基礎部品の採用理由、SATによる検証・合成の経緯 |
+| [研究・探索記録](docs/research/README.md) | 厳密代数・実数制約などの実装と独立レビュー、未採用の試作 |
