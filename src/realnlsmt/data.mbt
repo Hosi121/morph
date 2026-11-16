@@ -132,7 +132,30 @@ pub extend TheoryProgress with Debug::{to_repr}
 enum Phase {
   Boolean(@cdcl.Search)
   Theory(@sat.Model, @sat.Model, @cdcl.Search, TheorySolver)
+  Reducing(@sat.Model, @cdcl.Search, CoreReduction)
 }
+
+///|
+#derive(Debug)
+enum CoreMode {
+  Whole
+  Reduce
+}
+
+///|
+pub extend CoreMode with Debug::{to_repr}
+
+///|
+#derive(Debug)
+struct CoreReduction {
+  cover : @cad.Decomposition
+  assignment : @sat.Model
+  decomposition : @cad.Decomposition
+  pending : @sat.Model
+}
+
+///|
+pub extend CoreReduction with Debug::{to_repr}
 
 ///|
 #derive(Debug)
@@ -153,6 +176,9 @@ pub struct Search {
   problem : Problem
   mode : TheoryMode
   boolean_mode : BooleanMode
+  core_mode : CoreMode
+  probes : @core.Nat
+  removed_literals : @core.Nat
   restarts : @core.Nat
   formula : @sat.Cnf
   lemmas_rev : @core.Chain[Lemma]

@@ -165,20 +165,16 @@ pub fn lemma_clause(problem : Problem, lemma : Lemma) -> @sat.Clause? {
     match signed_formula(problem, lemma.assignment) {
       None => None
       Some(signed) =>
-        match @cad.prepare(arity(problem), signed) {
-          Err(_) => None
-          Ok(theory) =>
-            match @cad.check(theory, lemma.decomposition) {
-              None => None
-              Some(decomposition) =>
-                match
-                  @cad.sentence(
-                    decomposition,
-                    @core.replicate(arity(problem), @logic.Quantifier::Exists),
-                  ) {
-                  Ok(false) => Some(@core.map(lemma.assignment, @sat.negate))
-                  _ => None
-                }
+        match @cad.check_cover(arity(problem), signed, lemma.decomposition) {
+          None => None
+          Some(decomposition) =>
+            match
+              @cad.sentence(
+                decomposition,
+                @core.replicate(arity(problem), @logic.Quantifier::Exists),
+              ) {
+              Ok(false) => Some(@core.map(lemma.assignment, @sat.negate))
+              _ => None
             }
         }
     }

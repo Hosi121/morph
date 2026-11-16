@@ -112,6 +112,7 @@ fn assert_reference_mode(search : Search, full : Bool) -> Unit raise {
     Theory(_, _, _, FullSolver(_)) => assert_true(full)
     Theory(_, _, _, PrunedSolver(_)) => assert_false(full)
     Boolean(_) => ()
+    Reducing(_, _, _) => assert_false(full)
   }
 }
 

@@ -26,7 +26,7 @@ test "retained Boolean continuation exactly extends the cursor after every check
     let mut done = false
     for _ in 0..<20000 {
       let cursor = match state.phase {
-        Theory(_, _, cursor, _) => Some(cursor)
+        Theory(_, _, cursor, _) | Reducing(_, cursor, _) => Some(cursor)
         Boolean(_) => None
       }
       match step(state).unwrap() {

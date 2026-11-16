@@ -29,6 +29,10 @@ pub fn cnf(Problem) -> @core.Chain[@core.Chain[@sat.Literal]]
 
 pub fn context(Problem) -> Context
 
+pub fn core_literals_removed(Search) -> @core.Nat
+
+pub fn core_probes(Search) -> @core.Nat
+
 pub fn formula(Problem) -> @realcad.Formula
 
 pub fn lemma_clause(Problem, Lemma) -> @core.Chain[@sat.Literal]?
@@ -40,6 +44,8 @@ pub fn prepare(@core.Nat, @realcad.Formula) -> Result[Problem, SmtError]
 pub fn run(Search, @core.Nat) -> Result[Outcome, SmtError]
 
 pub fn start(Problem) -> Search
+
+pub fn start_core(Problem) -> Search
 
 pub fn start_full(Problem) -> Search
 
@@ -77,6 +83,14 @@ pub(all) struct Context {
 pub fn Context::equal(Self, Self) -> Bool
 pub fn Context::not_equal(Self, Self) -> Bool
 pub fn Context::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type CoreMode
+pub fn CoreMode::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type CoreReduction
+pub fn CoreReduction::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) struct Lemma {
@@ -133,6 +147,9 @@ pub struct Search {
   problem : Problem
   mode : TheoryMode
   boolean_mode : BooleanMode
+  core_mode : CoreMode
+  probes : @core.Nat
+  removed_literals : @core.Nat
   restarts : @core.Nat
   formula : @core.Chain[@core.Chain[@sat.Literal]]
   lemmas_rev : @core.Chain[Lemma]

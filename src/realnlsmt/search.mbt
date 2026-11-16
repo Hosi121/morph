@@ -3,12 +3,16 @@ fn start_with_mode(
   problem : Problem,
   mode : TheoryMode,
   boolean_mode : BooleanMode,
+  core_mode : CoreMode,
 ) -> Search {
   let formula = cnf(problem)
   {
     problem,
     mode,
     boolean_mode,
+    core_mode,
+    probes: Zero,
+    removed_literals: Zero,
     restarts: Zero,
     formula,
     lemmas_rev: Nil,
@@ -21,22 +25,30 @@ fn start_with_mode(
 /// Default theory search stops at an exact model and omits cylinders whose
 /// truth is established over the whole parent cell. CDCL learned clauses,
 /// trail and watches survive checked theory-clause additions. Projection
-/// remains global.
+/// remains global. Conflicts are reduced using the already generated cover.
 pub fn start(problem : Problem) -> Search {
-  start_retained(problem)
+  start_core(problem)
+}
+
+///|
+/// Retains CDCL state and reduces conflicts only when the existing CAD cover
+/// proves the smaller signed conjunction false everywhere. No new CAD solve.
+pub fn start_core(problem : Problem) -> Search {
+  start_with_mode(problem, PrunedCad, Retained, Reduce)
 }
 
 ///|
 /// Monotone theory-clause additions preserve the Boolean search continuation.
-/// This explicit entry is also available for controlled mode comparisons.
+/// Keeps whole source assignments in theory clauses, as the previous solver did.
+/// Use start_core for cover-certified conflict reduction.
 pub fn start_retained(problem : Problem) -> Search {
-  start_with_mode(problem, PrunedCad, Retained)
+  start_with_mode(problem, PrunedCad, Retained, Whole)
 }
 
 ///|
 /// Reference with pruned CAD but a fresh CDCL search after each theory conflict.
 pub fn start_restarting(problem : Problem) -> Search {
-  start_with_mode(problem, PrunedCad, Restarting)
+  start_with_mode(problem, PrunedCad, Restarting, Whole)
 }
 
 ///|
@@ -44,7 +56,7 @@ pub fn start_restarting(problem : Problem) -> Search {
 /// Theory clauses persist across candidates. This full-CAD reference restarts
 /// CDCL after a theory conflict, as does start_restarting.
 pub fn start_full(problem : Problem) -> Search {
-  start_with_mode(problem, FullCad, Restarting)
+  start_with_mode(problem, FullCad, Restarting, Whole)
 }
 
 ///|
@@ -139,6 +151,101 @@ fn finish_conflict(
 }
 
 ///|
+fn begin_conflict(
+  search : Search,
+  full : @sat.Model,
+  assignment : @sat.Model,
+  cursor : @cdcl.Search,
+  decomposition : @cad.Decomposition,
+) -> Result[Outcome, SmtError] {
+  match (search.core_mode, assignment) {
+    (Reduce, Cons(_, Cons(_, _))) =>
+      Ok(
+        Paused({
+          ..search,
+          phase: Reducing(full, cursor, {
+            cover: decomposition,
+            assignment,
+            decomposition,
+            pending: assignment,
+          }),
+        }),
+      )
+    _ => finish_conflict(search, full, assignment, cursor, decomposition)
+  }
+}
+
+///|
+/// A probe only relabels the fixed original cover. Reusing a previously
+/// shortened best tree could hide cells needed by a later deletion.
+fn reduce_conflict(
+  search : Search,
+  full : @sat.Model,
+  cursor : @cdcl.Search,
+  core : CoreReduction,
+) -> Result[Outcome, SmtError] {
+  match core.pending {
+    Nil =>
+      finish_conflict(search, full, core.assignment, cursor, core.decomposition)
+    Cons(literal, pending) => {
+      let candidate = @core.filter(core.assignment, fn(other) {
+        !other.variable.equal(literal.variable)
+      })
+      if candidate is Nil {
+        // The empty conjunction is true over the nonempty real domain.
+        Ok(
+          Paused({
+            ..search,
+            phase: Reducing(full, cursor, { ..core, pending, }),
+          }),
+        )
+      } else {
+        match signed_formula(search.problem, candidate) {
+          None => Err(InternalInvariant)
+          Some(signed) => {
+            let search = { ..search, probes: Succ(search.probes), }
+            match @cad.refute_on_cover(core.cover, signed) {
+              Err(error) => Err(CadFailure(error))
+              Ok(None) =>
+                Ok(
+                  Paused({
+                    ..search,
+                    phase: Reducing(full, cursor, { ..core, pending, }),
+                  }),
+                )
+              Ok(Some(decomposition)) =>
+                Ok(
+                  Paused({
+                    ..search,
+                    removed_literals: Succ(search.removed_literals),
+                    phase: Reducing(full, cursor, {
+                      ..core,
+                      assignment: candidate,
+                      decomposition,
+                      pending,
+                    }),
+                  }),
+                )
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+///|
+/// Counts deletion probes using the original cover, not additional CAD solves.
+pub fn core_probes(search : Search) -> @core.Nat {
+  search.probes
+}
+
+///|
+pub fn core_literals_removed(search : Search) -> @core.Nat {
+  search.removed_literals
+}
+
+///|
 pub fn transitions(search : Search) -> @core.Nat {
   search.transitions
 }
@@ -212,8 +319,9 @@ pub fn step(search : Search) -> Result[Outcome, SmtError] {
           )
         Ok(Found(point)) => finish_model(search, full, point)
         Ok(Rejected(decomposition)) =>
-          finish_conflict(search, full, assignment, cursor, decomposition)
+          begin_conflict(search, full, assignment, cursor, decomposition)
       }
+    Reducing(full, cursor, core) => reduce_conflict(search, full, cursor, core)
   }
 }
 
