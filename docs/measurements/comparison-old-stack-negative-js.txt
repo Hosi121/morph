@@ -1,0 +1,12 @@
+[Hosi121/morph] test binary/comparison_negative_wbtest.mbt:2 ("negative control old comparison exhausts JavaScript stack") failed: RangeError: Maximum call stack size exceeded
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11925:10)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+    at _M0FP37Hosi1215morph6binary24compare__bits__reference (/home/hosi/morph/.tools/agents/compare-kernel/_build/js/release/test/binary/binary.whitebox_test.js:11941:23)
+Total tests: 1, passed: 0, failed: 1.

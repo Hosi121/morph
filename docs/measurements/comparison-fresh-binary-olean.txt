@@ -1,0 +1,13 @@
+Poisoned this worktree's Binary.olean with invalid bytes.
+tools/check_formal exited 0 and regenerated Binary.olean before importing Comparison.
+Formal drift gate passed: 22 reviewed source regions; not a translation proof.
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]

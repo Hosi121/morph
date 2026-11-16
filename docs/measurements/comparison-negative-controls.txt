@@ -1,0 +1,33 @@
+source negative: code-generation boundary changed
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/comparison.mbt::compare_bits_grouped
+source negative: unequal-length order reversed
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/comparison.mbt::compare_bits_grouped
+source negative: bounded prefix passes reversed tails
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/comparison.mbt::compare_bits_tail
+Lean negative: high-bit ordering of a four-node group reversed
+/tmp/morph-comparison-negative-fhdj1h3f/formal/Comparison.lean:134:100: error: type mismatch
+  ih
+has type
+  loop4 xt yt (groupFourOrder false false false false false false false true previous) =
+    loop xt yt (groupFourOrder false false false false false false false true previous) : Prop
+but is expected to have type
+  loop4 (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons false xt))))
+      (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons true yt)))) previous =
+    loop (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons false xt))))
+      (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons true yt)))) previous : Prop
+/tmp/morph-comparison-negative-fhdj1h3f/formal/Comparison.lean:134:100: error: type mismatch
+  ih
+has type
+  loop4 xt yt (groupFourOrder false false false false false false true true previous) =
+    loop xt yt (groupFourOrder false false false false false false true true previous) : Prop
+but is expected to have type
+  loop4 (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons false xt))))
+      (Chain.cons false (Chain.cons false (Chain.cons true (Chain.cons true yt)))) previous =
+    loop (Chain.cons false (Chain.cons false (Chain.cons false (Chain.cons false xt))))
+      (Chain.cons false (Chain.cons false (Chain.cons true (Chain.cons true yt)))) previous : Prop
+[remaining 620 compiler diagnostic lines omitted; Lean exited nonzero]
+restored source/model
+Formal drift gate passed: 22 reviewed source regions; not a translation proof.

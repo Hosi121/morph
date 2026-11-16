@@ -1,0 +1,47 @@
+[Hosi121/morph] bench binary/comparison_wbtest.mbt:176 ("old and tail comparators on short and wide cohorts") ok
+name                   time (mean ± σ)         range (min … max) 
+old short 256 pairs       2.53 µs ± 129.85 ns     2.41 µs …   2.85 µs  in 10 ×  39737 runs
+tail short 256 pairs      3.03 µs ±  44.35 ns     2.94 µs …   3.09 µs  in 10 ×  33498 runs
+borrow short 256 pairs    3.07 µs ±  98.37 ns     2.90 µs …   3.25 µs  in 10 ×  29448 runs
+global short 256 pairs    3.02 µs ± 142.02 ns     2.90 µs …   3.39 µs  in 10 ×  32482 runs
+old equal 64            159.66 ns ±  39.39 ns   131.98 ns … 247.81 ns  in 10 × 100000 runs
+tail equal 64           113.98 ns ±   4.58 ns   108.92 ns … 122.42 ns  in 10 × 100000 runs
+borrow equal 64         114.65 ns ±  10.86 ns   103.77 ns … 133.91 ns  in 10 × 100000 runs
+global equal 64         116.90 ns ±   8.73 ns   107.76 ns … 131.95 ns  in 10 × 100000 runs
+old dense 64             98.53 ns ±   5.39 ns    90.77 ns … 108.80 ns  in 10 × 100000 runs
+tail dense 64           113.16 ns ±   7.12 ns   104.80 ns … 128.83 ns  in 10 × 100000 runs
+borrow dense 64         114.26 ns ±  15.61 ns   102.98 ns … 154.39 ns  in 10 × 100000 runs
+global dense 64         109.18 ns ±   4.54 ns   104.19 ns … 115.54 ns  in 10 × 100000 runs
+old low 64              142.25 ns ±  11.45 ns   131.85 ns … 167.81 ns  in 10 × 100000 runs
+tail low 64             110.98 ns ±  10.58 ns   102.47 ns … 132.03 ns  in 10 × 100000 runs
+borrow low 64           108.75 ns ±   4.64 ns   103.28 ns … 116.83 ns  in 10 × 100000 runs
+global low 64           118.82 ns ±  10.34 ns   106.52 ns … 137.91 ns  in 10 × 100000 runs
+old high 64              94.01 ns ±  10.56 ns    84.44 ns … 108.40 ns  in 10 × 100000 runs
+tail high 64            119.08 ns ±  13.31 ns   102.75 ns … 141.16 ns  in 10 × 100000 runs
+borrow high 64          111.50 ns ±   8.71 ns   102.85 ns … 132.75 ns  in 10 × 100000 runs
+global high 64          114.35 ns ±   7.79 ns   103.07 ns … 123.28 ns  in 10 × 100000 runs
+old width 64             87.49 ns ±   7.83 ns    81.87 ns … 104.75 ns  in 10 × 100000 runs
+tail width 64           125.83 ns ±   6.34 ns   117.20 ns … 134.73 ns  in 10 × 100000 runs
+borrow width 64         125.56 ns ±   5.23 ns   119.40 ns … 135.27 ns  in 10 × 100000 runs
+global width 64         124.38 ns ±   6.50 ns   117.29 ns … 137.47 ns  in 10 × 100000 runs
+old equal 2048            6.44 µs ± 161.90 ns     6.23 µs …   6.66 µs  in 10 ×  14909 runs
+tail equal 2048           4.48 µs ± 397.21 ns     4.01 µs …   5.10 µs  in 10 ×  25011 runs
+borrow equal 2048         4.24 µs ± 156.51 ns     4.06 µs …   4.53 µs  in 10 ×  23755 runs
+global equal 2048         4.23 µs ±  84.74 ns     4.06 µs …   4.34 µs  in 10 ×  25159 runs
+old dense 2048            5.33 µs ± 431.86 ns     4.93 µs …   6.47 µs  in 10 ×  17867 runs
+tail dense 2048           3.95 µs ± 132.43 ns     3.74 µs …   4.12 µs  in 10 ×  24967 runs
+borrow dense 2048         3.76 µs ±  82.57 ns     3.63 µs …   3.88 µs  in 10 ×  26924 runs
+global dense 2048         3.88 µs ± 216.24 ns     3.69 µs …   4.47 µs  in 10 ×  26680 runs
+old low 2048              6.33 µs ± 191.23 ns     6.13 µs …   6.79 µs  in 10 ×  15767 runs
+tail low 2048             4.17 µs ± 135.03 ns     3.99 µs …   4.40 µs  in 10 ×  23518 runs
+borrow low 2048           4.19 µs ± 244.28 ns     3.97 µs …   4.72 µs  in 10 ×  24242 runs
+global low 2048           4.23 µs ± 115.40 ns     4.11 µs …   4.43 µs  in 10 ×  22571 runs
+old high 2048             5.05 µs ± 136.68 ns     4.83 µs …   5.22 µs  in 10 ×  19170 runs
+tail high 2048            3.98 µs ± 126.67 ns     3.83 µs …   4.20 µs  in 10 ×  25463 runs
+borrow high 2048          3.91 µs ± 135.57 ns     3.74 µs …   4.19 µs  in 10 ×  26502 runs
+global high 2048          4.04 µs ± 136.21 ns     3.82 µs …   4.20 µs  in 10 ×  23650 runs
+old width 2048            5.27 µs ± 107.98 ns     5.14 µs …   5.48 µs  in 10 ×  19157 runs
+tail width 2048           4.30 µs ± 182.31 ns     4.12 µs …   4.75 µs  in 10 ×  24703 runs
+borrow width 2048         4.23 µs ± 118.68 ns     4.07 µs …   4.45 µs  in 10 ×  23613 runs
+global width 2048         4.26 µs ±  83.72 ns     4.13 µs …   4.38 µs  in 10 ×  21046 runs
+Total tests: 1, passed: 1, failed: 0.

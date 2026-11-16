@@ -1,0 +1,37 @@
+{
+  "base": "9fb8bce",
+  "cpu": 6,
+  "mode": "release",
+  "samples": 10,
+  "inputs": "constructed outside b.bench",
+  "baseline": "fixed compare_bits_reference matching pre-change compare_bits, including length priority",
+  "candidate": "eight bounded prefix frames, grouped four-node tail suffix, explicit noinline boundary",
+  "moon_version": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "comparison": "old and candidate in one artifact per backend; no cross-process absolute-time ratios",
+  "artifacts": {
+    "native": {
+      "path": "/home/hosi/morph/.tools/artifacts/comparison-20261116/comparison-noinline-native.exe",
+      "sha256": "1156a679beba0692e84a449e1248540a0c78d93c1d11cfd68f875a2d773ae92e",
+      "log": "docs/measurements/comparison-noinline-native.txt"
+    },
+    "js": {
+      "path": "/home/hosi/morph/.tools/artifacts/comparison-20261116/comparison-noinline-js.js",
+      "sha256": "7d068ca263393b11677992c8d4fb2f3811d95b27a315152e43ebf2e12607312f",
+      "log": "docs/measurements/comparison-noinline-js.txt"
+    },
+    "wasm-gc": {
+      "path": "/home/hosi/morph/.tools/artifacts/comparison-20261116/comparison-noinline-wasm-gc.wasm",
+      "sha256": "83613a3b32061a020f0c77bb37cebdf6f1f67f75e85c36326b114597e0020fdb",
+      "log": "docs/measurements/comparison-noinline-wasm-gc.txt"
+    }
+  },
+  "source_snapshots": "/home/hosi/morph/.tools/artifacts/comparison-20261116",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "snapshot_hashes": {
+    "comparison-noinline-native.c": "4dc77610769d55c27816047277320d0f302c418273222da8c2c543d8f29709f2",
+    "comparison.mbt": "318cae9bdec6742425fcbe6e1e87efdf0e549338082cb14ddfa10f0dce8bcee2",
+    "comparison_candidates_wbtest.mbt": "acb4eb603e5a4ced109e444685f26889d4cb1396f89b8fbf17a87df865dd1443",
+    "comparison_wbtest.mbt": "c39fdaba24ab8ccee7177425268ebe2e0e82a0c01337ded44019088fb8bc460f",
+    "generate_comparison_candidates.py": "d5126433aa508596fbed178cc3b2dddec86791b58827d28145e114c7f043e479"
+  }
+}

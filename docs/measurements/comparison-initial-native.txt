@@ -1,0 +1,25 @@
+[Hosi121/morph] bench binary/comparison_wbtest.mbt:115 ("old and tail comparators on short and wide cohorts") ok
+name                 time (mean ± σ)         range (min … max) 
+old short 256 pairs     2.53 µs ±  91.97 ns     2.44 µs …   2.72 µs  in 10 ×  40580 runs
+tail short 256 pairs    3.02 µs ± 142.30 ns     2.88 µs …   3.37 µs  in 10 ×  32756 runs
+old equal 64          144.28 ns ±   2.92 ns   139.59 ns … 148.58 ns  in 10 × 100000 runs
+tail equal 64         113.20 ns ±  11.56 ns   101.97 ns … 139.92 ns  in 10 × 100000 runs
+old dense 64           94.49 ns ±   5.71 ns    88.40 ns … 104.20 ns  in 10 × 100000 runs
+tail dense 64         108.48 ns ±   9.17 ns   101.90 ns … 132.56 ns  in 10 × 100000 runs
+old low 64            151.22 ns ±  21.23 ns   131.12 ns … 185.78 ns  in 10 × 100000 runs
+tail low 64           109.54 ns ±   7.44 ns   102.06 ns … 123.94 ns  in 10 × 100000 runs
+old high 64            89.65 ns ±   4.28 ns    84.73 ns …  97.48 ns  in 10 × 100000 runs
+tail high 64          107.13 ns ±   3.99 ns   101.46 ns … 113.26 ns  in 10 × 100000 runs
+old width 64           91.32 ns ±   7.96 ns    83.44 ns … 103.92 ns  in 10 × 100000 runs
+tail width 64         113.35 ns ±   6.61 ns   107.53 ns … 130.14 ns  in 10 × 100000 runs
+old equal 2048          6.35 µs ± 176.25 ns     6.06 µs …   6.54 µs  in 10 ×  16076 runs
+tail equal 2048         3.98 µs ± 126.89 ns     3.83 µs …   4.19 µs  in 10 ×  25274 runs
+old dense 2048          5.13 µs ± 583.20 ns     4.67 µs …   6.38 µs  in 10 ×  20234 runs
+tail dense 2048         4.09 µs ± 364.60 ns     3.72 µs …   4.95 µs  in 10 ×  24220 runs
+old low 2048            6.40 µs ± 332.71 ns     6.08 µs …   7.00 µs  in 10 ×  16121 runs
+tail low 2048           4.23 µs ± 371.88 ns     3.88 µs …   5.06 µs  in 10 ×  20851 runs
+old high 2048           5.08 µs ± 154.38 ns     4.89 µs …   5.34 µs  in 10 ×  19609 runs
+tail high 2048          3.99 µs ± 209.68 ns     3.74 µs …   4.33 µs  in 10 ×  25210 runs
+old width 2048          4.85 µs ± 132.39 ns     4.71 µs …   5.02 µs  in 10 ×  20296 runs
+tail width 2048         3.82 µs ±  49.70 ns     3.74 µs …   3.89 µs  in 10 ×  26025 runs
+Total tests: 1, passed: 1, failed: 0.
