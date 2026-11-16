@@ -270,6 +270,7 @@ def generate():
         (third, "cube root of unity", [omega], 2),
         (eighth, "sqrt2 plus i sqrt3", [sqrt2 + sp.I * sqrt3], 4),
         (eighth, "independent sqrt2 sqrt3 and i", [sqrt2, sqrt3, sp.I], 8),
+        (twelfth, "single nonreal cubic root", [cube * omega], 3),
         (twelfth, "all roots of t^3-2", [cube, cube * omega, cube * sp.conjugate(omega)], 6),
     ]
     records = [field_record(*specification) for specification in specifications]
@@ -304,7 +305,8 @@ def generate():
              f'the sqrt(3) image is `{polynomial(twelfth.real_coordinates(sqrt3)).as_expr()}`. '
              'SymPy to_number_field verifies both identities exactly. The three roots c, c*omega, c*omega^2 of t^3-2 have complete monomial rank 6 inside ambient rational dimension 12. They generate c and omega because c is nonzero and omega=(c*omega)/c; conversely c and omega express all three roots. Thus the generated field is the S3 splitting field of degree 6, while the degree-12 source is oversized. In particular sqrt(3) and i are excluded individually, whereas i*sqrt(3)=2*omega+1 is included.', "",
              "Regenerate with `python3 tools/generate_complexsubfield_fixtures.py`; check reproducibility with `--check`. Only the generated fixture and this document are rewritten; moonfmt formats the fixture through the pinned repository SDK. These bounded cases are regression evidence and make no performance or arbitrary-field correctness claim. Integration owns JS/wasm-gc validation and the full-suite checks.", ""]
-    docs += ["Milestone validation: the regeneration check passes, and `tools/measure --cpu 4 tools/moon test src/complexsubfield --target native --release -j 1` passes all 10 independent oracle cases, including degree 12 to degree 6. Scoped MoonBit formatting/checking and the repository purity gate pass. The shared performance lock is used for native tests and fixture generation.", ""]
+    docs += ["A single nonreal cubic root generates a degree-3 field inside the same degree-12 ambient field. This field need not contain the other two cubic roots. Generated subfields are therefore not restricted to even degrees or Galois extensions. The degree-6 case uses all three roots and is the splitting field.", "",
+             "Native/JS/wasm-gc validation and whole-suite results are recorded in the central [validation guide](../VALIDATION.md). Regeneration checks the exact fixtures independently of executing the MoonBit tests; a regenerated fixture is not itself a passing test result.", ""]
     return {ROOT / "src/complexsubfield/oracle_fixtures_wbtest.mbt": formatted,
             ROOT / "docs/research/complexsubfield-oracle-20261117.md": "\n".join(docs)}, stats
 

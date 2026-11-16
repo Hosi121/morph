@@ -7,7 +7,7 @@ For each generator its independent SymPy minimum bounds its exponent. The comple
 MoonBit tests import independently populated monomial certificates and primitive certificates; they do not assume generate returns the same basis order. Returned bases are checked against the independent span, and both basis dimensions agree. Independent left inverses pin imported basis coordinates and inclusion boundaries. Each input generator's minimum is compared with its independent SymPy minimum. Primitive certificates use the independently chosen monomial basis and an independently searched small integer candidate. Their modulus, ambient power matrix, canonical conversions, and unreduced polynomial evaluation are externally computed. Returned producer primitives are checked for degree, field binding, and reconstruction; the independent imported representation supplies the pinned quotient expectations.
 
 ```json
-{"ambient_degrees": [2, 4, 8, 12], "cases": 10, "conversions": 57, "exhaustive_monomials": 55, "generated_degrees": [1, 2, 4, 6, 8], "independently_populated_field_certificates": 10, "independently_populated_primitive_certificates": 10}
+{"ambient_degrees": [2, 4, 8, 12], "cases": 11, "conversions": 62, "exhaustive_monomials": 58, "generated_degrees": [1, 2, 3, 4, 6, 8], "independently_populated_field_certificates": 11, "independently_populated_primitive_certificates": 11}
 ```
 
 | Case | Ambient degree | Generated degree | Complete monomials | Independent candidate | Primitive minimum |
@@ -21,6 +21,7 @@ MoonBit tests import independently populated monomial certificates and primitive
 | cube root of unity | 4 | 2 | 2 | 1 | `t**2 - t + 1` |
 | sqrt2 plus i sqrt3 | 8 | 4 | 4 | 1 | `t**4 - 2304*t + 16128` |
 | independent sqrt2 sqrt3 and i | 8 | 8 | 8 | 1 | `t**8 - 8*t**7 + 32*t**6 + 288*t**5 + 992*t**4 + 1152*t**3 + 512*t**2 - 512*t + 256` |
+| single nonreal cubic root | 12 | 3 | 3 | 1 | `t**3 - 3*t**2 - 3*t - 1` |
 | all roots of t^3-2 | 12 | 6 | 27 | 1 | `t**6 + 15*t**4 + 48*t**3 + 63*t**2 + 36*t + 9` |
 
 The degree-12 source uses a=cbrt(2)+sqrt(3), selected by the exact interval (2,3]. SymPy primitive_element independently returns multipliers [1,1] and the irreducible real minimum `t^6-9*t^4-4*t^3+27*t^2-36*t-23`. Exact root counting gives one root in the chosen interval. Selected values are bound algebraically: (5/4)^3<2<(63/50)^3 and (17/10)^2<3<(26/15)^2 imply 59/20<a<449/150<3. The other source intervals use the same rational-power method, never an approximate radical sign comparison. MoonBit normalizes this single real root to a verified number field; the oracle needs no compositum producer to build the source.
@@ -29,4 +30,6 @@ The cbrt(2) image in QQ[a] is `-2*t**5/51 - t**4/102 + 20*t**3/51 + 13*t**2/51 -
 
 Regenerate with `python3 tools/generate_complexsubfield_fixtures.py`; check reproducibility with `--check`. Only the generated fixture and this document are rewritten; moonfmt formats the fixture through the pinned repository SDK. These bounded cases are regression evidence and make no performance or arbitrary-field correctness claim. Integration owns JS/wasm-gc validation and the full-suite checks.
 
-Milestone validation: the regeneration check passes, and `tools/measure --cpu 4 tools/moon test src/complexsubfield --target native --release -j 1` passes all 10 independent oracle cases, including degree 12 to degree 6. Scoped MoonBit formatting/checking and the repository purity gate pass. The shared performance lock is used for native tests and fixture generation.
+A single nonreal cubic root generates a degree-3 field inside the same degree-12 ambient field. This field need not contain the other two cubic roots. Generated subfields are therefore not restricted to even degrees or Galois extensions. The degree-6 case uses all three roots and is the splitting field.
+
+Native/JS/wasm-gc validation and whole-suite results are recorded in the central [validation guide](../VALIDATION.md). Regeneration checks the exact fixtures independently of executing the MoonBit tests; a regenerated fixture is not itself a passing test result.
