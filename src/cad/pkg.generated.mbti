@@ -21,6 +21,8 @@ pub fn certificate(Decomposition) -> Certificate
 
 pub fn check(Problem, Certificate) -> Decomposition?
 
+pub fn check_cover(@core.Nat, @realcad.Formula, Certificate) -> Decomposition?
+
 pub fn check_elimination(Problem, @core.Nat, @core.Chain[@realformula.Quantifier], EliminationCertificate) -> Elimination?
 
 pub fn check_elimination_result(Problem, @core.Nat, @core.Chain[@realformula.Quantifier], Elimination, EliminationCertificate) -> Bool
@@ -56,6 +58,8 @@ pub fn projection(Problem) -> @cadprojection.Certificate
 pub fn quantifier_free(Elimination) -> @realcad.Formula
 
 pub fn rational_point(@core.Chain[@exact.Rational]) -> Point
+
+pub fn refute_on_cover(Decomposition, @realcad.Formula) -> Result[Decomposition?, CadError]
 
 pub fn run(Machine, @core.Nat) -> Result[Progress, CadError]
 

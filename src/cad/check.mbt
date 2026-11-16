@@ -79,6 +79,9 @@ pub fn problem_of(value : Decomposition) -> Problem {
 /// canonical ordered samples, all specialised signs and all terminal truths.
 /// Shortened leaves additionally require a source-bound coefficient plan proving
 /// constant truth over the whole parent cell times every remaining coordinate.
+/// A cover may be built from additional partition polynomials, provided every
+/// target atom occurs in its checked source. Ordinary prepared Problems still
+/// bind their exact projection through proof.projection equality.
 /// Field and PRS computations are recomputed; this is not a Lean proof.
 pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
   if !@logic.qf_atoms(problem.formula).equal(problem.atoms) ||
@@ -91,7 +94,8 @@ pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
     !proof.arity.equal(problem.arity) ||
     !proof.formula.equal(problem.formula) ||
     !proof.projection.equal(problem.projection) ||
-    !@projection.check(problem.arity, problem.atoms, proof.projection) {
+    !cover_contains(problem.atoms, proof.projection.atoms) ||
+    !@projection.check(problem.arity, proof.projection.atoms, proof.projection) {
     None
   } else if check_node(
       problem,
