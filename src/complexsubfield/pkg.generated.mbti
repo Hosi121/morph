@@ -1,0 +1,142 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexsubfield"
+
+import {
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ambient(Field) -> @complexfield.Field
+
+pub fn basis(Field) -> @core.Chain[@complexfield.Element]
+
+pub fn certificate(Field) -> Certificate
+
+pub fn check(@complexfield.Field, @core.Chain[@complexfield.Element], Certificate) -> Bool
+
+pub fn check_conversion_for(Representation, @complexfield.Element, @polynomial.Polynomial, ConversionCertificate) -> Bool
+
+pub fn check_primitive(Field, PrimitiveCertificate) -> Bool
+
+pub fn check_primitive_result(Field, Representation, PrimitiveCertificate) -> Bool
+
+pub fn check_result(@complexfield.Field, @core.Chain[@complexfield.Element], Field, Certificate) -> Bool
+
+pub fn contains(Field, @complexfield.Element) -> Bool
+
+pub fn coordinates(Field, @complexfield.Element) -> Result[@core.Chain[@exact.Rational], SubfieldError]
+
+pub fn degree(Field) -> @core.Nat
+
+pub fn from_certificate(@complexfield.Field, @core.Chain[@complexfield.Element], Certificate) -> Result[Field, SubfieldError]
+
+pub fn from_coordinates(Field, @core.Chain[@exact.Rational]) -> Result[@complexfield.Element, SubfieldError]
+
+pub fn from_polynomial(Representation, @polynomial.Polynomial) -> Result[@complexfield.Element, SubfieldError]
+
+pub fn from_primitive_certificate(Field, PrimitiveCertificate) -> Result[Representation, SubfieldError]
+
+pub fn generate(@complexfield.Field, @core.Chain[@complexfield.Element]) -> Result[Field, SubfieldError]
+
+pub fn generators(Field) -> @core.Chain[@complexfield.Element]
+
+pub fn modulus(Representation) -> @polynomial.Polynomial
+
+pub fn primitive_advance(PrimitiveSearch, @core.Nat) -> Result[PrimitiveProgress, SubfieldError]
+
+pub fn primitive_certificate(Representation) -> PrimitiveCertificate
+
+pub fn primitive_element(Representation) -> @complexfield.Element
+
+pub fn primitive_next_candidate(PrimitiveSearch) -> @core.Nat
+
+pub fn primitive_start(Field) -> PrimitiveSearch
+
+pub fn representation_field(Representation) -> Field
+
+pub fn to_polynomial(Representation, @complexfield.Element) -> Result[Conversion, SubfieldError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @complexfield.Field
+  generators : @core.Chain[@complexfield.Element]
+  degree : @core.Nat
+  basis : @core.Chain[@complexfield.Element]
+  monomials : @core.Chain[@core.Chain[@core.Nat]]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Conversion {
+  polynomial : @polynomial.Polynomial
+  certificate : ConversionCertificate
+}
+pub fn Conversion::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct ConversionCertificate {
+  representation : PrimitiveCertificate
+  input : @complexfield.Element
+  polynomial : @polynomial.Polynomial
+}
+pub fn ConversionCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Field {
+  // private fields
+}
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct PrimitiveCertificate {
+  field : Certificate
+  candidate : @core.Nat
+  theta : @complexfield.Element
+  modulus : @polynomial.Polynomial
+  power_basis : @matrix.Matrix[@exact.Rational]
+}
+pub fn PrimitiveCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum PrimitiveProgress {
+  PrimitiveReady(Representation, PrimitiveCertificate)
+  PrimitivePaused(PrimitiveSearch)
+}
+pub fn PrimitiveProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct PrimitiveSearch {
+  // private fields
+}
+pub fn PrimitiveSearch::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Representation {
+  // private fields
+}
+pub fn Representation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SubfieldError {
+  InvalidCertificate
+  DifferentField
+  NotInSubfield
+  DimensionMismatch
+  NotUnivariate
+  InternalInvariant
+}
+pub fn SubfieldError::equal(Self, Self) -> Bool
+pub fn SubfieldError::not_equal(Self, Self) -> Bool
+pub fn SubfieldError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
