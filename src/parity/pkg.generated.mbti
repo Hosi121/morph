@@ -1,0 +1,121 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/parity"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Solution) -> Certificate
+
+pub fn check(Game, Certificate) -> Bool
+
+pub fn checked(Game, Certificate) -> Solution?
+
+pub fn game(@core.Chain[Position]) -> Game?
+
+pub fn positions(Game) -> @core.Chain[Position]
+
+pub fn run(Machine, @core.Nat) -> Progress
+
+pub fn start(Game) -> Machine
+
+pub fn step(Machine) -> Progress
+
+pub fn winner(Solution, @core.Nat) -> Player?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type Attraction
+pub fn Attraction::equal(Self, Self) -> Bool
+pub fn Attraction::not_equal(Self, Self) -> Bool
+pub fn Attraction::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  even_region : @core.Chain[@core.Nat]
+  odd_region : @core.Chain[@core.Nat]
+  even_strategy : @core.Chain[Move]
+  odd_strategy : @core.Chain[Move]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Frame
+pub fn Frame::equal(Self, Self) -> Bool
+pub fn Frame::not_equal(Self, Self) -> Bool
+pub fn Frame::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Game {
+  positions : @core.Chain[Position]
+}
+pub fn Game::equal(Self, Self) -> Bool
+pub fn Game::not_equal(Self, Self) -> Bool
+pub fn Game::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  game : Game
+  frames : @core.Chain[Frame]
+  returned : Certificate?
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Move {
+  source : @core.Nat
+  target : @core.Nat
+}
+pub fn Move::equal(Self, Self) -> Bool
+pub fn Move::not_equal(Self, Self) -> Bool
+pub fn Move::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Player {
+  EvenPlayer
+  OddPlayer
+}
+pub fn Player::equal(Self, Self) -> Bool
+pub fn Player::not_equal(Self, Self) -> Bool
+pub fn Player::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Position {
+  id : @core.Nat
+  owner : Player
+  priority : @core.Nat
+  successors : @core.Chain[@core.Nat]
+}
+pub fn Position::equal(Self, Self) -> Bool
+pub fn Position::not_equal(Self, Self) -> Bool
+pub fn Position::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Solution)
+  Paused(Machine)
+  Fault
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Solution {
+  certificate : Certificate
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：69パッケージ、135ソース。
-核のテスト宣言：1005、bench group：182。
+算法の核：73パッケージ、154ソース。
+核のテスト宣言：1228、bench group：182。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -38,6 +38,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [exact](../src/exact) | 3 | 13 | 30 | `binary`, `core` |
 | [exactcover](../src/exactcover) | 2 | 4 | 0 | `binary`, `core` |
 | [exactfft](../src/exactfft) | 1 | 15 | 0 | `binary`, `core`, `cyclotomic`, `exact`, `fft` |
+| [f4](../src/f4) | 3 | 71 | 0 | `core`, `exact`, `groebner`, `linear`, `matrix`, `polynomial`, `sorting` |
 | [factor](../src/factor) | 3 | 17 | 4 | `binary`, `core`, `modular`, `primality` |
 | [fft](../src/fft) | 1 | 3 | 0 | `core` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
@@ -50,18 +51,21 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [huffman](../src/huffman) | 1 | 2 | 0 | `binary`, `core`, `heap` |
 | [infer](../src/infer) | 1 | 4 | 0 | `core`, `unify` |
 | [linear](../src/linear) | 1 | 3 | 0 | `core`, `exact`, `matrix`, `rowreduce` |
+| [listdecode](../src/listdecode) | 6 | 39 | 0 | `binary`, `core`, `fppoly`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [lll](../src/lll) | 5 | 9 | 4 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix`, `smith` |
 | [lz78](../src/lz78) | 1 | 3 | 0 | `binary`, `bitcodec`, `core`, `trie` |
 | [matrix](../src/matrix) | 1 | 3 | 0 | `algebra`, `binary`, `core` |
 | [maxflow](../src/maxflow) | 1 | 2 | 0 | `binary`, `core`, `graph` |
 | [modular](../src/modular) | 3 | 4 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [ntt](../src/ntt) | 1 | 3 | 0 | `binary`, `core`, `fft`, `modular` |
+| [parity](../src/parity) | 4 | 7 | 0 | `core` |
 | [polynomial](../src/polynomial) | 1 | 3 | 0 | `binary`, `core`, `exact` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |
 | [primefield](../src/primefield) | 1 | 5 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
 | [primeprove](../src/primeprove) | 1 | 8 | 8 | `binary`, `core`, `factor`, `primality` |
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
-| [realcad](../src/realcad) | 5 | 5 | 0 | `core`, `exact`, `polynomial`, `sturm` |
+| [realalgebraic](../src/realalgebraic) | 6 | 69 | 0 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
+| [realcad](../src/realcad) | 5 | 42 | 0 | `core`, `exact`, `polynomial`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
 | [reedsolomon](../src/reedsolomon) | 1 | 4 | 0 | `binary`, `core`, `finitefield`, `matrix`, `modular`, `rowreduce` |
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |
