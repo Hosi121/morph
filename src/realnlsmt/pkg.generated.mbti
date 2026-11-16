@@ -1,0 +1,141 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realnlsmt"
+
+import {
+  "Hosi121/morph/cad",
+  "Hosi121/morph/cdcl",
+  "Hosi121/morph/circuit",
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/sat",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn arity(Problem) -> @core.Nat
+
+pub fn atoms(Problem) -> @core.Chain[Atom]
+
+pub fn booleans(Model) -> @core.Chain[@sat.Literal]
+
+pub fn check_model(Problem, Model) -> Bool
+
+pub fn check_refutation(Problem, Refutation) -> Bool
+
+pub fn cnf(Problem) -> @core.Chain[@core.Chain[@sat.Literal]]
+
+pub fn context(Problem) -> Context
+
+pub fn formula(Problem) -> @realcad.Formula
+
+pub fn lemma_clause(Problem, Lemma) -> @core.Chain[@sat.Literal]?
+
+pub fn point(Model) -> @cad.Point
+
+pub fn prepare(@core.Nat, @realcad.Formula) -> Result[Problem, SmtError]
+
+pub fn run(Search, @core.Nat) -> Result[Outcome, SmtError]
+
+pub fn start(Problem) -> Search
+
+pub fn step(Search) -> Result[Outcome, SmtError]
+
+pub fn theory_conflicts(Search) -> @core.Nat
+
+pub fn transitions(Search) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Atom {
+  polynomial : @polynomial.Polynomial
+  relation : @realcad.Relation
+}
+pub fn Atom::equal(Self, Self) -> Bool
+pub fn Atom::not_equal(Self, Self) -> Bool
+pub fn Atom::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Context {
+  arity : @core.Nat
+  source : @realcad.Formula
+}
+pub fn Context::equal(Self, Self) -> Bool
+pub fn Context::not_equal(Self, Self) -> Bool
+pub fn Context::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Lemma {
+  context : Context
+  assignment : @core.Chain[@sat.Literal]
+  decomposition : @cad.Certificate
+}
+pub fn Lemma::equal(Self, Self) -> Bool
+pub fn Lemma::not_equal(Self, Self) -> Bool
+pub fn Lemma::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Model {
+  context : Context
+  booleans : @core.Chain[@sat.Literal]
+  point : @cad.Point
+}
+pub fn Model::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Outcome {
+  Satisfiable(Model)
+  Unsatisfiable(Refutation)
+  Paused(Search)
+}
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  context : Context
+  atoms : @core.Chain[Atom]
+  encoding : @circuit.Encoding
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Refutation {
+  context : Context
+  lemmas : @core.Chain[Lemma]
+  propositional : @cdcl.Proof
+}
+pub fn Refutation::equal(Self, Self) -> Bool
+pub fn Refutation::not_equal(Self, Self) -> Bool
+pub fn Refutation::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  problem : Problem
+  formula : @core.Chain[@core.Chain[@sat.Literal]]
+  lemmas_rev : @core.Chain[Lemma]
+  phase : Phase
+  transitions : @core.Nat
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SmtError {
+  WrongArity
+  CadFailure(@cad.CadError)
+  InternalInvariant
+}
+pub fn SmtError::equal(Self, Self) -> Bool
+pub fn SmtError::not_equal(Self, Self) -> Bool
+pub fn SmtError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
