@@ -82,7 +82,8 @@ fn valid_roots(field : @cf.Field, values : @core.Chain[@cf.Element]) -> Bool {
           @core.any(rest, fn(other) { @cf.equal(root, other) }) {
           return false
         }
-        match evaluate(root, @nf.modulus(@cf.real_field(field))) {
+        match
+          @cf.evaluate_polynomial(root, @nf.modulus(@cf.real_field(field))) {
           Some(value) => @cf.is_zero(value) && go(rest)
           None => false
         }

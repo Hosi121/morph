@@ -164,8 +164,8 @@ pub fn check(field : @cf.Field, proof : Certificate) -> Bool {
   match
     (
       real_generator(field),
-      evaluate(proof.theta, proof.real_generator_image),
-      evaluate(proof.theta, proof.imaginary_unit_image),
+      @cf.evaluate_polynomial(proof.theta, proof.real_generator_image),
+      @cf.evaluate_polynomial(proof.theta, proof.imaginary_unit_image),
     ) {
     (Some(alpha), Some(real_image), Some(imaginary_image)) =>
       @cf.equal(alpha, real_image) &&

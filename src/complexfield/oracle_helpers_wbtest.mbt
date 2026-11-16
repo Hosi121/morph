@@ -84,6 +84,27 @@ fn assert_complexfield_fixture(
   let context = oracle_context(base_degree, constant)
   let value = oracle_element(context, real, imaginary)
   assert_eq(@oracle.int_of_nat(degree(context)), 2 * base_degree)
+  let expected_coordinates = @core.append(
+    @oracle.chain(real.map(fn(q) { @oracle.rational(q.0, q.1) })),
+    @oracle.chain(imaginary.map(fn(q) { @oracle.rational(q.0, q.1) })),
+  )
+  assert_eq(coordinates(value), expected_coordinates)
+  assert_true(
+    equal(from_coordinates(context, expected_coordinates).unwrap(), value),
+  )
+  assert_true(from_coordinates(context, Nil) is Err(DimensionMismatch))
+  assert_true(
+    from_coordinates(context, Cons(@exact.rational_one(), expected_coordinates))
+    is Err(DimensionMismatch),
+  )
+  assert_true(evaluate_polynomial(value, @poly.zero(Zero)) is None)
+  assert_true(evaluate_polynomial(value, @poly.zero(@oracle.nat(2))) is None)
+  assert_true(
+    equal(
+      evaluate_polynomial(value, oracle_poly([(0, 1), (1, 1)])).unwrap(),
+      value,
+    ),
+  )
   let expected_trace = @oracle.rational(expected_trace.0, expected_trace.1)
   let expected_norm = @oracle.rational(expected_norm.0, expected_norm.1)
   assert_eq(trace(value).unwrap(), expected_trace)

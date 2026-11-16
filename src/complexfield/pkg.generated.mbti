@@ -23,6 +23,8 @@ pub fn check_trace(Element, @exact.Rational) -> Bool
 
 pub fn conjugate(Element) -> Element
 
+pub fn coordinates(Element) -> @core.Chain[@exact.Rational]
+
 pub fn degree(Field) -> @core.Nat
 
 pub fn divide(Element, Element) -> Result[Element?, FieldError]
@@ -31,7 +33,11 @@ pub fn element(Field, @numberfield.Element, @numberfield.Element) -> Result[Elem
 
 pub fn equal(Element, Element) -> Bool
 
+pub fn evaluate_polynomial(Element, @polynomial.Polynomial) -> Element?
+
 pub fn field(@numberfield.Field) -> Field
+
+pub fn from_coordinates(Field, @core.Chain[@exact.Rational]) -> Result[Element, FieldError]
 
 pub fn imaginary_part(Element) -> @numberfield.Element
 
@@ -93,6 +99,7 @@ pub fn Field::to_repr(Self) -> @debug.Repr
 #derive(Eq, @debug.Debug)
 pub(all) enum FieldError {
   DifferentField
+  DimensionMismatch
   InternalInvariant
 }
 pub fn FieldError::equal(Self, Self) -> Bool

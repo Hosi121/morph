@@ -66,58 +66,6 @@ pub fn equal(a : Automorphism, b : Automorphism) -> Bool {
 }
 
 ///|
-fn coefficient(
-  polynomial : @poly.Polynomial,
-  exponent : @core.Nat,
-) -> @exact.Rational {
-  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(
-    sum,
-    term,
-  ) {
-    if term.exponents.equal(Cons(exponent, Nil)) {
-      @exact.rational_add(sum, term.coefficient)
-    } else {
-      sum
-    }
-  })
-}
-
-///|
-/// Evaluate an existing rational polynomial by exact source-field arithmetic.
-fn evaluate(value : @cf.Element, polynomial : @poly.Polynomial) -> @cf.Element? {
-  if !@poly.variables(polynomial).equal(Succ(Zero)) {
-    return None
-  }
-  let count : @core.Nat = match @poly.terms(polynomial) {
-    Nil => Zero
-    Cons({ exponents: Cons(d, Nil), .. }, _) => Succ(d)
-    _ => return None
-  }
-  fn go(
-    todo : @core.Chain[@core.Nat],
-    accumulated : @cf.Element,
-  ) -> @cf.Element? {
-    match todo {
-      Nil => Some(accumulated)
-      Cons(i, rest) =>
-        match @cf.multiply(accumulated, value) {
-          Ok(product) =>
-            match
-              @cf.add(
-                product,
-                @cf.rational(@cf.parent(value), coefficient(polynomial, i)),
-              ) {
-              Ok(next) => go(rest, next)
-              Err(_) => None
-            }
-          Err(_) => None
-        }
-    }
-  }
-  go(@core.reverse(@core.indices(count)), @cf.zero(@cf.parent(value)))
-}
-
-///|
 fn real_generator(field : @cf.Field) -> @cf.Element? {
   let real = @cf.real_field(field)
   match @nf.generator(real) {
@@ -142,11 +90,11 @@ pub fn apply(
   }
   match
     (
-      evaluate(
+      @cf.evaluate_polynomial(
         real_image(automorphism),
         @nf.representative(@cf.real_part(value)),
       ),
-      evaluate(
+      @cf.evaluate_polynomial(
         real_image(automorphism),
         @nf.representative(@cf.imaginary_part(value)),
       ),

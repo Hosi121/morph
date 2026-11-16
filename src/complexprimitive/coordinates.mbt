@@ -1,21 +1,4 @@
 ///|
-fn coefficient(
-  polynomial : @poly.Polynomial,
-  exponent : @core.Nat,
-) -> @exact.Rational {
-  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(
-    sum,
-    term,
-  ) {
-    if term.exponents.equal(Cons(exponent, Nil)) {
-      @exact.rational_add(sum, term.coefficient)
-    } else {
-      sum
-    }
-  })
-}
-
-///|
 fn polynomial_degree(polynomial : @poly.Polynomial) -> @core.Nat? {
   match @poly.terms(polynomial) {
     Cons({ exponents: Cons(d, Nil), .. }, _) => Some(d)
@@ -35,16 +18,6 @@ fn canonical(d : @core.Nat, polynomial : @poly.Polynomial) -> Bool {
 }
 
 ///|
-fn coordinates(value : @cf.Element) -> @core.Chain[@exact.Rational] {
-  fn part(value : @nf.Element) -> @core.Chain[@exact.Rational] {
-    @core.map(@core.indices(@nf.degree(@nf.parent(value))), fn(i) {
-      coefficient(@nf.representative(value), i)
-    })
-  }
-  @core.append(part(@cf.real_part(value)), part(@cf.imaginary_part(value)))
-}
-
-///|
 fn power_basis(
   field : @cf.Field,
   theta : @cf.Element,
@@ -59,7 +32,7 @@ fn power_basis(
         match @cf.multiply(power, theta) {
           Ok(next) =>
             match columns(rest, next) {
-              Some(tail) => Some(Cons(coordinates(power), tail))
+              Some(tail) => Some(Cons(@cf.coordinates(power), tail))
               None => None
             }
           Err(_) => None
@@ -83,7 +56,7 @@ fn coordinates_polynomial(
   value : @cf.Element,
 ) -> @poly.Polynomial? {
   let d = @cf.degree(@cf.parent(value))
-  let vector = match @matrix.matrix(d, Cons(coordinates(value), Nil)) {
+  let vector = match @matrix.matrix(d, Cons(@cf.coordinates(value), Nil)) {
     Some(row) => @matrix.transpose(row)
     None => return None
   }
@@ -110,40 +83,6 @@ fn coordinates_polynomial(
       }
     None => None
   }
-}
-
-///|
-/// Horner evaluation is in the supplied checked CF context.
-fn evaluate(theta : @cf.Element, polynomial : @poly.Polynomial) -> @cf.Element? {
-  if !@poly.variables(polynomial).equal(Succ(Zero)) {
-    return None
-  }
-  let count : @core.Nat = match polynomial_degree(polynomial) {
-    Some(d) => Succ(d)
-    None => Zero
-  }
-  fn go(
-    todo : @core.Chain[@core.Nat],
-    accumulated : @cf.Element,
-  ) -> @cf.Element? {
-    match todo {
-      Nil => Some(accumulated)
-      Cons(i, rest) =>
-        match @cf.multiply(accumulated, theta) {
-          Ok(product) =>
-            match
-              @cf.add(
-                product,
-                @cf.rational(@cf.parent(theta), coefficient(polynomial, i)),
-              ) {
-              Ok(next) => go(rest, next)
-              Err(_) => None
-            }
-          Err(_) => None
-        }
-    }
-  }
-  go(@core.reverse(@core.indices(count)), @cf.zero(@cf.parent(theta)))
 }
 
 ///|
@@ -185,7 +124,7 @@ pub fn check_conversion_for(
     !check(source(representation), proof.representation) {
     return false
   }
-  match evaluate(generator(representation), polynomial) {
+  match @cf.evaluate_polynomial(generator(representation), polynomial) {
     Some(value) => @cf.equal(input, value)
     None => false
   }
@@ -224,7 +163,7 @@ pub fn from_polynomial(
   }
   match @poly.normal_form(polynomial, Cons(modulus(representation), Nil)) {
     Ok(reduced) =>
-      match evaluate(generator(representation), reduced) {
+      match @cf.evaluate_polynomial(generator(representation), reduced) {
         Some(value) => Ok(value)
         None => Err(InternalInvariant)
       }

@@ -2,6 +2,7 @@
 #derive(Eq, Debug)
 pub(all) enum FieldError {
   DifferentField
+  DimensionMismatch
   InternalInvariant
 }
 
