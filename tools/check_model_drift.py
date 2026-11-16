@@ -16,7 +16,7 @@ from audit_purity import code_only
 ROOT = Path(__file__).resolve().parent.parent
 LOCK = ROOT / "formal/source-map.json"
 REGIONS = {
-    "src/core/data.mbt": ["replicate", "replicate_onto"],
+    "src/core/data.mbt": ["replicate", "replicate_onto", "reverse", "reverse_onto"],
     "src/core/natural.mbt": ["halve_nat", "half_nat"],
     "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "low_bit", "zero", "one", "from_nat", "compare_bits"],
     "src/binary/from_nat_grouped.mbt": ["split_nat_grouped", "from_nat_grouped"],

@@ -1,0 +1,31 @@
+Total tests: 1, passed: 1, failed: 0.
+[Hosi121/morph] bench binary/wide_groups_wbtest.mbt:512 ("unrolled reverse loops and native ownership controls") ok
+name                  time (mean ± σ)         range (min … max) 
+recursive rem 128        4.46 µs ±  70.91 ns     4.32 µs …   4.55 µs  in 10 ×  23126 runs
+reverse rem 128          4.81 µs ± 192.93 ns     4.61 µs …   5.18 µs  in 10 ×  20993 runs
+recursive div 128        6.32 µs ± 293.03 ns     6.01 µs …   6.99 µs  in 10 ×  15676 runs
+group2 remainder 128     5.42 µs ± 124.32 ns     5.26 µs …   5.61 µs  in 10 ×  19098 runs
+group2 divide 128        6.62 µs ± 178.88 ns     6.46 µs …   6.90 µs  in 10 ×  15010 runs
+group4 remainder 128     5.51 µs ±  94.46 ns     5.37 µs …   5.63 µs  in 10 ×  17990 runs
+group4 divide 128        6.65 µs ± 161.15 ns     6.45 µs …   7.01 µs  in 10 ×  14800 runs
+group8 remainder 128     5.61 µs ± 204.40 ns     5.37 µs …   5.93 µs  in 10 ×  17039 runs
+group8 divide 128        6.82 µs ± 212.19 ns     6.51 µs …   7.13 µs  in 10 ×  15228 runs
+recursive rem 512       54.88 µs ±   1.73 µs    52.98 µs …  57.44 µs  in 10 ×   1814 runs
+reverse rem 512         54.47 µs ± 813.06 ns    53.17 µs …  55.65 µs  in 10 ×   1732 runs
+recursive div 512       61.90 µs ±   1.53 µs    59.36 µs …  64.03 µs  in 10 ×   1578 runs
+group2 remainder 512    62.36 µs ±   2.92 µs    58.28 µs …  65.60 µs  in 10 ×   1702 runs
+group2 divide 512       65.01 µs ±   1.22 µs    63.70 µs …  67.24 µs  in 10 ×   1546 runs
+group4 remainder 512    60.05 µs ±   1.38 µs    58.14 µs …  61.90 µs  in 10 ×   1639 runs
+group4 divide 512       68.13 µs ±   3.54 µs    63.52 µs …  73.65 µs  in 10 ×   1485 runs
+group8 remainder 512    59.75 µs ±   1.43 µs    58.18 µs …  62.01 µs  in 10 ×   1650 runs
+group8 divide 512       66.32 µs ±   2.22 µs    64.18 µs …  70.52 µs  in 10 ×   1438 runs
+recursive rem 4096     139.64 µs ±   2.96 µs   137.21 µs … 146.66 µs  in 10 ×    673 runs
+reverse rem 4096       154.72 µs ±   5.22 µs   148.25 µs … 163.82 µs  in 10 ×    647 runs
+recursive div 4096     229.10 µs ±  11.05 µs   219.01 µs … 257.93 µs  in 10 ×    475 runs
+group2 remainder 4096  188.76 µs ±   5.33 µs   180.77 µs … 197.37 µs  in 10 ×    541 runs
+group2 divide 4096     237.40 µs ±   6.94 µs   228.42 µs … 250.36 µs  in 10 ×    434 runs
+group4 remainder 4096  197.77 µs ±   7.49 µs   185.26 µs … 212.00 µs  in 10 ×    529 runs
+group4 divide 4096     241.91 µs ±  12.23 µs   228.53 µs … 261.51 µs  in 10 ×    391 runs
+group8 remainder 4096  193.36 µs ±   7.61 µs   180.60 µs … 206.27 µs  in 10 ×    504 runs
+group8 divide 4096     233.37 µs ±   5.46 µs   227.15 µs … 241.78 µs  in 10 ×    428 runs
+Total tests: 1, passed: 1, failed: 0.

@@ -1,0 +1,16 @@
+Total tests: 1, passed: 1, failed: 0.
+[Hosi121/morph] bench binary/wide_raw_wbtest.mbt:98 ("raw bit state versus recursive boxed state") ok
+name               time (mean ± σ)         range (min … max) 
+old remainder 128     4.23 µs ± 152.43 ns     4.05 µs …   4.44 µs  in 10 ×  23618 runs
+raw remainder 128     4.59 µs ± 250.70 ns     4.24 µs …   5.03 µs  in 10 ×  23418 runs
+old quotient 128      6.05 µs ± 151.99 ns     5.90 µs …   6.32 µs  in 10 ×  16855 runs
+raw quotient 128      5.33 µs ± 208.45 ns     5.12 µs …   5.65 µs  in 10 ×  18003 runs
+old remainder 512    48.25 µs ±   2.60 µs    45.99 µs …  53.02 µs  in 10 ×   2049 runs
+raw remainder 512    49.92 µs ±   2.84 µs    46.43 µs …  54.57 µs  in 10 ×   2102 runs
+old quotient 512     55.49 µs ±   2.79 µs    52.65 µs …  60.73 µs  in 10 ×   1705 runs
+raw quotient 512     51.04 µs ±   2.02 µs    49.04 µs …  54.01 µs  in 10 ×   2039 runs
+old remainder 4096  132.12 µs ±   4.47 µs   126.80 µs … 139.23 µs  in 10 ×    750 runs
+raw remainder 4096  144.97 µs ±   8.12 µs   137.25 µs … 158.34 µs  in 10 ×    717 runs
+old quotient 4096   199.77 µs ±   7.60 µs   191.83 µs … 213.64 µs  in 10 ×    481 runs
+raw quotient 4096   194.86 µs ±   6.23 µs   187.01 µs … 204.81 µs  in 10 ×    520 runs
+Total tests: 1, passed: 1, failed: 0.

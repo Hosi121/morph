@@ -1,0 +1,16 @@
+Total tests: 1, passed: 1, failed: 0.
+[Hosi121/morph] bench binary/wide_budget_wbtest.mbt:112 ("bounded prefix versus recursive wide division") ok
+name                     time (mean ± σ)         range (min … max) 
+recursive remainder 128     4.70 µs ± 120.03 ns     4.52 µs …   4.90 µs  in 10 ×  21111 runs
+bounded remainder 128       5.47 µs ± 207.41 ns     5.18 µs …   5.87 µs  in 10 ×  19168 runs
+recursive quotient 128      6.86 µs ± 141.68 ns     6.66 µs …   7.04 µs  in 10 ×  14901 runs
+bounded quotient 128        6.73 µs ± 165.35 ns     6.47 µs …   6.99 µs  in 10 ×  15249 runs
+recursive remainder 512    57.63 µs ±   1.48 µs    55.33 µs …  59.15 µs  in 10 ×   1807 runs
+bounded remainder 512      56.46 µs ±   1.66 µs    54.25 µs …  59.66 µs  in 10 ×   1798 runs
+recursive quotient 512     63.80 µs ±   1.58 µs    61.70 µs …  66.27 µs  in 10 ×   1417 runs
+bounded quotient 512       64.96 µs ±   1.28 µs    63.29 µs …  66.68 µs  in 10 ×   1613 runs
+recursive remainder 4096  143.18 µs ±   2.92 µs   140.09 µs … 148.53 µs  in 10 ×    703 runs
+bounded remainder 4096    152.58 µs ±   3.50 µs   146.84 µs … 158.71 µs  in 10 ×    665 runs
+recursive quotient 4096   227.97 µs ±   9.31 µs   214.45 µs … 239.87 µs  in 10 ×    452 runs
+bounded quotient 4096     201.54 µs ±   3.93 µs   195.63 µs … 207.88 µs  in 10 ×    492 runs
+Total tests: 1, passed: 1, failed: 0.

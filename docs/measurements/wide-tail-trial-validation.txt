@@ -1,0 +1,18 @@
+Total tests: 2, passed: 2, failed: 0.
+Total tests: 2, passed: 2, failed: 0.
+Total tests: 2, passed: 2, failed: 0.
+[Hosi121/morph] bench binary/wide_trial_wbtest.mbt:87 ("reversed traversal versus recursive wide division") ok
+name                       time (mean ± σ)         range (min … max) 
+recursive quotient 128/3      6.68 µs ± 193.93 ns     6.46 µs …   7.03 µs  in 10 ×  15359 runs
+reversed quotient 128/3       6.09 µs ± 304.93 ns     5.84 µs …   6.90 µs  in 10 ×  16206 runs
+recursive remainder 128/3     4.59 µs ± 180.18 ns     4.29 µs …   4.80 µs  in 10 ×  22469 runs
+reversed remainder 128/3      5.10 µs ± 444.59 ns     4.66 µs …   5.93 µs  in 10 ×  21036 runs
+recursive quotient 512/31    63.17 µs ± 599.26 ns    62.55 µs …  64.38 µs  in 10 ×   1559 runs
+reversed quotient 512/31     66.72 µs ±   4.95 µs    62.95 µs …  77.00 µs  in 10 ×   1577 runs
+recursive remainder 512/31   57.23 µs ±   2.22 µs    54.10 µs …  60.77 µs  in 10 ×   1553 runs
+reversed remainder 512/31    56.95 µs ±   1.56 µs    54.70 µs …  59.12 µs  in 10 ×   1744 runs
+recursive quotient 4096/3   223.56 µs ±   6.55 µs   214.69 µs … 232.89 µs  in 10 ×    459 runs
+reversed quotient 4096/3    212.67 µs ±  17.84 µs   191.75 µs … 239.15 µs  in 10 ×    501 runs
+recursive remainder 4096/3  145.73 µs ±   5.24 µs   138.51 µs … 154.73 µs  in 10 ×    684 runs
+reversed remainder 4096/3   155.83 µs ±   4.15 µs   149.81 µs … 162.23 µs  in 10 ×    632 runs
+Total tests: 1, passed: 1, failed: 0.

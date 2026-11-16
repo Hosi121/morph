@@ -1,0 +1,12 @@
+[Hosi121/morph] test binary/wide_trial_wbtest.mbt:2 ("wide symbolic powers can take a remainder without consuming call stack") failed: RangeError: Maximum call stack size exceeded
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/binary.mbt:173:25)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at remainder_bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+    at _M0FP37Hosi1215morph6binary15remainder__bits (/home/hosi/morph/.tools/agents/binary-perf/src/binary/division.mbt:79:19)
+Total tests: 1, passed: 0, failed: 1.
