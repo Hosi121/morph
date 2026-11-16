@@ -1,0 +1,94 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realformula"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realcad",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Prenex) -> Certificate
+
+pub fn check(@core.Nat, Formula, Certificate) -> Prenex?
+
+pub fn complement(@realcad.Relation) -> @realcad.Relation
+
+pub fn evaluate_signs(@realcad.Formula, @core.Chain[@polynomial.Polynomial], @core.Chain[@core.Ordering]) -> Bool?
+
+pub fn free_variables(Prenex) -> @core.Nat
+
+pub fn matrix(Prenex) -> @realcad.Formula
+
+pub fn normalize(@core.Nat, Formula) -> Result[Prenex, BuildError]
+
+pub fn qf_atoms(@realcad.Formula) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn quantifiers(Prenex) -> @core.Chain[Quantifier]
+
+pub fn relation_holds(@realcad.Relation, @core.Ordering) -> Bool
+
+pub fn rename_polynomial(@polynomial.Polynomial, @core.Nat, @core.Chain[@core.Nat]) -> Result[@polynomial.Polynomial, BuildError]
+
+pub fn source(Prenex) -> Formula
+
+pub fn variables(Prenex) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum BuildError {
+  ArityMismatch
+  InvalidRenaming
+}
+pub fn BuildError::equal(Self, Self) -> Bool
+pub fn BuildError::not_equal(Self, Self) -> Bool
+pub fn BuildError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  free_variables : @core.Nat
+  source : Formula
+  quantifiers : @core.Chain[Quantifier]
+  matrix : @realcad.Formula
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Formula {
+  Truth(Bool)
+  Atom(@polynomial.Polynomial, @realcad.Relation)
+  Negation(Formula)
+  Conjunction(Formula, Formula)
+  Disjunction(Formula, Formula)
+  Exists(Formula)
+  Forall(Formula)
+}
+pub fn Formula::equal(Self, Self) -> Bool
+pub fn Formula::not_equal(Self, Self) -> Bool
+pub fn Formula::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Prenex {
+  certificate : Certificate
+}
+pub fn Prenex::equal(Self, Self) -> Bool
+pub fn Prenex::not_equal(Self, Self) -> Bool
+pub fn Prenex::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Quantifier {
+  Exists
+  Forall
+}
+pub fn Quantifier::equal(Self, Self) -> Bool
+pub fn Quantifier::not_equal(Self, Self) -> Bool
+pub fn Quantifier::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
