@@ -26,8 +26,42 @@ fn conjunction(atoms : Array[@qf.Formula]) -> @qf.Formula {
 }
 
 ///|
+fn alternatives(
+  count : Int32,
+  variables : Int32,
+  satisfiable : Bool,
+) -> @qf.Formula {
+  let mut source : @qf.Formula = @qf.Truth(false)
+  for index in 0..<count {
+    let terms = if variables == 0 {
+      [(index + 1, [])]
+    } else {
+      [(1, [2]), (index + 1, [0])]
+    }
+    source = @qf.Disjunction(
+      source,
+      @qf.Atom(polynomial(variables, terms), @qf.LessZero),
+    )
+  }
+  if satisfiable {
+    @qf.Disjunction(
+      source,
+      @qf.Atom(polynomial(variables, [(1, [1])]), @qf.AtLeastZero),
+    )
+  } else {
+    source
+  }
+}
+
+///|
 fn fixture(name : String) -> (Int32, @qf.Formula, Bool) {
   match name {
+    "constant-unsat4" => (0, alternatives(4, 0, false), false)
+    "constant-unsat6" => (0, alternatives(6, 0, false), false)
+    "squares-unsat3" => (1, alternatives(3, 1, false), false)
+    "squares-unsat4" => (1, alternatives(4, 1, false), false)
+    "alternatives-sat3" => (1, alternatives(3, 1, true), true)
+    "alternatives-sat4" => (1, alternatives(4, 1, true), true)
     "constant-sat4" => (4, @qf.Truth(true), true)
     "prefix-unsat2" =>
       (
@@ -175,16 +209,31 @@ fn checked_cad(problem : @cad.Problem, answer : CadAnswer) -> Bool {
 }
 
 ///|
-fn smt_search(problem : @smt.Problem, full : Bool) -> (@smt.Outcome, Int32) {
-  let mut state = if full {
-    @smt.start_full(problem)
-  } else {
-    @smt.start(problem)
+fn smt_search(
+  problem : @smt.Problem,
+  mode : String,
+) -> (@smt.Outcome, Int32, Int32, Int32) {
+  let mut state = match mode {
+    "full" => @smt.start_full(problem)
+    "pruned" => @smt.start_restarting(problem)
+    "retained" => @smt.start(problem)
+    _ => abort("unknown SMT mode")
   }
   for transitions in 1..<=100000 {
     match @smt.step(state).unwrap() {
       Paused(next) => state = next
-      answer => return (answer, transitions)
+      answer => {
+        let conflicts = match answer {
+          Unsatisfiable(proof) => @core.length(proof.lemmas)
+          _ => @smt.theory_conflicts(state)
+        }
+        return (
+          answer,
+          transitions,
+          @oracle.int_of_nat(@smt.boolean_restarts(state)),
+          @oracle.int_of_nat(conflicts),
+        )
+      }
     }
   }
   abort("SMT benchmark exhausted transition limit")
@@ -213,21 +262,25 @@ fn checked_smt(problem : @smt.Problem, answer : @smt.Outcome) -> Bool {
 fn main {
   let args = @env.args()
   if args.length() < 3 || args.length() > 5 {
-    abort("usage: incrementalbench cad|smt full|pruned CASE")
+    abort("usage: incrementalbench cad|smt full|pruned|retained CASE")
   }
   // Runtime prefixes differ: Node includes both its executable and script.
   let offset = args.length() - 3
   let layer = args[offset]
   let mode = args[offset + 1]
   let name = args[offset + 2]
-  if mode != "full" && mode != "pruned" {
+  if mode != "full" && mode != "pruned" && mode != "retained" {
     abort("unknown mode")
   }
   let full = mode == "full"
   let (variables, source, expected) = fixture(name)
   let total_start = @bench.monotonic_clock_start()
   let prep_start = @bench.monotonic_clock_start()
-  let (prep_us, search_us, check_us, transitions, actual) = if layer == "cad" {
+  let (prep_us, search_us, check_us, transitions, restarts, conflicts, actual) = if layer ==
+    "cad" {
+    if mode == "retained" {
+      abort("retained mode is only defined for SMT")
+    }
     let problem = @cad.prepare(@oracle.nat(variables), source).unwrap()
     let prep = @bench.monotonic_clock_end(prep_start)
     let search_start = @bench.monotonic_clock_start()
@@ -235,16 +288,24 @@ fn main {
     let search = @bench.monotonic_clock_end(search_start)
     let check_start = @bench.monotonic_clock_start()
     let actual = checked_cad(problem, answer)
-    (prep, search, @bench.monotonic_clock_end(check_start), steps, actual)
+    (prep, search, @bench.monotonic_clock_end(check_start), steps, 0, 0, actual)
   } else if layer == "smt" {
     let problem = @smt.prepare(@oracle.nat(variables), source).unwrap()
     let prep = @bench.monotonic_clock_end(prep_start)
     let search_start = @bench.monotonic_clock_start()
-    let (answer, steps) = smt_search(problem, full)
+    let (answer, steps, restarts, conflicts) = smt_search(problem, mode)
     let search = @bench.monotonic_clock_end(search_start)
     let check_start = @bench.monotonic_clock_start()
     let actual = checked_smt(problem, answer)
-    (prep, search, @bench.monotonic_clock_end(check_start), steps, actual)
+    (
+      prep,
+      search,
+      @bench.monotonic_clock_end(check_start),
+      steps,
+      restarts,
+      conflicts,
+      actual,
+    )
   } else {
     abort("unknown layer")
   }
@@ -253,6 +314,6 @@ fn main {
     abort("wrong decision")
   }
   println(
-    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{actual},\"transitions\":\{transitions},\"preparation_us\":\{prep_us},\"search_us\":\{search_us},\"verification_us\":\{check_us},\"total_us\":\{total_us}}",
+    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{actual},\"transitions\":\{transitions},\"boolean_restarts\":\{restarts},\"theory_conflicts\":\{conflicts},\"preparation_us\":\{prep_us},\"search_us\":\{search_us},\"verification_us\":\{check_us},\"total_us\":\{total_us}}",
   )
 }

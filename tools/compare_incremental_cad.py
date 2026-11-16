@@ -20,7 +20,9 @@ import time
 
 ROOT = Path(__file__).resolve().parent.parent
 CASES = ["constant-sat4", "prefix-unsat2", "circle-sat2", "diagonal-sat3",
-         "diagonal-unsat3", "diagonal-unsat4", "univariate-sat", "univariate-unsat"]
+         "diagonal-unsat3", "diagonal-unsat4", "univariate-sat", "univariate-unsat",
+         "constant-unsat4", "constant-unsat6", "squares-unsat3", "squares-unsat4",
+         "alternatives-sat3", "alternatives-sat4"]
 
 
 def digest(path):
@@ -35,8 +37,14 @@ def main():
     parser.add_argument("--runner", nargs="+", default=[])
     parser.add_argument("--case", action="append", choices=CASES, dest="cases")
     parser.add_argument("--layer", action="append", choices=["cad", "smt"], dest="layers")
+    parser.add_argument("--modes", nargs=2, choices=["full", "pruned", "retained"], default=["full", "pruned"])
     parser.add_argument("--timeout", type=float, default=60)
     args = parser.parse_args()
+    if args.modes[0] == args.modes[1]:
+        parser.error("comparison modes must differ")
+    if "retained" in args.modes and args.layers != ["smt"]:
+        parser.error("retained mode comparison requires --layer smt")
+    first_mode, second_mode = args.modes
     affinity = sorted(os.sched_getaffinity(0))
     if len(affinity) != 1:
         parser.error("Run under tools/measure --cpu N for shared serialization and fixed affinity.")
@@ -54,7 +62,8 @@ def main():
                   "artifact": str(artifact), "artifact_sha256": artifact_sha,
                   "compiler": subprocess.check_output([str(ROOT / "tools/moon"), "version", "--all"], cwd=ROOT, text=True).strip(),
                   "platform": platform.platform(), "cpu_affinity": affinity,
-                  "target": args.target, "profile": "release", "order": "ABBA",
+                  "target": args.target, "profile": "release", "order": "ABBA", "modes": args.modes,
+                  "runner": args.runner,
                   "unit": "microseconds", "projection": "full Collins in both modes",
                   "timing_scope": "fixture construction excluded; prepare + search + final external verification included; SMT search includes internal checks",
                   "records": [], "summary": []}
@@ -67,7 +76,7 @@ def main():
     for layer in args.layers or ["cad", "smt"]:
         for case in args.cases or CASES:
             rows = []
-            for position, mode in enumerate(["full", "pruned", "pruned", "full"]):
+            for position, mode in enumerate([first_mode, second_mode, second_mode, first_mode]):
                 if digest(artifact) != artifact_sha:
                     raise RuntimeError("Frozen artifact changed")
                 command = [*args.runner, str(artifact), layer, mode, case]
@@ -102,12 +111,12 @@ def main():
                 if len({row["satisfiable"] for row in completed}) != 1:
                     raise RuntimeError("Modes disagree")
                 summary = {"layer": layer, "case": case}
-                for mode in ["full", "pruned"]:
+                for mode in args.modes:
                     mode_rows = [row for row in completed if row["mode"] == mode]
                     summary[mode] = {key: statistics.median(row[key] for row in mode_rows)
-                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions"]}
-                summary["total_speedup"] = summary["full"]["total_us"] / summary["pruned"]["total_us"]
-                summary["conservative_total_speedup"] = min(row["total_us"] for row in completed if row["mode"] == "full") / max(row["total_us"] for row in completed if row["mode"] == "pruned")
+                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions", "boolean_restarts", "theory_conflicts"]}
+                summary["total_speedup"] = summary[first_mode]["total_us"] / summary[second_mode]["total_us"]
+                summary["conservative_total_speedup"] = min(row["total_us"] for row in completed if row["mode"] == first_mode) / max(row["total_us"] for row in completed if row["mode"] == second_mode)
                 provenance["summary"].append(summary)
                 save()
                 print(json.dumps(summary), flush=True)
