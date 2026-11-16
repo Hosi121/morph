@@ -4,6 +4,7 @@
 
 多段の実代数拡大、有限個の実数変数を扱うCAD、一階実数式の量化消去、
 量化なしの非線形実数SMTまで実装しています。
+複素代数的数の厳密演算と、有理係数多項式の全複素根・重複度の列挙も接続しています。
 部品の接続は[厳密代数の計算経路](handbook/algebraic-solving.md)、
 入力・出力・証拠の使い分けは[実数制約の章](handbook/real-constraints.md)、
 確認済みの検査と対象ソースは[検証ガイド](VALIDATION.md)を参照してください。
@@ -20,6 +21,7 @@
 | 任意変数のCAD | 変数列に沿って射影とliftingを再帰し、実数空間をセルに分割する | [実装](research/cad-20261116.md)・[独立レビュー](research/cad-independent-review-20261116.md) |
 | 一階実数式の量化消去 | セルの真偽を量化順序どおり集約し、自由変数の解集合を量化なしの式で表す | [正規化](research/realformula-20261116.md)・[式の出力](research/signcad-20261116.md) |
 | 量化なしの非線形実数SMT | CDCLと厳密な実数理論を接続し、SATの厳密モデル、UNSATのCAD理論補題と最終RUP反証を検査する | [実装](research/realnlsmt-20261116.md)・[独立レビュー](research/realnlsmt-independent-review-20261116.md) |
+| 複素代数と全複素根 | 実代数的な二座標の演算、QQ因数分解から各全根・元の重複度への復元 | [設計・同条件比較](research/complex-algebra-20261117.md)・[独立参照](research/complex-oracle-20261117.md) |
 
 ## 現在の探索経路と残る課題
 
@@ -54,7 +56,7 @@
 
 | 目標 | 使える部品 | 大きな不足 |
 | --- | --- | --- |
-| 分解体・Galois群・根号可解性 | QQ既約分解、共通数体、LLL | 厳密な複素根隔離、置換群、resolvent、非実根を含む代数拡大体 |
+| 分解体・Galois群・根号可解性 | QQ既約分解、共通数体、LLL、[複素代数的数の演算・全複素根](handbook/complex-algebra.md) | 置換群、resolvent、基底を持つ非実根の代数拡大体と合成 |
 | 実代数集合の連結成分と経路 | CAD、実根、実解の一変数表現 | 特異点、セルの接続関係、roadmap |
 | Schoof/SEAの楕円曲線点数計算 | 有限体、拡大体、多項式、楕円曲線、CRT | 除算多項式、torsion、Frobenius作用、traceの復元 |
 

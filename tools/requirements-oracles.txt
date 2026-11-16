@@ -1,2 +1,2 @@
-# Only needed to regenerate the committed Groebner fixtures.
+# Only needed to regenerate the committed SymPy-based oracle fixtures.
 sympy==1.14.0

@@ -1,0 +1,120 @@
+Frozen code 4aa8668a39b8ae18cfe9ef04c2f7138080806565; documentation edits may be pending.
+
+$ tools/check
+----------------------------------------------------------------------
+Ran 24 tests in 0.010s
+
+OK
+Documentation gate passed: 128 Markdown files, 1452 local links; navigation is connected.
+Source inventory is current.
+Purity gate passed: 264 kernel files; no machine numerics, mutation, arrays or FFI.
+Conversion gate passed; static library references recorded separately from tests.
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.
+4-bit product table checked: 256 cases, 90 shared results; suffix sharing=True.
+Difference controls checked; production=lookup
+Finished. moon: no work to do
+Finished. moon: ran 108 tasks, now up to date
+Total tests: 3920, passed: 3920, failed: 0.
+Total tests: 3920, passed: 3920, failed: 0.
+Finished. moon: ran 108 tasks, now up to date
+Interface drift gate passed: 108 compiler-generated snapshots.
+
+$ tools/moon test --target native --release --deny-warn
+Total tests: 3920, passed: 3920, failed: 0.
+
+$ tools/check_formal
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+'Morph.Core.replicateOnto_eq_append' depends on axioms: [propext]
+'Morph.Core.replicateOnto_nil' depends on axioms: [propext]
+'Morph.Core.halveNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Core.halfNat_floor' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatByHalves_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGroupedLoop_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_lt' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.lowBit_sound' does not depend on any axioms
+'Morph.Binary.lowBit_canonical' depends on axioms: [propext]
+'Morph.Binary.fromNatGroupedBits_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatGroupedBits_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.zero_sound' does not depend on any axioms
+'Morph.Binary.one_sound' does not depend on any axioms
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldLeft_reverseOnto' does not depend on any axioms
+'Morph.Fold.foldLeft_reverse' does not depend on any axioms
+'Morph.Fold.foldFour_eq_foldLeft' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldFour_reverse' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.boundedRightFour_eq_foldRight' depends on axioms: [propext]
+'Morph.PrefixLogic.partialEvaluate_sound' depends on axioms: [propext]
+'Morph.PrefixLogic.known_is_uniform' depends on axioms: [propext]
+'Morph.SparseHorner.power_add' depends on axioms: [propext]
+'Morph.SparseHorner.bitsPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.optimizedPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.scan_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_genericSum' depends on axioms: [propext]
+'Morph.SparseHorner.dispatch_generic' does not depend on any axioms
+'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
+'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
+'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]
+
+$ python3 tools/generate_complex_fixtures.py --check
+{"coordinate_certificates": 42, "distinct_roots": 21, "finite_cases": 12, "nonconstant_cases": 11, "rational_arithmetic_pairs": 6, "total_multiplicity": 25, "zero_validation_cases": 1}
+
+$ tools/moon run src/cmd/complex --target native --release
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+
+$ tools/moon run src/cmd/complex --target js --release
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+
+$ tools/moon run src/cmd/complex --target wasm-gc --release
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true

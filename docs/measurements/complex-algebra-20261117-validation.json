@@ -1,0 +1,103 @@
+{
+  "source_commit": "4aa8668a39b8ae18cfe9ef04c2f7138080806565",
+  "code_dirty": false,
+  "commands": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit_code": 0,
+      "seconds": 452.3486187259987,
+      "test_totals": [
+        3920,
+        3920
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 714.265206723001,
+      "test_totals": [
+        3920
+      ]
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit_code": 0,
+      "seconds": 6.940007716999389,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complex_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.44849543800228275,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "native",
+        "--release"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6527428079971287,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "js",
+        "--release"
+      ],
+      "exit_code": 0,
+      "seconds": 2.805732076998538,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "wasm-gc",
+        "--release"
+      ],
+      "exit_code": 0,
+      "seconds": 2.11884617800024,
+      "test_totals": [],
+      "tour_matches": true
+    }
+  ],
+  "all_passed": true,
+  "native_mode": "release",
+  "tour_backends": [
+    "native",
+    "js",
+    "wasm-gc"
+  ],
+  "pure_kernel_sources": 264,
+  "api_snapshots": 108,
+  "formal_regions": 32,
+  "maintenance_tests": 24
+}

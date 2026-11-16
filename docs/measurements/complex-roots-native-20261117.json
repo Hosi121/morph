@@ -1,0 +1,158 @@
+{
+  "utc": "2026-11-16T18:58:56.932319+00:00",
+  "backend": "native",
+  "source_commit": "4aa8668a39b8ae18cfe9ef04c2f7138080806565",
+  "tracked_dirty": true,
+  "dirty_paths": [
+    "HANDBOOK.md",
+    "README.md",
+    "docs/ALGORITHMS.md",
+    "docs/ENVIRONMENT.md",
+    "docs/README.md",
+    "docs/ROADMAP.md",
+    "docs/handbook/algebraic-solving.md",
+    "docs/research/README.md"
+  ],
+  "code_dirty": false,
+  "artifact": "_build/native/release/build/cmd/complexbench/complexbench.exe",
+  "artifact_sha256": "7388173ed2394f236a9565659508e5715c6ba7f306d97a36daf81084d861b270",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "source": "(z^2+1)^2(z-1)",
+  "scope": "process startup, preparation/factorization, enumeration, final exact checker; excludes compilation",
+  "timeout_seconds": 5.0,
+  "abba_repetitions": 3,
+  "runs": [
+    {
+      "repetition": 0,
+      "mode": "unfactored-zero",
+      "seconds": 5.012342116999207,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 0,
+      "mode": "factored",
+      "seconds": 0.009635720998630859,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "factored",
+      "seconds": 0.009500011001364328,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "unfactored-zero",
+      "seconds": 5.009696553002868,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "unfactored-zero",
+      "seconds": 5.011711331997503,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "factored",
+      "seconds": 0.010484196998731932,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "factored",
+      "seconds": 0.010469589997228468,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "unfactored-zero",
+      "seconds": 5.01158126700102,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "unfactored-zero",
+      "seconds": 5.012990259001526,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "factored",
+      "seconds": 0.013369219999731285,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "factored",
+      "seconds": 0.009881483001663582,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"(z^2+1)^2(z-1)\",\"roots\":3,\"multiplicity_sum\":5,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "unfactored-zero",
+      "seconds": 5.011794523001299,
+      "censored": true,
+      "checked": false
+    }
+  ],
+  "summary": {
+    "unfactored-zero": {
+      "completed": 0,
+      "censored": 6,
+      "median_seconds_completed_only": null
+    },
+    "factored": {
+      "completed": 6,
+      "censored": 0,
+      "median_seconds_completed_only": 0.010175536499446025
+    }
+  },
+  "build_mode": "release",
+  "build_command": [
+    "tools/moon",
+    "build",
+    "src/cmd/complexbench",
+    "--target",
+    "native",
+    "--release"
+  ],
+  "environment_observed_after_run": {
+    "cpu_model": "Intel(R) Core(TM) Ultra 7 255H",
+    "moon_version_all": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+    "cc_version": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+  }
+}

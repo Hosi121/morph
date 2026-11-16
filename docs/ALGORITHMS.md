@@ -19,6 +19,7 @@
 | 圧縮二進算術 | [runを展開しない加減乗算・shift・pair](../src/runbinary/runbinary.mbt)・[燃料付き除算](../src/runbinary/division.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
+| 複素代数的数 | [実代数的座標・四則演算・共役・等号・証拠](../src/complexalgebraic) |
 | 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
 | 多段の実代数拡大 | [選択根を順に加える四則演算・順序・相対実根](../src/realtower/api.mbt)・[二次式の厳密な符号判定](../src/realtower/quadratic.mbt) |
 | 共通数体 | [実代数的数のprimitive-element合成と両生成元の埋込み](../src/compositum/producer.mbt) |
@@ -55,6 +56,7 @@
 | F4 | [Macaulay行列のbatch簡約・入力idealへのwitness](../src/f4/f4.mbt) |
 | FGLM | [零次元商空間の線形従属・Lex/GradedLex/GrevLexへの基底変換](../src/fglm/fglm.mbt) |
 | 零次元系の実解 | [shapeと全実根の共有パラメータ表現](../src/realvariety/shape.mbt)・[分離線形形式の探索と元座標への射影](../src/realvariety/separation.mbt) |
+| 全複素根 | [QQ因数分解を先行する列挙](../src/complexfactor/search.mbt)・[実部・虚部の方程式と全根の被覆](../src/complexroots/search.mbt)・[微分とSturm–Tarskiによる重複度](../src/complexroots/multiplicity.mbt) |
 | 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt)・[Sturm–Tarski query・代数的な根での厳密な符号](../src/tarski/root_sign.mbt) |
 | 消去 | [環上の固定次数resultant・discriminant・Bézout証拠](../src/elimination/fixed.mbt)・[QQ多変数式の指定変数を消去](../src/elimination/projection.mbt) |
 | 代数係数の根 | [Q(α)上の相対Sturm・全実根の隔離・tower root](../src/orderedsturm/isolation.mbt) |

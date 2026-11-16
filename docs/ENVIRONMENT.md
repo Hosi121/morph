@@ -22,6 +22,8 @@ bootstrapの既定値は公式のlatestです。後日の取得物が下記の�
 [出力例](ADVANCED_TOUR.txt)はnative・JS・WasmGCで完全一致を確認しています。
 `tools/moon run src/cmd/realclosed` は量化消去・球の射影・三段平方根・非線形実数SMTを実行します。
 [実閉体ツアーの出力](REALCLOSED_TOUR.txt)も3バックエンドで照合しています。
+`tools/moon run src/cmd/complex` は複素数の四則演算・全複素根・重複度・因数分解との接続を実行します
+（[出力例](COMPLEX_TOUR.txt)）。
 
 ## 開発時のコマンド
 
@@ -120,3 +122,18 @@ Z3を使う生成器は正確なsat/unsat判定を要求し、unknownなら生�
 参照コード、SMT-LIB、バイナリのhashは各記録にあります。
 CDCL状態保持の生成器はPython標準ライブラリの真理値表を使い、Z3を必要としません。
 MoonBitの計算核から外部solverを呼ぶ経路はありません。
+
+## 複素代数の独立fixtureを再生成する
+
+通常のテストはコミット済みの参照値を使います。
+方程式・正確な根・重複度・有理の箱を再計算するときだけ、固定したSymPy環境を用意します。
+この生成器にはZ3は不要です。
+
+```sh
+uv venv .tools/complex-oracle-venv
+uv pip install --python .tools/complex-oracle-venv/bin/python -r tools/requirements-oracles.txt
+.tools/complex-oracle-venv/bin/python tools/generate_complex_fixtures.py --check
+```
+
+生成対象と照合方法は[独立参照](research/complex-oracle-20261117.md)、
+経路ごとの費用と再現手順は[複素代数の記録](research/complex-algebra-20261117.md)を参照してください。
