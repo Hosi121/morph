@@ -1,0 +1,160 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/mucalc"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/parity",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Solution) -> @parity.Certificate
+
+pub fn checked(Compilation, @parity.Certificate) -> Solution?
+
+pub fn compile(Model, Formula) -> Result[Compilation, CompileError]
+
+pub fn formula_of(Compilation) -> Formula
+
+pub fn game(Compilation) -> @parity.Game
+
+pub fn holds(Solution, @core.Nat) -> Bool?
+
+pub fn model(@core.Chain[State]) -> Result[Model, CompileError]
+
+pub fn model_of(Compilation) -> Model
+
+pub fn nodes(Compilation) -> @core.Chain[Node]
+
+pub fn position_id(Compilation, @core.Nat, @core.Nat) -> @core.Nat?
+
+pub fn positions(Compilation) -> @core.Chain[@parity.Position]
+
+pub fn run(Machine, @core.Nat) -> Progress
+
+pub fn satisfying_states(Solution) -> @core.Chain[@core.Nat]
+
+pub fn start(Compilation) -> Machine
+
+pub fn states(Model) -> @core.Chain[State]
+
+pub fn step(Machine) -> Progress
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Compilation {
+  model : Model
+  formula : Formula
+  nodes : @core.Chain[Node]
+  node_count : @core.Nat
+  positions : @core.Chain[@parity.Position]
+  game : @parity.Game
+}
+pub fn Compilation::equal(Self, Self) -> Bool
+pub fn Compilation::not_equal(Self, Self) -> Bool
+pub fn Compilation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CompileError {
+  DuplicateState
+  UnknownSuccessor
+  DuplicateLabel
+  UnboundVariable(@core.Nat)
+  InternalInvariant
+}
+pub fn CompileError::equal(Self, Self) -> Bool
+pub fn CompileError::not_equal(Self, Self) -> Bool
+pub fn CompileError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Formula {
+  Truth(Bool)
+  Proposition(@core.Nat, Bool)
+  And(Formula, Formula)
+  Or(Formula, Formula)
+  Diamond(Formula)
+  Box(Formula)
+  Mu(Formula)
+  Nu(Formula)
+  Bound(@core.Nat)
+}
+pub fn Formula::equal(Self, Self) -> Bool
+pub fn Formula::not_equal(Self, Self) -> Bool
+pub fn Formula::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  compilation : Compilation
+  solver : @parity.Machine
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Model {
+  states : @core.Chain[State]
+}
+pub fn Model::equal(Self, Self) -> Bool
+pub fn Model::not_equal(Self, Self) -> Bool
+pub fn Model::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Node {
+  id : @core.Nat
+  priority : @core.Nat
+  kind : NodeKind
+}
+pub fn Node::equal(Self, Self) -> Bool
+pub fn Node::not_equal(Self, Self) -> Bool
+pub fn Node::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum NodeKind {
+  Constant(Bool)
+  Literal(@core.Nat, Bool)
+  Conjunction(@core.Nat, @core.Nat)
+  Disjunction(@core.Nat, @core.Nat)
+  SomeNext(@core.Nat)
+  EveryNext(@core.Nat)
+  Unfold(@core.Nat)
+  Jump(@core.Nat)
+}
+pub fn NodeKind::equal(Self, Self) -> Bool
+pub fn NodeKind::not_equal(Self, Self) -> Bool
+pub fn NodeKind::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Solution)
+  Paused(Machine)
+  Fault
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Solution {
+  compilation : Compilation
+  parity : @parity.Solution
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct State {
+  id : @core.Nat
+  propositions : @core.Chain[@core.Nat]
+  successors : @core.Chain[@core.Nat]
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
