@@ -1,0 +1,20 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/realalgebraic" @real,
+  "Hosi121/morph/zassenhaus" @zass,
+  "Hosi121/morph/sturm",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/realalgebraic" @real,
+  "Hosi121/morph/zassenhaus" @zass,
+  "Hosi121/morph/testsupport" @oracle,
+} for "test"

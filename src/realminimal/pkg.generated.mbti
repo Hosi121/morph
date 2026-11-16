@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realminimal"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_normalization(@realalgebraic.Number, @realalgebraic.Number, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_result(@realalgebraic.Number, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn normalize(@realalgebraic.Number, @core.Chain[@binary.Binary], @core.Nat, @core.Nat, @core.Nat) -> Result[Progress, MinimalError]
+
+pub fn normalize_root(@realalgebraic.RootCertificate, @core.Chain[@binary.Binary], @core.Nat, @core.Nat, @core.Nat) -> Result[Progress, MinimalError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  input : @realalgebraic.RootCertificate
+  factorization : @zassenhaus.RationalFactorization
+  selected : @core.Nat
+  result : @realalgebraic.RootCertificate
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum MinimalError {
+  InvalidInput
+  FactorizationFailure(@zassenhaus.AlgebraError)
+  InternalInvariant
+}
+pub fn MinimalError::equal(Self, Self) -> Bool
+pub fn MinimalError::not_equal(Self, Self) -> Bool
+pub fn MinimalError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Normalized(@realalgebraic.Number, Certificate)
+  Unresolved(StopReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  NoGoodPrime
+  LiftBudget
+  SubsetBudget
+  VerificationBudget
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
