@@ -67,3 +67,67 @@ root・coefficient・sector sample に `Float` 不在 assert を追加した。3
 描画器はこの同じ固定表から、19 relative case に加え plane の123 fibre を数体係数の
 直接 test に展開できる（計142）。plane 35族の量化期待値は別 adapter へ描画する。
 描画器の追加は固定 JSON を変更しない。
+
+## 凍結 API への接続と最終結果
+
+対象 source は `relativecad b6de99b` と `cad2 316a15d`。
+本体を変更せず、各 package に `independent_review*_wbtest.mbt` だけを追加した。
+API 発行前の35族/123 fibre/19 algebraic fibre の期待値は、精度修正後の同じ SHA のまま。
+描画された19+123=142 fibre は、atom の列順に依存せず多項式の同一性で照合し、
+全 section/sector の sign と formula truth を比較する。CAD2 は固定35族の4量化値を照合する。
+
+- relativecad: native / JS / Wasm GC 各 **148/148**（独立144 + 既存4）。
+- cad2: native / JS / Wasm GC 各 **47/47**（独立40 + 既存7）。
+- 純粋性 gate **192 kernel files**、generated interface、format check を通過。
+- 両 fixture test file を再生成・format して byte 一致。固定 JSON SHA も不変。
+
+最終 snapshot の CAD2 native は、後述の higher-PSC case を強化した後に再確認した。
+そのため途中の旧 case の実行結果だけを現 source の成功として扱っていない。
+
+relativecad ではセル/section/sector の削除、並替、sign/holds/sample の改変、根リスト削除、
+異なる relation の formula への流用、別の共役 Field の証拠流用を拒否した。
+foreign Field の atom を prepare に渡す入力も拒否する。
+
+cad2 では、base cell と stack を同時に省略して見かけの長さを揃える攻撃、
+根リスト削除、別 sample の minimal certificate、別共役の fibre だけの流用、
+空 stack、source formula の差替え、正規の ProductProjection 証拠への差替え、
+full Collins の principal 欄の削除を拒否した。検査 budget 不足は受理しない。
+NeedsBudget から rebudget して完了し、通常の構築と同じ証拠になることも確認した。
+
+追加の手書き例では `(x²−2)y=0` の5 base cells に対して y-root count が
+`[1,0,1,0,1]`、stack cell count が `[3,1,3,1,3]` となる。
+二つの irrational point では atom が全 y で0となり、strict inequality の真偽と区別できる。
+公開 specialize は係数 `x³, x²+3, x+1` を Q(√2) で正しく還元し、
+leading coefficient の消滅による次数低下と全係数 nullification も確認した。
+
+## 高次 PSC だけが必要な追加族
+
+固定35族を変更せず、数学的な結合条件から別の手書き test を追加した。
+
+`f=y(y−x−1)`, `g=y(y−2x−3)`, formula `f=0 and g=0 and y!=0`。
+
+`f−g=(x+2)y` なので解は唯一 `(x,y)=(-2,-1)`。
+全 nonzero reducta が y を共有し、cross-resultant はすべて恒等0となる。
+元 atom の係数・自己 discriminant が与える cut は `-1,-3/2` であり、
+pair の高次 `PSC_1`（非零定数倍の `x+2`）が別の base section `x=-2` を作る。
+実装がその唯一の true fibre を **base section** として保持することを確認した。
+projection を元 atom の disc/resultant だけへ弱める経路への具体的な境界例である。
+
+## 静的レビューの結論と限界
+
+凍結した実装は、元 formula に対する full Collins 再検査、全 base cell の順序付き照合、
+各 sample の minimal normalization の結合、同じ Field での再 specialize、
+relativecad の全 stack 検査、内側 y と外側 x の別集約という必要な結合を持っている。
+ここで Theorem 2 / Lemma 1 を適用する際の top variable は実装の y、base region は x cell。
+sign pattern の不変性から各 fibre で量化した真偽を base cell 全体へ移す。
+この幾何的定理をモデル形式で証明した、というレビュー結果ではない。
+
+検査した有限族と公開証拠の変異では、本体の確定した誤受理は見つからなかった。
+任意入力の正しさ・一般の計算量・大次数の実用性を有限 test から証明したとは主張しない。
+root 側の本体 fix は要求していない。レビュー側 generator の Float 混入だけを前述の通り修正した。
+
+ログ: `.tools/cad2-independent-review-20261116/verification-review.json`。
+backend ごとの出力、fixture 再生成結果、固定 SHA を記録している。
+`oracle-rational-sample-fix.json` は精度修正前後の期待 sign/truth/quantifier 一致の記録。
+旧 NumberField/FGLM/Blossom/Zassenhaus/realalgebraic/compositum の artifacts は保持した。
+依存 source の cherry-pick は review-only commit と分離しており、本体の差分はゼロ。
