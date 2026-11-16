@@ -209,14 +209,24 @@ fn checked_cad(problem : @cad.Problem, answer : CadAnswer) -> Bool {
 }
 
 ///|
-fn smt_search(
-  problem : @smt.Problem,
-  mode : String,
-) -> (@smt.Outcome, Int32, Int32, Int32, Int32) {
+struct SmtRun {
+  answer : @smt.Outcome
+  transitions : Int32
+  restarts : Int32
+  conflicts : Int32
+  proof_additions : Int32
+  core_probes : Int32
+  removed_literals : Int32
+  refutation_literals : Int32
+}
+
+///|
+fn smt_search(problem : @smt.Problem, mode : String) -> SmtRun {
   let mut state = match mode {
     "full" => @smt.start_full(problem)
     "pruned" => @smt.start_restarting(problem)
     "retained" => @smt.start_retained(problem)
+    "core" => @smt.start_core(problem)
     _ => abort("unknown SMT mode")
   }
   for transitions in 1..<=100000 {
@@ -227,20 +237,33 @@ fn smt_search(
           Unsatisfiable(proof) => @core.length(proof.lemmas)
           _ => @smt.theory_conflicts(state)
         }
-        let proof_additions = match answer {
-          Unsatisfiable(refutation) =>
-            match refutation.propositional {
+        let (proof_additions, refutation_literals) = match answer {
+          Unsatisfiable(refutation) => {
+            let additions = match refutation.propositional {
               Rup(clauses) => @oracle.int_of_nat(@core.length(clauses))
             }
-          _ => 0
+            let literals = @oracle.array(refutation.lemmas).fold(init=0, fn(
+              count,
+              lemma,
+            ) {
+              count + @oracle.int_of_nat(@core.length(lemma.assignment))
+            })
+            (additions, literals)
+          }
+          _ => (0, 0)
         }
-        return (
+        return {
           answer,
           transitions,
-          @oracle.int_of_nat(@smt.boolean_restarts(state)),
-          @oracle.int_of_nat(conflicts),
+          restarts: @oracle.int_of_nat(@smt.boolean_restarts(state)),
+          conflicts: @oracle.int_of_nat(conflicts),
           proof_additions,
-        )
+          core_probes: @oracle.int_of_nat(@smt.core_probes(state)),
+          removed_literals: @oracle.int_of_nat(
+            @smt.core_literals_removed(state),
+          ),
+          refutation_literals,
+        }
       }
     }
   }
@@ -267,81 +290,109 @@ fn checked_smt(problem : @smt.Problem, answer : @smt.Outcome) -> Bool {
 }
 
 ///|
+struct Measurement {
+  preparation_us : Double
+  search_us : Double
+  verification_us : Double
+  transitions : Int32
+  restarts : Int32
+  conflicts : Int32
+  proof_additions : Int32
+  core_probes : Int32
+  removed_literals : Int32
+  refutation_literals : Int32
+  satisfiable : Bool
+}
+
+///|
+fn measure_cad(
+  variables : Int32,
+  source : @qf.Formula,
+  full : Bool,
+) -> Measurement {
+  let started = @bench.monotonic_clock_start()
+  let problem = @cad.prepare(@oracle.nat(variables), source).unwrap()
+  let preparation_us = @bench.monotonic_clock_end(started)
+  let started = @bench.monotonic_clock_start()
+  let (answer, transitions) = cad_search(problem, full)
+  let search_us = @bench.monotonic_clock_end(started)
+  let started = @bench.monotonic_clock_start()
+  let satisfiable = checked_cad(problem, answer)
+  {
+    preparation_us,
+    search_us,
+    verification_us: @bench.monotonic_clock_end(started),
+    transitions,
+    restarts: 0,
+    conflicts: 0,
+    proof_additions: 0,
+    core_probes: 0,
+    removed_literals: 0,
+    refutation_literals: 0,
+    satisfiable,
+  }
+}
+
+///|
+fn measure_smt(
+  variables : Int32,
+  source : @qf.Formula,
+  mode : String,
+) -> Measurement {
+  let started = @bench.monotonic_clock_start()
+  let problem = @smt.prepare(@oracle.nat(variables), source).unwrap()
+  let preparation_us = @bench.monotonic_clock_end(started)
+  let started = @bench.monotonic_clock_start()
+  let run = smt_search(problem, mode)
+  let search_us = @bench.monotonic_clock_end(started)
+  let started = @bench.monotonic_clock_start()
+  let satisfiable = checked_smt(problem, run.answer)
+  {
+    preparation_us,
+    search_us,
+    verification_us: @bench.monotonic_clock_end(started),
+    transitions: run.transitions,
+    restarts: run.restarts,
+    conflicts: run.conflicts,
+    proof_additions: run.proof_additions,
+    core_probes: run.core_probes,
+    removed_literals: run.removed_literals,
+    refutation_literals: run.refutation_literals,
+    satisfiable,
+  }
+}
+
+///|
 fn main {
   let args = @env.args()
   if args.length() < 3 || args.length() > 5 {
-    abort("usage: incrementalbench cad|smt full|pruned|retained CASE")
+    abort("usage: incrementalbench cad|smt full|pruned|retained|core CASE")
   }
   // Runtime prefixes differ: Node includes both its executable and script.
   let offset = args.length() - 3
   let layer = args[offset]
   let mode = args[offset + 1]
   let name = args[offset + 2]
-  if mode != "full" && mode != "pruned" && mode != "retained" {
+  if mode != "full" && mode != "pruned" && mode != "retained" && mode != "core" {
     abort("unknown mode")
   }
-  let full = mode == "full"
   let (variables, source, expected) = fixture(name)
-  let total_start = @bench.monotonic_clock_start()
-  let prep_start = @bench.monotonic_clock_start()
-  let (
-    prep_us,
-    search_us,
-    check_us,
-    transitions,
-    restarts,
-    conflicts,
-    proof_additions,
-    actual,
-  ) = if layer == "cad" {
-    if mode == "retained" {
-      abort("retained mode is only defined for SMT")
+  let started = @bench.monotonic_clock_start()
+  let measured = match layer {
+    "cad" => {
+      if mode == "retained" || mode == "core" {
+        abort("Boolean modes require SMT")
+      }
+      measure_cad(variables, source, mode == "full")
     }
-    let problem = @cad.prepare(@oracle.nat(variables), source).unwrap()
-    let prep = @bench.monotonic_clock_end(prep_start)
-    let search_start = @bench.monotonic_clock_start()
-    let (answer, steps) = cad_search(problem, full)
-    let search = @bench.monotonic_clock_end(search_start)
-    let check_start = @bench.monotonic_clock_start()
-    let actual = checked_cad(problem, answer)
-    (
-      prep,
-      search,
-      @bench.monotonic_clock_end(check_start),
-      steps,
-      0,
-      0,
-      0,
-      actual,
-    )
-  } else if layer == "smt" {
-    let problem = @smt.prepare(@oracle.nat(variables), source).unwrap()
-    let prep = @bench.monotonic_clock_end(prep_start)
-    let search_start = @bench.monotonic_clock_start()
-    let (answer, steps, restarts, conflicts, proof_additions) = smt_search(
-      problem, mode,
-    )
-    let search = @bench.monotonic_clock_end(search_start)
-    let check_start = @bench.monotonic_clock_start()
-    let actual = checked_smt(problem, answer)
-    (
-      prep,
-      search,
-      @bench.monotonic_clock_end(check_start),
-      steps,
-      restarts,
-      conflicts,
-      proof_additions,
-      actual,
-    )
-  } else {
-    abort("unknown layer")
+    "smt" => measure_smt(variables, source, mode)
+    _ => abort("unknown layer")
   }
-  let total_us = @bench.monotonic_clock_end(total_start)
-  if actual != expected {
+  let total_us = @bench.monotonic_clock_end(started)
+  if measured.satisfiable != expected {
     abort("wrong decision")
   }
   println(
-    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{actual},\"transitions\":\{transitions},\"boolean_restarts\":\{restarts},\"theory_conflicts\":\{conflicts},\"proof_additions\":\{proof_additions},\"preparation_us\":\{prep_us},\"search_us\":\{search_us},\"verification_us\":\{check_us},\"total_us\":\{total_us}}",
+    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{measured.satisfiable},\"transitions\":\{measured.transitions},\"boolean_restarts\":\{measured.restarts},\"theory_conflicts\":\{measured.conflicts},\"proof_additions\":\{measured.proof_additions},\"core_probes\":\{measured.core_probes},\"removed_literals\":\{measured.removed_literals},\"refutation_literals\":\{measured.refutation_literals},\"preparation_us\":\{measured.preparation_us},\"search_us\":\{measured.search_us},\"verification_us\":\{measured.verification_us},\"total_us\":\{total_us}}",
   )
 }

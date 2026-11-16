@@ -8,6 +8,10 @@ package "Hosi121/morph/cmd/incrementalbench"
 // Types and methods
 type CadAnswer
 
+type Measurement
+
+type SmtRun
+
 // Type aliases
 
 // Traits

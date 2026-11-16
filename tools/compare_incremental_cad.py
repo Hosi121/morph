@@ -37,7 +37,7 @@ def main():
     parser.add_argument("--runner", nargs="+", default=[])
     parser.add_argument("--case", action="append", choices=CASES, dest="cases")
     parser.add_argument("--layer", action="append", choices=["cad", "smt"], dest="layers")
-    parser.add_argument("--modes", nargs=2, choices=["full", "pruned", "retained"], default=["full", "pruned"])
+    parser.add_argument("--modes", nargs=2, choices=["full", "pruned", "retained", "core"], default=["full", "pruned"])
     parser.add_argument("--abba-repetitions", type=int, default=1, help="repeat ABBA blocks per case; report medians over every completed run")
     parser.add_argument("--timeout", type=float, default=60)
     args = parser.parse_args()
@@ -45,8 +45,8 @@ def main():
         parser.error("ABBA repetitions must be positive")
     if args.modes[0] == args.modes[1]:
         parser.error("comparison modes must differ")
-    if "retained" in args.modes and args.layers != ["smt"]:
-        parser.error("retained mode comparison requires --layer smt")
+    if any(mode in args.modes for mode in ["retained", "core"]) and args.layers != ["smt"]:
+        parser.error("Boolean mode comparisons require --layer smt")
     first_mode, second_mode = args.modes
     affinity = sorted(os.sched_getaffinity(0))
     if len(affinity) != 1:
@@ -117,7 +117,7 @@ def main():
                 for mode in args.modes:
                     mode_rows = [row for row in completed if row["mode"] == mode]
                     summary[mode] = {key: statistics.median(row[key] for row in mode_rows)
-                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions", "boolean_restarts", "theory_conflicts", "proof_additions"]}
+                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions", "boolean_restarts", "theory_conflicts", "proof_additions", "core_probes", "removed_literals", "refutation_literals"]}
                 summary["total_speedup"] = summary[first_mode]["total_us"] / summary[second_mode]["total_us"]
                 summary["conservative_total_speedup"] = min(row["total_us"] for row in completed if row["mode"] == first_mode) / max(row["total_us"] for row in completed if row["mode"] == second_mode)
                 provenance["summary"].append(summary)
