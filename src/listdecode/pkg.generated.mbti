@@ -1,0 +1,157 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/listdecode"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/fppoly",
+  "Hosi121/morph/primefield",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Search, @core.Nat) -> Result[Run, DecodeError]
+
+pub fn alphabet(Plan) -> @core.Chain[@binary.Binary]
+
+pub fn check_candidate(Plan, @core.Chain[@binary.Binary], Candidate) -> Bool
+
+pub fn check_interpolation(Plan, @core.Chain[@binary.Binary], Interpolation) -> Bool
+
+pub fn check_witnesses(Plan, @core.Chain[@binary.Binary], Decoded) -> Bool
+
+pub fn constraint_count(Plan) -> @core.Nat
+
+pub fn decode(Plan, @core.Chain[@binary.Binary], @core.Nat) -> Result[Run, DecodeError]
+
+pub fn degree_bound(Plan) -> @core.Nat
+
+pub fn encode(Plan, @core.Chain[@binary.Binary]) -> Result[@core.Chain[@binary.Binary], DecodeError]
+
+pub fn field_of(Plan) -> @primefield.Field
+
+pub fn interpolate(Plan, @core.Chain[@binary.Binary]) -> Result[Interpolation, DecodeError]
+
+pub fn message_size(Plan) -> @core.Nat
+
+pub fn minimum_agreements(Plan) -> @core.Nat
+
+pub fn monomials(Plan) -> @core.Chain[Monomial]
+
+pub fn multiplicity(Plan) -> @core.Nat
+
+pub fn nodes_visited(Search) -> @core.Nat
+
+pub fn partial_candidates(Search) -> @core.Chain[Candidate]
+
+pub fn plan(@primefield.Field, @core.Chain[@binary.Binary], @core.Chain[@binary.Binary], @core.Nat, @core.Nat, @core.Nat, @core.Nat) -> Result[Plan, DecodeError]
+
+pub fn points(Plan) -> @core.Chain[@binary.Binary]
+
+pub fn start(Plan, @core.Chain[@binary.Binary]) -> Result[Search, DecodeError]
+
+pub fn terms(Interpolation) -> @core.Chain[Term]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Candidate {
+  message : @core.Chain[@binary.Binary]
+  codeword : @core.Chain[@binary.Binary]
+  agreements : @core.Nat
+}
+pub fn Candidate::equal(Self, Self) -> Bool
+pub fn Candidate::not_equal(Self, Self) -> Bool
+pub fn Candidate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum DecodeError {
+  InvalidPlan
+  InvalidAlphabet
+  NoncanonicalSymbol
+  DuplicatePoint
+  LengthMismatch
+  InterpolationFailure
+  InternalInvariant
+  Polynomial(@fppoly.PolyError)
+}
+pub fn DecodeError::equal(Self, Self) -> Bool
+pub fn DecodeError::not_equal(Self, Self) -> Bool
+pub fn DecodeError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Decoded {
+  interpolation : Interpolation
+  candidates : @core.Chain[Candidate]
+  nodes : @core.Nat
+}
+pub fn Decoded::equal(Self, Self) -> Bool
+pub fn Decoded::not_equal(Self, Self) -> Bool
+pub fn Decoded::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Interpolation {
+  terms : @core.Chain[Term]
+}
+pub fn Interpolation::equal(Self, Self) -> Bool
+pub fn Interpolation::not_equal(Self, Self) -> Bool
+pub fn Interpolation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Monomial {
+  x : @core.Nat
+  y : @core.Nat
+}
+pub fn Monomial::equal(Self, Self) -> Bool
+pub fn Monomial::not_equal(Self, Self) -> Bool
+pub fn Monomial::to_repr(Self) -> @debug.Repr
+
+pub struct Node {
+  polynomial : Interpolation
+  reversed_prefix : @core.Chain[@binary.Binary]
+  remaining : @core.Nat
+}
+
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  field : @primefield.Field
+  alphabet : @core.Chain[@binary.Binary]
+  points : @core.Chain[@binary.Binary]
+  dimension : @core.Nat
+  agreements : @core.Nat
+  multiplicity : @core.Nat
+  degree_bound : @core.Nat
+  monomials : @core.Chain[Monomial]
+  derivatives : @core.Chain[Monomial]
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+pub(all) enum Run {
+  Suspended(Search)
+  Complete(Decoded)
+}
+
+pub struct Search {
+  plan : Plan
+  received : @core.Chain[@binary.Binary]
+  interpolation : Interpolation
+  pending : @core.Chain[Node]
+  found : @core.Chain[Candidate]
+  visited : @core.Nat
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Term {
+  coefficient : @binary.Binary
+  monomial : Monomial
+}
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
