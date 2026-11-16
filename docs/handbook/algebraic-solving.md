@@ -207,6 +207,14 @@ UNSATでは、各理論節のCAD証拠を元のatomへ結び直し、それら�
 `cad.start` と `realnlsmt.start_full` は完全CADの参照経路として残す。
 [設計と同条件比較](../research/incremental-cad-20261117.md)に採用理由と検査範囲を記録した。
 
-全Collins射影と、理論衝突後のCDCL再始動は残る。局所射影・探索状態の再利用は次の段階である。
+Boolean側は `cdcl.run_incremental` が返すcursorを算術探索の間も保持する。
+検査済みの理論節を `cdcl.add_clause` で追加し、学習節・trail・watchと証拠履歴を再利用する。
+追加時だけでなくbackjump後も、追加節が新しい単位節になっていないか確認する。
+最終RUP反証は元のCNFと全ての検査済み理論節に対して検査する。
+
+`realnlsmt.start_retained` は状態保持、`start_restarting` は枝刈りCADと再始動、
+`start_full` は完全CADと再始動の入口である。
+[設計・独立照合・採用比較](../research/retained-cdcl-20261117.md)に、入力節と導出節を分ける理由を記録した。
+全Collins射影は残り、局所射影・算術側の学習・仮定のpush/popは次の段階である。
 射影集合は大きくなり得る。燃料は遷移回数であり、一遷移の実時間や割当量を固定しない。
 密な高深度四次式には残る計算負荷があり、汎用solverの実用的な規模を保証するものではない。

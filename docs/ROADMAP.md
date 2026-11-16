@@ -29,8 +29,10 @@
 
 次の段階として、[厳密なSAT早期終了と円柱の枝刈り](research/incremental-cad-20261117.md)を実装した。
 親セル全体で真偽が確定する係数条件を検査し、不要なliftingを省く。完全CADの経路も比較用に保つ。
-残る候補は、局所射影、理論衝突後のCDCL状態の再利用、密な高深度の体演算の費用削減。
-全射影の費用は今回も残るため、各段階を同条件の計測で判断する。
+続いて[理論衝突後のCDCL状態の保持](research/retained-cdcl-20261117.md)を実装した。
+学習節・trail・watchを使い、検査済み理論節を単調に追加する。
+残る候補は局所射影、算術側の学習と小さな衝突節、仮定のpush/pop、密な高深度の体演算の費用削減。
+全射影と候補ごとの算術処理の費用は残るため、各段階を同条件の計測で判断する。
 
 [Jovanović–de Moura, Solving Non-Linear Arithmetic](https://dddejan.github.io/papers/jovanovic-ijcar2012.pdf)
 は、非線形実数制約にCDCL型探索とCAD由来の射影を接続する参考になる。

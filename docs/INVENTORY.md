@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：96パッケージ、249ソース。
-核のテスト宣言：3816、bench group：212。
+算法の核：96パッケージ、250ソース。
+核のテスト宣言：3834、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -29,7 +29,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [cad](../src/cad) | 7 | 60 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `prefixlogic`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
 | [cad2](../src/cad2) | 5 | 47 | 0 | `binary`, `core`, `numberfield`, `orderedsturm`, `polynomial`, `projection`, `realalgebraic`, `realcad`, `realminimal`, `relativecad` |
 | [cadprojection](../src/cadprojection) | 4 | 33 | 0 | `core`, `elimination`, `exact`, `polynomial` |
-| [cdcl](../src/cdcl) | 5 | 42 | 65 | `binary`, `core`, `sat` |
+| [cdcl](../src/cdcl) | 6 | 57 | 65 | `binary`, `core`, `sat` |
 | [cek](../src/cek) | 1 | 3 | 0 | `core`, `infer` |
 | [circuit](../src/circuit) | 2 | 3 | 0 | `boolean`, `core`, `sat` |
 | [compositum](../src/compositum) | 3 | 47 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `realvariety`, `zassenhaus` |
@@ -82,7 +82,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [realclosed](../src/realclosed) | 1 | 11 | 0 | `cad`, `core`, `realcad`, `realformula` |
 | [realformula](../src/realformula) | 3 | 112 | 0 | `core`, `polynomial`, `realcad` |
 | [realminimal](../src/realminimal) | 3 | 43 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm`, `zassenhaus` |
-| [realnlsmt](../src/realnlsmt) | 4 | 175 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
+| [realnlsmt](../src/realnlsmt) | 4 | 178 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
 | [realtower](../src/realtower) | 8 | 97 | 0 | `binary`, `core`, `exact`, `sturm` |
 | [realvariety](../src/realvariety) | 6 | 124 | 0 | `binary`, `core`, `exact`, `f4`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |

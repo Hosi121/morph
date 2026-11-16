@@ -12,6 +12,7 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | CIR-3 | 同じ幅の加算回路が同じ出力を返す | miterのUNSAT、RUP検査、Bool側の整数oracle | 個別の有限幅に対する等価性証拠 |
 | CIR-4 | 壊れた最適化は検査に落ちる | ANDをORへ変えたmiterの反例を元の式で再評価 | 陽性・陰性のsanity case |
 | SAT-1 | RUP受理は探索とは別に検査する | 独立レビュー、偽造列、整数固定点oracle | checker自体の形式証明なし |
+| CDCL-INPUT-1 | 単調な入力節追加後もモデルと最終RUPを元の増強CNFへ結ぶ | 独立真理値表・追加/backjump/active watchの反例・入力節を除いた反証の拒否 | 有限の入力・スケジュール照合。節削除・仮定のpush/popは未実装 |
 | PREFIX-BOOL-1 | 原子観測の一様性を任意深さのBoolean式へ伝える | Lean known_is_uniform、壊したAND/ORの拒否、source lock | 原子観測の健全性が明示的な仮定。係数分解・射影・CAD被覆の証明ではない |
 | CAD-PRUNE-1 | 短い葉を一点の真偽から受理しない | 係数の元式への再束縛、親族の符号再検査、16入力の独立Z3/完全CAD照合、偽造証拠検査 | 有限の実行検査と人手レビュー。全CAD checkerの形式証明ではない |
 | NAT-1 | 大きなNatラベルでも変換を開始できる | ID65535の単一unit節、JS/Wasm/native回帰、Nat変換100000まで | from_natを末尾再帰化して全3backendで回帰を解消。任意の大きさに対する資源上限の証明ではない |
