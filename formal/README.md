@@ -1,6 +1,6 @@
 # 基礎ADTのLeanモデル
 
-有限テストとは別に、`Binary.lean`・`Core.lean`の全称命題をLean 4.19.0で検査する。
+有限テストとは別に、Core・Binary・Comparison・Fold等のモデルの全称命題をLean 4.19.0で検査する。
 Mathlibや追加Leanライブラリは使わず、公式配布のStdだけを利用する。
 Leanは検証用で、MoonBitの計算核の依存ではない。
 
@@ -24,6 +24,7 @@ tools/check_formal
 | 旧二進分割による変換が値を保存 | fromNatByHalves_sound | 比較用の旧converter |
 | 非canonicalを含む全有限列で新旧比較が等しい | protectedCompare_eq_reference | binary.compare_bits / compare_bits_tail / compare_bits_grouped |
 | canonicalな列の比較が数値順序を表す | protectedCompare_sound | binary.compare |
+| reverse-left foldと従来right foldが一致 | foldLeft_reverse / boundedRightFour_eq_foldRight | core.reverse / reverse_onto、未採用のwide試作の参照法則 |
 | 均質blockのcarry/borrowが一桁後に安定 | carry_stabilizes / borrow_stabilizes | full_adder / runbinary.digit |
 
 値の意味は`value(Nil)=0`、`value(Cons(b,rest))=bitValue(b)+2*value(rest)`。
@@ -42,7 +43,7 @@ MoonBitからLeanへの変換器やコンパイラを形式検証したもので
 Leanモデルの値の定理から、MoonBitの資源上限、最上位bitの正規性、
 全run演算、全SAT、コンパイラの正しさは結論しない。
 
-`tools/check_model_drift.py`が、対応を確認した22領域のコメント/空白を除くtoken列と
+`tools/check_model_drift.py`が、対応を確認した24領域のコメント/空白を除くtoken列と
 Binary定数recordのinitializerと全Leanモデルファイルのhashを`source-map.json`に照合する。
 通常の`tools/check`はこの安価な差分検査を実行する。
 これは意味の同値性を自動で証明する機構ではなく、対応を未確認のまま変えないためのlockである。

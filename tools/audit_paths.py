@@ -127,7 +127,8 @@ def render(references, importers):
     lines += ["", "## 変換ゲートの範囲", "",
               "直接のto_nat(from_nat(...))、逆方向の恒等変換、to_nat(half(from_nat(...)))を拒否する。",
               "変数を介する経路や一般の意味の同値性はこの字句ゲートだけでは証明しない。",
-              "既約性検査の二箇所と円分体の半分化をcore.half_natへ変更し、Binaryのconverter自身もcore.halve_natを共有する。",
+              "既約性検査の二箇所と円分体の半分化はcore.half_natを使う。",
+              "Binary converterは半分化の共有を経て、現在は三bitずつ出す専用の8進helperへ進めた。",
               "IDの二進cache、係数/指数への入力変換、明示的な展開境界は別の意味を持つので一括置換しない。",
               "残るto_natは、Fpのp乗根のstride、展開上限を検査するrunbinary.expand、SHAの有限padding長などの境界にある。", ""]
     return "\n".join(lines)

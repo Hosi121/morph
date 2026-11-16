@@ -1183,3 +1183,15 @@ GCDとModular.reduceは商を作らない共通kernelへ接続した。
 [有理数の直接減算](docs/bootstrap/rational-subtraction.md)では中間の否定値を省く。
 これらの採用・未採用・実際の利用先は[KERNELS](docs/KERNELS.md)へまとめ、
 値のモデル・canonical性・有限oracle・速度の証拠を区別する。
+
+[比較kernel](docs/bootstrap/binary-comparison.md)は、短い語の既存経路を保護し、
+長い語を四node単位のtail loopへ渡す。全有限raw列の旧実装との一致と、
+canonicalな列の数値順序をLeanで別々に検査した。
+[4bit積](docs/bootstrap/tiny-products.md)と[小さい差](docs/bootstrap/tiny-differences.md)は、
+Bool列の有限表と不変の結果を共有し、外域では通常の算法へ戻る。
+積の定数はさらにsuffix DAGで共有し、追加Consを544から100へ減らした。
+
+[大きい語の追加実験](docs/research/wide-kernels/README.md)は未採用である。
+JSの2^20000の通常剰余にはstack制約が残る。tail化だけで値とstackの問題が解決しても、
+nativeの速度が改善するとは限らなかった。失敗案とgeneric foldの証明を残し、
+未採用の試作を通常経路の性能として報告しない。

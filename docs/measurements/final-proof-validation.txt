@@ -1,0 +1,18 @@
+units_scan: 2 clauses, 1 additions, 2 hints, LRAT+DRUP verified
+units_occurrence: 2 clauses, 1 additions, 2 hints, LRAT+DRUP verified
+chain_scan: 3 clauses, 1 additions, 3 hints, LRAT+DRUP verified
+chain_occurrence: 3 clauses, 1 additions, 3 hints, LRAT+DRUP verified
+duplicates_scan: 3 clauses, 1 additions, 2 hints, LRAT+DRUP verified
+duplicates_occurrence: 3 clauses, 1 additions, 2 hints, LRAT+DRUP verified
+original_empty_scan: 1 clauses, 1 additions, 1 hints, LRAT+DRUP verified
+original_empty_occurrence: 1 clauses, 1 additions, 1 hints, LRAT+DRUP verified
+cube_scan: 4 clauses, 2 additions, 5 hints, LRAT+DRUP verified
+cube_occurrence: 4 clauses, 2 additions, 5 hints, LRAT+DRUP verified
+pigeonhole_4_3_scan: 22 clauses, 6 additions, 67 hints, LRAT+DRUP verified
+pigeonhole_4_3_occurrence: 22 clauses, 6 additions, 59 hints, LRAT+DRUP verified
+miter8_scan: 246 clauses, 58 additions, 1188 hints, LRAT+DRUP verified
+miter8_occurrence: 246 clauses, 58 additions, 1112 hints, LRAT+DRUP verified
+miter64_scan: 2038 clauses, 478 additions, 31960 hints, LRAT+DRUP verified
+miter64_occurrence: 2038 clauses, 478 additions, 21132 hints, LRAT+DRUP verified
+Rejected 7 external negative controls
+Artifacts: /home/hosi/morph/.tools/final-proof-check

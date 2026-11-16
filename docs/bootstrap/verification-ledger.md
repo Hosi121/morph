@@ -18,9 +18,13 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | RUN-1 | 同じbitのblockではcarry/borrowが一桁後に安定する | 各操作の全Bool条件、Leanのcarry/borrow_stabilizes | 局所モデルの定理。全run算術の帰納的証明とは別 |
 | RUN-2 | 圧縮演算は通常の自然数算術と一致する | 全16384小対、Python任意精度fixture、巨大値の圧縮恒等式 | 有限照合と恒等式のsanity check。一般のrun数に対する形式証明なし |
 | BIN-ADD-1 | 加算とincrementが値を保存する | Leanの全称定理・source差分lock・MoonBit全小例 | 任意の有限列のモデルに対する帰納的証明。MoonBitへの翻訳は手動対応 |
-| NAT-2 | 構造的半分化によるNat→二進数が値を保存する | Lean split_sound/fromNat_sound | 任意の自然数のモデル定理。MoonBitのstack/メモリ上限を保証しない |
+| NAT-2 | 構造的半分化による旧Nat→二進数が値を保存する | Lean split_sound/fromNatByHalves_sound | 任意の自然数の参照モデル。現在の経路はNAT-3。stack/メモリ上限を保証しない |
 | CORE-HALF-1 | Natの商と余り、floor(n/2)を直接構成する | Lean halveNat_sound/halfNat_floor、0〜4096と200001の実行検査 | モデルは全称、実装への対応は手動レビューとsource lock |
 | CORE-PREFIX-1 | replicate_ontoはreplicate→appendと同じ列を返す | Lean generic Chainの等式、100000 prefixとpair | 任意型のモデル定理。backendの速度・資源保証とは別 |
 | PATH-1 | 代表的な直接往復を再導入しない | tools/audit_paths.pyと陽性/陰性のPython検査 | 字句ゲート。変数を介する経路やプログラム全体の到達可能性は証明しない |
+| NAT-3 | 8進単位の変換が値・正規性を保存し商が減少する | Lean splitGrouped/lowBit/fromNatの各定理、三backend小値/境界oracle | 任意のNatのモデル。factory/globalを含めsource対応をlock、翻訳は手動レビュー |
+| BIN-CMP-1 | 新しい比較は旧比較と一致し、canonical値の順序を返す | Lean protectedCompare_eq_reference/protectedCompare_sound、raw列全小対・20k bit | 旧比較との一致は全有限raw列、数値順序はcanonicalを前提 |
+| BIN-TABLE-1 | 有界積・差表の結果と外域fallbackが正しい | 65536 byte対、64〜2048bit境界、生成物gate | 有限域の独立整数oracle。unbounded multiply/subtract全体の形式証明ではない |
+| CORE-FOLD-1 | reverse-left fold、group4、有限prefixがright foldと一致 | Fold.leanの全称定理 | 任意型/state/stepのモデル。未採用の除算試作の値・速度・資源全体の証明とは別 |
 
 定理の全入力の正しさ、固定幅の完全なBoolean検査、有限の生成例の一致を同一視しない。
