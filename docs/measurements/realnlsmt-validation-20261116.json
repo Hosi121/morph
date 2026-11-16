@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-16",
+  "moon_version": "0.1.20261104 (940aa18 2026-11-04)",
+  "scope": "Exact nonlinear real SMT using full CAD and Boolean blocking; no original incremental NLSAT or whole-language formal-proof claim",
+  "production_commit": "612a159",
+  "cad_base_commit": "a142a05",
+  "realtower_binding_dependency": "1abcdda (locally applied as eb71791)",
+  "cpu": 10,
+  "serialization": "tools/measure shared Git common-directory lock",
+  "command_template": "tools/measure --cpu 10 /usr/bin/time -v tools/moon test src/realnlsmt --target TARGET",
+  "backends": {
+    "native": {
+      "tests": 126,
+      "passed": 126,
+      "failed": 0,
+      "wall_time": "0:00.58",
+      "max_rss_kib": 14976,
+      "exit_status": 0
+    },
+    "wasm-gc": {
+      "tests": 126,
+      "passed": 126,
+      "failed": 0,
+      "wall_time": "0:02.33",
+      "max_rss_kib": 215960,
+      "exit_status": 0
+    },
+    "js": {
+      "tests": 126,
+      "passed": 126,
+      "failed": 0,
+      "wall_time": "0:02.72",
+      "max_rss_kib": 112144,
+      "exit_status": 0
+    }
+  },
+  "oracle_fixtures": 114,
+  "oracle_sat": 101,
+  "oracle_unsat": 13,
+  "focused_tests": 12,
+  "checks": [
+    "moon check --deny-warn",
+    "moon fmt --check src/realnlsmt",
+    "generate_realnlsmt_fixtures.py --check",
+    "audit_purity.py",
+    "check_interfaces.py"
+  ],
+  "logs": ".tools/realnlsmt-20261116",
+  "build_cache": "Existing per-target _build cache retained; command includes any necessary rebuild",
+  "performance_claim": "Validation command snapshots; no speedup or scalability comparison",
+  "opaque_problem_regression": {
+    "before_log": "opaqueproblem-before.log",
+    "before": "1 failed: mixed true source and false encoding accepted a refutation",
+    "after_log": "opaqueproblem-after.log",
+    "after": "1 passed: boundary source-to-encoding reconstruction rejects the mixed payload"
+  }
+}
