@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-16T16:43:43.899537+00:00",
+  "source_commit": "de2a892efbcc0dc2a7b1d16e39bd58833ef734de",
+  "removed_worktrees": [
+    "/home/hosi/morph-retained-cdcl-20261117",
+    "/home/hosi/morph-retained-review-20261117"
+  ],
+  "remaining_worktrees": "worktree /home/hosi/morph\nHEAD de2a892efbcc0dc2a7b1d16e39bd58833ef734de\nbranch refs/heads/main",
+  "preserved_worker_files": 8,
+  "preserved_worker_bytes": 6185,
+  "worker_manifest": ".tools/retained-cdcl-20261117/workers/manifest.json",
+  "worker_manifest_sha256": "f7481abf42cf1a4f24d96245cf93f7de0ac6778c7bcd931e061bc062d9318f0d",
+  "research_bundle": ".tools/retained-cdcl-20261117/research-branches.bundle",
+  "research_bundle_sha256": "c374d298e8b5c9a044b1dc0fcc1fbe764c404d9b98dd319acfedfe386a84c6d0",
+  "branch_policy": "All worker patches present on main; original scoped commits retained as branch refs and verified bundle. Clean working directories removed after byte-verified evidence preservation.",
+  "frozen_benchmarks": ".tools/retained-cdcl-20261117/artifacts",
+  "retained_shared_tools": [
+    ".tools/moon",
+    ".tools/lean",
+    ".tools/realclosed-20261116/reference-venv"
+  ],
+  "validation": "Completed: 3835/3835 each native, JS and WasmGC; all final integration gates and documented tours pass.",
+  "removed_duplicate_benchmark_build_directories": [
+    "_build/native/release/build/cmd/incrementalbench",
+    "_build/js/release/build/cmd/incrementalbench",
+    "_build/wasm-gc/release/build/cmd/incrementalbench"
+  ],
+  "retained_artifact_policy": "Frozen release executables, measured pilot comparisons and all worker logs intentionally retained under .tools/retained-cdcl-20261117. Shared SDK/reference tools and useful main library caches preserved.",
+  "completed_utc": "2026-11-16T16:56:37.474366+00:00",
+  "validation_report": "docs/measurements/retained-cdcl-20261117-validation.json"
+}

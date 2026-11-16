@@ -1,0 +1,171 @@
+{
+  "source_commit": "de2a892efbcc0dc2a7b1d16e39bd58833ef734de",
+  "completed_utc": "2026-11-16T16:56:10.919492+00:00",
+  "cpu": 4,
+  "serialization": "tools/measure common Git lock",
+  "records": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit": 0,
+      "wall_seconds": 448.9655250899996,
+      "backends": {
+        "wasm-gc": {
+          "tests": 3835,
+          "passed": 3835,
+          "failed": 0
+        },
+        "js": {
+          "tests": 3835,
+          "passed": 3835,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 319.23715508700116,
+      "backends": {
+        "native": {
+          "tests": 3835,
+          "passed": 3835,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit": 0,
+      "wall_seconds": 7.845155824001267
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_retained_cdcl_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.08032349900167901
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_incremental_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.21176615299918922
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_realnlsmt_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.14242044699858525
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_cad_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.42676105099963024
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.7021032510019722,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.6556307749997359,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.6695009209979617,
+      "tour_matches_documented_output": true
+    }
+  ],
+  "validation_log_sha256": "b0d6cdd9c71182a89a7a3e8731cb82ce6867d25a2eab3e6b4cfa0e342160eda1",
+  "baseline": "b0ba4de",
+  "backends": {
+    "wasm-gc": {
+      "tests": 3835,
+      "passed": 3835,
+      "failed": 0
+    },
+    "js": {
+      "tests": 3835,
+      "passed": 3835,
+      "failed": 0
+    },
+    "native": {
+      "tests": 3835,
+      "passed": 3835,
+      "failed": 0
+    }
+  },
+  "python_tests": 24,
+  "pure_kernel_files": 250,
+  "public_api_snapshots": 103,
+  "reviewed_lean_regions": 32,
+  "lean_scope": "All existing models pass; no new end-to-end formal proof of CDCL, CAD, compiler or clause insertion is claimed.",
+  "independent_cdcl_oracle": {
+    "clause_pairs": 729,
+    "producer_chain_prefixes": 3543,
+    "independent_schedules": 160,
+    "independent_input_prefixes": 1440,
+    "watcher_and_scanning_queries_per_backend": 2880
+  },
+  "z3_regression_series": [
+    41,
+    16
+  ],
+  "timed_and_checked_runs": 432,
+  "mode_comparisons": 36,
+  "samples_per_mode_and_input": 6,
+  "adoption": "realnlsmt.start uses retained CDCL; explicit start_restarting and start_full preserve controlled references. Boolean-heavy controls improve; nonlinear controls overlap or have small slower medians.",
+  "remaining_limits": [
+    "Full Collins projection and CAD per Boolean candidate remain.",
+    "No clause deletion, temporary assumptions or push/pop.",
+    "Rechecking added clauses at insertion/backjump has a growing cost.",
+    "No universal performance improvement; nonlinear arithmetic and certificate checks can dominate.",
+    "Original quadratic optional CAD stress remains previously censored; no new completion claim."
+  ],
+  "validation_log": "docs/measurements/retained-cdcl-20261117-validation.txt",
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg"
+}
