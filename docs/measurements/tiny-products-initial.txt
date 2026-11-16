@@ -1,0 +1,111 @@
+Baseline: adopted direct subtraction wrapper; no later Nat/comparison changes mixed in.
+All executable builds/tests/benchmarks use common tools/measure --cpu 8 flock.
+
+same ELF Native controls:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+[Hosi121/morph] bench binary/tiny_products_wbtest.mbt:44 ("same ELF cached four bit generic products") ok
+name           time (mean ± σ)         range (min … max) 
+school tiny169   26.58 µs ± 698.07 ns    25.77 µs …  27.90 µs  in 10 ×   3691 runs
+cached tiny169    2.18 µs ±  54.33 ns     2.09 µs …   2.26 µs  in 10 ×  42674 runs
+[Hosi121/morph] bench binary/tiny_products_wbtest.mbt:64 ("same ELF cached products mixed byte controls") ok
+name           time (mean ± σ)         range (min … max) 
+school byte128   64.37 µs ±   1.09 µs    62.52 µs …  65.70 µs  in 10 ×   1647 runs
+cached byte128   62.40 µs ± 805.52 ns    61.22 µs …  63.55 µs  in 10 ×   1571 runs
+[Hosi121/morph] bench binary/tiny_products_wbtest.mbt:84 ("same ELF cached product wide controls") ok
+name         time (mean ± σ)         range (min … max) 
+school wide3  128.62 µs ±   3.75 µs   122.60 µs … 132.84 µs  in 10 ×    770 runs
+cached wide3  129.06 µs ±   3.47 µs   123.16 µs … 132.80 µs  in 10 ×    810 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+Native exhaustive byte oracle:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+JS exhaustive byte oracle:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+Wasm GC exhaustive byte oracle:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+JS tiny product control:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+[Hosi121/morph] bench binary/tiny_products_wbtest.mbt:44 ("same ELF cached four bit generic products") ok
+name           time (mean ± σ)         range (min … max) 
+school tiny169   13.29 µs ±   1.15 µs    11.83 µs …  14.98 µs  in 10 ×   7451 runs
+cached tiny169    2.39 µs ±  88.94 ns     2.31 µs …   2.53 µs  in 10 ×  43545 runs
+Total tests: 1, passed: 1, failed: 0.
+
+
+Wasm GC tiny product control:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_products.mbt:821:4 ]
+     │
+ 821 │ fn tiny_product(a : Binary, b : Binary) -> Binary? {
+     │    ──────┬─────  
+     │          ╰─────── Warning (unused_value): Unused function 'tiny_product'
+─────╯
+[Hosi121/morph] bench binary/tiny_products_wbtest.mbt:44 ("same ELF cached four bit generic products") ok
+name           time (mean ± σ)         range (min … max) 
+school tiny169    8.75 µs ± 766.19 ns     8.00 µs …  10.11 µs  in 10 ×  12278 runs
+cached tiny169    2.45 µs ±  88.99 ns     2.34 µs …   2.60 µs  in 10 ×  42038 runs
+Total tests: 1, passed: 1, failed: 0.
+
+
+Native callback allocation counter:
+allocation-probe school 124827894 / 47391 = 2634 allocations per tiny169 invocation
+allocation-probe cached 95552769 / 565401 = 169 allocations per tiny169 invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"tiny_products_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"tiny_products_wbtest.mbt","index":1,"message":"@BATCH_BENCH { \"summaries\": [{\"name\":\"school tiny169\",\"sum\":271.4626212882653,\"min\":25.931472678571428,\"max\":28.534853966836735,\"mean\":27.146262128826532,\"median\":27.12508609693878,\"variance\":1.011087832175925,\"std_dev\":1.0055286331954576,\"std_dev_pct\":3.704114505428318,\"median_abs_dev\":1.6480055882142854,\"median_abs_dev_pct\":6.075577354205236,\"quartiles\":[26.173222130102044,27.12508609693878,27.999435267857145],\"iqr\":1.8262131377551007,\"batch_size\":3920,\"runs\":10},{\"name\":\"cached tiny169\",\"sum\":21.812165050767852,\"min\":2.097938841433933,\"max\":2.27314629314116,\"mean\":2.1812165050767853,\"median\":2.1720465659751804,\"variance\":0.0028781645442046127,\"std_dev\":0.05364852788478555,\"std_dev_pct\":2.4595691330924057,\"median_abs_dev\":0.04485118454861556,\"median_abs_dev_pct\":2.0649273938783534,\"quartiles\":[2.146196521078443,2.1720465659751804,2.2158778405820456],\"iqr\":0.06968131950360279,\"batch_size\":43433,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
+
+
+LLL3x3 Binary.multiply input/allocation profile:
+binary-multiply-category 0 calls=1703611 allocations=1059240 avg=0.622
+binary-multiply-category 1 calls=1641822 allocations=19993155 avg=12.177
+binary-multiply-category 2 calls=70616 allocations=0 avg=0.000
+binary-multiply-category 3 calls=44135 allocations=873873 avg=19.800
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":1444.6505488938055,\"min\":139.69542359882007,\"max\":151.24161644542772,\"mean\":144.46505488938055,\"median\":143.7979033923304,\"variance\":17.438468390987108,\"std_dev\":4.175939222616525,\"std_dev_pct\":2.890622390178798,\"median_abs_dev\":5.249464561946934,\"median_abs_dev_pct\":3.650584909867969,\"quartiles\":[140.78585103244836,143.7979033923304,148.16936836283185],\"iqr\":7.383517330383484,\"batch_size\":678,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----

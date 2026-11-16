@@ -217,7 +217,10 @@ pub fn multiply(a : Binary, b : Binary) -> Binary {
     (_, Cons(true, Nil)) => a
     (Cons(false, Cons(true, Nil)), _) => double(b)
     (_, Cons(false, Cons(true, Nil))) => double(a)
-    _ => multiply_bits(a.bits, b)
+    _ => match tiny_product(a, b) {
+      Some(product) => product
+      None => multiply_bits(a.bits, b)
+    }
   }
 }
 
