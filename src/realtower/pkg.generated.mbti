@@ -146,6 +146,9 @@ pub fn BoundCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 type Context
+pub fn Context::equal(Self, Self) -> Bool
+pub fn Context::not_equal(Self, Self) -> Bool
+pub fn Context::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) struct CountCertificate {
@@ -162,6 +165,8 @@ pub(all) struct Division {
   quotient : Polynomial
   remainder : Polynomial
 }
+pub fn Division::equal(Self, Self) -> Bool
+pub fn Division::not_equal(Self, Self) -> Bool
 pub fn Division::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -169,22 +174,31 @@ pub(all) struct Extension {
   field : Field
   generator : Scalar
 }
+pub fn Extension::equal(Self, Self) -> Bool
+pub fn Extension::not_equal(Self, Self) -> Bool
 pub fn Extension::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Field {
   context : Context
 }
+pub fn Field::equal(Self, Self) -> Bool
+pub fn Field::not_equal(Self, Self) -> Bool
 pub fn Field::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 type Phase
+pub fn Phase::equal(Self, Self) -> Bool
+pub fn Phase::not_equal(Self, Self) -> Bool
+pub fn Phase::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Polynomial {
   field : Field
   values : @core.Chain[Representation]
 }
+pub fn Polynomial::equal(Self, Self) -> Bool
+pub fn Polynomial::not_equal(Self, Self) -> Bool
 pub fn Polynomial::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -192,6 +206,8 @@ pub(all) enum Progress {
   Isolated(SolutionSet)
   Paused(State)
 }
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
 pub fn Progress::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -208,6 +224,8 @@ pub struct Root {
   system : System
   certificate : RootCertificate
 }
+pub fn Root::equal(Self, Self) -> Bool
+pub fn Root::not_equal(Self, Self) -> Bool
 pub fn Root::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -224,6 +242,8 @@ pub struct Scalar {
   field : Field
   value : Representation
 }
+pub fn Scalar::equal(Self, Self) -> Bool
+pub fn Scalar::not_equal(Self, Self) -> Bool
 pub fn Scalar::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -241,6 +261,8 @@ pub(all) struct ScalarSign {
   sign : @core.Ordering
   certificate : ScalarCertificate
 }
+pub fn ScalarSign::equal(Self, Self) -> Bool
+pub fn ScalarSign::not_equal(Self, Self) -> Bool
 pub fn ScalarSign::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -260,6 +282,8 @@ pub struct SolutionSet {
   roots : @core.Chain[Root]
   certificate : SolutionCertificate
 }
+pub fn SolutionSet::equal(Self, Self) -> Bool
+pub fn SolutionSet::not_equal(Self, Self) -> Bool
 pub fn SolutionSet::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -269,6 +293,8 @@ pub struct State {
   candidate : @binary.Binary
   phase : Phase
 }
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
 pub fn State::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
@@ -278,6 +304,8 @@ pub struct System {
   sequence : @core.Chain[@core.Chain[Representation]]
   certificate : SystemCertificate
 }
+pub fn System::equal(Self, Self) -> Bool
+pub fn System::not_equal(Self, Self) -> Bool
 pub fn System::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)

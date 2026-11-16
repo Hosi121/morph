@@ -29,3 +29,22 @@ source/context/payload を束縛して厳密な決定計算を再実行する方
 
 初期検査：`tools/measure --cpu 6 tools/moon check --target js src/realtower` 成功。
 `moon info` のログは `.tools/realtower-20261116/api-info.log`（未追跡）。
+
+## 最初の実装済み到達点
+
+初期 scaffold の全演算・checker は実装に置き換わった。
+`PendingImplementation` は初期契約との互換性のための enum 名として残るだけで、
+現在の実装から返す経路はない。Field / Scalar / Polynomial の derived `Eq` は
+raw 表現の比較であり、数学的等価性には `scalar_equal` / `polynomial_equal` を使う。
+
+順序判定は分子分母の Sturm–Tarski query を親の係数体へ帰着する。
+係数の逆元も一段低い塔を再帰的に扱うため、任意の有限深さに対応する。
+深さ2/3を実測したが、深さによる性能上限や実用性能の一般的主張はしない。
+全根分離は strict Cauchy bound の倍増探索と有理二分を fuel で中断・再開できる。
+証明書 checker は厳密な決定計算を再実行し、context、原入力、結果の個々の
+payload を比較する。根の探索全体を verifier から再実行する必要はないが、
+PRS と符号決定は再計算する。
+
+6テストが native / wasm-gc / JS の各 backend で成功。
+[測定条件と検査範囲](../measurements/realtower-20261116.md)に記録した。
+次段階は独立な Fraction/SymPy による平坦な数体 oracle と相対根分離の照合。

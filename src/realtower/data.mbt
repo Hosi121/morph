@@ -206,7 +206,12 @@ pub extend SolutionSet with Debug::{to_repr}
 #derive(Eq, Debug)
 enum Phase {
   FindingBound
-  Splitting(BoundCertificate, CountCertificate, @core.Chain[CountCertificate], @core.Chain[RootCertificate])
+  Splitting(
+    BoundCertificate,
+    CountCertificate,
+    @core.Chain[CountCertificate],
+    @core.Chain[RootCertificate]
+  )
 }
 
 ///|
@@ -240,3 +245,48 @@ pub(all) struct Extension {
 
 ///|
 pub extend Extension with Debug::{to_repr}
+
+///|
+pub extend Context with Eq::{equal, not_equal}
+
+///|
+pub extend Field with Eq::{equal, not_equal}
+
+///|
+pub extend Scalar with Eq::{equal, not_equal}
+
+///|
+pub extend Polynomial with Eq::{equal, not_equal}
+
+///|
+pub extend ScalarSign with Eq::{equal, not_equal}
+
+///|
+pub extend Division with Eq::{equal, not_equal}
+
+///|
+pub extend System with Eq::{equal, not_equal}
+
+///|
+pub extend Root with Eq::{equal, not_equal}
+
+///|
+pub extend SolutionSet with Eq::{equal, not_equal}
+
+///|
+pub extend Phase with Eq::{equal, not_equal}
+
+///|
+pub extend State with Eq::{equal, not_equal}
+
+///|
+pub extend Progress with Eq::{equal, not_equal}
+
+///|
+pub extend Extension with Eq::{equal, not_equal}
+
+///|
+pub extend Context with Debug::{to_repr}
+
+///|
+pub extend Phase with Debug::{to_repr}
