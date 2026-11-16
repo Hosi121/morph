@@ -77,7 +77,7 @@ pub fn square_free(
 
 ///|
 /// A conservative Landau-Mignotte bound: 2^degree(f) * sum(abs(coeff(f))).
-/// This bounds every coefficient of every primitive integer divisor of f.
+/// For nonzero f, this bounds every coefficient of every integer divisor of f.
 pub fn coefficient_bound(value : Polynomial) -> @binary.Binary {
   fn times_two(value : @binary.Binary, count : @core.Nat) -> @binary.Binary {
     match count {

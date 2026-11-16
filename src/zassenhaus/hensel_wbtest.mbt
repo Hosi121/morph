@@ -118,3 +118,61 @@ test "lifting fuel suspends and resume preserves exact prime powers" {
     _ => fail("must reach 3^4")
   }
 }
+
+///|
+test "lift certificates reject noncanonical residues and altered degrees" {
+  let initial = start_lift(
+    test_polynomial([-1, 0, 1]),
+    Cons(test_fp(3, [1, 1]), Cons(test_fp(3, [2, 1]), Nil)),
+  ).unwrap()
+  let certificate = lift_certificate(lift_step(initial).unwrap())
+  let lifts = @oracle.array(certificate.lifts)
+  let modulus = @oracle.int_of_binary(lift_modulus(lift_step(initial).unwrap()))
+  let noncanonical = add(lifts[0], test_polynomial([modulus]))
+  assert_false(
+    check_lift({
+      target: certificate.target,
+      prime: certificate.prime,
+      exponent: certificate.exponent,
+      factors: certificate.factors,
+      lifts: Cons(noncanonical, Cons(lifts[1], Nil)),
+    }),
+  )
+  let nonmonic = scale(lifts[0], @oracle.integer(2))
+  assert_false(
+    check_lift({
+      target: certificate.target,
+      prime: certificate.prime,
+      exponent: certificate.exponent,
+      factors: certificate.factors,
+      lifts: Cons(nonmonic, Cons(lifts[1], Nil)),
+    }),
+  )
+  let extra_degree = add(lifts[0], test_polynomial([0, 0, modulus]))
+  assert_false(
+    check_lift({
+      target: certificate.target,
+      prime: certificate.prime,
+      exponent: certificate.exponent,
+      factors: certificate.factors,
+      lifts: Cons(extra_degree, Cons(lifts[1], Nil)),
+    }),
+  )
+  let missing = @core.Cons(test_fp(3, [1, 1]), @core.Nil)
+  assert_eq(start_lift(certificate.target, missing), Err(InvalidLift))
+}
+
+///|
+test "standalone binary Hensel supports reducible but coprime modular blocks" {
+  let target = test_polynomial([2, 0, 3, 0, 1])
+  let initial = start_lift(
+    target,
+    Cons(test_fp(7, [1, 0, 1]), Cons(test_fp(7, [2, 0, 1]), Nil)),
+  ).unwrap()
+  let state = lift_step(lift_step(initial).unwrap()).unwrap()
+  assert_true(check_lift(lift_certificate(state)))
+  assert_eq(@oracle.array(lift_certificate(state).lifts).map(test_native), [
+    [1, 0, 1],
+    [2, 0, 1],
+  ])
+}

@@ -2,7 +2,7 @@
 
 This package implements exact factorization of nonzero univariate integer and rational polynomials. It combines existing finite-field Berlekamp and rational-polynomial GCD packages with new primitive normalization, characteristic-zero square-free decomposition, simultaneous Hensel lifting, and exhaustive Zassenhaus recombination. All production arithmetic uses immutable symbolic ADTs. Numeric conversion, arrays, and external CAS calls occur only in tests and the fixture generator.
 
-The first verified milestone has 36 package tests passing on native, JS, and WasmGC, including independent SymPy fixtures. This is an executable algorithm and certificate checker, not a machine-checked proof of the implementation or a performance improvement claim.
+The package has 454 tests passing on native, JS, and WasmGC, including independent SymPy fixtures and a complete small coefficient grid. This is an executable algorithm and certificate checker, not a machine-checked proof of the implementation or a performance improvement claim.
 
 ## API and supported domain
 
@@ -12,6 +12,7 @@ The first verified milestone has 36 package tests passing on native, JS, and Was
 - The zero polynomial returns `Err(ZeroPolynomial)`. Nonzero constants return their content/unit and no factors. There is no machine-word coefficient limit; practical time, memory, and recursion limits remain.
 - The caller supplies a finite ordered prime-candidate list. Composite candidates, primes dividing the leading coefficient, and primes for which the square-free component becomes nonsquarefree are skipped. The first suitable candidate is used; the driver does not optimize the number of modular factors.
 - `lift_fuel` bounds **additional linear lifting steps per square-free component**, starting at exponent one. `subset_fuel` bounds **subset leaves per component**, including the empty and full subsets; complete enumeration of `r` modular factors costs exactly `2^r` leaves. Exhaustion returns `Incomplete(NoGoodPrime | LiftBudget | RecombinationBudget)` and never `Complete`.
+- These are operation-count bounds for the specified loops, not a wall-clock bound on primality testing, Berlekamp splitting, GCD, or integer arithmetic.
 - The irreducibility checker separately takes a subset budget **per claimed integer factor**. Exhaustion returns `Undecided`; invalid data or an exhibited proper factor returns `Refuted`; only completed exhaustion returns `Proven`.
 - Hensel seeds need only be monic, positive-degree and pairwise coprime. They need not be irreducible. The factorization certificates additionally require checked finite-field irreducibility certificates.
 
@@ -56,12 +57,12 @@ Trusted implementation dependencies include symbolic binary/exact arithmetic, pr
 
 The [generator](../../tools/generate_zassenhaus_fixtures.py) uses SymPy 1.14.0's integer/rational `factor_list` and its **quadratic divide-and-conquer** `dup_zz_hensel_lift`, independently of this package's linear simultaneous corrections. The official [SymPy factorization source](https://github.com/sympy/sympy/blob/1.14.0/sympy/polys/factortools.py) specifies the nonmonic lifting contract. Generated [fixture data](zassenhaus-20261116-fixtures.json) and [MoonBit tests](../../src/zassenhaus/fixtures_wbtest.mbt) are retained.
 
-Initial set: 5 Hensel fixtures, 19 integer factorizations and 5 rational factorizations. Cases cover repeated factors, nontrivial signed content, rational denominators, nonmonic factors, irreducible polynomials that split modulo the selected prime, and lifts through consecutive prime powers up to exponent five. Additional handwritten tests cover zero/constants, degree-losing and repeated-root primes, incompatible fields, repeated modular seeds, altered target/modulus/exponent/factor lists, insufficient reconstruction precision, both exhausted budgets, and product-only forgery.
+Targeted set: 5 Hensel fixtures, 19 integer factorizations and 5 rational factorizations. A further **412 cases** exhaust every primitive degree-two or degree-three polynomial with leading coefficient 1–3 and all lower coefficients in −2–2: **259 irreducible and 153 reducible**. SymPy factorizations are cross-checked independently by native integer rational-root enumeration (which is complete for degrees two and three). Every generated MoonBit case also checks its factorization certificate. Cases cover repeated factors, nontrivial signed content, rational denominators, nonmonic factors, irreducible polynomials that split modulo the selected prime, and lifts through consecutive prime powers up to exponent five. Additional handwritten tests cover zero/constants, degree-losing and repeated-root primes, incompatible fields, repeated modular seeds, altered target/modulus/exponent/factor lists, insufficient reconstruction precision, both exhausted budgets, exact subset-leaf exhaustion, a precision exactly equal to the threshold, noncanonical lift residues, corrupted finite-field witness payloads, and product-only forgery.
 
 Commands (all compilation/testing is serialized by the repository's shared lock and pinned to CPU 8):
 
 ```sh
-python3 tools/generate_zassenhaus_fixtures.py
+python3 tools/generate_zassenhaus_fixtures.py --check
 tools/measure --cpu 8 .tools/moon/bin/moon test src/zassenhaus --target native
 tools/measure --cpu 8 .tools/moon/bin/moon test src/zassenhaus --target js
 tools/measure --cpu 8 .tools/moon/bin/moon test src/zassenhaus --target wasm-gc
@@ -69,4 +70,4 @@ python3 tools/audit_purity.py
 tools/measure --cpu 8 .tools/moon/bin/moon info src/zassenhaus
 ```
 
-Initial result: **36 passed, 0 failed on each backend**. Purity audit: **125 kernel files passed**. Interfaces were generated by `moon info`, not handwritten. Root integration owns repository inventories, documentation navigation, and complete integrated checks; only the namespaced package, generator, and research artifacts are changed here.
+Result: **454 passed, 0 failed on each backend**. The first verified commit was `df66e93` (36 tests); the later grid and boundary cases expand that coverage. The [validation transcript](zassenhaus-20261116-validation.json) records commands, exit codes and output; its command wall times include build/runner overhead and are not an algorithm benchmark. Purity audit: **125 kernel files passed**. Interfaces were generated by `moon info`, not handwritten. Root integration owns repository inventories, documentation navigation, and complete integrated checks; only the namespaced package, generator, and research artifacts are changed here.

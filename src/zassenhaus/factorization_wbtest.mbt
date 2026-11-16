@@ -247,3 +247,133 @@ test "square-free components preserve multiplicities and positive primitive norm
     assert_eq(gcd(f.polynomial, derivative(f.polynomial)).unwrap(), one())
   }
 }
+
+///|
+test "exact subset budget boundary cannot become a premature proof" {
+  let value = test_polynomial([1, 0, 0, 0, 1])
+  let primes = @core.Cons(@oracle.binary(3), @core.Nil)
+  assert_eq(
+    factor(value, primes, @oracle.nat(20), @oracle.nat(3)).unwrap(),
+    Incomplete(RecombinationBudget),
+  )
+  let result = match
+    factor(value, primes, @oracle.nat(20), @oracle.nat(4)).unwrap() {
+    Complete(result) => result
+    _ =>
+      abort("four leaves must complete this two-factor modular decomposition")
+  }
+  let f = @oracle.array(result.factors)[0]
+  assert_eq(@oracle.array(f.certificate.lift.factors).length(), 2)
+  assert_eq(check_irreducible(value, f.certificate, @oracle.nat(3)), Undecided)
+  assert_eq(check_irreducible(value, f.certificate, @oracle.nat(4)), Proven)
+}
+
+///|
+test "precision equality requires one further prime-power lift" {
+  let value = test_polynomial([1, 0, 0, 1])
+  assert_eq(@oracle.int_of_binary(recombination_threshold(value)), 32)
+  let initial = start_lift(
+    value,
+    Cons(test_fp(2, [1, 1]), Cons(test_fp(2, [1, 1, 1]), Nil)),
+  ).unwrap()
+  let equality = match
+    lift_above(initial, @oracle.binary(32), @oracle.nat(4)).unwrap() {
+    Suspended(state) => state
+    _ => abort("m = threshold cannot suffice")
+  }
+  assert_eq(@oracle.int_of_binary(lift_modulus(equality)), 32)
+  assert_true(check_lift(lift_certificate(equality)))
+  let witnesses = finite_certificates(lift_certificate(equality).factors).unwrap()
+  assert_eq(
+    check_irreducible(
+      test_polynomial([1, 1]),
+      { lift: lift_certificate(equality), finite_certificates: witnesses, },
+      @oracle.nat(4),
+    ),
+    Refuted,
+  )
+  let greater = match
+    lift_above(equality, @oracle.binary(32), Succ(Zero)).unwrap() {
+    Reached(state) => state
+    _ => abort("next lift must exceed threshold")
+  }
+  assert_eq(@oracle.int_of_binary(lift_modulus(greater)), 64)
+  assert_eq(
+    check_irreducible(
+      test_polynomial([1, 1]),
+      { lift: lift_certificate(greater), finite_certificates: witnesses, },
+      @oracle.nat(4),
+    ),
+    Proven,
+  )
+  assert_eq(
+    factor(value, Cons(@oracle.binary(2), Nil), @oracle.nat(4), @oracle.nat(4)).unwrap(),
+    Incomplete(LiftBudget),
+  )
+  assert_true(
+    factor(value, Cons(@oracle.binary(2), Nil), @oracle.nat(5), @oracle.nat(4)).unwrap()
+    is Complete(_),
+  )
+}
+
+///|
+test "finite-field witness payload and rational scaled-unit boundaries are checked" {
+  let value = test_polynomial([1, 0, 0, 0, 1])
+  let result = test_factor(value)
+  let f = @oracle.array(result.factors)[0]
+  let corrupt = @core.map(f.certificate.finite_certificates, fn(_) {
+    (
+      { frobenius: @core.Nil, coprime: @core.Nil, } :
+      @fppoly.IrreducibilityCertificate)
+  })
+  assert_eq(
+    check_irreducible(
+      value,
+      { lift: f.certificate.lift, finite_certificates: corrupt, },
+      @oracle.nat(128),
+    ),
+    Refuted,
+  )
+  let coefficients = @oracle.chain(
+    [1, 0, 0, 0, 1].map(fn(c) { @oracle.rational(c, 1) }),
+  )
+  assert_eq(
+    check_rational_factorization(
+      coefficients,
+      { unit: @oracle.rational(1, 2), factors: result.factors, },
+      @oracle.nat(128),
+    ),
+    Refuted,
+  )
+  let input = @oracle.chain([@oracle.rational(1, 6)])
+  assert_eq(
+    check_rational_factorization(
+      input,
+      { unit: @oracle.rational(1, 6), factors: Nil, },
+      Zero,
+    ),
+    Proven,
+  )
+  assert_eq(
+    check_rational_factorization(
+      input,
+      { unit: @oracle.rational(1, 5), factors: Nil, },
+      Zero,
+    ),
+    Refuted,
+  )
+}
+
+///|
+test "content and repeated-factor normalization remain exact at negative leading coefficient" {
+  let value = test_polynomial([-2, 0, 4, 0, -2])
+  let decomposition = square_free(value).unwrap()
+  assert_eq(@oracle.int_of_integer(decomposition.content), -2)
+  assert_eq(@oracle.array(decomposition.components).length(), 1)
+  let component = @oracle.array(decomposition.components)[0]
+  assert_eq(test_native(component.polynomial), [-1, 0, 1])
+  assert_eq(@oracle.int_of_nat(component.multiplicity), 2)
+  let result = test_factor(value)
+  assert_eq(@oracle.array(result.factors).length(), 2)
+  assert_eq(check_factorization(value, result, @oracle.nat(16)), Proven)
+}
