@@ -39,6 +39,7 @@
 | --- | --- | --- |
 | Fp多項式の係数と除算 | Galois、巡回RS、AESの表生成 | [Fp(2)と除算](bootstrap/gf2-performance/README.md)。同じ検査済みfieldの係数、幅、scale/shiftを再利用。CPU時間とwall時間を別に記録 |
 | GF(2^m)の積 | Galois.multiply→RSの符号化/復号、AESの有限体演算 | [可変長Bool列](bootstrap/gf2-performance/README.md)。同一CPU timer系列でGF256積5.225→0.942 µs、RS255は7.510→5.000 ms。固定幅案はRSを悪化させたため棄却 |
+| 一変数多項式の評価 | 公開polynomial.evaluate→Sturm・実数制約・実代数計算 | [疎Horner](research/sparse-horner-20261116.md)。同じnative ELFの密な6評価2.51→0.336 ms、実数制約の次数8例1.59→0.490 s。√2の小例は横ばい。JSにも局所改善、WasmGCの短い対照は揺れが大きい。独立QQと降順を前提にしたLeanモデル |
 
 ## SATと反証
 

@@ -1,5 +1,7 @@
 # Independent review of the frozen shape-position real-variety solver
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 This review found no counterexample in the stated finite test range. It adds independent rational-root fixtures and adversarial certificate tests without changing the solver, F4, Sturm, or real-algebraic implementation. The reviewed snapshot is root `6934453` plus `fe5699b`, locally cherry-picked as `574b11c` on `research/realvariety-review-20261116`. Later separating-linear-form work is outside this review.
 
 The new tests are [the Fraction fixture checker](../../src/realvariety/independent_review_wbtest.mbt), [seven generated systems](../../src/realvariety/fraction_review_fixtures_wbtest.mbt), and [six adversarial groups](../../src/realvariety/adversarial_review_wbtest.mbt). The 13 review tests pass independently; the full package passes 105/105 tests on native, JS, and WasmGC. The test driver requires exactly 105 executed tests and a zero exit status, so an empty filter cannot count as validation.

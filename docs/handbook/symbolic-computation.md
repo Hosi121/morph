@@ -228,4 +228,7 @@ Hensel持ち上げ、Zassenhaus再結合を使って整数・有理係数の一�
 全実根を隔離し、共有する代数的パラメータαと座標`h_i(α)`で実解を表す。
 対応しないshapeや正次元の系を、解がないという結果へ置き換えない。
 
+基底の順序変換、分離線形形式、最小多項式と数体への接続は
+[厳密代数の計算経路](algebraic-solving.md)でまとめる。
+
 詳細: [Zassenhaus](../research/zassenhaus-20261116.md) · [F4](../research/f4-20261116.md) · [実解表現](../research/realvariety-20261116.md)

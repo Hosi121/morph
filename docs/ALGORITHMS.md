@@ -19,6 +19,7 @@
 | 圧縮二進算術 | [runを展開しない加減乗算・shift・pair](../src/runbinary/runbinary.mbt)・[燃料付き除算](../src/runbinary/division.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
+| 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
 | ソート | [安定merge/insertion/quick sort](../src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](../src/heap/heap.mbt) |
 | 辞書 | [Boolワードの永続trie・最長prefix・union](../src/trie/trie.mbt)・[永続AVL・削除・順位と選択](../src/avl/avl.mbt) |
@@ -50,7 +51,8 @@
 | 整数・有理係数の因数分解 | [Berlekamp–Zassenhaus・Hensel持ち上げ・既約性の検査](../src/zassenhaus/factorization.mbt) |
 | Gröbner基底 | [再開可能なBuchberger・既約基底](../src/groebner/groebner.mbt) |
 | F4 | [Macaulay行列のbatch簡約・入力idealへのwitness](../src/f4/f4.mbt) |
-| 零次元系の実解 | [検査済みF4基底→shape→全実根の共有パラメータ表現](../src/realvariety/shape.mbt) |
+| FGLM | [零次元商空間の線形従属・Lex/GradedLex/GrevLexへの基底変換](../src/fglm/fglm.mbt) |
+| 零次元系の実解 | [shapeと全実根の共有パラメータ表現](../src/realvariety/shape.mbt)・[分離線形形式の探索と元座標への射影](../src/realvariety/separation.mbt) |
 | 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
@@ -63,6 +65,7 @@
 | --- | --- |
 | 半環・行列 | [半環の演算辞書](../src/algebra/algebra.mbt)・[行列積・累乗・Warshall](../src/matrix/matrix.mbt) |
 | 線形代数 | [有理数の行列式・逆行列・解空間](../src/linear/linear.mbt)・[体で共通化したGauss–Jordan](../src/rowreduce/rowreduce.mbt) |
+| 環上の行列 | [除算不要のBerkowitz特性多項式・行列式](../src/berkowitz/berkowitz.mbt)・[随伴行列・行列への多項式代入](../src/berkowitz/matrix_polynomial.mbt) |
 | 整数線形代数 | [証拠付きSmith標準形](../src/smith/smith.mbt)・[整数解/不可能証拠](../src/smith/equations.mbt)・[有限生成アーベル群](../src/smith/cokernel.mbt) |
 | 格子 | [厳密有理数のLLL・依存基底の前処理・unimodular証拠](../src/lll/lll.mbt) |
 | 線形最適化 | [二段階単体法・Bland規則・双対解/非有界/Farkas証拠](../src/simplex/simplex.mbt) |
@@ -94,6 +97,7 @@
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
 | 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
 | パリティゲーム | [再開可能なZielonka法・位置戦略・独立した閉路検査](../src/parity/solve.mbt) |
+| モデル検査 | [μ-calculusの再帰的な様相論理式→パリティゲーム](../src/mucalc/compiler.mbt) |
 | 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](../src/exactcover/exactcover.mbt)・[再開可能な全解列挙](../src/exactcover/enumerate.mbt) |
 | 制約のモデル化 | [Nクイーン](../src/puzzles/queens.mbt)・[4×4/9×9数独](../src/puzzles/sudoku.mbt) |
 

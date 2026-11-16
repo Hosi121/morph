@@ -1,5 +1,7 @@
 # Independent review of sparse univariate Horner evaluation
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 The frozen candidate's algebraic transformation is correct under its canonical-polynomial representation invariant. The review found no failure on valid public inputs. It adds a Lean proof, a separate source correspondence lock, and an independent rational oracle without modifying any `src/*` file or the candidate worktree.
 
 The source of truth for this review is `/home/hosi/morph-evaluation-20261116/src/polynomial/evaluation.mbt` and `polynomial.mbt`, while that worktree is at base `6934453` with uncommitted candidate changes. Exact reviewed file and function hashes are in [the review source map](../../formal/reviews/sparse-horner-source-map.json). The original generic evaluator is retrieved from `6934453`; its complete token sequence equals the candidate's `evaluate_generic` after changing only its declaration name and visibility.

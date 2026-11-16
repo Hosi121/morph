@@ -1,5 +1,7 @@
 # 実代数的数の最小多項式正規化、2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 [研究・探索記録](README.md) / [実代数的数](realalgebraic-20261116.md) / [Zassenhaus](zassenhaus-20261116.md)
 
 `realalgebraic.Number` の定義多項式を明示的に因数分解し、同じ選択根を表す monic・Q 上既約な最小多項式へ置き換える。既存の arithmetic は変更しない。手書き計算核は不変 ADT・Bool・Nat・Chain・クロージャのみで、機械数値・配列・可変状態・FFI を使わない。
