@@ -73,3 +73,21 @@ tools/measure --cpu 6 tools/moon test src/realalgebraic --target native --deny-w
 ```
 
 検証は有限の次数・係数・区間に対するもの。任意次数の resultant、Sturm、exact rational 全体について機械化した証明を追加したわけではない。元の realalgebraic API は自己記述的な証拠を検査するため、外部の期待する入力とも別途対応を取る必要がある。実行時間・メモリ上限・最小多項式への最適化は対象外であり、今回の経過時間は性能 benchmark ではない。
+
+## 値付き API fix の独立追試
+
+実装者による別 fix `2f04b9c`（この worktree では依存取り込み `0b46ca6`）が、既存 proof-only API を維持したまま `check_arithmetic_result`、`check_unary_result`、`check_quotient_result`、`check_comparison_result` を追加した。本レビューはその本体を編集せず取り込み、[別の payload 追試](../../src/realalgebraic/payload_binding_review_wbtest.mbt) で元の再構成例を検査した。
+
+正規の返却 Number / Ordering は全四 API で受理された。正しい proof と無関係な有効 Number の組、同じ定義多項式の別共役との組、別 Number に合わせて proof 内 result も差し替える攻撃、正しい comparison proof と別 Ordering の組、Ordering に合わせて proof.order も差し替える攻撃は全て拒否された。既存 proof-only checker は証拠自体が有効なら true を返す役割を維持する。
+
+新しい API は「同じ正規化済み定義多項式と同じ interval」という**表現の完全一致**を束縛する。別 interval で表した数学的には同じ数を拒否することも、実装の明示された契約として確認した。一般の数値等値判定 API と混同しない。
+
+また、[既知 root-list による追加追試](../../src/realalgebraic/root_selection_review_wbtest.mbt) で、三つの既知の有理根を持つ定義、その平方、非モニックな有理 scale に対する全 144 半開区間選択を独立に照合した。excluded lower / included upper、零・複数 root の拒否、三回の refine 後にも同じ選択根が残ることを確認した。
+
+| fix 後の検査 | 結果 |
+| --- | --- |
+| review native / JS / Wasm GC、`--deny-warn` | それぞれ 88 passed / 0 failed |
+| package native、`--deny-warn` | 158 passed / 0 failed |
+| package fmt check | 成功 |
+
+生ログは `.tools/realalgebraic-independent-review-20261116/verification-after-payload-fix.json`。値付き checker の追加により、報告した payload 束縛の境界には明示的な検査入口が設けられ、元の陰性例が拒否されることを独立に確認した。外部の期待する入力と自己記述的な proof の対応は、引き続き利用側の確認事項である。
