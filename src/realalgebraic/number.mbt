@@ -186,6 +186,8 @@ pub extend ComparisonCertificate with Eq::{equal, not_equal}
 pub extend ComparisonCertificate with Debug::{to_repr}
 
 ///|
+/// Check the embedded ordering claim. Use check_comparison_result to also bind
+/// a separately supplied Ordering payload.
 pub fn check_comparison(proof : ComparisonCertificate) -> Bool {
   match (number(proof.left), number(proof.right)) {
     (Ok(a), Ok(b)) =>
@@ -293,4 +295,13 @@ pub fn compare(
     Ok(state) => compare_advance(state, fuel)
     Err(error) => Err(error)
   }
+}
+
+///|
+/// Check a comparison proof and bind the separately returned Ordering payload.
+pub fn check_comparison_result(
+  order : @core.Ordering,
+  proof : ComparisonCertificate,
+) -> Bool {
+  order.equal(proof.order) && check_comparison(proof)
 }

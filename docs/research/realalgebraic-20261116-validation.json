@@ -1,5 +1,5 @@
 {
-  "utc": "2026-11-16T07:53:57.268100+00:00",
+  "utc": "2026-11-16T08:06:50.668022+00:00",
   "cpu": 8,
   "serialization": "tools/measure shared git-common-dir lock",
   "timing_scope": "incremental command wall time, not an algorithm benchmark",
@@ -13,8 +13,8 @@
         "native"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.212933,
-      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+      "wall_seconds": 1.269101,
+      "output": "Total tests: 70, passed: 70, failed: 0.\n"
     },
     {
       "command": [
@@ -25,8 +25,8 @@
         "js"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.262419,
-      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+      "wall_seconds": 1.003622,
+      "output": "Total tests: 70, passed: 70, failed: 0.\n"
     },
     {
       "command": [
@@ -37,8 +37,8 @@
         "wasm-gc"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.149683,
-      "output": "Total tests: 69, passed: 69, failed: 0.\n"
+      "wall_seconds": 0.960791,
+      "output": "Total tests: 70, passed: 70, failed: 0.\n"
     },
     {
       "command": [
@@ -48,7 +48,7 @@
         "--deny-warn"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.825003,
+      "wall_seconds": 0.501362,
       "output": "Finished. moon: ran 13 tasks, now up to date\n"
     },
     {
@@ -58,7 +58,7 @@
         "src/realalgebraic"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.538933,
+      "wall_seconds": 0.423146,
       "output": "Finished. moon: ran 10 tasks, now up to date\n"
     },
     {
@@ -69,7 +69,7 @@
         "--check"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.14357,
+      "wall_seconds": 0.113872,
       "output": "Finished. moon: ran 11 tasks, now up to date\n"
     },
     {
@@ -78,8 +78,8 @@
         "tools/audit_purity.py"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.310879,
-      "output": "Purity gate passed: 131 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+      "wall_seconds": 0.208275,
+      "output": "Purity gate passed: 137 kernel files; no machine numerics, mutation, arrays or FFI.\n"
     },
     {
       "command": [
@@ -88,7 +88,7 @@
         "--check"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.955535,
+      "wall_seconds": 0.612384,
       "output": "{\"arithmetic\": 30, \"resultants\": 14, \"unary\": 11}\n"
     }
   ]

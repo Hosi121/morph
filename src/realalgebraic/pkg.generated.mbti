@@ -18,15 +18,23 @@ pub fn arithmetic_start(Number, Number, BinaryOperation) -> Result[Arithmetic, A
 
 pub fn check_arithmetic(ArithmeticCertificate) -> Bool
 
+pub fn check_arithmetic_result(Number, ArithmeticCertificate) -> Bool
+
 pub fn check_comparison(ComparisonCertificate) -> Bool
 
+pub fn check_comparison_result(@core.Ordering, ComparisonCertificate) -> Bool
+
 pub fn check_quotient(QuotientCertificate) -> Bool
+
+pub fn check_quotient_result(Number, QuotientCertificate) -> Bool
 
 pub fn check_resultant(ResultantCertificate) -> Bool
 
 pub fn check_root(RootCertificate) -> Bool
 
 pub fn check_unary(UnaryCertificate) -> Bool
+
+pub fn check_unary_result(Number, UnaryCertificate) -> Bool
 
 pub fn compare(Number, Number, @core.Nat) -> Result[ComparisonProgress, AlgebraError]
 

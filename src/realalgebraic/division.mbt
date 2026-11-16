@@ -12,6 +12,8 @@ pub extend QuotientCertificate with Eq::{equal, not_equal}
 pub extend QuotientCertificate with Debug::{to_repr}
 
 ///|
+/// Check embedded quotient certificates; use check_quotient_result to bind a
+/// separately supplied Number payload.
 pub fn check_quotient(proof : QuotientCertificate) -> Bool {
   proof.reciprocal.operation.equal(Reciprocal) &&
   proof.product.resultant.operation.equal(Product) &&
@@ -131,4 +133,13 @@ pub fn divide(
     Ok(state) => division_advance(state, fuel)
     Err(error) => Err(error)
   }
+}
+
+///|
+/// Check a quotient proof and bind the payload to its product result exactly.
+pub fn check_quotient_result(
+  value : Number,
+  proof : QuotientCertificate,
+) -> Bool {
+  root_certificate(value).equal(proof.product.result) && check_quotient(proof)
 }

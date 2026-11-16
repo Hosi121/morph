@@ -66,6 +66,8 @@ pub extend ArithmeticCertificate with Debug::{to_repr}
 ///|
 /// Validate the resultant identity and root-selection enclosure separately.
 /// No interpolation or refinement search is replayed by this checker.
+/// This checks the embedded result only; use check_arithmetic_result to bind a
+/// separately supplied Number payload.
 pub fn check_arithmetic(proof : ArithmeticCertificate) -> Bool {
   if !check_resultant(proof.resultant) {
     false
@@ -257,4 +259,15 @@ pub fn multiply(
     Ok(state) => arithmetic_advance(state, fuel)
     Err(error) => Err(error)
   }
+}
+
+///|
+/// Check the operation proof and bind a separately supplied payload. Binding
+/// requires exactly the normalized defining polynomial and interval recorded in
+/// proof.result; equivalent roots with another representation are rejected.
+pub fn check_arithmetic_result(
+  value : Number,
+  proof : ArithmeticCertificate,
+) -> Bool {
+  root_certificate(value).equal(proof.result) && check_arithmetic(proof)
 }

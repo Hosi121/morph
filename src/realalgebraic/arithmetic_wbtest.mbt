@@ -390,3 +390,65 @@ test "operation certificate checks bind normalization refinement and output inte
     _ => fail("negation must finish")
   }
 }
+
+///|
+test "result checkers bind public progress payloads to their exact certificates" {
+  let a = test_number([-2, 0, 1], (1, 1), (2, 1))
+  let b = test_number([-3, 0, 1], (1, 1), (2, 1))
+  let wrong = rational(@oracle.rational(7, 1)).unwrap()
+  match add(a, b, @oracle.nat(100)).unwrap() {
+    ArithmeticReady(value, proof) => {
+      assert_true(check_arithmetic(proof))
+      assert_true(check_arithmetic_result(value, proof))
+      let forged = ArithmeticReady(wrong, proof)
+      match forged {
+        ArithmeticReady(payload, certificate) =>
+          assert_false(check_arithmetic_result(payload, certificate))
+        _ => fail("forged payload variant")
+      }
+      let equivalent = refine(value, Succ(Zero)).unwrap()
+      assert_compared(value, equivalent, Equal, 0)
+      assert_false(check_arithmetic_result(equivalent, proof))
+    }
+    _ => fail("sum must finish")
+  }
+  match inverse(a, @oracle.nat(100)).unwrap() {
+    UnaryReady(value, proof) => {
+      assert_true(check_unary(proof))
+      assert_true(check_unary_result(value, proof))
+      let forged = UnaryReady(wrong, proof)
+      match forged {
+        UnaryReady(payload, certificate) =>
+          assert_false(check_unary_result(payload, certificate))
+        _ => fail("forged unary variant")
+      }
+    }
+    _ => fail("inverse must finish")
+  }
+  match divide(a, b, @oracle.nat(100)).unwrap() {
+    DivisionReady(value, proof) => {
+      assert_true(check_quotient(proof))
+      assert_true(check_quotient_result(value, proof))
+      let forged = DivisionReady(wrong, proof)
+      match forged {
+        DivisionReady(payload, certificate) =>
+          assert_false(check_quotient_result(payload, certificate))
+        _ => fail("forged quotient variant")
+      }
+    }
+    _ => fail("quotient must finish")
+  }
+  match compare(a, b, @oracle.nat(100)).unwrap() {
+    Compared(order, proof) => {
+      assert_true(check_comparison(proof))
+      assert_true(check_comparison_result(order, proof))
+      let forged = Compared(Greater, proof)
+      match forged {
+        Compared(payload, certificate) =>
+          assert_false(check_comparison_result(payload, certificate))
+        _ => fail("forged comparison variant")
+      }
+    }
+    _ => fail("comparison must finish")
+  }
+}

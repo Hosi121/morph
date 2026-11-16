@@ -106,6 +106,8 @@ pub extend UnaryCertificate with Eq::{equal, not_equal}
 pub extend UnaryCertificate with Debug::{to_repr}
 
 ///|
+/// Check the embedded input/result relation. Use check_unary_result when a
+/// separate Number payload is supplied alongside this certificate.
 pub fn check_unary(proof : UnaryCertificate) -> Bool {
   match number(proof.input) {
     Err(_) => false
@@ -237,4 +239,11 @@ pub fn inverse(
     Ok(state) => unary_advance(state, fuel)
     Err(error) => Err(error)
   }
+}
+
+///|
+/// Bind the Number payload to the exact normalized root certificate in the proof.
+/// This is representation binding, not a separate numeric-equality decision.
+pub fn check_unary_result(value : Number, proof : UnaryCertificate) -> Bool {
+  root_certificate(value).equal(proof.result) && check_unary(proof)
 }
