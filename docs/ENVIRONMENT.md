@@ -20,6 +20,8 @@ bootstrapの既定値は公式のlatestです。後日の取得物が下記の�
 ツアーの[出力例](TOUR.txt)と[表示・入力変換の実装](../src/cmd/main)も参照してください。
 `tools/moon run src/cmd/advanced` は実代数演算・数体・実解列挙・基底順序変換・μ-calculusをまとめて実行します。
 [出力例](ADVANCED_TOUR.txt)はnative・JS・WasmGCで完全一致を確認しています。
+`tools/moon run src/cmd/realclosed` は量化消去・球の射影・三段平方根・非線形実数SMTを実行します。
+[実閉体ツアーの出力](REALCLOSED_TOUR.txt)も3バックエンドで照合しています。
 
 ## 開発時のコマンド
 
@@ -106,8 +108,15 @@ uv venv .tools/reference-venv
 uv pip install --python .tools/reference-venv/bin/python sympy==1.14.0 z3-solver==5.4.1.0
 .tools/reference-venv/bin/python tools/generate_cad_review.py --check
 .tools/reference-venv/bin/python tools/generate_realnlsmt_review.py --check
+.tools/reference-venv/bin/python tools/generate_incremental_review.py --check
+.tools/reference-venv/bin/python tools/generate_theory_core_review.py --check
+python3 tools/generate_retained_cdcl_review.py --check
 ```
 
-Z3はQF_NRAの41入力についてsat/unsatの正確な判定を要求し、unknownなら生成を止めます。
-参照コード、SMT-LIB、バイナリのSHA-256は[独立照合](research/realnlsmt-independent-review-20261116.md)を参照してください。
+Z3を使う生成器は正確なsat/unsat判定を要求し、unknownなら生成を止めます。
+元のSMT参照は[41入力の照合](research/realnlsmt-independent-review-20261116.md)、
+枝刈りは[16入力の照合](research/incremental-cad-20261117.md)、
+共有被覆は[元式・部分式18組の照合](research/theory-core-20261117.md)を参照してください。
+参照コード、SMT-LIB、バイナリのhashは各記録にあります。
+CDCL状態保持の生成器はPython標準ライブラリの真理値表を使い、Z3を必要としません。
 MoonBitの計算核から外部solverを呼ぶ経路はありません。

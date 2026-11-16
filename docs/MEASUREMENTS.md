@@ -1,17 +1,55 @@
 # 計測記録
 
-[ドキュメント](README.md) / [探索・改善記録](bootstrap/README.md)
+[ドキュメント](README.md) / [基礎部品の最適化](KERNELS.md)
 
-このページは、2026-11-15の初回探索で行った比較の記録です。
-後続の基礎部品の改善は[採用状況](KERNELS.md)と[分野別の記録](bootstrap/README.md)、
-横断検証の最新の記録は[検証ガイド](VALIDATION.md)から辿れます。
+比較条件と生データを探すための入口です。
+通常経路への採否は[KERNELS](KERNELS.md)、値の正しさと検査範囲は[検証ガイド](VALIDATION.md)にまとめています。
 
 ## 計測値を読むとき
 
-- ソース、入力、backend、CPU、測定範囲を揃えた系列の中で比較します。
-- 入力構築や証拠検査を含むかどうかは、各比較の条件を確認してください。
-- 異なる系列の絶対時間や倍率は、足し合わせたり掛け合わせたりしません。
+- ソース、入力、バックエンド、CPU、測定範囲を揃えた系列の中で比較します。
+- 入力構築や証拠検査を含むかは、各記録の条件を確認します。
+- 異なる系列の絶対時間や倍率を足し合わせたり掛け合わせたりしません。
 - 同じ値を返すことと、その環境で速いことは別に検査します。
+
+中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
+個別入力での改善を、全入力の速度保証へ一般化しません。
+
+## 実数制約・SMTの比較
+
+| 比較 | 条件・採否 | 生データ |
+| --- | --- | --- |
+| 全割当ての理論節 → 既存被覆からの原子削減 | [小さな理論衝突節](research/theory-core-20261117.md) | [native](measurements/theory-core-native-20261117.json)・[JS](measurements/theory-core-js-20261117.json)・[WasmGC](measurements/theory-core-wasm-gc-20261117.json) |
+| 理論衝突後のCDCL再始動 → 状態保持 | [CDCL状態保持](research/retained-cdcl-20261117.md) | [native](measurements/retained-cdcl-native-20261117.json)・[JS](measurements/retained-cdcl-js-20261117.json)・[WasmGC](measurements/retained-cdcl-wasm-gc-20261117.json) |
+| 完全CAD → 早期SAT終了・円柱の枝刈り | [必要なセルからの探索](research/incremental-cad-20261117.md) | [native](measurements/incremental-cad-native-20261117.json)・[JS](measurements/incremental-cad-js-20261117.json)・[WasmGC](measurements/incremental-cad-wasm-gc-20261117.json) |
+
+各系列は同じartifact内の二方式を比較し、準備・探索・最終検査の内訳を記録しています。
+新しい系列でも共通checkerが変わる場合があるため、過去のGit版との直接の速度比とは区別します。
+未完了のstress例や改善の見えない対照も、各設計記録へ残しています。
+
+## 再現する
+
+Linuxで、既存被覆による理論節削減を一つの入力について比較する例です。
+CPU番号は環境に合わせて選びます。その他のバックエンド・入力・方式は
+[比較器](../tools/compare_incremental_cad.py)の `--help` と各記録を参照してください。
+
+```sh
+tools/measure --cpu 4 tools/moon build src/cmd/incrementalbench --target native --release
+tools/measure --cpu 4 python3 tools/compare_incremental_cad.py \
+  --artifact _build/native/release/build/cmd/incrementalbench/incrementalbench.exe \
+  --layer smt --modes retained core --abba-repetitions 3 \
+  --case squares-unsat4 --output .tools/theory-core-comparison.json
+```
+
+基礎算術・有限体・SAT核などの比較は、[最適化の採用一覧](KERNELS.md)と
+[分野別の探索記録](bootstrap/README.md)から辿れます。
+
+## 初回探索の記録
+
+<details>
+<summary>2026-11-15の比較条件・結果・再現コマンド</summary>
+
+以下は初回探索時の記録です。当時の入力、コード、環境に対する値を保存しています。
 
 ## 初回探索終了時の連続実行
 
@@ -215,3 +253,5 @@ tools/moon bench src/benchmarks/multiply_test.mbt --target native --release
 ```sh
 tools/moon bench src/benchmarks/sudoku_test.mbt --target native --release
 ```
+
+</details>

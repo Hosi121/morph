@@ -2,112 +2,101 @@
 
 [ドキュメント](README.md) / [開発・検証環境](ENVIRONMENT.md)
 
-morphは、ソース検査、実行テスト、証拠検査、Leanモデルを組み合わせて確認します。
-それぞれが確かめる性質と、信頼する部分は異なります。
+実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
+このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
+
+## 検証済みスナップショット
+
+2026-11-17（JST）に、コード `b8e5ff3` を固定して統合検証しました。
+理論衝突節の削減、CDCL状態保持、早期SAT終了と円柱の枝刈りを含みます。
+以後の文書編集を、新しいコードの実行検証として数えるものではありません。
+
+| 検査 | 結果 |
+| --- | --- |
+| native / JS / WasmGC | 各3,871テスト成功 |
+| Pythonの保守ゲート | 24テスト成功 |
+| 純記号制約 | 251核ソースが通過 |
+| 公開API | 103生成スナップショットが一致 |
+| Lean | 32対応領域の差分検査と全モデルが通過 |
+| 独立照合・証拠検査 | 共有被覆の18組・36件の厳密Z3照合、SAT弱化・証拠改竄、既存fixtureが通過 |
+| 実行例 | 実閉体ツアーが3バックエンドで掲載出力と一致 |
+
+正本は[条件・コマンド・集計](measurements/theory-core-20261117-validation.json)と
+[全出力](measurements/theory-core-20261117-validation.txt)です。
+六関係の解析例や旧CADとの回帰、独立生成器の一覧も、この記録から確認できます。
+[共有被覆と衝突節削減の検査範囲](research/theory-core-20261117.md)と
+[片付け記録](measurements/theory-core-20261117-cleanup.json)に、個別の判断と資料の保管先を残しています。
 
 ## 変更したときに実行する
 
-```sh
-python3 tools/check_docs.py           # 文書のリンク・節・コードブロック
-tools/check                          # ソース制約・生成物・Wasm GC/JSテスト
-tools/moon test --target native       # nativeテスト
-tools/check_formal                    # Leanモデルを変更・再確認するとき
-```
+すべてリポジトリのルートで実行します。
 
-Leanの初回準備は[形式検証](../formal/README.md)を参照してください。
-共有の開発環境で重い処理を並べるときは、`tools/measure --cpu N COMMAND...`で
-共通ロックとCPU固定を使います。文書のリンク検査にはMoonBitやLeanは不要です。
+| 変更 | コマンド |
+| --- | --- |
+| 文書 | `python3 tools/check_docs.py` |
+| 計算核・探索・検査器 | `tools/check` と `tools/moon test --target native` |
+| 対応するLeanモデルやソース | `tools/check_formal` |
+| 独立fixture | [環境ガイドの再生成手順](ENVIRONMENT.md#実閉体非線形smtの独立fixtureを再生成する) |
+
+`tools/check` は保守テスト、ソース制約、整形、型、生成物、WasmGC・JSテスト、公開APIの差分を検査します。
+文書のリンク検査にはMoonBitやLeanは不要です。Leanの初回準備は[形式検証](../formal/README.md)を参照してください。
+共有のLinux環境では、重い処理を `tools/measure --cpu N COMMAND...` で直列化できます。
+CPU番号は環境に合わせて指定します。
 
 ## 検査が示すもの
 
 | 方法 | 確認する性質 | 信頼する部分・限界 |
 | --- | --- | --- |
-| ソース検査 | 計算核へ数値型・配列・可変状態・FFIが混入しないこと、代表的な変換往復の再導入 | 保守的な字句検査。停止性やコンパイラの正しさは証明しない |
-| 総当たり・独立オラクル | 有限の入力集合で、整数・配列・別実装の期待値と一致すること | テスト範囲とオラクルに依存する。任意長への一般化は別に必要 |
-| 問題ごとの証拠検査 | SAT反証、最大流のカット、LPの双対解などが元の問題に対する根拠を満たすこと | 検査器と共有算術を信頼する。探索を再実行しない検査も、プログラムである |
-| 外部チェッカー | 実際のSAT核が出力した反証をLRAT/DRAT形式でも受理できること | 選んだ問題とチェッカーに対する確認。偽造例の拒否も併せて調べる |
-| Leanモデル | 加算、半分化、二進変換、比較、fold、疎Hornerなどの全称命題 | 手で対応付けたモデルの証明。MoonBitへの変換器・コンパイラ全体の証明ではない |
-| 対応差分・公開API検査 | レビューしたソース領域や公開型の変更を見逃さないこと | 変更を検出する仕組みであり、変更後の意味の正しさは別途確認する |
+| ソース検査 | 核への数値型・配列・可変状態・FFIの混入、代表的な変換往復の再導入 | 保守的な字句検査。停止性やコンパイラの正しさは証明しない |
+| 総当たり・独立オラクル | 有限の入力集合で、整数・配列・別実装の期待値と一致すること | 入力範囲とオラクルに依存する。任意長への一般化は別に必要 |
+| 問題ごとの証拠検査 | SAT反証、最大流のカット、LPの双対解などが元の問題の根拠を満たすこと | 検査器と共有算術を信頼する。探索と別の検査器もプログラムである |
+| 外部チェッカー | SAT核の出力をLRAT/DRAT形式でも受理できること | 選んだ問題とチェッカーに対する確認。偽造例の拒否も併せて調べる |
+| Leanモデル | 加算、半分化、二進変換、比較、fold、疎Horner、条件付きBoolean評価などの全称命題 | 手で対応付けたモデルの証明。原子観測の健全性など明示的な仮定がある。CAD・SMT・コンパイラ全体の証明ではない |
+| 対応差分・公開API検査 | レビューしたソース領域や公開型の変更の検出 | 差分を検出する仕組み。変更後の意味の正しさは別途確認する |
 
-定理とソースの対応は[形式検証](../formal/README.md)、個別の主張と根拠は
-[検証台帳](bootstrap/verification-ledger.md)に記録しています。
+定理とソースの対応は[形式検証](../formal/README.md)、主張ごとの根拠は
+[検証台帳](bootstrap/verification-ledger.md)、個別の独立レビューは[研究記録](research/README.md)にあります。
+パッケージ一覧の「テスト宣言数」、実行成功数、一つのテスト内の比較例数は異なる集計です。
 
-## 検証済みスナップショット
+## 過去の検証記録
 
-2026-11-17（JST）の統合検証は、ソース`b8e5ff3`を固定して実行しました。
-既存CAD被覆からの理論衝突節の削減、CDCL状態保持、早期SAT終了と証拠検査まで含みます。
-[全出力](measurements/theory-core-20261117-validation.txt)と
-[条件・コマンド・集計](measurements/theory-core-20261117-validation.json)を保存しています。
+履歴の値は、その時点のコードと条件に対する結果です。
 
-| 検査 | 結果 |
-| --- | --- |
-| native / JS / Wasm GC | 各3,871テスト成功 |
-| Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 251核ソースが通過 |
-| 公開API | 103生成スナップショットが一致 |
-| Leanモデル | 32対応領域の差分検査と全モデルが通過。CAD・衝突節削減全体の形式証明を追加したものではない |
-| 共有被覆の独立照合 | 元式/部分式の18組・36件の厳密Z3照合、SAT弱化と5種類の証拠攻撃を全3 backendで検査 |
-| 算術・SMTの回帰 | 六関係の30個の解析例、共同で矛盾する2原子、短い式と最終RUPの元問題への束縛を検査 |
-| 独立fixture | 新規subset参照、既存Z3 16/41入力、真理値表スケジュール、CAD 19例・一階式6例の生成物が一致 |
-| 実行ツアー | 実閉体のツアーが3 backendで掲載例と一致 |
-| 同条件の性能比較 | 36比較・432回の検査付き計測。各方式6回、削減できない対照と遅い中央値も保存 |
-
-[小さな理論衝突節の設計と計測](research/theory-core-20261117.md)に、通常経路への採用理由と保守的な失敗を記録しています。
-担当用作業木をmain一つへ戻し、12資料のバイト一致、研究branchのbundle、重複したビルド出力の削除を
-[片付け記録](measurements/theory-core-20261117-cleanup.json)へ残しました。
-
-前回の`de2a892`は、CDCL状態保持まで含む
-[各3,835テストの統合検証](measurements/retained-cdcl-20261117-validation.json)と
-[出力](measurements/retained-cdcl-20261117-validation.txt)を保存しています。
-
-前回の`8fe68f0`は、円柱の枝刈りまで含む
-[各3,817テストの統合検証](measurements/incremental-20261117-validation.json)と
-[出力](measurements/incremental-20261117-validation.txt)を保存しています。
-前段階の[設計・計測](research/incremental-cad-20261117.md)では、完全CADとの比較と未完了の追加stressを区別しています。
-
-前回の`37d82f5`は[各3,775テストの統合検証](measurements/realclosed-20261116-validation.json)
-と[出力](measurements/realclosed-20261116-validation.txt)を保存しています。
-多段実代数体・任意変数CAD・一階実数式の量化消去からの接続は、その記録も参照してください。
-
-前段階は、`9880edf`の[3,311テストの仕上げ検証](measurements/advanced-20261116-final-validation.txt)、
-`12db9d8`の[第二段階](measurements/advanced-20261116-second-validation.txt)、
-`6934453`の[最初の検証](measurements/advanced-20261116-first-validation.txt)として保存しています。
-
-追加算法については[個別の検証・独立レビュー](research/README.md)を参照してください。
-既存のLean定理が、新しく追加した算法全体の証明へ広がったわけではありません。
+| コード | 段階 | 記録 |
+| --- | --- | --- |
+| `de2a892` | CDCL状態保持、各3,835テスト | [集計](measurements/retained-cdcl-20261117-validation.json)・[出力](measurements/retained-cdcl-20261117-validation.txt) |
+| `8fe68f0` | 円柱の枝刈り、各3,817テスト | [集計](measurements/incremental-20261117-validation.json)・[出力](measurements/incremental-20261117-validation.txt) |
+| `37d82f5` | 多段実代数体・任意変数CAD・量化消去、各3,775テスト | [集計](measurements/realclosed-20261116-validation.json)・[出力](measurements/realclosed-20261116-validation.txt) |
+| `9880edf` | 複雑な算法の仕上げ、各3,311テスト | [出力](measurements/advanced-20261116-final-validation.txt) |
+| `12db9d8` / `6934453` | 複雑な算法の第二段階 / 最初の段階 | [第二段階](measurements/advanced-20261116-second-validation.txt)・[最初の段階](measurements/advanced-20261116-first-validation.txt) |
 
 <details>
 <summary>前段階の基礎kernel検証とSAT反証の外部検査</summary>
 
-次の数値は2026-11-16、計算核のソース`c331d0c`を基準に実行した記録です。
-以後の文書やテストの数が同じであることを保証する値ではありません。
+2026-11-16のコード `c331d0c` に対する記録です。
 
-| 検査 | 記録された結果 |
+| 検査 | 結果 |
 | --- | --- |
-| native / JS / Wasm GC | 各499テスト成功 |
-| Pythonの保守ゲート | 12テスト成功 |
-| 純記号制約 | 122核ソースが通過 |
-| 公開API | 69生成スナップショットが一致 |
+| native / JS / WasmGC | 各499テスト成功 |
+| Python / 純記号制約 / 公開API | 12テスト / 122核ソース / 69生成スナップショット |
 | Leanとの対応 | 24領域の差分検査と全モデルが通過 |
 | SAT反証の外部検査 | 16証拠をLRAT/DRAT両方が受理、7偽造例を拒否 |
 
-出力: [核・テスト・Lean](measurements/final-kernels-validation.txt) ·
-[外部反証検査](measurements/final-proof-validation.txt) ·
-[証拠マニフェスト](measurements/final-proof-manifest.json)
-
-パッケージ一覧の「テスト宣言数」は実行成功数ではありません。
-一つのテストに総当たりを含む場合もあるため、比較例の総数とも異なります。
+[核・テスト・Lean](measurements/final-kernels-validation.txt)・
+[外部反証検査](measurements/final-proof-validation.txt)・
+[証拠マニフェスト](measurements/final-proof-manifest.json)を保存しています。
 
 </details>
 
 ## 資源と性能の限界
 
 値の一致、再帰の深さ、割当量、実行速度は別々に確認します。
-燃料付き探索の一歩にも、リスト走査や有理数演算が含まれるため、一定実時間を保証しません。
+燃料付き探索の一歩にも、リスト走査や有理数演算が含まれ、一定実時間を保証しません。
 
-JSの通常の長語除算・剰余には、`2^20000 mod 3`で確認したスタック制約が残ります。
-20,000bitは耐久試験の入力であり、上位アルゴリズムで必要な桁数を示すものではありません。
+JSの通常の長語除算・剰余には、`2^20000 mod 3` で確認したスタック制約が残ります。
+20,000bitは耐久試験の入力で、上位アルゴリズムに必要な桁数を示すものではありません。
 [末尾再帰化の試作](research/wide-kernels/README.md)は値とスタックの検査を通過しましたが、
 nativeの剰余が遅くなるため採用していません。
 
-性能は[同条件の比較](KERNELS.md)で判定します。異なる測定系列の倍率は掛け合わせません。
+性能の比較条件は[計測記録](MEASUREMENTS.md)、通常経路への採否は[基礎部品の最適化](KERNELS.md)を参照してください。
+異なる測定系列の倍率は掛け合わせません。
