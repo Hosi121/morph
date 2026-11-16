@@ -1,6 +1,8 @@
 ///|
 /// Finite sign tree only. A geometric CAD checker must separately establish
 /// coverage, sign invariance and derivative closure of the supplied families.
+/// Leaf(value) is constant over every remaining real coordinate, including
+/// when it appears before the final level. It carries no geometric proof.
 #derive(Eq, Debug)
 pub(all) enum Tree {
   Leaf(Bool)

@@ -27,7 +27,7 @@ fn validate_tree(
   tree : Tree,
 ) -> Result[Unit, EncodingError] {
   match (levels, tree) {
-    (Nil, Leaf(_)) => Ok(())
+    (_, Leaf(_)) => Ok(())
     (Cons(family, rest), Branch(Cons(_, _) as children)) => {
       fn walk(children : @core.Chain[Child]) -> Result[Unit, EncodingError] {
         match children {

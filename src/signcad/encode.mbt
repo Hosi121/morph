@@ -18,13 +18,15 @@ fn disjoin(left : @qf.Formula, right : @qf.Formula) -> @qf.Formula {
 
 ///|
 /// Prefix variables are outermost first. Each fibre is collapsed before its
-/// parent; flattening the leaves would lose quantifier alternation.
+/// parent; flattening the leaves would lose quantifier alternation. A leaf
+/// denotes a constant cylinder, so any remaining prefix leaves it unchanged
+/// because each quantified real domain is nonempty.
 fn collapse(
   prefix : @core.Chain[@logic.Quantifier],
   tree : Tree,
 ) -> Result[Bool, EncodingError] {
   match (prefix, tree) {
-    (Nil, Leaf(value)) => Ok(value)
+    (_, Leaf(value)) => Ok(value)
     (Cons(quantifier, rest), Branch(children)) => {
       fn fold(children : @core.Chain[Child]) -> Result[Bool, EncodingError] {
         match children {
@@ -123,6 +125,7 @@ fn assemble(
       }
     Succ(rest) =>
       match (levels, tree) {
+        (_, Leaf(value)) => Ok(Truth(value))
         (Cons(family, following), Branch(children)) => {
           fn cases(
             children : @core.Chain[Child],
@@ -161,6 +164,8 @@ fn assemble(
 /// Families are in dimensions one through n, not including dimension zero.
 /// This checks a finite sign-tree transformation. It is NOT by itself a CAD
 /// coverage proof or a test that signs are constant between sample points.
+/// A Leaf at an intermediate level denotes a constant cylinder over all
+/// remaining coordinates; its geometric uniformity must be checked separately.
 pub fn encode(
   free_variables : @core.Nat,
   quantifiers : @core.Chain[@logic.Quantifier],
