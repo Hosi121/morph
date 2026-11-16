@@ -1,0 +1,196 @@
+{
+  "reference": "Z3 qfnra-nlsat, independently replayed exact SMT-LIB",
+  "z3_version": "5.4.1.0",
+  "wheel_version": "5.4.1.0",
+  "libz3_sha256": "529c335663f5f3e9143fd98a963266090348052f0f9fd7bf5fe891aad6ca5b35",
+  "transport_source_sha256": "7dd1ab1bfc632c6b335fc0bf7a45343c55e8b2785cb5fd22b02ec37765f27dd0",
+  "scope": "16 default exact search/model/proof and checked full-CAD differential cases, plus one preserved optional stress input checked only by external Z3",
+  "full_reference_policy": "Original quadratic-in-z case 14 remains as an optional stress input: neither full nor pruned morph completion is claimed. The default cohort uses a distinct, explicitly named affine replacement. --emit-full-stress emits the original input test under .tools, outside default package tests.",
+  "stress_cost_observation": {
+    "baseline": "09c4f7e",
+    "target": "native",
+    "profile": "debug",
+    "cpu": 10,
+    "classification": "unresolved cost, not wrong result and not passed",
+    "full_plus_search_single_case_execution_timeout_seconds": 10,
+    "initial_full_control_cohort_stopped_after_seconds": 72,
+    "full_disabled_cohort_stopped_after_seconds": 52,
+    "cohort_times_are_not_individual_case_times": true,
+    "phase_diagnostic_execution_timeout_seconds": 8,
+    "last_completed_phase_in_line_buffered_diagnostic": "prepare",
+    "active_phase_at_timeout": "search/lifting (before checker)"
+  },
+  "input_coefficients": "Fraction/QQ; no floats or approximate roots",
+  "cases": [
+    {
+      "name": "sector sample is not a cylindrical truth",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "x=y=1; y=x is not constant over the suffix at x=1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (> (+ (* 1 x0)) 0) (= (+ (* (- 1) x0) (* 1 x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "1a3be590ee689f1639e73a25b3ba6c2daac726fd8489421ee8334dabd2161dd2",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "negative sector square root",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "x=-1,y=1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (< (+ (* 1 x0)) 0) (= (+ (* 1 x0) (* 1 x1 x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "edf442a5352c87727923ae93a9a0060b9dfb50b48a58fa80d7d9ffc4ceb5abe7",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "positive sector square root obstruction",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "y^2+x>0 for every x>0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (> (+ (* 1 x0)) 0) (= (+ (* 1 x0) (* 1 x1 x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "fc84e955e950656c18fa6517973e7eb512e8fe761469ddc7374870d87abd1469",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "irrational section nullifies an impossible affine fibre",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "At both roots of x^2-2, the second polynomial is -1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (= (+ (* 1 x0 x0 x1) (* (- 2) x1) (* (- 1))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "c1d1a2293743ad63ae1582b6a752a270c304f0d8aaa898ab1250c32c89382332",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "irrational section nullifies a free suffix",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "x=sqrt(2) makes the entire y cylinder valid.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (= (+ (* 1 x0 x0 x1) (* (- 2) x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "2c4d87a641bf7c7451cdd1bebcb9412c5368fddeb10148a7d35b608cc4ee9b8f",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "combined coefficient cancellation leaves nonzero constant",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "x=1 kills the y coefficient and leaves -1.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 1))) 0) (= (+ (* 1 x0 x1) (* 1 x0) (* (- 1) x1) (* (- 2))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "92139b9733f20cdcc92c68191dd804868fc0f3c3f4747f8927fecf3ea2ec7112",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "closed boundary forbids strictly positive nullified product",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "The closed bounds force x=0, hence xy=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (>= (+ (* 1 x0)) 0) (and (<= (+ (* 1 x0)) 0) (> (+ (* 1 x0 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "ccb98dc3bc735a8a35d69444f5faef9646a80fdd77dc7c3c645b0e4202599188",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "closed boundary admits nonnegative nullified product",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "x=0 makes xy=0 for every y.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (>= (+ (* 1 x0)) 0) (and (<= (+ (* 1 x0)) 0) (>= (+ (* 1 x0 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "5de0ef4b50e53974b6093220b8af15a225b56b052bb9d4979c3e0bdc2a7061c6",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "irrational section rejects disequality after nullification",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "The zero coefficient forces d*y=0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (distinct (+ (* 1 x0 x0 x1) (* (- 2) x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "cbdb76d484eef235c64ab050d115eda67a5c026f143e0c182f2532ebf1b10e0b",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "negative scaling retains relation orientation",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "x=0 leaves positive constant 2, not a negative value.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (< (+ (* (- 3) x0 x1) (* 2)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "2266da07f6d36ed50e4fd90d43475565e81075a924ebba12312dc5db3dfe257a",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "Boolean alternative closes sectors and nullified sections",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "When d is nonzero the first disjunct holds; when d=0 the second is 1>0.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (or (distinct (+ (* 1 x0 x0) (* (- 2))) 0) (> (+ (* 1 x0 x0 x1) (* (- 2) x1) (* 1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "df758ecbd0a738f089eb8f828e0dbf8115215b83c66b75fba35384f5518750c6",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "exact rational coefficient nullification",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "x=1/3 makes the second polynomial -2.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0) (* (/ (- 1) 3))) 0) (>= (+ (* 3 x0 x1) (* (- 1) x1) (* (- 2))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "8650549bdce0b05b9427583f33d5f4fd743cb8384ea6546718189d0515964121",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "negated strict boundary survives at section",
+      "arity": 2,
+      "expected": "sat",
+      "closed_form_reason": "x=0 gives xy=0 and negates strict positivity.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (not (> (+ (* 1 x0 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "0a0a13cf5a0d32d548b053fdb88ebefa726fef50a5eda795ffda67c877831878",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "same future monomial combines several prefix terms",
+      "arity": 2,
+      "expected": "unsat",
+      "closed_form_reason": "At x=2 the grouped y coefficient is 4-6+2=0 and constant 3 remains.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 2))) 0) (= (+ (* 1 x0 x0 x1) (* (- 3) x0 x1) (* 2 x1) (* 3)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "ed95d102fceae381fd7a22f8fe0ad01ef4ac676aeaa109fda302dc244ff559f3",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "three coordinate affine coefficient vanishes before contradictory constant",
+      "arity": 3,
+      "expected": "unsat",
+      "closed_form_reason": "x=0 removes the z coefficient; y=1 then leaves -1. This tractable affine regression replaces the separately preserved quadratic-in-z stress input.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x1) (* (- 1))) 0) (= (+ (* 1 x0 x2) (* 1 x1) (* (- 2))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "0a03f78d0bfeff47dab5d5fb1c759343c26a6cdf6c0593d9ead9b32239bc9bd5",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "three coordinate nullification admits full last cylinder",
+      "arity": 3,
+      "expected": "sat",
+      "closed_form_reason": "x=0,y=1 makes the last polynomial zero for every z.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x1) (* (- 1))) 0) (= (+ (* 1 x0 x2 x2) (* 1 x1 x2) (* (- 1) x2)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "f436f7e750f2c03892129aeb1503d60e9437f99a44781fc7defceb9b83c80a81",
+      "default_regression": true,
+      "default_full_cad_comparison": true
+    },
+    {
+      "name": "three coordinate two future coefficients vanish",
+      "arity": 3,
+      "expected": "unsat",
+      "closed_form_reason": "At x=0,y=1 both z coefficients vanish and -1 remains. Exact Z3 UNSAT; morph execution is a censored cost observation, not a completed result.",
+      "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(declare-fun x2 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x1) (* (- 1))) 0) (= (+ (* 1 x0 x2 x2) (* 1 x1 x2) (* (- 1) x2) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+      "sha256": "8cf943fa2343dcbcad807113ed63298b6f45a60290a660e742b87ba9637f17c1",
+      "default_regression": false,
+      "default_full_cad_comparison": false
+    }
+  ]
+}
