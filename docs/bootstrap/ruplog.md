@@ -177,3 +177,48 @@ python3 tools/generate_ruplog.py --check --miter64 --cpu 10
 
 成果物は既定で `.tools/ruplog-export/`、外部checkerのcacheは `.tools/ruplog-checkers/` に置く。
 環境変数 `MORPH_RUPLOG_EXPORT` はテストadapterだけが読み、通常のテストではexportしない。
+
+## 節ID再検索を除く候補は白箱へ隔離
+
+`1017d72` と同じ共有Core/Binary基盤で、occurrence indexとwork queueに節IDの代わりに
+不変の `Entry` 参照を保持する候補を比較した。各queue訪問でclause-ID trieを引く処理を除く。
+節もIDも順序も同じであり、候補が生成するcertificateはhint列を含めて元のbuilderと一致した。
+候補は `references_wbtest.mbt` に残し、productionは節ID再検索のままとした。
+
+同じnative release ELF、CPU 10、共通mutex、各10サンプルのABBA比較：
+
+| 準備済み64bit proofのbuilder | 平均 ± 標準偏差 |
+| --- | ---: |
+| 節ID、最初のcontrol | 75.19 ms ± 6.78 ms |
+| 節参照 | 62.32 ms ± 3.86 ms |
+| 節参照、繰り返しcontrol | 61.76 ms ± 2.92 ms |
+| 節ID、繰り返しcontrol | 75.39 ms ± 3.57 ms |
+| 未変更の準備済みhint checker | 15.95 ms ± 332.29 µs |
+
+builder単体では改善した。しかし毎回startup・探索・入力準備・builder・独立checkerを含む
+全queryを20対、順序を交互に変えて実行すると、節IDが314.89 ms ± 10.09 ms、
+節参照が316.04 ms ± 27.56 msだった。節参照は13/20対で速く、対差は平均−1.15 ms、
+標準偏差32.59 ms、比の中央値1.0394、範囲0.8074–1.1178。実行順グループ間でも方向が
+揃わず、全queryの改善を確定できないため単独の既定採用は見送った。
+このcontrolは15.20 ms ± 614.97 µs。固定1,000個六変数cohortの全queryも
+45.25 ms ± 2.63 ms対44.18 ms ± 950.26 µsで区間が重なる。うちUNSATは219個。
+
+別のstage測定では全学習節の正規化が2.96 ms ± 84.79 µs、節参照builder全体が
+58.78 ms ± 1.89 msだった。この条件では正規化sortの変更より伝播側を優先する。
+各stageは独立したclosureであり、単純に差し引いた値を厳密なprofileとは扱わない。
+
+三変数の全二節CNF×candidate lemma、合計19,683列（受理・拒否の両方）、原空節、重複、
+tautology、65535ラベル、64bit miter、上記cohortでcertificateの完全一致を確認した。
+候補を一時的にproductionへ選択した状態では13 RUPLOG testsがnative/JS/Wasm GCで通過し、
+deny-warn、purity、外部16 positive/7 negativeも通過した。外部CNF/DRUP hashは不変。
+白箱へ隔離し直した後のnative回帰とdeny-warnも通過した。
+
+最初の比較ELF SHA256は
+`9c9bc6d5fe11d66030d3497eb57d722dea4f00f9f8ba4f9934297e66960edac3`。
+ELFとraw logsは `.tools/cdcl-profile/references-*` に保存した。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 1
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 2
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/ruplog/references_wbtest.mbt --target native --release -i 3
+```
