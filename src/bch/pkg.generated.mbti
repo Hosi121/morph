@@ -1,0 +1,116 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bch"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/galois",
+  "Hosi121/morph/recurrence",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(Plan, @core.Chain[Bool], Decoded) -> Bool
+
+pub fn check_codeword(Plan, @core.Chain[Bool]) -> Bool
+
+pub fn check_minimal_polynomial(@galois.Field, MinimalPolynomial) -> Bool
+
+pub fn decode(Plan, @core.Chain[Bool]) -> Result[Decoded, CodeError]
+
+pub fn encode(Plan, @core.Chain[Bool]) -> Result[@core.Chain[Bool], CodeError]
+
+pub fn field_of(Plan) -> @galois.Field
+
+pub fn generator_polynomial(Plan) -> @core.Chain[Bool]
+
+pub fn length(Plan) -> @core.Nat
+
+pub fn message_size(Plan) -> @core.Nat
+
+pub fn minimal_polynomials(Plan) -> @core.Chain[MinimalPolynomial]
+
+pub fn plan(@galois.Field, @galois.Element, @core.Nat, @core.Nat) -> Result[Plan, CodeError]
+
+pub fn radius(Plan) -> @core.Nat
+
+pub fn root(Plan) -> @galois.Element
+
+pub fn syndrome(Plan, @core.Chain[Bool]) -> Result[@core.Chain[@galois.Element], CodeError]
+
+pub fn valid(Validation) -> Bool
+
+pub fn validate(Plan) -> Validation
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum CodeError {
+  InvalidPlan
+  FieldMismatch
+  LengthMismatch
+  Uncorrectable
+  NonbinaryCoefficient
+  Arithmetic(@galois.FieldError)
+  Recurrence(@recurrence.CheckedError[@galois.FieldError])
+}
+pub fn CodeError::equal(Self, Self) -> Bool
+pub fn CodeError::not_equal(Self, Self) -> Bool
+pub fn CodeError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Decoded {
+  message : @core.Chain[Bool]
+  corrected : @core.Chain[Bool]
+  error_positions : @core.Chain[@core.Nat]
+}
+pub fn Decoded::equal(Self, Self) -> Bool
+pub fn Decoded::not_equal(Self, Self) -> Bool
+pub fn Decoded::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct MinimalPolynomial {
+  conjugates : @core.Chain[@galois.Element]
+  coefficients : @core.Chain[Bool]
+}
+pub fn MinimalPolynomial::equal(Self, Self) -> Bool
+pub fn MinimalPolynomial::not_equal(Self, Self) -> Bool
+pub fn MinimalPolynomial::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  field : @galois.Field
+  root : @galois.Element
+  length : @core.Nat
+  errors : @core.Nat
+  parity : @core.Nat
+  message_size : @core.Nat
+  generator : @core.Chain[Bool]
+  factors : @core.Chain[MinimalPolynomial]
+  roots : @core.Chain[@galois.Element]
+  inverse_points : @core.Chain[@galois.Element]
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Validation {
+  binary_field : Bool
+  root_field : Bool
+  primitive_length : Bool
+  exact_root_order : Bool
+  designed_roots : Bool
+  inverse_points : Bool
+  minimal_factors : Bool
+  generator_product : Bool
+  cyclic_divisor : Bool
+  dimensions : Bool
+}
+pub fn Validation::equal(Self, Self) -> Bool
+pub fn Validation::not_equal(Self, Self) -> Bool
+pub fn Validation::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
