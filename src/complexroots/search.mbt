@@ -48,12 +48,19 @@ pub extend Progress with Debug::{to_repr}
 
 ///|
 pub fn start(problem : Problem) -> Search {
+  start_from(problem, @binary.zero())
+}
+
+///|
+/// Explicit reference/search preference; no integer seed is universally
+/// separating. The default retains the original zero-based sequence.
+pub fn start_from(problem : Problem, seed : @binary.Binary) -> Search {
   {
     problem,
     phase: if degree(problem.squarefree).equal(Zero) {
       Constant
     } else {
-      Separating(@variety.separation_start(problem.variety))
+      Separating(@variety.separation_start_at(problem.variety, seed))
     },
   }
 }

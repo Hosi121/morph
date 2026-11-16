@@ -108,6 +108,8 @@ pub fn separation_from_certificate(Problem, SeparationCertificate) -> Result[Sep
 
 pub fn separation_start(Problem) -> SeparationSearch
 
+pub fn separation_start_at(Problem, @binary.Binary) -> SeparationSearch
+
 pub fn shape_certificate(Shape) -> ShapeCertificate
 
 pub fn shape_from_certificate(ShapeCertificate) -> Result[Shape, VarietyError]

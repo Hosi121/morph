@@ -2,6 +2,7 @@
 package "Hosi121/morph/complexroots"
 
 import {
+  "Hosi121/morph/binary",
   "Hosi121/morph/complexalgebraic",
   "Hosi121/morph/core",
   "Hosi121/morph/polynomial",
@@ -47,6 +48,8 @@ pub fn source(Problem) -> @polynomial.Polynomial
 pub fn squarefree(Problem) -> @polynomial.Polynomial
 
 pub fn start(Problem) -> Search
+
+pub fn start_from(Problem, @binary.Binary) -> Search
 
 // Errors
 

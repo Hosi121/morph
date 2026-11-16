@@ -372,13 +372,18 @@ pub extend SeparationProgress with Debug::{to_repr}
 
 ///|
 pub fn separation_start(source : Problem) -> SeparationSearch {
-  {
-    source,
-    next: @binary.zero(),
-    attempts: Zero,
-    failures: Nil,
-    phase: Choosing,
-  }
+  separation_start_at(source, @binary.zero())
+}
+
+///|
+/// Choose the first nonnegative integer separating form explicitly. Subsequent
+/// attempts still advance by one. This is a search preference, not a promise
+/// that the requested form separates the points; all certificates are checked.
+pub fn separation_start_at(
+  source : Problem,
+  seed : @binary.Binary,
+) -> SeparationSearch {
+  { source, next: seed, attempts: Zero, failures: Nil, phase: Choosing, }
 }
 
 ///|
