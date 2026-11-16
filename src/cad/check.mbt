@@ -68,7 +68,8 @@ pub fn problem_of(value : Decomposition) -> Problem {
 /// canonical ordered samples, all specialised signs and all terminal truths.
 /// Field and PRS computations are recomputed; this is not a Lean proof.
 pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
-  if !proof.arity.equal(problem.arity) ||
+  if !@logic.qf_atoms(problem.formula).equal(problem.atoms) ||
+    !proof.arity.equal(problem.arity) ||
     !proof.formula.equal(problem.formula) ||
     !proof.projection.equal(problem.projection) ||
     !@projection.check(problem.arity, problem.atoms, proof.projection) {
