@@ -1,0 +1,125 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/elimination"
+
+import {
+  "Hosi121/morph/berkowitz",
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] bezout(Fixed[A], Fixed[A], @berkowitz.Ring[A]) -> Bezout[A]?
+
+pub fn[A] check_bezout_identity(Fixed[A], Fixed[A], A, Bezout[A], @berkowitz.Ring[A], (A, A) -> Bool) -> Bool
+
+pub fn[A] check_discriminant(Fixed[A], A, @berkowitz.Ring[A], (A, A) -> Bool) -> Bool
+
+pub fn check_discrimination(Input, @polynomial.Polynomial) -> Bool
+
+pub fn check_elimination(Input, Input, @polynomial.Polynomial) -> Bool
+
+pub fn check_projection_identity(Input, Input, @polynomial.Polynomial, ProjectionIdentity) -> Bool
+
+pub fn check_projection_result(Input, Input, @polynomial.Polynomial, ProjectionIdentity) -> Bool
+
+pub fn[A] check_resultant(Fixed[A], Fixed[A], A, @berkowitz.Ring[A], (A, A) -> Bool) -> Bool
+
+pub fn[A, B] check_specialization(Fixed[A], Fixed[B], (A) -> B, (B, B) -> Bool) -> Bool
+
+pub fn[A] coefficients(Fixed[A]) -> @core.Chain[A]
+
+pub fn[A] dense(@core.Chain[A], @berkowitz.Ring[A]) -> Fixed[A]
+
+pub fn[A] derivative(Fixed[A], @berkowitz.Ring[A]) -> Fixed[A]
+
+pub fn[A] discriminant(Fixed[A], @berkowitz.Ring[A]) -> A?
+
+pub fn discriminant_variable(@polynomial.Polynomial, @core.Nat) -> Result[@polynomial.Polynomial, EliminationError]
+
+pub fn discriminate(Input) -> Result[@polynomial.Polynomial, EliminationError]
+
+pub fn eliminate(Input, Input) -> Result[@polynomial.Polynomial, EliminationError]
+
+pub fn[A] fixed(@core.Nat, @core.Chain[A]) -> Fixed[A]?
+
+pub fn fixed_input(@polynomial.Polynomial, @core.Nat, @core.Nat) -> Result[Input, EliminationError]
+
+pub fn input(@polynomial.Polynomial, @core.Nat) -> Result[Input, EliminationError]
+
+pub fn input_degree(Input) -> @core.Nat
+
+pub fn[A, B] map_coefficients(Fixed[A], (A) -> B) -> Fixed[B]
+
+pub fn[A] nominal_degree(Fixed[A]) -> @core.Nat
+
+pub fn projection_identity(Input, Input) -> Result[ProjectionIdentity, EliminationError]
+
+pub fn[A] resultant(Fixed[A], Fixed[A], @berkowitz.Ring[A]) -> A?
+
+pub fn resultant_variable(@polynomial.Polynomial, @polynomial.Polynomial, @core.Nat) -> Result[@polynomial.Polynomial, EliminationError]
+
+pub fn source(Input) -> @polynomial.Polynomial
+
+pub fn[A] sylvester(Fixed[A], Fixed[A], @berkowitz.Ring[A]) -> @matrix.Matrix[A]?
+
+pub fn variable(Input) -> @core.Nat
+
+// Errors
+
+// Types and methods
+pub(all) struct Bezout[A] {
+  left : Fixed[A]
+  right : Fixed[A]
+  value : A
+  u : @core.Chain[A]
+  v : @core.Chain[A]
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) enum EliminationError {
+  InvalidVariable
+  DegreeTooSmall
+  DimensionMismatch
+  InternalDimension
+  ConstantPairIdentity
+}
+pub fn EliminationError::equal(Self, Self) -> Bool
+pub fn EliminationError::not_equal(Self, Self) -> Bool
+pub fn EliminationError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Fixed[A] {
+  degree : @core.Nat
+  coefficients : @core.Chain[A]
+}
+pub fn[A : Eq] Fixed::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Fixed::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Fixed::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Input {
+  polynomial : @polynomial.Polynomial
+  variable : @core.Nat
+  degree : @core.Nat
+}
+pub fn Input::equal(Self, Self) -> Bool
+pub fn Input::not_equal(Self, Self) -> Bool
+pub fn Input::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ProjectionIdentity {
+  left : Input
+  right : Input
+  value : @polynomial.Polynomial
+  u : @polynomial.Polynomial
+  v : @polynomial.Polynomial
+}
+pub fn ProjectionIdentity::equal(Self, Self) -> Bool
+pub fn ProjectionIdentity::not_equal(Self, Self) -> Bool
+pub fn ProjectionIdentity::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,68 @@
+# Fixed-degree division-free elimination
+
+`src/elimination` supplies generic fixed-degree Sylvester resultants, universal fixed-degree discriminants, and a checked QQ multivariate-polynomial wrapper that deletes a selected variable. It uses the frozen division-free Berkowitz determinant and adjugate from root `1f067d2`, locally cherry-picked as `9db352a`; no Berkowitz implementation files are changed. The package is a projection building block, not a complete CAD or real-feasibility solver.
+
+The implementation is split into [fixed coefficients and Sylvester construction](../../src/elimination/fixed.mbt), [adjugate Bezout witnesses](../../src/elimination/bezout.mbt), [universal discriminants](../../src/elimination/discriminant.mbt), [private homogeneous coefficient arithmetic](../../src/elimination/coefficient.mbt), [QQ variable elimination](../../src/elimination/projection.mbt), and [query-bound checkers](../../src/elimination/projection_certificate.mbt). [The API](../../src/elimination/pkg.generated.mbti) is compiler-generated with `moon info`.
+
+## Generic fixed coefficients and conventions
+
+`Fixed[A]` is externally opaque and stores a nominal degree `d` together with exactly `d+1` coefficients in descending order. `fixed(d,coefficients)` rejects every other length, including `Nil`. `dense(coefficients,ring)` takes length minus one as the nominal degree; `dense(Nil,ring)` is the nominal constant zero `[0]`. Leading zeros are never trimmed. The ring dictionary is the frozen `@berkowitz.Ring[A]`: its caller must supply a commutative ring with identity, including additive negation. The algorithms do not verify those laws, use division, or search for pivots. Equality is needed only by the explicit checker callbacks.
+
+For nominal degrees `m,n`, `sylvester` returns the coefficient map
+
+```text
+(U,V) -> U*f+V*g,   degree(U)<n, degree(V)<m,
+```
+
+in descending coefficient bases. Its columns are the shifted `f` vectors followed by the shifted `g` vectors. This is the transpose of the usual shifted-row Sylvester matrix, so it has the same determinant and standard sign. In particular `Res(a*y+b,c*y+d)=a*d-b*c`. The [Sage reference's shifted-row matrix](https://doc.sagemath.org/html/en/reference/polynomial_rings/sage/rings/polynomial/polynomial_element.html#sage.rings.polynomial.polynomial_element.Polynomial.sylvester_matrix) provides an independent orientation reference. The [Mathlib definition explicitly permits nominal degrees independent of actual degrees](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/Polynomial/Resultant/Basic.html#Polynomial.sylvester), matching this representation choice.
+
+The resultant is the determinant of that fixed matrix. Two nominal constants give the empty determinant **one**, including `[0],[0]`. A nominal constant `a` against nominal degree `n>0` gives `a^n`; a nominal zero constant against a positive nominal degree gives zero. A constant-zero pair therefore uses a deliberate fixed-matrix convention rather than an assertion about their common-root set. `bezout` returns `None` for two nominal constants: their empty determinant need not belong to the ideal they generate. All other valid shapes have a square matrix; their `None` guards indicate an internal matrix-shape failure, not a resource pause.
+
+`map_coefficients` retains degree and length even when a leading coefficient maps to zero. `check_specialization` binds source/target nominal degrees and every mapped coefficient; it does not prove that the supplied callback is a unital ring homomorphism. Under that algebraic hypothesis, determinant polynomiality gives specialization compatibility. Recomputing actual degree after specialization is a different operation. For example `f=x*y+1,g=y+1` gives `Res_y=x-1`. At `x=0`, retaining nominal degree one gives `Res([0,1],[1,1])=-1`, whereas rebuilding `f=1` as a nominal constant gives resultant `+1`.
+
+These fixed-degree degeneracies matter for projection. With positive total nominal degree, the Bezout identity implies that any common finite zero forces the specialized resultant to vanish. The converse requires appropriate field and actual-degree hypotheses; simultaneous leading-degree drops can introduce projective/infinite-root degeneracies. No general finite-common-root equivalence is claimed for arbitrary specializations, zero divisors, or the exceptional total-degree-zero convention.
+
+## A discriminant without leading-coefficient division
+
+For `d>=2`, the package constructs the usual shifted-row matrix `S=Sylv(f,f')`, with nominal derivative degree `d-1`, even if derivative leading coefficients are zero in the ring. The first derivative row starts at index `d-1`. Subtracting `d` times the first `f` row from it clears its first entry. Every first-column entry except the first `f` row is now zero. Deleting that first row and first column gives a `(2d-2)` square matrix `M`, and determinant expansion gives
+
+```text
+det(S) = leadingCoefficient(f) * det(M).
+Disc_d(f) = (-1)^(d*(d-1)/2) * det(M).
+```
+
+The standard resultant/discriminant relation is stated in [Sage's discriminant reference](https://doc.sagemath.org/html/en/reference/polynomial_rings/sage/rings/polynomial/polynomial_element.html#sage.rings.polynomial.polynomial_element.Polynomial.discriminant). To identify this minor with the universal discriminant, first work over the integral polynomial ring in independent integer coefficient indeterminates and cancel its nonzero leading indeterminate there. The resulting polynomial identity can then be specialized to every commutative ring, including zero divisors and a zero leading coefficient. There is no cancellation or division in the actual specialized ring. This is the stated mathematical derivation, not a machine-checked formal proof of this source.
+
+For example `Disc_2([a,b,c])=b^2-4*a*c`, including `a=0`; trimming `[0,3,2]` to the actual linear polynomial would change its discriminant from 9 to the degree-one convention 1. Nominal degrees zero and one use convention one, including the nominal constant zero. Derivative coefficients use repeated ring addition, so the construction also handles positive characteristic. The only generic operations are ring addition, multiplication, negation, zero, and one.
+
+## QQ multivariate wrapper and coefficient invariant
+
+`input(p,variable)` checks the selected variable and records its actual maximum exponent, using zero for a zero polynomial. `fixed_input(p,variable,degree)` additionally checks that the supplied nominal degree bounds every exponent and retains any excess padding. `eliminate(left,right)` requires the same source arity and selected variable; `discriminate(input)` computes the universal discriminant for its retained degree. `resultant_variable` and `discriminant_variable` construct actual-degree inputs as convenience entry points. Every result declares one fewer variable, preserving the order of all unselected variables. A one-variable source therefore returns a zero-variable rational polynomial.
+
+The coefficient carrier and ring factory are **private**. Extraction first checks all source exponent-vector lengths, then removes exactly the selected exponent and groups terms into a fixed dense coefficient list. With source arity `r`, every coefficient monomial has exactly `r-1` exponents. The factory's zero and one use that same context, sparse insertion/addition preserve it, and multiplying two vectors of this length preserves it. No public operation accepts a foreign coefficient or exposes a dictionary into which coefficients from another arity can be inserted. Final conversion checks the output dimension again through the normal polynomial constructor.
+
+Coefficient arithmetic uses exact rational operations and canonical sparse insertion directly. It does not call a fallible `@poly.add` or `@poly.multiply` inside a supposedly total ring callback and then unwrap or replace an error with zero. Its total exponent-addition helper zero-extends vectors; on all checked factory inputs the vectors end together. Thus it neither truncates exponents nor disguises a zip failure. The QQ certificate checker can use the ordinary fallible polynomial operations safely because it handles their errors explicitly outside the ring dictionary. There is no kernel `Result.unwrap`, machine numeric type, numeric literal, array, mutation, or FFI.
+
+## What the certificates prove
+
+For positive total nominal degree, the last column of `adj(S)` satisfies `S*column=det(S)*e_constant`. Splitting its coefficients at `n` gives descending `U` and `V` of exact lengths `n` and `m`, hence `U*f+V*g=resultant`. This follows from the adjugate identity over any commutative ring, including singular matrices. [Mathlib's bounded resultant identity](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/Polynomial/Resultant/Basic.html#Polynomial.exists_mul_add_mul_eq_C_resultant) states the same degree-bound existence result for nonzero total nominal degree.
+
+`check_bezout_identity` binds the separately supplied fixed inputs, degrees, scalar value, and exact multiplier lengths, then verifies only the coefficient polynomial identity. `check_resultant` instead recomputes the determinant. These are different guarantees: zero multipliers certify the identity `0*f+0*g=0` even when the true resultant is one. An identity alone does not identify the resultant's value or prove completeness of an elimination condition.
+
+For QQ, `ProjectionIdentity` embeds the two checked inputs, result polynomial, and full-source-arity multipliers. `check_projection_identity` binds the external source equations, selected variable, both nominal degrees, result payload and arity, and multiplier degree bounds. It verifies `U*f+V*g=lift(result)` using ordinary polynomial identities, without a determinant or characteristic-polynomial calculation. `check_projection_result` adds recomputation of the fixed-degree resultant. `check_elimination` and `check_discrimination` check standalone claimed results by recomputation. The full checkers therefore share the producer's determinant/discriminant dependencies; they are not advertised as independently verified determinant algorithms. A proof for another nominal degree, variable, input, output arity, or payload is rejected.
+
+## Independent validation and limits
+
+[The generator](../../tools/generate_elimination.py) creates 73 generic rational resultant cases using direct Fraction permutation expansion of the shifted-row determinant. It independently expands every required cofactor and checks the complete `U,V` coefficient lists, not just their identity or final scalar. Its fixtures include total degree zero, zero and constant inputs, repeated factors, singular matrices, leading-zero nominal forms, negative rational coefficients, and magnitudes beyond machine-word range. The maximum generic resultant matrix order is six.
+
+Another 60 cases use independent SymPy universal discriminant polynomials of degrees zero through four, substituting rational coefficients **after** computing the universal formula, including zero leading coefficients. They do not compute a characteristic polynomial or reuse the production minor construction. Sixty-four pairs over `Z/4Z` exercise zero divisors, and a `Z/4Z -> F2` specialization test exercises characteristic and degree retention. The 24 QQ coefficient-ring projection cases use direct symbolic permutation expansion; their discriminants independently specialize universal SymPy formulas. They include two and three source variables, every variable position, one-variable-to-constant output, shared factors, zero systems, rational coefficients, and padded nominal degrees.
+
+Seven additional boundary groups reject invalid dense lengths, variable indices, insufficient degree bounds, mixed source dimensions, changed query bindings, wrong result arity and payload, multiplier-bound changes, and fake resultant values paired with valid trivial identities. Private factory tests check homogeneous vector lengths and rejection of a foreign output dimension. All 228 package tests pass on native, JS, and WasmGC; the driver requires that exact nonzero count. `moon check --deny-warn`, generated API, formatting, fixture drift, and the strict symbolic-purity gate also pass.
+
+```sh
+tools/measure --cpu 10 python3 .tools/elimination-20261116/validate.py
+```
+
+The retained `.tools/elimination-20261116/oracle.json` records exact oracle inputs and outputs. `validation.json` and `validation-00.log` through `validation-07.log` record the commands, UTC starts, exit codes, executed test counts and wall times. `frozen-berkowitz.json` confirms every tracked Berkowitz file remains byte-identical to the frozen dependency. All heavy work uses the shared CPU 10 lock. Incremental command wall times are not algorithm benchmarks.
+
+This is an exact synchronous symbolic bootstrap implementation. It has no degree cap, fuel counter, resumption protocol, or complexity guarantee for coefficient growth; callers must budget large nominal degrees. It supplies projection polynomials and bounded ideal-membership witnesses, not root isolation, CAD delineability, sign-invariant cells, real-root existence, or lifting. Arbitrary ring laws, exact-rational arithmetic, sparse canonicalization, the frozen Berkowitz implementation, matrix shape operations, compiler execution, and the recomputing checkers remain trust boundaries. No whole-stack formal proof or performance improvement is claimed. Root integration owns the shared catalog, CLI and documentation navigation. Earlier branches and artifacts are preserved; this work is committed locally without pushing or deploying.
