@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexalgebraic"
+
+import {
+  "Hosi121/morph/realalgebraic",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn imaginary_part(Number) -> @realalgebraic.Number
+
+pub fn number(@realalgebraic.Number, @realalgebraic.Number) -> Number
+
+pub fn real_part(Number) -> @realalgebraic.Number
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Number {
+  real : @realalgebraic.Number
+  imaginary : @realalgebraic.Number
+}
+pub fn Number::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
