@@ -9,7 +9,7 @@ fn tail_clause_pending(
   match clause {
     Nil => pending
     Cons(literal, rest) =>
-      match index_value(literal, values) {
+      match verified_index_value(literal, values) {
         True => Satisfied
         False => tail_clause_pending(rest, values, pending)
         Unassigned =>

@@ -799,3 +799,59 @@ ELFとraw logsは `.tools/cdcl-profile/decision-tail-*` に保存する。
 ```sh
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/decision_tail_wbtest.mbt --target native --release -i 2
 ```
+
+## trieで確定済みの変数同一性を再比較しない
+
+`9c8cd69` のhint builder短縮後、以前は保留したpolarityだけの読み取りを再評価した。
+decisionだけを変更した既存selectorでは、同じ保存ELF内でsearchが
+193.57/200.09 msから174.83/183.44 msへ短縮した。交互20対の全queryは
+284.93 ms ± 10.11 ms対269.76 ms ± 11.85 ms、18/20勝、対差15.17 ms ± 11.07 msだった。
+以前の約3.4%・大きい分散という観測を上書きせず、支配costが変わった現在のpipelineでの
+新しい結果として扱う。
+
+現在の `index_value` は全watch経路で、trieから取得した割当のpolarityだけを読む。
+完全なkey pathをたどって得た割当は、そのkeyへ挿入した割当なので、Binary keyの同一性を
+もう一度比較する必要がない。新しい表現や近似は導入しない。旧value/evaluator/replacement/
+watch経路は `direct_values_wbtest.mbt` に固定し、同一ELF内の対照に残した。
+元のdecision-only selectorも、検証付きkey helperを明示的に使う形で残す。
+
+同一native release ELF、CPU 10、共通mutex、各10サンプル：
+
+| 準備済み64bit Search | key再検証あり | polarityだけ |
+| --- | ---: | ---: |
+| AB前半 | 208.92 ms ± 9.06 ms | 179.82 ms ± 8.00 ms |
+| BA後半 | 205.10 ms ± 10.93 ms | 181.99 ms ± 8.94 ms |
+
+未変更の準備済みhint checkerは16.09 ms ± 946.20 µs。
+全queryを交互20対で比較すると291.08 ms ± 8.94 ms対277.32 ms ± 12.59 ms、16/20勝、
+対差13.77 ms ± 16.56 ms、比中央値1.0657、範囲0.9200–1.1313だった。
+両実行順群の平均方向は同じ。平均短縮は約4.73%で、このpipelineに限った小さい改善である。
+このときの未変更checkerは16.11 ms ± 1.17 msだった。
+
+最終選択ELF内で同じ20対をもう一度実行すると、286.48 ms ± 8.75 ms対
+263.71 ms ± 9.17 ms、20/20勝だった。対差22.78 ms ± 12.08 ms、比中央値1.1008、
+範囲1.0104–1.1793、両実行順群とも10/10勝。平均短縮は約7.95%で、未変更checkerは
+14.28 ms ± 347.47 µs。初回と再測定の双方を残し、決まった倍率の保証とは扱わない。
+
+| 小さい全query control | key再検証あり | polarityだけ |
+| --- | ---: | ---: |
+| pigeonhole 6 into 5 | 13.40 ms ± 317.54 µs | 13.60 ms ± 907.10 µs |
+| 固定1,000個六変数cohort | 44.69 ms ± 999.52 µs | 43.68 ms ± 703.17 µs |
+
+いずれも区間が重なり、小さい入力群での改善・退行は確定しない。
+全256 subsetのprefix/sparse key（0,1,2,3,255,256,257,65535）を両polarityと未割当で比較し、
+pigeonhole/4bit miterの全Paused状態、cohort等の最終model/proof/Statisticsも
+旧経路と一致することを要求する。
+39 CDCL testsがnative/JS/Wasm GCで通過し、deny-warn、purityも通過した。
+外部16 positive/7 negativeを再確認し、64bit CNF/DRUP hashは不変だった。
+
+最初の比較ELFは `d28d30a717a376986b93b50c916ce218a7a758b89c55b14491b6218b6e8aa369`。
+最終選択ELFは `5f5702e1a07767c8818ef8de3b9a45314575c353e0b6c0682117a80b02f6a5dc`。
+raw logsとELFを `.tools/cdcl-profile/all-values-*`、再評価したdecision-onlyの記録を
+`.tools/cdcl-profile/key-values-current.txt` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/direct_values_wbtest.mbt --target native --release -i 1
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/direct_values_wbtest.mbt --target native --release -i 2
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/direct_values_wbtest.mbt --target native --release -i 3
+```

@@ -198,9 +198,10 @@ fn index_value(literal : Atom, values : Index[Assignment]) -> Value {
   match index_get(values, @binary.bits(literal.key)) {
     None => Unassigned
     Some(entry) =>
-      match same(entry.literal, literal) {
-        true => True
-        false => False
+      // Following the complete trie key already establishes variable identity.
+      match (entry.literal.positive, literal.positive) {
+        (true, true) | (false, false) => True
+        _ => False
       }
   }
 }

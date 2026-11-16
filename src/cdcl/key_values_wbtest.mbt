@@ -1,4 +1,4 @@
-// Experimental decision-only value lookup; production remains unchanged.
+// Retained decision-only ablation. The verifying helper is frozen separately.
 
 ///|
 /// The assignment trie path already establishes variable identity.
@@ -24,7 +24,7 @@ fn indexed_clause_using(
     Cons(literal, rest) =>
       match
         (match verify_key {
-          true => index_value(literal, values)
+          true => verified_index_value(literal, values)
           false => index_value_direct(literal, values)
         }) {
         True => Satisfied
