@@ -1,0 +1,95 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexautomorphism"
+
+import {
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn apply(Automorphism, @complexfield.Element) -> Result[@complexfield.Element, AutomorphismError]
+
+pub fn automorphisms(Group) -> @core.Chain[Automorphism]
+
+pub fn certificate(Group) -> Certificate
+
+pub fn check(@complexfield.Field, Certificate) -> Bool
+
+pub fn check_result(@complexfield.Field, Group, Certificate) -> Bool
+
+pub fn compose(Group, Automorphism, Automorphism) -> Result[Automorphism, AutomorphismError]
+
+pub fn composition_table(Group) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn conjugation(Group) -> Automorphism
+
+pub fn equal(Automorphism, Automorphism) -> Bool
+
+pub fn from_certificate(@complexfield.Field, Certificate) -> Result[Group, AutomorphismError]
+
+pub fn identity(Group) -> Automorphism
+
+pub fn imaginary_image(Automorphism) -> @complexfield.Element
+
+pub fn inverse(Group, Automorphism) -> Result[Automorphism, AutomorphismError]
+
+pub fn order(Group) -> @core.Nat
+
+pub fn prepare(@complexfield.Field, @core.Chain[@complexfield.Element]) -> Result[Group, AutomorphismError]
+
+pub fn real_image(Automorphism) -> @complexfield.Element
+
+pub fn roots(Group) -> @core.Chain[@complexfield.Element]
+
+pub fn source(Group) -> @complexfield.Field
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Automorphism {
+  // private fields
+}
+pub fn Automorphism::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum AutomorphismError {
+  InvalidRoots
+  DifferentField
+  InvalidCertificate
+  NotMember
+  InternalInvariant
+}
+pub fn AutomorphismError::equal(Self, Self) -> Bool
+pub fn AutomorphismError::not_equal(Self, Self) -> Bool
+pub fn AutomorphismError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @complexfield.Field
+  roots : @core.Chain[@complexfield.Element]
+  images : @core.Chain[Image]
+  table : @core.Chain[@core.Chain[@core.Nat]]
+  identity : @core.Nat
+  conjugation : @core.Nat
+  inverses : @core.Chain[@core.Nat]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Group {
+  // private fields
+}
+pub fn Group::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Image {
+  real : @complexfield.Element
+  imaginary : @complexfield.Element
+}
+pub fn Image::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
