@@ -10,6 +10,5 @@ import {
 }
 
 import {
-  "Hosi121/morph/exact",
   "Hosi121/morph/testsupport" @oracle,
 } for "wbtest"

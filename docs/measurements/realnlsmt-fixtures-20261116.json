@@ -1,0 +1,2646 @@
+{
+  "oracle": "Python Fraction complete real sign cells from known rational factors; no CAD/Sturm/SymPy",
+  "polynomials": {
+    "p": [
+      "-1",
+      "0",
+      "1"
+    ],
+    "q": [
+      "0",
+      "-2",
+      "1"
+    ]
+  },
+  "all_real_roots": {
+    "p": [
+      "-1",
+      "1"
+    ],
+    "q": [
+      "0",
+      "2"
+    ]
+  },
+  "fixtures": 114,
+  "satisfiable": 101,
+  "unsatisfiable": 13,
+  "cases": [
+    {
+      "index": 0,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 1,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 2,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 3,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 4,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 5,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 6,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 7,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 8,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 9,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 10,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 11,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 12,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 13,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 14,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 15,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 16,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, LessZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 17,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, LessZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 18,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 19,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 20,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 21,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 22,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 23,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 24,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 25,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 26,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 27,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 28,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 29,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 30,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 31,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 32,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 33,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 34,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtMostZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 35,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtMostZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 36,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 37,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 38,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 39,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 40,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 41,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 42,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 43,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 44,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 45,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 46,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 47,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 48,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 49,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 50,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 51,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 52,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, EqualZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 53,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, EqualZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 54,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 55,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 56,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 57,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 58,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 59,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 60,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 61,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 62,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 63,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 64,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 65,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 66,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 67,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 68,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 69,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 70,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, NotZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 71,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, NotZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 72,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 73,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 74,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 75,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 76,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 77,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 78,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 79,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 80,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 81,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 82,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 83,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 84,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 85,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 86,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 87,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 88,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, AtLeastZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 89,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, AtLeastZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 90,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 91,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 92,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, LessZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 93,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 94,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 95,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, AtMostZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 96,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": false
+    },
+    {
+      "index": 97,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 98,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, EqualZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 99,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 100,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 101,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, NotZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 102,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 103,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 104,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, AtLeastZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 105,
+      "family": "same_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 106,
+      "family": "same_polynomial_or",
+      "formula": "Disjunction(Atom(p, GreaterZero), Atom(p, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 107,
+      "family": "different_polynomial_and",
+      "formula": "Conjunction(Atom(p, GreaterZero), Atom(q, GreaterZero))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 108,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, LessZero), Negation(Atom(q, LessZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 109,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, AtMostZero), Negation(Atom(q, AtMostZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 110,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, EqualZero), Negation(Atom(q, EqualZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 111,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, NotZero), Negation(Atom(q, NotZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 112,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, AtLeastZero), Negation(Atom(q, AtLeastZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    },
+    {
+      "index": 113,
+      "family": "negated_boolean",
+      "formula": "Negation(Disjunction(Atom(p, GreaterZero), Negation(Atom(q, GreaterZero))))",
+      "samples": [
+        "-2",
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1",
+        "3/2",
+        "2",
+        "3"
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "satisfiable": true
+    }
+  ]
+}
