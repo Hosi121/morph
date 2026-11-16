@@ -34,24 +34,30 @@ Leanの初回準備は[形式検証](../formal/README.md)を参照してくだ�
 
 ## 検証済みスナップショット
 
-2026-11-17（JST）の統合検証は、ソース`37d82f5`を固定して実行しました。
-多段の実代数拡大、任意変数CAD、一階実数式の量化消去、非線形実数SMT、検査付き根集合の縮約まで含みます。
-[全出力](measurements/realclosed-20261116-validation.txt)と[条件・集計](measurements/realclosed-20261116-validation.json)を保存しています。
+2026-11-17（JST）の統合検証は、ソース`8fe68f0`を固定して実行しました。
+非線形実数SMTの早期SAT終了と、親セル全体の真偽を検査する円柱の枝刈りまで含みます。
+[全出力](measurements/incremental-20261117-validation.txt)と
+[条件・コマンド・集計](measurements/incremental-20261117-validation.json)を保存しています。
 
 | 検査 | 結果 |
 | --- | --- |
-| native / JS / Wasm GC | 各3,775テスト成功 |
+| native / JS / Wasm GC | 各3,817テスト成功 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 246核ソースが通過 |
-| 公開API | 101生成スナップショットが一致 |
-| Leanモデル | 31対応領域の差分検査と全モデルが通過 |
-| 独立fixture | 7生成器が一致。正確なZ3参照の41入力、CAD 19例・一階式6例を含む |
-| 旧CADとの照合 | 4族の全base cellと全4量化対が3 backendで一致 |
-| 高次PSCの共有因子例 | 元の重い例を3 backendで検査 |
-| 実行ツアー | 厳密代数・実閉体の両ツアーが3 backendで掲載例と一致 |
+| 純記号制約 | 249核ソースが通過 |
+| 公開API | 103生成スナップショットが一致 |
+| Leanモデル | 32対応領域の差分検査と全モデルが通過。原子観測の一様性を仮定したBoolean再帰を追加 |
+| 独立fixture | 新規Z3参照16入力と既存41入力、CAD 19例・一階式6例の生成物が一致 |
+| 参照経路との照合 | 完全CADと枝刈り探索の独立16入力が一致。既存の旧cad2・高次PSCの回帰も全3 backendで通過 |
+| 実行ツアー | 実閉体のツアーが3 backendで掲載例と一致 |
+| 同条件の性能比較 | 48比較・192回の検査付き計測が完了。遅い対照例も記録 |
 
-作業木はmain一つに戻し、計測artifactはbyte一致を確認して保管しました。
-[片付け記録](measurements/realclosed-20261116-cleanup.json)に研究branchのbundle・保管先を記録しています。
+[枝刈りの設計と計測](research/incremental-cad-20261117.md)に、採用理由と未完了の追加stress例を記録しています。
+作業木はmain一つへ戻し、資料のバイト一致、元の研究branchのbundle、重複したビルド資材の削除を
+[片付け記録](measurements/incremental-20261117-cleanup.json)へ残しました。
+
+前回の`37d82f5`は[各3,775テストの統合検証](measurements/realclosed-20261116-validation.json)
+と[出力](measurements/realclosed-20261116-validation.txt)を保存しています。
+多段実代数体・任意変数CAD・一階実数式の量化消去からの接続は、その記録も参照してください。
 
 前段階は、`9880edf`の[3,311テストの仕上げ検証](measurements/advanced-20261116-final-validation.txt)、
 `12db9d8`の[第二段階](measurements/advanced-20261116-second-validation.txt)、

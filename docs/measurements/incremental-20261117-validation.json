@@ -1,0 +1,146 @@
+{
+  "source_commit": "8fe68f00fddc84a584550b0ffc74370d4a7557b3",
+  "completed_utc": "2026-11-16T16:06:08.701698+00:00",
+  "cpu": 4,
+  "serialization": "tools/measure common Git lock",
+  "records": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit": 0,
+      "wall_seconds": 411.2989845159991,
+      "backends": {
+        "wasm-gc": {
+          "tests": 3817,
+          "passed": 3817,
+          "failed": 0
+        },
+        "js": {
+          "tests": 3817,
+          "passed": 3817,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 413.88336760399943,
+      "backends": {
+        "native": {
+          "tests": 3817,
+          "passed": 3817,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit": 0,
+      "wall_seconds": 7.015470672999072
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_incremental_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.1332655269998213
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_realnlsmt_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.17187030000059167
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_cad_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.44514035200154467
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.7698814080013108,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.8548598109991872,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.7398405439998896,
+      "tour_matches_documented_output": true
+    }
+  ],
+  "validation_log_sha256": "0ae7ce4cfa50efc1b9634b634934790f6c62f33b4593b0398309aaa7991aea17",
+  "baseline": "9ac4a94",
+  "backends": {
+    "wasm-gc": {
+      "tests": 3817,
+      "passed": 3817,
+      "failed": 0
+    },
+    "js": {
+      "tests": 3817,
+      "passed": 3817,
+      "failed": 0
+    },
+    "native": {
+      "tests": 3817,
+      "passed": 3817,
+      "failed": 0
+    }
+  },
+  "python_tests": 24,
+  "pure_kernel_files": 249,
+  "public_api_snapshots": 103,
+  "reviewed_lean_regions": 32,
+  "lean_scope": "Boolean partial evaluation under explicit atom uniformity hypothesis; not an end-to-end proof of arithmetic/CAD/compiler",
+  "z3_regression_series": [
+    41,
+    16
+  ],
+  "timed_and_checked_runs": 192,
+  "full_vs_pruned_comparisons": 48,
+  "original_quadratic_optional_stress": "Censored in search after prepare at8s; no completed morph decision claimed",
+  "validation_log": "docs/measurements/incremental-20261117-validation.txt"
+}

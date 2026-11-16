@@ -110,6 +110,19 @@ SMTを含めた比も揺れるため、この対照での改善は主張しな�
 独立入力の厳密SMT-LIBと未完了stressの条件は
 [Z3参照記録](../measurements/incremental-review-oracle-20261117.json)を参照。
 
+## 統合と引継ぎ
+
+ソース `8fe68f0` で、native・JS・WasmGC各3,817テスト、24件の保守テスト、
+249核ソースの純記号制約、103公開API、32対応領域と全Leanモデルを検査した。
+独立fixtureの再生成と実閉体のツアーも全て一致した。
+[統合検証](../measurements/incremental-20261117-validation.json)にコマンドと結果、
+[全ログ](../measurements/incremental-20261117-validation.txt)に出力を保存した。
+
+実装・検査・計測・文書は理由ごとのcommitへ分けた。
+担当用の4作業木は、全差分の取り込みと23ファイルのバイト一致を確認して削除した。
+研究branchのbundleと固定実行ファイルを保管し、mainには作業木一つを残す。
+[片付け記録](../measurements/incremental-20261117-cleanup.json)から資料の所在とhashを辿れる。
+
 ## 今回の境界
 
 局所射影や、理論衝突後のCDCLのtrail・内部学習状態の再利用は次の段階である。

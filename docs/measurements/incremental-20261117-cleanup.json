@@ -1,0 +1,33 @@
+{
+  "utc": "2026-11-16T15:54:54.727748+00:00",
+  "source_commit": "8fe68f00fddc84a584550b0ffc74370d4a7557b3",
+  "removed_worktrees": [
+    "/home/hosi/morph-prefix-20261117",
+    "/home/hosi/morph-signs-20261117",
+    "/home/hosi/morph-smt-20261117",
+    "/home/hosi/morph-review-20261117"
+  ],
+  "remaining_worktrees": "worktree /home/hosi/morph\nHEAD 8fe68f00fddc84a584550b0ffc74370d4a7557b3\nbranch refs/heads/main",
+  "preserved_worker_files": 23,
+  "preserved_worker_bytes": 6310627,
+  "worker_manifest": ".tools/incremental-20261117/workers/manifest.json",
+  "worker_manifest_sha256": "c68abbed4b9e627c32d1916a3fb9b4011d483ee840ab9863276bd983b3ac6eb2",
+  "research_bundle": ".tools/incremental-20261117/research-branches.bundle",
+  "research_bundle_sha256": "f5bb438f8ca9d53b76e5f7fb0212583bf12fc37473abb9a213bb6f21c800418e",
+  "branch_policy": "Original scoped commits retained in branch refs and verified bundle; all patches are present on main; clean worktrees removed after byte-verified artifact preservation.",
+  "retained_shared_tools": [
+    ".tools/moon",
+    ".tools/lean",
+    ".tools/realclosed-20261116/reference-venv"
+  ],
+  "frozen_benchmarks": ".tools/incremental-20261117/artifacts",
+  "validation": "Complete: 3817/3817 on native, JS and WasmGC; all final gates and tours pass.",
+  "completed_utc": "2026-11-16T16:06:48.621637+00:00",
+  "validation_report": "docs/measurements/incremental-20261117-validation.json",
+  "removed_duplicate_benchmark_build_directories": [
+    "_build/native/release/build/cmd/incrementalbench",
+    "_build/js/release/build/cmd/incrementalbench",
+    "_build/wasm-gc/release/build/cmd/incrementalbench"
+  ],
+  "retained_artifact_policy": "Frozen release executables, pilot, censored diagnostic and worker logs retained intentionally under .tools/incremental-20261117; SDK/reference environment and useful main library caches preserved."
+}
