@@ -7,7 +7,7 @@
 
 | 記録 | 内容 | 状態 |
 | --- | --- | --- |
-| [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 仕上げ・統合検証中 |
+| [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 全3 backend・公開同期・片付け完了 |
 | [一変数の実数制約](realcad-20261116.md) | 符号不変分割、無理数の証人、存在・全称と証拠検査 | 統合済み |
 | [一般グラフのマッチング](blossom-20261116.md) | 奇数サイクルの縮約・展開、Tutte–Berge証拠 | 統合済み |
 | [整数・有理多項式の分解](zassenhaus-20261116.md) | Berlekamp・Hensel・Zassenhaus | [独立レビュー](zassenhaus-independent-review-20261116.md)済み |

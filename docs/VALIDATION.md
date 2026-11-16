@@ -34,19 +34,23 @@ Leanの初回準備は[形式検証](../formal/README.md)を参照してくだ�
 
 ## 検証済みスナップショット
 
-2026-11-16の第二段階の統合検証は、計算核`12db9d8`を基準に実行しました。
-疎Horner、FGLM、最小多項式、数体、μ-calculus、分離線形形式まで含みます。
-結果は[全出力](measurements/advanced-20261116-second-validation.txt)に保存しています。
+2026-11-16の仕上げ検証は、ソース`9880edf`を固定して実行しました。
+共通数体、相対実根、二変数CAD、厳密な区間集合、Bareissの通常経路への採用まで含みます。
+結果は[全出力](measurements/advanced-20261116-final-validation.txt)に保存しています。
 
 | 検査 | 結果 |
 | --- | --- |
-| native / JS / Wasm GC | 各1,874テスト成功 |
+| native / JS / Wasm GC | 各3,311テスト成功 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 178核ソースが通過 |
-| 公開API | 83生成スナップショットが一致 |
+| 純記号制約 | 216核ソースが通過 |
+| 公開API | 93生成スナップショットが一致 |
 | Leanモデル | 31対応領域の差分検査と全モデルが通過 |
+| 実行ツアー | 3 backendの出力が掲載例と一致 |
+| 独立fixture | 一変数の170 truth列と、二変数35族・142 fibreの再生成が一致 |
 
-前段階の`6934453`は[最初の検証ログ](measurements/advanced-20261116-first-validation.txt)に保存しています。
+前段階の`6934453`は[最初の検証ログ](measurements/advanced-20261116-first-validation.txt)、
+`12db9d8`は[第二段階の検証ログ](measurements/advanced-20261116-second-validation.txt)に保存しています。
+作業木の片付けと研究branch・実行artifactの保管先は[片付け記録](measurements/advanced-20261116-cleanup.json)を参照してください。
 
 追加算法については[個別の検証・独立レビュー](research/README.md)を参照してください。
 既存のLean定理が、新しく追加した算法全体の証明へ広がったわけではありません。

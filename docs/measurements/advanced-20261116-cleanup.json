@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-16T12:32:42.965838+00:00",
+  "removed_worktrees": [
+    "/home/hosi/morph-bch-20261116",
+    "/home/hosi/morph-blossom-20261116",
+    "/home/hosi/morph-cad2-20261116",
+    "/home/hosi/morph-zassenhaus-20261116"
+  ],
+  "preserved_artifacts": ".tools/advanced-20261116/final/agent-artifacts/manifest.json",
+  "bundle": ".tools/advanced-20261116/final/research-branches.bundle",
+  "bundle_sha256": "777f06cef8443be7dc41afd55d7f8988bc9e6db541d15e24d8feb8ddfd393ce3",
+  "bundled_branches": [
+    "refs/heads/research/bareiss-20261116",
+    "refs/heads/research/bch-20261116",
+    "refs/heads/research/blossom-20261116",
+    "refs/heads/research/cad2-20261116",
+    "refs/heads/research/elimination-20261116",
+    "refs/heads/research/evaluation-20261116",
+    "refs/heads/research/mucalc-20261116",
+    "refs/heads/research/realcad-review-20261116",
+    "refs/heads/research/realvariety-review-20261116",
+    "refs/heads/research/sparse-horner-review-20261116",
+    "refs/heads/research/zassenhaus-20261116"
+  ],
+  "branch_policy": "Research branch references retained as provenance; their working directories removed after byte-verified artifact preservation."
+}
