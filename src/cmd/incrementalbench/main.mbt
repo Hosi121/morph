@@ -212,7 +212,7 @@ fn checked_cad(problem : @cad.Problem, answer : CadAnswer) -> Bool {
 fn smt_search(
   problem : @smt.Problem,
   mode : String,
-) -> (@smt.Outcome, Int32, Int32, Int32) {
+) -> (@smt.Outcome, Int32, Int32, Int32, Int32) {
   let mut state = match mode {
     "full" => @smt.start_full(problem)
     "pruned" => @smt.start_restarting(problem)
@@ -227,11 +227,19 @@ fn smt_search(
           Unsatisfiable(proof) => @core.length(proof.lemmas)
           _ => @smt.theory_conflicts(state)
         }
+        let proof_additions = match answer {
+          Unsatisfiable(refutation) =>
+            match refutation.propositional {
+              Rup(clauses) => @oracle.int_of_nat(@core.length(clauses))
+            }
+          _ => 0
+        }
         return (
           answer,
           transitions,
           @oracle.int_of_nat(@smt.boolean_restarts(state)),
           @oracle.int_of_nat(conflicts),
+          proof_additions,
         )
       }
     }
@@ -276,8 +284,16 @@ fn main {
   let (variables, source, expected) = fixture(name)
   let total_start = @bench.monotonic_clock_start()
   let prep_start = @bench.monotonic_clock_start()
-  let (prep_us, search_us, check_us, transitions, restarts, conflicts, actual) = if layer ==
-    "cad" {
+  let (
+    prep_us,
+    search_us,
+    check_us,
+    transitions,
+    restarts,
+    conflicts,
+    proof_additions,
+    actual,
+  ) = if layer == "cad" {
     if mode == "retained" {
       abort("retained mode is only defined for SMT")
     }
@@ -288,12 +304,23 @@ fn main {
     let search = @bench.monotonic_clock_end(search_start)
     let check_start = @bench.monotonic_clock_start()
     let actual = checked_cad(problem, answer)
-    (prep, search, @bench.monotonic_clock_end(check_start), steps, 0, 0, actual)
+    (
+      prep,
+      search,
+      @bench.monotonic_clock_end(check_start),
+      steps,
+      0,
+      0,
+      0,
+      actual,
+    )
   } else if layer == "smt" {
     let problem = @smt.prepare(@oracle.nat(variables), source).unwrap()
     let prep = @bench.monotonic_clock_end(prep_start)
     let search_start = @bench.monotonic_clock_start()
-    let (answer, steps, restarts, conflicts) = smt_search(problem, mode)
+    let (answer, steps, restarts, conflicts, proof_additions) = smt_search(
+      problem, mode,
+    )
     let search = @bench.monotonic_clock_end(search_start)
     let check_start = @bench.monotonic_clock_start()
     let actual = checked_smt(problem, answer)
@@ -304,6 +331,7 @@ fn main {
       steps,
       restarts,
       conflicts,
+      proof_additions,
       actual,
     )
   } else {
@@ -314,6 +342,6 @@ fn main {
     abort("wrong decision")
   }
   println(
-    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{actual},\"transitions\":\{transitions},\"boolean_restarts\":\{restarts},\"theory_conflicts\":\{conflicts},\"preparation_us\":\{prep_us},\"search_us\":\{search_us},\"verification_us\":\{check_us},\"total_us\":\{total_us}}",
+    "{\"layer\":\"\{layer}\",\"mode\":\"\{mode}\",\"case\":\"\{name}\",\"satisfiable\":\{actual},\"transitions\":\{transitions},\"boolean_restarts\":\{restarts},\"theory_conflicts\":\{conflicts},\"proof_additions\":\{proof_additions},\"preparation_us\":\{prep_us},\"search_us\":\{search_us},\"verification_us\":\{check_us},\"total_us\":\{total_us}}",
   )
 }

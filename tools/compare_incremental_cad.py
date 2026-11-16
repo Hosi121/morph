@@ -117,7 +117,7 @@ def main():
                 for mode in args.modes:
                     mode_rows = [row for row in completed if row["mode"] == mode]
                     summary[mode] = {key: statistics.median(row[key] for row in mode_rows)
-                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions", "boolean_restarts", "theory_conflicts"]}
+                                     for key in ["preparation_us", "search_us", "verification_us", "total_us", "transitions", "boolean_restarts", "theory_conflicts", "proof_additions"]}
                 summary["total_speedup"] = summary[first_mode]["total_us"] / summary[second_mode]["total_us"]
                 summary["conservative_total_speedup"] = min(row["total_us"] for row in completed if row["mode"] == first_mode) / max(row["total_us"] for row in completed if row["mode"] == second_mode)
                 provenance["summary"].append(summary)
