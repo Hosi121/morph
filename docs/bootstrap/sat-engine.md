@@ -855,3 +855,24 @@ raw logsとELFを `.tools/cdcl-profile/all-values-*`、再評価したdecision-o
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/direct_values_wbtest.mbt --target native --release -i 2
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/direct_values_wbtest.mbt --target native --release -i 3
 ```
+
+## replacementのvalue先行評価は保留
+
+`ad86d56` の上で、false watchをkey比較で除いてからvalueを読む順序を変更した。
+active watchのliteralは偽なので、先にvalueを調べればそのliteralも自動的に除外される。
+残る候補だけをもう一方のwatchと比較する。同じ最初のreplacementを選ぶことを、
+27節×27部分割当と全てのwatch組、およびpigeonhole/4bit miterの全Paused状態で比較した。
+
+同一native release ELF、CPU 10、共通mutex、各10サンプルの64bit探索は、
+元の順序が173.81 ms ± 6.77 msと177.26 ms ± 10.87 ms、value先行が
+171.74 ms ± 5.35 msと173.22 ms ± 4.27 msだった。未変更checkerは16.14 ms ± 1.18 ms。
+区間が重なり、この小差を全query改善へ外挿しない。候補は `replacement_wbtest.mbt` に残し、
+productionを変更しなかった。既存のwatch invariantにはactive literalが偽である条件を追加した。
+新しい回帰と既存watch回帰の計4テストがnative/JS/Wasm GCとdeny-warnを通過した。
+
+比較ELF SHA256は `7192453990d22a0b5fb97470df98946b7c623b6ce0beb90f95eb77f35e471abf`。
+ELFとraw logsは `.tools/cdcl-profile/replacement-*` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/replacement_wbtest.mbt --target native --release -i 1
+```

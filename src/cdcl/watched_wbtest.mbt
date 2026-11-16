@@ -42,6 +42,11 @@ fn assert_watch(search : Search) -> Unit raise {
   match search.watch {
     None => fail("watch invariant test requires the watched engine")
     Some(state) => {
+      match state.active {
+        None => ()
+        Some((literal, _)) =>
+          assert_true(index_value(literal, state.values) is False)
+      }
       let clauses = @oracle.array(index_entries(state.clauses))
       let mut watch_count = 0
       for clause in clauses {
