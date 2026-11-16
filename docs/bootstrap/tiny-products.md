@@ -74,3 +74,44 @@ Native の Some はこの型では pointer 表現へ elide されていた。
 
 起動と callback の counter 生ログは `docs/measurements/tiny-products-allocations.txt`。
 必要 ELF/C/probe は worktree 外 `.tools/tiny-product-artifacts/` に hash 付き manifest とともに保存した。
+
+
+## 不変 suffix DAG で startup の重複を除く
+
+積表の九十結果は内容の等しい末尾を繰り返していた。
+生成器で末尾の closure を求め、各非空 suffix を一度だけ Cons する不変 global に変えた。
+零/一の既存 alias と各 Some global、公開 wrapper、lookup の pattern は維持した。
+上位の wrapper 変更や machine 数値型を追加していない。
+
+| 数えている対象 | flat literal | suffix DAG |
+| --- | ---: | ---: |
+| 論理的に異なる非空 suffix | 101 | 101 |
+| Nil を含む論理 suffix | 102 | 102 |
+| 表が追加する source Cons constructor | 544 | 100 |
+| 表が追加する Native runtime Cons | 544 | 100 |
+| 共通初期化を含む Native startup Bool Cons | 643 | 199 |
+| 共通初期化を含む Native startup 全生成 C malloc | 780 | 336 |
+
+DAG の百一 suffix のうち一は既存 canonical one の cell を使うため、追加 Cons は百となる。
+八十八個の新 Binary wrapper は同じままで、追加 startup malloc は 632→188 に減った。
+表の runtime Cons は、表なし共通初期化の九十九 Cons を差し引いた実行 counter から確認した。
+論理的な distinct 値の数を、そのまま compiler の実割当と呼んでいない。
+Native の生成 C に型別 Cons counter と allocator counter を置き、試験を一つも実行しない
+`bench_wbtest.mbt:0-0` の process を比較した。他 backend の実 heap 数への外挿はしない。
+
+Native 同一 ELF の lookup 169 組は flat 1.77 ± 0.06 µs、DAG 1.78 ± 0.11 µs で同等だった。
+これは Option を返す lookup 本体であり、前の表の公開 multiply guards 込みの microbenchmark と直接比べない。
+別の保存 ELF を CPU8 で ABBA 二巡、各欄二百 process 起動すると、whole process の平均範囲は
+flat 496–592 µs、DAG 500–527 µs だった。範囲が重なるため process 起動時間の短縮は主張しない。
+この時間には OS の process 起動、全 module の初期化、native driver の引数解析が含まれる。
+
+変更後も byte の全 65,536 積を独立整数 oracle と比較し、flat/DAG の表は
+境界を含む 289 組で同値かつ最高 bit が true の canonical 形であることを確認した。
+この二群は Native / JS / Wasm GC のすべてで通過した。
+生成物 --check と purity gate も通過した。
+
+`python3 tools/generate_binary_tiny_products.py --flat-control` は比較用の一時 WB source を作る。
+それを `tiny_products_flat_control_wbtest.mbt` として bench/test した後、通常 source から削除した。
+再生成した対照・ELF・生成 C は `.tools/tiny-product-artifacts/` に保全している。
+source の数は `tiny-products-dag-source-counts.json`、startup の各 batch は
+`tiny-products-dag-startup-wall.json`、試験と counter のログは `tiny-products-suffix-dag.txt`。

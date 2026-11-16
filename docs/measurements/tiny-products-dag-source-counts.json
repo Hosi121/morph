@@ -1,0 +1,9 @@
+{
+  "shared_results": 90,
+  "logical_nonempty_suffixes": 101,
+  "logical_suffixes_with_Nil": 102,
+  "flat_new_Cons_source": 544,
+  "dag_new_Cons_source": 100,
+  "new_Binary_wrappers": 88,
+  "existing_zero_one_aliases": 2
+}

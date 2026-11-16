@@ -1,0 +1,34 @@
+tiny-products-dag-tests.txt:
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+
+
+tiny-products-dag-lookup.txt:
+[Hosi121/morph] bench binary/tiny_products_flat_control_wbtest.mbt:1676 ("flat literal and shared suffix lookups in the same executable") ok
+name           time (mean ± σ)         range (min … max) 
+flat lookup169    1.77 µs ±  63.22 ns     1.71 µs …   1.90 µs  in 10 ×  55439 runs
+DAG lookup169     1.78 µs ± 111.40 ns     1.68 µs …   1.98 µs  in 10 ×  57156 runs
+Total tests: 1, passed: 1, failed: 0.
+
+
+tiny-products-flat-typed-startup.txt:
+startup generated-C allocations=780, Bool Chain Cons=643
+
+
+tiny-products-dag-typed-startup.txt:
+startup generated-C allocations=336, Bool Chain Cons=199
+
+
+tiny-products-dag-startup-wall.txt:
+flat 0 592.38 us/process
+DAG 0 526.63 us/process
+DAG 0 500.27 us/process
+flat 0 545.5 us/process
+flat 1 512.71 us/process
+DAG 1 512.12 us/process
+DAG 1 512.33 us/process
+flat 1 496.33 us/process

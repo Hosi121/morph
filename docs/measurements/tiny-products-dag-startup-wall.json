@@ -1,0 +1,77 @@
+{
+  "environment": {
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "affinity": [
+      8
+    ],
+    "filter": "bench_wbtest.mbt:0-0",
+    "batch_processes": 200,
+    "note": "whole process startup plus native driver argument parsing; no tests or benchmark body"
+  },
+  "runs": [
+    {
+      "cycle": 0,
+      "label": "flat",
+      "wall_seconds": 0.11847657799989975,
+      "child_cpu_seconds": 0.097866,
+      "wall_per_process_us": 592.3828899994987,
+      "sha256": "59c67e4a9a3578e7a6cfbca3b7f943d7736b79e6278898ce56435f386b6835b5"
+    },
+    {
+      "cycle": 0,
+      "label": "DAG",
+      "wall_seconds": 0.10532563800006756,
+      "child_cpu_seconds": 0.085626,
+      "wall_per_process_us": 526.6281900003378,
+      "sha256": "74aa248e575b54c129aab44886fd8c3384e5a00665ef0f1575fb500fad6a0e3e"
+    },
+    {
+      "cycle": 0,
+      "label": "DAG",
+      "wall_seconds": 0.10005328400029612,
+      "child_cpu_seconds": 0.081209,
+      "wall_per_process_us": 500.26642000148064,
+      "sha256": "74aa248e575b54c129aab44886fd8c3384e5a00665ef0f1575fb500fad6a0e3e"
+    },
+    {
+      "cycle": 0,
+      "label": "flat",
+      "wall_seconds": 0.10910003999970286,
+      "child_cpu_seconds": 0.088165,
+      "wall_per_process_us": 545.5001999985143,
+      "sha256": "59c67e4a9a3578e7a6cfbca3b7f943d7736b79e6278898ce56435f386b6835b5"
+    },
+    {
+      "cycle": 1,
+      "label": "flat",
+      "wall_seconds": 0.10254271200028597,
+      "child_cpu_seconds": 0.08429899999999993,
+      "wall_per_process_us": 512.7135600014299,
+      "sha256": "59c67e4a9a3578e7a6cfbca3b7f943d7736b79e6278898ce56435f386b6835b5"
+    },
+    {
+      "cycle": 1,
+      "label": "DAG",
+      "wall_seconds": 0.10242418699999689,
+      "child_cpu_seconds": 0.08353100000000006,
+      "wall_per_process_us": 512.1209349999845,
+      "sha256": "74aa248e575b54c129aab44886fd8c3384e5a00665ef0f1575fb500fad6a0e3e"
+    },
+    {
+      "cycle": 1,
+      "label": "DAG",
+      "wall_seconds": 0.10246566300020277,
+      "child_cpu_seconds": 0.08271500000000002,
+      "wall_per_process_us": 512.3283150010138,
+      "sha256": "74aa248e575b54c129aab44886fd8c3384e5a00665ef0f1575fb500fad6a0e3e"
+    },
+    {
+      "cycle": 1,
+      "label": "flat",
+      "wall_seconds": 0.09926677699968423,
+      "child_cpu_seconds": 0.0812609999999999,
+      "wall_per_process_us": 496.3338849984212,
+      "sha256": "59c67e4a9a3578e7a6cfbca3b7f943d7736b79e6278898ce56435f386b6835b5"
+    }
+  ]
+}
