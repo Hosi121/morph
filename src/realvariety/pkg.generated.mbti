@@ -2,6 +2,7 @@
 package "Hosi121/morph/realvariety"
 
 import {
+  "Hosi121/morph/binary",
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/f4",
@@ -14,6 +15,12 @@ import {
 
 // Values
 pub fn advance(Isolation, @core.Nat) -> Progress
+
+pub fn attempted(SeparationSearch) -> @core.Nat
+
+pub fn augment(Problem, @binary.Binary) -> Result[Augmentation, VarietyError]
+
+pub fn check_augmentation(Problem, Augmentation) -> Bool
 
 pub fn check_basis_shape(@f4.Basis, ShapeCertificate) -> Bool
 
@@ -28,6 +35,18 @@ pub fn check_coordinate_result(@realalgebraic.Number, CoordinateCertificate) -> 
 pub fn check_point(PointCertificate) -> Bool
 
 pub fn check_point_result(Point, PointCertificate) -> Bool
+
+pub fn check_projected_coordinate_result(Problem, ProjectedPoint, @realalgebraic.Number, CoordinateCertificate) -> Bool
+
+pub fn check_projected_point(Problem, ProjectedPointCertificate) -> Bool
+
+pub fn check_projected_point_result(Problem, ProjectedPoint, ProjectedPointCertificate) -> Bool
+
+pub fn check_separation(Problem, SeparationCertificate) -> Bool
+
+pub fn check_separation_result(Problem, SeparatedSet, SeparationCertificate) -> Bool
+
+pub fn check_separation_unit(Problem, SeparationUnitCertificate) -> Bool
 
 pub fn check_shape(ShapeCertificate) -> Bool
 
@@ -47,11 +66,17 @@ pub fn coordinate_start(Point, @core.Nat) -> Result[CoordinateEvaluation, Variet
 
 pub fn evaluate_coordinate(Point, @core.Nat, @core.Nat) -> Result[CoordinateProgress, VarietyError]
 
+pub fn evaluate_projected_coordinate(ProjectedPoint, @core.Nat, @core.Nat) -> Result[CoordinateProgress, VarietyError]
+
 pub fn extract(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Extraction, VarietyError]
+
+pub fn failed_attempts(SeparationSearch) -> @core.Chain[AttemptFailure]
 
 pub fn from_basis(@f4.Basis) -> Result[Extraction, VarietyError]
 
 pub fn isolate(Shape) -> Isolation
+
+pub fn next_seed(SeparationSearch) -> @binary.Binary
 
 pub fn parameter(Point) -> @realalgebraic.Number
 
@@ -60,6 +85,28 @@ pub fn point_certificate(Point) -> PointCertificate
 pub fn point_from_certificate(PointCertificate) -> Result[Point, VarietyError]
 
 pub fn points(SolutionSet) -> Result[@core.Chain[Point], VarietyError]
+
+pub fn problem(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Problem, VarietyError]
+
+pub fn problem_description(Problem) -> ProblemDescription
+
+pub fn projected_coordinate_expressions(ProjectedPoint) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn projected_dimension(ProjectedPoint) -> @core.Nat
+
+pub fn projected_parameter(ProjectedPoint) -> @realalgebraic.Number
+
+pub fn projected_point_certificate(ProjectedPoint) -> ProjectedPointCertificate
+
+pub fn projected_points(SeparatedSet) -> Result[@core.Chain[ProjectedPoint], VarietyError]
+
+pub fn separation_advance(SeparationSearch, @core.Nat, @core.Nat) -> Result[SeparationProgress, VarietyError]
+
+pub fn separation_certificate(SeparatedSet) -> SeparationCertificate
+
+pub fn separation_from_certificate(Problem, SeparationCertificate) -> Result[SeparatedSet, VarietyError]
+
+pub fn separation_start(Problem) -> SeparationSearch
 
 pub fn shape_certificate(Shape) -> ShapeCertificate
 
@@ -78,6 +125,27 @@ pub fn substitute_mod(@polynomial.Polynomial, @core.Chain[@polynomial.Polynomial
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct AttemptFailure {
+  seed : @binary.Binary
+  reason : UnsupportedReason
+}
+pub fn AttemptFailure::equal(Self, Self) -> Bool
+pub fn AttemptFailure::not_equal(Self, Self) -> Bool
+pub fn AttemptFailure::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Augmentation {
+  source : ProblemDescription
+  seed : @binary.Binary
+  variables : @core.Nat
+  inputs : @core.Chain[@polynomial.Polynomial]
+  relation : @polynomial.Polynomial
+}
+pub fn Augmentation::equal(Self, Self) -> Bool
+pub fn Augmentation::not_equal(Self, Self) -> Bool
+pub fn Augmentation::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub(all) struct CoordinateCertificate {
   point : PointCertificate
@@ -151,6 +219,23 @@ pub fn PointCertificate::not_equal(Self, Self) -> Bool
 pub fn PointCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+pub struct Problem {
+  description : ProblemDescription
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ProblemDescription {
+  variables : @core.Nat
+  inputs : @core.Chain[@polynomial.Polynomial]
+}
+pub fn ProblemDescription::equal(Self, Self) -> Bool
+pub fn ProblemDescription::not_equal(Self, Self) -> Bool
+pub fn ProblemDescription::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub(all) enum Progress {
   Complete(SolutionSet)
   Paused(Isolation)
@@ -158,6 +243,92 @@ pub(all) enum Progress {
 pub fn Progress::equal(Self, Self) -> Bool
 pub fn Progress::not_equal(Self, Self) -> Bool
 pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct ProjectedPoint {
+  separation : SeparationCertificate
+  full : Point
+}
+pub fn ProjectedPoint::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ProjectedPointCertificate {
+  separation : SeparationCertificate
+  parameter : @realalgebraic.RootCertificate
+}
+pub fn ProjectedPointCertificate::equal(Self, Self) -> Bool
+pub fn ProjectedPointCertificate::not_equal(Self, Self) -> Bool
+pub fn ProjectedPointCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SearchPauseReason {
+  AttemptLimit
+  ComputationFuel
+}
+pub fn SearchPauseReason::equal(Self, Self) -> Bool
+pub fn SearchPauseReason::not_equal(Self, Self) -> Bool
+pub fn SearchPauseReason::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type SearchPhase
+pub fn SearchPhase::equal(Self, Self) -> Bool
+pub fn SearchPhase::not_equal(Self, Self) -> Bool
+pub fn SearchPhase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct SeparatedSet {
+  source : Problem
+  augmentation : Augmentation
+  groebner : @f4.Certificate
+  full : SolutionSet
+}
+pub fn SeparatedSet::equal(Self, Self) -> Bool
+pub fn SeparatedSet::not_equal(Self, Self) -> Bool
+pub fn SeparatedSet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SeparationCertificate {
+  augmentation : Augmentation
+  groebner : @f4.Certificate
+  solutions : SolutionCertificate
+  projection : @core.Nat
+}
+pub fn SeparationCertificate::equal(Self, Self) -> Bool
+pub fn SeparationCertificate::not_equal(Self, Self) -> Bool
+pub fn SeparationCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SeparationProgress {
+  Separated(SeparatedSet)
+  SeparationPaused(SeparationSearch, SearchPauseReason)
+  SeparationNoSolutions(SeparationUnitCertificate)
+}
+pub fn SeparationProgress::equal(Self, Self) -> Bool
+pub fn SeparationProgress::not_equal(Self, Self) -> Bool
+pub fn SeparationProgress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct SeparationSearch {
+  source : Problem
+  next : @binary.Binary
+  attempts : @core.Nat
+  failures : @core.Chain[AttemptFailure]
+  phase : SearchPhase
+}
+pub fn SeparationSearch::equal(Self, Self) -> Bool
+pub fn SeparationSearch::not_equal(Self, Self) -> Bool
+pub fn SeparationSearch::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SeparationUnitCertificate {
+  augmentation : Augmentation
+  groebner : @f4.Certificate
+  unit : UnitCertificate
+  projection : @core.Nat
+}
+pub fn SeparationUnitCertificate::equal(Self, Self) -> Bool
+pub fn SeparationUnitCertificate::not_equal(Self, Self) -> Bool
+pub fn SeparationUnitCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Shape {

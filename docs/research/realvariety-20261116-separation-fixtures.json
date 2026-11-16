@@ -1,0 +1,1646 @@
+{
+  "sympy": "1.14.0",
+  "statistics": {
+    "complete": 9,
+    "paused": 2,
+    "unit": 1,
+    "real_points": 27,
+    "attempts": 27
+  },
+  "cases": [
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2 - 1",
+        "y**2 - 1"
+      ],
+      "attempt_limit": 3,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "y**2 - 1",
+            "t**2 - 1"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + x + y",
+            "y**2 - 1",
+            "-t**2 + 2*t*y",
+            "t**3 - 4*t"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 2,
+          "relation": "t - x - 2*y",
+          "basis": [
+            "-t**3 + 7*t + 6*x",
+            "t**3 - 13*t + 12*y",
+            "t**4 - 10*t**2 + 9"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 2,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -10,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            9,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              1,
+              6
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -7,
+              6
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              -1,
+              12
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              13,
+              12
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "-1",
+          "-1"
+        ],
+        [
+          "1",
+          "-1"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "parameter_values": [
+        "-3",
+        "-1",
+        "1",
+        "3"
+      ],
+      "intervals": [
+        [
+          [
+            -12289,
+            4096
+          ],
+          [
+            -3,
+            1
+          ]
+        ],
+        [
+          [
+            -4097,
+            4096
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            4095,
+            4096
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            12287,
+            4096
+          ],
+          [
+            3,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2 - 2",
+        "y**2 - 3"
+      ],
+      "attempt_limit": 2,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "y**2 - 3",
+            "t**2 - 2"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t**3 + 9*t + 2*x",
+            "t**3 - 11*t + 2*y",
+            "t**4 - 10*t**2 + 1"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 1,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -10,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -9,
+              2
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              -1,
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              11,
+              2
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "-sqrt(2)",
+          "-sqrt(3)"
+        ],
+        [
+          "sqrt(2)",
+          "-sqrt(3)"
+        ],
+        [
+          "-sqrt(2)",
+          "sqrt(3)"
+        ],
+        [
+          "sqrt(2)",
+          "sqrt(3)"
+        ]
+      ],
+      "parameter_values": [
+        "-sqrt(3) - sqrt(2)",
+        "-sqrt(3) + sqrt(2)",
+        "-sqrt(2) + sqrt(3)",
+        "sqrt(2) + sqrt(3)"
+      ],
+      "intervals": [
+        [
+          [
+            -129,
+            41
+          ],
+          [
+            -538,
+            171
+          ]
+        ],
+        [
+          [
+            -48,
+            151
+          ],
+          [
+            -41,
+            129
+          ]
+        ],
+        [
+          [
+            41,
+            129
+          ],
+          [
+            48,
+            151
+          ]
+        ],
+        [
+          [
+            538,
+            171
+          ],
+          [
+            129,
+            41
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2 - 2",
+        "y**2 - 2"
+      ],
+      "attempt_limit": 3,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "y**2 - 2",
+            "t**2 - 2"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + x + y",
+            "y**2 - 2",
+            "-t**2 + 2*t*y",
+            "t**3 - 8*t"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 2,
+          "relation": "t - x - 2*y",
+          "basis": [
+            "-t**3 + 14*t + 12*x",
+            "t**3 - 26*t + 24*y",
+            "t**4 - 20*t**2 + 36"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 2,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -20,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            36,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              1,
+              12
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -7,
+              6
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              -1,
+              24
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              13,
+              12
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "-sqrt(2)",
+          "-sqrt(2)"
+        ],
+        [
+          "sqrt(2)",
+          "-sqrt(2)"
+        ],
+        [
+          "-sqrt(2)",
+          "sqrt(2)"
+        ],
+        [
+          "sqrt(2)",
+          "sqrt(2)"
+        ]
+      ],
+      "parameter_values": [
+        "-3*sqrt(2)",
+        "-sqrt(2)",
+        "sqrt(2)",
+        "3*sqrt(2)"
+      ],
+      "intervals": [
+        [
+          [
+            -577,
+            136
+          ],
+          [
+            -140,
+            33
+          ]
+        ],
+        [
+          [
+            -99,
+            70
+          ],
+          [
+            -140,
+            99
+          ]
+        ],
+        [
+          [
+            140,
+            99
+          ],
+          [
+            99,
+            70
+          ]
+        ],
+        [
+          [
+            140,
+            33
+          ],
+          [
+            577,
+            136
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "inputs": [
+        "x**2 - 2",
+        "-x + y",
+        "z**2 - 3"
+      ],
+      "attempt_limit": 2,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "-t + y",
+            "z**2 - 3",
+            "t**2 - 2"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y - z",
+          "basis": [
+            "t**3 - 27*t + 20*x",
+            "t**3 - 27*t + 20*y",
+            "-t**3 + 17*t + 10*z",
+            "t**4 - 22*t**2 + 25"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 1,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -22,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            25,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              -1,
+              20
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              27,
+              20
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              -1,
+              20
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              27,
+              20
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              10
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -17,
+              10
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "-sqrt(2)",
+          "-sqrt(2)",
+          "-sqrt(3)"
+        ],
+        [
+          "-sqrt(2)",
+          "-sqrt(2)",
+          "sqrt(3)"
+        ],
+        [
+          "sqrt(2)",
+          "sqrt(2)",
+          "-sqrt(3)"
+        ],
+        [
+          "sqrt(2)",
+          "sqrt(2)",
+          "sqrt(3)"
+        ]
+      ],
+      "parameter_values": [
+        "-2*sqrt(2) - sqrt(3)",
+        "-2*sqrt(2) + sqrt(3)",
+        "-sqrt(3) + 2*sqrt(2)",
+        "sqrt(3) + 2*sqrt(2)"
+      ],
+      "intervals": [
+        [
+          [
+            -301,
+            66
+          ],
+          [
+            -415,
+            91
+          ]
+        ],
+        [
+          [
+            -91,
+            83
+          ],
+          [
+            -57,
+            52
+          ]
+        ],
+        [
+          [
+            57,
+            52
+          ],
+          [
+            91,
+            83
+          ]
+        ],
+        [
+          [
+            415,
+            91
+          ],
+          [
+            301,
+            66
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x"
+      ],
+      "inputs": [
+        "2*x**2 - 3"
+      ],
+      "attempt_limit": 1,
+      "kind": "complete",
+      "original_shape": true,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "2*t**2 - 3"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 0,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            -3,
+            2
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "-sqrt(6)/2"
+        ],
+        [
+          "sqrt(6)/2"
+        ]
+      ],
+      "parameter_values": [
+        "-sqrt(6)/2",
+        "sqrt(6)/2"
+      ],
+      "intervals": [
+        [
+          [
+            -158,
+            129
+          ],
+          [
+            -109,
+            89
+          ]
+        ],
+        [
+          [
+            109,
+            89
+          ],
+          [
+            158,
+            129
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2 + 1",
+        "y**2 + 1"
+      ],
+      "attempt_limit": 3,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "y**2 + 1",
+            "t**2 + 1"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + x + y",
+            "y**2 + 1",
+            "-t**2 + 2*t*y",
+            "t**3 + 4*t"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 2,
+          "relation": "t - x - 2*y",
+          "basis": [
+            "t**3 + 7*t + 6*x",
+            "-t**3 - 13*t + 12*y",
+            "t**4 + 10*t**2 + 9"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 2,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            10,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            9,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              -1,
+              6
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -7,
+              6
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              12
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              13,
+              12
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [],
+      "parameter_values": [],
+      "intervals": []
+    },
+    {
+      "variables": [
+        "x"
+      ],
+      "inputs": [
+        "(x - 1)**3"
+      ],
+      "attempt_limit": 1,
+      "kind": "complete",
+      "original_shape": true,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "t**3 - 3*t**2 + 3*t - 1"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 0,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          [
+            -3,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            1
+          ],
+          [
+            1
+          ]
+        ],
+        [
+          [
+            -1,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "1"
+        ]
+      ],
+      "parameter_values": [
+        "1"
+      ],
+      "intervals": [
+        [
+          [
+            4095,
+            4096
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2 + y**2 - 1",
+        "x*y"
+      ],
+      "attempt_limit": 3,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "t**2 + y**2 - 1",
+            "t*y",
+            "t**3 - t"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + x + y",
+            "-t*y + y**2",
+            "t**2 - 1"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 2,
+          "relation": "t - x - 2*y",
+          "basis": [
+            "t**3 - 4*t + 3*x",
+            "-t**3 + t + 6*y",
+            "t**4 - 5*t**2 + 4"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 2,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -5,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            4,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              -1,
+              3
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            [
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              6
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -1,
+              6
+            ],
+            [
+              1
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "parameter_values": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "intervals": [
+        [
+          [
+            -8193,
+            4096
+          ],
+          [
+            -2,
+            1
+          ]
+        ],
+        [
+          [
+            -4097,
+            4096
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        [
+          [
+            4095,
+            4096
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            8191,
+            4096
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "inputs": [
+        "x**2 - 2",
+        "y**2 - 3",
+        "-x*y + z"
+      ],
+      "attempt_limit": 2,
+      "kind": "complete",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "-t*z + 2*y",
+            "z**2 - 6",
+            "t**2 - 2"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y - z",
+          "basis": [
+            "t**3 - 3*t**2 - 15*t + 4*x - 3",
+            "-t**3 + 2*t**2 + 17*t + 2*y + 14",
+            "t**3 - t**2 - 23*t + 4*z - 25",
+            "t**4 - 22*t**2 - 48*t - 23"
+          ],
+          "shape": true,
+          "unit": false
+        }
+      ],
+      "seed": 1,
+      "eliminant": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            4
+          ]
+        ],
+        [
+          [
+            -22,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          [
+            -48,
+            1
+          ],
+          [
+            1
+          ]
+        ],
+        [
+          [
+            -23,
+            1
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "coordinates": [
+        [
+          [
+            [
+              -1,
+              4
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              3,
+              4
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              15,
+              4
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              3,
+              4
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -1,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              -17,
+              2
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              -7,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              -1,
+              4
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              1,
+              4
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              23,
+              4
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              25,
+              4
+            ],
+            [
+              0
+            ]
+          ]
+        ]
+      ],
+      "real_solutions": [
+        [
+          "sqrt(2)",
+          "-sqrt(3)",
+          "-sqrt(6)"
+        ],
+        [
+          "-sqrt(2)",
+          "sqrt(3)",
+          "-sqrt(6)"
+        ],
+        [
+          "-sqrt(2)",
+          "-sqrt(3)",
+          "sqrt(6)"
+        ],
+        [
+          "sqrt(2)",
+          "sqrt(3)",
+          "sqrt(6)"
+        ]
+      ],
+      "parameter_values": [
+        "-sqrt(6) - sqrt(3) + sqrt(2)",
+        "-sqrt(6) - sqrt(2) + sqrt(3)",
+        "-sqrt(3) - sqrt(2) + sqrt(6)",
+        "sqrt(2) + sqrt(3) + sqrt(6)"
+      ],
+      "intervals": [
+        [
+          [
+            -119,
+            43
+          ],
+          [
+            -440,
+            159
+          ]
+        ],
+        [
+          [
+            -356,
+            167
+          ],
+          [
+            -81,
+            38
+          ]
+        ],
+        [
+          [
+            -23,
+            33
+          ],
+          [
+            -108,
+            155
+          ]
+        ],
+        [
+          [
+            263,
+            47
+          ],
+          [
+            2658,
+            475
+          ]
+        ]
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x**2",
+        "y**2"
+      ],
+      "attempt_limit": 4,
+      "kind": "paused",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "y**2",
+            "t**2"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + x + y",
+            "y**2",
+            "-t**2 + 2*t*y",
+            "t**3"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 2,
+          "relation": "t - x - 2*y",
+          "basis": [
+            "-t + x + 2*y",
+            "y**2",
+            "-t**2 + 4*t*y",
+            "t**3"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 3,
+          "relation": "t - x - 3*y",
+          "basis": [
+            "-t + x + 3*y",
+            "y**2",
+            "-t**2 + 6*t*y",
+            "t**3"
+          ],
+          "shape": false,
+          "unit": false
+        }
+      ]
+    },
+    {
+      "variables": [
+        "x",
+        "y"
+      ],
+      "inputs": [
+        "x - y"
+      ],
+      "attempt_limit": 2,
+      "kind": "paused",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "-t + x",
+            "-t + y"
+          ],
+          "shape": false,
+          "unit": false
+        },
+        {
+          "seed": 1,
+          "relation": "t - x - y",
+          "basis": [
+            "-t + 2*x",
+            "-t + 2*y"
+          ],
+          "shape": false,
+          "unit": false
+        }
+      ]
+    },
+    {
+      "variables": [
+        "x"
+      ],
+      "inputs": [
+        "x",
+        "x - 1"
+      ],
+      "attempt_limit": 1,
+      "kind": "unit",
+      "original_shape": false,
+      "attempts": [
+        {
+          "seed": 0,
+          "relation": "t - x",
+          "basis": [
+            "1"
+          ],
+          "shape": false,
+          "unit": true
+        }
+      ]
+    }
+  ]
+}

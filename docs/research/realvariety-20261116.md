@@ -2,9 +2,9 @@
 
 [ドキュメント](../README.md) / [研究・探索記録](README.md)
 
-This package connects the symbolic F4 basis, Sturm root isolation, and exact real-algebraic representations. It solves the explicitly checked shape case of a zero-dimensional rational polynomial system, using the last variable as parameter `t`. It does not implement general CAD, a separating linear change of coordinates, or a general zero-dimensional solver.
+This package connects the symbolic F4 basis, Sturm root isolation, and exact real-algebraic representations. It solves the explicitly checked shape case of a zero-dimensional rational polynomial system, using the last variable as parameter `t`. It also searches a family of separating linear forms through a checked graph augmentation. It does not implement general CAD or an unconditional zero-dimensional solver.
 
-The F4 dependency is the frozen source commit `ae6f76b3d529ae86c63d065a77f9f5b380ddd1a6` (locally cherry-picked as `daf9e74`). No F4 implementation files are edited here. The first RUR commit `b0aa543` passes **25 tests**; the completed RUR and coordinate-materialization package passes **92 tests on native, JS and WasmGC**.
+The F4 dependency is the frozen source commit `ae6f76b3d529ae86c63d065a77f9f5b380ddd1a6` (locally cherry-picked as `daf9e74`). No F4 implementation files are edited here. The first RUR commit `b0aa543` passes **25 tests**; the RUR and coordinate-materialization commit `fe5699b` passes **92 tests**. With the separating-form search, the package passes **111 tests on native, JS and WasmGC**.
 
 ## Supported representation and certificate
 
@@ -58,6 +58,32 @@ One fuel unit computes one determinant/interpolation sample or one source-root b
 
 `check_coordinate` checks the result root and coordinate relation embedded in a certificate. `check_coordinate_result(value, proof)` additionally binds a separately supplied `Number` to the exact normalized polynomial and interval recorded by that certificate. Similarly, `check_point_result` and `check_solutions_result` bind separately supplied points and solution sets to their exact certificate representations. These are representation checks: equivalent values encoded with different intervals or shape data are deliberately not interchangeable. The original proof-only checkers remain available.
 
+## Searching a separating linear form
+
+[Graph augmentation and resumable search](../../src/realvariety/separation.mbt) and [projection](../../src/realvariety/projection.mbt) extend the supported input systems while preserving the shape core. `problem(n, inputs)` creates an opaque, dimension-checked source problem with `n>=1`. For seed `s=0,1,2,...`, the algorithm adds the final auxiliary variable `t`, appends zero to every original monomial exponent list, and appends
+
+```text
+t - (x_0 + s*x_1 + ... + s^(n-1)*x_(n-1)) = 0.
+```
+
+Original variables retain their order and coordinates. F4 computes the augmented lex basis; the existing shape checker tries to represent **all original coordinates** as polynomials in `t`. A candidate succeeds only if its full F4 ideal witness, actual-row shape provenance, all substitution remainders, and all Sturm real-root intervals check. A failed shape attempt is recorded diagnostically and the next seed is tried. The coefficient at `x_0` is one even when `s=0`; later coefficients are zero in that case. All powers and coefficients are exact symbolic binary integers/rationals.
+
+For any source solution `a`, the augmented graph has exactly the solution `(a,L_s(a))` above it. Conversely any augmented solution projects to a source solution. This graph correspondence is a bijection over both the complex and real fields and does not assume radicality. Once the augmented ideal has a checked shape representation, every augmented solution is enumerated and projection simply keeps the first `n` coordinate expressions. Projection neither loses nor duplicates points because the discarded `t` is already fixed by the original coordinates. There is no inverse coordinate transformation.
+
+The checker takes a **separately supplied source `Problem`**. It recomputes the complete ordered augmentation from that problem and seed, checks its source description, dimension, graph relation and lifted inputs, then calls `@f4.check(augmented_variables, recomputed_inputs, groebner_certificate)`. Thus a basis verified only against some other source is insufficient. The shape basis must equal the certified F4 basis; the projection dimension must equal the original variable count. Original lifted inputs and the graph relation are additionally substituted directly modulo `g`. `check_separation_result` also binds a separately supplied `SeparatedSet` payload. Unit-ideal proofs have the same source/augmentation/F4/projection binding through `check_separation_unit`.
+
+`projected_points` returns shared-parameter tuples containing only original coordinate expressions. `check_projected_point_result` binds their parameter, source, full solution proof, and projection. `evaluate_projected_coordinate` delegates to the bounded-degree coordinate materializer while rejecting the auxiliary coordinate index. `check_projected_coordinate_result` binds the source problem, projected point, coordinate index and numeric payload together.
+
+The search has two independent, replenishable budgets. `attempt_fuel` counts newly initialized seeds in that call. `work_fuel` counts F4 steps (including finalization) and Sturm interval nodes across candidates. `SeparationPaused(state, AttemptLimit | ComputationFuel)` retains the current F4/isolation state and the next unused seed; resuming with zero attempt fuel can finish an existing candidate but cannot start another. Initialization, exact field operations, full witness checking and substitution within these steps are not bit-operation or wall-clock bounds. History from `failed_attempts` is diagnostic and is not a proof that no future form works.
+
+For finitely many distinct points, equality of `L_s(a)` and `L_s(b)` means that the nonzero polynomial `sum((a_i-b_i)*s^i)` vanishes. Each pair therefore has finitely many bad seeds. The classical radical shape lemma motivates this search, but point separation alone does not certify a nonradical quotient algebra is generated by `t`. The implementation does not certify radicality or zero-dimensionality in advance and makes **no unconditional success claim for all zero-dimensional ideals**. In particular `{x^2,y^2}` remains non-shape for the tested seeds `0..3` despite having a real point. Its finite search is paused rather than declared empty. Positive-dimensional input behaves similarly. `SeparationNoSolutions` is returned only for a checked augmented unit ideal; an accepted shape with no real roots returns a completed empty projected set instead.
+
+The [independent separation generator](../../tools/generate_realvariety_separation.py) uses SymPy lex bases and `solve_poly_system`, compares the complete projected real tuple set exactly, and retains [27 seed attempts across 12 systems](realvariety-20261116-separation-fixtures.json): **9 completed systems with 27 real points**, **2 paused systems**, and **one unit ideal**. `{x^2-1,y^2-1}` rejects seeds 0 and 1 and succeeds at seed 2 with `g=t^4-10t^2+9`; `{x^2-2,y^2-3}` rejects seed 0 and succeeds at seed 1 with `g=t^4-10t^2+1`. Both original systems were unsupported by the direct shape entry point. Additional cases include three variables, repeated one-variable roots, independent and dependent quadratic irrationalities, rational points, and a nonunit ideal with no real solutions.
+
+Negative tests reject a correct proof from another problem, rewritten source metadata without matching lifted inputs, recomputed foreign augmentations paired with an old F4 witness, a foreign valid F4 basis/solution certificate, changed seed/relation/input order/dimensions, wrong projection size, a missing root, and materialization of the discarded auxiliary coordinate. Exact source binding also applies to unit certificates. This completes the bootstrap from an originally non-shape polynomial system through augmentation, F4, checked RUR, projection, and exact individual coordinates.
+
+A [three-variable eight-point SymPy pilot](realvariety-20261116-separation-pilot.json) is retained separately. An extended MoonBit regression containing that pilot was interrupted after observing 206 seconds on its task-owned test runner without a final summary. It is excluded from the verified regression; no isolated cost attribution or MoonBit correctness verdict for that extra pilot is claimed. The final verified set includes three-variable examples with smaller quotient dimension. No scalability improvement is claimed.
+
 ## Independent fixtures and boundaries
 
 The [generator](../../tools/generate_realvariety_fixtures.py) uses SymPy 1.14.0's reduced lex basis, `solve_poly_system`, exact real roots, and rational isolating intervals. It checks equality between the full real solution tuples from `solve_poly_system` and those reconstructed from the independent shape representation. The retained [fixture artifact](realvariety-20261116-fixtures.json) has **17 supported systems with 30 real points**, **one unit ideal**, and **three unsupported systems**. Every supported MoonBit case checks the F4 ideal witness, expected eliminant and coordinate polynomials, all original-input substitution remainders, full root coverage, and exact parameter equality to the SymPy intervals.
@@ -70,6 +96,7 @@ Adversarial tests reject fabricated shape coordinates, absent chosen rows, chang
 
 ```sh
 python3 tools/generate_realvariety_fixtures.py --check
+python3 tools/generate_realvariety_separation.py --check
 tools/measure --cpu 8 .tools/moon/bin/moon test src/realvariety --target native
 tools/measure --cpu 8 .tools/moon/bin/moon test src/realvariety --target js
 tools/measure --cpu 8 .tools/moon/bin/moon test src/realvariety --target wasm-gc

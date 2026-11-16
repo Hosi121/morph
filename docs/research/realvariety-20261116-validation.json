@@ -1,5 +1,5 @@
 {
-  "utc": "2026-11-16T08:17:28.840088+00:00",
+  "utc": "2026-11-16T08:39:23.008655+00:00",
   "cpu": 8,
   "serialization": "tools/measure shared git-common-dir lock",
   "timing_scope": "incremental command wall time, not an algorithm benchmark",
@@ -13,8 +13,8 @@
         "native"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.126367,
-      "output": "Total tests: 92, passed: 92, failed: 0.\n"
+      "wall_seconds": 87.008101,
+      "output": "Total tests: 111, passed: 111, failed: 0.\n"
     },
     {
       "command": [
@@ -25,8 +25,8 @@
         "js"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.745945,
-      "output": "Total tests: 92, passed: 92, failed: 0.\n"
+      "wall_seconds": 63.706948,
+      "output": "Total tests: 111, passed: 111, failed: 0.\n"
     },
     {
       "command": [
@@ -37,8 +37,8 @@
         "wasm-gc"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.739914,
-      "output": "Total tests: 92, passed: 92, failed: 0.\n"
+      "wall_seconds": 54.021654,
+      "output": "Total tests: 111, passed: 111, failed: 0.\n"
     },
     {
       "command": [
@@ -48,7 +48,7 @@
         "--deny-warn"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.420436,
+      "wall_seconds": 1.253662,
       "output": "Finished. moon: ran 17 tasks, now up to date\n"
     },
     {
@@ -58,7 +58,7 @@
         "src/realvariety"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.370606,
+      "wall_seconds": 1.157768,
       "output": "Finished. moon: ran 14 tasks, now up to date\n"
     },
     {
@@ -69,8 +69,8 @@
         "--check"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.131282,
-      "output": "Finished. moon: ran 8 tasks, now up to date\n"
+      "wall_seconds": 0.353568,
+      "output": "Finished. moon: ran 12 tasks, now up to date\n"
     },
     {
       "command": [
@@ -78,8 +78,8 @@
         "tools/audit_purity.py"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.172698,
-      "output": "Purity gate passed: 138 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+      "wall_seconds": 0.487913,
+      "output": "Purity gate passed: 140 kernel files; no machine numerics, mutation, arrays or FFI.\n"
     },
     {
       "command": [
@@ -88,8 +88,18 @@
         "--check"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.510681,
+      "wall_seconds": 1.739312,
       "output": "{\"coordinate_evaluations\": 62, \"real_points\": 30, \"shape\": 17, \"unit\": 1, \"unsupported\": 3}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_realvariety_separation.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 2.168917,
+      "output": "{\"attempts\": 27, \"complete\": 9, \"paused\": 2, \"real_points\": 27, \"unit\": 1}\n"
     }
   ]
 }
