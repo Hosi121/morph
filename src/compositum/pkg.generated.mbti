@@ -1,0 +1,118 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/compositum"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/realminimal",
+  "Hosi121/morph/realvariety",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check(@realalgebraic.Number, @realalgebraic.Number, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_result(@realalgebraic.Number, @realalgebraic.Number, Common, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn common_field(Common) -> @numberfield.Field
+
+pub fn compose(@realalgebraic.Number, @realalgebraic.Number, Budget) -> Result[Progress, CompositumError]
+
+pub fn left_element(Common) -> @numberfield.Element
+
+pub fn right_element(Common) -> @numberfield.Element
+
+pub fn source_problem(@realalgebraic.Number, @realalgebraic.Number) -> Result[@realvariety.Problem, CompositumError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Budget {
+  attempts : @core.Nat
+  work : @core.Nat
+  coordinate : @core.Nat
+  comparison : @core.Nat
+  primes : @core.Chain[@binary.Binary]
+  lift : @core.Nat
+  subset : @core.Nat
+  verification : @core.Nat
+  realization : @core.Nat
+}
+pub fn Budget::equal(Self, Self) -> Bool
+pub fn Budget::not_equal(Self, Self) -> Bool
+pub fn Budget::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  left : @realalgebraic.RootCertificate
+  right : @realalgebraic.RootCertificate
+  separation : @realvariety.SeparationCertificate
+  selection : @core.Chain[SelectionRow]
+  selected : @core.Nat
+  minimal : @realminimal.Certificate
+  left_embedding : @numberfield.RealCertificate
+  right_embedding : @numberfield.RealCertificate
+  left_equality : @realalgebraic.ComparisonCertificate
+  right_equality : @realalgebraic.ComparisonCertificate
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Common {
+  field : @numberfield.Field
+  left : @numberfield.Element
+  right : @numberfield.Element
+}
+pub fn Common::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CompositumError {
+  VarietyFailure(@realvariety.VarietyError)
+  AlgebraFailure(@realalgebraic.AlgebraError)
+  MinimalFailure(@realminimal.MinimalError)
+  FieldFailure(@numberfield.FieldError)
+  InternalInvariant
+}
+pub fn CompositumError::equal(Self, Self) -> Bool
+pub fn CompositumError::not_equal(Self, Self) -> Bool
+pub fn CompositumError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Composed(Common, Certificate)
+  Unresolved(StopReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SelectionRow {
+  left : @realvariety.CoordinateCertificate
+  right : @realvariety.CoordinateCertificate
+  left_comparison : @realalgebraic.ComparisonCertificate
+  right_comparison : @realalgebraic.ComparisonCertificate
+}
+pub fn SelectionRow::equal(Self, Self) -> Bool
+pub fn SelectionRow::not_equal(Self, Self) -> Bool
+pub fn SelectionRow::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  SeparationBudget(@realvariety.SearchPauseReason)
+  CoordinateBudget
+  ComparisonBudget
+  MinimalBudget(@realminimal.StopReason)
+  RealizationBudget
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
