@@ -671,14 +671,20 @@ fn transition(search : Search, inspection : Inspection) -> (Status, Statistics) 
 }
 
 ///|
-fn step(search : Search) -> (Status, Statistics) {
+fn inspect_search(search : Search) -> (Inspection, Search) {
   match search.watch {
-    None => transition(search, inspect_database(search.database, search.trail))
+    None => (inspect_database(search.database, search.trail), search)
     Some(watch) => {
       let (inspection, watch) = watch_inspect(watch, search.database)
-      transition({ ..search, watch: Some(watch), }, inspection)
+      (inspection, { ..search, watch: Some(watch), })
     }
   }
+}
+
+///|
+fn step(search : Search) -> (Status, Statistics) {
+  let (inspection, search) = inspect_search(search)
+  transition(search, inspection)
 }
 
 ///|

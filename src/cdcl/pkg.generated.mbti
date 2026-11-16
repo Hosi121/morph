@@ -8,9 +8,13 @@ import {
 }
 
 // Values
+pub fn add_clause(Search, @core.Chain[@sat.Literal]) -> Search
+
 pub fn check_refutation(@core.Chain[@core.Chain[@sat.Literal]], Proof) -> Bool
 
 pub fn run(Search, @core.Nat) -> Status
+
+pub fn run_incremental(Search, @core.Nat) -> IncrementalStatus
 
 pub fn run_measured(Search, @core.Nat) -> (Status, Statistics)
 
@@ -34,6 +38,17 @@ type Atom
 pub fn Atom::equal(Self, Self) -> Bool
 pub fn Atom::not_equal(Self, Self) -> Bool
 pub fn Atom::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum IncrementalStatus {
+  Satisfiable(@core.Chain[@sat.Literal], Search)
+  Unsatisfiable(Proof)
+  Paused(Search)
+  InvariantViolation
+}
+pub fn IncrementalStatus::equal(Self, Self) -> Bool
+pub fn IncrementalStatus::not_equal(Self, Self) -> Bool
+pub fn IncrementalStatus::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 type Index[A]

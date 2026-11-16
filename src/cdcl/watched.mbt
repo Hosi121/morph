@@ -89,6 +89,8 @@ struct WatchState {
   units : @core.Chain[(Atom, Lits)]
   empty : Bool
   next_id : @binary.Binary
+  added : Database
+  recheck_added : Bool
 }
 
 ///|
@@ -178,6 +180,8 @@ fn watch_start(db : Database) -> WatchState {
     units: Nil,
     empty: false,
     next_id: @binary.zero(),
+    added: Nil,
+    recheck_added: false,
   }
   let state = @core.fold_left(db, initial, fn(state, clause) {
     match clause {
@@ -308,6 +312,22 @@ fn watch_move(
 }
 
 ///|
+/// Clauses inserted under existing decisions can become unit after a later
+/// backjump without a new falsified-watch event. Reconcile only these input
+/// additions at insertion/backjump boundaries; the original watches stay shared.
+fn inspect_added(db : Database, values : Index[Assignment]) -> Inspection {
+  match db {
+    Nil => Complete
+    Cons(clause, rest) =>
+      match indexed_clause(clause, values) {
+        Conflict => Contradiction(clause)
+        Unit(literal) => Propagate(literal, clause)
+        Satisfied | Open(_) => inspect_added(rest, values)
+      }
+  }
+}
+
+///|
 /// Finish a bucket incrementally, retaining the remaining IDs when a new
 /// implied literal is returned. Clause moves remain valid after unassignment.
 fn watch_inspect_using(
@@ -315,89 +335,98 @@ fn watch_inspect_using(
   db : Database,
   check_rest : Bool,
 ) -> (Inspection, WatchState) {
-  match state.empty {
-    true => (Contradiction(Nil), state)
-    false =>
-      match state.units {
-        Cons((literal, reason), rest) => {
-          let state = { ..state, units: rest, }
-          match index_value(literal, state.values) {
-            True => watch_inspect_using(state, db, check_rest)
-            False => (Contradiction(reason), state)
-            Unassigned => (Propagate(literal, reason), state)
+  if state.recheck_added {
+    match inspect_added(state.added, state.values) {
+      Complete =>
+        watch_inspect_using({ ..state, recheck_added: false, }, db, check_rest)
+      inspection => (inspection, state)
+    }
+  } else {
+    match state.empty {
+      true => (Contradiction(Nil), state)
+      false =>
+        match state.units {
+          Cons((literal, reason), rest) => {
+            let state = { ..state, units: rest, }
+            match index_value(literal, state.values) {
+              True => watch_inspect_using(state, db, check_rest)
+              False => (Contradiction(reason), state)
+              Unassigned => (Propagate(literal, reason), state)
+            }
           }
-        }
-        Nil =>
-          match state.active {
-            None =>
-              match @core.dequeue(state.pending) {
-                None => {
-                  let decision = match check_rest {
-                    true => watch_decision_checked(db, state.values)
-                    false => watch_decision(db, state.values)
+          Nil =>
+            match state.active {
+              None =>
+                match @core.dequeue(state.pending) {
+                  None => {
+                    let decision = match check_rest {
+                      true => watch_decision_checked(db, state.values)
+                      false => watch_decision(db, state.values)
+                    }
+                    (decision, state)
                   }
-                  (decision, state)
-                }
-                Some((literal, pending)) => {
-                  let literal = opposite(literal)
-                  watch_inspect_using(
-                    {
-                      ..state,
-                      pending,
-                      active: Some((literal, bucket(state, literal))),
-                    },
-                    db,
-                    check_rest,
-                  )
-                }
-              }
-            Some((_, Nil)) =>
-              watch_inspect_using({ ..state, active: None, }, db, check_rest)
-            Some((false_watch, Cons(id, rest))) => {
-              let state = { ..state, active: Some((false_watch, rest)), }
-              match index_get(state.clauses, @binary.bits(id)) {
-                None => (Broken, state)
-                Some(clause) => {
-                  let other = match same(clause.first, false_watch) {
-                    true => clause.second
-                    false => Some(clause.first)
+                  Some((literal, pending)) => {
+                    let literal = opposite(literal)
+                    watch_inspect_using(
+                      {
+                        ..state,
+                        pending,
+                        active: Some((literal, bucket(state, literal))),
+                      },
+                      db,
+                      check_rest,
+                    )
                   }
-                  match other {
-                    None => (Contradiction(clause.literals), state)
-                    Some(other) =>
-                      match index_value(other, state.values) {
-                        True => watch_inspect_using(state, db, check_rest)
-                        _ =>
-                          match
-                            replacement(
-                              clause.literals,
-                              false_watch,
-                              other,
-                              state.values,
-                            ) {
-                            Some(next) =>
-                              watch_inspect_using(
-                                watch_move(
-                                  state, clause, false_watch, next, other,
-                                ),
-                                db,
-                                check_rest,
-                              )
-                            None =>
-                              match index_value(other, state.values) {
-                                False => (Contradiction(clause.literals), state)
-                                Unassigned =>
-                                  (Propagate(other, clause.literals), state)
-                                True => (Broken, state)
-                              }
-                          }
-                      }
+                }
+              Some((_, Nil)) =>
+                watch_inspect_using({ ..state, active: None, }, db, check_rest)
+              Some((false_watch, Cons(id, rest))) => {
+                let state = { ..state, active: Some((false_watch, rest)), }
+                match index_get(state.clauses, @binary.bits(id)) {
+                  None => (Broken, state)
+                  Some(clause) => {
+                    let other = match same(clause.first, false_watch) {
+                      true => clause.second
+                      false => Some(clause.first)
+                    }
+                    match other {
+                      None => (Contradiction(clause.literals), state)
+                      Some(other) =>
+                        match index_value(other, state.values) {
+                          True => watch_inspect_using(state, db, check_rest)
+                          _ =>
+                            match
+                              replacement(
+                                clause.literals,
+                                false_watch,
+                                other,
+                                state.values,
+                              ) {
+                              Some(next) =>
+                                watch_inspect_using(
+                                  watch_move(
+                                    state, clause, false_watch, next, other,
+                                  ),
+                                  db,
+                                  check_rest,
+                                )
+                              None =>
+                                match index_value(other, state.values) {
+                                  False =>
+                                    (Contradiction(clause.literals), state)
+                                  Unassigned =>
+                                    (Propagate(other, clause.literals), state)
+                                  True => (Broken, state)
+                                }
+                            }
+                        }
+                    }
                   }
                 }
               }
             }
-          }
-      }
+        }
+    }
   }
 }
 
@@ -459,6 +488,7 @@ fn watch_learn(
         values,
         active: None,
         pending: @core.enqueue(@core.queue(), first),
+        recheck_added: state.added is Cons(_, _),
       }
       Some(
         watch_insert(state, clause, first, second_watch(clause, first, trail)),
@@ -508,6 +538,7 @@ fn watch_learn_shared(
         values,
         active: None,
         pending: @core.enqueue(@core.queue(), first),
+        recheck_added: state.added is Cons(_, _),
       }
       Some(
         watch_insert(state, clause, first, second_watch(clause, first, trail)),
