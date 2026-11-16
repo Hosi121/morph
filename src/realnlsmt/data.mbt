@@ -131,8 +131,18 @@ pub extend TheoryProgress with Debug::{to_repr}
 #derive(Debug)
 enum Phase {
   Boolean(@cdcl.Search)
-  Theory(@sat.Model, @sat.Model, TheorySolver)
+  Theory(@sat.Model, @sat.Model, @cdcl.Search, TheorySolver)
 }
+
+///|
+#derive(Debug)
+enum BooleanMode {
+  Restarting
+  Retained
+}
+
+///|
+pub extend BooleanMode with Debug::{to_repr}
 
 ///|
 pub extend Phase with Debug::{to_repr}
@@ -142,6 +152,8 @@ pub extend Phase with Debug::{to_repr}
 pub struct Search {
   problem : Problem
   mode : TheoryMode
+  boolean_mode : BooleanMode
+  restarts : @core.Nat
   formula : @sat.Cnf
   lemmas_rev : @core.Chain[Lemma]
   phase : Phase

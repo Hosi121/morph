@@ -1,9 +1,15 @@
 ///|
-fn start_with_mode(problem : Problem, mode : TheoryMode) -> Search {
+fn start_with_mode(
+  problem : Problem,
+  mode : TheoryMode,
+  boolean_mode : BooleanMode,
+) -> Search {
   let formula = cnf(problem)
   {
     problem,
     mode,
+    boolean_mode,
+    restarts: Zero,
     formula,
     lemmas_rev: Nil,
     phase: Boolean(@cdcl.start(formula)),
@@ -13,17 +19,25 @@ fn start_with_mode(problem : Problem, mode : TheoryMode) -> Search {
 
 ///|
 /// Default theory search stops at an exact model and omits cylinders whose
-/// truth is established over the whole parent cell. Projection remains global.
+/// truth is established over the whole parent cell. CDCL learned clauses,
+/// trail and watches survive checked theory-clause additions. Projection
+/// remains global.
 pub fn start(problem : Problem) -> Search {
-  start_with_mode(problem, PrunedCad)
+  start_with_mode(problem, PrunedCad, Retained)
+}
+
+///|
+/// Reference with pruned CAD but a fresh CDCL search after each theory conflict.
+pub fn start_restarting(problem : Problem) -> Search {
+  start_with_mode(problem, PrunedCad, Restarting)
 }
 
 ///|
 /// Reference search constructs the full CAD for each Boolean candidate.
-/// Theory blocking clauses persist across candidates in both modes; CDCL is
-/// restarted after a theory conflict in both modes.
+/// Theory clauses persist across candidates. This full-CAD reference restarts
+/// CDCL after a theory conflict, as does start_restarting.
 pub fn start_full(problem : Problem) -> Search {
-  start_with_mode(problem, FullCad)
+  start_with_mode(problem, FullCad, Restarting)
 }
 
 ///|
@@ -81,6 +95,7 @@ fn finish_conflict(
   search : Search,
   full : @sat.Model,
   assignment : @sat.Model,
+  cursor : @cdcl.Search,
   decomposition : @cad.Decomposition,
 ) -> Result[Outcome, SmtError] {
   let lemma = Lemma::{
@@ -100,7 +115,16 @@ fn finish_conflict(
             ..search,
             formula,
             lemmas_rev: Cons(lemma, search.lemmas_rev),
-            phase: Boolean(@cdcl.start(formula)),
+            phase: Boolean(
+              match search.boolean_mode {
+                Restarting => @cdcl.start(formula)
+                Retained => @cdcl.add_clause(cursor, clause)
+              },
+            ),
+            restarts: match search.boolean_mode {
+              Restarting => Succ(search.restarts)
+              Retained => search.restarts
+            },
           }),
         )
       }
@@ -118,11 +142,17 @@ pub fn theory_conflicts(search : Search) -> @core.Nat {
 }
 
 ///|
+/// Counts fresh Boolean searches caused by theory conflicts, excluding start.
+pub fn boolean_restarts(search : Search) -> @core.Nat {
+  search.restarts
+}
+
+///|
 pub fn step(search : Search) -> Result[Outcome, SmtError] {
   let search = { ..search, transitions: Succ(search.transitions), }
   match search.phase {
     Boolean(solver) =>
-      match @cdcl.run(solver, Succ(Zero)) {
+      match @cdcl.run_incremental(solver, Succ(Zero)) {
         Paused(solver) => Ok(Paused({ ..search, phase: Boolean(solver), }))
         InvariantViolation => Err(InternalInvariant)
         Unsatisfiable(propositional) => {
@@ -137,7 +167,7 @@ pub fn step(search : Search) -> Result[Outcome, SmtError] {
             Err(InternalInvariant)
           }
         }
-        Satisfiable(partial) =>
+        Satisfiable(partial, cursor) =>
           match complete_boolean(search.formula, partial) {
             None => Err(InternalInvariant)
             Some(full) =>
@@ -156,6 +186,7 @@ pub fn step(search : Search) -> Result[Outcome, SmtError] {
                               phase: Theory(
                                 full,
                                 assignment,
+                                cursor,
                                 start_theory(search.mode, theory),
                               ),
                             }),
@@ -165,14 +196,16 @@ pub fn step(search : Search) -> Result[Outcome, SmtError] {
               }
           }
       }
-    Theory(full, assignment, solver) =>
+    Theory(full, assignment, cursor, solver) =>
       match advance_theory(solver) {
         Err(error) => Err(error)
         Ok(Working(next)) =>
-          Ok(Paused({ ..search, phase: Theory(full, assignment, next), }))
+          Ok(
+            Paused({ ..search, phase: Theory(full, assignment, cursor, next), }),
+          )
         Ok(Found(point)) => finish_model(search, full, point)
         Ok(Rejected(decomposition)) =>
-          finish_conflict(search, full, assignment, decomposition)
+          finish_conflict(search, full, assignment, cursor, decomposition)
       }
   }
 }

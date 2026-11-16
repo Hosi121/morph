@@ -109,8 +109,8 @@ fn assert_reference_mode(search : Search, full : Bool) -> Unit raise {
     PrunedCad => assert_false(full)
   }
   match search.phase {
-    Theory(_, _, FullSolver(_)) => assert_true(full)
-    Theory(_, _, PrunedSolver(_)) => assert_false(full)
+    Theory(_, _, _, FullSolver(_)) => assert_true(full)
+    Theory(_, _, _, PrunedSolver(_)) => assert_false(full)
     Boolean(_) => ()
   }
 }

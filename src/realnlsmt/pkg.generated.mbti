@@ -17,6 +17,8 @@ pub fn arity(Problem) -> @core.Nat
 
 pub fn atoms(Problem) -> @core.Chain[Atom]
 
+pub fn boolean_restarts(Search) -> @core.Nat
+
 pub fn booleans(Model) -> @core.Chain[@sat.Literal]
 
 pub fn check_model(Problem, Model) -> Bool
@@ -41,6 +43,8 @@ pub fn start(Problem) -> Search
 
 pub fn start_full(Problem) -> Search
 
+pub fn start_restarting(Problem) -> Search
+
 pub fn step(Search) -> Result[Outcome, SmtError]
 
 pub fn theory_conflicts(Search) -> @core.Nat
@@ -58,6 +62,10 @@ pub(all) struct Atom {
 pub fn Atom::equal(Self, Self) -> Bool
 pub fn Atom::not_equal(Self, Self) -> Bool
 pub fn Atom::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type BooleanMode
+pub fn BooleanMode::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) struct Context {
@@ -122,6 +130,8 @@ pub fn Refutation::to_repr(Self) -> @debug.Repr
 pub struct Search {
   problem : Problem
   mode : TheoryMode
+  boolean_mode : BooleanMode
+  restarts : @core.Nat
   formula : @core.Chain[@core.Chain[@sat.Literal]]
   lemmas_rev : @core.Chain[Lemma]
   phase : Phase
