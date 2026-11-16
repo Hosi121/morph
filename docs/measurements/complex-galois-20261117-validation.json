@@ -1,0 +1,187 @@
+{
+  "source_commit": "0c797426ed48214d8915ac715c159bbdc89cdd3c",
+  "code_dirty": false,
+  "scope": "whole repository; exact external fixtures and complex/galois tours included",
+  "commands": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit_code": 0,
+      "seconds": 390.5739631239994,
+      "test_totals": [
+        3976,
+        3976
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 202.587060484002,
+      "test_totals": [
+        3976
+      ]
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit_code": 0,
+      "seconds": 6.8139506349980365,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complex_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.41776146900156164,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5633774999987509,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexprimitive_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0902356299993698,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexautomorphism_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5848804630004452,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_fixedfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.625327385001583,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 8.862701655001729,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 2.382144592997065,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6687841340026353,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 3.8710348150016216,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 0.40889389099902473,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 0.39342986900010146,
+      "test_totals": [],
+      "tour_matches": true
+    }
+  ],
+  "all_passed": true,
+  "native_mode": "release",
+  "pure_kernel_sources": 276,
+  "api_snapshots": 114,
+  "formal_regions": 32,
+  "maintenance_tests": 24
+}

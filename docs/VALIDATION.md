@@ -7,38 +7,28 @@
 
 ## 検証済みスナップショット
 
-2026-11-17（JST）に、コード `4aa8668` を固定して統合検証しました。
-複素代数的数の演算、全複素根・重複度、QQ因数分解を先行する列挙まで含みます。
+2026-11-17（JST）に、コード `0c79742` を固定して統合検証しました。
+複素代数的数の演算・全複素根に加え、K(i)、α+i による一生成元表示、
+明示分解した体の全自己同型、部分群の固定体の完全な基底と座標を含みます。
 以後の文書編集を、新しいコードの実行検証として数えるものではありません。
 
 | 検査 | 結果 |
 | --- | --- |
-| native（release） / JS / WasmGC | 各3,920テスト成功 |
+| native（release） / JS / WasmGC | 各3,976テスト成功 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 264核ソースが通過 |
-| 公開API | 108生成スナップショットが一致 |
+| 純記号制約 | 276核ソースが通過 |
+| 公開API | 114生成スナップショットが一致 |
 | Lean | 32対応領域の差分検査と全モデルが通過 |
-| 独立照合・証拠検査 | 複素根12入力・21個の根・42座標、元問題・被覆・微分・返却値の改竄検査、既存fixtureが通過 |
-| 実行例 | 複素代数ツアーが3バックエンドで掲載出力と一致 |
+| 独立照合・証拠検査 | 全複素根、2・4・6・8次の複素数体と座標、C2/V4/D4の群作用、全17部分群の固定体、source・返却物の改竄検査が通過 |
+| 実行例 | 複素代数・D4と全10中間体のツアーが各3バックエンドで掲載出力と一致 |
 
-正本は[条件・コマンド・集計](measurements/complex-algebra-20261117-validation.json)と
-[全出力](measurements/complex-algebra-20261117-validation.txt)です。
-[複素代数の独立参照](research/complex-oracle-20261117.md)と
-[設計・検査・同条件比較](research/complex-algebra-20261117.md)に、範囲と限界を記録しています。
-
-## 追加した複素数体の検証
-
-コード `060a66f` では、K(i) の基底演算と α+i への一生成元変換を追加しました。
-追加した2パッケージの計38テストが native・JS・WasmGC の各 release で成功し、
-12行の複素代数ツアーも3バックエンドで掲載出力と一致しました。
-独立参照は数体18例、5つの体の変換23例・積12例を含みます。
-純記号270核・公開API111件・形式モデルとの対応32領域・文書・変換経路の検査も通過しています。
-
-これは追加範囲の検証です。上の3,920件の全体実行と合算した、新たな全体実行とは扱いません。
-[対象・コマンド・集計](measurements/complex-fields-20261117-validation.json)と
-[全出力](measurements/complex-fields-20261117-validation.txt)に範囲を保存しています。
-[固定基底と変換の設計・比較](research/complex-fields-20261117.md)、
-[数体](research/complexfield-oracle-20261117.md)・[変換](research/complexprimitive-oracle-20261117.md)の独立参照も参照してください。
+正本は[条件・コマンド・集計](measurements/complex-galois-20261117-validation.json)と
+[全出力](measurements/complex-galois-20261117-validation.txt)です。
+[複素数体と一生成元](research/complex-fields-20261117.md)、
+[自己同型と固定体](research/complex-galois-20261117.md)に独立参照・検査の根拠をまとめています。
+一般の分解体探索や、共有算術とプログラム全体の形式証明までは含みません。
+作業用worktreeは全パッチの反映とGitアーカイブを確認して削除しました
+（[片付け記録](measurements/complex-galois-20261117-cleanup.json)）。
 
 ## 変更したときに実行する
 
@@ -77,6 +67,8 @@ CPU番号は環境に合わせて指定します。
 
 | コード | 段階 | 記録 |
 | --- | --- | --- |
+| `060a66f` | K(i) と一生成元表示の追加範囲、各38テスト | [集計](measurements/complex-fields-20261117-validation.json)・[出力](measurements/complex-fields-20261117-validation.txt) |
+| `4aa8668` | 複素代数の演算・全根・因数分解の接続、各3,920テスト | [集計](measurements/complex-algebra-20261117-validation.json)・[出力](measurements/complex-algebra-20261117-validation.txt) |
 | `b8e5ff3` | 理論衝突節の削減、各3,871テスト | [集計](measurements/theory-core-20261117-validation.json)・[出力](measurements/theory-core-20261117-validation.txt) |
 | `de2a892` | CDCL状態保持、各3,835テスト | [集計](measurements/retained-cdcl-20261117-validation.json)・[出力](measurements/retained-cdcl-20261117-validation.txt) |
 | `8fe68f0` | 円柱の枝刈り、各3,817テスト | [集計](measurements/incremental-20261117-validation.json)・[出力](measurements/incremental-20261117-validation.txt) |

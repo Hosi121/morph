@@ -1,0 +1,60 @@
+{
+  "utc": "2026-11-16T20:06:36.731458+00:00",
+  "source_commit": "0c797426ed48214d8915ac715c159bbdc89cdd3c",
+  "worker_git_archive": ".tools/complex-primitive-20261117/final-workers.bundle",
+  "archive_sha256": "2bb4d50be7cdb217fd063ad3aba5eb9ff5f54b0cb298074ddd2b25fa9288a6df",
+  "archive_verified": true,
+  "previous_field_worker": {
+    "worktree": "/home/hosi/morph-complex-field-20261117",
+    "removed": true,
+    "integrated_patch_commits": [
+      "4f23387",
+      "6e9d519",
+      "3a11721"
+    ],
+    "archive": ".tools/complex-primitive-20261117/complex-field-worker.bundle"
+  },
+  "worktrees": [
+    {
+      "worktree": "/home/hosi/morph-complex-field-oracle-20261117",
+      "branch": "work/complex-field-oracle-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- 3057f816612148b1449293852a54bd652c8336e4",
+        "- 89e54ac5c9621e5ce5f551c215f2613c4c7f802d",
+        "- 4cc72eb01ad1e7afccbec8040b2e6dd0ea79abb4",
+        "- ffe845071d908e87fe815b352a2ae4f51e8c3447",
+        "- 4c05156f03104b7e46967a951f3a820a5346cd43",
+        "- de9e9fc5b35afd6377e0fa6a43e0eb77fccdc81b",
+        "- 25d77ea173e2f1e9f88c1fc1c0c9d63427a534c8",
+        "- 6a758c36cae51dabe33d415942a55ca774d72c0b",
+        "- 2aceffe77a8c8ac6e6f6fc51259ed19bae1b5186"
+      ],
+      "removed": true
+    },
+    {
+      "worktree": "/home/hosi/morph-complex-primitive-20261117",
+      "branch": "work/complex-primitive-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- c9c421926df665170491d8c7fe7950ca77bc8daa",
+        "- 8f18eca80aced33fb6b5d8f1a7cee7b57275c9f6"
+      ],
+      "removed": true
+    },
+    {
+      "worktree": "/home/hosi/morph-fixed-field-20261117",
+      "branch": "work/fixed-field-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- ddbf47498e312e32d250fa1d10f77a0d3fe5532c",
+        "- d3fb42a0114c0bf3d9275a95b1ef3a9f4add44e0",
+        "- 74e9d7ff4b496bab74a01e1f35e3ebd27ff01321"
+      ],
+      "removed": true
+    }
+  ],
+  "remaining": [
+    "/home/hosi/morph  0c79742 [main]"
+  ]
+}
