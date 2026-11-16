@@ -1,0 +1,95 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexprimitive"
+
+import {
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn basis_matrix(Representation) -> @matrix.Matrix[@exact.Rational]
+
+pub fn certificate(Representation) -> Certificate
+
+pub fn check(@complexfield.Field, Certificate) -> Bool
+
+pub fn check_conversion_for(Representation, @complexfield.Element, @polynomial.Polynomial, ConversionCertificate) -> Bool
+
+pub fn check_result(@complexfield.Field, Representation, Certificate) -> Bool
+
+pub fn degree(Representation) -> @core.Nat
+
+pub fn from_certificate(@complexfield.Field, Certificate) -> Result[Representation, PrimitiveError]
+
+pub fn from_polynomial(Representation, @polynomial.Polynomial) -> Result[@complexfield.Element, PrimitiveError]
+
+pub fn generator(Representation) -> @complexfield.Element
+
+pub fn imaginary_unit_image(Representation) -> @polynomial.Polynomial
+
+pub fn inverse_basis_matrix(Representation) -> @matrix.Matrix[@exact.Rational]
+
+pub fn modulus(Representation) -> @polynomial.Polynomial
+
+pub fn prepare(@complexfield.Field) -> Result[Representation, PrimitiveError]
+
+pub fn real_generator_image(Representation) -> @polynomial.Polynomial
+
+pub fn source(Representation) -> @complexfield.Field
+
+pub fn to_polynomial(Representation, @complexfield.Element) -> Result[Conversion, PrimitiveError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @complexfield.Field
+  theta : @complexfield.Element
+  modulus : @polynomial.Polynomial
+  basis : @matrix.Matrix[@exact.Rational]
+  inverse_basis : @matrix.Matrix[@exact.Rational]
+  real_generator_image : @polynomial.Polynomial
+  imaginary_unit_image : @polynomial.Polynomial
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Conversion {
+  polynomial : @polynomial.Polynomial
+  certificate : ConversionCertificate
+}
+pub fn Conversion::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct ConversionCertificate {
+  representation : Certificate
+  input : @complexfield.Element
+  polynomial : @polynomial.Polynomial
+}
+pub fn ConversionCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PrimitiveError {
+  InvalidCertificate
+  DifferentField
+  NotUnivariate
+  InternalInvariant
+}
+pub fn PrimitiveError::equal(Self, Self) -> Bool
+pub fn PrimitiveError::not_equal(Self, Self) -> Bool
+pub fn PrimitiveError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Representation {
+  // private fields
+}
+pub fn Representation::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
