@@ -20,6 +20,10 @@ pub fn check_discrimination(Input, @polynomial.Polynomial) -> Bool
 
 pub fn check_elimination(Input, Input, @polynomial.Polynomial) -> Bool
 
+pub fn[A] check_principal(Fixed[A], Fixed[A], @core.Nat, A, PrincipalCertificate[A], @berkowitz.Ring[A], (A, A) -> Bool) -> Bool
+
+pub fn check_principal_variable(Input, Input, @core.Nat, @polynomial.Polynomial, PrincipalVariableCertificate) -> Bool
+
 pub fn check_projection_identity(Input, Input, @polynomial.Polynomial, ProjectionIdentity) -> Bool
 
 pub fn check_projection_result(Input, Input, @polynomial.Polynomial, ProjectionIdentity) -> Bool
@@ -27,6 +31,8 @@ pub fn check_projection_result(Input, Input, @polynomial.Polynomial, ProjectionI
 pub fn[A] check_resultant(Fixed[A], Fixed[A], A, @berkowitz.Ring[A], (A, A) -> Bool) -> Bool
 
 pub fn[A, B] check_specialization(Fixed[A], Fixed[B], (A) -> B, (B, B) -> Bool) -> Bool
+
+pub fn coefficient_polynomials(Input) -> Result[@core.Chain[@polynomial.Polynomial], EliminationError]
 
 pub fn[A] coefficients(Fixed[A]) -> @core.Chain[A]
 
@@ -42,6 +48,8 @@ pub fn discriminate(Input) -> Result[@polynomial.Polynomial, EliminationError]
 
 pub fn eliminate(Input, Input) -> Result[@polynomial.Polynomial, EliminationError]
 
+pub fn[A] first_nonzero(@core.Chain[A], A, (A, A) -> Bool) -> @core.Nat?
+
 pub fn[A] fixed(@core.Nat, @core.Chain[A]) -> Fixed[A]?
 
 pub fn fixed_input(@polynomial.Polynomial, @core.Nat, @core.Nat) -> Result[Input, EliminationError]
@@ -53,6 +61,20 @@ pub fn input_degree(Input) -> @core.Nat
 pub fn[A, B] map_coefficients(Fixed[A], (A) -> B) -> Fixed[B]
 
 pub fn[A] nominal_degree(Fixed[A]) -> @core.Nat
+
+pub fn[A] principal_certificate(Fixed[A], Fixed[A], @core.Nat, @berkowitz.Ring[A]) -> PrincipalCertificate[A]?
+
+pub fn[A] principal_coefficients(Fixed[A], Fixed[A], @berkowitz.Ring[A]) -> @core.Chain[A]?
+
+pub fn principal_coefficients_variable(Input, Input) -> Result[@core.Chain[@polynomial.Polynomial], EliminationError]
+
+pub fn[A] principal_matrix(Fixed[A], Fixed[A], @core.Nat, @berkowitz.Ring[A]) -> @matrix.Matrix[A]?
+
+pub fn[A] principal_subresultant(Fixed[A], Fixed[A], @core.Nat, @berkowitz.Ring[A]) -> A?
+
+pub fn principal_variable(Input, Input, @core.Nat) -> Result[@polynomial.Polynomial, EliminationError]
+
+pub fn principal_variable_certificate(Input, Input, @core.Nat) -> Result[PrincipalVariableCertificate, EliminationError]
 
 pub fn projection_identity(Input, Input) -> Result[ProjectionIdentity, EliminationError]
 
@@ -107,6 +129,24 @@ pub struct Input {
 pub fn Input::equal(Self, Self) -> Bool
 pub fn Input::not_equal(Self, Self) -> Bool
 pub fn Input::to_repr(Self) -> @debug.Repr
+
+pub(all) struct PrincipalCertificate[A] {
+  left : Fixed[A]
+  right : Fixed[A]
+  index : @core.Nat
+  value : A
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct PrincipalVariableCertificate {
+  left : Input
+  right : Input
+  index : @core.Nat
+  value : @polynomial.Polynomial
+}
+pub fn PrincipalVariableCertificate::equal(Self, Self) -> Bool
+pub fn PrincipalVariableCertificate::not_equal(Self, Self) -> Bool
+pub fn PrincipalVariableCertificate::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) struct ProjectionIdentity {
