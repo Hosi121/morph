@@ -98,9 +98,40 @@ pub extend Refutation with Debug::{to_repr}
 
 ///|
 #derive(Debug)
+enum TheoryMode {
+  FullCad
+  PrunedCad
+}
+
+///|
+pub extend TheoryMode with Debug::{to_repr}
+
+///|
+#derive(Debug)
+enum TheorySolver {
+  FullSolver(@cad.Machine)
+  PrunedSolver(@cad.Search)
+}
+
+///|
+pub extend TheorySolver with Debug::{to_repr}
+
+///|
+#derive(Debug)
+enum TheoryProgress {
+  Found(@cad.Point)
+  Rejected(@cad.Decomposition)
+  Working(TheorySolver)
+}
+
+///|
+pub extend TheoryProgress with Debug::{to_repr}
+
+///|
+#derive(Debug)
 enum Phase {
   Boolean(@cdcl.Search)
-  Theory(@sat.Model, @sat.Model, @cad.Problem, @cad.Machine)
+  Theory(@sat.Model, @sat.Model, TheorySolver)
 }
 
 ///|
@@ -110,6 +141,7 @@ pub extend Phase with Debug::{to_repr}
 #derive(Debug)
 pub struct Search {
   problem : Problem
+  mode : TheoryMode
   formula : @sat.Cnf
   lemmas_rev : @core.Chain[Lemma]
   phase : Phase

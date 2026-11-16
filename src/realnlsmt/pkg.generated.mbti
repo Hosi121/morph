@@ -39,6 +39,8 @@ pub fn run(Search, @core.Nat) -> Result[Outcome, SmtError]
 
 pub fn start(Problem) -> Search
 
+pub fn start_full(Problem) -> Search
+
 pub fn step(Search) -> Result[Outcome, SmtError]
 
 pub fn theory_conflicts(Search) -> @core.Nat
@@ -119,6 +121,7 @@ pub fn Refutation::to_repr(Self) -> @debug.Repr
 #derive(@debug.Debug)
 pub struct Search {
   problem : Problem
+  mode : TheoryMode
   formula : @core.Chain[@core.Chain[@sat.Literal]]
   lemmas_rev : @core.Chain[Lemma]
   phase : Phase
@@ -135,6 +138,18 @@ pub(all) enum SmtError {
 pub fn SmtError::equal(Self, Self) -> Bool
 pub fn SmtError::not_equal(Self, Self) -> Bool
 pub fn SmtError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type TheoryMode
+pub fn TheoryMode::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type TheoryProgress
+pub fn TheoryProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type TheorySolver
+pub fn TheorySolver::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
