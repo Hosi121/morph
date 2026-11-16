@@ -59,25 +59,28 @@ fn main {
     abort("mode must be coordinate or field")
   }
   let mode = arguments[arguments.length() - 1]
+  let square = mode == "coordinate-square" || mode == "field-square"
+  let repetitions = if square { 1 } else { 3 }
+  let source = if square { "(sqrt(2)+i)^2" } else { "(sqrt(2)+i)^8" }
   let (base, selected) = input()
   let context = @cf.field(base)
   let expected = @cx.number(
-    @real.rational(@oracle.rational(17, 1)).unwrap(),
+    @real.rational(@oracle.rational(if square { 1 } else { 17 }, 1)).unwrap(),
     @real.number({
-      polynomial: polynomial([-6272, 0, 1]),
+      polynomial: polynomial([if square { -8 } else { -6272 }, 0, 1]),
       interval: {
-        lower: @oracle.rational(-80, 1),
-        upper: @oracle.rational(-79, 1),
+        lower: @oracle.rational(if square { 2 } else { -80 }, 1),
+        upper: @oracle.rational(if square { 3 } else { -79 }, 1),
       },
     }).unwrap(),
   )
   let fuel = @oracle.nat(2000)
-  let result = if mode == "coordinate" {
+  let result = if mode == "coordinate" || mode == "coordinate-square" {
     let mut value = @cx.number(
       selected,
       @real.rational(@oracle.rational(1, 1)).unwrap(),
     )
-    for _ in 0..<3 {
+    for _ in 0..<repetitions {
       let previous = value
       match @cx.multiply(previous, previous, fuel).unwrap() {
         ArithmeticReady(result, proof) => {
@@ -96,19 +99,19 @@ fn main {
       }
     }
     value
-  } else if mode == "field" {
+  } else if mode == "field" || mode == "field-square" {
     let mut value = @cf.element(
       context,
       @nf.generator(base).unwrap(),
       @nf.one(base),
     ).unwrap()
-    for _ in 0..<3 {
+    for _ in 0..<repetitions {
       value = @cf.multiply(value, value).unwrap()
     }
     let expected_in_field = @cf.element(
       context,
-      @nf.rational(base, @oracle.rational(17, 1)),
-      @nf.element(base, polynomial([0, -56])).unwrap(),
+      @nf.rational(base, @oracle.rational(if square { 1 } else { 17 }, 1)),
+      @nf.element(base, polynomial([0, if square { 2 } else { -56 }])).unwrap(),
     ).unwrap()
     if !@cf.equal(value, expected_in_field) {
       abort("field result differs from the independent exact power")
@@ -118,7 +121,7 @@ fn main {
       realize(@cf.imaginary_part(value)),
     )
   } else {
-    abort("mode must be coordinate or field")
+    abort("mode must be coordinate, field, coordinate-square or field-square")
   }
   let equal = match @cx.equal(result, expected, fuel).unwrap() {
     EqualityReady(equal, proof) => {
@@ -130,10 +133,10 @@ fn main {
     EqualityPaused(_) => abort("result comparison needs more fuel")
   }
   if !equal {
-    abort("wrong exact eighth power")
+    abort("wrong exact power")
   }
   let degree = @oracle.int_of_nat(@cf.degree(context))
   println(
-    "{\"source\":\"(sqrt(2)+i)^8\",\"field_degree\":\{degree},\"numeric_equal\":\{equal},\"checked\":true}",
+    "{\"source\":\"\{source}\",\"field_degree\":\{degree},\"numeric_equal\":\{equal},\"checked\":true}",
   )
 }

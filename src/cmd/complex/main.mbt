@@ -142,6 +142,53 @@ fn fixed_field_tour() -> Unit {
 }
 
 ///|
+fn primitive_tour() -> Unit {
+  let field = fixed_field(2)
+  let representation = @primitive.prepare(field).unwrap()
+  if !@primitive.check_result(
+      field,
+      representation,
+      @primitive.certificate(representation),
+    ) ||
+    @poly.multiply(
+      @primitive.real_generator_image(representation),
+      polynomial([6]),
+    ).unwrap() !=
+    polynomial([0, 5, 0, -1]) ||
+    @poly.multiply(
+      @primitive.imaginary_unit_image(representation),
+      polynomial([6]),
+    ).unwrap() !=
+    polynomial([0, 1, 0, 1]) {
+    abort("absolute primitive generator maps failed")
+  }
+  println(
+    "theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]",
+  )
+  let mut power = @primitive.generator(representation)
+  for _ in 0..<3 {
+    power = @cf.multiply(power, power).unwrap()
+  }
+  let converted = @primitive.to_polynomial(representation, power).unwrap()
+  if converted.polynomial != polynomial([45, 0, -28]) ||
+    !@primitive.check_conversion_for(
+      representation,
+      power,
+      converted.polynomial,
+      converted.certificate,
+    ) ||
+    !@cf.equal(
+      @primitive.from_polynomial(representation, converted.polynomial).unwrap(),
+      power,
+    ) {
+    abort("canonical eighth power conversion failed")
+  }
+  println(
+    "theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]",
+  )
+}
+
+///|
 fn main {
   let i = gaussian(0, 1)
   match @cx.multiply(i, i, @oracle.nat(100)).unwrap() {
@@ -263,4 +310,5 @@ fn main {
     Paused(_, _) => abort("factored mixed roots need more fuel")
   }
   fixed_field_tour()
+  primitive_tour()
 }

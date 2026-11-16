@@ -20,7 +20,7 @@ def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--artifact", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--case", choices=["complex-roots", "field-power"], default="complex-roots")
+    parser.add_argument("--case", choices=["complex-roots", "field-power", "field-square"], default="complex-roots")
     parser.add_argument("--abba-repetitions", type=int, default=3)
     parser.add_argument("--timeout-seconds", type=float, default=5.0)
     args = parser.parse_args()
@@ -40,10 +40,11 @@ def main():
                     "multiplicity_sum": 5, "checked": True}
         scope = "process startup, input construction, preparation/factorization, enumeration, final exact checker; excludes compilation"
     else:
-        modes = ["coordinate", "field"]
-        expected = {"source": "(sqrt(2)+i)^8", "field_degree": 4,
+        square = args.case == "field-square"
+        modes = ["coordinate-square", "field-square"] if square else ["coordinate", "field"]
+        expected = {"source": "(sqrt(2)+i)^2" if square else "(sqrt(2)+i)^8", "field_degree": 4,
                     "numeric_equal": True, "checked": True}
-        scope = "process startup, shared exact input/field preparation, three squarings, representation-specific validation/realization and numeric result equality; excludes compilation"
+        scope = "process startup, shared exact input/field preparation, " + ("one squaring" if square else "three squarings") + ", representation-specific validation/realization and numeric result equality; excludes compilation"
     report = {
         "utc": datetime.now(timezone.utc).isoformat(), "backend": "native",
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),

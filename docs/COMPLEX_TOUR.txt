@@ -8,3 +8,5 @@ z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
 K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
 a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
 a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
