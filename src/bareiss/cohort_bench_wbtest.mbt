@@ -1587,7 +1587,7 @@ test "reference_small" (b : @bench.T) {
   let matrices = bareiss_cohort(0)
   b.bench(name="reference_small", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1607,7 +1607,7 @@ test "reference_integer6" (b : @bench.T) {
   let matrices = bareiss_cohort(1)
   b.bench(name="reference_integer6", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1627,7 +1627,7 @@ test "reference_integer8" (b : @bench.T) {
   let matrices = bareiss_cohort(2)
   b.bench(name="reference_integer8", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1647,7 +1647,7 @@ test "reference_rational6" (b : @bench.T) {
   let matrices = bareiss_cohort(3)
   b.bench(name="reference_rational6", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1667,7 +1667,7 @@ test "reference_rational8" (b : @bench.T) {
   let matrices = bareiss_cohort(4)
   b.bench(name="reference_rational8", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1687,7 +1687,7 @@ test "reference_singular8" (b : @bench.T) {
   let matrices = bareiss_cohort(5)
   b.bench(name="reference_singular8", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1707,7 +1707,7 @@ test "reference_pivot8" (b : @bench.T) {
   let matrices = bareiss_cohort(6)
   b.bench(name="reference_pivot8", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }
@@ -1727,7 +1727,7 @@ test "reference_earlyzero8" (b : @bench.T) {
   let matrices = bareiss_cohort(7)
   b.bench(name="reference_earlyzero8", count=5, fn() {
     for matrix in matrices {
-      b.keep(@linear.determinant(matrix))
+      b.keep(bareiss_frozen_reference(matrix))
     }
   })
 }

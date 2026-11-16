@@ -73,13 +73,21 @@ def generate():
   scales=[math.lcm(*(q.denominator for q in row)) for row in a]
   lines+=['','///|',f'test "Bareiss independent Fraction determinant {i}" {{',f'  bareiss_fixture({matrix(a)}, {rat(value)}, '+str(all(q.denominator==1 for row in a for q in row)).lower()+')','}']
   records.append(dict(matrix=[[str(q) for q in row] for row in a],determinant=str(value),oracle='permutation+Gaussian' if len(a)<=5 else 'Fraction Gaussian',row_lcm=scales))
+ rng=random.Random(0x128256)
+ for n,bits,rational in [(4,128,False),(4,256,False),(6,128,False),(6,256,False),(4,128,True),(6,256,True)]:
+  common=(1<<(bits-1))-19
+  a=[[F((rng.getrandbits(bits-1)+(1<<(bits-1)))*rng.choice([-1,1]),common*rng.choice([3,5,7]) if rational else 1) for _ in range(n)] for _ in range(n)]
+  expected=gaussian(a)
+  if n==4:assert expected==perm(a)
+  lines+=['','///|',f'test "Bareiss wide {n}x{n} {bits}bit '+('rational' if rational else 'integer')+'" {',f'  bareiss_fixture({matrix(a)}, {rat(expected)}, '+str(not rational).lower()+')','}']
+  records.append(dict(matrix=[[str(q) for q in row] for row in a],determinant=str(expected),oracle='wide Fraction Gaussian'+(' + permutation' if n==4 else ''),coefficient_bits=bits,rational=rational))
  bench=['// Frozen same-artifact reference and Bareiss cohorts.','///|','fn bareiss_cohort(kind : Int32) -> Array[@matrix.Matrix[@exact.Rational]] {','  match kind {']
  for i,(name,matrices) in enumerate(cohorts.items()):bench.append(f'    {i} => ['+', '.join(matrix(a) for a in matrices)+']')
  bench+=['    _ => []','  }','}']
  for i,name in enumerate(cohorts):
   for candidate in [False,True]:
    label=('Bareiss' if candidate else 'reference')+'_'+name
-   call='determinant(matrix)' if candidate else '@linear.determinant(matrix)'
+   call='determinant(matrix)' if candidate else 'bareiss_frozen_reference(matrix)'
    bench+=['','///|',f'test "{label}" (b : @bench.T) {{',f'  let matrices = bareiss_cohort({i})',f'  b.bench(name="{label}", count=5, fn() {{ for matrix in matrices {{ b.keep({call}) }} }})','}']
  return '\n'.join(lines)+'\n','\n'.join(bench)+'\n',dict(cases=records,cohorts={name:len(xs) for name,xs in cohorts.items()})
 

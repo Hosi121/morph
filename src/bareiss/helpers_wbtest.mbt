@@ -33,6 +33,7 @@ fn bareiss_fixture(
 ) -> Unit raise {
   assert_eq(determinant(matrix), Ok(expected))
   assert_eq(@linear.determinant(matrix), Some(expected))
+  assert_eq(bareiss_frozen_reference(matrix), Some(expected))
   if integer {
     let ints = @matrix.matrix(
       @matrix.width(matrix),
