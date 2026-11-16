@@ -1,0 +1,45 @@
+{
+  "completed_utc": "2026-11-16T15:10:51.644050+00:00",
+  "source_commit": "37d82f56e351202c190fc5ebf939bbd42f03cb05",
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "cpu": 4,
+  "serialization": "tools/measure common Git lock",
+  "backends": {
+    "wasm-gc": {
+      "tests": 3775,
+      "passed": 3775,
+      "failed": 0
+    },
+    "js": {
+      "tests": 3775,
+      "passed": 3775,
+      "failed": 0
+    },
+    "native": {
+      "tests": 3775,
+      "passed": 3775,
+      "failed": 0
+    }
+  },
+  "python_tests": 24,
+  "pure_kernel_files": 246,
+  "public_api_snapshots": 101,
+  "reviewed_lean_regions": 31,
+  "lean_all_models": "passed; not an end-to-end proof of the RCF algorithms",
+  "independent_fixture_generators": 7,
+  "z3_reference_candidates": 41,
+  "closed_form_qe_fixtures": {
+    "cad": 19,
+    "first_order": 6
+  },
+  "old_cad2_comparisons": "4 families, all complete base cells and all four closed quantifier pairs, three backends",
+  "original_higher_psc_case": "all three backends",
+  "tours": "all match checked-in output",
+  "validation_log": "docs/measurements/realclosed-20261116-validation.txt",
+  "validation_log_sha256": "fc0e8dc6ef5f457721ea6d3d81329631bf951a61e6b4d84210aed4fc0f559d9b",
+  "remaining_limits": [
+    "Full CAD can have very large projection sets and cell counts; transition fuel is not a fixed wall-time budget.",
+    "Dense high-depth quartic relative arithmetic remains expensive.",
+    "No claim of original incremental NLSAT, or a Lean proof of the whole compiler/RCF solver."
+  ]
+}

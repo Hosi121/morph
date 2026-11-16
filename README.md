@@ -68,7 +68,7 @@ tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 
 | 資料 | 内容 |
 | --- | --- |
-| [次の到達点](docs/ROADMAP.md) | 実閉体ソルバの到達状況と、次に残る課題 |
+| [到達点と次の候補](docs/ROADMAP.md) | 実閉体ソルバの到達状況と、次に残る課題 |
 | [ハンドブック](HANDBOOK.md) | アルゴリズムの設計、表現コスト、考察、限界 |
 | [パッケージ一覧](docs/INVENTORY.md) | ソースから生成した依存関係・テスト宣言数 |
 | [基礎部品の最適化](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 改善の採否と、通常経路への統合状況 |

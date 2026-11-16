@@ -1,0 +1,34 @@
+{
+  "utc": "2026-11-16T14:57:47.168505+00:00",
+  "source_commit": "37d82f56e351202c190fc5ebf939bbd42f03cb05",
+  "removed_worktrees": [
+    "/home/hosi/morph-realformula-20261116",
+    "/home/hosi/morph-cadprojection-20261116",
+    "/home/hosi/morph-realtower-20261116",
+    "/home/hosi/morph-cad-review-20261116"
+  ],
+  "remaining_worktrees": "worktree /home/hosi/morph\nHEAD 37d82f56e351202c190fc5ebf939bbd42f03cb05\nbranch refs/heads/main",
+  "preserved_measurement_files": 161,
+  "preserved_measurement_bytes": 8213457,
+  "archive_manifest": ".tools/realclosed-20261116/final/completed-agents/manifest.json",
+  "archive_manifest_sha256": "e960070f9396b62dbbd248a62163491eb2d86edd7fa02dac0c8a647120010eb9",
+  "research_bundle": {
+    "bundle": "/home/hosi/morph/.tools/realclosed-20261116/final/research-branches.bundle",
+    "sha256": "2c7119c9d3c8a297426a4fb94770d8c12d3c13234ce234b1ba26a1779ecd4b5f",
+    "refs": [
+      "refs/heads/main",
+      "refs/heads/research/realtower-20261116",
+      "refs/heads/research/cadprojection-20261116",
+      "refs/heads/research/realformula-20261116",
+      "refs/heads/research/realnlsmt-20261116",
+      "refs/heads/research/cad-review-20261116",
+      "refs/heads/research/realnlsmt-review-20261116"
+    ]
+  },
+  "root_frozen_experiments": ".tools/realclosed-20261116/cad",
+  "stable_exact_reference_environment": ".tools/realclosed-20261116/reference-venv",
+  "reconstruction": "Archived comparison workspaces retain their original bytes. Recreate executable local workspaces with the checked-in fixture generators.",
+  "branch_policy": "Research branch references retained as provenance; working directories removed only after clean-status and byte-verified artifact preservation.",
+  "validation": "Completed: 3775/3775 tests on native, JS and WasmGC; all final integration checks passed.",
+  "validation_report": "docs/measurements/realclosed-20261116-validation.json"
+}
