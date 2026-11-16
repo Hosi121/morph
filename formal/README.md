@@ -13,6 +13,7 @@ tools/check_formal
 
 | 主張 | Leanの定理 | 対応するMoonBitの関数 |
 | --- | --- | --- |
+| 原子観測の一様性を任意深さのBoolean式へ伝える | partialEvaluate_sound / known_is_uniform | prefixlogic.evaluate_conditional のBoolean部分（[対応と仮定](REVIEW-prefixlogic.md)） |
 | 全8条件のfull adderが桁の和を保存 | fullAdder_sound | binary.full_adder |
 | 任意の有限bit列のincrementが値を1増やす | increment_sound | binary.increment_bits |
 | 任意の二つの有限bit列とcarryの加算が値を保存 | addition_sound | binary.add_bits / add |
@@ -46,7 +47,7 @@ MoonBitからLeanへの変換器やコンパイラを形式検証したもので
 Leanモデルの値の定理から、MoonBitの資源上限、最上位bitの正規性、
 全run演算、全SAT、コンパイラの正しさは結論しない。
 
-`tools/check_model_drift.py`が、対応を確認した31領域のコメント/空白を除くtoken列と
+`tools/check_model_drift.py`が、対応を確認した32領域のコメント/空白を除くtoken列と
 Binary定数recordのinitializerと全Leanモデルファイルのhashを`source-map.json`に照合する。
 通常の`tools/check`はこの安価な差分検査を実行する。
 これは意味の同値性を自動で証明する機構ではなく、対応を未確認のまま変えないためのlockである。

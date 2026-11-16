@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：95パッケージ、246ソース。
-核のテスト宣言：3774、bench group：212。
+算法の核：96パッケージ、249ソース。
+核のテスト宣言：3816、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -26,7 +26,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [blossom](../src/blossom) | 2 | 12 | 0 | `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
-| [cad](../src/cad) | 7 | 35 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
+| [cad](../src/cad) | 7 | 60 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `prefixlogic`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
 | [cad2](../src/cad2) | 5 | 47 | 0 | `binary`, `core`, `numberfield`, `orderedsturm`, `polynomial`, `projection`, `realalgebraic`, `realcad`, `realminimal`, `relativecad` |
 | [cadprojection](../src/cadprojection) | 4 | 33 | 0 | `core`, `elimination`, `exact`, `polynomial` |
 | [cdcl](../src/cdcl) | 5 | 42 | 65 | `binary`, `core`, `sat` |
@@ -71,6 +71,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [orderedsturm](../src/orderedsturm) | 5 | 48 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `sturm`, `tarski` |
 | [parity](../src/parity) | 4 | 7 | 0 | `core` |
 | [polynomial](../src/polynomial) | 2 | 4 | 8 | `binary`, `core`, `exact` |
+| [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |
 | [primefield](../src/primefield) | 1 | 5 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
 | [primeprove](../src/primeprove) | 1 | 8 | 8 | `binary`, `core`, `factor`, `primality` |
@@ -81,7 +82,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [realclosed](../src/realclosed) | 1 | 11 | 0 | `cad`, `core`, `realcad`, `realformula` |
 | [realformula](../src/realformula) | 3 | 112 | 0 | `core`, `polynomial`, `realcad` |
 | [realminimal](../src/realminimal) | 3 | 43 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm`, `zassenhaus` |
-| [realnlsmt](../src/realnlsmt) | 4 | 171 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
+| [realnlsmt](../src/realnlsmt) | 4 | 175 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
 | [realtower](../src/realtower) | 8 | 97 | 0 | `binary`, `core`, `exact`, `sturm` |
 | [realvariety](../src/realvariety) | 6 | 124 | 0 | `binary`, `core`, `exact`, `f4`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
@@ -94,7 +95,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sat](../src/sat) | 1 | 2 | 0 | `core` |
 | [semialgebraic](../src/semialgebraic) | 3 | 174 | 0 | `cad2`, `core`, `polynomial`, `realalgebraic`, `realcad`, `sturm` |
 | [sha256](../src/sha256) | 3 | 3 | 0 | `binary`, `core` |
-| [signcad](../src/signcad) | 3 | 5 | 0 | `core`, `polynomial`, `realcad`, `realformula` |
+| [signcad](../src/signcad) | 3 | 9 | 0 | `core`, `polynomial`, `realcad`, `realformula` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |
 | [smith](../src/smith) | 5 | 13 | 3 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix` |
 | [smt](../src/smt) | 1 | 5 | 0 | `cdcl`, `core`, `difference`, `sat` |

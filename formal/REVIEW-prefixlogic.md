@@ -54,7 +54,7 @@ MoonBit の全 ADT や polynomial の翻訳ではない。
 実行コマンドは次のとおり。共通の計測 lock を通して実行した。
 
 ```bash
-tools/measure --cpu 6 /home/hosi/morph/.tools/lean/bin/lean \
+tools/measure --cpu 6 .tools/lean/bin/lean \
   -DwarningAsError=true formal/PrefixLogic.lean
 python3 tools/check_model_drift.py
 python3 tools/test_model_drift.py

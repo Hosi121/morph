@@ -15,7 +15,7 @@
 | `binary.karatsuba` | 4 | 10 | 本体から参照あり |
 | `core.half_nat` | 4 | 2 | 本体から参照あり |
 | `core.halve_nat` | 5 | 3 | 本体から参照あり |
-| `core.replicate_onto` | 11 | 9 | 本体から参照あり |
+| `core.replicate_onto` | 12 | 13 | 本体から参照あり |
 
 `runbinary`の他package本体からの参照：0ファイル。
 現時点では独立した公開実装で、通常Binaryの代替backendとして全体へ組み込んだとは扱わない。
@@ -26,7 +26,7 @@
 - `binary.karatsuba`: [src/binary/number_theory.mbt:40](../src/binary/number_theory.mbt#L40), [src/binary/number_theory.mbt:48](../src/binary/number_theory.mbt#L48), [src/binary/number_theory.mbt:63](../src/binary/number_theory.mbt#L63), [src/binary/number_theory.mbt:64](../src/binary/number_theory.mbt#L64)
 - `core.half_nat`: [src/cyclotomic/cyclotomic.mbt:58](../src/cyclotomic/cyclotomic.mbt#L58), [src/elimination/discriminant.mbt:136](../src/elimination/discriminant.mbt#L136), [src/fppoly/irreducibility.mbt:96](../src/fppoly/irreducibility.mbt#L96), [src/fppoly/irreducibility.mbt:165](../src/fppoly/irreducibility.mbt#L165)
 - `core.halve_nat`: [src/blossom/blossom.mbt:387](../src/blossom/blossom.mbt#L387), [src/cad/arithmetic.mbt:29](../src/cad/arithmetic.mbt#L29), [src/core/natural.mbt:19](../src/core/natural.mbt#L19), [src/core/natural.mbt:29](../src/core/natural.mbt#L29), [src/parity/arena.mbt:74](../src/parity/arena.mbt#L74)
-- `core.replicate_onto`: [src/binary/binary.mbt:339](../src/binary/binary.mbt#L339), [src/binary/division.mbt:61](../src/binary/division.mbt#L61), [src/binary/division.mbt:103](../src/binary/division.mbt#L103), [src/cad/arithmetic.mbt:103](../src/cad/arithmetic.mbt#L103), [src/core/data.mbt:87](../src/core/data.mbt#L87), [src/fppoly/polynomial.mbt:337](../src/fppoly/polynomial.mbt#L337), [src/orderedsturm/polynomial.mbt:179](../src/orderedsturm/polynomial.mbt#L179), [src/realalgebraic/polynomial.mbt:96](../src/realalgebraic/polynomial.mbt#L96), [src/realalgebraic/resultant.mbt:85](../src/realalgebraic/resultant.mbt#L85), [src/realtower/raw.mbt:145](../src/realtower/raw.mbt#L145), [src/zassenhaus/polynomial.mbt:132](../src/zassenhaus/polynomial.mbt#L132)
+- `core.replicate_onto`: [src/binary/binary.mbt:339](../src/binary/binary.mbt#L339), [src/binary/division.mbt:61](../src/binary/division.mbt#L61), [src/binary/division.mbt:103](../src/binary/division.mbt#L103), [src/cad/arithmetic.mbt:103](../src/cad/arithmetic.mbt#L103), [src/cad/arithmetic.mbt:366](../src/cad/arithmetic.mbt#L366), [src/core/data.mbt:87](../src/core/data.mbt#L87), [src/fppoly/polynomial.mbt:337](../src/fppoly/polynomial.mbt#L337), [src/orderedsturm/polynomial.mbt:179](../src/orderedsturm/polynomial.mbt#L179), [src/realalgebraic/polynomial.mbt:96](../src/realalgebraic/polynomial.mbt#L96), [src/realalgebraic/resultant.mbt:85](../src/realalgebraic/resultant.mbt#L85), [src/realtower/raw.mbt:145](../src/realtower/raw.mbt#L145), [src/zassenhaus/polynomial.mbt:132](../src/zassenhaus/polynomial.mbt#L132)
 
 ## 変換ゲートの範囲
 

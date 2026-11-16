@@ -27,8 +27,10 @@
 厳密モデルとCAD理論補題・RUPの検査まで実装した。
 [受入例と検証範囲](research/cad-20261116.md)、[SMT](research/realnlsmt-20261116.md)を参照。
 
-今後の不足は、全CADを作らずに済む増分的な局所射影と、密な高深度の体演算の費用削減。
-これらは今回の入口の完成条件と分け、性能が確認できた変更だけを採用する。
+次の段階として、[厳密なSAT早期終了と円柱の枝刈り](research/incremental-cad-20261117.md)を実装した。
+親セル全体で真偽が確定する係数条件を検査し、不要なliftingを省く。完全CADの経路も比較用に保つ。
+残る候補は、局所射影、理論衝突後のCDCL状態の再利用、密な高深度の体演算の費用削減。
+全射影の費用は今回も残るため、各段階を同条件の計測で判断する。
 
 [Jovanović–de Moura, Solving Non-Linear Arithmetic](https://dddejan.github.io/papers/jovanovic-ijcar2012.pdf)
 は、非線形実数制約にCDCL型探索とCAD由来の射影を接続する参考になる。
