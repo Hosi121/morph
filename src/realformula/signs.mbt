@@ -1,5 +1,8 @@
 ///|
-pub fn relation_holds(relation : @realcad.Relation, sign : @core.Ordering) -> Bool {
+pub fn relation_holds(
+  relation : @realcad.Relation,
+  sign : @core.Ordering,
+) -> Bool {
   match (relation, sign) {
     (LessZero, Less)
     | (AtMostZero, Less)
@@ -35,7 +38,9 @@ fn collect_atoms(
 
 ///|
 /// Distinct polynomials in stable left-to-right first-occurrence order.
-pub fn qf_atoms(formula : @realcad.Formula) -> @core.Chain[@polynomial.Polynomial] {
+pub fn qf_atoms(
+  formula : @realcad.Formula,
+) -> @core.Chain[@polynomial.Polynomial] {
   @core.reverse(collect_atoms(formula, Nil))
 }
 
@@ -47,7 +52,11 @@ fn find_sign(
 ) -> @core.Ordering? {
   match (atoms, signs) {
     (Cons(atom, rest), Cons(sign, tail)) =>
-      if polynomial.equal(atom) { Some(sign) } else { find_sign(polynomial, rest, tail) }
+      if polynomial.equal(atom) {
+        Some(sign)
+      } else {
+        find_sign(polynomial, rest, tail)
+      }
     _ => None
   }
 }
@@ -71,12 +80,14 @@ fn evaluate_tree(
         Some(value) => Some(!value)
       }
     Conjunction(left, right) =>
-      match (evaluate_tree(left, atoms, signs), evaluate_tree(right, atoms, signs)) {
+      match
+        (evaluate_tree(left, atoms, signs), evaluate_tree(right, atoms, signs)) {
         (Some(a), Some(b)) => Some(a && b)
         _ => None
       }
     Disjunction(left, right) =>
-      match (evaluate_tree(left, atoms, signs), evaluate_tree(right, atoms, signs)) {
+      match
+        (evaluate_tree(left, atoms, signs), evaluate_tree(right, atoms, signs)) {
         (Some(a), Some(b)) => Some(a || b)
         _ => None
       }

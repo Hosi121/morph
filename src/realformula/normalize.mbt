@@ -45,7 +45,7 @@ fn valid_mapping(
   match mapping {
     Nil => true
     Cons(slot, rest) =>
-      @core.compare(slot, target_arity) == Less &&
+      @core.compare(slot, target_arity).equal(Less) &&
       !@core.any(rest, fn(other) { slot.equal(other) }) &&
       valid_mapping(target_arity, rest)
   }
@@ -67,14 +67,17 @@ pub fn rename_polynomial(
         false => Err(InvalidRenaming)
         true => {
           let slots = @core.indices(target_arity)
-          let terms : @core.Chain[@polynomial.Term] = @core.map(@polynomial.terms(polynomial), fn(term) {
-            {
-              coefficient: term.coefficient,
-              exponents: @core.map(slots, fn(slot) {
-                exponent_at(slot, mapping, term.exponents)
-              }),
-            }
-          })
+          let terms : @core.Chain[@polynomial.Term] = @core.map(
+            @polynomial.terms(polynomial),
+            fn(term) {
+              {
+                coefficient: term.coefficient,
+                exponents: @core.map(slots, fn(slot) {
+                  exponent_at(slot, mapping, term.exponents)
+                }),
+              }
+            },
+          )
           match @polynomial.polynomial(target_arity, terms) {
             Ok(result) => Ok(result)
             Err(_) => Err(InvalidRenaming)
@@ -93,16 +96,26 @@ fn normalize_tree(
   total : @core.Nat,
 ) -> Result[(@core.Chain[Quantifier], @realcad.Formula, @core.Nat), BuildError] {
   match formula {
-    Truth(value) => Ok((Nil, Truth(if negative { !value } else { value }), next))
+    Truth(value) =>
+      Ok((Nil, Truth(if negative { !value } else { value }), next))
     Atom(polynomial, relation) =>
       match rename_polynomial(polynomial, total, mapping) {
         Err(error) => Err(error)
         Ok(polynomial) =>
-          Ok((
-            Nil,
-            Atom(polynomial, if negative { complement(relation) } else { relation }),
-            next,
-          ))
+          Ok(
+            (
+              Nil,
+              Atom(
+                polynomial,
+                if negative {
+                  complement(relation)
+                } else {
+                  relation
+                },
+              ),
+              next,
+            ),
+          )
       }
     Negation(body) => normalize_tree(body, !negative, mapping, next, total)
     Exists(body) | Forall(body) => {
@@ -119,7 +132,8 @@ fn normalize_tree(
           total,
         ) {
         Err(error) => Err(error)
-        Ok((prefix, matrix, next)) => Ok((Cons(quantifier, prefix), matrix, next))
+        Ok((prefix, matrix, next)) =>
+          Ok((Cons(quantifier, prefix), matrix, next))
       }
     }
     Conjunction(left, right) | Disjunction(left, right) =>
@@ -151,10 +165,16 @@ pub fn normalize(
 ) -> Result[Prenex, BuildError] {
   let total = @core.add(free_variables, binder_count(source))
   match
-    normalize_tree(source, false, @core.indices(free_variables), free_variables, total) {
+    normalize_tree(
+      source,
+      false,
+      @core.indices(free_variables),
+      free_variables,
+      total,
+    ) {
     Err(error) => Err(error)
     Ok((quantifiers, matrix, _)) =>
-      Ok({ certificate: { free_variables, source, quantifiers, matrix } })
+      Ok({ certificate: { free_variables, source, quantifiers, matrix, }, })
   }
 }
 
@@ -198,6 +218,11 @@ pub fn check(
 ) -> Prenex? {
   match normalize(free_variables, source) {
     Err(_) => None
-    Ok(prenex) => if certificate(prenex).equal(claimed) { Some(prenex) } else { None }
+    Ok(prenex) =>
+      if certificate(prenex).equal(claimed) {
+        Some(prenex)
+      } else {
+        None
+      }
   }
 }
