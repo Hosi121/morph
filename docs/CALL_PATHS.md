@@ -12,7 +12,7 @@
 | `binary.stein_gcd` | 1 | 5 | 本体から参照あり |
 | `binary.karatsuba` | 4 | 10 | 本体から参照あり |
 | `core.half_nat` | 3 | 2 | 本体から参照あり |
-| `core.halve_nat` | 3 | 3 | 本体から参照あり |
+| `core.halve_nat` | 2 | 3 | 本体から参照あり |
 | `core.replicate_onto` | 5 | 9 | 本体から参照あり |
 
 `runbinary`の他package本体からの参照：0ファイル。
@@ -23,8 +23,8 @@
 - `binary.stein_gcd`: [src/exact/exact.mbt:415](../src/exact/exact.mbt#L415)
 - `binary.karatsuba`: [src/binary/number_theory.mbt:40](../src/binary/number_theory.mbt#L40), [src/binary/number_theory.mbt:48](../src/binary/number_theory.mbt#L48), [src/binary/number_theory.mbt:63](../src/binary/number_theory.mbt#L63), [src/binary/number_theory.mbt:64](../src/binary/number_theory.mbt#L64)
 - `core.half_nat`: [src/cyclotomic/cyclotomic.mbt:58](../src/cyclotomic/cyclotomic.mbt#L58), [src/fppoly/irreducibility.mbt:96](../src/fppoly/irreducibility.mbt#L96), [src/fppoly/irreducibility.mbt:165](../src/fppoly/irreducibility.mbt#L165)
-- `core.halve_nat`: [src/binary/binary.mbt:320](../src/binary/binary.mbt#L320), [src/core/natural.mbt:19](../src/core/natural.mbt#L19), [src/core/natural.mbt:29](../src/core/natural.mbt#L29)
-- `core.replicate_onto`: [src/binary/binary.mbt:357](../src/binary/binary.mbt#L357), [src/binary/division.mbt:61](../src/binary/division.mbt#L61), [src/binary/division.mbt:103](../src/binary/division.mbt#L103), [src/core/data.mbt:87](../src/core/data.mbt#L87), [src/fppoly/polynomial.mbt:337](../src/fppoly/polynomial.mbt#L337)
+- `core.halve_nat`: [src/core/natural.mbt:19](../src/core/natural.mbt#L19), [src/core/natural.mbt:29](../src/core/natural.mbt#L29)
+- `core.replicate_onto`: [src/binary/binary.mbt:352](../src/binary/binary.mbt#L352), [src/binary/division.mbt:61](../src/binary/division.mbt#L61), [src/binary/division.mbt:103](../src/binary/division.mbt#L103), [src/core/data.mbt:87](../src/core/data.mbt#L87), [src/fppoly/polynomial.mbt:337](../src/fppoly/polynomial.mbt#L337)
 
 ## 変換ゲートの範囲
 

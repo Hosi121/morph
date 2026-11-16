@@ -1167,10 +1167,19 @@ profile・候補探索・同入力比較・上位算法への再計測を行う�
 
 ユーザーの利用経路監査を受け、Natの半分化を共有Coreへ戻した。
 Fp多項式の既約性検査二箇所と円分体の次数は、Nat→Binary→Natを経由しない。
-商と余りが必要なBinary converterも同じ`halve_nat`を使う。
+初回はBinary converterも同じ`halve_nat`へ集約した。
+その後の[8進単位の変換](docs/bootstrap/nat-radix-grouping.md)では、三bitずつ出力する
+専用helperへ進めた。Coreの半分化はFp・円分体・2冪判定で引き続き利用する。
 `half_nat`のfloorの意味はLeanモデル、0〜4096と大きなNatは実行テストで確認する。
 
 [呼び出し経路の一覧](docs/CALL_PATHS.md)は内部参照のない公開API、実際の利用経路、
 独立表現のrunbinaryを区別する。実装の存在だけで全体へ統合したとは扱わない。
 直接的な数値表現の往復は`tools/audit_paths.py`で検出し、`tools/check`へ組み込む。
 変数経由の冗長性や実行頻度はこの字句検査の守備範囲外であり、profileとレビューも続ける。
+
+[適応除算と剰余](docs/bootstrap/adaptive-division.md)は、幅差の近い入力を整列減算で処理する。
+GCDとModular.reduceは商を作らない共通kernelへ接続した。
+[不変の0/1](docs/bootstrap/binary-constants.md)は割当を減らし、LLL等の固定入力でも前後比較した。
+[有理数の直接減算](docs/bootstrap/rational-subtraction.md)では中間の否定値を省く。
+これらの採用・未採用・実際の利用先は[KERNELS](docs/KERNELS.md)へまとめ、
+値のモデル・canonical性・有限oracle・速度の証拠を区別する。

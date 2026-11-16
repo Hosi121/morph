@@ -4,8 +4,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：65パッケージ、117ソース。
-核のテスト宣言：477、bench group：146。
+算法の核：65パッケージ、119ソース。
+核のテスト宣言：484、bench group：161。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -16,7 +16,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [autodiff](../src/autodiff) | 2 | 2 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [avl](../src/avl) | 1 | 2 | 0 | `binary`, `core` |
 | [bdd](../src/bdd) | 4 | 13 | 4 | `binary`, `circuit`, `core`, `sat` |
-| [binary](../src/binary) | 5 | 25 | 14 | `core` |
+| [binary](../src/binary) | 6 | 27 | 17 | `core` |
 | [bipartite](../src/bipartite) | 1 | 3 | 0 | `core` |
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
@@ -31,7 +31,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [discretelog](../src/discretelog) | 2 | 7 | 4 | `binary`, `core`, `factor`, `modular`, `primality`, `primefield`, `trie` |
 | [dp](../src/dp) | 2 | 2 | 0 | `binary`, `core` |
 | [elliptic](../src/elliptic) | 1 | 2 | 0 | `binary`, `core`, `finitefield`, `modular` |
-| [exact](../src/exact) | 2 | 11 | 26 | `binary`, `core` |
+| [exact](../src/exact) | 3 | 13 | 30 | `binary`, `core` |
 | [exactcover](../src/exactcover) | 2 | 4 | 0 | `binary`, `core` |
 | [exactfft](../src/exactfft) | 1 | 15 | 0 | `binary`, `core`, `cyclotomic`, `exact`, `fft` |
 | [factor](../src/factor) | 3 | 17 | 4 | `binary`, `core`, `modular`, `primality` |
@@ -62,7 +62,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |
 | [rowreduce](../src/rowreduce) | 1 | 0 | 0 | `core`, `matrix` |
 | [runbinary](../src/runbinary) | 2 | 13 | 3 | `binary`, `core` |
-| [ruplog](../src/ruplog) | 4 | 12 | 5 | `binary`, `cdcl`, `core`, `sat` |
+| [ruplog](../src/ruplog) | 4 | 15 | 13 | `binary`, `cdcl`, `core`, `sat` |
 | [sat](../src/sat) | 1 | 2 | 0 | `core` |
 | [sha256](../src/sha256) | 3 | 3 | 0 | `binary`, `core` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |
