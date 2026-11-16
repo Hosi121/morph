@@ -3,7 +3,9 @@ package "Hosi121/morph/realvariety"
 
 import {
   "Hosi121/morph/core",
+  "Hosi121/morph/exact",
   "Hosi121/morph/f4",
+  "Hosi121/morph/matrix",
   "Hosi121/morph/polynomial",
   "Hosi121/morph/realalgebraic",
   "Hosi121/morph/sturm",
@@ -17,17 +19,33 @@ pub fn check_basis_shape(@f4.Basis, ShapeCertificate) -> Bool
 
 pub fn check_basis_solutions(@f4.Basis, SolutionCertificate) -> Bool
 
+pub fn check_basis_unit(@f4.Basis, UnitCertificate) -> Bool
+
+pub fn check_coordinate(CoordinateCertificate) -> Bool
+
+pub fn check_coordinate_result(@realalgebraic.Number, CoordinateCertificate) -> Bool
+
 pub fn check_point(PointCertificate) -> Bool
+
+pub fn check_point_result(Point, PointCertificate) -> Bool
 
 pub fn check_shape(ShapeCertificate) -> Bool
 
 pub fn check_solutions(SolutionCertificate) -> Bool
 
+pub fn check_solutions_result(SolutionSet, SolutionCertificate) -> Bool
+
 pub fn check_unit(UnitCertificate) -> Bool
+
+pub fn coordinate_advance(CoordinateEvaluation, @core.Nat) -> Result[CoordinateProgress, VarietyError]
 
 pub fn coordinate_expression_at(Point, @core.Nat) -> @polynomial.Polynomial?
 
 pub fn coordinate_expressions(Point) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn coordinate_start(Point, @core.Nat) -> Result[CoordinateEvaluation, VarietyError]
+
+pub fn evaluate_coordinate(Point, @core.Nat, @core.Nat) -> Result[CoordinateProgress, VarietyError]
 
 pub fn extract(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Extraction, VarietyError]
 
@@ -60,6 +78,43 @@ pub fn substitute_mod(@polynomial.Polynomial, @core.Chain[@polynomial.Polynomial
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct CoordinateCertificate {
+  point : PointCertificate
+  index : @core.Nat
+  polynomial : @polynomial.Polynomial
+  samples : @core.Chain[@exact.Rational]
+  refined : @sturm.Interval
+  result : @realalgebraic.RootCertificate
+}
+pub fn CoordinateCertificate::equal(Self, Self) -> Bool
+pub fn CoordinateCertificate::not_equal(Self, Self) -> Bool
+pub fn CoordinateCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct CoordinateEvaluation {
+  original : PointCertificate
+  current : Point
+  index : @core.Nat
+  h : @polynomial.Polynomial
+  matrix : @matrix.Matrix[@exact.Rational]
+  degree : @core.Nat
+  remaining : @core.Nat
+  point : @core.Nat
+  coefficients : @polynomial.Polynomial
+  basis : @polynomial.Polynomial
+  samples : @core.Chain[@exact.Rational]
+  output : @sturm.System?
+}
+pub fn CoordinateEvaluation::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum CoordinateProgress {
+  CoordinateReady(@realalgebraic.Number, CoordinateCertificate)
+  CoordinatePaused(CoordinateEvaluation)
+}
+pub fn CoordinateProgress::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub(all) enum Extraction {
   ShapeReady(Shape)
@@ -178,6 +233,7 @@ pub fn UnsupportedReason::to_repr(Self) -> @debug.Repr
 pub(all) enum VarietyError {
   DimensionMismatch
   InvalidBasis
+  InvalidCoordinate
   InvalidCertificate
   F4Failure(@f4.F4Error)
   InternalInvariant

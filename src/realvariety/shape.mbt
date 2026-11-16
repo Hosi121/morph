@@ -316,3 +316,14 @@ pub fn check_basis_shape(basis : @f4.Basis, proof : ShapeCertificate) -> Bool {
     _ => false
   }
 }
+
+///|
+pub fn check_basis_unit(basis : @f4.Basis, proof : UnitCertificate) -> Bool {
+  match @f4.verify(basis) {
+    Ok(true) =>
+      @f4.variables(basis).equal(proof.variables) &&
+      @f4.polynomials(basis).equal(proof.basis) &&
+      check_unit(proof)
+    _ => false
+  }
+}

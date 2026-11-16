@@ -3,6 +3,7 @@
 pub(all) enum VarietyError {
   DimensionMismatch
   InvalidBasis
+  InvalidCoordinate
   InvalidCertificate
   F4Failure(@f4.F4Error)
   InternalInvariant

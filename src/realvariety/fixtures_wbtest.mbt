@@ -12,6 +12,34 @@ test "SymPy real variety fixture 0 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 0 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    1,
+    [[((1, 1), [2]), ((-2, 1), [0])]],
+    0,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 0 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    1,
+    [[((1, 1), [2]), ((-2, 1), [0])]],
+    1,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 1 shape" {
   assert_variety_fixture(
     2,
@@ -26,6 +54,74 @@ test "SymPy real variety fixture 1 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 1 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    0,
+    [(false, "4", "1"), (true, "4", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "1", "1")],
+    (false, "1fff", "1000"),
+    (false, "2", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 1 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 1 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    0,
+    [(false, "4", "1"), (true, "4", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "1", "1")],
+    (false, "1fff", "1000"),
+    (false, "2", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 1 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 2 shape" {
   assert_variety_fixture(
     2,
@@ -36,6 +132,74 @@ test "SymPy real variety fixture 2 shape" {
     [(-2, 1), (0, 1), (1, 1)],
     [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
     [((-99, 70), (-140, 99)), ((140, 99), (99, 70))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 2 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 2 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 2 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 2 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
   )
 }
 
@@ -55,6 +219,114 @@ test "SymPy real variety fixture 3 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 3 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    0,
+    0,
+    [(false, "1", "1"), (true, "6", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (true, "6", "1"), (false, "1", "1")],
+    (false, "6", "23"),
+    (false, "17", "86"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 3 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    0,
+    1,
+    [(true, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    (true, "1d", "46"),
+    (true, "29", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 3 point 0 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    0,
+    2,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 3 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    1,
+    0,
+    [(false, "1", "1"), (true, "6", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (true, "6", "1"), (false, "1", "1")],
+    (false, "30d", "86"),
+    (false, "cc", "23"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 3 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    1,
+    1,
+    [(true, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    (false, "ef", "63"),
+    (false, "a9", "46"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 3 point 1 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 2, 0])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 1]), ((-1, 1), [0, 0, 0])],
+      [((1, 1), [0, 0, 2]), ((-2, 1), [0, 0, 0])],
+    ],
+    1,
+    2,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 4 shape" {
   assert_variety_fixture(
     2,
@@ -65,6 +337,74 @@ test "SymPy real variety fixture 4 shape" {
     [(-2, 1), (0, 1), (1, 1)],
     [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
     [((-99, 70), (-140, 99)), ((140, 99), (99, 70))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 4 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-2, 1), [0, 0])],
+      [((-1, 1), [1, 0]), ((1, 1), [0, 1])],
+    ],
+    0,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 4 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-2, 1), [0, 0])],
+      [((-1, 1), [1, 0]), ((1, 1), [0, 1])],
+    ],
+    0,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 4 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-2, 1), [0, 0])],
+      [((-1, 1), [1, 0]), ((1, 1), [0, 1])],
+    ],
+    1,
+    0,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 4 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-2, 1), [0, 0])],
+      [((-1, 1), [1, 0]), ((1, 1), [0, 1])],
+    ],
+    1,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
   )
 }
 
@@ -97,6 +437,98 @@ test "SymPy real variety fixture 6 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 6 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+    ],
+    0,
+    0,
+    [
+      (false, "0", "1"),
+      (true, "1", "1"),
+      (false, "0", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(false, "0", "1"), (false, "1", "1")],
+    (true, "1", "1000"),
+    (false, "0", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 6 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+    ],
+    0,
+    1,
+    [
+      (false, "0", "1"),
+      (true, "1", "1"),
+      (false, "0", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(false, "0", "1"), (false, "1", "1")],
+    (true, "1", "1000"),
+    (false, "0", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 6 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+    ],
+    1,
+    0,
+    [
+      (false, "0", "1"),
+      (true, "1", "1"),
+      (false, "0", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 6 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [2, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+    ],
+    1,
+    1,
+    [
+      (false, "0", "1"),
+      (true, "1", "1"),
+      (false, "0", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 7 shape" {
   assert_variety_fixture(
     3,
@@ -112,6 +544,168 @@ test "SymPy real variety fixture 7 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 7 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    0,
+    0,
+    [(false, "0", "1"), (false, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    0,
+    1,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (false, "1", "1")],
+    (true, "1001", "1000"),
+    (true, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 0 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    0,
+    2,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (false, "1", "1")],
+    (true, "1001", "1000"),
+    (true, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    1,
+    0,
+    [(false, "0", "1"), (false, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    [(false, "0", "1"), (false, "1", "1")],
+    (true, "1", "1000"),
+    (false, "0", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    1,
+    1,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "0", "1"), (false, "1", "1")],
+    (true, "1", "1000"),
+    (false, "0", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 1 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    1,
+    2,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "0", "1"), (false, "1", "1")],
+    (true, "1", "1000"),
+    (false, "0", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 2 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    2,
+    0,
+    [(false, "0", "1"), (false, "1", "1"), (true, "2", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 2 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    2,
+    1,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 7 point 2 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 3])],
+      [((1, 1), [0, 0, 3]), ((-1, 1), [0, 0, 1])],
+    ],
+    2,
+    2,
+    [(false, "0", "1"), (true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 8 shape" {
   assert_variety_fixture(
     2,
@@ -122,6 +716,98 @@ test "SymPy real variety fixture 8 shape" {
     [(4, 1), (0, 1), (-4, 1), (0, 1), (1, 1)],
     [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
     [((-99, 70), (-140, 99)), ((140, 99), (99, 70))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 8 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 4]), ((-4, 1), [0, 2]), ((4, 1), [0, 0])],
+    ],
+    0,
+    0,
+    [
+      (false, "4", "1"),
+      (false, "0", "1"),
+      (true, "4", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 8 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 4]), ((-4, 1), [0, 2]), ((4, 1), [0, 0])],
+    ],
+    0,
+    1,
+    [
+      (false, "4", "1"),
+      (false, "0", "1"),
+      (true, "4", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 8 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 4]), ((-4, 1), [0, 2]), ((4, 1), [0, 0])],
+    ],
+    1,
+    0,
+    [
+      (false, "4", "1"),
+      (false, "0", "1"),
+      (true, "4", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 8 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 4]), ((-4, 1), [0, 2]), ((4, 1), [0, 0])],
+    ],
+    1,
+    1,
+    [
+      (false, "4", "1"),
+      (false, "0", "1"),
+      (true, "4", "1"),
+      (false, "0", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
   )
 }
 
@@ -141,6 +827,34 @@ test "SymPy real variety fixture 9 shape" {
     [(1, 1), (-4, 1), (6, 1), (-4, 1), (1, 1)],
     [[(0, 1), (1, 1)]],
     [((4095, 4096), (1, 1))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 9 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    1,
+    [
+      [
+        ((1, 1), [4]),
+        ((-4, 1), [3]),
+        ((6, 1), [2]),
+        ((-4, 1), [1]),
+        ((1, 1), [0]),
+      ],
+    ],
+    0,
+    0,
+    [
+      (false, "1", "1"),
+      (true, "4", "1"),
+      (false, "6", "1"),
+      (true, "4", "1"),
+      (false, "1", "1"),
+    ],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
   )
 }
 
@@ -215,6 +929,74 @@ test "SymPy real variety fixture 15 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 15 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1048576, 1), [0, 2]), ((-3072, 1), [0, 1]), ((2, 1), [0, 0])],
+    ],
+    0,
+    0,
+    [(false, "1", "4000000000"), (true, "5", "100000"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "100000", "1")],
+    (false, "0", "1"),
+    (false, "1", "20002"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 15 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1048576, 1), [0, 2]), ((-3072, 1), [0, 1]), ((2, 1), [0, 0])],
+    ],
+    0,
+    1,
+    [(false, "1", "80000"), (true, "3", "400"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "400", "1")],
+    (false, "3", "1000"),
+    (false, "1", "400"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 15 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1048576, 1), [0, 2]), ((-3072, 1), [0, 1]), ((2, 1), [0, 0])],
+    ],
+    1,
+    0,
+    [(false, "1", "4000000000"), (true, "5", "100000"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "40000", "1")],
+    (false, "0", "1"),
+    (false, "1", "8002"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 15 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 2])],
+      [((1048576, 1), [0, 2]), ((-3072, 1), [0, 1]), ((2, 1), [0, 0])],
+    ],
+    1,
+    1,
+    [(false, "1", "80000"), (true, "3", "400"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "200", "1")],
+    (false, "7", "1000"),
+    (false, "1", "200"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 16 shape" {
   assert_variety_fixture(
     2,
@@ -225,6 +1007,74 @@ test "SymPy real variety fixture 16 shape" {
     [(524287, 524288), (-2, 1), (1, 1)],
     [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
     [((723, 724), (724, 725)), ((726, 725), (725, 724))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 16 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 1]), ((524287, 524288), [0, 0])],
+    ],
+    0,
+    0,
+    [(false, "7ffff", "80000"), (true, "2", "1"), (false, "1", "1")],
+    [(false, "7ffff", "1"), (true, "100000", "1"), (false, "80000", "1")],
+    (false, "2d3", "2d4"),
+    (false, "2d4", "2d5"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 16 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 1]), ((524287, 524288), [0, 0])],
+    ],
+    0,
+    1,
+    [(false, "7ffff", "80000"), (true, "2", "1"), (false, "1", "1")],
+    [(false, "7ffff", "1"), (true, "100000", "1"), (false, "80000", "1")],
+    (false, "2d3", "2d4"),
+    (false, "2d4", "2d5"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 16 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 1]), ((524287, 524288), [0, 0])],
+    ],
+    1,
+    0,
+    [(false, "7ffff", "80000"), (true, "2", "1"), (false, "1", "1")],
+    [(false, "7ffff", "1"), (true, "100000", "1"), (false, "80000", "1")],
+    (false, "2d6", "2d5"),
+    (false, "2d5", "2d4"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 16 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 1]), ((524287, 524288), [0, 0])],
+    ],
+    1,
+    1,
+    [(false, "7ffff", "80000"), (true, "2", "1"), (false, "1", "1")],
+    [(false, "7ffff", "1"), (true, "100000", "1"), (false, "80000", "1")],
+    (false, "2d6", "2d5"),
+    (false, "2d5", "2d4"),
   )
 }
 
@@ -243,6 +1093,40 @@ test "SymPy real variety fixture 17 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 17 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    1,
+    [
+      [((1, 1), [4]), ((-5, 1), [2]), ((4, 1), [0])],
+      [((1, 1), [3]), ((-1, 1), [1])],
+    ],
+    0,
+    0,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (false, "1", "1")],
+    (true, "1001", "1000"),
+    (true, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 17 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    1,
+    [
+      [((1, 1), [4]), ((-5, 1), [2]), ((4, 1), [0])],
+      [((1, 1), [3]), ((-1, 1), [1])],
+    ],
+    1,
+    0,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 18 shape" {
   assert_variety_fixture(
     2,
@@ -253,6 +1137,74 @@ test "SymPy real variety fixture 18 shape" {
     [(-1, 1), (0, 1), (1, 1)],
     [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
     [((-4097, 4096), (-1, 1)), ((4095, 4096), (1, 1))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 18 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+    ],
+    0,
+    0,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (false, "1", "1")],
+    (true, "1001", "1000"),
+    (true, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 18 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+    ],
+    0,
+    1,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(false, "1", "1"), (false, "1", "1")],
+    (true, "1001", "1000"),
+    (true, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 18 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+    ],
+    1,
+    0,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 18 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [1, 0]), ((-1, 1), [0, 1])],
+    ],
+    1,
+    1,
+    [(true, "1", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "1", "1")],
+    (false, "fff", "1000"),
+    (false, "1", "1"),
   )
 }
 
@@ -271,6 +1223,74 @@ test "SymPy real variety fixture 19 shape" {
 }
 
 ///|
+test "SymPy coordinate norm 19 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    0,
+    [(true, "1", "2"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "0", "1"), (false, "2", "1")],
+    (true, "63", "8c"),
+    (true, "46", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 19 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    0,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "63", "46"),
+    (true, "8c", "63"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 19 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    0,
+    [(true, "1", "2"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1", "1"), (false, "0", "1"), (false, "2", "1")],
+    (false, "46", "63"),
+    (false, "63", "8c"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 19 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    2,
+    [
+      [((1, 1), [1, 1]), ((-1, 1), [0, 0])],
+      [((1, 1), [0, 2]), ((-2, 1), [0, 0])],
+    ],
+    1,
+    1,
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "2", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "8c", "63"),
+    (false, "63", "46"),
+  )
+}
+
+///|
 test "SymPy real variety fixture 20 shape" {
   assert_variety_fixture(
     3,
@@ -282,5 +1302,113 @@ test "SymPy real variety fixture 20 shape" {
     [(-3, 1), (0, 1), (1, 1)],
     [[(0, 1), (3, 1)], [(3, 1)], [(0, 1), (1, 1)]],
     [((-97, 56), (-168, 97)), ((168, 97), (97, 56))],
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 0 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    0,
+    0,
+    [(true, "1b", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1b", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "335", "9e"),
+    (true, "109", "33"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 0 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    0,
+    1,
+    [(false, "9", "1"), (true, "6", "1"), (false, "1", "1")],
+    [(true, "3", "1"), (false, "1", "1")],
+    (false, "2fff", "1000"),
+    (false, "3", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 0 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    0,
+    2,
+    [(true, "3", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "3", "1"), (false, "0", "1"), (false, "1", "1")],
+    (true, "61", "38"),
+    (true, "a8", "61"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 1 coordinate 0" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    1,
+    0,
+    [(true, "1b", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "1b", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "109", "33"),
+    (false, "335", "9e"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 1 coordinate 1" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    1,
+    1,
+    [(false, "9", "1"), (true, "6", "1"), (false, "1", "1")],
+    [(true, "3", "1"), (false, "1", "1")],
+    (false, "2fff", "1000"),
+    (false, "3", "1"),
+  )
+}
+
+///|
+test "SymPy coordinate norm 20 point 1 coordinate 2" {
+  assert_coordinate_fixture(
+    3,
+    [
+      [((1, 1), [1, 0, 0]), ((-1, 1), [0, 1, 1])],
+      [((1, 1), [0, 1, 0]), ((-1, 1), [0, 0, 2])],
+      [((1, 1), [0, 0, 2]), ((-3, 1), [0, 0, 0])],
+    ],
+    1,
+    2,
+    [(true, "3", "1"), (false, "0", "1"), (false, "1", "1")],
+    [(true, "3", "1"), (false, "0", "1"), (false, "1", "1")],
+    (false, "a8", "61"),
+    (false, "61", "38"),
   )
 }

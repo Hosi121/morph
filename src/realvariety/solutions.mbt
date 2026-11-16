@@ -242,3 +242,20 @@ pub fn points(value : SolutionSet) -> Result[@core.Chain[Point], VarietyError] {
     None => Err(InternalInvariant)
   }
 }
+
+///|
+/// Bind a separately supplied solution set to its exact certificate representation.
+pub fn check_solutions_result(
+  value : SolutionSet,
+  proof : SolutionCertificate,
+) -> Bool {
+  solution_certificate(value).equal(proof) && check_solutions(proof)
+}
+
+///|
+/// Bind a separately supplied shared-parameter point to the exact recorded shape
+/// and normalized parameter polynomial/interval. Other equivalent representations
+/// are not accepted by this representation-binding checker.
+pub fn check_point_result(value : Point, proof : PointCertificate) -> Bool {
+  point_certificate(value).equal(proof) && check_point(proof)
+}

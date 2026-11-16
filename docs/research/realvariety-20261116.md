@@ -4,7 +4,7 @@
 
 This package connects the symbolic F4 basis, Sturm root isolation, and exact real-algebraic representations. It solves the explicitly checked shape case of a zero-dimensional rational polynomial system, using the last variable as parameter `t`. It does not implement general CAD, a separating linear change of coordinates, or a general zero-dimensional solver.
 
-The F4 dependency is the frozen source commit `ae6f76b3d529ae86c63d065a77f9f5b380ddd1a6` (locally cherry-picked as `daf9e74`). No F4 implementation files are edited here. The initial RUR milestone passes **25 tests on native, JS and WasmGC**.
+The F4 dependency is the frozen source commit `ae6f76b3d529ae86c63d065a77f9f5b380ddd1a6` (locally cherry-picked as `daf9e74`). No F4 implementation files are edited here. The first RUR commit `b0aa543` passes **25 tests**; the completed RUR and coordinate-materialization package passes **92 tests on native, JS and WasmGC**.
 
 ## Supported representation and certificate
 
@@ -38,7 +38,7 @@ rational input equations
   -> @realvariety.points: shared @realalgebraic.Number alpha and h_i(alpha)
 ```
 
-`from_basis` first calls the frozen `verify`, then reads `variables` and `polynomials`. `check_basis_shape` and `check_basis_solutions` additionally bind the RUR certificate to that verified basis, so the original F4 input ideal is preserved. The raw `extract`/`start` entry points instead certify precisely the supplied equation list; they do not assert that it was derived from some other input ideal.
+`from_basis` first calls the frozen `verify`, then reads `variables` and `polynomials`. `check_basis_shape`, `check_basis_unit`, and `check_basis_solutions` additionally bind the RUR certificate to that verified basis, so the original F4 input ideal is preserved. The raw `extract`/`start` entry points instead certify precisely the supplied equation list; they do not assert that it was derived from some other input ideal.
 
 A `Point` stores one shared algebraic parameter plus all rational polynomial coordinate expressions. `coordinate_expressions` and `coordinate_expression_at` expose these expressions; `parameter` supplies the checked real-algebraic root. This keeps correlations such as `(alpha,alpha^2)` explicit and avoids degree explosion from separately evaluating every coordinate with repeated algebraic addition/multiplication. A point certificate verifies its shape and the selected parameter root. A solution-set certificate additionally verifies the ordered disjoint one-root intervals cover **all** distinct real roots using the Sturm checker.
 
@@ -46,13 +46,27 @@ A nonzero constant actual basis row yields `NoSolutions(UnitCertificate)`, whose
 
 Root enumeration fuel counts Sturm interval nodes, and `Paused` retains pending work. No partial root list is returned as complete. Exact substitution, F4 verification, and arithmetic within a Sturm node are not covered by this node-count budget.
 
+## Materializing a coordinate without degree explosion
+
+The optional [coordinate evaluator](../../src/realvariety/coordinate.mbt) turns `h_i(alpha)` into a standalone checked `@realalgebraic.Number` while keeping the original RUR intact. For `d=degree(g)` it builds the `d*d` matrix `M_h` of multiplication by `h_i` in the rational quotient algebra `Q[t]/(g)`, using the power basis `1,t,...,t^(d-1)`. Column `j` is the exact remainder of `h_i*t^j` modulo `g`.
+
+For any root `alpha` of `g`, the nonzero row vector `v=(1,alpha,...,alpha^(d-1))` satisfies `v*M_h=h_i(alpha)*v`: evaluating each column remainder at `alpha` removes its multiple of `g`. Consequently `h_i(alpha)` is a root of `C(z)=det(zI-M_h)`. This argument does not require `g` to be square-free. The multiplication-matrix/eigenvalue correspondence is described by [Verschelde, lecture 12, Stickelberger's theorem](https://homepages.math.uic.edu/~jan/mcs563s14/lec12.pdf); our univariate evaluation-row argument supplies the needed existence direction directly. Since the determinant is monic of degree `d`, the output annihilator degree is bounded by `degree(g)` regardless of the coordinate expression degree.
+
+`coordinate_start` and `coordinate_advance` compute determinant samples at `0,...,d` and interpolate exactly. A separate checker rebuilds the multiplication matrix, recomputes all samples, imposes degree at most `d`, and evaluates the claimed polynomial there; it does not replay interpolation. Closed rational Horner interval arithmetic encloses `h_i(alpha)`, then pads both ends by the current parameter-interval width. This positive padding keeps extrema and rational endpoint roots inside the half-open interval. If more than one distinct root of `C` remains, the source parameter is bisected and the range recomputed. Both the range and padding converge to the correct coordinate value. The output polynomial is normalized to monic square-free form by the real-algebraic constructor, and need not be minimal.
+
+One fuel unit computes one determinant/interpolation sample or one source-root bisection. `CoordinatePaused` preserves either unfinished phase. Out-of-range coordinate indices return `Err(InvalidCoordinate)`. The shared-parameter `Point` remains the preferred complete tuple representation, since materializing independent coordinates discards their explicit correlation.
+
+`check_coordinate` checks the result root and coordinate relation embedded in a certificate. `check_coordinate_result(value, proof)` additionally binds a separately supplied `Number` to the exact normalized polynomial and interval recorded by that certificate. Similarly, `check_point_result` and `check_solutions_result` bind separately supplied points and solution sets to their exact certificate representations. These are representation checks: equivalent values encoded with different intervals or shape data are deliberately not interchangeable. The original proof-only checkers remain available.
+
 ## Independent fixtures and boundaries
 
 The [generator](../../tools/generate_realvariety_fixtures.py) uses SymPy 1.14.0's reduced lex basis, `solve_poly_system`, exact real roots, and rational isolating intervals. It checks equality between the full real solution tuples from `solve_poly_system` and those reconstructed from the independent shape representation. The retained [fixture artifact](realvariety-20261116-fixtures.json) has **17 supported systems with 30 real points**, **one unit ideal**, and **three unsupported systems**. Every supported MoonBit case checks the F4 ideal witness, expected eliminant and coordinate polynomials, all original-input substitution remainders, full root coverage, and exact parameter equality to the SymPy intervals.
 
 Examples include nonrational coordinates, rational/nonmonic input coefficients, three variables, nonlinear original equations from which F4 must derive linear shape rows, repeated eliminants, a one-variable fourth-power equation, a shape with no real roots, closely spaced rational roots, and close irrational roots around one. Unsupported cases include a four-point zero-dimensional system whose last coordinate fails to separate its points and positive-dimensional systems.
 
-Adversarial tests reject fabricated shape coordinates, absent chosen rows, changed variable counts, an extra unsatisfied basis constraint, altered eliminants, a missing real root, duplicated root intervals, invalid point parameters, and zero unit witnesses. A mixed row such as `x*y-1` is deliberately unsupported by raw extraction; F4 derives `x-y/2` when combined with `y^2-2`, after which the certified path succeeds.
+The generator also creates **62 coordinate-materialization fixtures**. The full characteristic polynomial is independently computed as `resultant_t(g(t),z-h_i(t))`, including repeated factors for nonradical eliminants; the selected numeric coordinate is independently represented by its SymPy minimal polynomial and a rational isolating interval. Coefficients beyond machine-word bounds are encoded by signed binary magnitudes in test fixtures, so they do not silently truncate. Every materialized coordinate matches both oracles, and its value-bound certificate is checked.
+
+Adversarial tests reject fabricated shape coordinates, absent chosen rows, changed variable counts, an extra unsatisfied basis constraint, altered eliminants, a missing real root, duplicated root intervals, invalid point parameters, and zero unit witnesses. A mixed row such as `x*y-1` is deliberately unsupported by raw extraction; F4 derives `x-y/2` when combined with `y^2-2`, after which the certified path succeeds. Coordinate tests additionally cover zero and constant coordinates, raw degree-17 coordinates reduced modulo a quadratic before evaluation, exact sample-fuel boundaries, unfinished refinement after sampling, wrong valid conjugates, out-of-source intervals, a degree-too-high polynomial matching all samples, and normal proofs paired with wrong payloads.
 
 ```sh
 python3 tools/generate_realvariety_fixtures.py --check
@@ -63,4 +77,4 @@ tools/measure --cpu 8 .tools/moon/bin/moon check src/realvariety --deny-warn
 python3 tools/audit_purity.py
 ```
 
-The implementation is exact symbolic code with executable certificate checks, not a full formal proof or a performance comparison. Existing F4 verification, polynomial normal form, rational arithmetic, and Sturm correctness remain dependencies. Root integration owns shared documentation navigation and inventories.
+The [validation transcript](realvariety-20261116-validation.json) records exact commands, outputs and exit codes under the shared CPU 8 lock; incremental command times are not algorithm benchmarks. The implementation is exact symbolic code with executable certificate checks, not a full formal proof or a performance comparison. Existing F4 verification, polynomial normal form, rational arithmetic, and Sturm correctness remain dependencies. Root integration owns shared documentation navigation and inventories.
