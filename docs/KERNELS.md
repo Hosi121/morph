@@ -6,7 +6,8 @@
 
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
 | --- | --- | --- |
-| Natの半分化 | Core→Binary変換、Fp既約性、円分体の次数、2冪判定 | [共有化](bootstrap/nat-conversions.md)。4096単体でBinary往復67.70→22.72 µs。Leanのfloorモデルと三backendの有限oracle |
+| Natの半分化 | Fp既約性、円分体の次数、2冪判定 | [共有化](bootstrap/nat-conversions.md)。4096単体でBinary往復67.70→22.72 µs。Leanのfloorモデルと三backendの有限oracle |
+| NatからBinaryへの変換 | 公開binary.from_natとその利用先 | [8進単位の共有](bootstrap/nat-radix-grouping.md)。三bitずつ出力し、商は元のNatの末尾を共有。0/1の小値と三backendの独立oracle・Leanの値/停止性を検査 |
 | 定数prefix | core.replicate、binary.pair | [末尾共有](bootstrap/constant-prefix.md)。8192要素192.60→84.33 µs。任意型のLean等式。Karatsubaへの融合は差が不明瞭なので未採用 |
 | Binaryの恒等元 | multiply/divmod/gcdを使う全package | [恒等元経路](bootstrap/primitive-identities.md)。2048bitの同値GCD6.34 ms→5.29 µs。全体の一般入力にこの比は適用しない。短い除算groupには回帰あり |
 | full adder | 二進加減乗算・run算術 | [12候補探索](bootstrap/adder-search.md)。全8条件の等価性をLeanでも確認したが、実測で遅いためproduction式は変更していない |

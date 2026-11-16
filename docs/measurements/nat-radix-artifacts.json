@@ -1,0 +1,30 @@
+{
+  "environment_base": "d76b5a0 (only factories/constants aligned with main 66f48ae)",
+  "cpu": 6,
+  "machine": "LAPTOP-5NN9877L",
+  "moon_version": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "input_construction": "excluded; unary inputs are constructed before each b.bench",
+  "samples": "10 samples per benchmark; short hot benchmarks additionally batch 128 calls",
+  "comparison": "fixed shared_nat_binary versus protected_nat_binary (public wrapper integration contract), same artifact in each backend",
+  "sources": {
+    "src/binary/from_nat_grouped.mbt": "80c9fa2c9dca95a16931ba22011dcd9cda568f2160d5f89716f1ef6dd76081ff",
+    "src/binary/from_nat_grouped_wbtest.mbt": "1fa41d243a214ece1be4fcb6f4c46656886573a12cfcb4a1de077b06de318ef4",
+    "src/binary/constants.mbt": "88859d7755ecdd072e6d5fcd2c74cf5ec0de4c4d1225634839958302aa0b7327",
+    "src/binary/nat_sharing_wbtest.mbt": "2609562a62457ae5a092996ab007b9424ea98a6cedf18f56e67e7949d167afb1"
+  },
+  "artifacts": {
+    "native": {
+      "path": "/home/hosi/morph/.tools/artifacts/nat-radix-20261116/nat-radix-native.exe",
+      "sha256": "2d34fe32c2c07813a22aa847c0d5b67ae53e0eada5f22e9a7a4a210f4bc36c3c"
+    },
+    "js": {
+      "path": "/home/hosi/morph/.tools/artifacts/nat-radix-20261116/nat-radix-js.js",
+      "sha256": "7002022e49439114b394ce8aea448d2a21c438a03994fdc045d8d6d47427ab6b"
+    },
+    "wasm-gc": {
+      "path": "/home/hosi/morph/.tools/artifacts/nat-radix-20261116/nat-radix-wasm-gc.wasm",
+      "sha256": "b3f48389229fb2162537db655b68b105d165cbe6fe45a52acae6bee5ce43bffa"
+    }
+  }
+}

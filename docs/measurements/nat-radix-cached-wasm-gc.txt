@@ -1,0 +1,19 @@
+[Hosi121/morph] bench binary/from_nat_grouped_wbtest.mbt:36 ("fixed shared binary converter compared with grouped production helper") ok
+name                      time (mean ± σ)         range (min … max) 
+binary shared 0              6.90 ns ±   0.34 ns     6.51 ns …   7.53 ns  in 10 × 100000 runs
+grouped production 0         7.16 ns ±   0.40 ns     6.64 ns …   7.94 ns  in 10 × 100000 runs
+binary shared 1             12.56 ns ±   1.39 ns    11.16 ns …  15.06 ns  in 10 × 100000 runs
+grouped production 1         7.34 ns ±   1.39 ns     6.50 ns …  11.13 ns  in 10 × 100000 runs
+binary shared 64           117.38 ns ±   7.36 ns   109.11 ns … 133.43 ns  in 10 × 100000 runs
+grouped production 64       87.64 ns ±   5.06 ns    82.02 ns …  96.63 ns  in 10 × 100000 runs
+binary shared 4096           8.11 µs ± 278.33 ns     7.72 µs …   8.60 µs  in 10 ×  12071 runs
+grouped production 4096      5.07 µs ± 197.28 ns     4.80 µs …   5.52 µs  in 10 ×  19307 runs
+binary shared 100000       233.36 µs ±   7.10 µs   223.50 µs … 242.95 µs  in 10 ×    425 runs
+grouped production 100000  132.77 µs ±   3.25 µs   128.46 µs … 139.88 µs  in 10 ×    774 runs
+[Hosi121/morph] bench binary/from_nat_grouped_wbtest.mbt:49 ("hot unary values in batches to lengthen short timer samples") ok
+name                time (mean ± σ)         range (min … max) 
+binary hot batch 0   989.95 ns ±  20.83 ns   969.79 ns …   1.02 µs  in 10 × 100000 runs
+grouped hot batch 0  737.30 ns ±  32.54 ns   691.82 ns … 777.91 ns  in 10 × 100000 runs
+binary hot batch 1     1.69 µs ±  44.09 ns     1.64 µs …   1.77 µs  in 10 ×  59231 runs
+grouped hot batch 1  755.08 ns ±  21.04 ns   716.85 ns … 778.34 ns  in 10 × 100000 runs
+Total tests: 2, passed: 2, failed: 0.

@@ -1,0 +1,22 @@
+source negative: remainder one changed to zero
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/from_nat_grouped.mbt::split_nat_grouped
+source negative: low input bit discarded
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/from_nat_grouped.mbt::from_nat_grouped
+source negative: cached one initializer changed
+Formal model/source drift: review the domain property and the changed correspondence.
+  code-drift: src/binary/constants.mbt::canonical_one_value
+Lean negative: remainder one changed to zero
+/tmp/morph-nat-drift-m_a_odj6/formal/Binary.lean:145:71: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 0
+  a ≥ 0
+where
+ a := ↑slow
+Lean negative: redundant high zero retained (value proof alone would accept it)
+/tmp/morph-nat-drift-m_a_odj6/formal/Binary.lean:211:35: error: unsolved goals
+case false.nil
+⊢ False
+restored source/model
+Formal drift gate passed: 19 reviewed source regions; not a translation proof.

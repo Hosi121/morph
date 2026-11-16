@@ -1,0 +1,23 @@
+[Hosi121/morph] bench binary/nat_radix_wbtest.mbt:429 ("small unary grouping cohort") ok
+name             time (mean ± σ)         range (min … max) 
+two shared 0       12.39 ns ±   2.05 ns    10.28 ns …  15.95 ns  in 10 × 100000 runs
+eight shared 0     12.43 ns ±   1.26 ns    11.04 ns …  14.75 ns  in 10 × 100000 runs
+two shared 1       32.99 ns ±   4.37 ns    27.35 ns …  42.29 ns  in 10 × 100000 runs
+eight shared 1     24.38 ns ±   2.90 ns    21.02 ns …  30.35 ns  in 10 × 100000 runs
+two shared 2       37.23 ns ±   4.35 ns    32.17 ns …  45.64 ns  in 10 × 100000 runs
+eight shared 2     30.03 ns ±   2.59 ns    26.01 ns …  33.62 ns  in 10 × 100000 runs
+two shared 7       59.43 ns ±   4.00 ns    53.43 ns …  65.12 ns  in 10 × 100000 runs
+eight shared 7     50.60 ns ±   5.75 ns    45.32 ns …  60.66 ns  in 10 × 100000 runs
+two shared 8      100.70 ns ±  11.31 ns    83.32 ns … 115.97 ns  in 10 × 100000 runs
+eight shared 8     74.61 ns ±   8.37 ns    62.82 ns …  86.00 ns  in 10 × 100000 runs
+two shared 9       89.85 ns ±  10.46 ns    74.40 ns … 101.68 ns  in 10 × 100000 runs
+eight shared 9     65.62 ns ±   7.31 ns    55.89 ns …  76.26 ns  in 10 × 100000 runs
+two shared 16     141.82 ns ±  38.17 ns   103.16 ns … 207.19 ns  in 10 × 100000 runs
+eight shared 16    99.58 ns ±   7.92 ns    88.28 ns … 111.29 ns  in 10 × 100000 runs
+two shared 63     273.65 ns ±  16.67 ns   243.84 ns … 294.93 ns  in 10 × 100000 runs
+eight shared 63   166.76 ns ±  11.87 ns   150.57 ns … 189.18 ns  in 10 × 100000 runs
+two shared 64     317.05 ns ±  17.93 ns   286.33 ns … 345.54 ns  in 10 × 100000 runs
+eight shared 64   229.29 ns ±  31.98 ns   191.62 ns … 294.38 ns  in 10 × 100000 runs
+two shared 255    872.31 ns ±  42.94 ns   824.70 ns … 952.40 ns  in 10 × 100000 runs
+eight shared 255  550.82 ns ±  26.75 ns   519.61 ns … 604.70 ns  in 10 × 100000 runs
+Total tests: 1, passed: 1, failed: 0.

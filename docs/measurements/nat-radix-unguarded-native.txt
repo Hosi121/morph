@@ -1,0 +1,13 @@
+[Hosi121/morph] bench binary/from_nat_grouped_wbtest.mbt:25 ("fixed shared binary converter compared with grouped production helper") ok
+name                      time (mean ± σ)         range (min … max) 
+binary shared 0              9.79 ns ±   1.56 ns     8.36 ns …  12.82 ns  in 10 × 100000 runs
+grouped production 0        18.01 ns ±   7.53 ns     9.62 ns …  27.14 ns  in 10 × 100000 runs
+binary shared 1             20.84 ns ±   1.38 ns    19.34 ns …  23.21 ns  in 10 × 100000 runs
+grouped production 1        19.50 ns ±   2.20 ns    17.96 ns …  24.39 ns  in 10 × 100000 runs
+binary shared 64           269.63 ns ±  31.83 ns   244.24 ns … 328.79 ns  in 10 × 100000 runs
+grouped production 64      184.31 ns ±  13.08 ns   173.13 ns … 214.12 ns  in 10 × 100000 runs
+binary shared 4096           9.79 µs ± 244.53 ns     9.44 µs …  10.20 µs  in 10 ×  10431 runs
+grouped production 4096      6.35 µs ± 144.33 ns     6.11 µs …   6.53 µs  in 10 ×  15570 runs
+binary shared 100000       255.95 µs ±   6.53 µs   247.18 µs … 264.79 µs  in 10 ×    389 runs
+grouped production 100000  177.31 µs ±  10.51 µs   162.14 µs … 196.37 µs  in 10 ×    550 runs
+Total tests: 1, passed: 1, failed: 0.

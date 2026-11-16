@@ -1,0 +1,43 @@
+[Hosi121/morph] bench binary/nat_radix_wbtest.mbt:432 ("small unary grouping cohort") ok
+name                 time (mean ± σ)         range (min … max) 
+two shared 0            8.72 ns ±   0.52 ns     8.08 ns …   9.46 ns  in 10 × 100000 runs
+eight shared 0         10.11 ns ±   1.23 ns     8.83 ns …  13.20 ns  in 10 × 100000 runs
+production two 0        9.69 ns ±   0.27 ns     9.31 ns …  10.18 ns  in 10 × 100000 runs
+production eight 0      9.33 ns ±   1.66 ns     8.05 ns …  13.17 ns  in 10 × 100000 runs
+two shared 1           21.53 ns ±   2.11 ns    18.10 ns …  24.59 ns  in 10 × 100000 runs
+eight shared 1         32.52 ns ±  15.23 ns    20.03 ns …  68.46 ns  in 10 × 100000 runs
+production two 1       21.26 ns ±   2.01 ns    18.92 ns …  25.43 ns  in 10 × 100000 runs
+production eight 1     21.60 ns ±   4.15 ns    18.25 ns …  29.96 ns  in 10 × 100000 runs
+two shared 2           34.95 ns ±   3.55 ns    30.85 ns …  40.72 ns  in 10 × 100000 runs
+eight shared 2         31.57 ns ±   4.37 ns    26.78 ns …  39.39 ns  in 10 × 100000 runs
+production two 2       33.72 ns ±   4.40 ns    27.74 ns …  39.52 ns  in 10 × 100000 runs
+production eight 2     27.98 ns ±   3.16 ns    24.59 ns …  33.42 ns  in 10 × 100000 runs
+two shared 7           53.19 ns ±   4.72 ns    47.42 ns …  60.09 ns  in 10 × 100000 runs
+eight shared 7         44.29 ns ±   4.72 ns    39.58 ns …  55.73 ns  in 10 × 100000 runs
+production two 7       57.36 ns ±   4.70 ns    51.05 ns …  62.98 ns  in 10 × 100000 runs
+production eight 7     45.20 ns ±   6.61 ns    38.60 ns …  58.30 ns  in 10 × 100000 runs
+two shared 8           83.05 ns ±   9.35 ns    68.65 ns …  98.84 ns  in 10 × 100000 runs
+eight shared 8         64.69 ns ±   7.34 ns    55.27 ns …  76.08 ns  in 10 × 100000 runs
+production two 8       76.78 ns ±   9.16 ns    66.86 ns …  99.33 ns  in 10 × 100000 runs
+production eight 8     60.58 ns ±   4.94 ns    53.34 ns …  69.07 ns  in 10 × 100000 runs
+two shared 9           78.57 ns ±   5.82 ns    69.20 ns …  89.80 ns  in 10 × 100000 runs
+eight shared 9         63.15 ns ±   7.53 ns    54.64 ns …  73.97 ns  in 10 × 100000 runs
+production two 9       81.07 ns ±  10.66 ns    70.96 ns … 101.21 ns  in 10 × 100000 runs
+production eight 9     64.70 ns ±   5.54 ns    57.47 ns …  72.59 ns  in 10 × 100000 runs
+two shared 16         120.43 ns ±  11.19 ns   107.86 ns … 139.82 ns  in 10 × 100000 runs
+eight shared 16        88.48 ns ±   6.33 ns    83.74 ns … 102.36 ns  in 10 × 100000 runs
+production two 16     117.38 ns ±   5.75 ns   108.84 ns … 126.95 ns  in 10 × 100000 runs
+production eight 16    93.90 ns ±  15.27 ns    76.81 ns … 121.10 ns  in 10 × 100000 runs
+two shared 63         273.41 ns ±  13.39 ns   257.64 ns … 294.26 ns  in 10 × 100000 runs
+eight shared 63       168.24 ns ±  11.47 ns   151.13 ns … 188.64 ns  in 10 × 100000 runs
+production two 63     265.00 ns ±  14.41 ns   245.07 ns … 285.06 ns  in 10 × 100000 runs
+production eight 63   171.16 ns ±  10.65 ns   155.45 ns … 185.07 ns  in 10 × 100000 runs
+two shared 64         303.25 ns ±  17.39 ns   276.48 ns … 325.59 ns  in 10 × 100000 runs
+eight shared 64       207.79 ns ±  16.31 ns   181.17 ns … 227.15 ns  in 10 × 100000 runs
+production two 64     280.10 ns ±  20.20 ns   263.80 ns … 329.06 ns  in 10 × 100000 runs
+production eight 64   193.08 ns ±  11.03 ns   178.62 ns … 214.88 ns  in 10 × 100000 runs
+two shared 255        834.32 ns ±  24.18 ns   807.67 ns … 871.16 ns  in 10 × 100000 runs
+eight shared 255      559.89 ns ±  94.50 ns   481.68 ns … 745.38 ns  in 10 × 100000 runs
+production two 255    874.85 ns ±  23.68 ns   843.95 ns … 918.90 ns  in 10 × 100000 runs
+production eight 255  552.59 ns ±  18.03 ns   533.01 ns … 590.56 ns  in 10 × 100000 runs
+Total tests: 1, passed: 1, failed: 0.

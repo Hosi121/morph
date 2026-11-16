@@ -7,7 +7,9 @@ floor(n/2)のためにNat→Binary→Natを作っていた。
 最初は`halve_nat(n)`でSuccを二つずつ消費して商へ一つずつ積む方式を共有化した。
 その後、[末尾共有](nat-tail-sharing.md)へ進め、商のSuccの新規構築も省いた。
 同じNat上をfastは二つずつ、slowは一つずつ進み、slowの既存tailを返す。
-Binary.from_natも同じhelperを使う。BigIntも組み込み整数も必要ない。
+Binary.from_natはこの二進分割を経て、現在は[8進単位の末尾共有](nat-radix-grouping.md)で
+一度に三bitを作る。半分化だけが必要な経路は引き続きCore helperを使う。
+いずれもBigIntも組み込み整数も必要ない。
 商の値だけなら`half_nat`を呼び、Boolが必要なら`halve_nat`を呼ぶ。
 どちらも末尾再帰なので、ユーザー例の自然な再帰式と同じ値を継続stackを増やさず返す。
 

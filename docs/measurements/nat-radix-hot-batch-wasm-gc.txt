@@ -1,0 +1,7 @@
+[Hosi121/morph] bench binary/from_nat_grouped_wbtest.mbt:38 ("hot unary values in batches to lengthen short timer samples") ok
+name                time (mean ± σ)         range (min … max) 
+binary hot batch 0   992.47 ns ±  36.90 ns   947.36 ns …   1.07 µs  in 10 × 100000 runs
+grouped hot batch 0  971.26 ns ±  22.59 ns   945.15 ns …   1.01 µs  in 10 × 100000 runs
+binary hot batch 1     1.60 µs ±  25.86 ns     1.57 µs …   1.65 µs  in 10 ×  61200 runs
+grouped hot batch 1    1.36 µs ±  31.70 ns     1.32 µs …   1.41 µs  in 10 ×  73249 runs
+Total tests: 1, passed: 1, failed: 0.

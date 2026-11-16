@@ -7,7 +7,9 @@ fastが0ならslow自身、1ならslowのtailを返すと、長さはfloor(n/2)�
 
 private walkのfallbackは、初期fast=slowとstepのfast≤slow保存から到達不能である。
 Leanモデルは`2*商+余り=2*slow-fast`をその条件の下で示し、初期状態から
-元の商余りとfloorの定理を導く。Binaryの変換モデルも同じCore helperをimportする。
+元の商余りとfloorの定理を導く。この段階ではBinaryの変換も同じCore helperを使った。
+現在のBinary変換は[8進単位の共有](nat-radix-grouping.md)へ進み、この二進変換モデルは
+`fromNatByHalves`として検査を継続している。
 Coreのoleanは検査ごとに生成し、ソースとの対応lockも更新した。
 モデル定理から、物理的なheap割当数・速度・全入力の実行資源保証は主張しない。
 
