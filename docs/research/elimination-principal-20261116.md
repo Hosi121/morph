@@ -1,5 +1,7 @@
 # Fixed-degree principal subresultant coefficients
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 This second elimination milestone adds [generic PSC determinants](../../src/elimination/principal.mbt) and [QQ coefficient/PSC entry points](../../src/elimination/principal_variable.mbt) without changing the earlier implementation or signatures. The frozen Berkowitz dependency is still root `1f067d2`, local `9db352a`, byte-identical. The [generated API](../../src/elimination/pkg.generated.mbti) is extended using `moon info`.
 
 For nominal degrees `n,m` and `0<=k<=min(n,m)`, let `N=n+m-2k`. `principal_matrix` uses the shifted rows

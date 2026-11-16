@@ -1,5 +1,7 @@
 # Bivariate full Collins and product projection plans
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 The new `src/projection` package prepares exact projection polynomials for two-variable QQ atom lists. It does not isolate base roots, construct stacks, evaluate a Boolean formula, or return a satisfiability conclusion. Its preferred `full_collins` entry point follows the full reducta-based Collins family. A separately named `product_projection` retains the full nonzero-atom product as an alternative with explicitly stated applicability conditions.
 
 The implementation is [plan construction and product projection](../../src/projection/projection.mbt), [all-reducta Collins construction](../../src/projection/collins.mbt), [query/payload checkers](../../src/projection/check.mbt), and the [compiler-generated API](../../src/projection/pkg.generated.mbti). It consumes only the public elimination API. The dependency snapshot is `4d1170e` for elimination and root `1f067d2`, local `9db352a`, for Berkowitz; neither implementation is changed by this package.

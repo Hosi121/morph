@@ -26,6 +26,10 @@
 | [疎Horner評価](sparse-horner-20261116.md) | 一変数の通常経路と実数制約の計測 | [独立QQ・Leanレビュー](sparse-horner-independent-review-20261116.md)後に採用 |
 | [Sturm–Tarskiの符号判定](tarski-20261116.md) | 半開端点のTaylor jetsと負剰余列で根上の符号を求める | 独立oracle356 query＋40根符号 |
 | [環上の消去](elimination-20261116.md) | 固定次数resultant、discriminant、Bézout証拠とQQ projection | 独立置換展開・SymPyと比較 |
+| [共通の実数体](compositum-20261116.md) | 原入力の選択根をprimitive elementの剰余へ埋め込む | 独立SymPyと比較、追加レビュー中 |
+| [principal subresultants](elimination-principal-20261116.md) | 固定次数のPSCとQQ変数消去への接続 | 独立determinant/gcd oracle |
+| [Collins projection](projection-20261116.md) | 全reducta・導関数・atom対のPSCを投影する | 一次資料の定義と独立oracle |
+| [数体係数の実根](orderedsturm-20261116.md) | 相対Sturm・半開根数・tower rootと全根cover | 3 backend、独立Fraction/SymPy |
 | [探索とリファクタリングの履歴](HISTORY.md) | 初期の実装、表現コストの見直し、検証と統合の経緯 | 当時の記録を保存 |
 | [長語除算・剰余](wide-kernels/README.md) | 逆順fold、末尾再帰、有限prefix、unrollの比較 | 通常経路へ未採用 |
 

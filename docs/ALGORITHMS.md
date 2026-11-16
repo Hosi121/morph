@@ -20,6 +20,7 @@
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
 | 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
+| 共通数体 | [実代数的数のprimitive-element合成と両生成元の埋込み](../src/compositum/producer.mbt) |
 | ソート | [安定merge/insertion/quick sort](../src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](../src/heap/heap.mbt) |
 | 辞書 | [Boolワードの永続trie・最長prefix・union](../src/trie/trie.mbt)・[永続AVL・削除・順位と選択](../src/avl/avl.mbt) |
@@ -55,6 +56,8 @@
 | 零次元系の実解 | [shapeと全実根の共有パラメータ表現](../src/realvariety/shape.mbt)・[分離線形形式の探索と元座標への射影](../src/realvariety/separation.mbt) |
 | 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt)・[Sturm–Tarski query・代数的な根での厳密な符号](../src/tarski/root_sign.mbt) |
 | 消去 | [環上の固定次数resultant・discriminant・Bézout証拠](../src/elimination/fixed.mbt)・[QQ多変数式の指定変数を消去](../src/elimination/projection.mbt) |
+| 代数係数の根 | [Q(α)上の相対Sturm・全実根の隔離・tower root](../src/orderedsturm/isolation.mbt) |
+| 射影 | [principal subresultants](../src/elimination/principal.mbt)・[full Collinsの係数・全reducta・全対PSC](../src/projection/collins.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
 

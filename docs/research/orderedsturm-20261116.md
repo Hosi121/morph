@@ -1,5 +1,7 @@
 # Exact relative Sturm isolation over a selected real number field, 2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 `orderedsturm` counts and isolates the **distinct real roots** of a univariate polynomial in `Q(alpha)[y]`, where `alpha` belongs to an existing checked, irreducible, real-embedded `numberfield.Field`. It returns finite exact tower-root descriptors: the fixed base embedding, a relative polynomial, and a rational half-open interval `(lower,upper]` containing exactly one relative real root `beta`. It does not construct the field `Q(alpha,beta)`, implement arbitrary tower arithmetic, or claim full CAD.
 
 [Generated API](../../src/orderedsturm/pkg.generated.mbti), [field sign bridge](../../src/orderedsturm/scalar.mbt), [relative arithmetic](../../src/orderedsturm/polynomial.mbt), [system certificate checker](../../src/orderedsturm/system.mbt), [half-open root counting](../../src/orderedsturm/count.mbt), [isolation and coverage checker](../../src/orderedsturm/isolation.mbt), [independent fixture generator](../../tools/generate_orderedsturm_fixtures.py).

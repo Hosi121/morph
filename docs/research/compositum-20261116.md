@@ -1,5 +1,7 @@
 # 選択された二つの実代数的数の共通体
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 `src/compositum/` は二つの `realalgebraic.Number` a,b を、同じ検査済み
 `numberfield.Field = Q(theta)` に写す。`theta = a + s*b` の整数係数 s を有限回試し、
 共通体の二つの `Element` と、外部入力から実埋込みまでを束縛する証拠を返す。
