@@ -1,0 +1,996 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Exact adversarial corpus for shifted-quadratic sign shortcuts; baseline verifies current general PRS implementation",
+  "production_upstream_commit": "da46274e17d5ceceaf23bd981b9deb028cbb3476",
+  "fixture_commit": "1905242",
+  "quadratic_shortcut_evaluated": false,
+  "independent_test_count": 70,
+  "added_contexts": 13,
+  "added_linear_queries": 123,
+  "cpu": 8,
+  "serialization": "tools/measure shared Git common-directory flock; no nested measurement",
+  "sdk": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "backend_results": {
+    "native": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target native --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 5.5,
+      "peak_rss_kib": 14592,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=5.50 peak_rss_kib=14592\n"
+    },
+    "wasm-gc": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target wasm-gc --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 3.05,
+      "peak_rss_kib": 216916,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=3.05 peak_rss_kib=216916\n"
+    },
+    "js": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target js --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 4.45,
+      "peak_rss_kib": 164384,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=4.45 peak_rss_kib=164384\n"
+    }
+  },
+  "fixture_check": "Checked 65 independent review tests: Fraction rational/quadratic, repeated endpoint Tarski, exact SymPy relative counts, and shifted quadratic cancellation.\n",
+  "check_deny_warn": "Finished. moon: ran 1 task, now up to date\n",
+  "source_sha256": {
+    "src/realtower/api.mbt": "10afe5d99e19401f236c2eb3abc308eaa99e529fca013dc976ad90d2c9334e90",
+    "src/realtower/data.mbt": "c83ab9c0e46292cfb66a19bc4412b2be9fc65a1195d69e4a4ce56fdadfd9053b",
+    "src/realtower/independent_review_adversarial_wbtest.mbt": "932e8d55b8724186612bf132f86ddac3d4f330f4d471384ec3a5b1e566ee70c9",
+    "src/realtower/independent_review_helpers_wbtest.mbt": "36c41793e337f6f052b7e713706d49f0f797067ee291c25d27a6949233d112ed",
+    "src/realtower/independent_review_oracle_wbtest.mbt": "b4b10163e50a6af8f37daa4190db730f288481253a5c937faa51a76fc2f18c1c",
+    "src/realtower/isolation.mbt": "9e53ab78b5b5de80af204804659f36b9a767dc8ff033ba16cf4f2be9cea12059",
+    "src/realtower/polynomial.mbt": "e09c13c27b8b44f84596aa05657e9f0f97e87be9baea16a72a1cd3e12a029c0e",
+    "src/realtower/raw.mbt": "c2e08bba11d797a56085a1ea6a517b50ba398195fc2c9315dde0134aff210c93",
+    "src/realtower/realtower_wbtest.mbt": "d1790e17f8e6279ecd38b926c18dbd307da1ec58f61656c61b99f00f433e8064",
+    "src/realtower/scalar.mbt": "35312ddeffd009b5d80d58344653ace9501a25b10144689838d2494e4a731c43",
+    "src/realtower/system.mbt": "cd1b0f5f12614b134a86f0251f82a020267ee29f637138e987e18c36f56d63f4",
+    "tools/generate_realtower_review.py": "d2a7f810f0adf0de08dd85f46b665330da3ba27a56c97dd0fa0f74fb68b36fc7"
+  },
+  "oracle_additions": [
+    {
+      "modulus": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "interval": [
+        "1",
+        "3"
+      ],
+      "root_pair": [
+        "1",
+        "1"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-1",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "1",
+          "linear": "-1",
+          "expected": -1
+        },
+        {
+          "constant": "-408/169",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-985/408",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "-2378/985",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-33461/13860",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "2856/845",
+          "linear": "-7/5",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-1",
+        "-2",
+        "1"
+      ],
+      "interval": [
+        "-1",
+        "1"
+      ],
+      "root_pair": [
+        "1",
+        "-1"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-1",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "1",
+          "linear": "-1",
+          "expected": 1
+        },
+        {
+          "constant": "70/169",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "169/408",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "408/985",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "5741/13860",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-98/169",
+          "linear": "-7/5",
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "7/4",
+        "3",
+        "1"
+      ],
+      "interval": [
+        "-3/2",
+        "-1/2"
+      ],
+      "root_pair": [
+        "-3/2",
+        "1/2"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "3/2",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-3/2",
+          "linear": "-1",
+          "expected": -1
+        },
+        {
+          "constant": "134/169",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "647/816",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "781/985",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "21979/27720",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "-938/845",
+          "linear": "-7/5",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "7/4",
+        "3",
+        "1"
+      ],
+      "interval": [
+        "-5/2",
+        "-3/2"
+      ],
+      "root_pair": [
+        "-3/2",
+        "-1/2"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "3/2",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "-3/2",
+          "linear": "-1",
+          "expected": 1
+        },
+        {
+          "constant": "373/169",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "1801/816",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "2174/985",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "61181/27720",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-2611/845",
+          "linear": "-7/5",
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-4/9",
+        "-4/3",
+        "1"
+      ],
+      "interval": [
+        "2/3",
+        "2"
+      ],
+      "root_pair": [
+        "2/3",
+        "2/3"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-2/3",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "2/3",
+          "linear": "-1",
+          "expected": -1
+        },
+        {
+          "constant": "-272/169",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-985/612",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "-4756/2955",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-33461/20790",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "1904/845",
+          "linear": "-7/5",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-4/9",
+        "-4/3",
+        "1"
+      ],
+      "interval": [
+        "-2/3",
+        "2/3"
+      ],
+      "root_pair": [
+        "2/3",
+        "-2/3"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-2/3",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "2/3",
+          "linear": "-1",
+          "expected": 1
+        },
+        {
+          "constant": "140/507",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "169/612",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "272/985",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "5741/20790",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-196/507",
+          "linear": "-7/5",
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "interval": [
+        "-1",
+        "3"
+      ],
+      "root_pair": [
+        "3",
+        "0"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-1",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "1",
+          "linear": "-1",
+          "expected": -1
+        },
+        {
+          "constant": "-3",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "3",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "-3145727/1048576",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-3145729/1048576",
+          "linear": "1",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-3",
+        "-2",
+        "1"
+      ],
+      "interval": [
+        "-2",
+        "1"
+      ],
+      "root_pair": [
+        "-1",
+        "0"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-1",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "1",
+          "linear": "-1",
+          "expected": 1
+        },
+        {
+          "constant": "1",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "-1",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "1048577/1048576",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "1048575/1048576",
+          "linear": "1",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-65/36",
+        "-4/3",
+        "1"
+      ],
+      "interval": [
+        "-5/6",
+        "13/6"
+      ],
+      "root_pair": [
+        "13/6",
+        "0"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-2/3",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "2/3",
+          "linear": "-1",
+          "expected": -1
+        },
+        {
+          "constant": "-13/6",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "13/6",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "-6815741/3145728",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-6815747/3145728",
+          "linear": "1",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "-65/36",
+        "-4/3",
+        "1"
+      ],
+      "interval": [
+        "-11/6",
+        "2/3"
+      ],
+      "root_pair": [
+        "-5/6",
+        "0"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-2/3",
+          "linear": "1",
+          "expected": -1
+        },
+        {
+          "constant": "2/3",
+          "linear": "-1",
+          "expected": 1
+        },
+        {
+          "constant": "5/6",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "-5/6",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "2621443/3145728",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "2621437/3145728",
+          "linear": "1",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "modulus": [
+        "4",
+        "-4",
+        "1"
+      ],
+      "interval": [
+        "1",
+        "2"
+      ],
+      "root_pair": [
+        "2",
+        "0"
+      ],
+      "queries": [
+        {
+          "constant": "0",
+          "linear": "0",
+          "expected": 0
+        },
+        {
+          "constant": "1",
+          "linear": "0",
+          "expected": 1
+        },
+        {
+          "constant": "-1",
+          "linear": "0",
+          "expected": -1
+        },
+        {
+          "constant": "-2",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "2",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "-2",
+          "linear": "1",
+          "expected": 0
+        },
+        {
+          "constant": "2",
+          "linear": "-1",
+          "expected": 0
+        },
+        {
+          "constant": "-2097151/1048576",
+          "linear": "1",
+          "expected": 1
+        },
+        {
+          "constant": "-2097153/1048576",
+          "linear": "1",
+          "expected": -1
+        }
+      ]
+    },
+    {
+      "parent_root": "sqrt(2)",
+      "modulus": "beta^2-2*alpha*beta+1",
+      "branch": 1,
+      "root_pair": [
+        "1",
+        "1"
+      ],
+      "queries": [
+        {
+          "constant": [
+            "0",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "1",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "0"
+          ],
+          "expected": 1
+        },
+        {
+          "constant": [
+            "0",
+            "-1"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": 1
+        },
+        {
+          "constant": [
+            "-1",
+            "-1"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "1",
+            "1"
+          ],
+          "linear": [
+            "-1",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "-2",
+            "-1"
+          ],
+          "linear": [
+            "0",
+            "1"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "-408/169",
+            "0"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": 1
+        },
+        {
+          "constant": [
+            "-985/408",
+            "0"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": -1
+        },
+        {
+          "constant": [
+            "-2",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "1"
+          ],
+          "expected": 1
+        }
+      ]
+    },
+    {
+      "parent_root": "sqrt(2)",
+      "modulus": "beta^2-2*alpha*beta+1",
+      "branch": -1,
+      "root_pair": [
+        "-1",
+        "1"
+      ],
+      "queries": [
+        {
+          "constant": [
+            "0",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "1",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "0"
+          ],
+          "expected": 1
+        },
+        {
+          "constant": [
+            "0",
+            "-1"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": -1
+        },
+        {
+          "constant": [
+            "1",
+            "-1"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "-1",
+            "1"
+          ],
+          "linear": [
+            "-1",
+            "0"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "-2",
+            "1"
+          ],
+          "linear": [
+            "0",
+            "1"
+          ],
+          "expected": 0
+        },
+        {
+          "constant": [
+            "-70/169",
+            "0"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": 1
+        },
+        {
+          "constant": [
+            "-169/408",
+            "0"
+          ],
+          "linear": [
+            "1",
+            "0"
+          ],
+          "expected": -1
+        },
+        {
+          "constant": [
+            "-2",
+            "0"
+          ],
+          "linear": [
+            "0",
+            "1"
+          ],
+          "expected": -1
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "These timings include compilation/test harness and support no speedup comparison.",
+    "This record concerns the general PRS baseline; a later shortcut needs the same corpus rerun."
+  ]
+}

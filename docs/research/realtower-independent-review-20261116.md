@@ -66,3 +66,20 @@ SolutionSetの内部Systemの一貫した差し替えの拒否も含めた。
 [測定・検査記録](../measurements/realtower-review-20261116.json)に保存する。
 この検査は有限の厳密例によるadversarial reviewであり、任意深さ・任意次数の形式的な正当性証明ではない。
 性能改善の比較実験でもない。元実装担当のflat数体fixtureとは別の期待値生成器と例を使用した。
+
+## 追加：shifted quadraticの符号判定に向けた厳密corpus
+
+二次定義の符号判定を親の体の四則・比較へ帰着する候補に向け、13 context・123 linear queryを追加した。
+これにより独立検査は全70件となり、現行の汎用PRS実装 `da46274` で native / wasm-gc / JS 各70/70成功した。
+
+一次係数が非零の `beta=h±k*sqrt(2)`、頂点が区間端点にある場合、
+もう一方の根が除外される左端点で選択根が含まれる右端点にある可約二次定義を含む。
+重根を持つ二次入力のsquarefree定義が一次になる場合も検査する。
+queryには零・定数・正負の傾き・非自明な `a*beta+d=0`、
+`239/169, 577/408, 1393/985, 19601/13860` による `sqrt(2)` の両側からの近接相殺を使う。
+
+さらに親を `alpha=sqrt(2)` とする `beta^2-2*alpha*beta+1` から `beta=alpha±1` を選び、
+一次係数自体が有理数でない二つのcontextを追加した。
+queryの係数も `Q(sqrt(2))` とし、例えば `alpha*beta-2∓alpha=0` を係数対のFraction oracleで確認する。
+この追加は最適化を採用したという記録ではなく、同じ期待値で候補実装を検査するためのもの。
+[追加corpusのbaseline検査記録](../measurements/realtower-review-quadratic-20261116.json)に全期待値を残した。
