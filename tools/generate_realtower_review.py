@@ -154,7 +154,52 @@ def generate():
         lines+=['','///|',f'test "independent exact irrational relative degree {sp.degree(source,t)} source {i}" {{',
                 f'  review_relative_count_fixture({depth}, {str(positive).lower()}, {encoded}, {expected})','}']
         count_records.append(dict(depth=depth,positive_embedding=positive,source=str(source),ascending_coefficients=[list(map(str,cs)) for cs in values],spans=spans))
-    return '\n'.join(lines)+'\n',dict(sympy=sp.__version__,no_float=True,rational=rational_records,quadratic=quadratic_records,tarski=query_records,relative_count=count_records)
+    shifted_records=[]
+    shifted=[]
+    for h,k in [(F(1),F(1)),(F(-3,2),F(1,2)),(F(2,3),F(2,3))]:
+        for embedding in [1,-1]:
+            span=(h,h+2*k) if embedding>0 else (h-2*k,h)
+            shifted.append(([h*h-2*k*k,-2*h,F(1)],span,(h,k*embedding),None))
+    for h,r in [(F(1),F(2)),(F(2,3),F(3,2))]:
+        shifted.append(([h*h-r*r,-2*h,F(1)],(h-r,h+r),(h+r,F(0)),h+r))
+        shifted.append(([h*h-r*r,-2*h,F(1)],(h-r-1,h),(h-r,F(0)),h-r))
+    # A repeated root makes the squarefree definition linear; this exercises the
+    # same public API without assuming that every quadratic stays degree two.
+    shifted.append(([F(4),F(-4),F(1)],(F(1),F(2)),(F(2),F(0)),F(2)))
+    for i,(modulus,span,root_pair,rational_root) in enumerate(shifted):
+        h= -modulus[1]/2
+        queries=[(F(0),F(0)),(F(1),F(0)),(F(-1),F(0)),(-h,F(1)),(h,F(-1))]
+        if rational_root is None:
+            for near in [F(239,169),F(577,408),F(1393,985),F(19601,13860)]:
+                queries.append((-h-root_pair[1]*near,F(1)))
+            a=F(-7,5)
+            queries.append((-a*h-a*root_pair[1]*F(239,169),a))
+        else:
+            queries += [(-rational_root,F(1)),(rational_root,F(-1)),
+                        (-rational_root+F(1,1048576),F(1)),
+                        (-rational_root-F(1,1048576),F(1))]
+        expected=[pair_sign(pair_add((d,F(0)),pair_mul((a,F(0)),root_pair)),1) for d,a in queries]
+        encoded='['+', '.join(f'({q(d)}, {q(a)}, {order(s)})' for (d,a),s in zip(queries,expected))+']'
+        lines+=['','///|',f'test "independent shifted quadratic branch and cancellation {i}" {{',
+                f'  review_shifted_quadratic_fixture({qs(modulus)}, @sturm.Interval::{{lower: {q(span[0])}, upper: {q(span[1])}}}, {encoded})','}']
+        shifted_records.append(dict(modulus=list(map(str,modulus)),interval=list(map(str,span)),root_pair=list(map(str,root_pair)),
+                                    queries=[dict(constant=str(d),linear=str(a),expected=s) for (d,a),s in zip(queries,expected)]))
+    irrational_shifted=[]
+    for branch in [1,-1]:
+        root=(F(branch),F(1))
+        queries=[((F(0),F(0)),(F(0),F(0))),((F(1),F(0)),(F(0),F(0))),
+                 ((F(0),F(-1)),(F(1),F(0))),((F(-branch),F(-1)),(F(1),F(0))),
+                 ((F(branch),F(1)),(F(-1),F(0))),((F(-2),F(-branch)),(F(0),F(1))),
+                 ((-F(branch)-F(239,169),F(0)),(F(1),F(0))),
+                 ((-F(branch)-F(577,408),F(0)),(F(1),F(0))),
+                 ((F(-2),F(0)),(F(0),F(1)))]
+        expected=[pair_sign(pair_add(d,pair_mul(a,root)),1) for d,a in queries]
+        encoded='['+', '.join(f'({qs(d)}, {qs(a)}, {order(s)})' for (d,a),s in zip(queries,expected))+']'
+        lines+=['','///|',f'test "independent shifted irrational parent quadratic branch {branch}" {{',
+                f'  review_irrational_shift_fixture({str(branch>0).lower()}, {encoded})','}']
+        irrational_shifted.append(dict(parent_root='sqrt(2)',modulus='beta^2-2*alpha*beta+1',branch=branch,
+                                        root_pair=list(map(str,root)),queries=[dict(constant=list(map(str,d)),linear=list(map(str,a)),expected=s) for (d,a),s in zip(queries,expected)]))
+    return '\n'.join(lines)+'\n',dict(sympy=sp.__version__,no_float=True,rational=rational_records,quadratic=quadratic_records,tarski=query_records,relative_count=count_records,shifted_quadratic=shifted_records,irrational_shifted_quadratic=irrational_shifted)
 
 
 def tokens(source):
@@ -170,7 +215,7 @@ def main():
     else:OUT.write_text(source)
     ART.parent.mkdir(parents=True,exist_ok=True)
     ART.write_text(json.dumps(data,indent=2)+'\n')
-    print(f"{'Checked' if args.check else 'Wrote'} {sum(len(data[k]) for k in ['rational','quadratic','tarski','relative_count'])} independent review tests: Fraction rational/quadratic, repeated endpoint Tarski, and exact SymPy relative counts.")
+    print(f"{'Checked' if args.check else 'Wrote'} {sum(len(data[k]) for k in ['rational','quadratic','tarski','relative_count','shifted_quadratic','irrational_shifted_quadratic'])} independent review tests: Fraction rational/quadratic, repeated endpoint Tarski, exact SymPy relative counts, and shifted quadratic cancellation.")
 
 
 if __name__=='__main__':main()

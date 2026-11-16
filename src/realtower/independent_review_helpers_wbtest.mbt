@@ -131,3 +131,61 @@ fn review_relative_count_fixture(
     assert_true(check_count(sys, span, @oracle.nat(expected), cert))
   }
 }
+
+///|
+fn review_shifted_quadratic_fixture(
+  modulus : Array[@exact.Rational],
+  span : @sturm.Interval,
+  queries : Array[(@exact.Rational, @exact.Rational, @core.Ordering)],
+) -> Unit raise {
+  let ext = extension(review_poly(rational_field(), modulus), span)
+  for (constant, linear, expected) in queries {
+    let value = must(
+      scalar_add(
+        rational(ext.field, constant),
+        must(scalar_multiply(rational(ext.field, linear), ext.generator)),
+      ),
+    )
+    sign_is(value, expected)
+    if expected == @core.Equal {
+      assert_true(scalar_inverse(value) is Err(ZeroDivisor))
+    }
+  }
+}
+
+///|
+fn review_irrational_shift_fixture(
+  upper : Bool,
+  queries : Array[
+    (Array[@exact.Rational], Array[@exact.Rational], @core.Ordering),
+  ],
+) -> Unit raise {
+  let first = review_sqrt2(true)
+  let definition = must(
+    polynomial(
+      first.field,
+      @oracle.chain([
+        scalar_one(first.field),
+        must(scalar_multiply(s(first.field, -2), first.generator)),
+        scalar_one(first.field),
+      ]),
+    ),
+  )
+  let ext = extension(
+    definition,
+    if upper {
+      interval(2, 3)
+    } else {
+      interval(0, 1)
+    },
+  )
+  for (constant, linear, expected) in queries {
+    let d = must(embed(ext.field, review_eval(first.generator, constant)))
+    let a = must(embed(ext.field, review_eval(first.generator, linear)))
+    let value = must(scalar_add(d, must(scalar_multiply(a, ext.generator))))
+    sign_is(value, expected)
+    if expected == @core.Equal {
+      assert_true(scalar_inverse(value) is Err(ZeroDivisor))
+    }
+  }
+}

@@ -1307,3 +1307,373 @@ test "independent exact irrational relative degree 4 source 7" {
     ],
   )
 }
+
+///|
+test "independent shifted quadratic branch and cancellation 0" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-1, 1), @oracle.rational(-2, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(1, 1),
+      upper: @oracle.rational(3, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-1, 1), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(1, 1), @oracle.rational(-1, 1), @core.Less),
+      (@oracle.rational(-408, 169), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-985, 408), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(-2378, 985), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-33461, 13860), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(2856, 845), @oracle.rational(-7, 5), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 1" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-1, 1), @oracle.rational(-2, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-1, 1),
+      upper: @oracle.rational(1, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-1, 1), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(1, 1), @oracle.rational(-1, 1), @core.Greater),
+      (@oracle.rational(70, 169), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(169, 408), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(408, 985), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(5741, 13860), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-98, 169), @oracle.rational(-7, 5), @core.Greater),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 2" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(7, 4), @oracle.rational(3, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-3, 2),
+      upper: @oracle.rational(-1, 2),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(3, 2), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-3, 2), @oracle.rational(-1, 1), @core.Less),
+      (@oracle.rational(134, 169), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(647, 816), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(781, 985), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(21979, 27720), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(-938, 845), @oracle.rational(-7, 5), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 3" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(7, 4), @oracle.rational(3, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-5, 2),
+      upper: @oracle.rational(-3, 2),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(3, 2), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(-3, 2), @oracle.rational(-1, 1), @core.Greater),
+      (@oracle.rational(373, 169), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(1801, 816), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(2174, 985), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(61181, 27720), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-2611, 845), @oracle.rational(-7, 5), @core.Greater),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 4" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-4, 9), @oracle.rational(-4, 3), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(2, 3),
+      upper: @oracle.rational(2, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-2, 3), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(2, 3), @oracle.rational(-1, 1), @core.Less),
+      (@oracle.rational(-272, 169), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-985, 612), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(-4756, 2955), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-33461, 20790), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(1904, 845), @oracle.rational(-7, 5), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 5" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-4, 9), @oracle.rational(-4, 3), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-2, 3),
+      upper: @oracle.rational(2, 3),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-2, 3), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(2, 3), @oracle.rational(-1, 1), @core.Greater),
+      (@oracle.rational(140, 507), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(169, 612), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(272, 985), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(5741, 20790), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(-196, 507), @oracle.rational(-7, 5), @core.Greater),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 6" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-3, 1), @oracle.rational(-2, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-1, 1),
+      upper: @oracle.rational(3, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-1, 1), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(1, 1), @oracle.rational(-1, 1), @core.Less),
+      (@oracle.rational(-3, 1), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(3, 1), @oracle.rational(-1, 1), @core.Equal),
+      (
+        @oracle.rational(-3145727, 1048576),
+        @oracle.rational(1, 1),
+        @core.Greater,
+      ),
+      (@oracle.rational(-3145729, 1048576), @oracle.rational(1, 1), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 7" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-3, 1), @oracle.rational(-2, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-2, 1),
+      upper: @oracle.rational(1, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-1, 1), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(1, 1), @oracle.rational(-1, 1), @core.Greater),
+      (@oracle.rational(1, 1), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(-1, 1), @oracle.rational(-1, 1), @core.Equal),
+      (
+        @oracle.rational(1048577, 1048576),
+        @oracle.rational(1, 1),
+        @core.Greater,
+      ),
+      (@oracle.rational(1048575, 1048576), @oracle.rational(1, 1), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 8" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-65, 36), @oracle.rational(-4, 3), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-5, 6),
+      upper: @oracle.rational(13, 6),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-2, 3), @oracle.rational(1, 1), @core.Greater),
+      (@oracle.rational(2, 3), @oracle.rational(-1, 1), @core.Less),
+      (@oracle.rational(-13, 6), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(13, 6), @oracle.rational(-1, 1), @core.Equal),
+      (
+        @oracle.rational(-6815741, 3145728),
+        @oracle.rational(1, 1),
+        @core.Greater,
+      ),
+      (@oracle.rational(-6815747, 3145728), @oracle.rational(1, 1), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 9" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(-65, 36), @oracle.rational(-4, 3), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(-11, 6),
+      upper: @oracle.rational(2, 3),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-2, 3), @oracle.rational(1, 1), @core.Less),
+      (@oracle.rational(2, 3), @oracle.rational(-1, 1), @core.Greater),
+      (@oracle.rational(5, 6), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(-5, 6), @oracle.rational(-1, 1), @core.Equal),
+      (
+        @oracle.rational(2621443, 3145728),
+        @oracle.rational(1, 1),
+        @core.Greater,
+      ),
+      (@oracle.rational(2621437, 3145728), @oracle.rational(1, 1), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted quadratic branch and cancellation 10" {
+  review_shifted_quadratic_fixture(
+    [@oracle.rational(4, 1), @oracle.rational(-4, 1), @oracle.rational(1, 1)],
+    @sturm.Interval::{
+      lower: @oracle.rational(1, 1),
+      upper: @oracle.rational(2, 1),
+    },
+    [
+      (@oracle.rational(0, 1), @oracle.rational(0, 1), @core.Equal),
+      (@oracle.rational(1, 1), @oracle.rational(0, 1), @core.Greater),
+      (@oracle.rational(-1, 1), @oracle.rational(0, 1), @core.Less),
+      (@oracle.rational(-2, 1), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(2, 1), @oracle.rational(-1, 1), @core.Equal),
+      (@oracle.rational(-2, 1), @oracle.rational(1, 1), @core.Equal),
+      (@oracle.rational(2, 1), @oracle.rational(-1, 1), @core.Equal),
+      (
+        @oracle.rational(-2097151, 1048576),
+        @oracle.rational(1, 1),
+        @core.Greater,
+      ),
+      (@oracle.rational(-2097153, 1048576), @oracle.rational(1, 1), @core.Less),
+    ],
+  )
+}
+
+///|
+test "independent shifted irrational parent quadratic branch 1" {
+  review_irrational_shift_fixture(true, [
+    (
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      @core.Greater,
+    ),
+    (
+      [@oracle.rational(0, 1), @oracle.rational(-1, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Greater,
+    ),
+    (
+      [@oracle.rational(-1, 1), @oracle.rational(-1, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(1, 1), @oracle.rational(1, 1)],
+      [@oracle.rational(-1, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(-2, 1), @oracle.rational(-1, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(1, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(-408, 169), @oracle.rational(0, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Greater,
+    ),
+    (
+      [@oracle.rational(-985, 408), @oracle.rational(0, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Less,
+    ),
+    (
+      [@oracle.rational(-2, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(1, 1)],
+      @core.Greater,
+    ),
+  ])
+}
+
+///|
+test "independent shifted irrational parent quadratic branch -1" {
+  review_irrational_shift_fixture(false, [
+    (
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(0, 1)],
+      @core.Greater,
+    ),
+    (
+      [@oracle.rational(0, 1), @oracle.rational(-1, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Less,
+    ),
+    (
+      [@oracle.rational(1, 1), @oracle.rational(-1, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(-1, 1), @oracle.rational(1, 1)],
+      [@oracle.rational(-1, 1), @oracle.rational(0, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(-2, 1), @oracle.rational(1, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(1, 1)],
+      @core.Equal,
+    ),
+    (
+      [@oracle.rational(-70, 169), @oracle.rational(0, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Greater,
+    ),
+    (
+      [@oracle.rational(-169, 408), @oracle.rational(0, 1)],
+      [@oracle.rational(1, 1), @oracle.rational(0, 1)],
+      @core.Less,
+    ),
+    (
+      [@oracle.rational(-2, 1), @oracle.rational(0, 1)],
+      [@oracle.rational(0, 1), @oracle.rational(1, 1)],
+      @core.Less,
+    ),
+  ])
+}
