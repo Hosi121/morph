@@ -38,7 +38,10 @@ def roots_at(ps,a):
    if not any(same(r,z) for z in roots):roots.append(r)
  return sorted(roots,key=cmp_to_key(compare)),polynomials
 def fibre(ps,f,a):
+ a=s.sympify(a)
+ assert not a.atoms(s.Float), ("inexact fibre sample",a)
  roots,polynomials=roots_at(ps,a)
+ assert not any(z.atoms(s.Float) for z in roots+polynomials), ("inexact roots/coefficients",a)
  samples=[]
  if roots:
   samples=[roots[0]-1]
@@ -47,11 +50,12 @@ def fibre(ps,f,a):
    if i+1<len(roots):samples.append((r+roots[i+1])/2)
   samples.append(roots[-1]+1)
  else:samples=[s.Integer(0)]
+ assert not any(z.atoms(s.Float) for z in samples), ("inexact sector samples",a)
  signs=[[sign(p.subs(y,b)) for p in polynomials] for b in samples]
  truth=[holds(f,ss) for ss in signs]
  return dict(x=str(a),roots=[str(r) for r in roots],samples=[str(b) for b in samples],signs=signs,truth=truth,exists=any(truth),forall=all(truth),nullified=[i for i,p in enumerate(polynomials) if p==0])
 def cover(cuts):
- cuts=sorted(cuts,key=cmp_to_key(compare))
+ cuts=sorted(map(s.sympify,cuts),key=cmp_to_key(compare))
  if not cuts:return [s.Integer(0)]
  out=[cuts[0]-1]
  for i,c in enumerate(cuts):
@@ -134,10 +138,59 @@ for name,alpha,ps,f in R:
 out=ROOT/'docs/research/cad2-independent-review-20261116-fixtures.json'
 payload=dict(oracle='known exact factor families; SymPy symbolic real roots/signs; hand-derived quantifier reasons, independent of implementation',sympy=s.__version__,plane=plane_records,relative=relative_records)
 encoded=json.dumps(payload,indent=2,sort_keys=True)+'\n'
-parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');parser.add_argument('--emit-drafts',action='store_true');parser.add_argument('--emit-tests',action='store_true');args=parser.parse_args()
 if args.check:
  assert out.read_text()==encoded,'frozen semantic oracle changed'
 else:out.write_text(encoded)
 artifact=ROOT/'.tools/cad2-independent-review-20261116';artifact.mkdir(parents=True,exist_ok=True)
 (artifact/'oracle-sha256.txt').write_text(hashlib.sha256(encoded.encode()).hexdigest()+'\n')
 print(f'frozen {len(plane_records)} plane families, {sum(len(r["fibres"]) for r in plane_records)} exact fibres, {len(relative_records)} algebraic-field fibres; sha256={hashlib.sha256(encoded.encode()).hexdigest()}')
+
+# Rendering tests changes no semantic expected data or frozen JSON.
+def mb_terms(atoms):
+ return '['+', '.join('['+', '.join('('+', '.join(map(str,z))+')' for z in p)+']' for p in atoms)+']'
+def mb_bool(value):return 'true' if value else 'false'
+def mb_formula(f):
+ names={'lt':'LessZero','le':'AtMostZero','eq':'EqualZero','ne':'NotZero','ge':'AtLeastZero','gt':'GreaterZero'}
+ op=f[0]
+ if op=='truth':return 'Truth('+mb_bool(f[1])+')'
+ if op=='atom':return f'Atom(ps[{f[1]}], {names[f[2]]})'
+ if op=='not':return 'Negation('+mb_formula(f[1])+')'
+ return ('Conjunction' if op=='and' else 'Disjunction')+'('+mb_formula(f[1])+', '+mb_formula(f[2])+')'
+def mb_pairs(values):return '['+', '.join(f'({int(c.p)}, {int(c.q)})' for c in values)+']'
+def field_data(value):
+ p=s.Poly(s.minimal_polynomial(value,x),x,domain=s.QQ).monic()
+ for (lo,hi),_ in s.intervals(p,eps=s.Rational(1,32)):
+  if lo==hi:
+   if not same(value,hi):continue
+   lo=hi-1
+  if sign(value-lo)>0 and sign(hi-value)>=0:return p,lo,hi
+ raise AssertionError(('field root interval',value,p))
+def mb_fibre(name,atoms,f,result):
+ value=s.sympify(result['x']);p,lo,hi=field_data(value)
+ formula=mb_formula(f);param='_' if not atoms else 'ps'
+ expected='['+', '.join('['+', '.join(map(str,row))+']' for row in result['signs'])+']'
+ truth='['+', '.join(map(mb_bool,result['truth']))+']'
+ return ['///|','test '+json.dumps(name)+' {',
+  '  review_relative_fixture('+mb_pairs(reversed(p.all_coeffs()))+f', ({int(lo.p)}, {int(lo.q)}), ({int(hi.p)}, {int(hi.q)}),',
+  '    '+mb_terms(atoms)+', fn('+param+') { '+formula+' }, '+expected+', '+truth+')','}','']
+if args.emit_drafts or args.emit_tests:
+ relative_lines=['// Generated from frozen independent semantics, not implementation results.','']
+ for i,record in enumerate(relative_records):
+  relative_lines+=mb_fibre('independent algebraic fibre '+str(i)+' '+record['name'],record['atoms'],record['formula'],record)
+ for i,record in enumerate(plane_records):
+  for j,result in enumerate(record['fibres']):
+   relative_lines+=mb_fibre(f'independent plane fibre {i} {j} '+record['name'],record['atoms'],record['formula'],result)
+ plane_lines=['// Generated from frozen hand-derived quantified semantics.','']
+ for i,record in enumerate(plane_records):
+  param='_' if not record['atoms'] else 'ps'
+  truth='['+', '.join(map(mb_bool,record['quantifiers']))+']'
+  plane_lines+=['///|',f'test "independent plane quantifier family {i} '+record['name']+'" {',
+   '  review_plane_fixture('+mb_terms(record['atoms'])+', fn('+param+') { '+mb_formula(record['formula'])+' }, '+truth+')','}','']
+ targets=[(artifact/'relativecad-frozen-review.mbt',relative_lines),(artifact/'cad2-frozen-review.mbt',plane_lines)]
+ if args.emit_tests:
+  targets=[(ROOT/'src/relativecad/independent_review_fixtures_wbtest.mbt',relative_lines),(ROOT/'src/cad2/independent_review_fixtures_wbtest.mbt',plane_lines)]
+ for path,lines in targets:
+  assert path.parent.exists(),path
+  path.write_text('\n'.join(lines))
+ print(f'emitted {len(relative_records)+sum(len(r["fibres"]) for r in plane_records)} fixed relative fibres and {len(plane_records)} fixed quantified families')
