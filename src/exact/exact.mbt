@@ -247,7 +247,7 @@ pub fn rational_add(a : Rational, b : Rational) -> Rational {
 
 ///|
 pub fn rational_subtract(a : Rational, b : Rational) -> Rational {
-  rational_add(a, rational_negate(b))
+  subtract_rationals(a, b)
 }
 
 ///|

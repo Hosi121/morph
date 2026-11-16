@@ -1,0 +1,88 @@
+Base: public wrappers identical to main66f48ae; no other shared source edits.
+CPU8; Native release (unless named otherwise); common tools/measure flock.
+
+same ELF initial:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/exact/subtraction.mbt:4:4 ]
+   │
+ 4 │ fn subtract_rationals(a : Rational, b : Rational) -> Rational {
+   │    ─────────┬────────  
+   │             ╰────────── Warning (unused_value): Unused function 'subtract_rationals'
+───╯
+[Hosi121/morph] bench exact/subtraction_control_wbtest.mbt:37 ("same ELF direct rational subtraction small corpus") ok
+name           time (mean ± σ)         range (min … max) 
+composed small   96.25 µs ±   2.42 µs    91.97 µs …  99.64 µs  in 10 ×    915 runs
+direct small     79.64 µs ±   2.63 µs    76.89 µs …  84.55 µs  in 10 ×   1211 runs
+[Hosi121/morph] bench exact/subtraction_control_wbtest.mbt:61 ("same ELF direct rational subtraction common large denominator") ok
+name            time (mean ± σ)         range (min … max) 
+composed common    2.53 µs ±  89.38 ns     2.42 µs …   2.67 µs  in 10 ×  39350 runs
+direct common      2.62 µs ±  73.78 ns     2.53 µs …   2.77 µs  in 10 ×  39216 runs
+[Hosi121/morph] bench exact/subtraction_control_wbtest.mbt:74 ("same ELF direct rational subtraction coprime large denominators") ok
+name             time (mean ± σ)         range (min … max) 
+composed coprime  195.53 µs ±   6.46 µs   188.12 µs … 204.05 µs  in 10 ×    508 runs
+direct coprime    194.94 µs ±   4.92 µs   187.07 µs … 201.58 µs  in 10 ×    512 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+same ELF reverse order:
+[Hosi121/morph] bench exact/subtraction_control_wbtest.mbt:89 ("same ELF direct rational subtraction reverse small corpus") ok
+name                   time (mean ± σ)         range (min … max) 
+direct reverse small     77.74 µs ±   1.88 µs    75.26 µs …  81.45 µs  in 10 ×   1251 runs
+composed reverse small   89.92 µs ±   2.75 µs    87.13 µs …  94.72 µs  in 10 ×   1063 runs
+Total tests: 1, passed: 1, failed: 0.
+
+
+Native 23,409-pair oracle:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/exact/subtraction.mbt:4:4 ]
+   │
+ 4 │ fn subtract_rationals(a : Rational, b : Rational) -> Rational {
+   │    ─────────┬────────  
+   │             ╰────────── Warning (unused_value): Unused function 'subtract_rationals'
+───╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+JS 23,409-pair oracle:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/exact/subtraction.mbt:4:4 ]
+   │
+ 4 │ fn subtract_rationals(a : Rational, b : Rational) -> Rational {
+   │    ─────────┬────────  
+   │             ╰────────── Warning (unused_value): Unused function 'subtract_rationals'
+───╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+Wasm GC 23,409-pair oracle:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/exact/subtraction.mbt:4:4 ]
+   │
+ 4 │ fn subtract_rationals(a : Rational, b : Rational) -> Rational {
+   │    ─────────┬────────  
+   │             ╰────────── Warning (unused_value): Unused function 'subtract_rationals'
+───╯
+Total tests: 1, passed: 1, failed: 0.
+
+
+Native 30 wide Python fixtures:
+Total tests: 1, passed: 1, failed: 0.
+
+
+JS 30 wide Python fixtures:
+Total tests: 1, passed: 1, failed: 0.
+
+
+Wasm GC 30 wide Python fixtures:
+Total tests: 1, passed: 1, failed: 0.
+
+
+generated C allocation probe:
+allocation-probe composed 119366450 / 14525 = 8218 allocations per small784 invocation
+allocation-probe direct 117472250 / 16625 = 7066 allocations per small784 invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"subtraction_control_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"subtraction_control_wbtest.mbt","index":1,"message":"@BATCH_BENCH { \"summaries\": [{\"name\":\"composed small\",\"sum\":942.1464402205179,\"min\":90.02369419942474,\"max\":106.36268753595397,\"mean\":94.21464402205179,\"median\":92.00829865771811,\"variance\":26.642527181703983,\"std_dev\":5.161639970174594,\"std_dev_pct\":5.478596266803773,\"median_abs_dev\":2.730546886610719,\"median_abs_dev_pct\":2.9677180498344833,\"quartiles\":[90.79716826462128,92.00829865771811,95.32107670182167],\"iqr\":4.52390843720039,\"batch_size\":1043,\"runs\":10},{\"name\":\"direct small\",\"sum\":795.0599676775738,\"min\":76.34358268156424,\"max\":81.98684549082202,\"mean\":79.50599676775738,\"median\":80.13788268156424,\"variance\":3.7961279684053073,\"std_dev\":1.9483654606888583,\"std_dev_pct\":2.450589313885556,\"median_abs_dev\":1.8142924072625692,\"median_abs_dev_pct\":2.2639634921125116,\"quartiles\":[78.22513447725458,80.13788268156424,80.38655606544293],\"iqr\":2.1614215881883467,\"batch_size\":1253,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
