@@ -1,0 +1,101 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/tarski"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/sturm",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_query(@polynomial.Polynomial, @polynomial.Polynomial, @sturm.Interval, QueryCertificate) -> Bool
+
+pub fn check_query_result(@polynomial.Polynomial, @polynomial.Polynomial, @sturm.Interval, @exact.Integer, QueryCertificate) -> Bool
+
+pub fn check_root_sign(@realalgebraic.RootCertificate, @polynomial.Polynomial, @core.Ordering, RootSignCertificate) -> Bool
+
+pub fn check_sign_at(@realalgebraic.Number, @polynomial.Polynomial, @core.Ordering, RootSignCertificate) -> Bool
+
+pub fn query(@polynomial.Polynomial, @polynomial.Polynomial, @sturm.Interval) -> Result[QueryResult, TarskiError]
+
+pub fn root_sign(@realalgebraic.RootCertificate, @polynomial.Polynomial) -> Result[SignResult, TarskiError]
+
+pub fn sign_at(@realalgebraic.Number, @polynomial.Polynomial) -> Result[SignResult, TarskiError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct QueryCertificate {
+  polynomial : @polynomial.Polynomial
+  query : @polynomial.Polynomial
+  interval : @sturm.Interval
+  normalized : @polynomial.Polynomial
+  seed : @polynomial.Polynomial
+  sequence : @core.Chain[@polynomial.Polynomial]
+  quotients : @core.Chain[@polynomial.Polynomial]
+  lower_jets : @core.Chain[RightJet]
+  upper_jets : @core.Chain[RightJet]
+  result : @exact.Integer
+}
+pub fn QueryCertificate::equal(Self, Self) -> Bool
+pub fn QueryCertificate::not_equal(Self, Self) -> Bool
+pub fn QueryCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct QueryResult {
+  value : @exact.Integer
+  certificate : QueryCertificate
+}
+pub fn QueryResult::equal(Self, Self) -> Bool
+pub fn QueryResult::not_equal(Self, Self) -> Bool
+pub fn QueryResult::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RightJet {
+  order : @core.Nat
+  value : @exact.Rational
+}
+pub fn RightJet::equal(Self, Self) -> Bool
+pub fn RightJet::not_equal(Self, Self) -> Bool
+pub fn RightJet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RootSignCertificate {
+  root : @realalgebraic.RootCertificate
+  query : @polynomial.Polynomial
+  query_certificate : QueryCertificate
+  sign : @core.Ordering
+}
+pub fn RootSignCertificate::equal(Self, Self) -> Bool
+pub fn RootSignCertificate::not_equal(Self, Self) -> Bool
+pub fn RootSignCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SignResult {
+  sign : @core.Ordering
+  certificate : RootSignCertificate
+}
+pub fn SignResult::equal(Self, Self) -> Bool
+pub fn SignResult::not_equal(Self, Self) -> Bool
+pub fn SignResult::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum TarskiError {
+  NotUnivariate
+  ZeroPolynomial
+  InvalidInterval
+  InvalidRoot
+  PolynomialFailure
+  InternalInvariant
+}
+pub fn TarskiError::equal(Self, Self) -> Bool
+pub fn TarskiError::not_equal(Self, Self) -> Bool
+pub fn TarskiError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

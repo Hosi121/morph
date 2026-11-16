@@ -1,0 +1,144 @@
+{
+  "created_utc": "2026-11-16T09:07:51.109794+00:00",
+  "workspace": "/home/hosi/morph-zassenhaus-20261116",
+  "transcript_format": "Each *-validation.json commands[].output is the unedited combined stdout/stderr of that command; command, exit_code, CPU and UTC metadata are retained.",
+  "compiler_version": "moon 0.1.20261104 (940aa18 2026-11-04)\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "additional_agent_log_paths": [],
+  "separate_common_dir_artifact_copies": [],
+  "groups": [
+    {
+      "package": "zassenhaus",
+      "files": [
+        {
+          "path": "docs/research/zassenhaus-20261116-fixtures.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 138751,
+          "sha256": "a53a8011f27b4dad2509b4ac41ee5ced9ec899bdff5b00bd3c533a99dcacb985"
+        },
+        {
+          "path": "docs/research/zassenhaus-20261116-validation.json",
+          "role": "raw_cli_transcript",
+          "bytes": 2340,
+          "sha256": "9c4bb4ae6f8532881eaef0144a653d13decfd27051574b156a891a42df87e13e"
+        },
+        {
+          "path": "docs/research/zassenhaus-20261116.md",
+          "role": "research_note",
+          "bytes": 10578,
+          "sha256": "9812f7e47ccff0a638498d9268b22e629e3300a8b144d41da16e565c27b3bd23"
+        },
+        {
+          "path": "tools/generate_zassenhaus_fixtures.py",
+          "role": "oracle_generator",
+          "bytes": 7600,
+          "sha256": "930a019aa785b37e575cf063717e18b4f8229e607de8005e76c90a027512f8c6"
+        }
+      ]
+    },
+    {
+      "package": "realalgebraic",
+      "files": [
+        {
+          "path": "docs/research/realalgebraic-20261116-fixtures.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 47182,
+          "sha256": "df3576efd90c71738b7b7b2327d5cc2842d15f2ab05004667c01163a6408c3a2"
+        },
+        {
+          "path": "docs/research/realalgebraic-20261116-validation.json",
+          "role": "raw_cli_transcript",
+          "bytes": 2286,
+          "sha256": "67fbbf780ff4cc76b8c3aacb257bea2780ed0dd04c3383d039ced1aaa688cfa9"
+        },
+        {
+          "path": "docs/research/realalgebraic-20261116.md",
+          "role": "research_note",
+          "bytes": 12059,
+          "sha256": "8b7f34c266da613205e3e6d23026fdcbb2bdfb1f2073f73a580fedcb4cada236"
+        },
+        {
+          "path": "tools/generate_realalgebraic_fixtures.py",
+          "role": "oracle_generator",
+          "bytes": 4793,
+          "sha256": "fca918c619b0d4649a3569edf8d21abe78c60661f1386395d3f4af4a50fb2653"
+        }
+      ]
+    },
+    {
+      "package": "realvariety",
+      "files": [
+        {
+          "path": "docs/research/realvariety-20261116-fixtures.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 70788,
+          "sha256": "90a732dff89a0a7fdd03ba79d5e5c8f995e2de7dd083e5a0c9041e9b35753c1e"
+        },
+        {
+          "path": "docs/research/realvariety-20261116-separation-fixtures.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 26056,
+          "sha256": "269a3d4287af3276617d9a7c7bab3595595c354ce22373ac4fa35cd507f3a6d3"
+        },
+        {
+          "path": "docs/research/realvariety-20261116-separation-pilot.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 5344,
+          "sha256": "a816a4f49533f322bf2794a8129191bf7ee9e120e0ca4f2ebfcf6ac1f054c1cc"
+        },
+        {
+          "path": "docs/research/realvariety-20261116-validation.json",
+          "role": "raw_cli_transcript",
+          "bytes": 2616,
+          "sha256": "f5e021ffcf6eda12854404021f6e9cdc2e71cc5c55898a5228643bb8866dd538"
+        },
+        {
+          "path": "docs/research/realvariety-20261116.md",
+          "role": "research_note",
+          "bytes": 18622,
+          "sha256": "951df719ac6d86b8ec85e513bde82bcaa183d7b4eb3f3ce48b7cc4afdab63523"
+        },
+        {
+          "path": "tools/generate_realvariety_fixtures.py",
+          "role": "oracle_generator",
+          "bytes": 6178,
+          "sha256": "f0b563940a85f5aac73ee4d9c8f393c4fa315e428a05700ff9f1b4605d927aa6"
+        },
+        {
+          "path": "tools/generate_realvariety_separation.py",
+          "role": "oracle_generator",
+          "bytes": 5711,
+          "sha256": "b1a2e0c715093f90fa484e70e271d5f09199dcc8d9cd56e13c551611bc9f6bfa"
+        }
+      ]
+    },
+    {
+      "package": "tarski",
+      "files": [
+        {
+          "path": "docs/research/tarski-20261116-fixtures.json",
+          "role": "oracle_or_supplemental_manifest",
+          "bytes": 601953,
+          "sha256": "b1081e1f13bf08afd51b53cd7c612171c62929859360b4538c4aa171c94c56f6"
+        },
+        {
+          "path": "docs/research/tarski-20261116-validation.json",
+          "role": "raw_cli_transcript",
+          "bytes": 2276,
+          "sha256": "c17849b7131fc43353e1af4e810e1d0b9a80a4ab77cd98be74e85bd8d328e36b"
+        },
+        {
+          "path": "docs/research/tarski-20261116.md",
+          "role": "research_note",
+          "bytes": 10485,
+          "sha256": "a5ce7356d7b0ac0fca7bbbaeeb6ed9d315e346a13cd81079ffb6e8056d94ee2d"
+        },
+        {
+          "path": "tools/generate_tarski_fixtures.py",
+          "role": "oracle_generator",
+          "bytes": 7504,
+          "sha256": "6fb4034d72462e1486671db50168e552789310498e355eaa940184dabadeaa4f"
+        }
+      ]
+    }
+  ]
+}
