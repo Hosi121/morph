@@ -216,7 +216,7 @@ fn smt_search(
   let mut state = match mode {
     "full" => @smt.start_full(problem)
     "pruned" => @smt.start_restarting(problem)
-    "retained" => @smt.start(problem)
+    "retained" => @smt.start_retained(problem)
     _ => abort("unknown SMT mode")
   }
   for transitions in 1..<=100000 {

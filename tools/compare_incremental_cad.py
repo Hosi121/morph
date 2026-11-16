@@ -38,8 +38,11 @@ def main():
     parser.add_argument("--case", action="append", choices=CASES, dest="cases")
     parser.add_argument("--layer", action="append", choices=["cad", "smt"], dest="layers")
     parser.add_argument("--modes", nargs=2, choices=["full", "pruned", "retained"], default=["full", "pruned"])
+    parser.add_argument("--abba-repetitions", type=int, default=1, help="repeat ABBA blocks per case; report medians over every completed run")
     parser.add_argument("--timeout", type=float, default=60)
     args = parser.parse_args()
+    if args.abba_repetitions < 1:
+        parser.error("ABBA repetitions must be positive")
     if args.modes[0] == args.modes[1]:
         parser.error("comparison modes must differ")
     if "retained" in args.modes and args.layers != ["smt"]:
@@ -63,7 +66,7 @@ def main():
                   "compiler": subprocess.check_output([str(ROOT / "tools/moon"), "version", "--all"], cwd=ROOT, text=True).strip(),
                   "platform": platform.platform(), "cpu_affinity": affinity,
                   "target": args.target, "profile": "release", "order": "ABBA", "modes": args.modes,
-                  "runner": args.runner,
+                  "runner": args.runner, "abba_repetitions": args.abba_repetitions,
                   "unit": "microseconds", "projection": "full Collins in both modes",
                   "timing_scope": "fixture construction excluded; prepare + search + final external verification included; SMT search includes internal checks",
                   "records": [], "summary": []}
@@ -76,7 +79,7 @@ def main():
     for layer in args.layers or ["cad", "smt"]:
         for case in args.cases or CASES:
             rows = []
-            for position, mode in enumerate([first_mode, second_mode, second_mode, first_mode]):
+            for position, mode in enumerate([first_mode, second_mode, second_mode, first_mode] * args.abba_repetitions):
                 if digest(artifact) != artifact_sha:
                     raise RuntimeError("Frozen artifact changed")
                 command = [*args.runner, str(artifact), layer, mode, case]
@@ -107,7 +110,7 @@ def main():
                 rows.append(record)
                 save()
             completed = [row for row in rows if row["completed"]]
-            if len(completed) == 4:
+            if len(completed) == 4 * args.abba_repetitions:
                 if len({row["satisfiable"] for row in completed}) != 1:
                     raise RuntimeError("Modes disagree")
                 summary = {"layer": layer, "case": case}

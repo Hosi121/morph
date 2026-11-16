@@ -23,6 +23,13 @@ fn start_with_mode(
 /// trail and watches survive checked theory-clause additions. Projection
 /// remains global.
 pub fn start(problem : Problem) -> Search {
+  start_retained(problem)
+}
+
+///|
+/// Monotone theory-clause additions preserve the Boolean search continuation.
+/// This explicit entry is also available for controlled mode comparisons.
+pub fn start_retained(problem : Problem) -> Search {
   start_with_mode(problem, PrunedCad, Retained)
 }
 

@@ -45,6 +45,8 @@ pub fn start_full(Problem) -> Search
 
 pub fn start_restarting(Problem) -> Search
 
+pub fn start_retained(Problem) -> Search
+
 pub fn step(Search) -> Result[Outcome, SmtError]
 
 pub fn theory_conflicts(Search) -> @core.Nat
