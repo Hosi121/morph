@@ -10,6 +10,9 @@ import {
   "Hosi121/morph/boolean",
   "Hosi121/morph/ruplog",
   "moonbitlang/core/bench",
+  "moonbitlang/core/debug",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
 } for "wbtest"
 
 import {

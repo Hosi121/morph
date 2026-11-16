@@ -876,3 +876,30 @@ ELFとraw logsは `.tools/cdcl-profile/replacement-*` に保存する。
 ```sh
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/replacement_wbtest.mbt --target native --release -i 1
 ```
+
+## 保存ELF間の完全なcontinuation比較
+
+`tools/compare_cdcl_traces.py` は、変更前後に保存したnative release ELFを同じfixtureで
+実行し、初期Search、fuel一遷移ごとの全Paused SearchとStatistics、最終model/proofを比較する。
+専用のopt-in bench slotだけが `MORPH_CDCL_TRACE` を読み、通常のテストではdumpしない。
+`Debug` の全フィールド表現をdepth 10,000でrenderし、省略記号があれば拒否する。
+手書きの状態射影ではなく、private trieやqueueの形も含む構造全体をhashする。
+
+既定はpigeonhole 4 into 3、2bit miter、無関係なdecision levelを飛ばすSAT例について、
+watched/scanの計6通り。各fixtureは最終modelまたはRUPを別checkerで検査する。
+`--full` はmiterを4bitへ広げる。これは有限traceの一致検査であり、任意CNFのsoundness証明や
+外部LRAT/DRAT検査の代わりにはしない。同じtoolchain・同じ表現定義のELFを使う。
+
+adapterは順番・欠落・terminal後の余分なframe・truncationを検査し、ELFのSHA256、
+traceのSHA256、frame数・byte数・case別終端をmanifestへ残す。dumpはstreamでhashし、
+巨大な全文ファイルを保存しない。途中frameを書き換えたnegative controlと末尾を欠くcontrolを
+ともに拒否した。実際の保存ELFを自分自身と比較した既定fixtureは421 frames、74,247,151 bytesで
+一致した。最初の4bit版でも923 frames、765,436,504 bytesの一致を確認した。
+
+```sh
+# 変更前後に同条件でbuildし、生成ELFを別名で保存する。
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/trace_wbtest.mbt --target native --release --build-only
+cp _build/native/release/bench/cdcl/cdcl.whitebox_test.exe .tools/before.exe
+# 変更後のbuildを .tools/after.exe として保存してから比較する。
+/home/hosi/morph/tools/measure --cpu 10 python3 tools/compare_cdcl_traces.py .tools/before.exe .tools/after.exe --output .tools/trace-comparison.json
+```
