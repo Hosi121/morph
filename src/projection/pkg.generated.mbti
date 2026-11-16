@@ -1,0 +1,80 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/projection"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn atoms(Plan) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn certificate(Plan) -> Certificate
+
+pub fn check(Method, @core.Chain[@polynomial.Polynomial], @core.Nat, Certificate) -> Bool
+
+pub fn check_result(Method, @core.Chain[@polynomial.Polynomial], @core.Nat, Plan, Certificate) -> Bool
+
+pub fn checked(Method, @core.Chain[@polynomial.Polynomial], @core.Nat, Certificate) -> Plan?
+
+pub fn coefficients(Plan) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn full_collins(@core.Chain[@polynomial.Polynomial], @core.Nat) -> Result[Plan, ProjectionError]
+
+pub fn mode(Plan) -> Method
+
+pub fn polynomials(Plan) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn principal_coefficients(Plan) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn product(Plan) -> @polynomial.Polynomial?
+
+pub fn product_projection(@core.Chain[@polynomial.Polynomial], @core.Nat) -> Result[Plan, ProjectionError]
+
+pub fn reducta(@polynomial.Polynomial, @core.Nat) -> Result[@core.Chain[@polynomial.Polynomial], ProjectionError]
+
+pub fn variable(Plan) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  mode : Method
+  atoms : @core.Chain[@polynomial.Polynomial]
+  variable : @core.Nat
+  product : @polynomial.Polynomial?
+  coefficients : @core.Chain[@polynomial.Polynomial]
+  principal : @core.Chain[@polynomial.Polynomial]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Method {
+  CollinsProjection
+  ProductProjection
+}
+pub fn Method::equal(Self, Self) -> Bool
+pub fn Method::not_equal(Self, Self) -> Bool
+pub fn Method::to_repr(Self) -> @debug.Repr
+
+pub struct Plan {
+  proof : Certificate
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) enum ProjectionError {
+  InvalidVariable
+  WrongArity
+  ArithmeticFailure
+}
+pub fn ProjectionError::equal(Self, Self) -> Bool
+pub fn ProjectionError::not_equal(Self, Self) -> Bool
+pub fn ProjectionError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
