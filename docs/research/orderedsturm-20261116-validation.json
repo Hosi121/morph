@@ -1,5 +1,5 @@
 {
-  "utc": "2026-11-16T09:22:00.576545+00:00",
+  "utc": "2026-11-16T09:23:58.339150+00:00",
   "cpu": 8,
   "serialization": "tools/measure shared git-common-dir lock",
   "timing_scope": "incremental command wall time, not an algorithm benchmark",
@@ -13,8 +13,8 @@
         "native"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.373026,
-      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+      "wall_seconds": 1.251088,
+      "output": "Total tests: 48, passed: 48, failed: 0.\n"
     },
     {
       "command": [
@@ -25,8 +25,8 @@
         "js"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.154483,
-      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+      "wall_seconds": 1.121097,
+      "output": "Total tests: 48, passed: 48, failed: 0.\n"
     },
     {
       "command": [
@@ -37,8 +37,8 @@
         "wasm-gc"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.943789,
-      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+      "wall_seconds": 0.917273,
+      "output": "Total tests: 48, passed: 48, failed: 0.\n"
     },
     {
       "command": [
@@ -48,7 +48,7 @@
         "--deny-warn"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.549381,
+      "wall_seconds": 0.553221,
       "output": "Finished. moon: ran 22 tasks, now up to date\n"
     },
     {
@@ -58,7 +58,7 @@
         "src/orderedsturm"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.495077,
+      "wall_seconds": 0.501139,
       "output": "Finished. moon: ran 19 tasks, now up to date\n"
     },
     {
@@ -69,7 +69,7 @@
         "src/orderedsturm"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.07417,
+      "wall_seconds": 0.078181,
       "output": "Finished. moon: ran 8 tasks, now up to date\n"
     },
     {
@@ -78,7 +78,7 @@
         "tools/audit_purity.py"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.198351,
+      "wall_seconds": 0.197431,
       "output": "Purity gate passed: 154 kernel files; no machine numerics, mutation, arrays or FFI.\n"
     },
     {
@@ -88,7 +88,7 @@
         "--check"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.307784,
+      "wall_seconds": 1.277254,
       "output": "{\"cases\": 40, \"half_open_queries\": 200, \"norm_resultants\": 40, \"quadratic_field_fraction_prs\": 40, \"relative_roots\": 52}\n"
     }
   ]

@@ -80,7 +80,7 @@ fn checked_sum(
 ///|
 /// A strict Cauchy radius B > 1 + sum |a_i| for the monic square-free polynomial.
 pub fn check_bound(system : System, proof : BoundCertificate) -> Bool {
-  system.certificate.equal(proof.system) &&
+  system_payload(system, proof.system) &&
   @exact.rational_compare(proof.bound, @exact.rational_zero()).equal(Greater) &&
   (match
     checked_sum(
@@ -178,6 +178,7 @@ pub fn check_root_result(
   proof : RootCertificate,
 ) -> Bool {
   equal(p, root.system.polynomial) &&
+  system_payload(root.system, proof.system) &&
   root.certificate.equal(proof) &&
   check_root(p, proof)
 }
@@ -262,6 +263,11 @@ pub fn check_isolation_result(
   proof : SolutionCertificate,
 ) -> Bool {
   equal(p, value.system.polynomial) &&
+  system_payload(value.system, proof.system) &&
+  @core.all(value.roots, fn(root) {
+    equal(p, root.system.polynomial) &&
+    system_payload(root.system, proof.system)
+  }) &&
   value.certificate.equal(proof) &&
   @core.map(value.roots, root_certificate).equal(proof.roots) &&
   check_isolation(p, proof)

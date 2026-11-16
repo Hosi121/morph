@@ -313,3 +313,104 @@ test "degree one and cubic coefficient fields use the same checked entrance" {
     assert_true(check_isolation_result(p, answer, solution_certificate(answer)))
   }
 }
+
+///|
+test "payload checker binds internal tower contexts and derived Sturm members" {
+  let f = test_field(2, false)
+  let g = test_field(2, true)
+  let p = test_relative(f, [(0, -1), (0, 0), (1, 0)])
+  let other = test_relative(g, [(0, -1), (0, 0), (1, 0)])
+  let value = test_solution(p, 64)
+  let proof = solution_certificate(value)
+  assert_false(check_isolation(other, proof))
+  assert_false(check_system(other, proof.system))
+  let raw = @nf.embedding(f)
+  let refined_number = @real.number({
+    ..raw,
+    interval: { lower: test_q(7, 5), upper: test_q(3, 2), },
+  }).unwrap()
+  let refined_field = match
+    @minimal.normalize(
+      refined_number,
+      @oracle.chain([2, 3, 5, 7, 11, 13].map(@oracle.binary)),
+      @oracle.nat(40),
+      @oracle.nat(256),
+      @oracle.nat(256),
+    ).unwrap() {
+    @minimal.Normalized(n, c) =>
+      @nf.field_result(n, c, @oracle.nat(256)).unwrap()
+    _ => abort("refined field")
+  }
+  assert_true(
+    polynomial(f, @oracle.chain([@nf.one(refined_field)]))
+    is Err(DifferentField),
+  )
+  let same_root_other_context = test_relative(refined_field, [
+    (0, -1),
+    (0, 0),
+    (1, 0),
+  ])
+  assert_false(check_isolation(same_root_other_context, proof))
+  match roots(value) {
+    Cons(root, rest) => {
+      let fake_root : Root = {
+        system: system(other).unwrap(),
+        certificate: root_certificate(root),
+      }
+      let fake : SolutionSet = { ..value, roots: Cons(fake_root, rest), }
+      assert_false(check_isolation_result(p, fake, proof))
+      assert_false(check_root_result(p, fake_root, root_certificate(root)))
+      let bad_system : System = { ..root.system, sequence: Cons(one(f), Nil), }
+      let bad_root : Root = { ..root, system: bad_system, }
+      assert_false(check_root_result(p, bad_root, root_certificate(root)))
+      assert_false(
+        check_count(
+          bad_system,
+          root_interval(root),
+          @oracle.nat(1),
+          root_certificate(root).count,
+        ),
+      )
+    }
+    Nil => abort("two roots")
+  }
+}
+
+///|
+test "relative endpoint jets require the first nonzero derivative and exact scalar proof" {
+  let f = test_field(2, false)
+  let p = test_relative(f, [(-1, 0), (1, 0)])
+  let s = system(p).unwrap()
+  let interval : @sturm.Interval = { lower: test_r(0), upper: test_r(1), }
+  let proof = count_between(s, interval).unwrap()
+  match proof.upper {
+    Cons(jet, rest) => {
+      assert_eq(jet.order, @oracle.nat(1))
+      assert_false(
+        check_count(s, interval, @oracle.nat(1), {
+          ..proof,
+          upper: Cons({ ..jet, order: @oracle.nat(0), }, rest),
+        }),
+      )
+      assert_false(
+        check_count(s, interval, @oracle.nat(1), {
+          ..proof,
+          upper: Cons({ ..jet, order: @oracle.nat(2), }, rest),
+        }),
+      )
+      assert_false(
+        check_count(s, interval, @oracle.nat(1), {
+          ..proof,
+          upper: Cons({ ..jet, value: test_poly([-1]), }, rest),
+        }),
+      )
+      assert_false(
+        check_count(s, interval, @oracle.nat(1), {
+          ..proof,
+          upper: Cons({ ..jet, sign: { ..jet.sign, sign: Less, }, }, rest),
+        }),
+      )
+    }
+    Nil => abort("endpoint jets")
+  }
+}

@@ -198,7 +198,7 @@ pub fn check_count(
   count : @core.Nat,
   proof : CountCertificate,
 ) -> Bool {
-  system.certificate.equal(proof.system) &&
+  system_payload(system, proof.system) &&
   interval.equal(proof.interval) &&
   count.equal(proof.count) &&
   @exact.rational_compare(interval.lower, interval.upper).equal(Less) &&

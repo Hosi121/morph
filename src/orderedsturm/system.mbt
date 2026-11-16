@@ -47,6 +47,19 @@ fn encode_sequence(
 }
 
 ///|
+fn system_payload(value : System, proof : SystemCertificate) -> Bool {
+  value.certificate.equal(proof) &&
+  @nf.embedding(value.polynomial.field).equal(proof.context) &&
+  representatives(value.polynomial).equal(proof.polynomial) &&
+  @nf.same_field(value.polynomial.field, value.squarefree.field) &&
+  representatives(value.squarefree).equal(proof.squarefree) &&
+  @core.all(value.sequence, fn(p) {
+    @nf.same_field(value.polynomial.field, p.field)
+  }) &&
+  encode_sequence(value.sequence).equal(proof.sequence)
+}
+
+///|
 fn decode_sequence(
   field : @nf.Field,
   values : @core.Chain[@core.Chain[@poly.Polynomial]],
