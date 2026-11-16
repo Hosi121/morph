@@ -18,8 +18,9 @@ LOCK = ROOT / "formal/source-map.json"
 REGIONS = {
     "src/core/data.mbt": ["replicate", "replicate_onto"],
     "src/core/natural.mbt": ["halve_nat", "half_nat"],
-    "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "low_bit", "zero", "one", "from_nat"],
+    "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "low_bit", "zero", "one", "from_nat", "compare_bits"],
     "src/binary/from_nat_grouped.mbt": ["split_nat_grouped", "from_nat_grouped"],
+    "src/binary/comparison.mbt": ["compare_bits_grouped", "compare_bits_tail"],
     "src/binary/constants.mbt": ["canonical_zero", "canonical_one"],
     "src/runbinary/runbinary.mbt": ["digit"],
 }
@@ -32,7 +33,10 @@ def function_tokens(path, name):
     match = re.search(r"\b(?:pub\s+)?fn(?:\[[^\]]+\])?\s+" + re.escape(name) + r"\s*\(", source)
     if not match:
         raise ValueError(f"Missing mapped function: {path}:{name}")
-    return braced_tokens(source, match, name)
+    # Function attributes affect code generation and must travel with the lock.
+    attributes = re.search(r"(?:\#[^\n]*\n\s*)+$", source[:match.start()])
+    start = attributes.start() if attributes else match.start()
+    return braced_tokens(source, match, name, start=start)
 
 
 def constant_tokens(path, name):
@@ -43,7 +47,7 @@ def constant_tokens(path, name):
     return braced_tokens(source, match, name)
 
 
-def braced_tokens(source, match, name):
+def braced_tokens(source, match, name, start=None):
     opening = source.index("{", match.end())
     depth = 1
     position = opening + 1
@@ -52,7 +56,7 @@ def braced_tokens(source, match, name):
         position += 1
     if depth:
         raise ValueError(f"Unclosed mapped declaration: {name}")
-    return re.sub(r"\s+", "", source[match.start():position]).encode()
+    return re.sub(r"\s+", "", source[match.start() if start is None else start:position]).encode()
 
 
 def snapshot():

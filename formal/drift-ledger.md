@@ -110,3 +110,21 @@ recommended_fix_target: factory/helper/globalのいずれを変えても構造�
 lock_update: 合計19領域。global initializerは型付きBinary recordとして明示的に登録
 epistemic_status: aliasのモデル値はmachine-confirmed、実行時の初期化は有限oracle、翻訳証明なし
 ```
+
+```yaml
+claim_id: BIN-COMPARE-1
+source_of_truth: canonical Binaryの数値比較と既存raw列のlength-first挙動を保つユーザー指示
+spec_delta: 値・API・非canonical列の振る舞いを維持
+code_delta: 八段の有限prefixと四node tail loop、helper境界をinline neverで保持
+model_delta: 任意previousのloop不変式、全有限列の新旧等価、canonical値のOrdering soundを追加
+check_command: tools/check_formal / comparison対象の三backend tests / 同artifact benchmarks
+previous_machine_result: 比較の有限テストのみ。旧20k bit JS比較はRangeErrorを実確認
+current_machine_result: machine-confirmed; 全称モデルと三backend各5 testsが通過
+drift_class: coverage-gap (比較の全称対応を追加して解消)
+witness: 高位ordering反転は等価証明を壊し、異幅/逆suffix/inline属性変更はsource gateが拒否
+domain_wording: 任意長の有限列で従来どおりに比較し、canonicalなら値の大小を表すモデル
+domain_question: なし。上位全体の速度比と全入力の実行資源上限は未主張
+recommended_fix_target: 通常入口をhelperへ接続しsource lockを再記録、上位の速度評価は別に実施
+lock_update: 既存19領域を維持し、入口と二helperを足した22領域。codegen属性もlock
+epistemic_status: モデルと有限実行はmachine-confirmed、source対応はreviewed、翻訳/refinementは未証明
+```

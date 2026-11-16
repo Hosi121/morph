@@ -32,6 +32,16 @@ class ConstantRegionTests(unittest.TestCase):
         changed = self.tokens('fn sample() -> Binary { { bits: Cons(false, Nil), } }', function=True)
         self.assertNotEqual(original, changed)
 
+    def test_function_codegen_attributes_are_locked(self):
+        original = self.tokens('#inline(never)\nfn sample() -> Binary { { bits: Nil, } }', function=True)
+        edited = self.tokens('#inline\nfn sample() -> Binary { { bits: Nil, } }', function=True)
+        self.assertNotEqual(original, edited)
+
+    def test_attribute_comments_and_spaces_do_not_change_the_lock(self):
+        original = self.tokens('#inline(never)\nfn sample() -> Binary { { bits: Nil, } }', function=True)
+        edited = self.tokens('// comment\n#inline(never) // comment\n\nfn sample() -> Binary { { bits: Nil, } }', function=True)
+        self.assertEqual(original, edited)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -108,21 +108,7 @@ fn compare_bits(
   xs : @core.Chain[Bool],
   ys : @core.Chain[Bool],
 ) -> @core.Ordering {
-  match (xs, ys) {
-    (Nil, Nil) => Equal
-    (Nil, Cons(_, _)) => Less
-    (Cons(_, _), Nil) => Greater
-    (Cons(x, xt), Cons(y, yt)) =>
-      match compare_bits(xt, yt) {
-        Equal =>
-          match (x, y) {
-            (false, true) => Less
-            (true, false) => Greater
-            _ => Equal
-          }
-        order => order
-      }
-  }
+  compare_bits_tail(xs, ys)
 }
 
 ///|

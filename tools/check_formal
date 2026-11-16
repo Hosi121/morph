@@ -17,7 +17,8 @@ mkdir -p .tools/formal
 export LEAN_PATH="$root/.tools/formal${LEAN_PATH:+:$LEAN_PATH}"
 cd formal
 "$checker" -DwarningAsError=true -o "$root/.tools/formal/Core.olean" Core.lean
+"$checker" -DwarningAsError=true -o "$root/.tools/formal/Binary.olean" Binary.lean
 for model in *.lean; do
-  [[ "$model" == Core.lean ]] && continue
+  [[ "$model" == Core.lean || "$model" == Binary.lean ]] && continue
   "$checker" -DwarningAsError=true "$model"
 done

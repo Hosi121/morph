@@ -2,12 +2,15 @@
   "functions": {
     "src/binary/binary.mbt::add": "4f2f9ad98fd5e6f232e07dfffbec9f3e75998cf736c4c937395787e4752b33a7",
     "src/binary/binary.mbt::add_bits": "f52e761c1788c6833ee2f5c955452ddd9bf469a39b43a7aa29c20254500670ec",
+    "src/binary/binary.mbt::compare_bits": "a0c7d48189a9cc36d1274c1c85dd7cfeaaa78929cffcecf904b695b7465b2752",
     "src/binary/binary.mbt::from_nat": "58c5f114403dd4dc1efd25bc897a913f44ea7e56026775a1da833fbbf904a10d",
     "src/binary/binary.mbt::full_adder": "b2e8100e900b910f89e18359653d6f97d6ef317e299f9ecdf1c162a6945893cd",
     "src/binary/binary.mbt::increment_bits": "3d9fde65116cd4ebfa2664e635ca2cce2d26ef3cdd6a14a3dbc2e9d14108d076",
     "src/binary/binary.mbt::low_bit": "6a4c0be343d5a07a98440707a9c01325d3bc35a99028b543c12713b1379db948",
     "src/binary/binary.mbt::one": "3e6f9bd9ef35fba8c069e665277ad6353f92af1d20451daf40d7e30cd9a4b769",
     "src/binary/binary.mbt::zero": "4a0aa1c5c6aa8abb8095de4e195f9b5c5b2ad7ed7663aefc4d4ecd1f13d0dd62",
+    "src/binary/comparison.mbt::compare_bits_grouped": "d2458e4f4b10fc282395b6636b42d19ef854c169315fc0cc1e5b7d89963bfc8d",
+    "src/binary/comparison.mbt::compare_bits_tail": "f204eefd0f79438d3de63d2dd5cdab0c0509f391180da6564dd45bb6c8b818c6",
     "src/binary/constants.mbt::canonical_one": "02e93e72ddaced885d450866f10ac6afce77ff4b7b6040f7c9bbcecbe321913d",
     "src/binary/constants.mbt::canonical_one_value": "d11ca3484614d680601e90acc04b2cdf8750c6a141602f5ff3c5321376a63ba4",
     "src/binary/constants.mbt::canonical_zero": "e93e9873195283bc011e1b19713fa2e9c2a47076a51e49760e2868e587c8adf1",
@@ -24,6 +27,7 @@
   "models": {
     "formal/AdderCandidates.lean": "ce139fab804e46e8f95507d69af6a89736f6554e99052bfae59907217af8cfe2",
     "formal/Binary.lean": "f6d18292b19e528df207a75dc3c2252c10c6bb4bc75e58bfbaacfa94cd542ec8",
+    "formal/Comparison.lean": "71fdec1c355c22955c55ba400c95c1cfd00c56c31f8473b48667c6aab68ca444",
     "formal/Core.lean": "d244a1e399202a2a10bde9b78152640ba048d90f4d430f6e17530a87c9aea20f"
   }
 }

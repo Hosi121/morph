@@ -9,6 +9,7 @@ python3 tools/check_model_drift.py
 python3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null
 python3 tools/generate_binary_tiny_products.py --check
 tools/moon fmt --check
+python3 tools/generate_comparison_candidates.py --check
 tools/moon check --deny-warn
 tools/moon test --target wasm-gc
 tools/moon test --target js

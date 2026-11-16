@@ -22,6 +22,8 @@ tools/check_formal
 | 任意の自然数からbit列への変換が正規性を保存 | fromNat_canonical | binary.from_nat / from_nat_grouped |
 | 任意の自然数からbit列への変換が値を保存 | fromNat_sound | binary.from_nat / from_nat_grouped |
 | 旧二進分割による変換が値を保存 | fromNatByHalves_sound | 比較用の旧converter |
+| 非canonicalを含む全有限列で新旧比較が等しい | protectedCompare_eq_reference | binary.compare_bits / compare_bits_tail / compare_bits_grouped |
+| canonicalな列の比較が数値順序を表す | protectedCompare_sound | binary.compare |
 | 均質blockのcarry/borrowが一桁後に安定 | carry_stabilizes / borrow_stabilizes | full_adder / runbinary.digit |
 
 値の意味は`value(Nil)=0`、`value(Cons(b,rest))=bitValue(b)+2*value(rest)`。
@@ -40,7 +42,7 @@ MoonBitからLeanへの変換器やコンパイラを形式検証したもので
 Leanモデルの値の定理から、MoonBitの資源上限、最上位bitの正規性、
 全run演算、全SAT、コンパイラの正しさは結論しない。
 
-`tools/check_model_drift.py`が、対応を確認した19領域のコメント/空白を除くtoken列と
+`tools/check_model_drift.py`が、対応を確認した22領域のコメント/空白を除くtoken列と
 Binary定数recordのinitializerと全Leanモデルファイルのhashを`source-map.json`に照合する。
 通常の`tools/check`はこの安価な差分検査を実行する。
 これは意味の同値性を自動で証明する機構ではなく、対応を未確認のまま変えないためのlockである。
@@ -99,3 +101,12 @@ checker/olean/共有ライブラリだけを抽出し、グローバルなelan�
 共有zero/oneについてはpublic factory、private helper、不変globalのinitializerもlockする。
 Leanでは同じalias関係を定義し、zero_sound/one_soundを公理なしで示す。
 ソースlockは値の翻訳証明ではなく、初期化の実行時挙動は三backendの有限oracleで別に検査する。
+
+## 比較の有限prefixとtail loop
+
+`Comparison.lean`は既存Binaryのvalue/canonicalをimportし、新旧比較の全有限列での等価性と、
+canonicalな場合の数値順序を検査する。sourceの先頭八段と四node groupの対応は
+[比較のレビュー](REVIEW-comparison.md)、採否とstack/速度の有限実行証拠は
+[比較kernelの記録](../docs/bootstrap/binary-comparison.md)へ分けた。
+`tools/check_formal`はCoreに続けてBinary.oleanも再生成し、Comparisonが古いartifactをimportしない。
+function fingerprintは直前のcode-generation属性も含め、値を変えないinline方針の変更も検出する。
