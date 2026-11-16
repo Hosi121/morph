@@ -20,7 +20,7 @@
 
 ## 本体の参照位置
 
-- `binary.stein_gcd`: [src/exact/exact.mbt:409](../src/exact/exact.mbt#L409)
+- `binary.stein_gcd`: [src/exact/exact.mbt:415](../src/exact/exact.mbt#L415)
 - `binary.karatsuba`: [src/binary/number_theory.mbt:40](../src/binary/number_theory.mbt#L40), [src/binary/number_theory.mbt:48](../src/binary/number_theory.mbt#L48), [src/binary/number_theory.mbt:63](../src/binary/number_theory.mbt#L63), [src/binary/number_theory.mbt:64](../src/binary/number_theory.mbt#L64)
 - `core.half_nat`: [src/cyclotomic/cyclotomic.mbt:58](../src/cyclotomic/cyclotomic.mbt#L58), [src/fppoly/irreducibility.mbt:96](../src/fppoly/irreducibility.mbt#L96), [src/fppoly/irreducibility.mbt:165](../src/fppoly/irreducibility.mbt#L165)
 - `core.halve_nat`: [src/binary/binary.mbt:340](../src/binary/binary.mbt#L340), [src/core/natural.mbt:19](../src/core/natural.mbt#L19), [src/core/natural.mbt:29](../src/core/natural.mbt#L29)
