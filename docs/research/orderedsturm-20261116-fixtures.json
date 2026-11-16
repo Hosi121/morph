@@ -1,0 +1,3596 @@
+{
+  "sympy": "1.14.0",
+  "statistics": {
+    "cases": 40,
+    "half_open_queries": 200,
+    "relative_roots": 52,
+    "quadratic_field_fraction_prs": 40,
+    "norm_resultants": 40
+  },
+  "cases": [
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "quadratic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-2**(1/4)",
+        "2**(1/4)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "repeated relative",
+      "coefficients": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-2**(1/4)",
+        "2**(1/4)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        4,
+        0,
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "cubic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "2**(1/6)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "linear algebraic",
+      "coefficients": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1 + sqrt(2)"
+      ],
+      "relative_squarefree_degree": 1,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -1,
+        -2,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "conjugate field roots",
+      "coefficients": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(2)",
+        "sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        4,
+        0,
+        -4,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-2",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "2",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "repeated rational endpoint",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1",
+        "-sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        12,
+        -29,
+        34,
+        -15,
+        -8,
+        13,
+        -6,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3/4",
+            "1/2"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "mixed radical",
+      "coefficients": [
+        [
+          2,
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(sqrt(2) + 2)",
+        "sqrt(sqrt(2) + 2)",
+        "sqrt(2)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          3
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -4,
+        0,
+        10,
+        0,
+        -6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "2",
+            "2"
+          ],
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-2"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-16/9",
+            "-16/9"
+          ],
+          [
+            "16/9",
+            "2/3"
+          ]
+        ],
+        [
+          [
+            "306/529",
+            "-63/529"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "no real root",
+      "coefficients": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "3",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-3",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "constant",
+      "coefficients": [
+        [
+          -3,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 0,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "positive",
+      "kind": "zero endpoint",
+      "coefficients": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "0",
+        "sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        0,
+        0,
+        -2,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1/2",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "quadratic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "repeated relative",
+      "coefficients": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        4,
+        0,
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "cubic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-2**(1/6)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "linear algebraic",
+      "coefficients": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1 - sqrt(2)"
+      ],
+      "relative_squarefree_degree": 1,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -1,
+        -2,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "conjugate field roots",
+      "coefficients": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "sqrt(2)",
+        "-sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        4,
+        0,
+        -4,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-2",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "2",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "repeated rational endpoint",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1",
+        "sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        12,
+        -29,
+        34,
+        -15,
+        -8,
+        13,
+        -6,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3/4",
+            "1/2"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "mixed radical",
+      "coefficients": [
+        [
+          2,
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(2 - sqrt(2))",
+        "sqrt(2 - sqrt(2))",
+        "-sqrt(2)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          3
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -4,
+        0,
+        10,
+        0,
+        -6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "2",
+            "2"
+          ],
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-2"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-16/9",
+            "-16/9"
+          ],
+          [
+            "16/9",
+            "2/3"
+          ]
+        ],
+        [
+          [
+            "306/529",
+            "-63/529"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "no real root",
+      "coefficients": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "3",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-3",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "constant",
+      "coefficients": [
+        [
+          -3,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 0,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 2,
+      "embedding": "negative",
+      "kind": "zero endpoint",
+      "coefficients": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "0",
+        "-sqrt(2)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        0,
+        0,
+        -2,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1/2",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "quadratic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-3**(1/4)",
+        "3**(1/4)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "repeated relative",
+      "coefficients": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-3**(1/4)",
+        "3**(1/4)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        0,
+        0,
+        -6,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "cubic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "3**(1/6)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "linear algebraic",
+      "coefficients": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1 + sqrt(3)"
+      ],
+      "relative_squarefree_degree": 1,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        -2,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "conjugate field roots",
+      "coefficients": [
+        [
+          -3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(3)",
+        "sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        -6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-3",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "repeated rational endpoint",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1",
+        "-sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        18,
+        -44,
+        54,
+        -30,
+        -2,
+        12,
+        -6,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "1/2"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "mixed radical",
+      "coefficients": [
+        [
+          3,
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(sqrt(3) + 2)",
+        "sqrt(sqrt(3) + 2)",
+        "sqrt(3)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          3
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        13,
+        0,
+        -7,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "3",
+            "2"
+          ],
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-2"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-8/3",
+            "-16/9"
+          ],
+          [
+            "2",
+            "2/3"
+          ]
+        ],
+        [
+          [
+            "2/3",
+            "-1/3"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "no real root",
+      "coefficients": [
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        16,
+        0,
+        8,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "4",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-4",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "constant",
+      "coefficients": [
+        [
+          -3,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 0,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "positive",
+      "kind": "zero endpoint",
+      "coefficients": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "0",
+        "sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        0,
+        0,
+        -3,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3/4",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "quadratic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "repeated relative",
+      "coefficients": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        0,
+        0,
+        -6,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "cubic relative",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-3**(1/6)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "linear algebraic",
+      "coefficients": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1 - sqrt(3)"
+      ],
+      "relative_squarefree_degree": 1,
+      "queries": [
+        [
+          -5,
+          5,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -2,
+        -2,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "conjugate field roots",
+      "coefficients": [
+        [
+          -3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "sqrt(3)",
+        "-sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        9,
+        0,
+        -6,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "-3",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "repeated rational endpoint",
+      "coefficients": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          3
+        ],
+        [
+          3,
+          -3
+        ],
+        [
+          -3,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "1",
+        "sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        18,
+        -44,
+        54,
+        -30,
+        -2,
+        12,
+        -6,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-1",
+            "1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "1",
+            "1/2"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "mixed radical",
+      "coefficients": [
+        [
+          3,
+          2
+        ],
+        [
+          -2,
+          -1
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "-sqrt(2 - sqrt(3))",
+        "sqrt(2 - sqrt(3))",
+        "-sqrt(3)"
+      ],
+      "relative_squarefree_degree": 3,
+      "queries": [
+        [
+          -5,
+          5,
+          3
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        -3,
+        0,
+        13,
+        0,
+        -7,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "3",
+            "2"
+          ],
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-2",
+            "-1"
+          ],
+          [
+            "0",
+            "-2"
+          ],
+          [
+            "3",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-8/3",
+            "-16/9"
+          ],
+          [
+            "2",
+            "2/3"
+          ]
+        ],
+        [
+          [
+            "2/3",
+            "-1/3"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "no real root",
+      "coefficients": [
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        16,
+        0,
+        8,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "4",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "-4",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "constant",
+      "coefficients": [
+        [
+          -3,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [],
+      "relative_squarefree_degree": 0,
+      "queries": [
+        [
+          -5,
+          5,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          0
+        ]
+      ],
+      "norm_resultant": [
+        9
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      ]
+    },
+    {
+      "d": 3,
+      "embedding": "negative",
+      "kind": "zero endpoint",
+      "coefficients": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "exact_distinct_real_roots": [
+        "0",
+        "-sqrt(3)"
+      ],
+      "relative_squarefree_degree": 2,
+      "queries": [
+        [
+          -5,
+          5,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          -3,
+          -1,
+          1
+        ]
+      ],
+      "norm_resultant": [
+        0,
+        0,
+        -3,
+        0,
+        1
+      ],
+      "fraction_sturm_sequence": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "2",
+            "0"
+          ]
+        ],
+        [
+          [
+            "3/4",
+            "0"
+          ]
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "utc": "2026-11-16T09:22:00.576545+00:00",
+  "cpu": 8,
+  "serialization": "tools/measure shared git-common-dir lock",
+  "timing_scope": "incremental command wall time, not an algorithm benchmark",
+  "commands": [
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/orderedsturm",
+        "--target",
+        "native"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.373026,
+      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/orderedsturm",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.154483,
+      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/orderedsturm",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.943789,
+      "output": "Total tests: 46, passed: 46, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "check",
+        "src/orderedsturm",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.549381,
+      "output": "Finished. moon: ran 22 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "info",
+        "src/orderedsturm"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.495077,
+      "output": "Finished. moon: ran 19 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "fmt",
+        "--check",
+        "src/orderedsturm"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.07417,
+      "output": "Finished. moon: ran 8 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.198351,
+      "output": "Purity gate passed: 154 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_orderedsturm_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.307784,
+      "output": "{\"cases\": 40, \"half_open_queries\": 200, \"norm_resultants\": 40, \"quadratic_field_fraction_prs\": 40, \"relative_roots\": 52}\n"
+    }
+  ]
+}

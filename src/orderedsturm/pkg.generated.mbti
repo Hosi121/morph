@@ -1,0 +1,268 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/orderedsturm"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/sturm",
+  "Hosi121/morph/tarski",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Polynomial, Polynomial) -> Result[Polynomial, OrderedError]
+
+pub fn advance(State, @core.Nat) -> Result[Progress, OrderedError]
+
+pub fn check_bound(System, BoundCertificate) -> Bool
+
+pub fn check_count(System, @sturm.Interval, @core.Nat, CountCertificate) -> Bool
+
+pub fn check_isolation(Polynomial, SolutionCertificate) -> Bool
+
+pub fn check_isolation_result(Polynomial, SolutionSet, SolutionCertificate) -> Bool
+
+pub fn check_root(Polynomial, RootCertificate) -> Bool
+
+pub fn check_root_result(Polynomial, Root, RootCertificate) -> Bool
+
+pub fn check_scalar(@numberfield.Element, @core.Ordering, ScalarCertificate) -> Bool
+
+pub fn check_system(Polynomial, SystemCertificate) -> Bool
+
+pub fn coefficients(Polynomial) -> @core.Chain[@numberfield.Element]
+
+pub fn count_between(System, @sturm.Interval) -> Result[CountCertificate, OrderedError]
+
+pub fn degree(Polynomial) -> @core.Nat?
+
+pub fn derivative(Polynomial) -> Result[Polynomial, OrderedError]
+
+pub fn divide(Polynomial, Polynomial) -> Result[Division, OrderedError]
+
+pub fn equal(Polynomial, Polynomial) -> Bool
+
+pub fn evaluate(Polynomial, @exact.Rational) -> Result[@numberfield.Element, OrderedError]
+
+pub fn field_of(Polynomial) -> @numberfield.Field
+
+pub fn is_zero(Polynomial) -> Bool
+
+pub fn isolate(System) -> Result[State, OrderedError]
+
+pub fn monic(Polynomial) -> Result[Polynomial, OrderedError]
+
+pub fn multiply(Polynomial, Polynomial) -> Result[Polynomial, OrderedError]
+
+pub fn negate(Polynomial) -> Polynomial
+
+pub fn one(@numberfield.Field) -> Polynomial
+
+pub fn polynomial(@numberfield.Field, @core.Chain[@numberfield.Element]) -> Result[Polynomial, OrderedError]
+
+pub fn refine(Root, @core.Nat) -> Result[Root, OrderedError]
+
+pub fn representatives(Polynomial) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn root_certificate(Root) -> RootCertificate
+
+pub fn root_field(Root) -> @numberfield.Field
+
+pub fn root_from_certificate(Polynomial, RootCertificate) -> Result[Root, OrderedError]
+
+pub fn root_interval(Root) -> @sturm.Interval
+
+pub fn root_polynomial(Root) -> Polynomial
+
+pub fn roots(SolutionSet) -> @core.Chain[Root]
+
+pub fn scalar_sign(@numberfield.Element) -> Result[ScalarSign, OrderedError]
+
+pub fn scale(Polynomial, @numberfield.Element) -> Result[Polynomial, OrderedError]
+
+pub fn solution_certificate(SolutionSet) -> SolutionCertificate
+
+pub fn squarefree(System) -> Polynomial
+
+pub fn subtract(Polynomial, Polynomial) -> Result[Polynomial, OrderedError]
+
+pub fn system(Polynomial) -> Result[System, OrderedError]
+
+pub fn system_certificate(System) -> SystemCertificate
+
+pub fn system_from_certificate(Polynomial, SystemCertificate) -> Result[System, OrderedError]
+
+pub fn zero(@numberfield.Field) -> Polynomial
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct BoundCertificate {
+  system : SystemCertificate
+  bound : @exact.Rational
+  coefficients : @core.Chain[ScalarCertificate]
+  comparison : ScalarCertificate
+}
+pub fn BoundCertificate::equal(Self, Self) -> Bool
+pub fn BoundCertificate::not_equal(Self, Self) -> Bool
+pub fn BoundCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct CountCertificate {
+  system : SystemCertificate
+  interval : @sturm.Interval
+  lower : @core.Chain[EndpointJet]
+  upper : @core.Chain[EndpointJet]
+  count : @core.Nat
+}
+pub fn CountCertificate::equal(Self, Self) -> Bool
+pub fn CountCertificate::not_equal(Self, Self) -> Bool
+pub fn CountCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Division {
+  quotient : Polynomial
+  remainder : Polynomial
+}
+pub fn Division::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct EndpointJet {
+  order : @core.Nat
+  value : @polynomial.Polynomial
+  sign : ScalarCertificate
+}
+pub fn EndpointJet::equal(Self, Self) -> Bool
+pub fn EndpointJet::not_equal(Self, Self) -> Bool
+pub fn EndpointJet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum OrderedError {
+  DifferentField
+  ZeroDivisor
+  ZeroPolynomial
+  InvalidInterval
+  InvalidCertificate
+  FieldFailure(@numberfield.FieldError)
+  SignFailure(@tarski.TarskiError)
+  InternalInvariant
+}
+pub fn OrderedError::equal(Self, Self) -> Bool
+pub fn OrderedError::not_equal(Self, Self) -> Bool
+pub fn OrderedError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Polynomial {
+  field : @numberfield.Field
+  coefficients : @core.Chain[@numberfield.Element]
+}
+pub fn Polynomial::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Isolated(SolutionSet)
+  Paused(State)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Root {
+  system : System
+  certificate : RootCertificate
+}
+pub fn Root::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RootCertificate {
+  system : SystemCertificate
+  count : CountCertificate
+}
+pub fn RootCertificate::equal(Self, Self) -> Bool
+pub fn RootCertificate::not_equal(Self, Self) -> Bool
+pub fn RootCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ScalarCertificate {
+  context : @realalgebraic.RootCertificate
+  representative : @polynomial.Polynomial
+  sign : @core.Ordering
+  tarski : @tarski.RootSignCertificate
+}
+pub fn ScalarCertificate::equal(Self, Self) -> Bool
+pub fn ScalarCertificate::not_equal(Self, Self) -> Bool
+pub fn ScalarCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ScalarSign {
+  sign : @core.Ordering
+  certificate : ScalarCertificate
+}
+pub fn ScalarSign::equal(Self, Self) -> Bool
+pub fn ScalarSign::not_equal(Self, Self) -> Bool
+pub fn ScalarSign::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SolutionCertificate {
+  system : SystemCertificate
+  bound : BoundCertificate
+  whole : CountCertificate
+  roots : @core.Chain[RootCertificate]
+}
+pub fn SolutionCertificate::equal(Self, Self) -> Bool
+pub fn SolutionCertificate::not_equal(Self, Self) -> Bool
+pub fn SolutionCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct SolutionSet {
+  system : System
+  roots : @core.Chain[Root]
+  certificate : SolutionCertificate
+}
+pub fn SolutionSet::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct State {
+  system : System
+  threshold : @numberfield.Element
+  signs : @core.Chain[ScalarCertificate]
+  candidate : @binary.Binary
+  phase : Phase
+}
+pub fn State::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct System {
+  polynomial : Polynomial
+  squarefree : Polynomial
+  sequence : @core.Chain[Polynomial]
+  certificate : SystemCertificate
+}
+pub fn System::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SystemCertificate {
+  context : @realalgebraic.RootCertificate
+  polynomial : @core.Chain[@polynomial.Polynomial]
+  normalized : @core.Chain[@polynomial.Polynomial]
+  gcd_sequence : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+  gcd_quotients : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+  squarefree : @core.Chain[@polynomial.Polynomial]
+  sequence : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+  quotients : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+}
+pub fn SystemCertificate::equal(Self, Self) -> Bool
+pub fn SystemCertificate::not_equal(Self, Self) -> Bool
+pub fn SystemCertificate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
