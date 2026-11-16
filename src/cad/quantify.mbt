@@ -101,6 +101,7 @@ pub fn check_elimination_result(
   value : Elimination,
   proof : EliminationCertificate,
 ) -> Bool {
+  same_problem(value.decomposition.problem, problem) &&
   elimination_certificate(value).equal(proof) &&
   check_elimination(problem, free_variables, quantifiers, proof) is Some(_)
 }

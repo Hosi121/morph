@@ -86,14 +86,20 @@ pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
 }
 
 ///|
+fn same_problem(left : Problem, right : Problem) -> Bool {
+  left.arity.equal(right.arity) &&
+  left.formula.equal(right.formula) &&
+  left.atoms.equal(right.atoms) &&
+  left.projection.equal(right.projection)
+}
+
+///|
 pub fn check_result(
   problem : Problem,
   value : Decomposition,
   proof : Certificate,
 ) -> Bool {
-  value.problem.arity.equal(problem.arity) &&
-  value.problem.formula.equal(problem.formula) &&
-  value.problem.projection.equal(problem.projection) &&
+  same_problem(value.problem, problem) &&
   value.proof.equal(proof) &&
   check(problem, proof) is Some(_)
 }
@@ -158,5 +164,8 @@ pub fn witness(value : Decomposition) -> Result[Point?, CadError] {
 ///|
 pub fn check_witness(problem : Problem, point : Point) -> Bool {
   @core.length(point.coordinates).equal(problem.arity) &&
+  @core.all(point.coordinates, fn(value) {
+    @tower.same_field(point.field, @tower.scalar_field(value))
+  }) &&
   evaluate_formula(point, problem.formula) is Ok(true)
 }

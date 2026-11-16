@@ -163,6 +163,55 @@ fn append_rational(point : Point, value : @exact.Rational) -> Point {
 }
 
 ///|
+/// A root of an atom in a one-root union interval is the same selected real
+/// value. Choose a smaller squarefree defining degree without factoring it.
+fn defining_root(
+  fibre : Fibre,
+  proof : @tower.RootCertificate,
+) -> Result[@tower.Root, CadError] {
+  fn choose(
+    systems : @core.Chain[@tower.System?],
+    best : @tower.Root,
+    degree : @core.Nat,
+  ) -> Result[@tower.Root, CadError] {
+    match systems {
+      Nil => Ok(best)
+      Cons(None, rest) => choose(rest, best, degree)
+      Cons(Some(system), rest) =>
+        match @tower.degree(@tower.squarefree(system)) {
+          Some(Succ(_) as candidate) =>
+            if @core.compare(candidate, degree) is Less {
+              match @tower.count_between(system, proof.count.interval) {
+                Err(error) => Err(TowerFailure(error))
+                Ok(count) =>
+                  if count.count.equal(Succ(Zero)) {
+                    match
+                      @tower.root_in_interval(system, proof.count.interval) {
+                      Ok(root) => choose(rest, root, candidate)
+                      Err(error) => Err(TowerFailure(error))
+                    }
+                  } else {
+                    choose(rest, best, degree)
+                  }
+              }
+            } else {
+              choose(rest, best, degree)
+            }
+          _ => choose(rest, best, degree)
+        }
+    }
+  }
+  match @tower.root_from_certificate(fibre.product, proof) {
+    Err(error) => Err(TowerFailure(error))
+    Ok(root) =>
+      match @tower.degree(@tower.squarefree(fibre.system)) {
+        Some(degree) => choose(fibre.systems, root, degree)
+        None => Err(InternalInvariant)
+      }
+  }
+}
+
+///|
 fn extend_point(
   point : Point,
   fibre : Fibre,
@@ -175,8 +224,8 @@ fn extend_point(
         Err(error) => Err(error)
         Ok(Equal) => Ok(append_rational(point, proof.count.interval.upper))
         Ok(_) =>
-          match @tower.root_from_certificate(fibre.product, proof) {
-            Err(error) => Err(TowerFailure(error))
+          match defining_root(fibre, proof) {
+            Err(error) => Err(error)
             Ok(root) =>
               match @tower.adjoin(root) {
                 Err(error) => Err(TowerFailure(error))

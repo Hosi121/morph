@@ -1,0 +1,46 @@
+{
+  "cpu": 4,
+  "target": "native debug",
+  "case": "nested positive x^2=2,y^2=x,z^2=y; full CAD+check+QE+witness+z^8=2",
+  "order": "ABBA",
+  "baseline_tower": "525edf4 before opaque-payload hardening; both frozen ELFs use the same baseline tower sources",
+  "records": [
+    {
+      "phase": "before-tower-normalization",
+      "seconds": 6.517209253000146,
+      "exit": 0,
+      "sha256": "1f0f3c6da9de1be459d8c8dcdf098500861c288b6f9c1625ff84158bd220d373",
+      "stdout": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"cad_wbtest.mbt\",\"index\":8}\n----- END MOON TEST RESULT -----\n----- BEGIN MOON TEST RESULT -----\n{\"type\":\"result\",\"file\":\"cad_wbtest.mbt\",\"index\":8,\"message\":\"\"}\n----- END MOON TEST RESULT -----\n",
+      "stderr": ""
+    },
+    {
+      "phase": "after-smaller-root",
+      "seconds": 1.299599038999986,
+      "exit": 0,
+      "sha256": "4c3c7a17de0f063769b1e315142acf43c90214eea86e6f676a1399f935646469",
+      "stdout": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"cad_wbtest.mbt\",\"index\":8}\n----- END MOON TEST RESULT -----\n----- BEGIN MOON TEST RESULT -----\n{\"type\":\"result\",\"file\":\"cad_wbtest.mbt\",\"index\":8,\"message\":\"\"}\n----- END MOON TEST RESULT -----\n",
+      "stderr": ""
+    },
+    {
+      "phase": "after-smaller-root",
+      "seconds": 1.3007947750002131,
+      "exit": 0,
+      "sha256": "4c3c7a17de0f063769b1e315142acf43c90214eea86e6f676a1399f935646469",
+      "stdout": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"cad_wbtest.mbt\",\"index\":8}\n----- END MOON TEST RESULT -----\n----- BEGIN MOON TEST RESULT -----\n{\"type\":\"result\",\"file\":\"cad_wbtest.mbt\",\"index\":8,\"message\":\"\"}\n----- END MOON TEST RESULT -----\n",
+      "stderr": ""
+    },
+    {
+      "phase": "before-tower-normalization",
+      "seconds": 6.486625079000078,
+      "exit": 0,
+      "sha256": "1f0f3c6da9de1be459d8c8dcdf098500861c288b6f9c1625ff84158bd220d373",
+      "stdout": "----- BEGIN MOON TEST RESULT -----\n{\"type\":\"start\",\"file\":\"cad_wbtest.mbt\",\"index\":8}\n----- END MOON TEST RESULT -----\n----- BEGIN MOON TEST RESULT -----\n{\"type\":\"result\",\"file\":\"cad_wbtest.mbt\",\"index\":8,\"message\":\"\"}\n----- END MOON TEST RESULT -----\n",
+      "stderr": ""
+    }
+  ],
+  "interpretation": "A finite native debug cohort, two observations per artifact; not a general CAD speed forecast. Do not multiply with independently measured kernel speed ratios.",
+  "source_baseline": "a142a05",
+  "selection": "cad_wbtest.mbt:8-9",
+  "sdk": "moonc v0.10.20+65efd5b93; moon 0.1.20261104",
+  "before_test_file_sha256": "545ddde205fa49318c25df84c0a4fb906f407a3586b0b64cee6059289a3a1536"
+}

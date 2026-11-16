@@ -1,0 +1,5 @@
+Finished. moon: ran 4 tasks, now up to date
+Finished. moon: ran 7 tasks, now up to date
+Total tests: 15, passed: 15, failed: 0.
+Total tests: 15, passed: 15, failed: 0.
+Total tests: 15, passed: 15, failed: 0.
