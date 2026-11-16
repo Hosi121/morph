@@ -954,3 +954,25 @@ ELF、C抜粋、候補の一時source、raw logsは `.tools/cdcl-profile/trie-*`
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/trie_order_wbtest.mbt --target native --release -i 1
 /home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/trie_order_wbtest.mbt --target native --release -i 3
 ```
+
+## conflict levelの二一致cutoffは次回評価用に保持
+
+期限でこの実験を区切り、productionを変更せず `level_count_wbtest.mbt` へ隔離した。
+`at_level` が必要とする区分は0個・1個・2個以上だけなので、同じlevelのliteralを二つ
+見つけた後は残りをlookupせず `Several` を返せる。三変数27節×64部分割当×4 target levelの
+6,912組を、旧全走査と独立のnumeric oracleで照合したnative回帰は通過した。
+
+64bit実行の実際の解析途中から14,674 count caseを収集し、全caseで区分が一致することを
+確認した。このcount処理内のlookupは75,618回から36,366回へ減った。他の解析helperのlookupは
+この数に含めない。同じnative release ELF、CPU 10、共通mutex、各10サンプルのcount datasetは、
+全走査28.17 ms ± 3.54 ms / 24.11 ms ± 1.39 msに対し、二一致cutoffが
+18.18 ms ± 760.71 µs / 17.86 ms ± 1.57 msだった。未変更checker controlは34.68 ms ± 1.08 ms。
+収集時の結果・Statisticsは通常実行と一致し、生成hint certificateを独立checkerが受理した。
+
+これは収集済みcount datasetの比較であり、全query短縮の証拠にはしない。全query比較、
+新候補での外部証拠再生成、三backend検証を採用前の残るgateとする。候補ELF・一時source・
+raw logsは `.tools/cdcl-profile/level-count-*` に保存した。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/level_count_wbtest.mbt --target native --release -i 1
+```
