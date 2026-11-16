@@ -21,9 +21,11 @@
 | [μ-calculusモデル検査](mucalc-20261116.md) | 最小・最大不動点と様相演算をパリティゲームへコンパイル | 独立な集合反復と比較 |
 | [FGLMによる順序変換](fglm-20261116.md) | 零次元商空間の線形従属から目標順序の基底を構成 | 独立SymPyの3順序と比較 |
 | [最小多項式への正規化](realminimal-20261116.md) | QQ既約分解と一根区間で不要な因子を除く | 既約性Provenを必須にして統合 |
-| [数体Q(α)](numberfield-20261116.md) | 剰余演算、Bézout逆元、traceとnorm | 独立Fractionと比較 |
+| [数体Q(α)](numberfield-20261116.md) | 剰余演算、Bézout逆元、trace/norm、要素の最小多項式と実埋込み | 独立Fractionと比較 |
 | [除算不要の特性多項式](berkowitz-20261116.md) | 環上のBerkowitzと随伴行列 | Fractionの順列展開・余因子と比較 |
 | [疎Horner評価](sparse-horner-20261116.md) | 一変数の通常経路と実数制約の計測 | [独立QQ・Leanレビュー](sparse-horner-independent-review-20261116.md)後に採用 |
+| [Sturm–Tarskiの符号判定](tarski-20261116.md) | 半開端点のTaylor jetsと負剰余列で根上の符号を求める | 独立oracle356 query＋40根符号 |
+| [環上の消去](elimination-20261116.md) | 固定次数resultant、discriminant、Bézout証拠とQQ projection | 独立置換展開・SymPyと比較 |
 | [探索とリファクタリングの履歴](HISTORY.md) | 初期の実装、表現コストの見直し、検証と統合の経緯 | 当時の記録を保存 |
 | [長語除算・剰余](wide-kernels/README.md) | 逆順fold、末尾再帰、有限prefix、unrollの比較 | 通常経路へ未採用 |
 

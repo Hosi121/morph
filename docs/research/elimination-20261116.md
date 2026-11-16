@@ -1,5 +1,7 @@
 # Fixed-degree division-free elimination
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 `src/elimination` supplies generic fixed-degree Sylvester resultants, universal fixed-degree discriminants, and a checked QQ multivariate-polynomial wrapper that deletes a selected variable. It uses the frozen division-free Berkowitz determinant and adjugate from root `1f067d2`, locally cherry-picked as `9db352a`; no Berkowitz implementation files are changed. The package is a projection building block, not a complete CAD or real-feasibility solver.
 
 The implementation is split into [fixed coefficients and Sylvester construction](../../src/elimination/fixed.mbt), [adjugate Bezout witnesses](../../src/elimination/bezout.mbt), [universal discriminants](../../src/elimination/discriminant.mbt), [private homogeneous coefficient arithmetic](../../src/elimination/coefficient.mbt), [QQ variable elimination](../../src/elimination/projection.mbt), and [query-bound checkers](../../src/elimination/projection_certificate.mbt). [The API](../../src/elimination/pkg.generated.mbti) is compiler-generated with `moon info`.

@@ -18,6 +18,8 @@ tools/moon run src/cmd/main
 bootstrapの既定値は公式のlatestです。後日の取得物が下記の検証済み版と同じになるとは限りません。
 
 ツアーの[出力例](TOUR.txt)と[表示・入力変換の実装](../src/cmd/main)も参照してください。
+`tools/moon run src/cmd/advanced` は実代数演算・数体・実解列挙・基底順序変換・μ-calculusをまとめて実行します。
+[出力例](ADVANCED_TOUR.txt)はnative・JS・WasmGCで完全一致を確認しています。
 
 ## 開発時のコマンド
 

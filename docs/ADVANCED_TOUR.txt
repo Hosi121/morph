@@ -1,0 +1,21 @@
+morph: exact algebra and fixed-point model checking
+sign(2*sqrt(2)-3): negative, proof=true
+sqrt(2)+sqrt(3): z^4 - 10*z^2 + 1 = 0, proof=true
+sqrt(2)^2: z^2 - 4 -> z - 2
+Q(sqrt(2)): (1+alpha)^4 = 12*alpha + 17
+(1+alpha)^(-1) = alpha - 1, Bezout=true
+trace((1+alpha)^4)=34, norm=1
+minimal polynomial of (1+alpha)^4: z^2 - 34*z + 1
+alpha multiplication matrix characteristic (descending): [1, 0, -2]
+x^2=2, y^2=3: separating seed=1, real points=4, proof=true
+parameter equation: t^4 - 10*t^2 + 1 = 0
+x=1/2*t^3 - 9/2*t, y=-1/2*t^3 + 11/2*t
+  one t root in (-11/2, -11/4]
+  one t root in (-11/4, 0]
+  one t root in (0, 11/4]
+  one t root in (11/4, 11/2]
+F4 -> FGLM GrevLex: quotient dimension=3, proof=true
+  x^2 - y
+  x*y - 1
+  -x + y^2
+mu X.(p OR Diamond X): satisfying states=[0, 1], parity proof=true

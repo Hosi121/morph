@@ -53,7 +53,8 @@
 | F4 | [Macaulay行列のbatch簡約・入力idealへのwitness](../src/f4/f4.mbt) |
 | FGLM | [零次元商空間の線形従属・Lex/GradedLex/GrevLexへの基底変換](../src/fglm/fglm.mbt) |
 | 零次元系の実解 | [shapeと全実根の共有パラメータ表現](../src/realvariety/shape.mbt)・[分離線形形式の探索と元座標への射影](../src/realvariety/separation.mbt) |
-| 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt) |
+| 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt)・[Sturm–Tarski query・代数的な根での厳密な符号](../src/tarski/root_sign.mbt) |
+| 消去 | [環上の固定次数resultant・discriminant・Bézout証拠](../src/elimination/fixed.mbt)・[QQ多変数式の指定変数を消去](../src/elimination/projection.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
 

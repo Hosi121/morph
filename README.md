@@ -27,6 +27,7 @@ tools/moon run src/cmd/main
 
 Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどをまとめて試せます。
 表示と入力変換の実装は [cmd/main](src/cmd/main/showcase.mbt) にあります。
+代数的数・数体・F4/FGLM・実解列挙・μ-calculusは `tools/moon run src/cmd/advanced` で試せます（[出力例](docs/ADVANCED_TOUR.txt)）。
 確認済みのコンパイラは moonc v0.10.20 です。再現条件は[検証環境](docs/ENVIRONMENT.md)を参照してください。
 
 ## アルゴリズム
