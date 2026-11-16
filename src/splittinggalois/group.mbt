@@ -309,7 +309,12 @@ pub fn check_result(
   result.proof.table.equal(proof.table) &&
   result.proof.identity.equal(proof.identity) &&
   result.proof.inverses.equal(proof.inverses) &&
-  same_context(source, result.identity.source) &&
+  @split.check_result(
+    @split.source(source),
+    @split.ambient(source),
+    result.identity.source,
+    proof.source,
+  ) &&
   same_map(identity_map(source), result.identity.map)
 }
 
