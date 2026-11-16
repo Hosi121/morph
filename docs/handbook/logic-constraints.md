@@ -197,3 +197,11 @@ SCC全体の最大優先度だけでは、内部の悪い小閉路を見逃す�
 ∀x∃yと∃x∀yを区別し、量化したyの結果は[区間集合](../../src/semialgebraic)として取り出せる。
 共有因子、次数低下、nullification、厳密不等号の端点を含め、独立な族と照合した。
 構成・証拠・現在の次元制限は[厳密代数の計算経路](algebraic-solving.md)にまとめる。
+
+
+## 任意変数の実閉体と非線形SMT
+
+[realclosed](../../src/realclosed)は一階の実数多項式式から量化なしの有理多項式式を作る。
+[realnlsmt](../../src/realnlsmt)は量化なしのBoolean制約をCDCLで探索し、CADの理論節と最終RUPを別々に検査する。
+多段の実代数拡大、全セル被覆、量化順序、入力と返却値の束縛は
+[厳密代数の計算経路](algebraic-solving.md#任意変数のcadと実閉体の量化消去)にまとめた。

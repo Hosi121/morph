@@ -39,6 +39,8 @@
 | --- | --- | --- |
 | Fp多項式の係数と除算 | Galois、巡回RS、AESの表生成 | [Fp(2)と除算](bootstrap/gf2-performance/README.md)。同じ検査済みfieldの係数、幅、scale/shiftを再利用。CPU時間とwall時間を別に記録 |
 | GF(2^m)の積 | Galois.multiply→RSの符号化/復号、AESの有限体演算 | [可変長Bool列](bootstrap/gf2-performance/README.md)。同一CPU timer系列でGF256積5.225→0.942 µs、RS255は7.510→5.000 ms。固定幅案はRSを悪化させたため棄却 |
+| 多段実代数の二次式の符号 | realtowerのscalar sign→相対Sturm・任意変数CAD | [厳密な親体比較](research/realtower-20261116.md)。凍結native debug・深さ3の相対二次式1例で1.564/1.633 s→0.0227/0.0201 s。可約・従属・shifted queryの独立70テスト×3 backend。高次数一般PRSは維持 |
+| CADの根を加える表現 | cadのlifting・証人再構成 | [同一根を持つ低次数atom](research/cad-20261116.md)。unionの被覆は維持し、定義次数を抑える。同条件の三段平方根1例で6.517/6.487 s→1.300/1.301 s。別の改善倍率とは合成しない |
 | 一変数多項式の評価 | 公開polynomial.evaluate→Sturm・実数制約・実代数計算 | [疎Horner](research/sparse-horner-20261116.md)。同じnative ELFの密な6評価2.51→0.336 ms、実数制約の次数8例1.59→0.490 s。√2の小例は横ばい。JSにも局所改善、WasmGCの短い対照は揺れが大きい。独立QQと降順を前提にしたLeanモデル |
 
 ## 行列式

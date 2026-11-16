@@ -28,6 +28,7 @@ tools/moon run src/cmd/main
 Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどをまとめて試せます。
 表示と入力変換の実装は [cmd/main](src/cmd/main/showcase.mbt) にあります。
 代数的数・数体・F4/FGLM・実解列挙・μ-calculusは `tools/moon run src/cmd/advanced` で試せます（[出力例](docs/ADVANCED_TOUR.txt)）。
+実閉体の量化消去、球の射影、三段平方根、非線形SMTは `tools/moon run src/cmd/realclosed` で試せます（[出力例](docs/REALCLOSED_TOUR.txt)）。
 確認済みのコンパイラは moonc v0.10.20 です。再現条件は[検証環境](docs/ENVIRONMENT.md)を参照してください。
 
 ## アルゴリズム
@@ -39,7 +40,7 @@ Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどを�
 | [変換・記号計算](docs/ALGORITHMS.md#symbolic-computation) | FFT・NTT、円分体、Gröbner基底、実根隔離、自動微分、厳密幾何 |
 | [線形代数・最適化](docs/ALGORITHMS.md#linear-optimization) | Gauss–Jordan、Smith標準形、LLL、単体法、0/1分枝限定法 |
 | [グラフ](docs/ALGORITHMS.md#graphs) | 最短路、SCC、最小全域森、最大流、一般マッチング |
-| [論理・制約解決](docs/ALGORITHMS.md#logic-constraints) | SAT・SMT、BDD、回路、実数制約、パリティゲーム |
+| [論理・制約解決](docs/ALGORITHMS.md#logic-constraints) | SAT・非線形実数SMT、BDD、回路、実閉体の量化消去、パリティゲーム |
 | [言語・列アルゴリズム](docs/ALGORITHMS.md#languages-sequences) | 単一化、型推論、CEK、正規表現、CYK、文字列検索、動的計画法 |
 | [符号・圧縮・暗号](docs/ALGORITHMS.md#coding-cryptography) | 自己区切り符号、Huffman、LZ78、SHA-256、AES、Reed–Solomon |
 
@@ -67,7 +68,7 @@ tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 
 | 資料 | 内容 |
 | --- | --- |
-| [次の到達点](docs/ROADMAP.md) | 任意変数の実閉体ソルバと証拠付き非線形SMTへの計画 |
+| [次の到達点](docs/ROADMAP.md) | 実閉体ソルバの到達状況と、次に残る課題 |
 | [ハンドブック](HANDBOOK.md) | アルゴリズムの設計、表現コスト、考察、限界 |
 | [パッケージ一覧](docs/INVENTORY.md) | ソースから生成した依存関係・テスト宣言数 |
 | [基礎部品の最適化](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 改善の採否と、通常経路への統合状況 |

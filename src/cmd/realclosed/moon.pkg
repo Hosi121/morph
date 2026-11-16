@@ -1,0 +1,12 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/realcad" @qf,
+  "Hosi121/morph/realformula" @logic,
+  "Hosi121/morph/realclosed" @rcf,
+  "Hosi121/morph/realnlsmt" @smt,
+  "Hosi121/morph/cad",
+  "Hosi121/morph/testsupport" @oracle,
+}
+
+pkgtype(kind: "executable")

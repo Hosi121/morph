@@ -9,7 +9,7 @@
 | データ型から算法を組み立てる考え方 | [ハンドブック](../HANDBOOK.md) |
 | 次に目指す範囲と不足部品 | [次の到達点](ROADMAP.md) |
 | 実装済みの算法とソースの入口 | [アルゴリズム一覧](ALGORITHMS.md) |
-| 実際に何が計算できるか | [基本ツアー](TOUR.txt)・[厳密代数とモデル検査](ADVANCED_TOUR.txt) |
+| 実際に何が計算できるか | [基本ツアー](TOUR.txt)・[厳密代数とモデル検査](ADVANCED_TOUR.txt)・[実閉体と非線形SMT](REALCLOSED_TOUR.txt) |
 | 表現と証拠の違いを手元で試す | [小さな実験](handbook/exercises.md) |
 | 環境の準備、テスト、生成物の更新 | [開発・検証環境](ENVIRONMENT.md) |
 | テスト・証拠検査・形式証明の対象 | [検証ガイド](VALIDATION.md) |

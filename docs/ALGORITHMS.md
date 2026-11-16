@@ -20,6 +20,7 @@
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
 | 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
+| 多段の実代数拡大 | [選択根を順に加える四則演算・順序・相対実根](../src/realtower/api.mbt)・[二次式の厳密な符号判定](../src/realtower/quadratic.mbt) |
 | 共通数体 | [実代数的数のprimitive-element合成と両生成元の埋込み](../src/compositum/producer.mbt) |
 | ソート | [安定merge/insertion/quick sort](../src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](../src/heap/heap.mbt) |
@@ -58,6 +59,7 @@
 | 消去 | [環上の固定次数resultant・discriminant・Bézout証拠](../src/elimination/fixed.mbt)・[QQ多変数式の指定変数を消去](../src/elimination/projection.mbt) |
 | 代数係数の根 | [Q(α)上の相対Sturm・全実根の隔離・tower root](../src/orderedsturm/isolation.mbt) |
 | 射影 | [principal subresultants](../src/elimination/principal.mbt)・[full Collinsの係数・全reducta・全対PSC](../src/projection/collins.mbt) |
+| 任意変数の射影 | [導関数で閉じた全Collins階層・入力束縛](../src/cadprojection/hierarchy.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
 
@@ -101,6 +103,8 @@
 | BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
 | 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
+| 非線形実数SMT | [Tseitin・CDCLとCAD理論節](../src/realnlsmt/search.mbt)・[モデル・理論補題・最終RUPの検査](../src/realnlsmt/check.mbt) |
+| 実閉体・量化消去 | [一階実数式から量化なしのQQ式へ](../src/realclosed/realclosed.mbt)・[任意変数CADと全セル検査](../src/cad/check.mbt)・[符号木の量化fold](../src/signcad/encode.mbt) |
 | 二変数の実数制約 | [full Collins→数体上のlifting→量化文の判定](../src/cad2/machine.mbt)・[量化結果の区間集合と厳密membership](../src/semialgebraic/assemble.mbt) |
 | パリティゲーム | [再開可能なZielonka法・位置戦略・独立した閉路検査](../src/parity/solve.mbt) |
 | モデル検査 | [μ-calculusの再帰的な様相論理式→パリティゲーム](../src/mucalc/compiler.mbt) |

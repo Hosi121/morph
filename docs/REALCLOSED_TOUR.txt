@@ -1,0 +1,6 @@
+forall x exists y forall z. y^2+z^2 >= x: true [checked]
+exists x forall y exists z. y^2+z^2 <= x: false [checked]
+exists z. x^2+y^2+z^2=1: rational-polynomial formula in x,y [checked]
+  origin=true; boundary (1,0)=true; outside (1,1)=false
+positive nested roots x^2=2, y^2=x, z^2=y: SAT; z^8=2: true; model checked: true
+x^2 < 0: UNSAT; theory lemmas: 1; CAD + RUP checked: true

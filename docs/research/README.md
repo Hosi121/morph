@@ -13,6 +13,7 @@
 | [一階実数式の正規化](realformula-20261116.md) | 変数捕獲を避けたprenex化と量化の否定 | 独立Fraction・112テスト×3 backend |
 | [任意変数のCADと量化消去](cad-20261116.md) | 再帰lifting、全木検査、複数自由変数のQQ式出力 | CAD・一階式15テスト×3 backend |
 | [実代数塔の独立レビュー](realtower-independent-review-20261116.md) | 可約・従属拡大・Fraction/SymPy・coherent証拠改竄 | opaque payload反例を修正し3 backend確認 |
+| [非線形実数SMT](realnlsmt-20261116.md) | CAD理論補題・厳密モデル・最終RUP反証 | 独立Fraction・126テスト×3 backend |
 | [任意変数の実閉体ソルバ](realclosed-20261116.md) | 多段の実代数拡大から量化消去・非線形SMTへ | 実装・成立検証中 |
 | [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 全3 backend・公開同期・片付け完了 |
 | [一変数の実数制約](realcad-20261116.md) | 符号不変分割、無理数の証人、存在・全称と証拠検査 | 統合済み |

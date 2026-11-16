@@ -13,7 +13,7 @@
 | 記号計算の仕組みを読む | [矢印FFT](docs/handbook/symbolic-computation.md#fft) → [多項式](docs/handbook/symbolic-computation.md#polynomials) → [円分体・厳密FFT](docs/handbook/symbolic-computation.md#exact-fft) |
 | 構文木を扱う | [単一化](docs/handbook/languages-sequences.md#unification) → [型推論](docs/handbook/languages-sequences.md#inference) → [CEK評価機械](docs/handbook/languages-sequences.md#cek) |
 | 解と根拠を組み立てる | [SAT反証](docs/handbook/logic-constraints.md#sat) → [最大流・カット](docs/handbook/graphs.md#flow) → [LPの証拠](docs/handbook/linear-optimization.md#simplex) |
-| 厳密代数をつないで使う | [多項式](docs/handbook/symbolic-computation.md#polynomials) → [基底・実解・最小多項式・数体](docs/handbook/algebraic-solving.md) |
+| 厳密代数をつないで使う | [多項式](docs/handbook/symbolic-computation.md#polynomials) → [基底・実解・数体・実閉体・SMT](docs/handbook/algebraic-solving.md) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
 環境の準備とコマンドは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
@@ -62,7 +62,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | [基礎算術とデータ構造](docs/handbook/foundations.md) | 自然数、二進数、ペア、整数・有理数、ソート、永続木 |
 | [数論と有限体](docs/handbook/number-theory.md) | 剰余算術、CRT、素数証明、因数分解、拡大体、楕円曲線 |
 | [変換と記号計算](docs/handbook/symbolic-computation.md) | FFT・NTT、多項式、Gröbner基底、実根隔離、微分、幾何 |
-| [厳密代数の計算経路](docs/handbook/algebraic-solving.md) | F4、FGLM、実解列挙、最小多項式、数体をつなぐ |
+| [厳密代数の計算経路](docs/handbook/algebraic-solving.md) | F4、FGLM、実解、数体、多段拡大、CAD・量化消去をつなぐ |
 | [線形代数と最適化](docs/handbook/linear-optimization.md) | 半環、Gauss–Jordan、Smith標準形、LLL、単体法、0/1最適化 |
 | [グラフ](docs/handbook/graphs.md) | BFS、Dijkstra、SCC、全域森、最大流、二部マッチング |
 | [論理と制約解決](docs/handbook/logic-constraints.md) | SAT・CDCL、回路、BDD、SMT、exact cover、数独 |

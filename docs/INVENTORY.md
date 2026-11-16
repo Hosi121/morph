@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：95パッケージ、245ソース。
-核のテスト宣言：3539、bench group：212。
+算法の核：95パッケージ、246ソース。
+核のテスト宣言：3698、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -81,8 +81,8 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [realclosed](../src/realclosed) | 1 | 5 | 0 | `cad`, `core`, `realcad`, `realformula` |
 | [realformula](../src/realformula) | 3 | 112 | 0 | `core`, `polynomial`, `realcad` |
 | [realminimal](../src/realminimal) | 3 | 43 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm`, `zassenhaus` |
-| [realnlsmt](../src/realnlsmt) | 4 | 0 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
-| [realtower](../src/realtower) | 7 | 64 | 0 | `binary`, `core`, `exact`, `sturm` |
+| [realnlsmt](../src/realnlsmt) | 4 | 126 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
+| [realtower](../src/realtower) | 8 | 97 | 0 | `binary`, `core`, `exact`, `sturm` |
 | [realvariety](../src/realvariety) | 6 | 124 | 0 | `binary`, `core`, `exact`, `f4`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
 | [reedsolomon](../src/reedsolomon) | 1 | 4 | 0 | `binary`, `core`, `finitefield`, `matrix`, `modular`, `rowreduce` |
