@@ -2,6 +2,7 @@
 #derive(Eq, Debug)
 pub(all) enum CadError {
   WrongArity
+  PrefixFailure(@prefix.PrefixError)
   InvalidCertificate
   ProjectionFailure(@projection.ProjectionError)
   TowerFailure(@tower.TowerError)
@@ -77,6 +78,7 @@ pub struct Problem {
   formula : @qf.Formula
   atoms : @core.Chain[@poly.Polynomial]
   projection : @projection.Certificate
+  prefix : @prefix.Plan
 }
 
 ///|
@@ -118,7 +120,7 @@ pub extend Fibre with Debug::{to_repr}
 ///|
 #derive(Debug)
 enum Node {
-  Pending(Point, @core.Chain[@projection.Level])
+  Pending(Point, @core.Chain[@projection.Level], @core.Chain[@core.Ordering])
   Isolating(Point, @core.Chain[@projection.Level], Fibre, @tower.State)
   Separating(
     Point,
@@ -174,9 +176,33 @@ pub extend Progress with Debug::{to_repr}
 ///|
 #derive(Debug)
 enum NodeProgress {
+  Found(Point)
   Finished(TreeCertificate)
   Working(Node)
 }
 
 ///|
 pub extend NodeProgress with Debug::{to_repr}
+
+///|
+/// Resumable satisfiability search. Unlike Machine it may stop before complete
+/// decomposition once an exact checked point has been found.
+#derive(Debug)
+pub struct Search {
+  problem : Problem
+  node : Node
+}
+
+///|
+pub extend Search with Debug::{to_repr}
+
+///|
+#derive(Debug)
+pub(all) enum SearchProgress {
+  Satisfiable(Point)
+  Unsatisfiable(Decomposition)
+  Paused(Search)
+}
+
+///|
+pub extend SearchProgress with Debug::{to_repr}

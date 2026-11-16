@@ -1,20 +1,57 @@
 ///|
-fn step_node(problem : Problem, node : Node) -> Result[NodeProgress, CadError] {
+fn step_node(
+  problem : Problem,
+  node : Node,
+  searching : Bool,
+) -> Result[NodeProgress, CadError] {
   match node {
-    Pending(point, Nil) =>
-      match evaluate_formula(point, problem.formula) {
-        Ok(value) => Ok(Finished(Leaf(value)))
-        Err(error) => Err(error)
+    Pending(point, levels, parent_signs) => {
+      let partial = if searching {
+        @prefix.evaluate(
+          problem.prefix,
+          @core.length(point.coordinates),
+          parent_signs,
+        )
+      } else {
+        Ok(@prefix.Undetermined)
       }
-    Pending(point, Cons(level, _) as levels) =>
-      match prepare_fibre(point, level.family) {
-        Err(error) => Err(error)
-        Ok(fibre) =>
-          match @tower.isolate(fibre.system) {
-            Err(error) => Err(TowerFailure(error))
-            Ok(state) => Ok(Working(Isolating(point, levels, fibre, state)))
+      match partial {
+        Err(error) => Err(PrefixFailure(error))
+        Ok(Known(false)) => Ok(Finished(Leaf(false)))
+        Ok(Known(true)) => {
+          let candidate = complete_point(point, @core.length(levels))
+          if check_witness(problem, candidate) {
+            Ok(Found(candidate))
+          } else {
+            Err(InternalInvariant)
+          }
+        }
+        Ok(Undetermined) =>
+          match levels {
+            Nil =>
+              match evaluate_formula(point, problem.formula) {
+                Ok(true) =>
+                  if searching {
+                    Ok(Found(point))
+                  } else {
+                    Ok(Finished(Leaf(true)))
+                  }
+                Ok(false) => Ok(Finished(Leaf(false)))
+                Err(error) => Err(error)
+              }
+            Cons(level, _) =>
+              match prepare_fibre(point, level.family) {
+                Err(error) => Err(error)
+                Ok(fibre) =>
+                  match @tower.isolate(fibre.system) {
+                    Err(error) => Err(TowerFailure(error))
+                    Ok(state) =>
+                      Ok(Working(Isolating(point, levels, fibre, state)))
+                  }
+              }
           }
       }
+    }
     Isolating(point, levels, fibre, state) =>
       match @tower.advance(state, Succ(Zero)) {
         Err(error) => Err(TowerFailure(error))
@@ -72,7 +109,7 @@ fn step_node(problem : Problem, node : Node) -> Result[NodeProgress, CadError] {
                 finished,
                 sample,
                 signs,
-                Pending(next, rest),
+                Pending(next, rest, signs),
               ),
             ),
           )
@@ -90,8 +127,9 @@ fn step_node(problem : Problem, node : Node) -> Result[NodeProgress, CadError] {
       signs,
       child
     ) =>
-      match step_node(problem, child) {
+      match step_node(problem, child, searching) {
         Err(error) => Err(error)
+        Ok(Found(point)) => Ok(Found(point))
         Ok(Working(next)) =>
           Ok(
             Working(
@@ -124,14 +162,16 @@ pub fn start(problem : Problem) -> Machine {
     node: Pending(
       rational_point(Nil),
       @core.drop(Succ(Zero), problem.projection.levels),
+      Nil,
     ),
   }
 }
 
 ///|
 pub fn step(state : Machine) -> Result[Progress, CadError] {
-  match step_node(state.problem, state.node) {
+  match step_node(state.problem, state.node, false) {
     Err(error) => Err(error)
+    Ok(Found(_)) => Err(InternalInvariant)
     Ok(Working(node)) => Ok(Paused({ ..state, node, }))
     Ok(Finished(tree)) => {
       let proof : Certificate = {
@@ -157,6 +197,55 @@ pub fn run(state : Machine, fuel : @core.Nat) -> Result[Progress, CadError] {
       match step(state) {
         Ok(Paused(next)) => run(next, rest)
         other => other
+      }
+  }
+}
+
+///|
+/// Full Collins projection is shared with start; lifting is demand driven.
+/// A false constant cylinder is recorded as a shortened checked leaf. A true
+/// cylinder returns a full exact point, without constructing unused siblings.
+pub fn start_search(problem : Problem) -> Search {
+  {
+    problem,
+    node: Pending(
+      rational_point(Nil),
+      @core.drop(Succ(Zero), problem.projection.levels),
+      Nil,
+    ),
+  }
+}
+
+///|
+pub fn search_step(state : Search) -> Result[SearchProgress, CadError] {
+  match step_node(state.problem, state.node, true) {
+    Err(error) => Err(error)
+    Ok(Working(node)) => Ok(Paused({ ..state, node, }))
+    Ok(Found(point)) => Ok(Satisfiable(point))
+    Ok(Finished(tree)) => {
+      let proof : Certificate = {
+        arity: state.problem.arity,
+        formula: state.problem.formula,
+        projection: state.problem.projection,
+        tree,
+      }
+      Ok(Unsatisfiable({ problem: state.problem, proof, }))
+    }
+  }
+}
+
+///|
+/// Fuel counts transitions, not fixed time. Paused or errors never imply UNSAT.
+pub fn search_run(
+  state : Search,
+  fuel : @core.Nat,
+) -> Result[SearchProgress, CadError] {
+  match fuel {
+    Zero => Ok(Paused(state))
+    Succ(rest) =>
+      match search_step(state) {
+        Ok(Paused(next)) => search_run(next, rest)
+        result => result
       }
   }
 }

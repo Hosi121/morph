@@ -3,6 +3,7 @@ fn check_node(
   problem : Problem,
   point : Point,
   levels : @core.Chain[@projection.Level],
+  parent_signs : @core.Chain[@core.Ordering],
   proof : TreeCertificate,
 ) -> Bool {
   match (levels, proof) {
@@ -10,6 +11,16 @@ fn check_node(
       match evaluate_formula(point, problem.formula) {
         Ok(expected) => holds.equal(expected)
         Err(_) => false
+      }
+    (Cons(_, _), Leaf(holds)) =>
+      match
+        @prefix.evaluate(
+          problem.prefix,
+          @core.length(point.coordinates),
+          parent_signs,
+        ) {
+        Ok(Known(expected)) => holds.equal(expected)
+        _ => false
       }
     (Cons(level, rest), Stack(isolation, cells)) =>
       match prepare_fibre(point, level.family) {
@@ -35,7 +46,7 @@ fn check_node(
                       ) {
                       (Ok(signs), Ok(next)) =>
                         cell.signs.equal(signs) &&
-                        check_node(problem, next, rest, cell.subtree) &&
+                        check_node(problem, next, rest, signs, cell.subtree) &&
                         walk(pending, tail)
                       _ => false
                     }
@@ -66,9 +77,17 @@ pub fn problem_of(value : Decomposition) -> Problem {
 ///|
 /// Validates source-bound Collins projection, complete relative root covers,
 /// canonical ordered samples, all specialised signs and all terminal truths.
+/// Shortened leaves additionally require a source-bound coefficient plan proving
+/// constant truth over the whole parent cell times every remaining coordinate.
 /// Field and PRS computations are recomputed; this is not a Lean proof.
 pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
   if !@logic.qf_atoms(problem.formula).equal(problem.atoms) ||
+    !@prefix.check_plan(
+      problem.arity,
+      problem.formula,
+      @core.map(problem.projection.levels, @projection.family),
+      problem.prefix,
+    ) ||
     !proof.arity.equal(problem.arity) ||
     !proof.formula.equal(problem.formula) ||
     !proof.projection.equal(problem.projection) ||
@@ -78,6 +97,7 @@ pub fn check(problem : Problem, proof : Certificate) -> Decomposition? {
       problem,
       rational_point(Nil),
       @core.drop(Succ(Zero), problem.projection.levels),
+      Nil,
       proof.tree,
     ) {
     Some({ problem, proof, })
@@ -91,7 +111,8 @@ fn same_problem(left : Problem, right : Problem) -> Bool {
   left.arity.equal(right.arity) &&
   left.formula.equal(right.formula) &&
   left.atoms.equal(right.atoms) &&
-  left.projection.equal(right.projection)
+  left.projection.equal(right.projection) &&
+  left.prefix.equal(right.prefix)
 }
 
 ///|
@@ -124,7 +145,7 @@ fn find_witness(
     Ok(None)
   } else {
     match (levels, tree) {
-      (Nil, Leaf(true)) => Ok(Some(point))
+      (_, Leaf(true)) => Ok(Some(complete_point(point, @core.length(levels))))
       (Cons(level, rest), Stack(_, children)) =>
         match prepare_fibre(point, level.family) {
           Err(error) => Err(error)

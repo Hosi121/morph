@@ -6,6 +6,7 @@ import {
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/polynomial",
+  "Hosi121/morph/prefixlogic",
   "Hosi121/morph/realcad",
   "Hosi121/morph/realformula",
   "Hosi121/morph/realtower",
@@ -58,9 +59,15 @@ pub fn rational_point(@core.Chain[@exact.Rational]) -> Point
 
 pub fn run(Machine, @core.Nat) -> Result[Progress, CadError]
 
+pub fn search_run(Search, @core.Nat) -> Result[SearchProgress, CadError]
+
+pub fn search_step(Search) -> Result[SearchProgress, CadError]
+
 pub fn sentence(Decomposition, @core.Chain[@realformula.Quantifier]) -> Result[Bool, CadError]
 
 pub fn start(Problem) -> Machine
+
+pub fn start_search(Problem) -> Search
 
 pub fn step(Machine) -> Result[Progress, CadError]
 
@@ -72,6 +79,7 @@ pub fn witness(Decomposition) -> Result[Point?, CadError]
 #derive(Eq, @debug.Debug)
 pub(all) enum CadError {
   WrongArity
+  PrefixFailure(@prefixlogic.PrefixError)
   InvalidCertificate
   ProjectionFailure(@cadprojection.ProjectionError)
   TowerFailure(@realtower.TowerError)
@@ -158,6 +166,7 @@ pub struct Problem {
   formula : @realcad.Formula
   atoms : @core.Chain[@polynomial.Polynomial]
   projection : @cadprojection.Certificate
+  prefix : @prefixlogic.Plan
 }
 pub fn Problem::to_repr(Self) -> @debug.Repr
 
@@ -176,6 +185,21 @@ pub(all) enum Sample {
 pub fn Sample::equal(Self, Self) -> Bool
 pub fn Sample::not_equal(Self, Self) -> Bool
 pub fn Sample::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  problem : Problem
+  node : Node
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum SearchProgress {
+  Satisfiable(Point)
+  Unsatisfiable(Decomposition)
+  Paused(Search)
+}
+pub fn SearchProgress::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) enum TreeCertificate {

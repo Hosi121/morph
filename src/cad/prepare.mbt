@@ -9,8 +9,18 @@ pub fn prepare(
   } else {
     match @projection.prepare(arity, atoms) {
       Err(error) => Err(ProjectionFailure(error))
-      Ok(plan) =>
-        Ok({ arity, formula, atoms, projection: @projection.certificate(plan), })
+      Ok(plan) => {
+        let projection = @projection.certificate(plan)
+        match
+          @prefix.prepare(
+            arity,
+            formula,
+            @core.map(projection.levels, @projection.family),
+          ) {
+          Err(error) => Err(PrefixFailure(error))
+          Ok(prefix) => Ok({ arity, formula, atoms, projection, prefix, })
+        }
+      }
     }
   }
 }

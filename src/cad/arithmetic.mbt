@@ -354,3 +354,16 @@ fn prepare_fibre(
       }
   }
 }
+
+///|
+/// Any remaining coordinates of a certified true cylinder may be chosen zero.
+/// All coordinates stay in the same checked descendant field.
+fn complete_point(point : Point, remaining : @core.Nat) -> Point {
+  {
+    ..point,
+    coordinates: @core.append(
+      point.coordinates,
+      @core.replicate_onto(remaining, @tower.scalar_zero(point.field), Nil),
+    ),
+  }
+}
