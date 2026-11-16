@@ -8,6 +8,7 @@ python3 tools/inventory.py --check
 python3 tools/audit_purity.py
 python3 tools/audit_paths.py --check
 python3 tools/check_model_drift.py
+python3 tools/benchmark_bareiss.py --check-reference-only
 python3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null
 python3 tools/generate_binary_tiny_products.py --check
 python3 tools/generate_binary_tiny_differences.py --check --winner lookup

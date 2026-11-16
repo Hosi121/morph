@@ -10,6 +10,22 @@ COHORTS=['small','integer6','integer8','rational6','rational8','singular8','pivo
 UNITS={'ns':1e-9,'µs':1e-6,'μs':1e-6,'us':1e-6,'ms':1e-3,'s':1}
 
 
+def check_reference():
+ lock=json.loads((ROOT/'docs/measurements/bareiss-20261116-reference.json').read_text())
+ assert lock['schema_version']==1,'unknown frozen-reference lock schema'
+ reference=ROOT/lock['sources']['wb_reference']
+ rref=ROOT/lock['sources']['rref_dependency']
+ def body(name):return function_tokens(reference,name).split(b'{',1)[1]
+ actual={
+  'arithmetic_body':hashlib.sha256(body('bareiss_reference_arithmetic')).hexdigest(),
+  'normalized_determinant_body':hashlib.sha256(body('bareiss_reference_field_determinant').replace(b'@rowreduce.rref(',b'rref(')).hexdigest(),
+  'rref_wholefile':hashlib.sha256(rref.read_bytes()).hexdigest(),
+  'wrapper_body':hashlib.sha256(body('bareiss_frozen_reference')).hexdigest(),
+ }
+ assert actual==lock['sha256'],'frozen Bareiss reference drift; review before updating its lock'
+ return dict(provenance=lock['provenance'],sha256=actual,reference_source_sha256=hashlib.sha256(reference.read_bytes()).hexdigest())
+
+
 def parse(output):
  rows={}
  pattern=r'^(reference|Bareiss)_([a-z0-9]+)\s+([0-9.]+)\s+(ns|µs|μs|us|ms|s)\s+±\s+([0-9.]+)\s+(ns|µs|μs|us|ms|s)'
@@ -35,19 +51,14 @@ def preserve(target):
 
 
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--check-reference-only',action='store_true',help='verify the frozen baseline without running benchmarks or requiring Git history')
+ args=parser.parse_args()
  ART.mkdir(parents=True,exist_ok=True)
- reference=ROOT/'src/rowreduce/rowreduce.mbt'
- assert reference.read_bytes()==subprocess.check_output(['git','-C',str(ROOT),'show','a8e7207:src/rowreduce/rowreduce.mbt']),'frozen reference rref dependency changed'
- original_linear=ART/'original-linear.mbt'
- original_linear.write_bytes(subprocess.check_output(['git','-C',str(ROOT),'show','a8e7207:src/linear/linear.mbt']))
- frozen_reference=ROOT/'src/bareiss/frozen_reference_wbtest.mbt'
- def body(path,name):return function_tokens(path,name).split(b'{',1)[1]
- old_det=body(reference,'determinant')
- new_det=body(frozen_reference,'bareiss_reference_field_determinant').replace(b'@rowreduce.rref(',b'rref(')
- assert old_det==new_det,'frozen determinant body drift'
- assert body(original_linear,'arithmetic')==body(frozen_reference,'bareiss_reference_arithmetic'),'frozen arithmetic dictionary drift'
- (ART/'frozen-reference.json').write_text(json.dumps(dict(base='a8e7207',determinant_body_sha256=hashlib.sha256(old_det).hexdigest(),reference_source_sha256=hashlib.sha256(frozen_reference.read_bytes()).hexdigest(),rref_dependency_sha256=hashlib.sha256(reference.read_bytes()).hexdigest()),indent=2)+'\n')
+ (ART/'frozen-reference.json').write_text(json.dumps(check_reference(),indent=2)+'\n')
+ if args.check_reference_only:
+  print('Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.')
+  return
  frozen={}
  for folder in ['src/bareiss','src/linear','src/rowreduce','src/berkowitz']:
   for path in sorted((ROOT/folder).glob('*')):

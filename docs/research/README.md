@@ -7,7 +7,7 @@
 
 | 記録 | 内容 | 状態 |
 | --- | --- | --- |
-| [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 進行中 |
+| [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号をつなぐ4時間の探索 | 仕上げ・統合検証中 |
 | [一変数の実数制約](realcad-20261116.md) | 符号不変分割、無理数の証人、存在・全称と証拠検査 | 統合済み |
 | [一般グラフのマッチング](blossom-20261116.md) | 奇数サイクルの縮約・展開、Tutte–Berge証拠 | 統合済み |
 | [整数・有理多項式の分解](zassenhaus-20261116.md) | Berlekamp・Hensel・Zassenhaus | [独立レビュー](zassenhaus-independent-review-20261116.md)済み |
@@ -26,10 +26,14 @@
 | [疎Horner評価](sparse-horner-20261116.md) | 一変数の通常経路と実数制約の計測 | [独立QQ・Leanレビュー](sparse-horner-independent-review-20261116.md)後に採用 |
 | [Sturm–Tarskiの符号判定](tarski-20261116.md) | 半開端点のTaylor jetsと負剰余列で根上の符号を求める | 独立oracle356 query＋40根符号 |
 | [環上の消去](elimination-20261116.md) | 固定次数resultant、discriminant、Bézout証拠とQQ projection | 独立置換展開・SymPyと比較 |
-| [共通の実数体](compositum-20261116.md) | 原入力の選択根をprimitive elementの剰余へ埋め込む | 独立SymPyと比較、追加レビュー中 |
+| [共通の実数体](compositum-20261116.md) | 原入力の選択根をprimitive elementの剰余へ埋め込む | [独立レビュー](compositum-review-20261116.md)済み |
 | [principal subresultants](elimination-principal-20261116.md) | 固定次数のPSCとQQ変数消去への接続 | 独立determinant/gcd oracle |
 | [Collins projection](projection-20261116.md) | 全reducta・導関数・atom対のPSCを投影する | 一次資料の定義と独立oracle |
 | [数体係数の実根](orderedsturm-20261116.md) | 相対Sturm・半開根数・tower rootと全根cover | 3 backend、独立Fraction/SymPy |
+| [数体係数の符号分割](relativecad-20261116.md) | 相対SturmからBoolean制約の全セルへ | [独立レビュー](cad2-independent-review-20261116.md)済み |
+| [二変数CAD・量化文](cad2-20261116.md) | full Collinsと代数的lifting、量化順序どおりの集約 | [独立35族・142 fibre](cad2-independent-review-20261116.md)と一致 |
+| [厳密な区間集合](semialgebraic-20261116.md) | 量化結果を代数的端点の区間・点の集合へ | 全170 truth列と境界・membershipを検査 |
+| [Bareiss行列式](bareiss-20261116.md) | 整数保存・分母払い・任意精度oracle・同一artifact比較 | [通常経路へ採用](bareiss-adoption-20261116.md) |
 | [探索とリファクタリングの履歴](HISTORY.md) | 初期の実装、表現コストの見直し、検証と統合の経緯 | 当時の記録を保存 |
 | [長語除算・剰余](wide-kernels/README.md) | 逆順fold、末尾再帰、有限prefix、unrollの比較 | 通常経路へ未採用 |
 

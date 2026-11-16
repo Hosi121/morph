@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "original_worker_commit": "a8e7207e29673653cb606040403df10f8a6f9127",
+    "main_equivalent_commit": "c1da59d3192409099a96a29e2dec72e070d9a2c1",
+    "review": "Original and main-equivalent rowreduce/old-linear bytes match; frozen WB bodies match their originals. Hashes detect drift, not source-translation correctness."
+  },
+  "normalization": "check_model_drift.function_tokens, then body after first opening brace; determinant body replaces @rowreduce.rref( with rref(. Other bodies are unchanged.",
+  "sources": {
+    "wb_reference": "src/bareiss/frozen_reference_wbtest.mbt",
+    "rref_dependency": "src/rowreduce/rowreduce.mbt"
+  },
+  "sha256": {
+    "arithmetic_body": "5ccd30f9259c3ee7f87ead1dca5695311e693a9b3c87e4ae9ad9be7430171d97",
+    "normalized_determinant_body": "b8aeb8453de4363b02383cc2ef2f924410f209a9a9e7dc20d9bfeb029b826d60",
+    "rref_wholefile": "2d40bac3f673fd0cc8186bd06b756bafdaaa8fea6e2c8e724a530c4470b26855",
+    "wrapper_body": "fca66aea0bebede49682ebbcfcaf9222109cc548006ffd23472a7e38fa853ea8"
+  }
+}

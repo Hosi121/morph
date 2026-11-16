@@ -1,5 +1,7 @@
 # Exact interval-set reification of bivariate QE truth cells, 2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 `semialgebraic` converts a completed `cad2.eliminate_y` truth column into a finite union of intervals and isolated points with exact real algebraic endpoints. The free variable is x; y is quantified by Exists or Forall over the reals. This is an **exact interval-set representation of a QE result**, not a conversion to a quantifier-free rational-polynomial Formula, a new projection algorithm, or a general higher-dimensional CAD implementation.
 
 [Construction](../../src/semialgebraic/assemble.mbt), [membership](../../src/semialgebraic/contains.mbt), [generated API](../../src/semialgebraic/pkg.generated.mbti), [independent oracle generator](../../tools/generate_semialgebraic_fixtures.py), [oracle data](semialgebraic-20261116-fixtures.json), [verification transcript](semialgebraic-20261116-validation.json).

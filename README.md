@@ -67,6 +67,7 @@ tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 
 | 資料 | 内容 |
 | --- | --- |
+| [次の到達点](docs/ROADMAP.md) | 任意変数の実閉体ソルバと証拠付き非線形SMTへの計画 |
 | [ハンドブック](HANDBOOK.md) | アルゴリズムの設計、表現コスト、考察、限界 |
 | [パッケージ一覧](docs/INVENTORY.md) | ソースから生成した依存関係・テスト宣言数 |
 | [基礎部品の最適化](docs/KERNELS.md)・[呼び出し経路](docs/CALL_PATHS.md) | 改善の採否と、通常経路への統合状況 |

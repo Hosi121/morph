@@ -71,6 +71,7 @@
 | 線形代数 | [有理数の行列式・逆行列・解空間](../src/linear/linear.mbt)・[体で共通化したGauss–Jordan](../src/rowreduce/rowreduce.mbt) |
 | 環上の行列 | [除算不要のBerkowitz特性多項式・行列式](../src/berkowitz/berkowitz.mbt)・[随伴行列・行列への多項式代入](../src/berkowitz/matrix_polynomial.mbt) |
 | 整数線形代数 | [証拠付きSmith標準形](../src/smith/smith.mbt)・[整数解/不可能証拠](../src/smith/equations.mbt)・[有限生成アーベル群](../src/smith/cokernel.mbt) |
+| 分数なしの行列式 | [Bareiss・厳密除算・行ごとの分母払い](../src/bareiss/bareiss.mbt)・[通常の有理数行列式](../src/linear/linear.mbt) |
 | 格子 | [厳密有理数のLLL・依存基底の前処理・unimodular証拠](../src/lll/lll.mbt) |
 | 線形最適化 | [二段階単体法・Bland規則・双対解/非有界/Farkas証拠](../src/simplex/simplex.mbt) |
 | 整数最適化 | [0/1分枝限定法・再開可能なLP緩和・最適性の証拠木](../src/zeroone/zeroone.mbt) |
@@ -100,6 +101,7 @@
 | BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
 | 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
+| 二変数の実数制約 | [full Collins→数体上のlifting→量化文の判定](../src/cad2/machine.mbt)・[量化結果の区間集合と厳密membership](../src/semialgebraic/assemble.mbt) |
 | パリティゲーム | [再開可能なZielonka法・位置戦略・独立した閉路検査](../src/parity/solve.mbt) |
 | モデル検査 | [μ-calculusの再帰的な様相論理式→パリティゲーム](../src/mucalc/compiler.mbt) |
 | 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](../src/exactcover/exactcover.mbt)・[再開可能な全解列挙](../src/exactcover/enumerate.mbt) |

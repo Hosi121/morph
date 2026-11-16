@@ -1,5 +1,7 @@
 # relativecad / cad2 の独立レビュー
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 レビュー対象は root 担当の `relativecad` と、その上の二変数 CAD。
 本体は変更せず、既知の族の意味から先に oracle を固定し、API 凍結後に tests を接続する。
 本 note の初期段階は 2026-11-16 09:28 UTC 時点、cad2 API の発行前。

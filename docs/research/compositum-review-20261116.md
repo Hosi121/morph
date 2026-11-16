@@ -1,5 +1,7 @@
 # Independent compositum review, 2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 Reviewed frozen worker commit `706cb8b` (root integration `5d1d9f2`) with frozen numberfield realization/minimality dependency `24d04ed`. The review modifies **no production source, package configuration, or API**. Local dependency cherry-picks are `24d04ed -> 8d949fc` and `706cb8b -> 9c9f9b7`; these are separate from the review-only commit.
 
 [Review tests](../../src/compositum/adversarial_review_wbtest.mbt), [generated direct arithmetic tests](../../src/compositum/direct_review_wbtest.mbt), [independent generator](../../tools/generate_compositum_review_fixtures.py), [oracle data](compositum-review-20261116-fixtures.json), [raw validation transcript](compositum-review-20261116-validation.json).

@@ -41,6 +41,13 @@
 | GF(2^m)の積 | Galois.multiply→RSの符号化/復号、AESの有限体演算 | [可変長Bool列](bootstrap/gf2-performance/README.md)。同一CPU timer系列でGF256積5.225→0.942 µs、RS255は7.510→5.000 ms。固定幅案はRSを悪化させたため棄却 |
 | 一変数多項式の評価 | 公開polynomial.evaluate→Sturm・実数制約・実代数計算 | [疎Horner](research/sparse-horner-20261116.md)。同じnative ELFの密な6評価2.51→0.336 ms、実数制約の次数8例1.59→0.490 s。√2の小例は横ばい。JSにも局所改善、WasmGCの短い対照は揺れが大きい。独立QQと降順を前提にしたLeanモデル |
 
+## 行列式
+
+[Bareissの採用](research/bareiss-adoption-20261116.md)で、`linear.determinant`を整数保存消去へ接続しました。
+分母払いを含め、nativeの密な6/8次cohortは旧RREF経路の1.86〜2.36倍。
+上位の固定例では、和のresultantと証拠検査が135.88→89.26 µs、四次数体のnorm4回が174.87→105.97 µsでした。
+次数4×2の積resultantは範囲が重なるため改善を主張しません。Hornerとの倍率は合成しません。
+
 ## SATと反証
 
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
