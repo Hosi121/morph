@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：93パッケージ、240ソース。
-核のテスト宣言：3474、bench group：212。
+算法の核：95パッケージ、245ソース。
+核のテスト宣言：3539、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -26,7 +26,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [blossom](../src/blossom) | 2 | 12 | 0 | `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
-| [cad](../src/cad) | 7 | 8 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
+| [cad](../src/cad) | 7 | 10 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
 | [cad2](../src/cad2) | 5 | 47 | 0 | `binary`, `core`, `numberfield`, `orderedsturm`, `polynomial`, `projection`, `realalgebraic`, `realcad`, `realminimal`, `relativecad` |
 | [cadprojection](../src/cadprojection) | 4 | 33 | 0 | `core`, `elimination`, `exact`, `polynomial` |
 | [cdcl](../src/cdcl) | 5 | 42 | 65 | `binary`, `core`, `sat` |
@@ -78,9 +78,11 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
 | [realalgebraic](../src/realalgebraic) | 6 | 158 | 2 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
 | [realcad](../src/realcad) | 5 | 42 | 3 | `core`, `exact`, `polynomial`, `sturm` |
+| [realclosed](../src/realclosed) | 1 | 5 | 0 | `cad`, `core`, `realcad`, `realformula` |
 | [realformula](../src/realformula) | 3 | 112 | 0 | `core`, `polynomial`, `realcad` |
 | [realminimal](../src/realminimal) | 3 | 43 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm`, `zassenhaus` |
-| [realtower](../src/realtower) | 7 | 6 | 0 | `binary`, `core`, `exact`, `sturm` |
+| [realnlsmt](../src/realnlsmt) | 4 | 0 | 0 | `cad`, `cdcl`, `circuit`, `core`, `polynomial`, `realcad`, `realformula`, `sat` |
+| [realtower](../src/realtower) | 7 | 64 | 0 | `binary`, `core`, `exact`, `sturm` |
 | [realvariety](../src/realvariety) | 6 | 124 | 0 | `binary`, `core`, `exact`, `f4`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
 | [reedsolomon](../src/reedsolomon) | 1 | 4 | 0 | `binary`, `core`, `finitefield`, `matrix`, `modular`, `rowreduce` |

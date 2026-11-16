@@ -1,0 +1,11 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/realcad" @qf,
+  "Hosi121/morph/realformula" @logic,
+  "Hosi121/morph/cad",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+  "Hosi121/morph/polynomial" @poly,
+} for "wbtest"

@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realclosed"
+
+import {
+  "Hosi121/morph/cad",
+  "Hosi121/morph/core",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/realformula",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Solution) -> Certificate
+
+pub fn check(@core.Nat, @realformula.Formula, Certificate) -> Solution?
+
+pub fn check_result(@core.Nat, @realformula.Formula, Solution, Certificate) -> Bool
+
+pub fn free_variables(Problem) -> @core.Nat
+
+pub fn prenex(Problem) -> @realformula.Prenex
+
+pub fn prepare(@core.Nat, @realformula.Formula) -> Result[Problem, SolverError]
+
+pub fn quantifier_free(Solution) -> @realcad.Formula
+
+pub fn run(Machine, @core.Nat) -> Result[Progress, SolverError]
+
+pub fn source(Problem) -> @realformula.Formula
+
+pub fn start(Problem) -> Machine
+
+pub fn truth(Solution) -> Bool?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  normalization : @realformula.Certificate
+  elimination : @cad.EliminationCertificate
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Machine {
+  problem : Problem
+  state : @cad.Machine
+}
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Problem {
+  normal : @realformula.Prenex
+  cad : @cad.Problem
+}
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Complete(Solution)
+  Paused(Machine)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Solution {
+  problem : Problem
+  value : @cad.Elimination
+}
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SolverError {
+  FormulaFailure(@realformula.BuildError)
+  CadFailure(@cad.CadError)
+  InvalidCertificate
+}
+pub fn SolverError::equal(Self, Self) -> Bool
+pub fn SolverError::not_equal(Self, Self) -> Bool
+pub fn SolverError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
