@@ -1,5 +1,7 @@
 # Symbolic Berlekamp–Zassenhaus, 2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 This package implements exact factorization of nonzero univariate integer and rational polynomials. It combines existing finite-field Berlekamp and rational-polynomial GCD packages with new primitive normalization, characteristic-zero square-free decomposition, simultaneous Hensel lifting, and exhaustive Zassenhaus recombination. All production arithmetic uses immutable symbolic ADTs. Numeric conversion, arrays, and external CAS calls occur only in tests and the fixture generator.
 
 The package has 454 tests passing on native, JS, and WasmGC, including independent SymPy fixtures and a complete small coefficient grid. This is an executable algorithm and certificate checker, not a machine-checked proof of the implementation or a performance improvement claim.

@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：73パッケージ、154ソース。
-核のテスト宣言：1228、bench group：182。
+算法の核：74パッケージ、157ソース。
+核のテスト宣言：1338、bench group：182。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -64,8 +64,9 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [primefield](../src/primefield) | 1 | 5 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
 | [primeprove](../src/primeprove) | 1 | 8 | 8 | `binary`, `core`, `factor`, `primality` |
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
-| [realalgebraic](../src/realalgebraic) | 6 | 69 | 0 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
+| [realalgebraic](../src/realalgebraic) | 6 | 154 | 0 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
 | [realcad](../src/realcad) | 5 | 42 | 0 | `core`, `exact`, `polynomial`, `sturm` |
+| [realvariety](../src/realvariety) | 3 | 25 | 0 | `core`, `exact`, `f4`, `polynomial`, `realalgebraic`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
 | [reedsolomon](../src/reedsolomon) | 1 | 4 | 0 | `binary`, `core`, `finitefield`, `matrix`, `modular`, `rowreduce` |
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |

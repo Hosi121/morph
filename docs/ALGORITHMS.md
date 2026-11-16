@@ -18,6 +18,7 @@
 | 二進算術 | [算術・連結・pair/unpair](../src/binary/binary.mbt)・[Karatsuba](../src/binary/karatsuba.mbt)・[Stein GCD・整数平方根・Fibonacci](../src/binary/number_theory.mbt) |
 | 圧縮二進算術 | [runを展開しない加減乗算・shift・pair](../src/runbinary/runbinary.mbt)・[燃料付き除算](../src/runbinary/division.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
+| 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
 | ソート | [安定merge/insertion/quick sort](../src/sorting/sorting.mbt) |
 | 優先度キュー | [永続leftist heap・heap sort](../src/heap/heap.mbt) |
 | 辞書 | [Boolワードの永続trie・最長prefix・union](../src/trie/trie.mbt)・[永続AVL・削除・順位と選択](../src/avl/avl.mbt) |
@@ -46,7 +47,10 @@
 | 円分体・厳密FFT | [円分多項式の正規形・逆元](../src/cyclotomic/cyclotomic.mbt)・[正規化されたFFT/逆FFT](../src/exactfft/exactfft.mbt) |
 | NTT | [有限体変換・逆変換・線形畳み込み](../src/ntt/ntt.mbt) |
 | 多項式 | [有理係数の疎多項式・除算・GCD・偏微分](../src/polynomial/polynomial.mbt) |
+| 整数・有理係数の因数分解 | [Berlekamp–Zassenhaus・Hensel持ち上げ・既約性の検査](../src/zassenhaus/factorization.mbt) |
 | Gröbner基底 | [再開可能なBuchberger・既約基底](../src/groebner/groebner.mbt) |
+| F4 | [Macaulay行列のbatch簡約・入力idealへのwitness](../src/f4/f4.mbt) |
+| 零次元系の実解 | [検査済みF4基底→shape→全実根の共有パラメータ表現](../src/realvariety/shape.mbt) |
 | 実代数 | [Sturm列・実根数・有理区間による隔離と精密化](../src/sturm/sturm.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
@@ -74,6 +78,7 @@
 | 全域森 | [Kruskal・Prim・最小性の証拠検査](../src/spanning/spanning.mbt) |
 | ネットワーク | [Edmonds–Karp最大流・最小カット・証拠検査](../src/maxflow/maxflow.mbt) |
 | マッチング | [Hopcroft–Karp・最小頂点被覆・最適性検査](../src/bipartite/bipartite.mbt) |
+| 一般マッチング | [Blossom縮約・展開・最大対応とTutte–Berge証拠](../src/blossom/blossom.mbt) |
 
 <a id="logic-constraints"></a>
 
@@ -88,6 +93,7 @@
 | BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
 | 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
+| パリティゲーム | [再開可能なZielonka法・位置戦略・独立した閉路検査](../src/parity/solve.mbt) |
 | 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](../src/exactcover/exactcover.mbt)・[再開可能な全解列挙](../src/exactcover/enumerate.mbt) |
 | 制約のモデル化 | [Nクイーン](../src/puzzles/queens.mbt)・[4×4/9×9数独](../src/puzzles/sudoku.mbt) |
 
@@ -116,4 +122,6 @@
 | ハッシュ | [BoolリストだけのSHA-256](../src/sha256/sha256.mbt)・[固定幅ビット演算](../src/sha256/word.mbt) |
 | AES | [GF(256)からのSbox生成](../src/aes/sbox.mbt)・[128/192/256bit鍵のblock暗号・復号](../src/aes/cipher.mbt) |
 | 誤り訂正 | [Reed–Solomon評価符号・Berlekamp–Welch・消失訂正](../src/reedsolomon/reedsolomon.mbt) |
+| 二進BCH | [共役根からの生成多項式・系統符号化・BM/Chien訂正](../src/bch/bch.mbt) |
+| リスト復号 | [Guruswami–Sudan多重度補間・Roth–Ruckenstein探索](../src/listdecode/interpolate.mbt) |
 | 漸化式と巡回符号 | [Berlekamp–Massey](../src/recurrence/recurrence.mbt)・[Chien/ForneyによるGF(p^m)のRS訂正](../src/cyclicrs/cyclicrs.mbt) |

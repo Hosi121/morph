@@ -18,6 +18,7 @@
 - [永続二分trie](#trie)
 - [永続AVL木](#avl)
 - [圧縮二進表現](#compressed)
+- [実代数的数](#algebraic-numbers)
 
 <a id="list-nat"></a>
 
@@ -215,3 +216,14 @@ Eqは木の形の観察であり、別の挿入順で得た辞書の内容同値
 **入口:** [runbinary](../../src/runbinary) · [設計と検証](../bootstrap/runbinary.md) · [独立レビュー](../bootstrap/review-runbinary.md)
 
 Natの半分化、二進変換、定数の共有、比較の現在の実装は[基礎部品の最適化](../KERNELS.md)を参照。
+
+<a id="algebraic-numbers"></a>
+
+## 実代数的数
+
+[realalgebraic](../../src/realalgebraic)は、多項式と有理数の一根区間を検査して実数を表す。
+resultantの厳密補間と区間の細分化で和・積・逆数・商を構成し、共役根から正しい値を選ぶ。
+異なる定義が同じ数を表す場合も、gcdと区間の分離によって比較する。
+証拠自体の検査と、別渡しの返却値との束縛を検査するAPIを区別する。
+
+詳細: [構成・演算・証拠](../research/realalgebraic-20261116.md) · [独立レビュー](../research/realalgebraic-independent-review-20261116.md)

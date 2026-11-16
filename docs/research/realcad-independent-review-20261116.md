@@ -1,5 +1,7 @@
 # realcad 独立レビュー（2026-11-16）
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 [研究記録](README.md) / [凍結した本体](../../src/realcad/machine.mbt)
 
 対象は commit `64f703d` の `src/realcad`。今回の有限な検証範囲で、誤った分解・符号・真理値・完了判定を返す反例は見つからなかった。本体は変更していない。既存944件の SymPy 例を増やすだけでなく、**SymPy、Sturm 列、production 実行を使わない別の期待値経路**と、半開端点・gap refinement・全 fuel 境界の試験を追加した。

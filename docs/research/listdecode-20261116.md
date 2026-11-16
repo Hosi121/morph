@@ -1,5 +1,7 @@
 # Prime-field Reed–Solomon の Guruswami–Sudan リスト復号（2026-11-16）
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 [研究記録](README.md) / [生成 API](../../src/listdecode/pkg.generated.mbti)
 
 今回の問いは、Hasse 多重度の二変数補間と Roth–Ruckenstein（RR）の根探索を純記号表現で合成し、一意訂正半径を超えた**候補集合全体**を求められるか。実装は [src/listdecode](../../src/listdecode/types.mbt)。既存の `primefield`、`rowreduce.solve`、`fppoly` を利用し、本体には機械数値、配列、mutation、FFI、全メッセージ列挙を使わない。先行する BCH の実装・記録は凍結したまま追加した。

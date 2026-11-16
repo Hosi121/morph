@@ -1,5 +1,7 @@
 # Exact real algebraic numbers, 2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 This package represents a real number by a nonzero rational univariate polynomial and a rational half-open interval `(lower, upper]` containing exactly one distinct real root. Construction checks that condition with the existing Sturm package; repeated and reducible defining polynomials are allowed and normalized to a monic square-free definition. No floating point or external CAS occurs in production code. This is executable exact arithmetic and certificate checking, not a formal proof of the MoonBit implementation or an asymptotic performance claim.
 
 ## Representation, comparison, and resultants

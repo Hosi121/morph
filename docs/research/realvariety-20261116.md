@@ -1,5 +1,7 @@
 # Shape-position real solutions and rational univariate representation
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 This package connects the symbolic F4 basis, Sturm root isolation, and exact real-algebraic representations. It solves the explicitly checked shape case of a zero-dimensional rational polynomial system, using the last variable as parameter `t`. It does not implement general CAD, a separating linear change of coordinates, or a general zero-dimensional solver.
 
 The F4 dependency is the frozen source commit `ae6f76b3d529ae86c63d065a77f9f5b380ddd1a6` (locally cherry-picked as `daf9e74`). No F4 implementation files are edited here. The initial RUR milestone passes **25 tests on native, JS and WasmGC**.

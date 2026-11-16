@@ -15,6 +15,7 @@
 - [Reed–Solomon評価符号](#reed-solomon)
 - [漸化式と巡回Reed–Solomon](#cyclic-rs)
 - [有限体から組み立てるAES](#aes)
+- [BCHとリスト復号](#advanced-codes)
 
 <a id="bit-codes"></a>
 
@@ -164,3 +165,17 @@ NISTの中間状態・既知ベクトルと、OpenSSLの別実装を使って照
 これらの暗号実装はアルゴリズムを読むためのもので、定数時間性やサイドチャネル耐性を保証しない。
 
 詳細: [AESの構成と検証](../bootstrap/aes.md)
+
+<a id="advanced-codes"></a>
+
+## BCHとリスト復号
+
+[bch](../../src/bch)はGF(2^m)の共役根から二進の生成多項式を作り、
+系統符号化とBM・Chienによる誤り訂正を行う。full-length primitive narrow-senseを対象とする。
+
+[listdecode](../../src/listdecode)はHasse多重度制約を線形核で解き、
+Guruswami–Sudanの補間多項式からRoth–Ruckenstein法で候補を列挙する。
+一意訂正半径を超える場合には、正しい候補が複数あり得る。
+候補の健全性と、探索が完了して全候補を列挙したことは別の条件である。
+
+詳細: [二進BCH](../research/bch-20261116.md) · [GSリスト復号](../research/listdecode-20261116.md)

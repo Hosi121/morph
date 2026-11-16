@@ -16,6 +16,7 @@
 - [記号微分と自動微分](#differentiation)
 - [有理数による厳密幾何](#geometry)
 - [円分体と厳密FFT](#exact-fft)
+- [因数分解・F4・有限な実解集合](#advanced-polynomials)
 
 <a id="fft"></a>
 
@@ -210,3 +211,21 @@ BézierはBernstein式を展開した独立の整数係数式と、区間外を�
 元の矢印FFTとの意味の対応と、正規形での往復を別々に確認する。
 
 詳細: [円分体・厳密FFTの設計と検証](../bootstrap/cyclotomic.md)
+
+<a id="advanced-polynomials"></a>
+
+## 因数分解・F4・有限な実解集合
+
+[zassenhaus](../../src/zassenhaus)は、平方因子分離、有限体でのBerlekamp分解、
+Hensel持ち上げ、Zassenhaus再結合を使って整数・有理係数の一変数多項式を分解する。
+積の一致と既約性の検査を分け、全subset探索が終わらなければ既約と判定しない。
+
+[f4](../../src/f4)は複数Sペアをbatchし、symbolic preprocessingからMacaulay行列を作る。
+有理数の行簡約で新しい先頭単項式を抽出し、元入力のidealへの係数多項式witnessを保つ。
+入力の包含、出力のideal membership、全Sペアの簡約を別々に検査する。
+
+[realvariety](../../src/realvariety)は、検査済みF4基底から`g(t), x_i-h_i(t)`のshapeを抽出する。
+全実根を隔離し、共有する代数的パラメータαと座標`h_i(α)`で実解を表す。
+対応しないshapeや正次元の系を、解がないという結果へ置き換えない。
+
+詳細: [Zassenhaus](../research/zassenhaus-20261116.md) · [F4](../research/f4-20261116.md) · [実解表現](../research/realvariety-20261116.md)

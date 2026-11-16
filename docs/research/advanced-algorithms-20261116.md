@@ -37,3 +37,6 @@
 - 07:25 UTC: 4時間枠を開始。基準ソースと終了時刻を固定。
 - 07:28 UTC: 三つの独立作業木を準備し、Blossom・Hensel/Zassenhaus・BCHを分担。
 - rootはSturmによる符号分割と証拠検査の設計を進める。
+
+- 08:25 UTC: 第一段階の統合検査の完了を確認。`6934453`の計算核でnative/JS/Wasm GC各1,339テスト、24 Python、157純記号ソース、78API、既存Leanモデルが通過。各検査の[全出力](../measurements/advanced-20261116-first-validation.txt)を保存。
+- 追加のbootstrap: F4から零次元系の実解表現へ、パリティゲームからμ-calculusモデル検査へ進める。実代数的数の証拠と返却値の束縛も独立レビューで補強。

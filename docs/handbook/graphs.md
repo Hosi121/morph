@@ -13,6 +13,7 @@
 - [最小全域森と最適性検査](#spanning)
 - [最大流と最小カット](#flow)
 - [Hopcroft–Karpと最小頂点被覆](#matching)
+- [Blossomによる一般グラフの最大対応](#general-matching)
 
 <a id="paths"></a>
 
@@ -120,3 +121,14 @@ source/sink の流量、カットの妥当性、カット容量＝流量を検�
 この実装全体の実時間へそのまま移す主張はしない。
 
 原論文：[Hopcroft–Karp 1973](https://doi.org/10.1137/0202019)。
+
+<a id="general-matching"></a>
+
+## Blossomによる一般グラフの最大対応
+
+[blossom](../../src/blossom)は二部グラフに限定しない最大cardinality matchingを扱う。
+奇数サイクルを縮約して増加路を探し、元のグラフへ路を展開する。
+最大性はTutte–Berge barrierと対応の大きさの等式で検査し、検査器はBlossom探索を呼ばない。
+重み付きmatchingは対象に含まない。
+
+詳細: [縮約・展開・証拠・独立列挙](../research/blossom-20261116.md)

@@ -37,8 +37,8 @@ Fibonacci(100)、SHA-256、Gröbner基底、単体法、8クイーンなどを�
 | [数論・有限体](docs/ALGORITHMS.md#number-theory) | CRT、素数証明、因数分解、拡大体、離散対数、楕円曲線 |
 | [変換・記号計算](docs/ALGORITHMS.md#symbolic-computation) | FFT・NTT、円分体、Gröbner基底、実根隔離、自動微分、厳密幾何 |
 | [線形代数・最適化](docs/ALGORITHMS.md#linear-optimization) | Gauss–Jordan、Smith標準形、LLL、単体法、0/1分枝限定法 |
-| [グラフ](docs/ALGORITHMS.md#graphs) | 最短路、SCC、最小全域森、最大流、二部マッチング |
-| [論理・制約解決](docs/ALGORITHMS.md#logic-constraints) | SAT・CDCL・SMT、BDD、回路検証・合成、exact cover、数独 |
+| [グラフ](docs/ALGORITHMS.md#graphs) | 最短路、SCC、最小全域森、最大流、一般マッチング |
+| [論理・制約解決](docs/ALGORITHMS.md#logic-constraints) | SAT・SMT、BDD、回路、実数制約、パリティゲーム |
 | [言語・列アルゴリズム](docs/ALGORITHMS.md#languages-sequences) | 単一化、型推論、CEK、正規表現、CYK、文字列検索、動的計画法 |
 | [符号・圧縮・暗号](docs/ALGORITHMS.md#coding-cryptography) | 自己区切り符号、Huffman、LZ78、SHA-256、AES、Reed–Solomon |
 

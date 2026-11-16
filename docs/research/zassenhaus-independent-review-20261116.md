@@ -1,5 +1,7 @@
 # Zassenhaus 独立レビュー、2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 [研究・探索記録](README.md) / [実装記録](zassenhaus-20261116.md)
 
 実装者とは別のエージェントが、`df66e93` の Zassenhaus 実装を独立に検査した。この専有 worktree では依存コミットを `d42a183` として取り込んだ。レビューで追加したものは [テスト](../../src/zassenhaus/independent_review_wbtest.mbt)、[標準ライブラリだけの数値 witness 検査](../../tools/zassenhaus_independent_review.py)、本記録のみ。本体・既存テスト・既存 generator は変更していない。

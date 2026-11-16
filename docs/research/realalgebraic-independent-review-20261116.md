@@ -1,5 +1,7 @@
 # realalgebraic 独立レビュー、2026-11-16
 
+[ドキュメント](../README.md) / [研究・探索記録](README.md)
+
 [研究・探索記録](README.md) / [実装記録](realalgebraic-20261116.md)
 
 実装者とは別のエージェントが `7a33d59` と `c500327` を検査した。専有 worktree での依存取り込みはそれぞれ `e56b671` と `fe8fc67`。本体・F4・既存テスト・既存 generator は変更していない。追加は [レビュー専用テスト](../../src/realalgebraic/independent_review_wbtest.mbt)、[独立 resultant fixture](../../src/realalgebraic/independent_review_fixtures_wbtest.mbt)、[標準ライブラリだけの oracle](../../tools/generate_realalgebraic_review.py)、本記録である。

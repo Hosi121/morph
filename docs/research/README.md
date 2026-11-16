@@ -13,10 +13,11 @@
 | [整数・有理多項式の分解](zassenhaus-20261116.md) | Berlekamp・Hensel・Zassenhaus | [独立レビュー](zassenhaus-independent-review-20261116.md)済み |
 | [二進BCH符号](bch-20261116.md) | 共役根からの構成、系統符号化、代数的訂正 | 統合済み |
 | [GSリスト復号](listdecode-20261116.md) | 多重度補間、Roth–Ruckenstein、複数候補 | 統合済み |
-| [実代数的数](realalgebraic-20261116.md) | resultants、共役選択、厳密な演算 | 独立レビュー中 |
+| [実代数的数](realalgebraic-20261116.md) | resultants、共役選択、厳密な演算 | [独立レビュー](realalgebraic-independent-review-20261116.md)・返却値の束縛を補強 |
 | [F4 Gröbner基底](f4-20261116.md) | Macaulay行列、元入力へのideal witness | 統合済み |
 | [実数制約の独立レビュー](realcad-independent-review-20261116.md) | Fraction・二次体の独立符号と境界検査 | 検査範囲で反例なし |
 | [パリティゲーム](parity-20261116.md) | Zielonka法、位置戦略、独立した閉路検査 | 統合済み |
+| [有限な実解集合の表現](realvariety-20261116.md) | F4からshapeを抽出し、一つの代数的パラメータで全実解を表す | 対応shapeを明示して統合 |
 | [探索とリファクタリングの履歴](HISTORY.md) | 初期の実装、表現コストの見直し、検証と統合の経緯 | 当時の記録を保存 |
 | [長語除算・剰余](wide-kernels/README.md) | 逆順fold、末尾再帰、有限prefix、unrollの比較 | 通常経路へ未採用 |
 
