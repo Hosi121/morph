@@ -18,6 +18,12 @@ pub fn certificate(Field) -> @realminimal.Certificate
 
 pub fn check_inverse_result(Element, Element, InverseCertificate) -> Bool
 
+pub fn check_minimal_polynomial(Element, @polynomial.Polynomial) -> Bool
+
+pub fn check_realization(Element, RealCertificate) -> Bool
+
+pub fn check_realization_result(Element, @realalgebraic.Number, RealCertificate) -> Bool
+
 pub fn degree(Field) -> @core.Nat
 
 pub fn divide(Element, Element) -> Result[Element?, FieldError]
@@ -40,6 +46,8 @@ pub fn inverse_with_certificate(Element) -> Result[Inverse?, FieldError]
 
 pub fn is_zero(Element) -> Bool
 
+pub fn minimal_polynomial(Element) -> Result[@polynomial.Polynomial, FieldError]
+
 pub fn modulus(Field) -> @polynomial.Polynomial
 
 pub fn multiplication_matrix(Element) -> Result[@matrix.Matrix[@exact.Rational], FieldError]
@@ -55,6 +63,12 @@ pub fn one(Field) -> Element
 pub fn parent(Element) -> Field
 
 pub fn rational(Field, @exact.Rational) -> Element
+
+pub fn realize(Element, @core.Nat) -> Result[RealProgress, FieldError]
+
+pub fn realize_advance(Realization, @core.Nat) -> Result[RealProgress, FieldError]
+
+pub fn realize_start(Element) -> Result[Realization, FieldError]
 
 pub fn representative(Element) -> @polynomial.Polynomial
 
@@ -112,6 +126,33 @@ pub(all) struct InverseCertificate {
 pub fn InverseCertificate::equal(Self, Self) -> Bool
 pub fn InverseCertificate::not_equal(Self, Self) -> Bool
 pub fn InverseCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RealCertificate {
+  context : @realalgebraic.RootCertificate
+  input : @polynomial.Polynomial
+  refined : @realalgebraic.RootCertificate
+  result : @realalgebraic.RootCertificate
+}
+pub fn RealCertificate::equal(Self, Self) -> Bool
+pub fn RealCertificate::not_equal(Self, Self) -> Bool
+pub fn RealCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum RealProgress {
+  RealReady(@realalgebraic.Number, RealCertificate)
+  RealPaused(Realization)
+}
+pub fn RealProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Realization {
+  input : Element
+  polynomial : @polynomial.Polynomial
+  root : @realalgebraic.Number
+  padding : @exact.Rational
+}
+pub fn Realization::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
