@@ -1,0 +1,233 @@
+Frozen code 701e78916ecd3fc04b108d065a85a533f7690fde; only documentation/report edits permitted during validation.
+{
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "moon": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+}
+
+$ tools/check
+----------------------------------------------------------------------
+Ran 24 tests in 0.012s
+
+OK
+Documentation gate passed: 143 Markdown files, 1608 local links; navigation is connected.
+Source inventory is current.
+Purity gate passed: 292 kernel files; no machine numerics, mutation, arrays or FFI.
+Conversion gate passed; static library references recorded separately from tests.
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.
+4-bit product table checked: 256 cases, 90 shared results; suffix sharing=True.
+Difference controls checked; production=lookup
+Finished. moon: no work to do
+Finished. moon: ran 148 tasks, now up to date
+Total tests: 4041, passed: 4041, failed: 0.
+Total tests: 4041, passed: 4041, failed: 0.
+Finished. moon: ran 121 tasks, now up to date
+Interface drift gate passed: 121 compiler-generated snapshots.
+
+$ tools/moon test --target native --release --deny-warn
+Total tests: 4041, passed: 4041, failed: 0.
+
+$ tools/check_formal
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+'Morph.Core.replicateOnto_eq_append' depends on axioms: [propext]
+'Morph.Core.replicateOnto_nil' depends on axioms: [propext]
+'Morph.Core.halveNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Core.halfNat_floor' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatByHalves_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGroupedLoop_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_lt' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.lowBit_sound' does not depend on any axioms
+'Morph.Binary.lowBit_canonical' depends on axioms: [propext]
+'Morph.Binary.fromNatGroupedBits_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatGroupedBits_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.zero_sound' does not depend on any axioms
+'Morph.Binary.one_sound' does not depend on any axioms
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldLeft_reverseOnto' does not depend on any axioms
+'Morph.Fold.foldLeft_reverse' does not depend on any axioms
+'Morph.Fold.foldFour_eq_foldLeft' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldFour_reverse' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.boundedRightFour_eq_foldRight' depends on axioms: [propext]
+'Morph.PrefixLogic.partialEvaluate_sound' depends on axioms: [propext]
+'Morph.PrefixLogic.known_is_uniform' depends on axioms: [propext]
+'Morph.SparseHorner.power_add' depends on axioms: [propext]
+'Morph.SparseHorner.bitsPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.optimizedPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.scan_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_genericSum' depends on axioms: [propext]
+'Morph.SparseHorner.dispatch_generic' does not depend on any axioms
+'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
+'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
+'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]
+
+$ python3 tools/generate_complex_fixtures.py --check
+{"coordinate_certificates": 42, "distinct_roots": 21, "finite_cases": 12, "nonconstant_cases": 11, "rational_arithmetic_pairs": 6, "total_multiplicity": 25, "zero_validation_cases": 1}
+
+$ python3 tools/generate_complexfield_fixtures.py --check
+{"ambient_degrees": [2, 4, 6, 8], "cases": 18, "smaller_minimum_cases": 10}
+
+$ python3 tools/generate_complexprimitive_fixtures.py --check
+{"ambient_degrees": [2, 4, 6, 8], "conversions": 23, "exact_basis_matrices": 5, "exact_inverse_matrices": 5, "fields": 5, "products": 12}
+
+$ python3 tools/generate_complexautomorphism_fixtures.py --check
+{"compositions": 148, "fixtures": 4, "group_orders": [2, 4, 8], "inverses": 22, "root_actions": 74, "sample_images": 88}
+
+$ python3 tools/generate_fixedfield_fixtures.py --check
+{"ambient_fields": 3, "fixed_sample_coordinates": 49, "independent_basis_vectors": 49, "primitive_identifications": 17, "sample_memberships": 118, "subgroups": 17}
+
+$ python3 tools/generate_complexsubfield_fixtures.py --check
+{"ambient_degrees": [2, 4, 8, 12], "cases": 11, "conversions": 62, "exhaustive_monomials": 58, "generated_degrees": [1, 2, 3, 4, 6, 8], "independently_populated_field_certificates": 11, "independently_populated_primitive_certificates": 11}
+
+$ python3 tools/generate_complexcohort_fixtures.py --check
+{"ambient_degrees": [2, 4, 8], "cases": 9, "complex_minima": 16, "nonminimal_sources": 2, "products": 14, "selected_real_sources": 32}
+
+$ python3 tools/generate_splittinggalois_fixtures.py --check
+{"accepted_permutations": 26, "cases": 7, "compositions": 146, "inverses": 26, "orders": [1, 2, 6, 8], "root_actions": 77, "sample_images": 104}
+
+$ tools/moon run src/cmd/complex --target native --release --deny-warn
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ tools/moon run src/cmd/complex --target js --release --deny-warn
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ tools/moon run src/cmd/complex --target wasm-gc --release --deny-warn
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ tools/moon run src/cmd/galois --target native --release --deny-warn
+a^4=2: Gal(Q(a,i)/Q)=D4, order=8; full composition table [checked]
+r(a)=ia, r(i)=i; tau=conjugation; r^4=tau^2=1 and tau*r*tau=r^-1 [checked]
+Q(a,i): subgroup order=1; fixed degree=8; generator and full invariant basis [checked]
+Q(sqrt(2),i): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1+i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(ia): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1-i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(i): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(i*sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q: subgroup order=8; fixed degree=1; generator and full invariant basis [checked]
+
+$ tools/moon run src/cmd/galois --target js --release --deny-warn
+a^4=2: Gal(Q(a,i)/Q)=D4, order=8; full composition table [checked]
+r(a)=ia, r(i)=i; tau=conjugation; r^4=tau^2=1 and tau*r*tau=r^-1 [checked]
+Q(a,i): subgroup order=1; fixed degree=8; generator and full invariant basis [checked]
+Q(sqrt(2),i): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1+i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(ia): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1-i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(i): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(i*sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q: subgroup order=8; fixed degree=1; generator and full invariant basis [checked]
+
+$ tools/moon run src/cmd/galois --target wasm-gc --release --deny-warn
+a^4=2: Gal(Q(a,i)/Q)=D4, order=8; full composition table [checked]
+r(a)=ia, r(i)=i; tau=conjugation; r^4=tau^2=1 and tau*r*tau=r^-1 [checked]
+Q(a,i): subgroup order=1; fixed degree=8; generator and full invariant basis [checked]
+Q(sqrt(2),i): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1+i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(ia): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q((1-i)a): subgroup order=2; fixed degree=4; generator and full invariant basis [checked]
+Q(i): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q(i*sqrt(2)): subgroup order=4; fixed degree=2; generator and full invariant basis [checked]
+Q: subgroup order=8; fixed degree=1; generator and full invariant basis [checked]
+
+$ tools/moon run src/cmd/splitting --target native --release --deny-warn
+z^2-1: minimal degree=1; group order=1; all roots and full group [checked]
+z^2+1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-2: minimal degree=6; group order=6; all roots and full group [checked]
+z^3-2: Gal=S3; all six permutations, r^3=t^2=1 and t*r*t=r^-1 [checked]
+cubic ambient degree12 -> splitting degree6: i and sqrt3 excluded, i*sqrt3 included [checked]
+z^4-2 (supplied exact roots): minimal degree=8; Gal=D4; faithful root action and relations [checked]
+
+$ tools/moon run src/cmd/splitting --target js --release --deny-warn
+z^2-1: minimal degree=1; group order=1; all roots and full group [checked]
+z^2+1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-2: minimal degree=6; group order=6; all roots and full group [checked]
+z^3-2: Gal=S3; all six permutations, r^3=t^2=1 and t*r*t=r^-1 [checked]
+cubic ambient degree12 -> splitting degree6: i and sqrt3 excluded, i*sqrt3 included [checked]
+z^4-2 (supplied exact roots): minimal degree=8; Gal=D4; faithful root action and relations [checked]
+
+$ tools/moon run src/cmd/splitting --target wasm-gc --release --deny-warn
+z^2-1: minimal degree=1; group order=1; all roots and full group [checked]
+z^2+1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-2: minimal degree=6; group order=6; all roots and full group [checked]
+z^3-2: Gal=S3; all six permutations, r^3=t^2=1 and t*r*t=r^-1 [checked]
+cubic ambient degree12 -> splitting degree6: i and sqrt3 excluded, i*sqrt3 included [checked]
+z^4-2 (supplied exact roots): minimal degree=8; Gal=D4; faithful root action and relations [checked]

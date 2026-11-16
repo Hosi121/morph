@@ -1,0 +1,271 @@
+{
+  "source_commit": "701e78916ecd3fc04b108d065a85a533f7690fde",
+  "code_dirty": false,
+  "scope": "whole repository, all complex algebra independent fixtures, complex/galois/splitting tours",
+  "wrapper": "tools/measure --cpu 4 python3 .tools/complex-splitting-20261117/validate.py",
+  "environment": {
+    "affinity": [
+      4
+    ],
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "moon": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "commands": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit_code": 0,
+      "seconds": 645.4848183009963,
+      "test_totals": [
+        4041,
+        4041
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 401.34540581900364,
+      "test_totals": [
+        4041
+      ]
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit_code": 0,
+      "seconds": 7.814753696002299,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complex_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5285954270002549,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5991771980043268,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexprimitive_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0999565419988357,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexautomorphism_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6256089909948059,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_fixedfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.656936551000399,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexsubfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 2.3446607740042964,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexcohort_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.39661705899925437,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_splittinggalois_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 6.713860014999227,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 8.78069708700059,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 2.495678234998195,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 1.8814357189985458,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 4.005289011001878,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5009417530018254,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/galois",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5439142879986321,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/splitting",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 8.017893377000291,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/splitting",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 7.098033262998797,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/splitting",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 5.645839144002821,
+      "test_totals": [],
+      "tour_matches": true
+    }
+  ],
+  "all_passed": true,
+  "native_mode": "release",
+  "pure_kernel_sources": 292,
+  "api_snapshots": 121,
+  "formal_regions": 32,
+  "maintenance_tests": 24
+}

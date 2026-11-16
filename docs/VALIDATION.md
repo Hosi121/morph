@@ -7,28 +7,27 @@
 
 ## 検証済みスナップショット
 
-2026-11-17（JST）に、コード `0c79742` を固定して統合検証しました。
-複素代数的数の演算・全複素根に加え、K(i)、α+i による一生成元表示、
-明示分解した体の全自己同型、部分群の固定体の完全な基底と座標を含みます。
+2026-11-17（JST）に、コード `701e789` を固定して統合検証しました。
+複素数の共通体への移送、単項式基底による最小生成体、一生成元の剰余表示、
+QQ多項式からの最小分解体と全Galois作用まで含みます。
 以後の文書編集を、新しいコードの実行検証として数えるものではありません。
 
 | 検査 | 結果 |
 | --- | --- |
-| native（release） / JS / WasmGC | 各3,976テスト成功 |
+| native（release） / JS / WasmGC | 各4,041テスト成功 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 276核ソースが通過 |
-| 公開API | 114生成スナップショットが一致 |
+| 純記号制約 | 292核ソースが通過 |
+| 公開API | 121生成スナップショットが一致 |
 | Lean | 32対応領域の差分検査と全モデルが通過 |
-| 独立照合・証拠検査 | 全複素根、2・4・6・8次の複素数体と座標、C2/V4/D4の群作用、全17部分群の固定体、source・返却物の改竄検査が通過 |
-| 実行例 | 複素代数・D4と全10中間体のツアーが各3バックエンドで掲載出力と一致 |
+| 独立照合・証拠検査 | 共通体9例、非実三次体と12次→6次を含む生成体11例、C1/C2/S3/D4の全置換集合と146合成、既存fixture、source・返却物の改竄検査が通過 |
+| 実行例 | 複素代数・全10中間体・最小分解体と群作用の各ツアーが3バックエンドで掲載出力と一致 |
 
-正本は[条件・コマンド・集計](measurements/complex-galois-20261117-validation.json)と
-[全出力](measurements/complex-galois-20261117-validation.txt)です。
-[複素数体と一生成元](research/complex-fields-20261117.md)、
-[自己同型と固定体](research/complex-galois-20261117.md)に独立参照・検査の根拠をまとめています。
-一般の分解体探索や、共有算術とプログラム全体の形式証明までは含みません。
+正本は[環境・コマンド・集計](measurements/complex-splitting-20261117-validation.json)と
+[全出力](measurements/complex-splitting-20261117-validation.txt)です。
+[最小分解体とGalois群の設計・独立参照・同条件比較](research/complex-splitting-20261117.md)に根拠をまとめています。
+一般経路は消去と置換探索の費用を持ち、高次数の実用速度や、体論と実装全体の形式証明までは示しません。
 作業用worktreeは全パッチの反映とGitアーカイブを確認して削除しました
-（[片付け記録](measurements/complex-galois-20261117-cleanup.json)）。
+（[片付け記録](measurements/complex-splitting-20261117-cleanup.json)）。
 
 ## 変更したときに実行する
 
@@ -67,6 +66,7 @@ CPU番号は環境に合わせて指定します。
 
 | コード | 段階 | 記録 |
 | --- | --- | --- |
+| `0c79742` | K(i)・一生成元・明示自己同型と固定体、各3,976テスト | [集計](measurements/complex-galois-20261117-validation.json)・[出力](measurements/complex-galois-20261117-validation.txt) |
 | `060a66f` | K(i) と一生成元表示の追加範囲、各38テスト | [集計](measurements/complex-fields-20261117-validation.json)・[出力](measurements/complex-fields-20261117-validation.txt) |
 | `4aa8668` | 複素代数の演算・全根・因数分解の接続、各3,920テスト | [集計](measurements/complex-algebra-20261117-validation.json)・[出力](measurements/complex-algebra-20261117-validation.txt) |
 | `b8e5ff3` | 理論衝突節の削減、各3,871テスト | [集計](measurements/theory-core-20261117-validation.json)・[出力](measurements/theory-core-20261117-validation.txt) |

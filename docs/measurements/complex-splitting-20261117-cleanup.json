@@ -1,0 +1,70 @@
+{
+  "utc": "2026-11-16T22:07:12.176484+00:00",
+  "source_commit": "701e78916ecd3fc04b108d065a85a533f7690fde",
+  "worker_git_archive": ".tools/complex-splitting-20261117/workers.bundle",
+  "archive_sha256": "2a609d9239142c5762195329d6889be80ce1adbdab8659100082577a76bdc632",
+  "archive_verified": true,
+  "worktrees": [
+    {
+      "worktree": "/home/hosi/morph-complex-cohort-20261117",
+      "branch": "work/complex-cohort-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- d8b2b7703a6a497ed596b108dfaf21a9b2010ba7",
+        "- 247f3f36ff3878276c8d4baabb548d5323bacc70",
+        "- 5b43db1f0067f7a87f597904b82a2c0262d47da2",
+        "- 4a35377b2bf194a963d097fa74e885d08bf5b57d",
+        "- 77604103deb9ed65d5c813e646e9483540e3548f"
+      ],
+      "removed": true
+    },
+    {
+      "worktree": "/home/hosi/morph-complex-subfield-20261117",
+      "branch": "work/complex-subfield-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- eb26ccda283c7dac348cb5b492995bc108e457fe",
+        "- a241c1412ddb5727b246721794ccf95100e770aa",
+        "- b018fe26622841b3ca879e10ec8adaa88579886c",
+        "- 7f05c2ff18d5d7e09618c835c54104cc74533972",
+        "- 0bc25acc39a42528630a2d171a4d144b90b3cdc1",
+        "- 7eab86df70fc9073b4baada318d415a9003a8732",
+        "- e700bd467645a5673a241f9ecfe235dca25ec559",
+        "- 5fd7c00fef26f97b0d4434084c936f93a0bcb2d7"
+      ],
+      "removed": true
+    },
+    {
+      "worktree": "/home/hosi/morph-complex-splitting-oracle-20261117",
+      "branch": "work/complex-splitting-oracle-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- 140468bf77c9b190cc930fda653371803743020c",
+        "- aabca53821c4389af98f9bf844db3c4e9f35811e",
+        "- faff2c53f092854fe5e356354d599927872941e9",
+        "- 6751c8534cefa8d526436c86e3f7193c6e19c7e0",
+        "- d9f8fdbee35b27dba2ca811e4402c689d5f7aa45",
+        "- f182216cf1b7d6e8e445dbc1658d99f2b7b742c6",
+        "- 06157dfa5ce1051e80037f2c69d588a0551fcc1e",
+        "- 287b617e11b9ee879b9d05db70b5192aa8c8a52b",
+        "- b490f209d1f396bdd126e192e6b0a03b14206da2",
+        "- 6e0fbf6cbb14a8b77746cf6b6bf8cef08926325d",
+        "- 0dfaf5a7ccdbaed05aafc3ddcc1440dabc932def"
+      ],
+      "removed": true
+    },
+    {
+      "worktree": "/home/hosi/morph-splitting-galois-20261117",
+      "branch": "work/splitting-galois-20261117",
+      "tracked_and_nonignored_untracked_clean": true,
+      "patches_already_integrated": [
+        "- e0843a5213da6bee42cab05fb042ead52231756a",
+        "- 936a4f89bca041c2d3e8e73cc51607a48fee91c5"
+      ],
+      "removed": true
+    }
+  ],
+  "remaining": [
+    "/home/hosi/morph  701e789 [main]"
+  ]
+}
