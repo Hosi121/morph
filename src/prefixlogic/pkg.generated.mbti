@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/prefixlogic"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realcad",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_plan(@core.Nat, @realcad.Formula, @core.Chain[@core.Chain[@polynomial.Polynomial]], Plan) -> Bool
+
+pub fn evaluate(Plan, @core.Nat, @core.Chain[@core.Ordering]) -> Result[Truth, PrefixError]
+
+pub fn prepare(@core.Nat, @realcad.Formula, @core.Chain[@core.Chain[@polynomial.Polynomial]]) -> Result[Plan, PrefixError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type Binding
+pub fn Binding::equal(Self, Self) -> Bool
+pub fn Binding::not_equal(Self, Self) -> Bool
+pub fn Binding::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Conditional
+pub fn Conditional::equal(Self, Self) -> Bool
+pub fn Conditional::not_equal(Self, Self) -> Bool
+pub fn Conditional::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Group
+pub fn Group::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Plan {
+  stages : @core.Chain[Stage]
+}
+pub fn Plan::equal(Self, Self) -> Bool
+pub fn Plan::not_equal(Self, Self) -> Bool
+pub fn Plan::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PrefixError {
+  DimensionMismatch
+  InvalidObservation
+}
+pub fn PrefixError::equal(Self, Self) -> Bool
+pub fn PrefixError::not_equal(Self, Self) -> Bool
+pub fn PrefixError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Stage
+pub fn Stage::equal(Self, Self) -> Bool
+pub fn Stage::not_equal(Self, Self) -> Bool
+pub fn Stage::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Truth {
+  Known(Bool)
+  Undetermined
+}
+pub fn Truth::equal(Self, Self) -> Bool
+pub fn Truth::not_equal(Self, Self) -> Bool
+pub fn Truth::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
