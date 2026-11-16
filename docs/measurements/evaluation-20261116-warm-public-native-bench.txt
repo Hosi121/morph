@@ -1,0 +1,25 @@
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:99 ("evaluation short scalar reference") ok
+time (mean ± σ)         range (min … max) 
+   5.07 µs ± 694.55 ns     4.44 µs …   6.55 µs  in 10 ×  18023 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:104 ("evaluation short scalar Horner") ok
+time (mean ± σ)         range (min … max) 
+   2.16 µs ± 143.61 ns     2.03 µs …   2.49 µs  in 10 ×  46617 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:109 ("evaluation dense reference") ok
+time (mean ± σ)         range (min … max) 
+   2.51 ms ±  86.05 µs     2.41 ms …   2.63 ms  in 10 ×     40 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:114 ("evaluation dense Horner") ok
+time (mean ± σ)         range (min … max) 
+ 335.95 µs ±  54.47 µs   275.75 µs … 408.42 µs  in 10 ×    367 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:119 ("evaluation sparse reference") ok
+time (mean ± σ)         range (min … max) 
+   2.93 ms ± 209.65 µs     2.67 ms …   3.31 ms  in 10 ×     36 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:124 ("evaluation sparse Horner") ok
+time (mean ± σ)         range (min … max) 
+   2.16 ms ±  41.40 µs     2.07 ms …   2.22 ms  in 10 ×     49 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:129 ("evaluation multivariate reference control") ok
+time (mean ± σ)         range (min … max) 
+  53.80 µs ±   3.45 µs    50.22 µs …  62.12 µs  in 10 ×   2011 runs
+[Hosi121/morph] bench polynomial/evaluation_bench_wbtest.mbt:134 ("evaluation multivariate Horner control") ok
+time (mean ± σ)         range (min … max) 
+  53.16 µs ±   1.63 µs    50.44 µs …  54.88 µs  in 10 ×   1898 runs
+Total tests: 8, passed: 8, failed: 0.

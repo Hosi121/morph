@@ -1,0 +1,3 @@
+Total tests: 4, passed: 4, failed: 0.
+Total tests: 4, passed: 4, failed: 0.
+Total tests: 4, passed: 4, failed: 0.

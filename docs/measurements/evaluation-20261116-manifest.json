@@ -1,0 +1,32 @@
+{
+  "baseline": "6934453",
+  "candidate": "uncommitted source recorded by SHA256, committed with this manifest",
+  "sdk": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "node": "v24.13.0",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu": "4",
+  "serialization": "tools/measure common Git directory lock",
+  "cohorts": "same ELF frozen reference/public evaluate; 128 equal warmup passes before each microbenchmark. Upper before/after use two frozen native ELFs and identical harness; prepare excluded, solve and explicit check included.",
+  "sha256": {
+    "src/polynomial/evaluation.mbt": "00a0c551f0b8af0521e0f977630de72c4dc4ae15ed40c5aad35c689f20ea8c1f",
+    "src/polynomial/polynomial.mbt": "703b321f4fb3fe09949162530f19e753535f67de48e2cb357fb97cd8bf532106",
+    "src/polynomial/evaluation_reference_wbtest.mbt": "dbd06618ee8ba49f4a40b2f7b9c2a2ba9b31d8df811b4b6d3bc828c434c6dfb7",
+    "src/polynomial/evaluation_bench_wbtest.mbt": "22aef34ad63b2c98e9b292b093baec0830eeb0cd0a5934b83b6f849461581684",
+    "src/realcad/evaluation_upper_bench_wbtest.mbt": "4981d48b20f50fa175b4f3c58673ef9bf5874f61860b888abd7a1927d7ff8d7c",
+    ".tools/evaluation-20261116/after/polynomial.c": "57b9078ec0da00cbd1985f34226a88f6aa566034feac20c42395666631ab6c1e",
+    ".tools/evaluation-20261116/after/polynomial.exe": "e9f68faa14e95ee9fc4230d1abddb01ff67c3a4277e9403ad92a2080e1111cc6",
+    ".tools/evaluation-20261116/after/realcad.c": "2ae2986c79fdfcb5dd0dcad3a997ce55bb6789562c26e1b5526721d34fbd6ceb",
+    ".tools/evaluation-20261116/after/realcad.exe": "d6ac8311f6ac0ead8dc5c7c8bc95360b486991185280e46e8d9cde05c1b77a6e",
+    ".tools/evaluation-20261116/before/polynomial.exe": "a69ab48d873fcb886ecfc2291f7333fd5994bced63710658fbc7a8a123832f6c",
+    ".tools/evaluation-20261116/before/realcad.exe": "a402d61a2a0f6e6c60889877ed6defa4f435cb3e7134ed6def279bf149bdc5c7"
+  },
+  "logs": [
+    "warm-public-native-bench.txt",
+    "warm-public-js-bench.txt",
+    "warm-public-wasm-bench.txt",
+    "upper-before.txt",
+    "upper-after.txt",
+    "public-tests.txt",
+    "clients.txt"
+  ]
+}

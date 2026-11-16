@@ -550,7 +550,7 @@ pub fn derivative(p : Polynomial, variable : @core.Nat) -> Polynomial? {
 }
 
 ///|
-pub fn evaluate(
+fn evaluate_generic(
   p : Polynomial,
   values : @core.Chain[@exact.Rational],
 ) -> @exact.Rational? {

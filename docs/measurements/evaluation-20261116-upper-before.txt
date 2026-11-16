@@ -1,0 +1,11 @@
+Finished. moon: ran 4 tasks, now up to date
+[Hosi121/morph] bench realcad/evaluation_upper_bench_wbtest.mbt:50 ("prepared realcad sqrt two including certificate check") ok
+time (mean ± σ)         range (min … max) 
+  89.02 µs ±   4.77 µs    84.14 µs …  96.55 µs  in 10 ×   1110 runs
+[Hosi121/morph] bench realcad/evaluation_upper_bench_wbtest.mbt:55 ("prepared realcad eight dense roots including certificate check") ok
+time (mean ± σ)         range (min … max) 
+   1.59 s ± 215.76 ms     1.34 s …   1.92 s  in 10 ×      1 runs
+[Hosi121/morph] bench realcad/evaluation_upper_bench_wbtest.mbt:62 ("prepared realcad close roots including certificate check") ok
+time (mean ± σ)         range (min … max) 
+   1.56 ms ±  62.97 µs     1.44 ms …   1.62 ms  in 10 ×     64 runs
+Total tests: 3, passed: 3, failed: 0.
