@@ -1,0 +1,33 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bareiss"
+
+import {
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn determinant(@matrix.Matrix[@exact.Rational]) -> Result[@exact.Rational, BareissError]
+
+pub fn exact_divide(@exact.Integer, @exact.Integer) -> Result[@exact.Integer, BareissError]
+
+pub fn integer_determinant(@matrix.Matrix[@exact.Integer]) -> Result[@exact.Integer, BareissError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum BareissError {
+  NotSquare
+  ZeroDivisor
+  InexactDivision
+  InternalShape
+}
+pub fn BareissError::equal(Self, Self) -> Bool
+pub fn BareissError::not_equal(Self, Self) -> Bool
+pub fn BareissError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
