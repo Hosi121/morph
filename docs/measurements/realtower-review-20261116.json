@@ -1,0 +1,1161 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Independent adversarial arithmetic and certificate verification; not a performance comparison",
+  "original_production_commit": "163430ffef42310d8ec1dd555dbe286ce8361942",
+  "fix_production_commit": "da46274e17d5ceceaf23bd981b9deb028cbb3476",
+  "local_fix_cherry_pick": "cb1d5c1200c594bb16bae99acd1a2be1958973cb",
+  "cpu": 8,
+  "serialization": "tools/measure uses shared Git common-directory flock; no nested measurement commands",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "sdk": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "backend_results": {
+    "native": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target native --filter 'independent*'",
+      "tests": 57,
+      "passed": 57,
+      "failed": 0,
+      "elapsed_seconds": 8.05,
+      "peak_rss_kib": 96196,
+      "stdout": "Total tests: 57, passed: 57, failed: 0.\nelapsed_seconds=8.05 peak_rss_kib=96196\n"
+    },
+    "wasm-gc": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target wasm-gc --filter 'independent*'",
+      "tests": 57,
+      "passed": 57,
+      "failed": 0,
+      "elapsed_seconds": 3.23,
+      "peak_rss_kib": 215540,
+      "stdout": "Total tests: 57, passed: 57, failed: 0.\nelapsed_seconds=3.23 peak_rss_kib=215540\n"
+    },
+    "js": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target js --filter 'independent*'",
+      "tests": 57,
+      "passed": 57,
+      "failed": 0,
+      "elapsed_seconds": 4.39,
+      "peak_rss_kib": 158456,
+      "stdout": "Total tests: 57, passed: 57, failed: 0.\nelapsed_seconds=4.39 peak_rss_kib=158456\n"
+    }
+  },
+  "pre_fix_result": {
+    "command": "tools/measure --cpu 8 .tools/moon/bin/moon test src/realtower --target native",
+    "total_tests": 63,
+    "passed": 62,
+    "failed": 1,
+    "source_tests": 6,
+    "independent_tests": 57,
+    "counterexample": "Replace System.sequence for x^2-2 with the sequence of x^2+1; count_between(-2,2] claims zero and old check_count accepts this opaque malformed System.",
+    "stdout": "Warning: [0060]\n    \u256d\u2500[ /home/hosi/morph-cadprojection-20261116/src/realtower/independent_review_adversarial_wbtest.mbt:6:3 ]\n    \u2502\n  6 \u2502 \u256d\u2500\u25b6   {\n    \u2506 \u2506   \n 14 \u2502 \u251c\u2500\u25b6   }\n    \u2502 \u2502         \n    \u2502 \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_struct_update): The spread '..s' has no effect: all fields are explicitly overwritten.\n\u2500\u2500\u2500\u2500\u256f\nWarning: [0060]\n    \u256d\u2500[ /home/hosi/morph-cadprojection-20261116/src/realtower/independent_review_adversarial_wbtest.mbt:12:7 ]\n    \u2502\n 12 \u2502       { ..root, system: sys, count: { ..root.count, system: sys, }, }\n    \u2502       \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n    \u2502                                      \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_struct_update): The spread '..s' has no effect: all fields are explicitly overwritten.\n\u2500\u2500\u2500\u2500\u256f\n[Hosi121/morph] test realtower/independent_review_adversarial_wbtest.mbt:189 (\"independent opaque system sequence and squarefree payload substitutions rejected\") failed: src/realtower/independent_review_adversarial_wbtest.mbt:199:3-199:81@Hosi121/morph FAILED: `true` is not false\nTotal tests: 63, passed: 62, failed: 1.\n"
+  },
+  "post_fix_counterexample_test": "independent opaque system sequence and squarefree payload substitutions rejected",
+  "check_deny_warn": "Finished. moon: ran 9 tasks, now up to date\n",
+  "fixture_check": "Checked 52 independent review tests: Fraction rational/quadratic, repeated endpoint Tarski, and exact SymPy relative counts.\n",
+  "format_check": "Finished. moon: ran 12 tasks, now up to date\n",
+  "purity_audit": "Purity gate passed: 227 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+  "source_sha256": {
+    "src/realtower/api.mbt": "10afe5d99e19401f236c2eb3abc308eaa99e529fca013dc976ad90d2c9334e90",
+    "src/realtower/data.mbt": "c83ab9c0e46292cfb66a19bc4412b2be9fc65a1195d69e4a4ce56fdadfd9053b",
+    "src/realtower/independent_review_adversarial_wbtest.mbt": "932e8d55b8724186612bf132f86ddac3d4f330f4d471384ec3a5b1e566ee70c9",
+    "src/realtower/independent_review_helpers_wbtest.mbt": "9efaaab1f1013a4448f663fd4da8ab5549e45956e2a3b4da2b46eea526497381",
+    "src/realtower/independent_review_oracle_wbtest.mbt": "89a0cddc4a665931db3c7c46b292e3705d77a3d0285dfd9dd68c104f31321f84",
+    "src/realtower/isolation.mbt": "9e53ab78b5b5de80af204804659f36b9a767dc8ff033ba16cf4f2be9cea12059",
+    "src/realtower/polynomial.mbt": "e09c13c27b8b44f84596aa05657e9f0f97e87be9baea16a72a1cd3e12a029c0e",
+    "src/realtower/raw.mbt": "c2e08bba11d797a56085a1ea6a517b50ba398195fc2c9315dde0134aff210c93",
+    "src/realtower/realtower_wbtest.mbt": "d1790e17f8e6279ecd38b926c18dbd307da1ec58f61656c61b99f00f433e8064",
+    "src/realtower/scalar.mbt": "35312ddeffd009b5d80d58344653ace9501a25b10144689838d2494e4a731c43",
+    "src/realtower/system.mbt": "cd1b0f5f12614b134a86f0251f82a020267ee29f637138e987e18c36f56d63f4",
+    "tools/generate_realtower_review.py": "6be604fbdeb621c7ffc40af3e8e4c51bf0513153cfb156c2c1781137d4c77cd4"
+  },
+  "oracle": {
+    "sympy": "1.14.0",
+    "no_float": true,
+    "rational": [
+      {
+        "root": "-2",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "-3",
+          "-2"
+        ],
+        "numerator": [
+          "2",
+          "-3",
+          "1"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "value": "-6"
+      },
+      {
+        "root": "-2",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "-3",
+          "-2"
+        ],
+        "numerator": [
+          "5/3",
+          "-7/2",
+          "2",
+          "1/5"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "value": "-226/45"
+      },
+      {
+        "root": "0",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "-1",
+          "0"
+        ],
+        "numerator": [
+          "2",
+          "-3",
+          "1"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "value": "-2"
+      },
+      {
+        "root": "0",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "-1",
+          "0"
+        ],
+        "numerator": [
+          "5/3",
+          "-7/2",
+          "2",
+          "1/5"
+        ],
+        "denominator": [
+          "-3/2",
+          "1"
+        ],
+        "value": "-10/9"
+      },
+      {
+        "root": "1",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "1/2",
+          "1"
+        ],
+        "numerator": [
+          "2",
+          "-3",
+          "1"
+        ],
+        "denominator": [
+          "-3/2",
+          "1"
+        ],
+        "value": "0"
+      },
+      {
+        "root": "1",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "1/2",
+          "1"
+        ],
+        "numerator": [
+          "5/3",
+          "-7/2",
+          "2",
+          "1/5"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "value": "11/90"
+      },
+      {
+        "root": "3/2",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "5/4",
+          "3/2"
+        ],
+        "numerator": [
+          "2",
+          "-3",
+          "1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "value": "-1/14"
+      },
+      {
+        "root": "3/2",
+        "modulus": [
+          "0",
+          "3",
+          "-7/2",
+          "-1/2",
+          "1"
+        ],
+        "interval": [
+          "5/4",
+          "3/2"
+        ],
+        "numerator": [
+          "5/3",
+          "-7/2",
+          "2",
+          "1/5"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "value": "191/180"
+      }
+    ],
+    "quadratic": [
+      {
+        "embedding": 1,
+        "numerator": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "value": [
+          "-1",
+          "1"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "3",
+          "-2"
+        ],
+        "value": [
+          "0",
+          "0"
+        ],
+        "sign": 0
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "0",
+          "3",
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "value": [
+          "1",
+          "0"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "5/7",
+          "-2/3",
+          "0",
+          "1/5",
+          "1/11"
+        ],
+        "denominator": [
+          "-3/2",
+          "1/4",
+          "2/7"
+        ],
+        "value": [
+          "-56116/47685",
+          "-1414/47685"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "-1",
+          "4/3",
+          "1",
+          "2/3"
+        ],
+        "denominator": [
+          "2/3",
+          "4",
+          "-4/3"
+        ],
+        "value": [
+          "5/6",
+          "1/3"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "-1",
+          "3",
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "-1/3",
+          "-4",
+          "-2"
+        ],
+        "value": [
+          "-33/119",
+          "3/119"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "-1",
+          "2/5",
+          "2",
+          "-3/5"
+        ],
+        "denominator": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "value": [
+          "-3/2",
+          "2/5"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": 1,
+        "numerator": [
+          "-1/5",
+          "3/5",
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "1/3",
+          "0",
+          "1"
+        ],
+        "value": [
+          "-33/35",
+          "39/35"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "value": [
+          "-1",
+          "1"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "3",
+          "-2"
+        ],
+        "value": [
+          "0",
+          "0"
+        ],
+        "sign": 0
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "0",
+          "3",
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "value": [
+          "1",
+          "0"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "5/7",
+          "-2/3",
+          "0",
+          "1/5",
+          "1/11"
+        ],
+        "denominator": [
+          "-3/2",
+          "1/4",
+          "2/7"
+        ],
+        "value": [
+          "-56116/47685",
+          "-1414/47685"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-1",
+          "4/3",
+          "1",
+          "2/3"
+        ],
+        "denominator": [
+          "2/3",
+          "4",
+          "-4/3"
+        ],
+        "value": [
+          "5/6",
+          "1/3"
+        ],
+        "sign": 1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-1",
+          "3",
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "-1/3",
+          "-4",
+          "-2"
+        ],
+        "value": [
+          "-33/119",
+          "3/119"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-1",
+          "2/5",
+          "2",
+          "-3/5"
+        ],
+        "denominator": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "value": [
+          "-3/2",
+          "2/5"
+        ],
+        "sign": -1
+      },
+      {
+        "embedding": -1,
+        "numerator": [
+          "-1/5",
+          "3/5",
+          "-1",
+          "1"
+        ],
+        "denominator": [
+          "1/3",
+          "0",
+          "1"
+        ],
+        "value": [
+          "-33/35",
+          "39/35"
+        ],
+        "sign": -1
+      }
+    ],
+    "tarski": [
+      {
+        "source": "t**3*(t - 1)*(t + 1)**2",
+        "query": "t",
+        "interval": [
+          -2,
+          -1
+        ],
+        "expected": -1
+      },
+      {
+        "source": "t**3*(t - 1)*(t + 1)**2",
+        "query": "t",
+        "interval": [
+          -1,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)*(t + 1)**2",
+        "query": "t",
+        "interval": [
+          0,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "source": "t**3*(t - 1)*(t + 1)**2",
+        "query": "t",
+        "interval": [
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)*(t + 1)**2",
+        "query": "t",
+        "interval": [
+          -3,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t*(t - 2)**2*(t - 1)**2",
+        "query": "(t - 1)**2",
+        "interval": [
+          -2,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t*(t - 2)**2*(t - 1)**2",
+        "query": "(t - 1)**2",
+        "interval": [
+          -1,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "source": "t*(t - 2)**2*(t - 1)**2",
+        "query": "(t - 1)**2",
+        "interval": [
+          0,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t*(t - 2)**2*(t - 1)**2",
+        "query": "(t - 1)**2",
+        "interval": [
+          1,
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "source": "t*(t - 2)**2*(t - 1)**2",
+        "query": "(t - 1)**2",
+        "interval": [
+          -3,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "source": "(t - 2)*(t - 1)*(t + 1)*(t + 2)",
+        "query": "(t + 2)*(t**2 - 1)",
+        "interval": [
+          -2,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "(t - 2)*(t - 1)*(t + 1)*(t + 2)",
+        "query": "(t + 2)*(t**2 - 1)",
+        "interval": [
+          -1,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "source": "(t - 2)*(t - 1)*(t + 1)*(t + 2)",
+        "query": "(t + 2)*(t**2 - 1)",
+        "interval": [
+          0,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "(t - 2)*(t - 1)*(t + 1)*(t + 2)",
+        "query": "(t + 2)*(t**2 - 1)",
+        "interval": [
+          1,
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "source": "(t - 2)*(t - 1)*(t + 1)*(t + 2)",
+        "query": "(t + 2)*(t**2 - 1)",
+        "interval": [
+          -3,
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "source": "t**3*(t - 1)**2",
+        "query": "-t**2*(t - 1)",
+        "interval": [
+          -2,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)**2",
+        "query": "-t**2*(t - 1)",
+        "interval": [
+          -1,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)**2",
+        "query": "-t**2*(t - 1)",
+        "interval": [
+          0,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)**2",
+        "query": "-t**2*(t - 1)",
+        "interval": [
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "source": "t**3*(t - 1)**2",
+        "query": "-t**2*(t - 1)",
+        "interval": [
+          -3,
+          3
+        ],
+        "expected": 0
+      }
+    ],
+    "relative_count": [
+      {
+        "depth": 1,
+        "positive_embedding": true,
+        "source": "t**3 - sqrt(2)*t**2 - t**2 - 2*t + sqrt(2)*t + 2*sqrt(2)",
+        "ascending_coefficients": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "-2",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            -3,
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "depth": 1,
+        "positive_embedding": false,
+        "source": "t**3 - t**2 + sqrt(2)*t**2 - 2*t - sqrt(2)*t - 2*sqrt(2)",
+        "ascending_coefficients": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "-2",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "depth": 1,
+        "positive_embedding": true,
+        "source": "t**3 - sqrt(2)*t**2 + sqrt(2)*t - 2",
+        "ascending_coefficients": [
+          [
+            "-2"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            1
+          ]
+        ]
+      },
+      {
+        "depth": 1,
+        "positive_embedding": false,
+        "source": "t**3 + sqrt(2)*t**2 - sqrt(2)*t - 2",
+        "ascending_coefficients": [
+          [
+            "-2"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "depth": 1,
+        "positive_embedding": true,
+        "source": "t**4 - t**2 - 2 + sqrt(2)",
+        "ascending_coefficients": [
+          [
+            "-2",
+            "1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "-1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            2
+          ]
+        ]
+      },
+      {
+        "depth": 1,
+        "positive_embedding": false,
+        "source": "t**4 - t**2 - 2 - sqrt(2)",
+        "ascending_coefficients": [
+          [
+            "-2",
+            "1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "-1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            2
+          ]
+        ]
+      },
+      {
+        "depth": 2,
+        "positive_embedding": true,
+        "source": "t**3 - t**2 - 2**(1/4)*t + 2**(1/4)",
+        "ascending_coefficients": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "depth": 2,
+        "positive_embedding": true,
+        "source": "t**4 - 2**(1/4)*t**2 + sqrt(2)*t**2 - 2**(3/4)",
+        "ascending_coefficients": [
+          [
+            "0",
+            "0",
+            "0",
+            "-1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "1"
+          ],
+          [
+            "0"
+          ],
+          [
+            "1"
+          ]
+        ],
+        "spans": [
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            -3,
+            3,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "manual_tests": [
+    "dependent beta=alpha over positive and negative sqrt2; semantic zero, coefficient degree drop and inverse vanishing on unselected component",
+    "coherent foreign valid contexts with identical positive signs and source/root certificates",
+    "whole source substitutions with equal squarefree roots plus correct relabeling positive control and false source relabeling rejection",
+    "coherent count/bound/solution substitutions, strict Cauchy bound equality, root order and duplicates",
+    "opaque System.sequence/squarefree, Root.system and SolutionSet.system corruption rejection after production fix"
+  ],
+  "limits": [
+    "Finite exact cases do not formally prove arbitrary-depth field arithmetic.",
+    "The integrity counterexample required white-box construction of opaque values; no public-API arithmetic counterexample was found in this corpus.",
+    "Timings include compilation/test harness; no speedup claim."
+  ]
+}
