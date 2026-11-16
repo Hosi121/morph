@@ -1,0 +1,103 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cubicradical"
+
+import {
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/compositum",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/sturm",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Search, @compositum.Budget) -> Result[Progress, CubicError]
+
+pub fn certificate(Common) -> Certificate
+
+pub fn check(@polynomial.Polynomial, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_result(@polynomial.Polynomial, Common, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn common_field(Common) -> @complexfield.Field
+
+pub fn compose(@polynomial.Polynomial, @compositum.Budget) -> Result[Progress, CubicError]
+
+pub fn eligible(@polynomial.Polynomial) -> Bool
+
+pub fn roots(Common) -> @core.Chain[@complexfield.Element]
+
+pub fn start(@polynomial.Polynomial) -> Result[Search, CubicError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @polynomial.Polynomial
+  scale : @exact.Rational
+  radicand : @exact.Rational
+  cube_root : @realalgebraic.RootCertificate
+  common : @compositum.Common
+  composition : @compositum.Certificate
+  field : @complexfield.Field
+  roots : @core.Chain[@complexfield.Element]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Common {
+  field : @complexfield.Field
+  values : @core.Chain[@complexfield.Element]
+  proof : Certificate
+}
+pub fn Common::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CubicError {
+  Ineligible
+  SturmFailure(@sturm.BuildError)
+  AlgebraFailure(@realalgebraic.AlgebraError)
+  MergeFailure(@compositum.CompositumError)
+  FieldFailure(@numberfield.FieldError)
+  ComplexFieldFailure(@complexfield.FieldError)
+  InternalInvariant
+}
+pub fn CubicError::equal(Self, Self) -> Bool
+pub fn CubicError::not_equal(Self, Self) -> Bool
+pub fn CubicError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Ready(Common, Certificate)
+  Paused(Search, StopReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  source : @polynomial.Polynomial
+  phase : Phase
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  IsolationBudget
+  MergeBudget(@compositum.StopReason)
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
