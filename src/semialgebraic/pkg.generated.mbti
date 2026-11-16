@@ -1,0 +1,79 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/semialgebraic"
+
+import {
+  "Hosi121/morph/cad2",
+  "Hosi121/morph/core",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/realcad",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(RealSet) -> Certificate
+
+pub fn check(@cad2.Problem, @cad2.Quantifier, Certificate, @core.Nat) -> RealSet?
+
+pub fn check_result(@cad2.Problem, @cad2.Quantifier, RealSet, Certificate, @core.Nat) -> Bool
+
+pub fn contains(RealSet, @realalgebraic.Number, @core.Nat) -> Result[Bool?, SetError]
+
+pub fn from_cad2(@cad2.Decomposition, @cad2.Quantifier) -> Result[RealSet, SetError]
+
+pub fn intervals(RealSet) -> @core.Chain[Interval]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Bound {
+  NegativeInfinity
+  Finite(@realalgebraic.RootCertificate)
+  PositiveInfinity
+}
+pub fn Bound::equal(Self, Self) -> Bool
+pub fn Bound::not_equal(Self, Self) -> Bool
+pub fn Bound::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  formula : @realcad.Formula
+  quantifier : @cad2.Quantifier
+  cad : @cad2.Certificate
+  truth : @core.Chain[Bool]
+  intervals : @core.Chain[Interval]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Interval {
+  lower : Bound
+  upper : Bound
+  lower_closed : Bool
+  upper_closed : Bool
+}
+pub fn Interval::equal(Self, Self) -> Bool
+pub fn Interval::not_equal(Self, Self) -> Bool
+pub fn Interval::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct RealSet {
+  certificate : Certificate
+}
+pub fn RealSet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SetError {
+  MalformedCells
+  InvalidEndpoint
+  AlgebraFailure(@realalgebraic.AlgebraError)
+}
+pub fn SetError::equal(Self, Self) -> Bool
+pub fn SetError::not_equal(Self, Self) -> Bool
+pub fn SetError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

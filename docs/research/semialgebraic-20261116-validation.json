@@ -1,0 +1,98 @@
+{
+  "utc": "2026-11-16T09:59:10.930937+00:00",
+  "cpu": 8,
+  "serialization": "tools/measure shared git-common-dir lock",
+  "timing_scope": "incremental command wall time, not an algorithm benchmark",
+  "commands": [
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/semialgebraic",
+        "--target",
+        "native",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 5.459022,
+      "output": "Total tests: 174, passed: 174, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/semialgebraic",
+        "--target",
+        "js",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 2.925807,
+      "output": "Total tests: 174, passed: 174, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/semialgebraic",
+        "--target",
+        "wasm-gc",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 2.732506,
+      "output": "Total tests: 174, passed: 174, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "check",
+        "src/semialgebraic",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 2.00318,
+      "output": "Finished. moon: ran 28 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "info",
+        "src/semialgebraic"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.850857,
+      "output": "Finished. moon: ran 26 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "fmt",
+        "--check",
+        "src/semialgebraic"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.14227,
+      "output": "Finished. moon: ran 6 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_semialgebraic_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.130856,
+      "output": "{\"circle_sets\": 2, \"fraction_membership_queries\": 38, \"truth_patterns\": 170}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.539885,
+      "output": "Purity gate passed: 189 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+    }
+  ]
+}

@@ -1,0 +1,5950 @@
+{
+  "oracle": "stdlib maximal runs of true cell indices; Fraction q^2 relation 2, no CAD or root-count formula",
+  "statistics": {
+    "truth_patterns": 170,
+    "circle_sets": 2,
+    "fraction_membership_queries": 38
+  },
+  "patterns": [
+    {
+      "roots": [],
+      "polynomial": [
+        1
+      ],
+      "truth": [
+        false
+      ],
+      "expected_components": []
+    },
+    {
+      "roots": [],
+      "polynomial": [
+        1
+      ],
+      "truth": [
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false
+      ],
+      "expected_components": []
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        0
+      ],
+      "polynomial": [
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": []
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        1
+      ],
+      "polynomial": [
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": []
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          0,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          0,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          -1,
+          true,
+          true
+        ],
+        [
+          0,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          false
+        ],
+        [
+          -1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          0,
+          true,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          -1,
+          false,
+          true
+        ],
+        [
+          0,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          false
+        ],
+        [
+          0,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          1,
+          true,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          0,
+          false,
+          true
+        ],
+        [
+          1,
+          9,
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          false
+        ],
+        [
+          1,
+          9,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "expected_components": [
+        [
+          -9,
+          1,
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "roots": [
+        -1,
+        0,
+        1
+      ],
+      "polynomial": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "truth": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "expected_components": [
+        [
+          -9,
+          9,
+          false,
+          false
+        ]
+      ]
+    }
+  ],
+  "circles": [
+    {
+      "closed": false,
+      "expected_set": "(-sqrt(2),sqrt(2))",
+      "rational_samples": [
+        [
+          -4,
+          1,
+          false
+        ],
+        [
+          -3,
+          1,
+          false
+        ],
+        [
+          -2,
+          1,
+          false
+        ],
+        [
+          -3,
+          2,
+          false
+        ],
+        [
+          -4,
+          3,
+          true
+        ],
+        [
+          -1,
+          1,
+          true
+        ],
+        [
+          -2,
+          3,
+          true
+        ],
+        [
+          -1,
+          2,
+          true
+        ],
+        [
+          -1,
+          3,
+          true
+        ],
+        [
+          0,
+          1,
+          true
+        ],
+        [
+          1,
+          3,
+          true
+        ],
+        [
+          1,
+          2,
+          true
+        ],
+        [
+          2,
+          3,
+          true
+        ],
+        [
+          1,
+          1,
+          true
+        ],
+        [
+          4,
+          3,
+          true
+        ],
+        [
+          3,
+          2,
+          false
+        ],
+        [
+          2,
+          1,
+          false
+        ],
+        [
+          3,
+          1,
+          false
+        ],
+        [
+          4,
+          1,
+          false
+        ]
+      ]
+    },
+    {
+      "closed": true,
+      "expected_set": "[-sqrt(2),sqrt(2)]",
+      "rational_samples": [
+        [
+          -4,
+          1,
+          false
+        ],
+        [
+          -3,
+          1,
+          false
+        ],
+        [
+          -2,
+          1,
+          false
+        ],
+        [
+          -3,
+          2,
+          false
+        ],
+        [
+          -4,
+          3,
+          true
+        ],
+        [
+          -1,
+          1,
+          true
+        ],
+        [
+          -2,
+          3,
+          true
+        ],
+        [
+          -1,
+          2,
+          true
+        ],
+        [
+          -1,
+          3,
+          true
+        ],
+        [
+          0,
+          1,
+          true
+        ],
+        [
+          1,
+          3,
+          true
+        ],
+        [
+          1,
+          2,
+          true
+        ],
+        [
+          2,
+          3,
+          true
+        ],
+        [
+          1,
+          1,
+          true
+        ],
+        [
+          4,
+          3,
+          true
+        ],
+        [
+          3,
+          2,
+          false
+        ],
+        [
+          2,
+          1,
+          false
+        ],
+        [
+          3,
+          1,
+          false
+        ],
+        [
+          4,
+          1,
+          false
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "utc": "2026-11-16T10:00:24.132363+00:00",
+  "workspace": "/home/hosi/morph-zassenhaus-20261116",
+  "cpu": 8,
+  "serialization": "tools/measure shared git-common-dir lock",
+  "old_files_preserved": [
+    {
+      "path": "docs/research/zassenhaus-20261116-fixtures.json",
+      "sha256": "a53a8011f27b4dad2509b4ac41ee5ced9ec899bdff5b00bd3c533a99dcacb985",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/zassenhaus-20261116-validation.json",
+      "sha256": "9c4bb4ae6f8532881eaef0144a653d13decfd27051574b156a891a42df87e13e",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/zassenhaus-20261116.md",
+      "sha256": "9812f7e47ccff0a638498d9268b22e629e3300a8b144d41da16e565c27b3bd23",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_zassenhaus_fixtures.py",
+      "sha256": "930a019aa785b37e575cf063717e18b4f8229e607de8005e76c90a027512f8c6",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116-fixtures.json",
+      "sha256": "df3576efd90c71738b7b7b2327d5cc2842d15f2ab05004667c01163a6408c3a2",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116-validation.json",
+      "sha256": "67fbbf780ff4cc76b8c3aacb257bea2780ed0dd04c3383d039ced1aaa688cfa9",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116.md",
+      "sha256": "8b7f34c266da613205e3e6d23026fdcbb2bdfb1f2073f73a580fedcb4cada236",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realalgebraic_fixtures.py",
+      "sha256": "fca918c619b0d4649a3569edf8d21abe78c60661f1386395d3f4af4a50fb2653",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-fixtures.json",
+      "sha256": "90a732dff89a0a7fdd03ba79d5e5c8f995e2de7dd083e5a0c9041e9b35753c1e",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-separation-fixtures.json",
+      "sha256": "269a3d4287af3276617d9a7c7bab3595595c354ce22373ac4fa35cd507f3a6d3",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-separation-pilot.json",
+      "sha256": "a816a4f49533f322bf2794a8129191bf7ee9e120e0ca4f2ebfcf6ac1f054c1cc",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-validation.json",
+      "sha256": "f5e021ffcf6eda12854404021f6e9cdc2e71cc5c55898a5228643bb8866dd538",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116.md",
+      "sha256": "951df719ac6d86b8ec85e513bde82bcaa183d7b4eb3f3ce48b7cc4afdab63523",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realvariety_fixtures.py",
+      "sha256": "f0b563940a85f5aac73ee4d9c8f393c4fa315e428a05700ff9f1b4605d927aa6",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realvariety_separation.py",
+      "sha256": "b1a2e0c715093f90fa484e70e271d5f09199dcc8d9cd56e13c551611bc9f6bfa",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116-fixtures.json",
+      "sha256": "b1081e1f13bf08afd51b53cd7c612171c62929859360b4538c4aa171c94c56f6",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116-validation.json",
+      "sha256": "c17849b7131fc43353e1af4e810e1d0b9a80a4ab77cd98be74e85bd8d328e36b",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116.md",
+      "sha256": "a5ce7356d7b0ac0fca7bbbaeeb6ed9d315e346a13cd81079ffb6e8056d94ee2d",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_tarski_fixtures.py",
+      "sha256": "6fb4034d72462e1486671db50168e552789310498e355eaa940184dabadeaa4f",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/orderedsturm-20261116-fixtures.json",
+      "sha256": "dd4dc3b83da1b27b461e753e44162040d8f787c3ab68b8f40b3eaf96f356fc30",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/orderedsturm-20261116-validation.json",
+      "sha256": "e2d510f64749016a723fa7ea5b17c1c9f6ea1adf2d4f2970eaa8ffb1f3c225d4",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/orderedsturm-20261116.md",
+      "sha256": "e83fb2c300a7f4e590717472bb69e56da9ff6060116c3f15466fd4cfe158c7c6",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/count.mbt",
+      "sha256": "fc2c59c866beb252e82fa3ba641edac567eddab63b9397901da71eb5ff97adee",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/fixtures_wbtest.mbt",
+      "sha256": "9ca1f5afe6df707708f8169c01e48112c8e152a3ae78924fbadecdab3445668d",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/isolation.mbt",
+      "sha256": "5f2494d5ee4f3d7bf8be69efc8ca5806ca660c30385c20b3d405105b74ffbc65",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/moon.pkg",
+      "sha256": "7ab15dd7901de4ea7c9910731ac1cd693a292e3e061b8c06e26c51220ce47b26",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/ordered_wbtest.mbt",
+      "sha256": "b1e57dfc77a156c11a95b6f158cc1a6188e2085d4386046baf22446c60d0fc30",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/pkg.generated.mbti",
+      "sha256": "18b1f89361590a8f33da5e6a326297fbd7171e415405635b5887f812ef56270a",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/polynomial.mbt",
+      "sha256": "a57fc441e65ddaf5792e2485f3bafc676262305a5bc871eda303290d71c0800b",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/scalar.mbt",
+      "sha256": "fd8da3fa64ed3a44c92298a40918a84367528471bc6dde1e662703b2f86304d5",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/system.mbt",
+      "sha256": "7ca70320b0160541b671efa4c96710c9a81d77651b6e9a57cb670a6f94d6fac7",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_orderedsturm_fixtures.py",
+      "sha256": "cec3c65f755e37df66a29f938158ae909c5cf8e645775a2672bac14ec77640c0",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_orderedsturm_validation.py",
+      "sha256": "cd856f9570f48d0ada568911d3c96b21d9c1cffc89503dc9801235848ab64f95",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/compositum-review-20261116-fixtures.json",
+      "sha256": "3d519bfa6a84fe1d3a7f6ed009f5cf631a2b6cafe4f02a129efde40201bf6e05",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/compositum-review-20261116-preservation.json",
+      "sha256": "591e8b5a5660f9946e4d646242e60086688e7df77863cfdbcad6a00579a16876",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/compositum-review-20261116-validation.json",
+      "sha256": "b123fad65ad90a5e5ca078273c53c344a06a54beb07462217cd3f0eba35fbdb1",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/compositum-review-20261116.md",
+      "sha256": "6fb970826321465daa2dbbcf87fc321a7e169fcc46d157e70232776023486967",
+      "preserved": true
+    },
+    {
+      "path": "src/compositum/adversarial_review_wbtest.mbt",
+      "sha256": "61ea1496c1f9f5a047ae674384c3ae0343910c4b1276a0f40d59d93fbe50a792",
+      "preserved": true
+    },
+    {
+      "path": "src/compositum/direct_review_wbtest.mbt",
+      "sha256": "ee8324f43c4d86960aa15188c13fd25dac82a9859602696641c9a7bbadd8e8b9",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_compositum_review_fixtures.py",
+      "sha256": "3cb7801525bfe371245e1152aac19dca64ac085daca43e2b6e5b2f43ea2291cb",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_compositum_review_validation.py",
+      "sha256": "7a9c0ff25bf3ef34121ca1cee3d94fbb1a6ab96c7448f85ab456ed544063868e",
+      "preserved": true
+    }
+  ],
+  "current_files": [
+    {
+      "path": "docs/research/semialgebraic-20261116-fixtures.json",
+      "bytes": 78084,
+      "sha256": "8ff957c216fba45551b58828a05ef9c781745165022a538b4c9f5ee1d674249f"
+    },
+    {
+      "path": "docs/research/semialgebraic-20261116-validation.json",
+      "bytes": 2385,
+      "sha256": "3515d30248f420fd11a10320a842354adbad65a2ac6a10437b0af86f5ccf8b13"
+    },
+    {
+      "path": "docs/research/semialgebraic-20261116.md",
+      "bytes": 8589,
+      "sha256": "8b1d2d17dd50cccf21d636556695ee40e5fef3c7c1690934546f75fdbb48f6b0"
+    },
+    {
+      "path": "src/semialgebraic/assemble.mbt",
+      "bytes": 4665,
+      "sha256": "471d0e13b2f636d65f9cf3d16bce4419d0b53f9a1c49ec1046fafff2537e1eca"
+    },
+    {
+      "path": "src/semialgebraic/contains.mbt",
+      "bytes": 2664,
+      "sha256": "b6c7dc5aab88c018bd22f660a3ad58e39afa22b371474558f6015855e0088552"
+    },
+    {
+      "path": "src/semialgebraic/data.mbt",
+      "bytes": 1582,
+      "sha256": "a17067b430295e17dfcbf98d465e1ae42782fd6969710d9f112c19bd391e90d9"
+    },
+    {
+      "path": "src/semialgebraic/fixtures_wbtest.mbt",
+      "bytes": 34553,
+      "sha256": "7ee74280906e9aa21032858bf0e399d2c7e55bcaa67bba5b79189d83e0a32362"
+    },
+    {
+      "path": "src/semialgebraic/moon.pkg",
+      "bytes": 281,
+      "sha256": "9aba57f6e1bfda6f2fe2dcc7a649588f658608e2057daccca805f6fc2e4ff9cc"
+    },
+    {
+      "path": "src/semialgebraic/pkg.generated.mbti",
+      "bytes": 2019,
+      "sha256": "b2888cbcbff2e83d4afcebc14e79e2aaa5af2bab8c6c31efabd7b8e08487d85b"
+    },
+    {
+      "path": "src/semialgebraic/set_wbtest.mbt",
+      "bytes": 11394,
+      "sha256": "ee8622e2c70c966bbbb1d364ba18254782bd70c8a78fd9d2f5e489503625020b"
+    },
+    {
+      "path": "tools/generate_semialgebraic_fixtures.py",
+      "bytes": 2922,
+      "sha256": "caa200965c024a3b6641e17468bf29f3174cfd2a0d35ef5e5b8069c95fdde05b"
+    },
+    {
+      "path": "tools/generate_semialgebraic_validation.py",
+      "bytes": 1349,
+      "sha256": "9943cf4bf36b5932e211db28a2f243ce787bc85cace7233271bcd0e941a107d8"
+    }
+  ],
+  "raw_logs": "*-validation.json commands[].output contains unedited combined stdout/stderr",
+  "additional_log_paths": [],
+  "separate_common_dir_copies": []
+}
