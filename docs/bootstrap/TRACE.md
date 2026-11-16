@@ -19,3 +19,7 @@
 - 16時台：利用経路のユーザー監査を受け、指定された三箇所のNat/Binary往復を共有Coreのhalf_natへ置換。67テストを全3backend、Leanのfloorとprefix定理を検査。
 - 同時点：内部参照のない公開APIと独立runbinaryを区別する静的一覧、直接の変換往復を拒否する保守ゲートを追加。
 - 16:10 UTC：共有half/prefix、exact、Fp/Galois、SATの採用済み改善を統合し、464テストをWasm GC/JS/native、69公開API、純粋性・変換経路・Leanモデルまで検査。個別の実験経路を通常経路と区別するKERNELS一覧を追加。
+- 2026-11-16 01:58 UTC：期限を確認後、ユーザーが追加4時間の同方針反復を承認。新しい終了時刻は05:58:27 UTC。
+- 継続枠：8進変換・不変0/1・小さい積/差・比較・直接有理数減算・SAT入口/索引を検証して本体へ接続。値/正規性/比較/foldのモデルとsource対応を拡張。
+- 05:30 UTC頃：sourceを確定。長語除算のtail化はnative回帰が残り未採用としてsource・モデル・ログを保全。
+- 最終検査：499テスト×native/JS/Wasm GC、Python12、69公開API、24領域と全Leanモデル、外部16証拠×LRAT/DRATと7陰性例。不要worktreeは全て削除し、mainのみを残す。
