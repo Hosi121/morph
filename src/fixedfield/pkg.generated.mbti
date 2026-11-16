@@ -1,0 +1,76 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/fixedfield"
+
+import {
+  "Hosi121/morph/complexautomorphism",
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn basis(Field) -> @core.Chain[@complexfield.Element]
+
+pub fn certificate(Field) -> Certificate
+
+pub fn check(@complexautomorphism.Group, Certificate) -> Bool
+
+pub fn check_result(@complexautomorphism.Group, Field, Certificate) -> Bool
+
+pub fn contains(Field, @complexfield.Element) -> Bool
+
+pub fn coordinates(Field, @complexfield.Element) -> Result[@core.Chain[@exact.Rational], FixedError]
+
+pub fn degree(Field) -> @core.Nat
+
+pub fn from_certificate(@complexautomorphism.Group, Certificate) -> Result[Field, FixedError]
+
+pub fn from_coordinates(Field, @core.Chain[@exact.Rational]) -> Result[@complexfield.Element, FixedError]
+
+pub fn group(Field) -> @complexautomorphism.Group
+
+pub fn members(Field) -> @core.Chain[@core.Nat]
+
+pub fn prepare(@complexautomorphism.Group, @core.Chain[@core.Nat]) -> Result[Field, FixedError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @complexfield.Field
+  group : @complexautomorphism.Certificate
+  members : @core.Chain[@core.Nat]
+  degree : @core.Nat
+  basis : @core.Chain[@complexfield.Element]
+  actions : @core.Chain[@matrix.Matrix[@exact.Rational]]
+  constraints : @matrix.Matrix[@exact.Rational]
+  rank : @core.Nat
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Field {
+  // private fields
+}
+pub fn Field::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FixedError {
+  InvalidGroup
+  InvalidSubgroup
+  InvalidCertificate
+  DifferentField
+  NotFixed
+  DimensionMismatch
+  InternalInvariant
+}
+pub fn FixedError::equal(Self, Self) -> Bool
+pub fn FixedError::not_equal(Self, Self) -> Bool
+pub fn FixedError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
