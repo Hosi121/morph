@@ -1,0 +1,61 @@
+JS factory comparison:
+[Hosi121/morph] bench binary/factory_bench_wbtest.mbt:12 ("cached Binary zero and one factories") ok
+time (mean ± σ)         range (min … max) 
+  15.36 ns ±   4.87 ns    12.00 ns …  24.43 ns  in 10 × 100000 runs
+[Hosi121/morph] bench binary/factory_bench_wbtest.mbt:20 ("previous Binary zero and one factories same executable") ok
+time (mean ± σ)         range (min … max) 
+  24.24 ns ±   3.07 ns    19.95 ns …  29.24 ns  in 10 × 100000 runs
+Total tests: 2, passed: 2, failed: 0.
+
+Wasm GC factory comparison:
+[Hosi121/morph] bench binary/factory_bench_wbtest.mbt:12 ("cached Binary zero and one factories") ok
+time (mean ± σ)         range (min … max) 
+  11.57 ns ±   0.87 ns    10.41 ns …  12.42 ns  in 10 × 100000 runs
+[Hosi121/morph] bench binary/factory_bench_wbtest.mbt:20 ("previous Binary zero and one factories same executable") ok
+time (mean ± σ)         range (min … max) 
+  18.94 ns ±   7.13 ns    15.13 ns …  33.57 ns  in 10 × 100000 runs
+Total tests: 2, passed: 2, failed: 0.
+
+Native generated C allocation probe:
+allocation-probe fresh 113906720 / 10027 = 11360 allocations per small128 invocation
+allocation-probe shared 106252058 / 9647 = 11014 allocations per small128 invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"factory_control_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"factory_control_wbtest.mbt","index":1,"message":"@BATCH_BENCH { \"summaries\": [{\"name\":\"fresh small128\",\"sum\":1348.3378548245612,\"min\":130.40455093984963,\"max\":143.1069768170426,\"mean\":134.8337854824561,\"median\":133.21274122807017,\"variance\":18.441820478023313,\"std_dev\":4.294394075771728,\"std_dev_pct\":3.1849540235080713,\"median_abs_dev\":2.3632504657894775,\"median_abs_dev_pct\":1.7740423656198292,\"quartiles\":[132.5136453634085,133.21274122807017,137.31942293233084],\"iqr\":4.805777568922338,\"batch_size\":798,\"runs\":10},{\"name\":\"shared small128\",\"sum\":1350.6811444736843,\"min\":127.77003546052632,\"max\":147.13671032894737,\"mean\":135.06811444736843,\"median\":133.0426697368421,\"variance\":42.22282148466846,\"std_dev\":6.497909008647971,\"std_dev_pct\":4.810838616674397,\"median_abs_dev\":4.909399706842121,\"median_abs_dev_pct\":3.6900941003009753,\"quartiles\":[130.5687947368421,133.0426697368421,136.70817335526317],\"iqr\":6.139378618421063,\"batch_size\":760,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
+
+JS 8-bit oracle:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/constants.mbt:9:4 ]
+   │
+ 9 │ fn canonical_zero() -> Binary {
+   │    ───────┬──────  
+   │           ╰──────── Warning (unused_value): Unused function 'canonical_zero'
+───╯
+Warning: [0001]
+    ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/constants.mbt:14:4 ]
+    │
+ 14 │ fn canonical_one() -> Binary {
+    │    ──────┬──────  
+    │          ╰──────── Warning (unused_value): Unused function 'canonical_one'
+────╯
+Total tests: 1, passed: 1, failed: 0.
+
+Wasm GC 8-bit oracle:
+Warning: [0001]
+   ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/constants.mbt:9:4 ]
+   │
+ 9 │ fn canonical_zero() -> Binary {
+   │    ───────┬──────  
+   │           ╰──────── Warning (unused_value): Unused function 'canonical_zero'
+───╯
+Warning: [0001]
+    ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/constants.mbt:14:4 ]
+    │
+ 14 │ fn canonical_one() -> Binary {
+    │    ──────┬──────  
+    │          ╰──────── Warning (unused_value): Unused function 'canonical_one'
+────╯
+Total tests: 1, passed: 1, failed: 0.
