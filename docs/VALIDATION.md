@@ -34,27 +34,31 @@ Leanの初回準備は[形式検証](../formal/README.md)を参照してくだ�
 
 ## 検証済みスナップショット
 
-2026-11-17（JST）の統合検証は、ソース`de2a892`を固定して実行しました。
-理論衝突後のCDCL状態の保持、早期SAT終了、円柱の枝刈りと証拠検査まで含みます。
-[全出力](measurements/retained-cdcl-20261117-validation.txt)と
-[条件・コマンド・集計](measurements/retained-cdcl-20261117-validation.json)を保存しています。
+2026-11-17（JST）の統合検証は、ソース`b8e5ff3`を固定して実行しました。
+既存CAD被覆からの理論衝突節の削減、CDCL状態保持、早期SAT終了と証拠検査まで含みます。
+[全出力](measurements/theory-core-20261117-validation.txt)と
+[条件・コマンド・集計](measurements/theory-core-20261117-validation.json)を保存しています。
 
 | 検査 | 結果 |
 | --- | --- |
-| native / JS / Wasm GC | 各3,835テスト成功 |
+| native / JS / Wasm GC | 各3,871テスト成功 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 250核ソースが通過 |
+| 純記号制約 | 251核ソースが通過 |
 | 公開API | 103生成スナップショットが一致 |
-| Leanモデル | 32対応領域の差分検査と全モデルが通過。CDCL全体の形式証明を追加したものではない |
-| 増分CDCLの独立照合 | 全729節対・3,543増分prefixに加え、別担当の160スケジュール・1,440入力prefixをwatch/scanningで照合 |
-| 独立fixture | 新規の真理値表スケジュール、Z3参照16入力と41入力、CAD 19例・一階式6例の生成物が一致 |
-| SMTと証拠 | 状態保持・再始動経路の厳密モデル/反証を検査。旧cad2・高次PSCも全3 backendで通過 |
+| Leanモデル | 32対応領域の差分検査と全モデルが通過。CAD・衝突節削減全体の形式証明を追加したものではない |
+| 共有被覆の独立照合 | 元式/部分式の18組・36件の厳密Z3照合、SAT弱化と5種類の証拠攻撃を全3 backendで検査 |
+| 算術・SMTの回帰 | 六関係の30個の解析例、共同で矛盾する2原子、短い式と最終RUPの元問題への束縛を検査 |
+| 独立fixture | 新規subset参照、既存Z3 16/41入力、真理値表スケジュール、CAD 19例・一階式6例の生成物が一致 |
 | 実行ツアー | 実閉体のツアーが3 backendで掲載例と一致 |
-| 同条件の性能比較 | 36比較・432回の検査付き計測。各方式6回、改善のない対照も保存 |
+| 同条件の性能比較 | 36比較・432回の検査付き計測。各方式6回、削減できない対照と遅い中央値も保存 |
 
-[CDCL状態保持の設計と計測](research/retained-cdcl-20261117.md)に、通常経路への採用理由と限界を記録しています。
-担当用作業木をmain一つへ戻し、8資料のバイト一致、研究branchのbundle、重複したビルド出力の削除を
-[片付け記録](measurements/retained-cdcl-20261117-cleanup.json)へ残しました。
+[小さな理論衝突節の設計と計測](research/theory-core-20261117.md)に、通常経路への採用理由と保守的な失敗を記録しています。
+担当用作業木をmain一つへ戻し、12資料のバイト一致、研究branchのbundle、重複したビルド出力の削除を
+[片付け記録](measurements/theory-core-20261117-cleanup.json)へ残しました。
+
+前回の`de2a892`は、CDCL状態保持まで含む
+[各3,835テストの統合検証](measurements/retained-cdcl-20261117-validation.json)と
+[出力](measurements/retained-cdcl-20261117-validation.txt)を保存しています。
 
 前回の`8fe68f0`は、円柱の枝刈りまで含む
 [各3,817テストの統合検証](measurements/incremental-20261117-validation.json)と

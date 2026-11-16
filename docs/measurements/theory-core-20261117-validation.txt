@@ -1,0 +1,140 @@
+Fixed source b8e5ff344afd8f68b34f1afffdb55136c3a3eb9c; CPU4, common Git performance lock.
+
+$ tools/check
+----------------------------------------------------------------------
+Ran 24 tests in 0.032s
+
+OK
+Documentation gate passed: 125 Markdown files, 1350 local links; navigation is connected.
+Source inventory is current.
+Purity gate passed: 251 kernel files; no machine numerics, mutation, arrays or FFI.
+Conversion gate passed; static library references recorded separately from tests.
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.
+4-bit product table checked: 256 cases, 90 shared results; suffix sharing=True.
+Difference controls checked; production=lookup
+Finished. moon: ran 36 tasks, now up to date
+Finished. moon: ran 112 tasks, now up to date
+Total tests: 3871, passed: 3871, failed: 0.
+Total tests: 3871, passed: 3871, failed: 0.
+Finished. moon: ran 103 tasks, now up to date
+Interface drift gate passed: 103 compiler-generated snapshots.
+
+
+$ tools/moon test --target native
+Total tests: 3871, passed: 3871, failed: 0.
+
+
+$ tools/check_formal
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+'Morph.Core.replicateOnto_eq_append' depends on axioms: [propext]
+'Morph.Core.replicateOnto_nil' depends on axioms: [propext]
+'Morph.Core.halveNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Core.halfNat_floor' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatByHalves_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGroupedLoop_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_lt' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.lowBit_sound' does not depend on any axioms
+'Morph.Binary.lowBit_canonical' depends on axioms: [propext]
+'Morph.Binary.fromNatGroupedBits_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatGroupedBits_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.zero_sound' does not depend on any axioms
+'Morph.Binary.one_sound' does not depend on any axioms
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldLeft_reverseOnto' does not depend on any axioms
+'Morph.Fold.foldLeft_reverse' does not depend on any axioms
+'Morph.Fold.foldFour_eq_foldLeft' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldFour_reverse' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.boundedRightFour_eq_foldRight' depends on axioms: [propext]
+'Morph.PrefixLogic.partialEvaluate_sound' depends on axioms: [propext]
+'Morph.PrefixLogic.known_is_uniform' depends on axioms: [propext]
+'Morph.SparseHorner.power_add' depends on axioms: [propext]
+'Morph.SparseHorner.bitsPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.optimizedPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.scan_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_genericSum' depends on axioms: [propext]
+'Morph.SparseHorner.dispatch_generic' does not depend on any axioms
+'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
+'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
+'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]
+
+
+$ .tools/realclosed-20261116/reference-venv/bin/python tools/generate_theory_core_review.py --check
+Verified 18 whole/subset pairs, 36 exact Z3 queries; 9 SAT / 9 UNSAT targets.
+
+
+$ python3 tools/generate_retained_cdcl_review.py --check
+Verified 160 schedules / 1440 independently enumerated prefix decisions; watched+scanning execution.
+
+
+$ .tools/realclosed-20261116/reference-venv/bin/python tools/generate_incremental_review.py --check
+Verified 16 default exact cylindrical-search cases: 7 SAT, 9 UNSAT; preserved optional stress input independently Z3 UNSAT.
+
+
+$ .tools/realclosed-20261116/reference-venv/bin/python tools/generate_realnlsmt_review.py --check
+Verified 41 default/emitted cases; external exact Z3 reference validates 41 candidates: 20 SAT, 21 UNSAT.
+
+
+$ python3 tools/generate_cad_review.py --check
+Checked 19 CAD and 6 FO closed-form cases, plus 4 old-CAD2 complete base-cell comparisons.
+
+
+$ tools/moon run src/cmd/realclosed --target native
+forall x exists y forall z. y^2+z^2 >= x: true [checked]
+exists x forall y exists z. y^2+z^2 <= x: false [checked]
+exists z. x^2+y^2+z^2=1: rational-polynomial formula in x,y [checked]
+  origin=true; boundary (1,0)=true; outside (1,1)=false
+positive nested roots x^2=2, y^2=x, z^2=y: SAT; z^8=2: true; model checked: true
+x^2 < 0: UNSAT; theory lemmas: 1; CAD + RUP checked: true
+
+
+$ tools/moon run src/cmd/realclosed --target js
+forall x exists y forall z. y^2+z^2 >= x: true [checked]
+exists x forall y exists z. y^2+z^2 <= x: false [checked]
+exists z. x^2+y^2+z^2=1: rational-polynomial formula in x,y [checked]
+  origin=true; boundary (1,0)=true; outside (1,1)=false
+positive nested roots x^2=2, y^2=x, z^2=y: SAT; z^8=2: true; model checked: true
+x^2 < 0: UNSAT; theory lemmas: 1; CAD + RUP checked: true
+
+
+$ tools/moon run src/cmd/realclosed --target wasm-gc
+forall x exists y forall z. y^2+z^2 >= x: true [checked]
+exists x forall y exists z. y^2+z^2 <= x: false [checked]
+exists z. x^2+y^2+z^2=1: rational-polynomial formula in x,y [checked]
+  origin=true; boundary (1,0)=true; outside (1,1)=false
+positive nested roots x^2=2, y^2=x, z^2=y: SAT; z^8=2: true; model checked: true
+x^2 < 0: UNSAT; theory lemmas: 1; CAD + RUP checked: true
+

@@ -1,0 +1,184 @@
+{
+  "source_commit": "b8e5ff344afd8f68b34f1afffdb55136c3a3eb9c",
+  "completed_utc": "2026-11-16T17:53:57.813829+00:00",
+  "cpu": 4,
+  "serialization": "tools/measure common Git lock",
+  "records": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit": 0,
+      "wall_seconds": 498.9356385379979,
+      "backends": {
+        "wasm-gc": {
+          "tests": 3871,
+          "passed": 3871,
+          "failed": 0
+        },
+        "js": {
+          "tests": 3871,
+          "passed": 3871,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 299.53802398599873,
+      "backends": {
+        "native": {
+          "tests": 3871,
+          "passed": 3871,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit": 0,
+      "wall_seconds": 7.054792868999357
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_theory_core_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.1224075130012352
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_retained_cdcl_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.06467238100231043
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_incremental_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.1091592570010107
+    },
+    {
+      "command": [
+        ".tools/realclosed-20261116/reference-venv/bin/python",
+        "tools/generate_realnlsmt_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.13840489400172373
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_cad_review.py",
+        "--check"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.383214287001465
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "native"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.6403681279989542,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.6596137189990259,
+      "tour_matches_documented_output": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/realclosed",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "wall_seconds": 0.6218276950021391,
+      "tour_matches_documented_output": true
+    }
+  ],
+  "validation_log_sha256": "69b970e728249a0964ff62a3a3012a0e4bd2d8630047579ff2d35e7543b38453",
+  "baseline": "5e856e0",
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "backends": {
+    "wasm-gc": {
+      "tests": 3871,
+      "passed": 3871,
+      "failed": 0
+    },
+    "js": {
+      "tests": 3871,
+      "passed": 3871,
+      "failed": 0
+    },
+    "native": {
+      "tests": 3871,
+      "passed": 3871,
+      "failed": 0
+    }
+  },
+  "python_tests": 24,
+  "pure_kernel_files": 251,
+  "public_api_snapshots": 103,
+  "reviewed_lean_regions": 32,
+  "lean_scope": "All existing models pass; no end-to-end formal proof of subset-CAD checking, core reduction, CDCL or compiler is claimed.",
+  "independent_cover_review": {
+    "whole_subset_pairs": 18,
+    "exact_z3_queries": 36,
+    "subset_sat": 9,
+    "subset_unsat": 9,
+    "tests_each_backend": 23,
+    "old_private_problem_attack_each_backend": "passed"
+  },
+  "analytic_shifted_square_relation_cases": 30,
+  "previous_z3_regression_series": [
+    41,
+    16
+  ],
+  "timed_and_checked_runs": 432,
+  "mode_comparisons": 36,
+  "samples_per_mode_and_input": 6,
+  "benchmark_source_commit": "14990c3",
+  "adoption": "realnlsmt.start uses start_core; start_retained preserves whole-assignment clauses with retained CDCL. Final checks bind exact subset source to a fully verified covering projection.",
+  "remaining_limits": [
+    "Existing cover can safely refuse a genuinely UNSAT subset when needed cells were pruned.",
+    "No guarantee of minimum-cardinality or mathematical subset-minimal cores.",
+    "No-shrink controls pay rational coefficient-plan/tree-walk costs; some medians are slower.",
+    "Original full Collins projection is retained, including helper polynomials.",
+    "No new root/projection solve in the producer, but the final checker still performs exact projection/geometry verification.",
+    "No local projection, arithmetic-state learning, temporary assumptions or push/pop."
+  ],
+  "validation_log": "docs/measurements/theory-core-20261117-validation.txt"
+}

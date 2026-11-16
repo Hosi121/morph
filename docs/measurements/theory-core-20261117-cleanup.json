@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-16T17:41:12.909858+00:00",
+  "source_commit": "b8e5ff344afd8f68b34f1afffdb55136c3a3eb9c",
+  "removed_worktrees": [
+    "/home/hosi/morph-theory-core-cad-20261117",
+    "/home/hosi/morph-theory-core-review-20261117"
+  ],
+  "remaining_worktrees": "worktree /home/hosi/morph\nHEAD b8e5ff344afd8f68b34f1afffdb55136c3a3eb9c\nbranch refs/heads/main",
+  "preserved_worker_files": 12,
+  "preserved_worker_bytes": 5958,
+  "worker_manifest": ".tools/theory-core-20261117/workers/manifest.json",
+  "worker_manifest_sha256": "9d5b6f12c4dbe194c04259051adc21a5ae3d00d14dd55a27d848999e96497556",
+  "research_bundle": ".tools/theory-core-20261117/research-branches.bundle",
+  "research_bundle_sha256": "13c5014661e9874736464d46e7e04155cd9b5d2f510d0412e87a209a223228f5",
+  "branch_policy": "All worker patches present on main; original scoped commits retained as refs and verified bundle. Clean worktrees removed after byte-verified evidence preservation.",
+  "frozen_benchmarks": ".tools/theory-core-20261117/artifacts",
+  "retained_shared_tools": [
+    ".tools/moon",
+    ".tools/lean",
+    ".tools/realclosed-20261116/reference-venv"
+  ],
+  "validation": "Completed: 3871/3871 each native, JS and WasmGC; all final gates, independent generators and documented tours pass.",
+  "removed_duplicate_benchmark_build_directories": [
+    "_build/native/release/build/cmd/incrementalbench",
+    "_build/js/release/build/cmd/incrementalbench",
+    "_build/wasm-gc/release/build/cmd/incrementalbench"
+  ],
+  "retained_artifact_policy": "Frozen release executables, pilot comparisons, worker logs and branch bundle intentionally retained under .tools/theory-core-20261117. Shared SDK/reference tools and useful main library caches preserved.",
+  "completed_utc": "2026-11-16T17:54:03.401136+00:00",
+  "validation_report": "docs/measurements/theory-core-20261117-validation.json"
+}
