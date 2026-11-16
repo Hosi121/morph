@@ -19,3 +19,5 @@ F4 -> FGLM GrevLex: quotient dimension=3, proof=true
   x*y - 1
   -x + y^2
 mu X.(p OR Diamond X): satisfying states=[0, 1], parity proof=true
+CAD2 x^2+y^2=2: forall x exists y=false, exists x forall y=false, proof=true
+CAD2 y=x: forall x exists y=true, exists x forall y=false, proof=true

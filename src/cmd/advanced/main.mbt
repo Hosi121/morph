@@ -331,4 +331,36 @@ fn main {
   real_points()
   order_conversion()
   model_checking()
+  quantified_plane()
+}
+
+///|
+fn quantified_plane() -> Unit {
+  let circle = multivariate(2, [(1, [2, 0]), (1, [0, 2]), (-2, [0, 0])])
+  let diagonal = multivariate(2, [(1, [0, 1]), (-1, [1, 0])])
+  let budget : @cad2.Budget = {
+    primes: @oracle.chain([2, 3, 5, 7, 11, 13].map(@oracle.binary)),
+    lifting: @oracle.nat(40),
+    subsets: @oracle.nat(1024),
+    verification: @oracle.nat(4096),
+  }
+  for (name, polynomial) in [("x^2+y^2=2", circle), ("y=x", diagonal)] {
+    let problem = @cad2.prepare(@realcad.Atom(polynomial, EqualZero)).unwrap()
+    match @cad2.run(@cad2.start(problem, budget), @oracle.nat(8192)).unwrap() {
+      Complete(value) => {
+        guard @cad2.check(
+            problem,
+            @cad2.certificate(value),
+            budget.verification,
+          )
+          is Some(_) else {
+          abort("bivariate CAD proof failed")
+        }
+        println(
+          "CAD2 \{name}: forall x exists y=\{@cad2.sentence(value, Forall, Exists)}, exists x forall y=\{@cad2.sentence(value, Exists, Forall)}, proof=true",
+        )
+      }
+      _ => abort("bivariate CAD demo budget exhausted")
+    }
+  }
 }

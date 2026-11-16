@@ -11,6 +11,8 @@ import {
   "Hosi121/morph/fglm",
   "Hosi121/morph/berkowitz",
   "Hosi121/morph/mucalc",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/cad2",
   "Hosi121/morph/testsupport" @oracle,
 }
 
