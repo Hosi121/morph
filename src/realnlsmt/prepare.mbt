@@ -124,3 +124,14 @@ pub fn atoms(problem : Problem) -> @core.Chain[Atom] {
 pub fn cnf(problem : Problem) -> @sat.Cnf {
   @circuit.cnf(problem.encoding)
 }
+
+///|
+/// Rebuild the finite source-to-CNF binding at public checker boundaries.
+/// Opaque construction prevents callers from manufacturing mixed payloads,
+/// but the checker also enforces the invariant instead of relying on opacity.
+fn valid_problem(problem : Problem) -> Bool {
+  match prepare(arity(problem), formula(problem)) {
+    Ok(expected) => expected.equal(problem)
+    Err(_) => false
+  }
+}

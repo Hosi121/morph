@@ -131,7 +131,8 @@ pub fn point(model : Model) -> @cad.Point {
 
 ///|
 pub fn check_model(problem : Problem, model : Model) -> Bool {
-  if !model.context.equal(problem.context) ||
+  if !valid_problem(problem) ||
+    !model.context.equal(problem.context) ||
     !@core.length(@cad.coordinates(model.point)).equal(arity(problem)) {
     false
   } else {
@@ -158,7 +159,7 @@ pub fn check_model(problem : Problem, model : Model) -> Bool {
 /// validate complete CAD coverage, then require its existential sentence false.
 /// This does not accept a detached valid decomposition of another conjunction.
 pub fn lemma_clause(problem : Problem, lemma : Lemma) -> @sat.Clause? {
-  if !lemma.context.equal(problem.context) {
+  if !valid_problem(problem) || !lemma.context.equal(problem.context) {
     None
   } else {
     match signed_formula(problem, lemma.assignment) {
@@ -186,7 +187,7 @@ pub fn lemma_clause(problem : Problem, lemma : Lemma) -> @sat.Clause? {
 
 ///|
 pub fn check_refutation(problem : Problem, proof : Refutation) -> Bool {
-  if !proof.context.equal(problem.context) {
+  if !valid_problem(problem) || !proof.context.equal(problem.context) {
     false
   } else {
     fn augment(rest : @core.Chain[Lemma], formula : @sat.Cnf) -> @sat.Cnf? {

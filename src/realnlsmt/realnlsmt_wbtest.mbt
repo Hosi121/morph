@@ -271,12 +271,19 @@ test "models reject source context Boolean payload and real point substitution" 
 ///|
 test "theory lemmas and RUP proof reject detached coherent and payload substitutions" {
   let p = test_polynomial(1, [(1, 1, [2])])
-  let problem = test_problem(1, @qf.Atom(p, LessZero))
+  let problem = test_problem(1, @qf.Conjunction(Atom(p, LessZero), Truth(true)))
   let proof = test_unsat(problem)
   let lemma = match proof.lemmas {
     Cons(lemma, Nil) => lemma
     _ => abort("one lemma expected")
   }
+  // Variable 1 exists in the Boolean CNF, but is a Tseitin auxiliary rather
+  // than a source arithmetic atom. It must not be accepted as a theory label.
+  assert_true(
+    @core.any(boolean_variables(cnf(problem)), fn(variable) {
+      variable.equal(@oracle.nat(1))
+    }),
+  )
   assert_eq(
     lemma_clause(problem, {
       ..lemma,
@@ -415,4 +422,37 @@ test "three-variable sum of squares below zero has a checked refutation" {
   let problem = test_problem(3, @qf.Atom(sum, LessZero))
   let proof = test_unsat(problem)
   assert_eq(@core.length(proof.lemmas), @oracle.nat(1))
+}
+
+///|
+test "opaque problem payloads must still agree with their source context" {
+  let good = test_problem(0, @qf.Truth(true))
+  let bad = test_problem(0, @qf.Truth(false))
+  let proof = test_unsat(bad)
+  let forged = Problem::{ ..good, encoding: bad.encoding, }
+  assert_true(!check_refutation(forged, { ..proof, context: context(good), }))
+  let model = test_sat(good)
+  assert_true(
+    !check_model(
+      Problem::{
+        ..good,
+        atoms: @oracle.chain([
+          Atom::{
+            polynomial: @polynomial.zero(@core.Zero),
+            relation: EqualZero,
+          },
+        ]),
+      },
+      model,
+    ),
+  )
+  let square = test_polynomial(1, [(1, 1, [2])])
+  let problem = test_problem(1, @qf.Atom(square, LessZero))
+  let arithmetic_proof = test_unsat(problem)
+  let lemma = match arithmetic_proof.lemmas {
+    Cons(lemma, _) => lemma
+    _ => abort("theory lemma expected")
+  }
+  let forged_arithmetic = Problem::{ ..problem, encoding: good.encoding, }
+  assert_eq(lemma_clause(forged_arithmetic, lemma), None)
 }
