@@ -1,0 +1,221 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/zassenhaus"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/fppoly",
+  "Hosi121/morph/modular",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Polynomial, Polynomial) -> Polynomial
+
+pub fn check_factorization(Polynomial, Factorization, @core.Nat) -> Verdict
+
+pub fn check_irreducible(Polynomial, IrreducibilityCertificate, @core.Nat) -> Verdict
+
+pub fn check_lift(LiftCertificate) -> Bool
+
+pub fn check_product(Polynomial, Factorization) -> Bool
+
+pub fn check_rational_factorization(@core.Chain[@exact.Rational], RationalFactorization, @core.Nat) -> Verdict
+
+pub fn coefficient_bound(Polynomial) -> @binary.Binary
+
+pub fn coefficients(Polynomial) -> @core.Chain[@exact.Integer]
+
+pub fn degree(Polynomial) -> @core.Nat?
+
+pub fn derivative(Polynomial) -> Polynomial
+
+pub fn exact_divide(Polynomial, Polynomial) -> Polynomial?
+
+pub fn factor(Polynomial, @core.Chain[@binary.Binary], @core.Nat, @core.Nat) -> Result[Outcome, AlgebraError]
+
+pub fn factor_rational(@core.Chain[@exact.Rational], @core.Chain[@binary.Binary], @core.Nat, @core.Nat) -> Result[RationalOutcome, AlgebraError]
+
+pub fn is_zero(Polynomial) -> Bool
+
+pub fn leading(Polynomial) -> @exact.Integer?
+
+pub fn lift_above(Lift, @binary.Binary, @core.Nat) -> Result[LiftStatus, AlgebraError]
+
+pub fn lift_certificate(Lift) -> LiftCertificate
+
+pub fn lift_modulus(Lift) -> @binary.Binary
+
+pub fn lift_step(Lift) -> Result[Lift, AlgebraError]
+
+pub fn multiply(Polynomial, Polynomial) -> Polynomial
+
+pub fn negate(Polynomial) -> Polynomial
+
+pub fn one() -> Polynomial
+
+pub fn polynomial(@core.Chain[@exact.Integer]) -> Polynomial
+
+pub fn primitive(Polynomial) -> (@exact.Integer, Polynomial)
+
+pub fn recombination_threshold(Polynomial) -> @binary.Binary
+
+pub fn scale(Polynomial, @exact.Integer) -> Polynomial
+
+pub fn square_free(Polynomial) -> Result[SquareFreeDecomposition, AlgebraError]
+
+pub fn start_lift(Polynomial, @core.Chain[@fppoly.Polynomial]) -> Result[Lift, AlgebraError]
+
+pub fn subtract(Polynomial, Polynomial) -> Polynomial
+
+pub fn zero() -> Polynomial
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum AlgebraError {
+  ZeroPolynomial
+  InvalidLift
+  InternalInvariant
+}
+pub fn AlgebraError::equal(Self, Self) -> Bool
+pub fn AlgebraError::not_equal(Self, Self) -> Bool
+pub fn AlgebraError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Factor {
+  polynomial : Polynomial
+  multiplicity : @core.Nat
+  certificate : IrreducibilityCertificate
+}
+pub fn Factor::equal(Self, Self) -> Bool
+pub fn Factor::not_equal(Self, Self) -> Bool
+pub fn Factor::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Factorization {
+  content : @exact.Integer
+  factors : @core.Chain[Factor]
+}
+pub fn Factorization::equal(Self, Self) -> Bool
+pub fn Factorization::not_equal(Self, Self) -> Bool
+pub fn Factorization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct IrreducibilityCertificate {
+  lift : LiftCertificate
+  finite_certificates : @core.Chain[@fppoly.IrreducibilityCertificate]
+}
+pub fn IrreducibilityCertificate::equal(Self, Self) -> Bool
+pub fn IrreducibilityCertificate::not_equal(Self, Self) -> Bool
+pub fn IrreducibilityCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Lift {
+  certificate : LiftCertificate
+  modulus : @modular.Modulus
+  inverses : @core.Chain[@fppoly.Polynomial]
+}
+pub fn Lift::equal(Self, Self) -> Bool
+pub fn Lift::not_equal(Self, Self) -> Bool
+pub fn Lift::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct LiftCertificate {
+  target : Polynomial
+  prime : @binary.Binary
+  exponent : @core.Nat
+  factors : @core.Chain[@fppoly.Polynomial]
+  lifts : @core.Chain[Polynomial]
+}
+pub fn LiftCertificate::equal(Self, Self) -> Bool
+pub fn LiftCertificate::not_equal(Self, Self) -> Bool
+pub fn LiftCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum LiftStatus {
+  Reached(Lift)
+  Suspended(Lift)
+}
+pub fn LiftStatus::equal(Self, Self) -> Bool
+pub fn LiftStatus::not_equal(Self, Self) -> Bool
+pub fn LiftStatus::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Outcome {
+  Complete(Factorization)
+  Incomplete(StopReason)
+}
+pub fn Outcome::equal(Self, Self) -> Bool
+pub fn Outcome::not_equal(Self, Self) -> Bool
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Polynomial {
+  coefficients : @core.Chain[@exact.Integer]
+}
+pub fn Polynomial::equal(Self, Self) -> Bool
+pub fn Polynomial::not_equal(Self, Self) -> Bool
+pub fn Polynomial::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RationalFactorization {
+  unit : @exact.Rational
+  factors : @core.Chain[Factor]
+}
+pub fn RationalFactorization::equal(Self, Self) -> Bool
+pub fn RationalFactorization::not_equal(Self, Self) -> Bool
+pub fn RationalFactorization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum RationalOutcome {
+  RationalComplete(RationalFactorization)
+  RationalIncomplete(StopReason)
+}
+pub fn RationalOutcome::equal(Self, Self) -> Bool
+pub fn RationalOutcome::not_equal(Self, Self) -> Bool
+pub fn RationalOutcome::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SquareFreeDecomposition {
+  content : @exact.Integer
+  components : @core.Chain[SquareFreeFactor]
+}
+pub fn SquareFreeDecomposition::equal(Self, Self) -> Bool
+pub fn SquareFreeDecomposition::not_equal(Self, Self) -> Bool
+pub fn SquareFreeDecomposition::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SquareFreeFactor {
+  polynomial : Polynomial
+  multiplicity : @core.Nat
+}
+pub fn SquareFreeFactor::equal(Self, Self) -> Bool
+pub fn SquareFreeFactor::not_equal(Self, Self) -> Bool
+pub fn SquareFreeFactor::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  NoGoodPrime
+  LiftBudget
+  RecombinationBudget
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Verdict {
+  Proven
+  Refuted
+  Undecided
+}
+pub fn Verdict::equal(Self, Self) -> Bool
+pub fn Verdict::not_equal(Self, Self) -> Bool
+pub fn Verdict::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
