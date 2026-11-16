@@ -103,7 +103,7 @@
 | BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
 | 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
-| 非線形実数SMT | [Tseitin・CDCL状態保持・早期SAT終了とCAD理論節](../src/realnlsmt/search.mbt)・[モデル・理論補題・最終RUPの検査](../src/realnlsmt/check.mbt) |
+| 非線形実数SMT | [Tseitin・CDCL状態保持・早期SAT・理論節の削減](../src/realnlsmt/search.mbt)・[モデル・理論補題・最終RUPの検査](../src/realnlsmt/check.mbt) |
 | 実閉体・量化消去 | [一階実数式から量化なしのQQ式へ](../src/realclosed/realclosed.mbt)・[任意変数CADと円柱省略の検査](../src/cad/check.mbt)・[符号木の量化fold](../src/signcad/encode.mbt) |
 | 二変数の実数制約 | [full Collins→数体上のlifting→量化文の判定](../src/cad2/machine.mbt)・[量化結果の区間集合と厳密membership](../src/semialgebraic/assemble.mbt) |
 | パリティゲーム | [再開可能なZielonka法・位置戦略・独立した閉路検査](../src/parity/solve.mbt) |

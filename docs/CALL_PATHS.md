@@ -15,7 +15,7 @@
 | `binary.karatsuba` | 4 | 10 | 本体から参照あり |
 | `core.half_nat` | 4 | 2 | 本体から参照あり |
 | `core.halve_nat` | 5 | 3 | 本体から参照あり |
-| `core.replicate_onto` | 12 | 13 | 本体から参照あり |
+| `core.replicate_onto` | 12 | 17 | 本体から参照あり |
 
 `runbinary`の他package本体からの参照：0ファイル。
 現時点では独立した公開実装で、通常Binaryの代替backendとして全体へ組み込んだとは扱わない。

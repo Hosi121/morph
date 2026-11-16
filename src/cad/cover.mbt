@@ -104,7 +104,8 @@ fn refute_tree(
 
 ///|
 /// Re-labels an existing opaque cover using exact conditional signs. No
-/// projection, field arithmetic, root isolation, or extra CAD search is done.
+/// new projection, algebraic-tower operations, root isolation, or extra CAD
+/// search is done. Exact rational coefficient-plan construction still runs.
 /// Unknown shortened cells are refused rather than inferred from their sample.
 /// This producer shares the trust boundary of start/run: an untrusted result
 /// must be validated with check_cover or check_result before it is relied on.

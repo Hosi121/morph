@@ -56,6 +56,7 @@
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
 | --- | --- | --- |
 | CDCLのdecision/conflict | watched solver→NAND合成・SMT・RUP生成 | [SAT kernel](bootstrap/sat-engine.md)。first-openとassignment trieを採用。同一ELFのcomplete-query4.39 s→0.826 s、生成CNFと燃料構築を除きbuilder/checkerを含む。探索traceと証拠の一致も検査 |
+| 既存CADからの理論衝突節削減 | realnlsmt.start / start_core | [被覆の再束縛と検査込み比較](research/theory-core-20261117.md)。二次式4原子のUNSATで衝突15→4、native345.526→97.005 ms、JS1.84倍、WasmGC1.35倍。削減できない対照の追加probe費用も記録し、全割当て経路を残す |
 | CDCLへの単調な入力節追加 | realnlsmtの理論節を同じcursorへ追加 | [状態保持と同条件比較](research/retained-cdcl-20261117.md)。人工的な63衝突の対照で再始動63→0、SMT遷移3853→243。検査込みnative25.856→8.318 ms、JS1.97倍、WasmGC2.69倍。算術が支配的な対照は範囲重複や小さな遅れがあり、再始動経路を維持 |
 | RUPの索引とhint生成 | 生成proof→独立checker | [RUP](bootstrap/ruplog.md)。非unitの早期終了と節参照の共有を合成し、20対全query314.14→284.44 ms。単独案は差が不明確で保留した。LRAT/DRATへ16証拠と7偽造例を出力して追試 |
 

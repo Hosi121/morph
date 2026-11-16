@@ -31,7 +31,9 @@
 親セル全体で真偽が確定する係数条件を検査し、不要なliftingを省く。完全CADの経路も比較用に保つ。
 続いて[理論衝突後のCDCL状態の保持](research/retained-cdcl-20261117.md)を実装した。
 学習節・trail・watchを使い、検査済み理論節を単調に追加する。
-残る候補は局所射影、算術側の学習と小さな衝突節、仮定のpush/pop、密な高深度の体演算の費用削減。
+さらに[既存被覆から小さな理論衝突節を作る経路](research/theory-core-20261117.md)を実装した。
+全割当てを拒否する代わりに、同じ被覆上で不可能性を証明できる部分式へ絞る。
+残る候補は局所射影、算術側の学習、より情報の多い被覆による追加削減、仮定のpush/pop、密な高深度の体演算の費用削減。
 全射影と候補ごとの算術処理の費用は残るため、各段階を同条件の計測で判断する。
 
 [Jovanović–de Moura, Solving Non-Linear Arithmetic](https://dddejan.github.io/papers/jovanovic-ijcar2012.pdf)
