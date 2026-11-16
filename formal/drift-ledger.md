@@ -74,3 +74,39 @@ recommended_fix_target: 構造と停止条件を維持し、MoonBit/Leanの両�
 lock_update: source-map.jsonの10領域と全Leanファイル
 epistemic_status: モデル定理はmachine-confirmed、MoonBitへの翻訳の形式証明なし
 ```
+
+```yaml
+claim_id: NAT-3
+source_of_truth: docs/bootstrap/nat-radix-grouping.md / strict canonical Binary API
+spec_delta: 値とcanonicalなbit列を維持
+code_delta: 八つ/七つの二cursor走査で既存Nat tailを商にし、三bitずつ出力。公開wrapperは0/1を保護
+model_delta: 8q+r=8slow−7fast、q<n、lowBitの値/正規性、全自然数の値/正規性を追加。旧二進モデルも保存
+check_command: tools/check_formal / moon test --target native,js,wasm-gc -p Hosi121/morph/binary
+previous_machine_result: 旧二進共有の全称値定理と有限oracle
+current_machine_result: machine-confirmed; 新旧の値定理、新しい停止性/正規性、三backend各25 tests通過
+drift_class: model-drift (実装の三bit分割にモデルを追従し、元の値契約も維持)
+witness: 不正な余りは値の不変式を壊し、高位0の残留は値が同じでも正規性を壊す
+domain_wording: どの自然数でも同じ値のcanonicalな有限bit列になるモデル
+domain_question: なし。実装の全入力の資源上限や翻訳証明は主張しない
+recommended_fix_target: 公開wrapper統合後にsource lockを再記録し、共通factoryと合わせた比較を維持
+lock_update: split_nat_grouped/from_nat_grouped/low_bitと関連factory依存、全モデルhash
+epistemic_status: モデル定理はmachine-confirmed、MoonBit対応はreviewed、翻訳/refinementは未証明
+```
+
+```yaml
+claim_id: BIN-FACTORY-1
+source_of_truth: docs/bootstrap/binary-constants.md / zero()=0, one()=1
+spec_delta: なし。不変のcanonical葉を共有
+code_delta: public zero/one→private canonical helpers→二つの不変global
+model_delta: 同じalias関係とzero_sound/one_soundを追加
+check_command: tools/check_formal / tools/test_model_drift.py / 三backendのBinary oracle
+previous_machine_result: factoryの有限oracleと共有候補の別担当による検査
+current_machine_result: machine-confirmed; 両値の定理は公理なし、initializerの変更検出も検査
+drift_class: coverage-gap (新wrapperのfactory依存をlockへ追加して解消)
+witness: canonical_one_valueのtrueをfalseへ変えるとsource gateがそのinitializerを拒否
+domain_wording: 定数を共有してもzeroは0、oneは1のcanonicalな葉である
+domain_question: なし。実際の初期化/割当はモデルの外に残す
+recommended_fix_target: factory/helper/globalのいずれを変えても構造対応と有限oracleを確認
+lock_update: 合計19領域。global initializerは型付きBinary recordとして明示的に登録
+epistemic_status: aliasのモデル値はmachine-confirmed、実行時の初期化は有限oracle、翻訳証明なし
+```

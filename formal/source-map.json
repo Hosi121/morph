@@ -2,9 +2,18 @@
   "functions": {
     "src/binary/binary.mbt::add": "4f2f9ad98fd5e6f232e07dfffbec9f3e75998cf736c4c937395787e4752b33a7",
     "src/binary/binary.mbt::add_bits": "f52e761c1788c6833ee2f5c955452ddd9bf469a39b43a7aa29c20254500670ec",
-    "src/binary/binary.mbt::from_nat": "2e56bcd07c9989516ecd146247031182ca1c30695b84dcf4afd9c348816c8bc6",
+    "src/binary/binary.mbt::from_nat": "58c5f114403dd4dc1efd25bc897a913f44ea7e56026775a1da833fbbf904a10d",
     "src/binary/binary.mbt::full_adder": "b2e8100e900b910f89e18359653d6f97d6ef317e299f9ecdf1c162a6945893cd",
     "src/binary/binary.mbt::increment_bits": "3d9fde65116cd4ebfa2664e635ca2cce2d26ef3cdd6a14a3dbc2e9d14108d076",
+    "src/binary/binary.mbt::low_bit": "6a4c0be343d5a07a98440707a9c01325d3bc35a99028b543c12713b1379db948",
+    "src/binary/binary.mbt::one": "3e6f9bd9ef35fba8c069e665277ad6353f92af1d20451daf40d7e30cd9a4b769",
+    "src/binary/binary.mbt::zero": "4a0aa1c5c6aa8abb8095de4e195f9b5c5b2ad7ed7663aefc4d4ecd1f13d0dd62",
+    "src/binary/constants.mbt::canonical_one": "02e93e72ddaced885d450866f10ac6afce77ff4b7b6040f7c9bbcecbe321913d",
+    "src/binary/constants.mbt::canonical_one_value": "d11ca3484614d680601e90acc04b2cdf8750c6a141602f5ff3c5321376a63ba4",
+    "src/binary/constants.mbt::canonical_zero": "e93e9873195283bc011e1b19713fa2e9c2a47076a51e49760e2868e587c8adf1",
+    "src/binary/constants.mbt::canonical_zero_value": "7d1ee9370ae21b3de0561bea6c4669865f4fd47d09342028ff70c22c2b765cd2",
+    "src/binary/from_nat_grouped.mbt::from_nat_grouped": "b25af987b57632e07045b3e9e9a7371942eaeb6f37c43fa5da3b32745dd96ceb",
+    "src/binary/from_nat_grouped.mbt::split_nat_grouped": "070d3c55be44a65868cd070b8e785870b91e8215377374bdf5fb62d3d5a34cee",
     "src/core/data.mbt::replicate": "5db036392179652009ddc6d25495c704c412b24689145a42aa16c5b2cf628993",
     "src/core/data.mbt::replicate_onto": "de01c1d00a55360bfdbb3d17e5c8b992d442e47b8a360cf26080adccab9a051f",
     "src/core/natural.mbt::half_nat": "e96a4d05289a4be6d46f0fd26342c7362a24a3c2fd1981d0bdeafdead25f4314",
@@ -14,7 +23,7 @@
   "lean_version": "4.19.0",
   "models": {
     "formal/AdderCandidates.lean": "ce139fab804e46e8f95507d69af6a89736f6554e99052bfae59907217af8cfe2",
-    "formal/Binary.lean": "132f2ee19f8ccce3951b3eb7a185077144934d11bb0426da600e2d6359b7239d",
+    "formal/Binary.lean": "f6d18292b19e528df207a75dc3c2252c10c6bb4bc75e58bfbaacfa94cd542ec8",
     "formal/Core.lean": "d244a1e399202a2a10bde9b78152640ba048d90f4d430f6e17530a87c9aea20f"
   }
 }

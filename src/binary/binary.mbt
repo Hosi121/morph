@@ -313,16 +313,11 @@ pub fn power(base : Binary, exponent : Binary) -> Binary {
 
 ///|
 pub fn from_nat(n : @core.Nat) -> Binary {
-  fn convert(value : @core.Nat) -> @core.Chain[Bool] {
-    match value {
-      Zero => Nil
-      Succ(_) => {
-        let (half, low) = @core.halve_nat(value)
-        Cons(low, convert(half))
-      }
-    }
+  match n {
+    Zero => zero()
+    Succ(Zero) => one()
+    _ => from_nat_grouped(n)
   }
-  { bits: convert(n), }
 }
 
 ///|

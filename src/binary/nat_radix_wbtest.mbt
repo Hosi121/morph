@@ -388,7 +388,7 @@ fn radix_16_rebuild(n : @core.Nat) -> Binary {
 test "radix candidates agree with an independent integer conversion oracle" {
   let candidates = [
     radix_4_shared, radix_4_rebuild, radix_8_shared, radix_8_rebuild, radix_16_shared,
-    radix_16_rebuild,
+    radix_16_rebuild, from_nat_grouped,
   ]
   for value in 0..<=1024 {
     let n = @oracle.nat(value)
@@ -422,5 +422,19 @@ test "grouping unary input into several bits at a time" (b : @bench.T) {
     b.bench(name="radix_16_rebuild \{value}", fn() {
       b.keep(radix_16_rebuild(n))
     })
+    b.bench(name="from_nat_grouped \{value}", fn() {
+      b.keep(from_nat_grouped(n))
+    })
+  }
+}
+
+///|
+test "small unary grouping cohort" (b : @bench.T) {
+  for value in [0, 1, 2, 7, 8, 9, 16, 63, 64, 255] {
+    let n = @oracle.nat(value)
+    b.bench(name="two shared \{value}", fn() { b.keep(shared_nat_binary(n)) })
+    b.bench(name="eight shared \{value}", fn() { b.keep(radix_8_shared(n)) })
+    b.bench(name="public converter \{value}", fn() { b.keep(from_nat(n)) })
+    b.bench(name="grouped helper \{value}", fn() { b.keep(from_nat_grouped(n)) })
   }
 }

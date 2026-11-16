@@ -18,9 +18,13 @@ LOCK = ROOT / "formal/source-map.json"
 REGIONS = {
     "src/core/data.mbt": ["replicate", "replicate_onto"],
     "src/core/natural.mbt": ["halve_nat", "half_nat"],
-    "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "from_nat"],
+    "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "low_bit", "zero", "one", "from_nat"],
+    "src/binary/from_nat_grouped.mbt": ["split_nat_grouped", "from_nat_grouped"],
+    "src/binary/constants.mbt": ["canonical_zero", "canonical_one"],
     "src/runbinary/runbinary.mbt": ["digit"],
 }
+
+CONSTANTS = {"src/binary/constants.mbt": ["canonical_zero_value", "canonical_one_value"]}
 
 
 def function_tokens(path, name):
@@ -28,6 +32,18 @@ def function_tokens(path, name):
     match = re.search(r"\b(?:pub\s+)?fn(?:\[[^\]]+\])?\s+" + re.escape(name) + r"\s*\(", source)
     if not match:
         raise ValueError(f"Missing mapped function: {path}:{name}")
+    return braced_tokens(source, match, name)
+
+
+def constant_tokens(path, name):
+    source = code_only(path.read_text())
+    match = re.search(r"\blet\s+" + re.escape(name) + r"\s*:\s*Binary\s*=\s*", source)
+    if not match or not source[match.end():].startswith("{"):
+        raise ValueError(f"Missing mapped Binary record constant: {path}:{name}")
+    return braced_tokens(source, match, name)
+
+
+def braced_tokens(source, match, name):
     opening = source.index("{", match.end())
     depth = 1
     position = opening + 1
@@ -35,7 +51,7 @@ def function_tokens(path, name):
         depth += (source[position] == "{") - (source[position] == "}")
         position += 1
     if depth:
-        raise ValueError(f"Unclosed mapped function: {path}:{name}")
+        raise ValueError(f"Unclosed mapped declaration: {name}")
     return re.sub(r"\s+", "", source[match.start():position]).encode()
 
 
@@ -44,6 +60,9 @@ def snapshot():
     for relative, names in REGIONS.items():
         for name in names:
             functions[f"{relative}::{name}"] = hashlib.sha256(function_tokens(ROOT / relative, name)).hexdigest()
+    for relative, names in CONSTANTS.items():
+        for name in names:
+            functions[f"{relative}::{name}"] = hashlib.sha256(constant_tokens(ROOT / relative, name)).hexdigest()
     return {
         "models": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                    for p in sorted((ROOT / "formal").glob("*.lean"))},
