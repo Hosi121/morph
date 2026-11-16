@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Compare native exact root routes in one frozen artifact, keeping censoring.
+"""Compare native exact complex algebra routes, keeping timeout censoring.
 
-Run under tools/measure --cpu N. Each route includes preparation, enumeration
-and the final source/value-bound checker. A timeout is never a solved result.
+Run under tools/measure --cpu N. Each route includes exact input preparation,
+computation and result checks. A timeout is never a solved result.
 """
 from argparse import ArgumentParser
 from datetime import datetime, timezone
@@ -20,6 +20,7 @@ def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--artifact", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--case", choices=["complex-roots", "field-power"], default="complex-roots")
     parser.add_argument("--abba-repetitions", type=int, default=3)
     parser.add_argument("--timeout-seconds", type=float, default=5.0)
     args = parser.parse_args()
@@ -33,9 +34,16 @@ def main():
     dirty_paths = subprocess.check_output(
         ["git", "diff", "--name-only", "HEAD"], cwd=root, text=True,
     ).splitlines()
-    modes = ["unfactored-zero", "factored"]
-    expected = {"source": "(z^2+1)^2(z-1)", "roots": 3,
-                "multiplicity_sum": 5, "checked": True}
+    if args.case == "complex-roots":
+        modes = ["unfactored-zero", "factored"]
+        expected = {"source": "(z^2+1)^2(z-1)", "roots": 3,
+                    "multiplicity_sum": 5, "checked": True}
+        scope = "process startup, input construction, preparation/factorization, enumeration, final exact checker; excludes compilation"
+    else:
+        modes = ["coordinate", "field"]
+        expected = {"source": "(sqrt(2)+i)^8", "field_degree": 4,
+                    "numeric_equal": True, "checked": True}
+        scope = "process startup, shared exact input/field preparation, three squarings, representation-specific validation/realization and numeric result equality; excludes compilation"
     report = {
         "utc": datetime.now(timezone.utc).isoformat(), "backend": "native",
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
@@ -47,7 +55,7 @@ def main():
         "artifact_sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
         "affinity": affinity, "platform": platform.platform(),
         "python": platform.python_version(), "source": expected["source"],
-        "scope": "process startup, preparation/factorization, enumeration, final exact checker; excludes compilation",
+        "case": args.case, "scope": scope,
         "timeout_seconds": args.timeout_seconds, "abba_repetitions": args.abba_repetitions,
         "runs": [], "summary": {},
     }

@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：99パッケージ、264ソース。
-核のテスト宣言：3919、bench group：212。
+算法の核：101パッケージ、270ソース。
+核のテスト宣言：3952、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -34,6 +34,8 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [circuit](../src/circuit) | 2 | 3 | 0 | `boolean`, `core`, `sat` |
 | [complexalgebraic](../src/complexalgebraic) | 5 | 10 | 0 | `core`, `exact`, `polynomial`, `realalgebraic` |
 | [complexfactor](../src/complexfactor) | 3 | 16 | 0 | `binary`, `complexroots`, `core`, `exact`, `polynomial`, `zassenhaus` |
+| [complexfield](../src/complexfield) | 4 | 27 | 0 | `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
+| [complexprimitive](../src/complexprimitive) | 2 | 6 | 0 | `algebra`, `complexfield`, `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexroots](../src/complexroots) | 5 | 23 | 0 | `binary`, `complexalgebraic`, `core`, `exact`, `polynomial`, `realalgebraic`, `realvariety`, `sturm`, `tarski` |
 | [compositum](../src/compositum) | 3 | 47 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `realvariety`, `zassenhaus` |
 | [core](../src/core) | 3 | 4 | 0 | — |

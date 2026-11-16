@@ -56,6 +56,92 @@ fn solve(coefficients : Array[Int32]) -> @roots.RootSet {
 }
 
 ///|
+fn fixed_field(degree : Int32) -> @cf.Field {
+  let coefficients = Array::make(degree + 1, 0)
+  coefficients[0] = -2
+  coefficients[degree] = 1
+  let input : @real.RootCertificate = {
+    polynomial: polynomial(coefficients),
+    interval: { lower: @oracle.rational(1, 1), upper: @oracle.rational(2, 1), },
+  }
+  let primes = @oracle.chain([2, 3, 5, 7, 11, 13].map(@oracle.binary))
+  match
+    @minimal.normalize_root(
+      input,
+      primes,
+      @oracle.nat(100),
+      @oracle.nat(500),
+      @oracle.nat(500),
+    ).unwrap() {
+    Normalized(value, proof) =>
+      @cf.field(@nf.field_result(value, proof, @oracle.nat(500)).unwrap())
+    _ => abort("real coefficient field needs a verified minimum")
+  }
+}
+
+///|
+fn fixed_field_tour() -> Unit {
+  let context = fixed_field(2)
+  let base = @cf.real_field(context)
+  let value = @cf.element(context, @nf.generator(base).unwrap(), @nf.one(base)).unwrap()
+  let minimum = @cf.minimal_polynomial(value).unwrap()
+  let checked = minimum == polynomial([9, 0, -2, 0, 1]) &&
+    @cf.check_minimal_polynomial(value, minimum) &&
+    @cf.check_trace(value, @oracle.rational(0, 1)) &&
+    @cf.check_norm(value, @oracle.rational(9, 1))
+  if !checked {
+    abort("quartic basis invariants failed")
+  }
+  println(
+    "K=Q(sqrt(2)): K(i) degree=\{@oracle.int_of_nat(@cf.degree(context))}; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]",
+  )
+
+  let context = fixed_field(4)
+  let base = @cf.real_field(context)
+  let a = @cf.element(context, @nf.generator(base).unwrap(), @nf.zero(base)).unwrap()
+  let i = @cf.imaginary_unit(context)
+  let ia = @cf.multiply(i, a).unwrap()
+  let roots = [a, @cf.negate(a), ia, @cf.negate(ia)]
+  for index in 0..<roots.length() {
+    let squared = @cf.multiply(roots[index], roots[index]).unwrap()
+    if !@cf.equal(
+        @cf.multiply(squared, squared).unwrap(),
+        @cf.rational(context, @oracle.rational(2, 1)),
+      ) {
+      abort("quartic splitting root failed")
+    }
+    for other in (index + 1)..<roots.length() {
+      if @cf.equal(roots[index], roots[other]) {
+        abort("duplicate quartic root")
+      }
+    }
+  }
+  if !@cf.equal(@cf.divide(ia, a).unwrap().unwrap(), i) {
+    abort("root ratio did not recover i")
+  }
+  println(
+    "a^4=2: Q(a,i) degree=\{@oracle.int_of_nat(@cf.degree(context))}; all four distinct roots +a,-a,+ia,-ia [checked]",
+  )
+  let unit = @cf.add(a, i).unwrap()
+  let inverted = @cf.inverse_with_certificate(unit).unwrap().unwrap()
+  let expected = @cf.element(
+    context,
+    @nf.element(base, polynomial([0, -1, 0, 1])).unwrap(),
+    @nf.element(base, polynomial([1, 0, -1])).unwrap(),
+  ).unwrap()
+  let minimum = @cf.minimal_polynomial(unit).unwrap()
+  if !@cf.equal(inverted.value, expected) ||
+    !@cf.check_inverse_result(unit, inverted.value, inverted.certificate) ||
+    minimum != polynomial([1, 0, 28, 0, 2, 0, 4, 0, 1]) ||
+    !@cf.check_norm(unit, @oracle.rational(1, 1)) {
+    abort("eighth-degree unit proof failed")
+  }
+  println(
+    "a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]",
+  )
+}
+
+///|
 fn main {
   let i = gaussian(0, 1)
   match @cx.multiply(i, i, @oracle.nat(100)).unwrap() {
@@ -176,4 +262,5 @@ fn main {
     }
     Paused(_, _) => abort("factored mixed roots need more fuel")
   }
+  fixed_field_tour()
 }
