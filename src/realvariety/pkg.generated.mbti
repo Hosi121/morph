@@ -1,0 +1,191 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realvariety"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/f4",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/sturm",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Isolation, @core.Nat) -> Progress
+
+pub fn check_basis_shape(@f4.Basis, ShapeCertificate) -> Bool
+
+pub fn check_basis_solutions(@f4.Basis, SolutionCertificate) -> Bool
+
+pub fn check_point(PointCertificate) -> Bool
+
+pub fn check_shape(ShapeCertificate) -> Bool
+
+pub fn check_solutions(SolutionCertificate) -> Bool
+
+pub fn check_unit(UnitCertificate) -> Bool
+
+pub fn coordinate_expression_at(Point, @core.Nat) -> @polynomial.Polynomial?
+
+pub fn coordinate_expressions(Point) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn extract(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Extraction, VarietyError]
+
+pub fn from_basis(@f4.Basis) -> Result[Extraction, VarietyError]
+
+pub fn isolate(Shape) -> Isolation
+
+pub fn parameter(Point) -> @realalgebraic.Number
+
+pub fn point_certificate(Point) -> PointCertificate
+
+pub fn point_from_certificate(PointCertificate) -> Result[Point, VarietyError]
+
+pub fn points(SolutionSet) -> Result[@core.Chain[Point], VarietyError]
+
+pub fn shape_certificate(Shape) -> ShapeCertificate
+
+pub fn shape_from_certificate(ShapeCertificate) -> Result[Shape, VarietyError]
+
+pub fn solution_certificate(SolutionSet) -> SolutionCertificate
+
+pub fn solutions_from_certificate(SolutionCertificate) -> Result[SolutionSet, VarietyError]
+
+pub fn start(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Start, VarietyError]
+
+pub fn start_basis(@f4.Basis) -> Result[Start, VarietyError]
+
+pub fn substitute_mod(@polynomial.Polynomial, @core.Chain[@polynomial.Polynomial], @polynomial.Polynomial) -> Result[@polynomial.Polynomial, VarietyError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Extraction {
+  ShapeReady(Shape)
+  UnitIdeal(UnitCertificate)
+  Unsupported(UnsupportedReason)
+}
+pub fn Extraction::equal(Self, Self) -> Bool
+pub fn Extraction::not_equal(Self, Self) -> Bool
+pub fn Extraction::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Isolation {
+  shape : Shape
+  isolation : @sturm.Isolation
+}
+pub fn Isolation::equal(Self, Self) -> Bool
+pub fn Isolation::not_equal(Self, Self) -> Bool
+pub fn Isolation::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Point {
+  shape : Shape
+  parameter : @realalgebraic.Number
+}
+pub fn Point::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct PointCertificate {
+  shape : ShapeCertificate
+  parameter : @realalgebraic.RootCertificate
+}
+pub fn PointCertificate::equal(Self, Self) -> Bool
+pub fn PointCertificate::not_equal(Self, Self) -> Bool
+pub fn PointCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(SolutionSet)
+  Paused(Isolation)
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Shape {
+  certificate : ShapeCertificate
+  system : @sturm.System
+}
+pub fn Shape::equal(Self, Self) -> Bool
+pub fn Shape::not_equal(Self, Self) -> Bool
+pub fn Shape::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ShapeCertificate {
+  variables : @core.Nat
+  basis : @core.Chain[@polynomial.Polynomial]
+  eliminant_source : @polynomial.Polynomial
+  coordinate_sources : @core.Chain[@polynomial.Polynomial]
+  eliminant : @polynomial.Polynomial
+  coordinates : @core.Chain[@polynomial.Polynomial]
+}
+pub fn ShapeCertificate::equal(Self, Self) -> Bool
+pub fn ShapeCertificate::not_equal(Self, Self) -> Bool
+pub fn ShapeCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SolutionCertificate {
+  shape : ShapeCertificate
+  intervals : @core.Chain[@sturm.Interval]
+}
+pub fn SolutionCertificate::equal(Self, Self) -> Bool
+pub fn SolutionCertificate::not_equal(Self, Self) -> Bool
+pub fn SolutionCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct SolutionSet {
+  shape : Shape
+  intervals : @core.Chain[@sturm.Interval]
+}
+pub fn SolutionSet::equal(Self, Self) -> Bool
+pub fn SolutionSet::not_equal(Self, Self) -> Bool
+pub fn SolutionSet::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Start {
+  Isolating(Isolation)
+  NoSolutions(UnitCertificate)
+  UnsupportedSystem(UnsupportedReason)
+}
+pub fn Start::equal(Self, Self) -> Bool
+pub fn Start::not_equal(Self, Self) -> Bool
+pub fn Start::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct UnitCertificate {
+  variables : @core.Nat
+  basis : @core.Chain[@polynomial.Polynomial]
+  witness : @polynomial.Polynomial
+}
+pub fn UnitCertificate::equal(Self, Self) -> Bool
+pub fn UnitCertificate::not_equal(Self, Self) -> Bool
+pub fn UnitCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum UnsupportedReason {
+  NoParameter
+  NoEliminant
+  NotShapePosition
+}
+pub fn UnsupportedReason::equal(Self, Self) -> Bool
+pub fn UnsupportedReason::not_equal(Self, Self) -> Bool
+pub fn UnsupportedReason::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum VarietyError {
+  DimensionMismatch
+  InvalidBasis
+  InvalidCertificate
+  F4Failure(@f4.F4Error)
+  InternalInvariant
+}
+pub fn VarietyError::equal(Self, Self) -> Bool
+pub fn VarietyError::not_equal(Self, Self) -> Bool
+pub fn VarietyError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
