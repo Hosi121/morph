@@ -1,0 +1,116 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cadprojection"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn arity(Plan) -> @core.Nat
+
+pub fn atoms(Plan) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn certificate(Plan) -> Certificate
+
+pub fn check(@core.Nat, @core.Chain[@polynomial.Polynomial], Certificate) -> Bool
+
+pub fn check_projection(@core.Nat, @core.Chain[@polynomial.Polynomial], ProjectionCertificate) -> Bool
+
+pub fn check_result(@core.Nat, @core.Chain[@polynomial.Polynomial], Plan, Certificate) -> Bool
+
+pub fn checked(@core.Nat, @core.Chain[@polynomial.Polynomial], Certificate) -> Plan?
+
+pub fn family(Level) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn full_collins(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[ProjectionCertificate, ProjectionError]
+
+pub fn level(Plan, @core.Nat) -> Level?
+
+pub fn levels(Plan) -> @core.Chain[Level]
+
+pub fn polynomials(Level) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn prepare(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Plan, ProjectionError]
+
+pub fn projection_polynomials(ProjectionCertificate) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn reducta(@polynomial.Polynomial, @core.Nat) -> Result[@core.Chain[@polynomial.Polynomial], ProjectionError]
+
+pub fn source_signs(Level, @core.Chain[@core.Ordering]) -> @core.Chain[@core.Ordering]?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Binding {
+  Constant(@core.Ordering)
+  Member(@core.Nat)
+}
+pub fn Binding::equal(Self, Self) -> Bool
+pub fn Binding::not_equal(Self, Self) -> Bool
+pub fn Binding::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  arity : @core.Nat
+  atoms : @core.Chain[@polynomial.Polynomial]
+  levels : @core.Chain[Level]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Level {
+  arity : @core.Nat
+  source : @core.Chain[@polynomial.Polynomial]
+  family : @core.Chain[@polynomial.Polynomial]
+  bindings : @core.Chain[Binding]
+  derivatives : @core.Chain[Binding]
+  projection : ProjectionCertificate?
+}
+pub fn Level::equal(Self, Self) -> Bool
+pub fn Level::not_equal(Self, Self) -> Bool
+pub fn Level::to_repr(Self) -> @debug.Repr
+
+pub struct Plan {
+  proof : Certificate
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct PrincipalRow {
+  left : @polynomial.Polynomial
+  right : @polynomial.Polynomial
+  values : @core.Chain[@polynomial.Polynomial]
+}
+pub fn PrincipalRow::equal(Self, Self) -> Bool
+pub fn PrincipalRow::not_equal(Self, Self) -> Bool
+pub fn PrincipalRow::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ProjectionCertificate {
+  arity : @core.Nat
+  atoms : @core.Chain[@polynomial.Polynomial]
+  coefficients : @core.Chain[@polynomial.Polynomial]
+  reducta : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+  principal : @core.Chain[PrincipalRow]
+}
+pub fn ProjectionCertificate::equal(Self, Self) -> Bool
+pub fn ProjectionCertificate::not_equal(Self, Self) -> Bool
+pub fn ProjectionCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum ProjectionError {
+  WrongArity
+  InvalidVariable
+  ArithmeticFailure
+}
+pub fn ProjectionError::equal(Self, Self) -> Bool
+pub fn ProjectionError::not_equal(Self, Self) -> Bool
+pub fn ProjectionError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
