@@ -1,4 +1,6 @@
-# morph
+<h1>
+  <img src="assets/brand/morph-logo.png" alt="morph" width="360">
+</h1>
 
 MoonBit の代数的データ型・パターンマッチ・再帰でアルゴリズムを組み立てる実験。
 
