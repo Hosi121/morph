@@ -28,6 +28,7 @@ tools/check_formal
 | canonicalな列の比較が数値順序を表す | protectedCompare_sound | binary.compare |
 | reverse-left foldと従来right foldが一致 | foldLeft_reverse / boundedRightFour_eq_foldRight | core.reverse / reverse_onto、未採用のwide試作の参照法則 |
 | 均質blockのcarry/borrowが一桁後に安定 | carry_stabilizes / borrow_stabilizes | full_adder / runbinary.digit |
+| 降順指数で疎Hornerが項別評価と一致 | scan_invariant / horner_eq_genericSum | polynomial.univariate_horner / evaluate |
 
 値の意味は`value(Nil)=0`、`value(Cons(b,rest))=bitValue(b)+2*value(rest)`。
 加算の定理は最上位の0を含む非正規形の列にも成立する。
@@ -45,7 +46,7 @@ MoonBitからLeanへの変換器やコンパイラを形式検証したもので
 Leanモデルの値の定理から、MoonBitの資源上限、最上位bitの正規性、
 全run演算、全SAT、コンパイラの正しさは結論しない。
 
-`tools/check_model_drift.py`が、対応を確認した24領域のコメント/空白を除くtoken列と
+`tools/check_model_drift.py`が、対応を確認した31領域のコメント/空白を除くtoken列と
 Binary定数recordのinitializerと全Leanモデルファイルのhashを`source-map.json`に照合する。
 通常の`tools/check`はこの安価な差分検査を実行する。
 これは意味の同値性を自動で証明する機構ではなく、対応を未確認のまま変えないためのlockである。
@@ -122,7 +123,21 @@ function fingerprintは直前のcode-generation属性も含め、値を変えな
 | [Coreのレビュー](REVIEW-core.md) | prefix共有の追加分 |
 | [Nat変換のレビュー](REVIEW-nat-grouped.md) | 8進単位の変換、値・停止性・正規性 |
 | [比較のレビュー](REVIEW-comparison.md) | raw列の旧比較との一致、canonical値の順序 |
+| [疎Hornerの独立レビュー](../docs/research/sparse-horner-independent-review-20261116.md) | 抽象代数のscan不変条件、降順前提、公開dispatchと独立QQ oracle |
 | [対応の変更記録](drift-ledger.md) | 仕様・ソース・モデルを揃えた変更の経緯 |
 
 各レビューの領域数や実行結果はレビュー時点の記録です。
 横断検証の固定スナップショットは[検証ガイド](../docs/VALIDATION.md)から参照できます。
+
+## 疎Hornerの抽象代数モデル
+
+[SparseHorner.lean](reviews/SparseHorner.lean)は、明示した結合則・単位則・右分配則と
+指数の降順を前提に、gapを使うscanの不変条件と項別評価との一致を示す。
+可換性は不要だが、実際の有理数実装が各法則を満たすことはこのモデル内では証明していない。
+二進累乗と0/1の省略も示し、Nat→bit列の値の保存は明示的な仮定にしている。
+既存のBinaryモデルとの構造対応と、MoonBitでの独立QQ評価は別途確認する。
+降順を外すと結果が変わる具体的な反例も、Leanと実sourceのコピーで検査する。
+
+`tools/check_formal`はこのモデルも毎回検査する。通常の差分ゲートは
+評価器とsmart constructorの7領域、およびモデルを既存のlockへ追加して監視する。
+正しさの前提を消したまま実装やモデルを更新しないための仕組みであり、翻訳証明ではない。

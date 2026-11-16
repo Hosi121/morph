@@ -62,5 +62,5 @@ Int32 で安全な範囲に収めた独立の分数展開と、旧評価器・�
 polynomial の4テストは native/JS/WasmGC で通過。
 既存の realcad と realalgebraic も新経路で native の検査を通した。
 
-モデル証明の範囲は独立レビューに記録する。
+モデル証明の範囲は[独立レビュー](sparse-horner-independent-review-20261116.md)に記録する。
 有理数実装やコンパイラまで含む end-to-end の形式証明とは区別する。

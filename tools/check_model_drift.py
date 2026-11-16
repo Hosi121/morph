@@ -23,6 +23,8 @@ REGIONS = {
     "src/binary/comparison.mbt": ["compare_bits_grouped", "compare_bits_tail"],
     "src/binary/constants.mbt": ["canonical_zero", "canonical_one"],
     "src/runbinary/runbinary.mbt": ["digit"],
+    "src/polynomial/evaluation.mbt": ["univariate_power", "univariate_horner", "evaluate"],
+    "src/polynomial/polynomial.mbt": ["compare_monomial", "insert", "polynomial", "evaluate_generic"],
 }
 
 CONSTANTS = {"src/binary/constants.mbt": ["canonical_zero_value", "canonical_one_value"]}
@@ -69,7 +71,7 @@ def snapshot():
             functions[f"{relative}::{name}"] = hashlib.sha256(constant_tokens(ROOT / relative, name)).hexdigest()
     return {
         "models": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                   for p in sorted((ROOT / "formal").glob("*.lean"))},
+                   for p in sorted((ROOT / "formal").rglob("*.lean"))},
         "lean_version": "4.19.0",
         "functions": functions,
     }

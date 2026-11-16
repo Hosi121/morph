@@ -23,6 +23,13 @@
     "src/core/data.mbt::reverse_onto": "79edde2c8742950e65740c9b38fa6638ddba05b1aedb634dcd6df4fce6e1a662",
     "src/core/natural.mbt::half_nat": "e96a4d05289a4be6d46f0fd26342c7362a24a3c2fd1981d0bdeafdead25f4314",
     "src/core/natural.mbt::halve_nat": "d2febb887c00c0795eaf95cce8eb658bf822b96de6f106f45d0217314dd47a9d",
+    "src/polynomial/evaluation.mbt::evaluate": "0776b5ea38a0021a9addae9d97294c5cc3cb0e2430f3ee80d1928a775facfe1f",
+    "src/polynomial/evaluation.mbt::univariate_horner": "9cecdf73a2265171369de615956b01bc5930bde725466c2a6b524160d5a3e2ee",
+    "src/polynomial/evaluation.mbt::univariate_power": "42bdfb6b8ebcb1965c07bea54afaf9d24b930c2c7024644ce81beef50d0595dd",
+    "src/polynomial/polynomial.mbt::compare_monomial": "f77243a5b5b780cf1b36fc4b824729df337452f29750485f91dc37aacb2870a7",
+    "src/polynomial/polynomial.mbt::evaluate_generic": "014c7887ce0760ffef73bb0c11be72745d22f8d9bdcee948720b8cc8300f880e",
+    "src/polynomial/polynomial.mbt::insert": "fc74b0f1ed4bc693385d332ff3ec051d7b639586db9e6839c2c18973e24f8c70",
+    "src/polynomial/polynomial.mbt::polynomial": "369ea0ffb2b4240cb5c8547988775ad56a4e7b1453e696007f2eb7ccd721bbfc",
     "src/runbinary/runbinary.mbt::digit": "241cfa7ec3ab623b4441d0c7f42618b46c4973b2aeb7e98819d282b611050898"
   },
   "lean_version": "4.19.0",
@@ -31,6 +38,7 @@
     "formal/Binary.lean": "f6d18292b19e528df207a75dc3c2252c10c6bb4bc75e58bfbaacfa94cd542ec8",
     "formal/Comparison.lean": "71fdec1c355c22955c55ba400c95c1cfd00c56c31f8473b48667c6aab68ca444",
     "formal/Core.lean": "d244a1e399202a2a10bde9b78152640ba048d90f4d430f6e17530a87c9aea20f",
-    "formal/Fold.lean": "a858206f27cccc7dd126fe7d7cb3c258b8568a4652a7b7e166d5b111ba6a84d5"
+    "formal/Fold.lean": "a858206f27cccc7dd126fe7d7cb3c258b8568a4652a7b7e166d5b111ba6a84d5",
+    "formal/reviews/SparseHorner.lean": "2fa75c6ee46296e16aa3404fe2a419ce7d6589936e6c88983daa978f816d78c7"
   }
 }

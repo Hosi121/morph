@@ -222,7 +222,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-root',required=True,type=Path)
     parser.add_argument('--record',action='store_true')
-    parser.add_argument('--lean',type=Path,default=Path('/home/hosi/morph/.tools/lean/bin/lean'))
+    parser.add_argument('--lean',type=Path,default=ROOT/'.tools/lean/bin/lean')
     args=parser.parse_args();source=args.source_root.resolve()
     ARTIFACT.mkdir(parents=True,exist_ok=True)
     version=subprocess.check_output([str(args.lean),'--version'],text=True)

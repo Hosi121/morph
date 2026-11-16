@@ -130,3 +130,10 @@ recommended_fix_target: 通常入口をhelperへ接続しsource lockを再記録
 lock_update: 既存19領域を維持し、入口と二helperを足した22領域。codegen属性もlock
 epistemic_status: モデルと有限実行はmachine-confirmed、source対応はreviewed、翻訳/refinementは未証明
 ```
+
+## 2026-11-16: 疎Hornerの採用
+
+- 採用ソース `00b220e`、独立レビュー `a558a29`。降順指数でのscan不変条件、項別評価との一致、二進累乗と0/1省略をStdのみのLeanモデルで検査した。
+- smart constructorと評価器の7領域を対応lockへ追加し、合計31領域にした。既存24領域の意味とモデルは変えていない。
+- `tools/check_formal`の対象を`formal/reviews/*.lean`へ広げた。Leanが全12定理を受理し、`sorryAx`がなく、既存の全モデルと6つのdrift保守テストも成功してからlockを記録・再検査した。
+- 降順、演算辞書の法則、converterの値の保存は明示的な前提。有理数実装・compiler全体の証明を追加したという主張ではない。
