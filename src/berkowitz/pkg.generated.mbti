@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/berkowitz"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+}
+
+// Values
+pub fn[A] adjugate(@matrix.Matrix[A], Ring[A]) -> @matrix.Matrix[A]?
+
+pub fn[A] characteristic(@matrix.Matrix[A], Ring[A]) -> @core.Chain[A]?
+
+pub fn[A] determinant(@matrix.Matrix[A], Ring[A]) -> A?
+
+pub fn[A] evaluate_matrix(@core.Chain[A], @matrix.Matrix[A], @algebra.Semiring[A]) -> @matrix.Matrix[A]?
+
+pub fn integers() -> Ring[@exact.Integer]
+
+pub fn rationals() -> Ring[@exact.Rational]
+
+// Errors
+
+// Types and methods
+pub(all) struct Ring[A] {
+  semiring : @algebra.Semiring[A]
+  negate : (A) -> A
+}
+
+// Type aliases
+
+// Traits
