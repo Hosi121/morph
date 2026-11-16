@@ -1,0 +1,60 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/blossom"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn augment(Problem, @core.Chain[(@core.Nat, @core.Nat)], @core.Chain[@core.Nat]) -> @core.Chain[(@core.Nat, @core.Nat)]?
+
+pub fn augmenting_search(Problem, @core.Chain[(@core.Nat, @core.Nat)]) -> Search?
+
+pub fn certify(Problem, @core.Chain[(@core.Nat, @core.Nat)]) -> Solution?
+
+pub fn check(Problem, Solution) -> Bool
+
+pub fn check_augmenting(Problem, @core.Chain[(@core.Nat, @core.Nat)], @core.Chain[@core.Nat]) -> Bool
+
+pub fn check_matching(Problem, @core.Chain[(@core.Nat, @core.Nat)]) -> Bool
+
+pub fn maximum(Problem) -> Solution?
+
+pub fn maximum_matching(Problem) -> @core.Chain[(@core.Nat, @core.Nat)]?
+
+pub fn problem(@core.Chain[@core.Nat], @core.Chain[(@core.Nat, @core.Nat)]) -> Problem?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  vertices : @core.Chain[@core.Nat]
+  edges : @core.Chain[(@core.Nat, @core.Nat)]
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Search {
+  path : @core.Chain[@core.Nat]?
+  blossoms : @core.Chain[@core.Chain[@core.Nat]]
+}
+pub fn Search::equal(Self, Self) -> Bool
+pub fn Search::not_equal(Self, Self) -> Bool
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Solution {
+  pairs : @core.Chain[(@core.Nat, @core.Nat)]
+  barrier : @core.Chain[@core.Nat]
+}
+pub fn Solution::equal(Self, Self) -> Bool
+pub fn Solution::not_equal(Self, Self) -> Bool
+pub fn Solution::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
