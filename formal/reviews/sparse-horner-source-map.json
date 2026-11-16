@@ -1,0 +1,31 @@
+{
+  "correspondence": {
+    "dispatch": "evaluate; only variables=1 and exactly one value select Horner; malformed terms fall back",
+    "genericSum": "evaluate_generic final fold_left; univariate term coefficient times power",
+    "horner": "univariate_horner initial Nil/Cons dispatch after valid singleton shape",
+    "power": "univariate_power; bitsPower, optimizedPower; converter soundness is an explicit hypothesis",
+    "precondition": "Polynomial is opaque externally; polynomial/insert canonicalize lex descending",
+    "scan": "univariate_horner.scan; natural subtraction; singleton exponent vectors; weak descending invariant"
+  },
+  "generic_reference": {
+    "base": "6934453",
+    "function": "evaluate",
+    "path": "src/polynomial/polynomial.mbt",
+    "sha256": "05991fc1f7aebfd3ae42cbf1d78ab2845bb0c0fb4e2e93dc0e82e48ba3afbf7b"
+  },
+  "lean_version": "4.19.0",
+  "model_sha256": "2fa75c6ee46296e16aa3404fe2a419ce7d6589936e6c88983daa978f816d78c7",
+  "source_files": {
+    "src/polynomial/evaluation.mbt": "00a0c551f0b8af0521e0f977630de72c4dc4ae15ed40c5aad35c689f20ea8c1f",
+    "src/polynomial/polynomial.mbt": "703b321f4fb3fe09949162530f19e753535f67de48e2cb357fb97cd8bf532106"
+  },
+  "source_regions": {
+    "src/polynomial/evaluation.mbt::evaluate": "0776b5ea38a0021a9addae9d97294c5cc3cb0e2430f3ee80d1928a775facfe1f",
+    "src/polynomial/evaluation.mbt::univariate_horner": "9cecdf73a2265171369de615956b01bc5930bde725466c2a6b524160d5a3e2ee",
+    "src/polynomial/evaluation.mbt::univariate_power": "42bdfb6b8ebcb1965c07bea54afaf9d24b930c2c7024644ce81beef50d0595dd",
+    "src/polynomial/polynomial.mbt::compare_monomial": "f77243a5b5b780cf1b36fc4b824729df337452f29750485f91dc37aacb2870a7",
+    "src/polynomial/polynomial.mbt::evaluate_generic": "014c7887ce0760ffef73bb0c11be72745d22f8d9bdcee948720b8cc8300f880e",
+    "src/polynomial/polynomial.mbt::insert": "fc74b0f1ed4bc693385d332ff3ec051d7b639586db9e6839c2c18973e24f8c70",
+    "src/polynomial/polynomial.mbt::polynomial": "369ea0ffb2b4240cb5c8547988775ad56a4e7b1453e696007f2eb7ccd721bbfc"
+  }
+}
