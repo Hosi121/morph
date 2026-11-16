@@ -1,0 +1,110 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/splittinggalois"
+
+import {
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/complexsplitting",
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Search, @core.Nat) -> Result[Progress, GaloisError]
+
+pub fn apply(Automorphism, @complexfield.Element) -> Result[@complexfield.Element, GaloisError]
+
+pub fn automorphisms(Group) -> @core.Chain[Automorphism]
+
+pub fn certificate(Group) -> Certificate
+
+pub fn check(@complexsplitting.Splitting, Certificate) -> Bool
+
+pub fn check_result(@complexsplitting.Splitting, Group, Certificate) -> Bool
+
+pub fn compose(Group, Automorphism, Automorphism) -> Result[Automorphism, GaloisError]
+
+pub fn composition_table(Group) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn equal(Automorphism, Automorphism) -> Bool
+
+pub fn from_certificate(@complexsplitting.Splitting, Certificate) -> Result[Group, GaloisError]
+
+pub fn generator_image(Automorphism) -> @complexfield.Element
+
+pub fn identity(Group) -> Automorphism
+
+pub fn inverse(Group, Automorphism) -> Result[Automorphism, GaloisError]
+
+pub fn order(Group) -> @core.Nat
+
+pub fn permutation(Automorphism) -> @core.Chain[@core.Nat]
+
+pub fn source(Group) -> @complexsplitting.Splitting
+
+pub fn start(@complexsplitting.Splitting) -> Result[Search, GaloisError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Automorphism {
+  // private fields
+}
+pub fn Automorphism::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  source : @complexsplitting.Certificate
+  maps : @core.Chain[MapCertificate]
+  table : @core.Chain[@core.Chain[@core.Nat]]
+  identity : @core.Nat
+  inverses : @core.Chain[@core.Nat]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Frame
+pub fn Frame::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum GaloisError {
+  InvalidSource
+  InvalidCertificate
+  DifferentField
+  NotInField
+  NotMember
+  InternalInvariant
+}
+pub fn GaloisError::equal(Self, Self) -> Bool
+pub fn GaloisError::not_equal(Self, Self) -> Bool
+pub fn GaloisError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Group {
+  // private fields
+}
+pub fn Group::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct MapCertificate {
+  permutation : @core.Chain[@core.Nat]
+  image : @complexfield.Element
+}
+pub fn MapCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Ready(Group, Certificate)
+  Paused(Search)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  // private fields
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
