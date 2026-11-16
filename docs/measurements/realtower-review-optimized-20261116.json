@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Independent correctness recheck after quadratic sign optimization; not a comparative speed benchmark",
+  "optimized_upstream_commit": "aedec4f98f3f892dd9b135a6540b309089650eaa",
+  "local_optimized_cherry_pick": "43b3ffcc01a17bffdfb97de7638a6724a2336576",
+  "fixture_commits": [
+    "9ef5291",
+    "1905242"
+  ],
+  "prior_baseline_record": "realtower-review-quadratic-20261116.json",
+  "quadratic_shortcut_evaluated": true,
+  "gcd_normalization_included": false,
+  "independent_tests": 70,
+  "shifted_contexts": 13,
+  "shifted_linear_queries": 123,
+  "cpu": 8,
+  "serialization": "tools/measure shared Git common-directory flock; no nested measurement",
+  "backend_results": {
+    "native": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target native --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 3.93,
+      "peak_rss_kib": 118596,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=3.93 peak_rss_kib=118596\n"
+    },
+    "wasm-gc": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target wasm-gc --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 2.55,
+      "peak_rss_kib": 217012,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=2.55 peak_rss_kib=217012\n"
+    },
+    "js": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/realtower --target js --filter 'independent*'",
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "elapsed_seconds": 2.42,
+      "peak_rss_kib": 102164,
+      "stdout": "Total tests: 70, passed: 70, failed: 0.\nelapsed_seconds=2.42 peak_rss_kib=102164\n"
+    }
+  },
+  "check_deny_warn": "Finished. moon: ran 3 tasks, now up to date\n",
+  "source_sha256": {
+    "src/realtower/api.mbt": "10afe5d99e19401f236c2eb3abc308eaa99e529fca013dc976ad90d2c9334e90",
+    "src/realtower/data.mbt": "c83ab9c0e46292cfb66a19bc4412b2be9fc65a1195d69e4a4ce56fdadfd9053b",
+    "src/realtower/flat_fixtures_wbtest.mbt": "334aa0010e7ef14c94f7f869ba87b167dffbd5f7880e407d1568c71117823dc2",
+    "src/realtower/flat_helpers_wbtest.mbt": "492abbfc5601cc8b1c197ddb121839eec720cddb475568475ac591e5930f9b8f",
+    "src/realtower/independent_review_adversarial_wbtest.mbt": "932e8d55b8724186612bf132f86ddac3d4f330f4d471384ec3a5b1e566ee70c9",
+    "src/realtower/independent_review_helpers_wbtest.mbt": "36c41793e337f6f052b7e713706d49f0f797067ee291c25d27a6949233d112ed",
+    "src/realtower/independent_review_oracle_wbtest.mbt": "b4b10163e50a6af8f37daa4190db730f288481253a5c937faa51a76fc2f18c1c",
+    "src/realtower/isolation.mbt": "9e53ab78b5b5de80af204804659f36b9a767dc8ff033ba16cf4f2be9cea12059",
+    "src/realtower/polynomial.mbt": "e09c13c27b8b44f84596aa05657e9f0f97e87be9baea16a72a1cd3e12a029c0e",
+    "src/realtower/quadratic.mbt": "ac2958e01ba2126bf173117dec3b041307b389c58bee88624ffded37eacd15ac",
+    "src/realtower/raw.mbt": "0a421ed9931f403643dad5b98900738dd28a48c022b11b512372f5da8d91c210",
+    "src/realtower/realtower_wbtest.mbt": "d1790e17f8e6279ecd38b926c18dbd307da1ec58f61656c61b99f00f433e8064",
+    "src/realtower/scalar.mbt": "35312ddeffd009b5d80d58344653ace9501a25b10144689838d2494e4a731c43",
+    "src/realtower/system.mbt": "cd1b0f5f12614b134a86f0251f82a020267ee29f637138e987e18c36f56d63f4",
+    "tools/generate_realtower_review.py": "d2a7f810f0adf0de08dd85f46b665330da3ba27a56c97dd0fa0f74fb68b36fc7"
+  },
+  "counterexamples_found": [],
+  "limits": [
+    "The corpus is finite; it is not a proof for all quadratic definitions or arbitrary towers.",
+    "Package-test timings include compilation and test harness; they support no speedup claim."
+  ]
+}

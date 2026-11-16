@@ -83,3 +83,12 @@ queryには零・定数・正負の傾き・非自明な `a*beta+d=0`、
 queryの係数も `Q(sqrt(2))` とし、例えば `alpha*beta-2∓alpha=0` を係数対のFraction oracleで確認する。
 この追加は最適化を採用したという記録ではなく、同じ期待値で候補実装を検査するためのもの。
 [追加corpusのbaseline検査記録](../measurements/realtower-review-quadratic-20261116.json)に全期待値を残した。
+
+## 最適化後の独立再検査
+
+二次符号判定の最適化 `aedec4f` を取り込み、同一の独立70件を native / wasm-gc / JS で再実行し、各70/70成功した。
+shifted quadraticの13 context・123 query、irrationalな一次係数、従属拡大、零の判定、
+proof/context差し替えの全検査を含む。追加の反例は見つからなかった。
+警告禁止checkも成功した。gcd正規化はこの対象commitに含まれない。
+[最適化後の独立検査記録](../measurements/realtower-review-optimized-20261116.json)に対象commitとログを残した。
+これらのpackage test時間はcompile/harnessを含むため、速度改善の比較として使わない。
