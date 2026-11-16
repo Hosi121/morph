@@ -1,0 +1,114 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexcompositum"
+
+import {
+  "Hosi121/morph/complexalgebraic",
+  "Hosi121/morph/complexfield",
+  "Hosi121/morph/compositum",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realalgebraic",
+  "Hosi121/morph/realminimal",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Build, @compositum.Budget) -> Result[Progress, CompositumError]
+
+pub fn certificate(Common) -> Certificate
+
+pub fn check(@core.Chain[@complexalgebraic.Number], Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_result(@core.Chain[@complexalgebraic.Number], Common, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn common_field(Common) -> @complexfield.Field
+
+pub fn completed_coordinates(Build) -> @core.Nat
+
+pub fn compose(@core.Chain[@complexalgebraic.Number], @compositum.Budget) -> Result[Progress, CompositumError]
+
+pub fn elements(Common) -> @core.Chain[@complexfield.Element]
+
+pub fn start(@core.Chain[@complexalgebraic.Number]) -> Build
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Build {
+  inputs : @core.Chain[@complexalgebraic.Number]
+  remaining : @core.Chain[@realalgebraic.Number]
+  initial : @realminimal.Certificate?
+  state : State?
+  steps_rev : @core.Chain[StepCertificate]
+}
+pub fn Build::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  sources : @core.Chain[@complexalgebraic.NumberCertificate]
+  initial : @realminimal.Certificate
+  steps : @core.Chain[StepCertificate]
+  field : @numberfield.Field
+  coordinates : @core.Chain[@polynomial.Polynomial]
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Common {
+  field : @complexfield.Field
+  values : @core.Chain[@complexfield.Element]
+  proof : Certificate
+}
+pub fn Common::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CompositumError {
+  AlgebraFailure(@realalgebraic.AlgebraError)
+  MinimalFailure(@realminimal.MinimalError)
+  FieldFailure(@numberfield.FieldError)
+  ComplexFieldFailure(@complexfield.FieldError)
+  MergeFailure(@compositum.CompositumError)
+  InternalInvariant
+}
+pub fn CompositumError::equal(Self, Self) -> Bool
+pub fn CompositumError::not_equal(Self, Self) -> Bool
+pub fn CompositumError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Ready(Common, Certificate)
+  Paused(Build, StopReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type State
+pub fn State::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum StepCertificate {
+  Rational(@exact.Rational)
+  Reuse(@core.Nat)
+  Normalize(@realminimal.Certificate)
+  Merge(@compositum.Common, @compositum.Certificate)
+}
+pub fn StepCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  InitializationBudget(@realminimal.StopReason)
+  NormalizationBudget(@realminimal.StopReason)
+  MergeBudget(@compositum.StopReason)
+  VerificationBudget
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
