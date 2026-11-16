@@ -3,6 +3,7 @@ import {
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
   "Hosi121/morph/rowreduce",
+  "Hosi121/morph/bareiss",
 }
 
 import {

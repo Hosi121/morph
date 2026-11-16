@@ -1,0 +1,36 @@
+{
+  "artifact_sha256": {
+    "after-build.txt": "79c47851b60972ec0daeb77aa752f6abb512bf004d20d3629680c3a378f81a62",
+    "after-norms.txt": "459320375045ee8fcff959da51ceadcf8fa63b886f5dac92f2431cafb824b4fe",
+    "after-resultants.txt": "29d7c0d646570881f268ae99b2664bb75f7aba86bd8a83df30aea357690fc1cf",
+    "after/linear.mbt": "fa40a473148b8adca1d425cea0b6f551ee6b00b93cbce864522f6908616af6b6",
+    "after/moon.pkg": "1b350b53baf0fc601174fd8c6ce46db2a0d1dace2c9d272e49ff1ae0837e65ec",
+    "after/numberfield.c": "2afa7512b5fcfcc77066ed6a171b21b1478462638bc0658676b8971fb4239f7a",
+    "after/numberfield.exe": "ad5150872d6636641bd2a791eeab831aed613c0744b2971922711c6d3d3fa375",
+    "after/realalgebraic.c": "39efbe3c32ecea6b4a90110a235a921dcd6061d3a825f16d33d563176406a004",
+    "after/realalgebraic.exe": "ebc042aaed13dca497a9bace2b865c026c3b50009f2ff4efc9c9998b547f427c",
+    "before-norms.txt": "d7160ff540f78980e2a8f11361c1dd51746d84e6bebd3bd10d7b8b485b8242bf",
+    "before-resultants.txt": "30292bdff315f773604080f4c70d625f73f130d297f6831dfbcc715350059a95",
+    "before/linear.mbt": "b776afaeed1be619f7a9b2b33e74b05dbbb6c9278c719beebb96f79f1cbb9d31",
+    "before/moon.pkg": "11c892973dc07ae52fd65b8bee0102bd02612075ac667538ccfcbd2a7c3fa973",
+    "before/numberfield.c": "f07c9eade766e0cd34c30b95c457d3bfb8e20e2a9a4b120d54320345e3b4565c",
+    "before/numberfield.exe": "d5842c214afbb9497c70a93a7845f6bb860e7547e2b4c992dcbdc9776e80ddc0",
+    "before/realalgebraic.c": "5af66e9a17bcfba11e2144ad52a514f47255f20cfe6d17dbff72e5f6088aad36",
+    "before/realalgebraic.exe": "dd8b8534082d510f874b54091df652f7459d7f9388ba58adf4dfb37dc92bc4ad",
+    "build.txt": "eb1875444060c71da21f9243322349795bddcbb1ffc0dc6fc2138db8987f2cba",
+    "callers.txt": "33df8fc92bff27ed05b8f4f44100b25d38b78a9ed0c10df24279138bf37b9bb7"
+  },
+  "before_linear_main": "c1da59d",
+  "comparison": "Two frozen native release ELFs, identical prepared client inputs and harness. Resultant includes generation and checker; norms include multiplication matrices; input/field construction excluded.",
+  "cpu": 4,
+  "sdk": "moonc v0.10.20+65efd5b93",
+  "serialization": "tools/measure common Git directory lock",
+  "source_sha256": {
+    "src/bareiss/bareiss.mbt": "d4cf8d486b1f830b0368d634c14ecf4fd7e7f8ced1661abf9c9badc255c88456",
+    "src/bareiss/rational.mbt": "ae8e355f7b44b24cf728db52b0429de5f93e12d355e6671653601daa81a85f16",
+    "src/linear/linear.mbt": "fa40a473148b8adca1d425cea0b6f551ee6b00b93cbce864522f6908616af6b6",
+    "src/linear/moon.pkg": "1b350b53baf0fc601174fd8c6ce46db2a0d1dace2c9d272e49ff1ae0837e65ec",
+    "src/numberfield/determinant_upper_bench_wbtest.mbt": "d68916a67532d35b9d943e82c80cc301f0def62cdaaf56b4f4ed6fd3ab23824b",
+    "src/realalgebraic/determinant_upper_bench_wbtest.mbt": "14d9697d9ecfdf1fc49fe0da8c16e9087aa510607cc1148842480f4466cf4e17"
+  }
+}

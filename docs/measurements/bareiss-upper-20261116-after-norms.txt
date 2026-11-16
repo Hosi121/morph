@@ -1,0 +1,4 @@
+[Hosi121/morph] bench numberfield/determinant_upper_bench_wbtest.mbt:2 ("prepared four quartic field norms including multiplication matrices") ok
+time (mean ± σ)         range (min … max) 
+ 105.97 µs ±  12.42 µs    92.13 µs … 126.49 µs  in 10 ×    980 runs
+Total tests: 1, passed: 1, failed: 0.

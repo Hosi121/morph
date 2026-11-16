@@ -46,7 +46,10 @@ pub fn rref(input : @matrix.Matrix[@exact.Rational]) -> Reduction? {
 
 ///|
 pub fn determinant(input : @matrix.Matrix[@exact.Rational]) -> @exact.Rational? {
-  @rowreduce.determinant(arithmetic(), input)
+  match @bareiss.determinant(input) {
+    Ok(value) => Some(value)
+    Err(_) => None
+  }
 }
 
 ///|

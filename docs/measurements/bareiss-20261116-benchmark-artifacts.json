@@ -1,0 +1,140 @@
+{
+  "native": [
+    {
+      "path": "_build/native/release/bench/bareiss/__blackbox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/native/__blackbox_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/__internal_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/native/__internal_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/__whitebox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/native/__whitebox_test_info.json",
+      "sha256": "0d82ad0934ca54a487030895a9715db2a7bec79deee4b0b0c4ce244a9a1f0784",
+      "bytes": 47003
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.blackbox_test.c",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.blackbox_test.c",
+      "sha256": "30f7783ff6a89cd7be586b6213309069bc8fbe84b66e010c85332d66ded9c7d5",
+      "bytes": 194146
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.blackbox_test.exe",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.blackbox_test.exe",
+      "sha256": "c8861ac8edb7180a5ca7c1adff7d0b6415260e13355fdde3042b12b77ce61bdc",
+      "bytes": 497256
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.internal_test.c",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.internal_test.c",
+      "sha256": "94d75b1f173e11b9240f0e3fdee039777e5d61f75e55fb83eeffd687ee8484fb",
+      "bytes": 192448
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.internal_test.exe",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.internal_test.exe",
+      "sha256": "f147af4924b7e6ac9b79198fb2d7cb35179b3c8e22dc9917169af9eb15b5c462",
+      "bytes": 497216
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.whitebox_test.c",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.whitebox_test.c",
+      "sha256": "0b0123dad85b78231f8d52116ac0c2c1bfbf75f93a4a5d0441daa3d27d5c5d0f",
+      "bytes": 3548105
+    },
+    {
+      "path": "_build/native/release/bench/bareiss/bareiss.whitebox_test.exe",
+      "copy": ".tools/bareiss-20261116/executables/native/bareiss.whitebox_test.exe",
+      "sha256": "17045c7a583f3e8ca0f446ef967df3e7f9d7f212c82ea01e18ece51472fd9b8a",
+      "bytes": 750976
+    }
+  ],
+  "js": [
+    {
+      "path": "_build/js/release/bench/bareiss/__blackbox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/js/__blackbox_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/__internal_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/js/__internal_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/__whitebox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/js/__whitebox_test_info.json",
+      "sha256": "0d82ad0934ca54a487030895a9715db2a7bec79deee4b0b0c4ce244a9a1f0784",
+      "bytes": 47003
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/bareiss.blackbox_test.js",
+      "copy": ".tools/bareiss-20261116/executables/js/bareiss.blackbox_test.js",
+      "sha256": "6e0cc2ec33f42505b6768ae97a8ac14b906184440d879c88403f5c856f34d8af",
+      "bytes": 15457
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/bareiss.internal_test.js",
+      "copy": ".tools/bareiss-20261116/executables/js/bareiss.internal_test.js",
+      "sha256": "941b04f89390e70194b4d799912dccd3fce6c82eaae9b1f1b158b547ee26d9bc",
+      "bytes": 14862
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/bareiss.whitebox_test.js",
+      "copy": ".tools/bareiss-20261116/executables/js/bareiss.whitebox_test.js",
+      "sha256": "937a6a88f1def5cd62409867ef3fcbde72a5d050447262638f0c0a9b3c79fa05",
+      "bytes": 870038
+    },
+    {
+      "path": "_build/js/release/bench/bareiss/package.json",
+      "copy": ".tools/bareiss-20261116/executables/js/package.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "bytes": 2
+    }
+  ],
+  "wasm-gc": [
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/__blackbox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/__blackbox_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/__internal_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/__internal_test_info.json",
+      "sha256": "a9eab2f8620fdf7105ab62fe0111ea4174a2649fa2145b5d961b6ed8f1f61362",
+      "bytes": 327
+    },
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/__whitebox_test_info.json",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/__whitebox_test_info.json",
+      "sha256": "0d82ad0934ca54a487030895a9715db2a7bec79deee4b0b0c4ce244a9a1f0784",
+      "bytes": 47003
+    },
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/bareiss.blackbox_test.wasm",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/bareiss.blackbox_test.wasm",
+      "sha256": "160e3005d106f7b0d27f15113e2214e3cb93a0e2b3dd90f70f1aa99c65ab8e0f",
+      "bytes": 7344
+    },
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/bareiss.internal_test.wasm",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/bareiss.internal_test.wasm",
+      "sha256": "1c851cd42fed3f048335f0fd12d2d4216b4db838133a64eace94bfac20346dbe",
+      "bytes": 7288
+    },
+    {
+      "path": "_build/wasm-gc/release/bench/bareiss/bareiss.whitebox_test.wasm",
+      "copy": ".tools/bareiss-20261116/executables/wasm-gc/bareiss.whitebox_test.wasm",
+      "sha256": "c3fe69a01d8d0f71ee67e3fb27db384e9c8eaace8f648bdfff7ee66bc39e0716",
+      "bytes": 152937
+    }
+  ]
+}

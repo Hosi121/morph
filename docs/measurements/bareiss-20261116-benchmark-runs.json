@@ -1,0 +1,632 @@
+[
+  {
+    "target": "native",
+    "iteration": 0,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "native",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 22.223494737998408,
+    "completed_utc": "2026-11-16T09:49:44.049326+00:00",
+    "log": ".tools/bareiss-20261116/bench-native-0.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 4.72e-06,
+        "stddev_seconds": 1.9315e-07,
+        "raw": "reference_small    4.72 \u00b5s \u00b1 193.15 ns     4.44 \u00b5s \u2026   4.99 \u00b5s  in 5 \u00d7  21509 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 2.4900000000000003e-06,
+        "stddev_seconds": 1.1837000000000001e-07,
+        "raw": "Bareiss_small    2.49 \u00b5s \u00b1 118.37 ns     2.36 \u00b5s \u2026   2.63 \u00b5s  in 5 \u00d7  40967 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.00118,
+        "stddev_seconds": 6.966e-05,
+        "raw": "reference_integer6    1.18 ms \u00b1  69.66 \u00b5s     1.10 ms \u2026   1.24 ms  in 5 \u00d7     83 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.00049358,
+        "stddev_seconds": 3.12e-05,
+        "raw": "Bareiss_integer6  493.58 \u00b5s \u00b1  31.20 \u00b5s   460.03 \u00b5s \u2026 532.27 \u00b5s  in 5 \u00d7    205 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.0057,
+        "stddev_seconds": 0.00035369,
+        "raw": "reference_integer8    5.70 ms \u00b1 353.69 \u00b5s     5.30 ms \u2026   6.25 ms  in 5 \u00d7     17 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.00237,
+        "stddev_seconds": 4.578e-05,
+        "raw": "Bareiss_integer8    2.37 ms \u00b1  45.78 \u00b5s     2.32 ms \u2026   2.43 ms  in 5 \u00d7     44 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.0066,
+        "stddev_seconds": 0.0001418,
+        "raw": "reference_rational6    6.60 ms \u00b1 141.80 \u00b5s     6.37 ms \u2026   6.73 ms  in 5 \u00d7     16 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.0033799999999999998,
+        "stddev_seconds": 0.00023944,
+        "raw": "Bareiss_rational6    3.38 ms \u00b1 239.44 \u00b5s     3.11 ms \u2026   3.76 ms  in 5 \u00d7     32 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.028030000000000003,
+        "stddev_seconds": 0.0007949099999999999,
+        "raw": "reference_rational8   28.03 ms \u00b1 794.91 \u00b5s    27.26 ms \u2026  29.21 ms  in 5 \u00d7      4 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.01486,
+        "stddev_seconds": 0.00055909,
+        "raw": "Bareiss_rational8   14.86 ms \u00b1 559.09 \u00b5s    14.30 ms \u2026  15.62 ms  in 5 \u00d7      7 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.006940000000000001,
+        "stddev_seconds": 0.00037934,
+        "raw": "reference_singular8    6.94 ms \u00b1 379.34 \u00b5s     6.41 ms \u2026   7.40 ms  in 5 \u00d7     14 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.00163,
+        "stddev_seconds": 8.837e-05,
+        "raw": "Bareiss_singular8    1.63 ms \u00b1  88.37 \u00b5s     1.53 ms \u2026   1.74 ms  in 5 \u00d7     62 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.005110000000000001,
+        "stddev_seconds": 0.00017936999999999999,
+        "raw": "reference_pivot8    5.11 ms \u00b1 179.37 \u00b5s     4.89 ms \u2026   5.37 ms  in 5 \u00d7     21 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00197,
+        "stddev_seconds": 0.00010809,
+        "raw": "Bareiss_pivot8    1.97 ms \u00b1 108.09 \u00b5s     1.80 ms \u2026   2.09 ms  in 5 \u00d7     53 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.01724,
+        "stddev_seconds": 0.00034033999999999996,
+        "raw": "reference_earlyzero8   17.24 ms \u00b1 340.34 \u00b5s    16.80 ms \u2026  17.74 ms  in 5 \u00d7      7 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00024734,
+        "stddev_seconds": 7.37e-06,
+        "raw": "Bareiss_earlyzero8  247.34 \u00b5s \u00b1   7.37 \u00b5s   238.03 \u00b5s \u2026 255.06 \u00b5s  in 5 \u00d7    422 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/native/release/bench/bareiss/bareiss.blackbox_test.exe": "c8861ac8edb7180a5ca7c1adff7d0b6415260e13355fdde3042b12b77ce61bdc",
+      "_build/native/release/bench/bareiss/bareiss.internal_test.exe": "f147af4924b7e6ac9b79198fb2d7cb35179b3c8e22dc9917169af9eb15b5c462",
+      "_build/native/release/bench/bareiss/bareiss.whitebox_test.exe": "17045c7a583f3e8ca0f446ef967df3e7f9d7f212c82ea01e18ece51472fd9b8a"
+    }
+  },
+  {
+    "target": "native",
+    "iteration": 1,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "native",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 12.926967425999464,
+    "completed_utc": "2026-11-16T09:49:56.977022+00:00",
+    "log": ".tools/bareiss-20261116/bench-native-1.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 4.54e-06,
+        "stddev_seconds": 1.7066e-07,
+        "raw": "reference_small    4.54 \u00b5s \u00b1 170.66 ns     4.28 \u00b5s \u2026   4.74 \u00b5s  in 5 \u00d7  22866 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 2.58e-06,
+        "stddev_seconds": 1.1072e-07,
+        "raw": "Bareiss_small    2.58 \u00b5s \u00b1 110.72 ns     2.45 \u00b5s \u2026   2.71 \u00b5s  in 5 \u00d7  42406 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.0011200000000000001,
+        "stddev_seconds": 2.675e-05,
+        "raw": "reference_integer6    1.12 ms \u00b1  26.75 \u00b5s     1.09 ms \u2026   1.16 ms  in 5 \u00d7     92 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.00050196,
+        "stddev_seconds": 1.038e-05,
+        "raw": "Bareiss_integer6  501.96 \u00b5s \u00b1  10.38 \u00b5s   484.11 \u00b5s \u2026 510.23 \u00b5s  in 5 \u00d7    197 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.0056,
+        "stddev_seconds": 7.901e-05,
+        "raw": "reference_integer8    5.60 ms \u00b1  79.01 \u00b5s     5.52 ms \u2026   5.69 ms  in 5 \u00d7     18 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.0024100000000000002,
+        "stddev_seconds": 0.00018838999999999998,
+        "raw": "Bareiss_integer8    2.41 ms \u00b1 188.39 \u00b5s     2.19 ms \u2026   2.64 ms  in 5 \u00d7     43 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.00609,
+        "stddev_seconds": 0.00056562,
+        "raw": "reference_rational6    6.09 ms \u00b1 565.62 \u00b5s     5.24 ms \u2026   6.68 ms  in 5 \u00d7     17 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.00344,
+        "stddev_seconds": 0.0003571,
+        "raw": "Bareiss_rational6    3.44 ms \u00b1 357.10 \u00b5s     3.01 ms \u2026   3.90 ms  in 5 \u00d7     32 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.030090000000000002,
+        "stddev_seconds": 0.00219,
+        "raw": "reference_rational8   30.09 ms \u00b1   2.19 ms    27.54 ms \u2026  33.15 ms  in 5 \u00d7      4 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.015560000000000001,
+        "stddev_seconds": 0.00134,
+        "raw": "Bareiss_rational8   15.56 ms \u00b1   1.34 ms    13.82 ms \u2026  17.03 ms  in 5 \u00d7      7 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.00732,
+        "stddev_seconds": 0.0005814199999999999,
+        "raw": "reference_singular8    7.32 ms \u00b1 581.42 \u00b5s     6.69 ms \u2026   8.07 ms  in 5 \u00d7     14 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.00166,
+        "stddev_seconds": 0.00013487,
+        "raw": "Bareiss_singular8    1.66 ms \u00b1 134.87 \u00b5s     1.47 ms \u2026   1.79 ms  in 5 \u00d7     64 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.00528,
+        "stddev_seconds": 0.00039285,
+        "raw": "reference_pivot8    5.28 ms \u00b1 392.85 \u00b5s     4.67 ms \u2026   5.66 ms  in 5 \u00d7     20 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00199,
+        "stddev_seconds": 7.099999999999999e-05,
+        "raw": "Bareiss_pivot8    1.99 ms \u00b1  71.00 \u00b5s     1.89 ms \u2026   2.07 ms  in 5 \u00d7     48 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.017320000000000002,
+        "stddev_seconds": 0.00135,
+        "raw": "reference_earlyzero8   17.32 ms \u00b1   1.35 ms    16.09 ms \u2026  19.36 ms  in 5 \u00d7      6 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00024686,
+        "stddev_seconds": 9.07e-06,
+        "raw": "Bareiss_earlyzero8  246.86 \u00b5s \u00b1   9.07 \u00b5s   239.94 \u00b5s \u2026 262.08 \u00b5s  in 5 \u00d7    454 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/native/release/bench/bareiss/bareiss.blackbox_test.exe": "c8861ac8edb7180a5ca7c1adff7d0b6415260e13355fdde3042b12b77ce61bdc",
+      "_build/native/release/bench/bareiss/bareiss.internal_test.exe": "f147af4924b7e6ac9b79198fb2d7cb35179b3c8e22dc9917169af9eb15b5c462",
+      "_build/native/release/bench/bareiss/bareiss.whitebox_test.exe": "17045c7a583f3e8ca0f446ef967df3e7f9d7f212c82ea01e18ece51472fd9b8a"
+    }
+  },
+  {
+    "target": "js",
+    "iteration": 0,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "js",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 13.821674941998936,
+    "completed_utc": "2026-11-16T09:50:10.799744+00:00",
+    "log": ".tools/bareiss-20261116/bench-js-0.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 3.3599999999999996e-06,
+        "stddev_seconds": 8.761e-08,
+        "raw": "reference_small    3.36 \u00b5s \u00b1  87.61 ns     3.24 \u00b5s \u2026   3.47 \u00b5s  in 5 \u00d7  28675 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 1.6399999999999998e-06,
+        "stddev_seconds": 5.6840000000000005e-08,
+        "raw": "Bareiss_small    1.64 \u00b5s \u00b1  56.84 ns     1.57 \u00b5s \u2026   1.71 \u00b5s  in 5 \u00d7  57933 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.00102,
+        "stddev_seconds": 0.00023978999999999998,
+        "raw": "reference_integer6    1.02 ms \u00b1 239.79 \u00b5s   767.25 \u00b5s \u2026   1.29 ms  in 5 \u00d7     60 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.00032169999999999996,
+        "stddev_seconds": 4.609e-05,
+        "raw": "Bareiss_integer6  321.70 \u00b5s \u00b1  46.09 \u00b5s   270.48 \u00b5s \u2026 385.07 \u00b5s  in 5 \u00d7    273 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.0040999999999999995,
+        "stddev_seconds": 0.00040201999999999995,
+        "raw": "reference_integer8    4.10 ms \u00b1 402.02 \u00b5s     3.74 ms \u2026   4.71 ms  in 5 \u00d7     12 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.00161,
+        "stddev_seconds": 8.79e-05,
+        "raw": "Bareiss_integer8    1.61 ms \u00b1  87.90 \u00b5s     1.53 ms \u2026   1.75 ms  in 5 \u00d7     51 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.005240000000000001,
+        "stddev_seconds": 0.0008578899999999999,
+        "raw": "reference_rational6    5.24 ms \u00b1 857.89 \u00b5s     4.63 ms \u2026   6.75 ms  in 5 \u00d7      9 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.00302,
+        "stddev_seconds": 0.00029907999999999996,
+        "raw": "Bareiss_rational6    3.02 ms \u00b1 299.08 \u00b5s     2.70 ms \u2026   3.52 ms  in 5 \u00d7     24 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.035320000000000004,
+        "stddev_seconds": 0.0205,
+        "raw": "reference_rational8   35.32 ms \u00b1  20.50 ms    22.11 ms \u2026  70.85 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.01046,
+        "stddev_seconds": 0.0021000000000000003,
+        "raw": "Bareiss_rational8   10.46 ms \u00b1   2.10 ms     8.49 ms \u2026  13.53 ms  in 5 \u00d7      7 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.0049900000000000005,
+        "stddev_seconds": 0.00042156999999999996,
+        "raw": "reference_singular8    4.99 ms \u00b1 421.57 \u00b5s     4.64 ms \u2026   5.69 ms  in 5 \u00d7     11 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.00109,
+        "stddev_seconds": 0.00016277000000000002,
+        "raw": "Bareiss_singular8    1.09 ms \u00b1 162.77 \u00b5s   843.63 \u00b5s \u2026   1.23 ms  in 5 \u00d7    113 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.0037,
+        "stddev_seconds": 0.0005836699999999999,
+        "raw": "reference_pivot8    3.70 ms \u00b1 583.67 \u00b5s     3.10 ms \u2026   4.37 ms  in 5 \u00d7     16 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00149,
+        "stddev_seconds": 0.00014599,
+        "raw": "Bareiss_pivot8    1.49 ms \u00b1 145.99 \u00b5s     1.28 ms \u2026   1.63 ms  in 5 \u00d7     59 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.02938,
+        "stddev_seconds": 0.011720000000000001,
+        "raw": "reference_earlyzero8   29.38 ms \u00b1  11.72 ms    18.18 ms \u2026  46.99 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00012198,
+        "stddev_seconds": 8.119999999999998e-06,
+        "raw": "Bareiss_earlyzero8  121.98 \u00b5s \u00b1   8.12 \u00b5s   110.55 \u00b5s \u2026 130.33 \u00b5s  in 5 \u00d7    758 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/js/release/bench/bareiss/bareiss.blackbox_test.js": "6e0cc2ec33f42505b6768ae97a8ac14b906184440d879c88403f5c856f34d8af",
+      "_build/js/release/bench/bareiss/bareiss.internal_test.js": "941b04f89390e70194b4d799912dccd3fce6c82eaae9b1f1b158b547ee26d9bc",
+      "_build/js/release/bench/bareiss/bareiss.whitebox_test.js": "937a6a88f1def5cd62409867ef3fcbde72a5d050447262638f0c0a9b3c79fa05"
+    }
+  },
+  {
+    "target": "js",
+    "iteration": 1,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "js",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 13.965086890999373,
+    "completed_utc": "2026-11-16T09:50:24.765805+00:00",
+    "log": ".tools/bareiss-20261116/bench-js-1.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 3.35e-06,
+        "stddev_seconds": 3.2407e-07,
+        "raw": "reference_small    3.35 \u00b5s \u00b1 324.07 ns     2.90 \u00b5s \u2026   3.75 \u00b5s  in 5 \u00d7  25391 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 1.5199999999999998e-06,
+        "stddev_seconds": 1.2756e-07,
+        "raw": "Bareiss_small    1.52 \u00b5s \u00b1 127.56 ns     1.41 \u00b5s \u2026   1.72 \u00b5s  in 5 \u00d7  62129 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.00085871,
+        "stddev_seconds": 0.00031501999999999995,
+        "raw": "reference_integer6  858.71 \u00b5s \u00b1 315.02 \u00b5s   506.90 \u00b5s \u2026   1.21 ms  in 5 \u00d7     63 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.0002125,
+        "stddev_seconds": 2.291e-05,
+        "raw": "Bareiss_integer6  212.50 \u00b5s \u00b1  22.91 \u00b5s   197.36 \u00b5s \u2026 252.67 \u00b5s  in 5 \u00d7    373 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.00409,
+        "stddev_seconds": 0.00038974999999999996,
+        "raw": "reference_integer8    4.09 ms \u00b1 389.75 \u00b5s     3.50 ms \u2026   4.55 ms  in 5 \u00d7     13 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.0015500000000000002,
+        "stddev_seconds": 0.00018866,
+        "raw": "Bareiss_integer8    1.55 ms \u00b1 188.66 \u00b5s     1.32 ms \u2026   1.75 ms  in 5 \u00d7     59 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.00454,
+        "stddev_seconds": 0.00040223,
+        "raw": "reference_rational6    4.54 ms \u00b1 402.23 \u00b5s     4.09 ms \u2026   5.01 ms  in 5 \u00d7     13 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.002,
+        "stddev_seconds": 0.00027189999999999994,
+        "raw": "Bareiss_rational6    2.00 ms \u00b1 271.90 \u00b5s     1.71 ms \u2026   2.33 ms  in 5 \u00d7     32 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.02671,
+        "stddev_seconds": 0.005110000000000001,
+        "raw": "reference_rational8   26.71 ms \u00b1   5.11 ms    21.38 ms \u2026  33.05 ms  in 5 \u00d7      3 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.0125,
+        "stddev_seconds": 0.0014,
+        "raw": "Bareiss_rational8   12.50 ms \u00b1   1.40 ms    10.66 ms \u2026  14.39 ms  in 5 \u00d7      7 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.0056,
+        "stddev_seconds": 0.00034485,
+        "raw": "reference_singular8    5.60 ms \u00b1 344.85 \u00b5s     5.21 ms \u2026   6.01 ms  in 5 \u00d7     10 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.0011899999999999999,
+        "stddev_seconds": 0.00015756,
+        "raw": "Bareiss_singular8    1.19 ms \u00b1 157.56 \u00b5s     1.03 ms \u2026   1.45 ms  in 5 \u00d7     92 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.00382,
+        "stddev_seconds": 0.0005599299999999999,
+        "raw": "reference_pivot8    3.82 ms \u00b1 559.93 \u00b5s     3.35 ms \u2026   4.67 ms  in 5 \u00d7     16 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00132,
+        "stddev_seconds": 0.00010595,
+        "raw": "Bareiss_pivot8    1.32 ms \u00b1 105.95 \u00b5s     1.21 ms \u2026   1.48 ms  in 5 \u00d7     59 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.01504,
+        "stddev_seconds": 0.0029,
+        "raw": "reference_earlyzero8   15.04 ms \u00b1   2.90 ms    11.42 ms \u2026  19.18 ms  in 5 \u00d7      4 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00013536,
+        "stddev_seconds": 1.265e-05,
+        "raw": "Bareiss_earlyzero8  135.36 \u00b5s \u00b1  12.65 \u00b5s   118.29 \u00b5s \u2026 147.88 \u00b5s  in 5 \u00d7    888 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/js/release/bench/bareiss/bareiss.blackbox_test.js": "6e0cc2ec33f42505b6768ae97a8ac14b906184440d879c88403f5c856f34d8af",
+      "_build/js/release/bench/bareiss/bareiss.internal_test.js": "941b04f89390e70194b4d799912dccd3fce6c82eaae9b1f1b158b547ee26d9bc",
+      "_build/js/release/bench/bareiss/bareiss.whitebox_test.js": "937a6a88f1def5cd62409867ef3fcbde72a5d050447262638f0c0a9b3c79fa05"
+    }
+  },
+  {
+    "target": "wasm-gc",
+    "iteration": 0,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 8.67536009000105,
+    "completed_utc": "2026-11-16T09:50:33.442106+00:00",
+    "log": ".tools/bareiss-20261116/bench-wasm-gc-0.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 2.713e-05,
+        "stddev_seconds": 1.065e-05,
+        "raw": "reference_small   27.13 \u00b5s \u00b1  10.65 \u00b5s    21.19 \u00b5s \u2026  46.11 \u00b5s  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 1.42e-06,
+        "stddev_seconds": 1.9674000000000003e-07,
+        "raw": "Bareiss_small    1.42 \u00b5s \u00b1 196.74 ns     1.23 \u00b5s \u2026   1.64 \u00b5s  in 5 \u00d7  11061 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.01586,
+        "stddev_seconds": 0.012369999999999999,
+        "raw": "reference_integer6   15.86 ms \u00b1  12.37 ms     2.40 ms \u2026  28.78 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.0008425899999999999,
+        "stddev_seconds": 0.0008326,
+        "raw": "Bareiss_integer6  842.59 \u00b5s \u00b1 832.60 \u00b5s   262.15 \u00b5s \u2026   2.20 ms  in 5 \u00d7     31 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.03105,
+        "stddev_seconds": 0.0089,
+        "raw": "reference_integer8   31.05 ms \u00b1   8.90 ms    16.54 ms \u2026  38.96 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.012289999999999999,
+        "stddev_seconds": 0.00948,
+        "raw": "Bareiss_integer8   12.29 ms \u00b1   9.48 ms     3.31 ms \u2026  27.12 ms  in 5 \u00d7      1 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.03173,
+        "stddev_seconds": 0.00513,
+        "raw": "reference_rational6   31.73 ms \u00b1   5.13 ms    27.23 ms \u2026  39.74 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.0023,
+        "stddev_seconds": 0.00020981,
+        "raw": "Bareiss_rational6    2.30 ms \u00b1 209.81 \u00b5s     2.04 ms \u2026   2.50 ms  in 5 \u00d7     25 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.07453,
+        "stddev_seconds": 0.03469,
+        "raw": "reference_rational8   74.53 ms \u00b1  34.69 ms    27.98 ms \u2026 116.60 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.01168,
+        "stddev_seconds": 0.00237,
+        "raw": "Bareiss_rational8   11.68 ms \u00b1   2.37 ms     9.50 ms \u2026  15.60 ms  in 5 \u00d7      4 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.056549999999999996,
+        "stddev_seconds": 0.00875,
+        "raw": "reference_singular8   56.55 ms \u00b1   8.75 ms    45.89 ms \u2026  63.28 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.00117,
+        "stddev_seconds": 0.00018496999999999999,
+        "raw": "Bareiss_singular8    1.17 ms \u00b1 184.97 \u00b5s   966.13 \u00b5s \u2026   1.39 ms  in 5 \u00d7     16 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.04197,
+        "stddev_seconds": 0.00701,
+        "raw": "reference_pivot8   41.97 ms \u00b1   7.01 ms    34.56 ms \u2026  52.58 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00426,
+        "stddev_seconds": 0.003,
+        "raw": "Bareiss_pivot8    4.26 ms \u00b1   3.00 ms     1.24 ms \u2026   7.39 ms  in 5 \u00d7     13 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.08834,
+        "stddev_seconds": 0.0074800000000000005,
+        "raw": "reference_earlyzero8   88.34 ms \u00b1   7.48 ms    77.51 ms \u2026  95.26 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00011915,
+        "stddev_seconds": 1.338e-05,
+        "raw": "Bareiss_earlyzero8  119.15 \u00b5s \u00b1  13.38 \u00b5s   102.61 \u00b5s \u2026 137.22 \u00b5s  in 5 \u00d7    237 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/wasm-gc/release/bench/bareiss/bareiss.blackbox_test.wasm": "160e3005d106f7b0d27f15113e2214e3cb93a0e2b3dd90f70f1aa99c65ab8e0f",
+      "_build/wasm-gc/release/bench/bareiss/bareiss.internal_test.wasm": "1c851cd42fed3f048335f0fd12d2d4216b4db838133a64eace94bfac20346dbe",
+      "_build/wasm-gc/release/bench/bareiss/bareiss.whitebox_test.wasm": "c3fe69a01d8d0f71ee67e3fb27db384e9c8eaace8f648bdfff7ee66bc39e0716"
+    }
+  },
+  {
+    "target": "wasm-gc",
+    "iteration": 1,
+    "command": [
+      "tools/moon",
+      "bench",
+      "src/bareiss",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "--no-parallelize",
+      "--verbose"
+    ],
+    "reused_existing_log": false,
+    "command_wall_seconds": 8.363570773999527,
+    "completed_utc": "2026-11-16T09:50:41.806813+00:00",
+    "log": ".tools/bareiss-20261116/bench-wasm-gc-1.log",
+    "measurements": {
+      "reference_small": {
+        "mean_seconds": 7.544e-05,
+        "stddev_seconds": 2.789e-05,
+        "raw": "reference_small   75.44 \u00b5s \u00b1  27.89 \u00b5s    54.50 \u00b5s \u2026 110.25 \u00b5s  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_small": {
+        "mean_seconds": 5.73e-06,
+        "stddev_seconds": 4.71e-06,
+        "raw": "Bareiss_small    5.73 \u00b5s \u00b1   4.71 \u00b5s     1.38 \u00b5s \u2026  11.91 \u00b5s  in 5 \u00d7   7972 runs"
+      },
+      "reference_integer6": {
+        "mean_seconds": 0.01216,
+        "stddev_seconds": 0.00762,
+        "raw": "reference_integer6   12.16 ms \u00b1   7.62 ms     3.06 ms \u2026  20.28 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_integer6": {
+        "mean_seconds": 0.00083988,
+        "stddev_seconds": 0.0006479099999999999,
+        "raw": "Bareiss_integer6  839.88 \u00b5s \u00b1 647.91 \u00b5s   315.71 \u00b5s \u2026   1.65 ms  in 5 \u00d7     49 runs"
+      },
+      "reference_integer8": {
+        "mean_seconds": 0.034820000000000004,
+        "stddev_seconds": 0.0057,
+        "raw": "reference_integer8   34.82 ms \u00b1   5.70 ms    29.75 ms \u2026  44.24 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_integer8": {
+        "mean_seconds": 0.01298,
+        "stddev_seconds": 0.00459,
+        "raw": "Bareiss_integer8   12.98 ms \u00b1   4.59 ms     8.78 ms \u2026  18.68 ms  in 5 \u00d7      1 runs"
+      },
+      "reference_rational6": {
+        "mean_seconds": 0.03279,
+        "stddev_seconds": 0.016620000000000003,
+        "raw": "reference_rational6   32.79 ms \u00b1  16.62 ms    13.27 ms \u2026  55.31 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_rational6": {
+        "mean_seconds": 0.00233,
+        "stddev_seconds": 0.00014502999999999999,
+        "raw": "Bareiss_rational6    2.33 ms \u00b1 145.03 \u00b5s     2.17 ms \u2026   2.49 ms  in 5 \u00d7     23 runs"
+      },
+      "reference_rational8": {
+        "mean_seconds": 0.09159,
+        "stddev_seconds": 0.04575,
+        "raw": "reference_rational8   91.59 ms \u00b1  45.75 ms    32.56 ms \u2026 141.73 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_rational8": {
+        "mean_seconds": 0.011810000000000001,
+        "stddev_seconds": 0.00315,
+        "raw": "Bareiss_rational8   11.81 ms \u00b1   3.15 ms     8.83 ms \u2026  17.00 ms  in 5 \u00d7      4 runs"
+      },
+      "reference_singular8": {
+        "mean_seconds": 0.043340000000000004,
+        "stddev_seconds": 0.01028,
+        "raw": "reference_singular8   43.34 ms \u00b1  10.28 ms    30.28 ms \u2026  57.60 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_singular8": {
+        "mean_seconds": 0.0038,
+        "stddev_seconds": 0.00313,
+        "raw": "Bareiss_singular8    3.80 ms \u00b1   3.13 ms   943.81 \u00b5s \u2026   8.02 ms  in 5 \u00d7     11 runs"
+      },
+      "reference_pivot8": {
+        "mean_seconds": 0.038939999999999995,
+        "stddev_seconds": 0.00905,
+        "raw": "reference_pivot8   38.94 ms \u00b1   9.05 ms    32.02 ms \u2026  54.05 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_pivot8": {
+        "mean_seconds": 0.00395,
+        "stddev_seconds": 0.0029500000000000004,
+        "raw": "Bareiss_pivot8    3.95 ms \u00b1   2.95 ms     1.44 ms \u2026   7.98 ms  in 5 \u00d7     13 runs"
+      },
+      "reference_earlyzero8": {
+        "mean_seconds": 0.08308,
+        "stddev_seconds": 0.013630000000000001,
+        "raw": "reference_earlyzero8   83.08 ms \u00b1  13.63 ms    60.24 ms \u2026  93.98 ms  in 5 \u00d7      1 runs"
+      },
+      "Bareiss_earlyzero8": {
+        "mean_seconds": 0.00012203,
+        "stddev_seconds": 2.596e-05,
+        "raw": "Bareiss_earlyzero8  122.03 \u00b5s \u00b1  25.96 \u00b5s    91.00 \u00b5s \u2026 154.84 \u00b5s  in 5 \u00d7    228 runs"
+      }
+    },
+    "artifact_sha256": {
+      "_build/wasm-gc/release/bench/bareiss/bareiss.blackbox_test.wasm": "160e3005d106f7b0d27f15113e2214e3cb93a0e2b3dd90f70f1aa99c65ab8e0f",
+      "_build/wasm-gc/release/bench/bareiss/bareiss.internal_test.wasm": "1c851cd42fed3f048335f0fd12d2d4216b4db838133a64eace94bfac20346dbe",
+      "_build/wasm-gc/release/bench/bareiss/bareiss.whitebox_test.wasm": "c3fe69a01d8d0f71ee67e3fb27db384e9c8eaace8f648bdfff7ee66bc39e0716"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+[Hosi121/morph] bench realalgebraic/determinant_upper_bench_wbtest.mbt:44 ("prepared degree two sum resultant including certificate check") ok
+time (mean ± σ)         range (min … max) 
+  89.26 µs ±   4.22 µs    84.62 µs …  96.44 µs  in 10 ×   1097 runs
+[Hosi121/morph] bench realalgebraic/determinant_upper_bench_wbtest.mbt:51 ("prepared degree four by two product resultant including certificate check") ok
+time (mean ± σ)         range (min … max) 
+ 911.62 µs ±  62.46 µs   831.63 µs …   1.00 ms  in 10 ×     99 runs
+Total tests: 2, passed: 2, failed: 0.
