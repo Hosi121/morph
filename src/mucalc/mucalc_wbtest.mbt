@@ -506,3 +506,70 @@ fn assert_fixture(
     assert_true(checked(compilation, certificate(solution)) is Some(_))
   }
 }
+
+///|
+fn dual(formula : Formula) -> Formula {
+  match formula {
+    Truth(value) => Truth(!value)
+    Proposition(p, positive) => Proposition(p, !positive)
+    Bound(index) => Bound(index)
+    And(a, b) => Or(dual(a), dual(b))
+    Or(a, b) => And(dual(a), dual(b))
+    Diamond(body) => Box(dual(body))
+    Box(body) => Diamond(dual(body))
+    Mu(body) => Nu(dual(body))
+    Nu(body) => Mu(dual(body))
+  }
+}
+
+///|
+test "three binder alternation shared outer references and syntactic duality exhaust two state two atom models" {
+  let p = Proposition(@oracle.nat(0), true)
+  let q = Proposition(@oracle.nat(1), true)
+  let innermost = Bound(@oracle.nat(0))
+  let middle = Bound(@oracle.nat(1))
+  let outermost = Bound(@oracle.nat(2))
+  let formulas = [
+    Nu(
+      Mu(
+        Nu(
+          Or(
+            And(p, Diamond(outermost)),
+            And(q, Or(Box(middle), Diamond(innermost))),
+          ),
+        ),
+      ),
+    ),
+    Mu(
+      Nu(
+        Mu(
+          And(
+            Or(p, Box(outermost)),
+            Or(q, And(Diamond(middle), Box(innermost))),
+          ),
+        ),
+      ),
+    ),
+    Nu(And(Mu(Or(p, Diamond(middle))), Nu(And(q, Box(middle))))),
+  ]
+  for graph in 0..<16 {
+    let edges = edges_from_mask(2, graph)
+    for bits in 0..<16 {
+      let labels = [
+        for i in 0..<2 => {
+          [
+            for p in 0..<2 if (bits & (1 << (i * 2 + p))) != 0 => p
+          ]
+        }
+      ]
+      for formula in formulas {
+        assert_interpretation(formula, edges, labels)
+        assert_interpretation(dual(formula), edges, labels)
+        assert_eq(
+          interpret(dual(formula), edges, labels, []),
+          3 ^ interpret(formula, edges, labels, []),
+        )
+      }
+    }
+  }
+}
