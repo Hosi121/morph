@@ -1,0 +1,77 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/signcad"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/realformula",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Encoding) -> Certificate
+
+pub fn check(@core.Nat, @core.Chain[@realformula.Quantifier], @core.Chain[@core.Chain[@polynomial.Polynomial]], Tree, Certificate) -> Encoding?
+
+pub fn check_result(@core.Nat, @core.Chain[@realformula.Quantifier], @core.Chain[@core.Chain[@polynomial.Polynomial]], Tree, Encoding, Certificate) -> Bool
+
+pub fn encode(@core.Nat, @core.Chain[@realformula.Quantifier], @core.Chain[@core.Chain[@polynomial.Polynomial]], Tree) -> Result[Encoding, EncodingError]
+
+pub fn formula(Encoding) -> @realcad.Formula
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  free_variables : @core.Nat
+  quantifiers : @core.Chain[@realformula.Quantifier]
+  levels : @core.Chain[@core.Chain[@polynomial.Polynomial]]
+  tree : Tree
+  formula : @realcad.Formula
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Child {
+  signs : @core.Chain[@core.Ordering]
+  subtree : Tree
+}
+pub fn Child::equal(Self, Self) -> Bool
+pub fn Child::not_equal(Self, Self) -> Bool
+pub fn Child::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Encoding {
+  proof : Certificate
+}
+pub fn Encoding::equal(Self, Self) -> Bool
+pub fn Encoding::not_equal(Self, Self) -> Bool
+pub fn Encoding::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum EncodingError {
+  DimensionMismatch
+  InvalidTree
+  AmbiguousSigns
+  ArithmeticFailure
+}
+pub fn EncodingError::equal(Self, Self) -> Bool
+pub fn EncodingError::not_equal(Self, Self) -> Bool
+pub fn EncodingError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Tree {
+  Leaf(Bool)
+  Branch(@core.Chain[Child])
+}
+pub fn Tree::equal(Self, Self) -> Bool
+pub fn Tree::not_equal(Self, Self) -> Bool
+pub fn Tree::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
