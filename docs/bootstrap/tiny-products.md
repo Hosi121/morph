@@ -16,7 +16,7 @@ Some wrapper も共有するので lookup ごとの Option 構築を避ける。
 
 既存 multiply の零/一/二の経路を先に残し、一般経路だけで lookup を試す候補を WB で測った。
 表から外れた入力には従来の `multiply_bits` をそのまま呼ぶ。
-共有 binary.mbt の変更は root 担当が行う。
+共有 binary.mbt の最後の一般経路へ root 担当が接続し、main `7bfe78c` へ採用した。
 
 | 同一 ELF、十 batch、CPU8 | 従来の再帰積 | 表を使う候補 |
 | --- | ---: | ---: |
@@ -41,3 +41,36 @@ Native の生成 C に allocator counter を置いた場合、同じ 169 組の 
 通常の MoonBit 試験は Python を実行せず、commit 済みデータを使う。
 生ログは `docs/measurements/tiny-products-initial.txt`。
 実利用経路の効果は、公開 multiply に適用した保存 ELF と旧 ELF の ABBA 比較で別途確認する。
+
+
+## 公開経路の上位比較と実割当
+
+公開 multiply の dispatch hunk だけを direct-subtraction 基盤へ適用し、後続の
+Nat converter / comparator 変更は混ぜずに保存 ELF を作った。
+CPU8、共通 flock、Native release、ABBA 二巡。表は四実行それぞれの平均値の範囲で、
+各実行は十 batch を含む。
+
+| 固定 fixture | 再帰積の実行平均 µs | 小積表ありの実行平均 µs |
+| --- | ---: | ---: |
+| LLL 3x3 | 135.00–143.83 | 115.47–124.11 |
+| LLL checker | 8.91–9.15 | 8.59–8.90 |
+| LLL 3x4 | 151.93–161.02 | 136.60–142.36 |
+| Smith+LLL 依存 3x4 | 158.64–168.05 | 146.23–152.97 |
+| Smith 3x3 | 23.32–24.41 | 21.76–22.28 |
+| Smith checker | 8.80–9.00 | 7.82–8.03 |
+| simplex | 11.93–12.38 | 11.68–12.13 |
+
+LLL の三生成群と Smith の生成/checker で短縮を観測した。
+LLL checker は小差、simplex は範囲が重なるため、この二群の改善は主張しない。
+生 batch 統計・ELF hash・wall/CPU 秒は `tiny-products-{lll,upper}.json` に保存した。
+
+LLL3x3 callback 全体の生成 C allocator 実行数は、一回あたり 12,367→10,102。
+共通の `bench.keep` 一回も含むが、差の 2,265 は実利用経路内の削減である。
+計測 counter は通常 latency の比較には入れていない。
+逆に、試験を一つも実行しない process の起動時生成 C allocator は 148→780。
+追加 632 回は 544 Cons と 88 Binary wrapper に一致する。零/一は既存 alias を使い、
+Native の Some はこの型では pointer 表現へ elide されていた。
+この段階では runtime の積を安くする代わりに固定の startup/pinned-data 費用を増やしている。
+
+起動と callback の counter 生ログは `docs/measurements/tiny-products-allocations.txt`。
+必要 ELF/C/probe は worktree 外 `.tools/tiny-product-artifacts/` に hash 付き manifest とともに保存した。

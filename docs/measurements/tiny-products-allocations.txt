@@ -1,0 +1,26 @@
+tiny-products-lll-before-alloc.txt:
+LLL3x3 callback 115347009 / 9327 = 12367 allocations per invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":1368.1439151785714,\"min\":130.23976160714287,\"max\":143.45001208791209,\"mean\":136.81439151785713,\"median\":136.2401188186813,\"variance\":25.68590195501655,\"std_dev\":5.068126079234469,\"std_dev_pct\":3.7043808206192788,\"median_abs_dev\":7.487110652884619,\"median_abs_dev_pct\":5.4955256335683575,\"quartiles\":[132.65028090659342,136.2401188186813,141.48920570054946],\"iqr\":8.83892479395604,\"batch_size\":728,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
+
+
+tiny-products-lll-after-alloc.txt:
+LLL3x3 callback 108465174 / 10737 = 10102 allocations per invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":1166.190793498274,\"min\":112.6659833141542,\"max\":124.00999890678938,\"mean\":116.61907934982739,\"median\":115.42676179516685,\"variance\":13.854113089848052,\"std_dev\":3.722111375261097,\"std_dev_pct\":3.191683038498114,\"median_abs_dev\":3.533748949367102,\"median_abs_dev_pct\":3.0614641651630103,\"quartiles\":[114.45523101265822,115.42676179516685,117.93571173762946],\"iqr\":3.480480724971244,\"batch_size\":869,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
+
+
+tiny-products-startup-before.txt:
+startup generated-C allocations = 148
+
+
+tiny-products-startup-after.txt:
+startup generated-C allocations = 780
