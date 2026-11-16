@@ -1,0 +1,79 @@
+Frozen code 060a66fd60dcf39371dbea0a411db1b6fc0377e7; scoped field/primitive verification.
+
+$ python3 tools/generate_complexfield_fixtures.py --check
+{"ambient_degrees": [2, 4, 6, 8], "cases": 18, "smaller_minimum_cases": 10}
+
+$ python3 tools/generate_complexprimitive_fixtures.py --check
+{"ambient_degrees": [2, 4, 6, 8], "conversions": 23, "exact_basis_matrices": 5, "exact_inverse_matrices": 5, "fields": 5, "products": 12}
+
+$ tools/moon test src/complexfield src/complexprimitive --target native --release --deny-warn -j 1
+Total tests: 38, passed: 38, failed: 0.
+
+$ tools/moon test src/complexfield src/complexprimitive --target js --release --deny-warn -j 1
+Total tests: 38, passed: 38, failed: 0.
+
+$ tools/moon test src/complexfield src/complexprimitive --target wasm-gc --release --deny-warn -j 1
+Total tests: 38, passed: 38, failed: 0.
+
+$ tools/moon run src/cmd/complex --target native --release --deny-warn -j 1
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ tools/moon run src/cmd/complex --target js --release --deny-warn -j 1
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ tools/moon run src/cmd/complex --target wasm-gc --release --deny-warn -j 1
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true
+K=Q(sqrt(2)): K(i) degree=4; min(sqrt(2)+i)=t^4-2t^2+9; trace=0; norm=9 [checked]
+a^4=2: Q(a,i) degree=8; all four distinct roots +a,-a,+ia,-ia [checked]
+a+i: inverse=a^3-a+i(1-a^2); minimum degree=8; ambient norm=1 [checked]
+theta=sqrt(2)+i: sqrt(2)=(5t-t^3)/6; i=(t+t^3)/6 in Q[t]/(t^4-2t^2+9) [checked]
+theta^8=45-28t^2: canonical polynomial, source-bound certificate and round trip [checked]
+
+$ python3 tools/audit_purity.py
+Purity gate passed: 270 kernel files; no machine numerics, mutation, arrays or FFI.
+
+$ python3 tools/check_interfaces.py
+Finished. moon: no work to do
+Interface drift gate passed: 111 compiler-generated snapshots.
+
+$ python3 tools/check_docs.py
+Documentation gate passed: 133 Markdown files, 1505 local links; navigation is connected.
+
+$ python3 tools/audit_paths.py --check
+Conversion gate passed; static library references recorded separately from tests.
+
+$ python3 tools/check_model_drift.py
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+
+$ tools/moon fmt --check
+Finished. moon: ran 18 tasks, now up to date
+
+$ git diff --check

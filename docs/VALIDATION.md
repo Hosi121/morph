@@ -26,6 +26,20 @@
 [複素代数の独立参照](research/complex-oracle-20261117.md)と
 [設計・検査・同条件比較](research/complex-algebra-20261117.md)に、範囲と限界を記録しています。
 
+## 追加した複素数体の検証
+
+コード `060a66f` では、K(i) の基底演算と α+i への一生成元変換を追加しました。
+追加した2パッケージの計38テストが native・JS・WasmGC の各 release で成功し、
+12行の複素代数ツアーも3バックエンドで掲載出力と一致しました。
+独立参照は数体18例、5つの体の変換23例・積12例を含みます。
+純記号270核・公開API111件・形式モデルとの対応32領域・文書・変換経路の検査も通過しています。
+
+これは追加範囲の検証です。上の3,920件の全体実行と合算した、新たな全体実行とは扱いません。
+[対象・コマンド・集計](measurements/complex-fields-20261117-validation.json)と
+[全出力](measurements/complex-fields-20261117-validation.txt)に範囲を保存しています。
+[固定基底と変換の設計・比較](research/complex-fields-20261117.md)、
+[数体](research/complexfield-oracle-20261117.md)・[変換](research/complexprimitive-oracle-20261117.md)の独立参照も参照してください。
+
 ## 変更したときに実行する
 
 すべてリポジトリのルートで実行します。

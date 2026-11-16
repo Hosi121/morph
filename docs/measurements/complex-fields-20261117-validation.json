@@ -1,0 +1,201 @@
+{
+  "source_commit": "060a66fd60dcf39371dbea0a411db1b6fc0377e7",
+  "scope": "complexfield and complexprimitive package tests, exact independent fixtures, 12-line complex tour, repository static gates; not a new whole-suite run",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexfield_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5902602339992882,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_complexprimitive_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.1014521720026096,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/complexfield",
+        "src/complexprimitive",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 13.387282677998883,
+      "test_totals": [
+        38
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/complexfield",
+        "src/complexprimitive",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6705426900007296,
+      "test_totals": [
+        38
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/complexfield",
+        "src/complexprimitive",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 1.776663036998798,
+      "test_totals": [
+        38
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7339894029973948,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 3.246829646999686,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/complex",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 2.6161694239999633,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.2732341520022601,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/check_interfaces.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.07162381799935247,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/check_docs.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12482818400167162,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_paths.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9956762610017904,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "python3",
+        "tools/check_model_drift.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.05237487299746135,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.1566097169998102,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.011277688001428032,
+      "test_totals": []
+    }
+  ],
+  "all_passed": true
+}
