@@ -1,0 +1,120 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/complexfactor"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/complexroots",
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/zassenhaus",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(RootFamily) -> Certificate
+
+pub fn check(@polynomial.Polynomial, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn check_result(@polynomial.Polynomial, RootFamily, Certificate, @core.Nat) -> @zassenhaus.Verdict
+
+pub fn multiplicity(Root) -> @core.Nat
+
+pub fn prepare(@polynomial.Polynomial, @core.Chain[@binary.Binary], @core.Nat, @core.Nat, @core.Nat) -> Result[Preparation, RootError]
+
+pub fn prepare_with_factorization(@polynomial.Polynomial, @zassenhaus.RationalFactorization, @core.Nat) -> Result[Preparation, RootError]
+
+pub fn root(Root) -> @complexroots.Root
+
+pub fn roots(RootFamily) -> @core.Chain[Root]
+
+pub fn run(Search, @core.Nat, @core.Nat) -> Result[Progress, RootError]
+
+pub fn source(RootFamily) -> @polynomial.Polynomial
+
+pub fn start(Problem) -> Search
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : @polynomial.Polynomial
+  factorization : @zassenhaus.RationalFactorization
+  covers : @core.Chain[@complexroots.Certificate]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Preparation {
+  Prepared(Problem)
+  FactorizationIncomplete(@zassenhaus.StopReason)
+  VerificationUndecided(@zassenhaus.RationalFactorization)
+}
+pub fn Preparation::equal(Self, Self) -> Bool
+pub fn Preparation::not_equal(Self, Self) -> Bool
+pub fn Preparation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  source : @polynomial.Polynomial
+  factorization : @zassenhaus.RationalFactorization
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Complete(RootFamily)
+  Paused(Search, @complexroots.PauseReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Root {
+  group : @complexroots.RootSet
+  index : @core.Nat
+  fallback : @complexroots.Root
+  weight : @core.Nat
+}
+pub fn Root::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum RootError {
+  NotUnivariate
+  ZeroPolynomial
+  InvalidFactorization
+  PolynomialFailure
+  FactorizationFailure(@zassenhaus.AlgebraError)
+  RootFailure(@complexroots.RootError)
+  InternalInvariant
+}
+pub fn RootError::equal(Self, Self) -> Bool
+pub fn RootError::not_equal(Self, Self) -> Bool
+pub fn RootError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct RootFamily {
+  source : @polynomial.Polynomial
+  proof : Certificate
+  roots : @core.Chain[Root]
+}
+pub fn RootFamily::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  problem : Problem
+  phase : Phase
+  completed : @core.Chain[@complexroots.RootSet]
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
