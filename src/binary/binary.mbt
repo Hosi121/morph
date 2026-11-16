@@ -37,12 +37,12 @@ pub fn bits(n : Binary) -> @core.Chain[Bool] {
 
 ///|
 pub fn zero() -> Binary {
-  { bits: Nil, }
+  canonical_zero()
 }
 
 ///|
 pub fn one() -> Binary {
-  { bits: Cons(true, Nil), }
+  canonical_one()
 }
 
 ///|
