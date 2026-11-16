@@ -465,24 +465,39 @@ fn root_value_sign(
   value : @core.Chain[Representation],
   interval : @sturm.Interval,
 ) -> Result[@core.Ordering, TowerError] {
-  match value {
-    Nil => Ok(Equal)
-    Cons(c, Nil) => raw_sign(field, c)
-    _ =>
-      next(rp_query(field, modulus, value, interval), fn(n) {
-        let zero = @exact.positive(@binary.zero())
-        let unit = @exact.positive(@binary.one())
-        if n.equal(zero) {
-          Ok(Equal)
-        } else if n.equal(unit) {
-          Ok(Greater)
-        } else if n.equal(@exact.negate(unit)) {
-          Ok(Less)
-        } else {
-          Err(InternalInvariant)
-        }
-      })
+  match (modulus, value) {
+    (_, Nil) => Ok(Equal)
+    (_, Cons(c, Nil)) => raw_sign(field, c)
+    (Cons(c, Cons(b, Cons(lc, Nil))), Cons(d, Cons(a, Nil))) =>
+      if lc.equal(raw_one(field)) {
+        quadratic_linear_sign(field, c, b, d, a, interval)
+      } else {
+        generic_root_value_sign(field, modulus, value, interval)
+      }
+    _ => generic_root_value_sign(field, modulus, value, interval)
   }
+}
+
+///|
+fn generic_root_value_sign(
+  field : Field,
+  modulus : @core.Chain[Representation],
+  value : @core.Chain[Representation],
+  interval : @sturm.Interval,
+) -> Result[@core.Ordering, TowerError] {
+  next(rp_query(field, modulus, value, interval), fn(n) {
+    let zero = @exact.positive(@binary.zero())
+    let unit = @exact.positive(@binary.one())
+    if n.equal(zero) {
+      Ok(Equal)
+    } else if n.equal(unit) {
+      Ok(Greater)
+    } else if n.equal(@exact.negate(unit)) {
+      Ok(Less)
+    } else {
+      Err(InternalInvariant)
+    }
+  })
 }
 
 ///|

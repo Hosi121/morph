@@ -61,3 +61,34 @@ count、bound、Root、SolutionSet 内の squarefree/sequence を含む payload 
 同じ差し替えを Root/SolutionSet に行う white-box 受入検査が native で成功した。
 外部クライアントに opaque 型の偽造を許す API はないが、checker の検査対象を
 公開証明書だけでなく返却結果全体にも揃えるための修正である。
+
+## 独立な平坦数体 oracle と二次符号判定
+
+`tools/generate_realtower_fixtures.py` は塔を使わず、一つの既約式
+`X^(2^depth)-2`（Eisenstein、depth0では有理数）上の Fraction 係数ベクトルで
+算術する。逆元は SymPy の QQ 多項式逆元を積が1となることでも検査し、
+符号は有理区間演算・厳密二分で確定する。Float / evalf は使わない。
+その独立な数体で相対多項式の signed Sturm sequence を作り、根数と全根数も照合した。
+44 quotient・96区間根数・16全根被覆を含む27テストが3backendで成功した。
+
+相対二次拡大では次の厳密短縮経路を使う。monic squarefree な
+`f=x²+b*x+c` と選択根 beta に対し、`z=2*beta+b` とすると
+`z²=Delta=b²-4*c`。選択区間の上端 u において `2*u+b<=0` なら左の根、
+それ以外では `f(u)>=0` なら右の根、`f(u)<0` なら左の根である。
+区間がちょうど一根を含む検査を済ませていることを前提に、この分岐は上端が根や
+頂点である場合も `(lower,upper]` 規約と一致する。
+
+線形式 `q=a*x+d` では `2*q(beta)=a*z+w`, `w=2*d-a*b`。
+両項の符号が同じならその符号、逆なら `w²` と `a²*Delta` の大小で決める。
+親の体の算術と符号にのみ帰着し、可約性や親からの独立性を要求しない。
+一般次数の定義・query は元の Sturm–Tarski に戻る。Field context は変更しない。
+凍結した同一入力での ABBA 計測と残る高次数ケースの制約は
+[測定記録](../measurements/realtower-20261116.md)に分けて記した。
+
+Sturm–Tarski の基礎は一次資料
+[Deciding Univariate Polynomial Problems Using Untrusted Certificates in Isabelle/HOL](https://wenda302.github.io/assets/pdf/rcf_jar.pdf)
+および [Archive of Formal Proofs: The Sturm–Tarski Theorem](https://isa-afp.org/entries/Sturm_Tarski.html)
+で確認した。通常の非根端点の式から `(a,b]` への拡張は本実装側の整理である。
+有限個の関連多項式の根を越えない正の微小量を取り両端を右に移すと、
+a の根は除外され b の根は包含される。その右側の符号を最初の非零導関数で
+決めるため、数値的な epsilon や端点摂動を実装する必要はない。

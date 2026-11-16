@@ -1,0 +1,47 @@
+{
+  "command": "tools/measure --cpu 6 python3 .tools/realtower-20261116/benchmark.py",
+  "case": "flat exact relative roots depth 3 case 0",
+  "input": "gamma^8=2, positive nested radicals; y^2-gamma; six interval queries and whole-cover/result checks",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "sha256": {
+    "quadratic-before.exe": "d2b5db5115920dc1fce48b97747f20c37691574fea01e1a6cae130a655ccca27",
+    "quadratic-after.exe": "7639d3940c2f223693220100875adb9ad07b6251fa31e7aa4d873a468500fdc3",
+    "raw-before-unit-normalization.mbt": "c2e08bba11d797a56085a1ea6a517b50ba398195fc2c9315dde0134aff210c93",
+    "raw-quadratic-final.mbt": "0a421ed9931f403643dad5b98900738dd28a48c022b11b512372f5da8d91c210"
+  },
+  "fixture_sha256": "334aa0010e7ef14c94f7f869ba87b167dffbd5f7880e407d1568c71117823dc2",
+  "runs": [
+    {
+      "variant": "before",
+      "wall": 1.5643237989997942,
+      "user": 1.6149939999999998,
+      "sys": 0.0
+    },
+    {
+      "variant": "after",
+      "wall": 0.02271858499989321,
+      "user": 0.02241100000000018,
+      "sys": 0.0
+    },
+    {
+      "variant": "after",
+      "wall": 0.02006316299957689,
+      "user": 0.019910000000000094,
+      "sys": 0.0
+    },
+    {
+      "variant": "before",
+      "wall": 1.6327086580004107,
+      "user": 1.638633,
+      "sys": 0.0
+    }
+  ],
+  "moon": "moon 0.1.20261104 (940aa18 2026-11-04)",
+  "cpu": "Intel Core Ultra 7 255H; fixed CPU 6",
+  "source_sha256": {
+    "src/realtower/raw.mbt": "0a421ed9931f403643dad5b98900738dd28a48c022b11b512372f5da8d91c210",
+    "src/realtower/quadratic.mbt": "ac2958e01ba2126bf173117dec3b041307b389c58bee88624ffded37eacd15ac",
+    "src/realtower/flat_helpers_wbtest.mbt": "492abbfc5601cc8b1c197ddb121839eec720cddb475568475ac591e5930f9b8f"
+  },
+  "cohort": "native debug executable; four ABBA runs; compilation excluded; no optional unit normalization"
+}
