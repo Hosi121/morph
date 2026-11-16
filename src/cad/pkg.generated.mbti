@@ -1,0 +1,191 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cad"
+
+import {
+  "Hosi121/morph/cadprojection",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/realformula",
+  "Hosi121/morph/realtower",
+  "Hosi121/morph/signcad",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn arity(Problem) -> @core.Nat
+
+pub fn certificate(Decomposition) -> Certificate
+
+pub fn check(Problem, Certificate) -> Decomposition?
+
+pub fn check_elimination(Problem, @core.Nat, @core.Chain[@realformula.Quantifier], EliminationCertificate) -> Elimination?
+
+pub fn check_elimination_result(Problem, @core.Nat, @core.Chain[@realformula.Quantifier], Elimination, EliminationCertificate) -> Bool
+
+pub fn check_result(Problem, Decomposition, Certificate) -> Bool
+
+pub fn check_witness(Problem, Point) -> Bool
+
+pub fn coordinates(Point) -> @core.Chain[@realtower.Scalar]
+
+pub fn eliminate(Decomposition, @core.Nat, @core.Chain[@realformula.Quantifier]) -> Result[Elimination, CadError]
+
+pub fn elimination_certificate(Elimination) -> EliminationCertificate
+
+pub fn evaluate_formula(Point, @realcad.Formula) -> Result[Bool, CadError]
+
+pub fn evaluate_polynomial(Point, @polynomial.Polynomial) -> Result[@realtower.Scalar, CadError]
+
+pub fn formula(Problem) -> @realcad.Formula
+
+pub fn point(@realtower.Field, @core.Chain[@realtower.Scalar]) -> Result[Point, CadError]
+
+pub fn point_field(Point) -> @realtower.Field
+
+pub fn polynomials(Problem) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn prepare(@core.Nat, @realcad.Formula) -> Result[Problem, CadError]
+
+pub fn problem_of(Decomposition) -> Problem
+
+pub fn projection(Problem) -> @cadprojection.Certificate
+
+pub fn quantifier_free(Elimination) -> @realcad.Formula
+
+pub fn rational_point(@core.Chain[@exact.Rational]) -> Point
+
+pub fn run(Machine, @core.Nat) -> Result[Progress, CadError]
+
+pub fn sentence(Decomposition, @core.Chain[@realformula.Quantifier]) -> Result[Bool, CadError]
+
+pub fn start(Problem) -> Machine
+
+pub fn step(Machine) -> Result[Progress, CadError]
+
+pub fn witness(Decomposition) -> Result[Point?, CadError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum CadError {
+  WrongArity
+  InvalidCertificate
+  ProjectionFailure(@cadprojection.ProjectionError)
+  TowerFailure(@realtower.TowerError)
+  EncodingFailure(@signcad.EncodingError)
+  InternalInvariant
+}
+pub fn CadError::equal(Self, Self) -> Bool
+pub fn CadError::not_equal(Self, Self) -> Bool
+pub fn CadError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct CellCertificate {
+  sample : Sample
+  signs : @core.Chain[@core.Ordering]
+  subtree : TreeCertificate
+}
+pub fn CellCertificate::equal(Self, Self) -> Bool
+pub fn CellCertificate::not_equal(Self, Self) -> Bool
+pub fn CellCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  arity : @core.Nat
+  formula : @realcad.Formula
+  projection : @cadprojection.Certificate
+  tree : TreeCertificate
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Decomposition {
+  problem : Problem
+  proof : Certificate
+}
+pub fn Decomposition::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Elimination {
+  decomposition : Decomposition
+  encoding : @signcad.Encoding
+}
+pub fn Elimination::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct EliminationCertificate {
+  decomposition : Certificate
+  encoding : @signcad.Certificate
+}
+pub fn EliminationCertificate::equal(Self, Self) -> Bool
+pub fn EliminationCertificate::not_equal(Self, Self) -> Bool
+pub fn EliminationCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Fibre
+pub fn Fibre::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Machine {
+  problem : Problem
+  node : Node
+}
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Node
+pub fn Node::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type NodeProgress
+pub fn NodeProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Point {
+  field : @realtower.Field
+  coordinates : @core.Chain[@realtower.Scalar]
+}
+pub fn Point::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Problem {
+  arity : @core.Nat
+  formula : @realcad.Formula
+  atoms : @core.Chain[@polynomial.Polynomial]
+  projection : @cadprojection.Certificate
+}
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Complete(Decomposition)
+  Paused(Machine)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Sample {
+  RationalPoint(@exact.Rational)
+  RootPoint(@realtower.RootCertificate)
+}
+pub fn Sample::equal(Self, Self) -> Bool
+pub fn Sample::not_equal(Self, Self) -> Bool
+pub fn Sample::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum TreeCertificate {
+  Leaf(Bool)
+  Stack(@realtower.SolutionCertificate, @core.Chain[CellCertificate])
+}
+pub fn TreeCertificate::equal(Self, Self) -> Bool
+pub fn TreeCertificate::not_equal(Self, Self) -> Bool
+pub fn TreeCertificate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
