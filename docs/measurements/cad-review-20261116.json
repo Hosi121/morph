@@ -1,0 +1,2489 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Finite independent exact CAD/QE arithmetic and certificate review; no performance comparison",
+  "base_commit": "bacdea9",
+  "quadratic_optimization_upstream": "aedec4f98f3f892dd9b135a6540b309089650eaa",
+  "source_binding_fix_upstream": "d99cead",
+  "review_core_commit": "677388a",
+  "cpu": 8,
+  "serialization": "tools/measure shared Git common-directory flock; no nested measurement commands",
+  "new_cases": {
+    "cad_closed_form": 18,
+    "cad_algebraic_and_bundle": 3,
+    "private_problem_guard": 1,
+    "scoped_first_order": 6
+  },
+  "rational_output_evaluations": 327,
+  "exact_irrational_output_evaluations": 6,
+  "backend_results": {
+    "native": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/cad src/realclosed --target native --filter 'independent*'",
+      "executed_tests": 29,
+      "new_review_tests": 28,
+      "existing_name_matched_tests": 1,
+      "passed": 29,
+      "failed": 0,
+      "elapsed_seconds": 3.94,
+      "peak_rss_kib": 108112,
+      "stdout": "Total tests: 29, passed: 29, failed: 0.\nelapsed_seconds=3.94 peak_rss_kib=108112\n",
+      "old_cad2_comparison": {
+        "families": 4,
+        "all_base_cells_checked": true,
+        "closed_quantifier_pairs_per_family": 4,
+        "stdout": "Compared 4 independent bivariate families: all old base-cell quantifications and all 4 closed quantifier pairs.\n"
+      }
+    },
+    "wasm-gc": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/cad src/realclosed --target wasm-gc --filter 'independent*'",
+      "executed_tests": 29,
+      "new_review_tests": 28,
+      "existing_name_matched_tests": 1,
+      "passed": 29,
+      "failed": 0,
+      "elapsed_seconds": 3.56,
+      "peak_rss_kib": 264768,
+      "stdout": "Total tests: 29, passed: 29, failed: 0.\nelapsed_seconds=3.56 peak_rss_kib=264768\n",
+      "old_cad2_comparison": {
+        "families": 4,
+        "all_base_cells_checked": true,
+        "closed_quantifier_pairs_per_family": 4,
+        "stdout": "Compared 4 independent bivariate families: all old base-cell quantifications and all 4 closed quantifier pairs.\n"
+      }
+    },
+    "js": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f 'elapsed_seconds=%e peak_rss_kib=%M' .tools/moon/bin/moon test src/cad src/realclosed --target js --filter 'independent*'",
+      "executed_tests": 29,
+      "new_review_tests": 28,
+      "existing_name_matched_tests": 1,
+      "passed": 29,
+      "failed": 0,
+      "elapsed_seconds": 4.52,
+      "peak_rss_kib": 253448,
+      "stdout": "Total tests: 29, passed: 29, failed: 0.\nelapsed_seconds=4.52 peak_rss_kib=253448\n",
+      "old_cad2_comparison": {
+        "families": 4,
+        "all_base_cells_checked": true,
+        "closed_quantifier_pairs_per_family": 4,
+        "stdout": "Compared 4 independent bivariate families: all old base-cell quantifications and all 4 closed quantifier pairs.\n"
+      }
+    }
+  },
+  "pre_fix_counterexample": {
+    "commit": "282add6",
+    "stdout": "[Hosi121/morph] test cad/independent_review_integrity_wbtest.mbt:2 (\"independent coherent private Problem atoms and projection mismatch rejected\") failed: src/cad/independent_review_integrity_wbtest.mbt:27:3-27:44@Hosi121/morph FAILED: `false` is not true\nTotal tests: 1, passed: 0, failed: 1.\n",
+    "scope": "White-box opaque Problem mutation; formula x^2-2=0 retained with unrelated x^2+1 atoms/projection. Old checker accepted the incorrectly false existential."
+  },
+  "optional_stress": {
+    "oracle": {
+      "matrix": "y*(y-x-1)=0 and y*(y-2*x-3)=0 and y!=0",
+      "closed_form": "x=-2",
+      "command": "tools/measure --cpu 8 .tools/moon/bin/moon -C .tools/cad-review-20261116 run comparison/stress --target native",
+      "default_suite": false,
+      "observed_limit": "Initial implementation exceeded a 10-second diagnostic cap for the full QE/checker case; no semantic result inferred."
+    },
+    "initial_diagnostic_case": {
+      "case": 8,
+      "returncode": 124,
+      "elapsed_with_lock_wait": 10.02101089200005
+    },
+    "build_only_check": "{\"artifacts_path\":[\"/home/hosi/morph-cad-review-20261116/.tools/cad-review-20261116/_build/native/debug/build/Hosi121/cadreview/stress/stress.exe\"]}\n"
+  },
+  "sdk": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "source_sha256": {
+    "src/cad/arithmetic.mbt": "bf5851562f5c919a0cbd8a86c704263228efb65c579106ee7607008cfc7d7c86",
+    "src/cad/cad_wbtest.mbt": "8415e879543a02c4a97d0ddfbbd0d140b2c6cb67ae39592b7e06255061f82c60",
+    "src/cad/check.mbt": "5eb4f1ee21506c152fa81ea9c03ba4b326f584571dbd93d19e923f22a0961558",
+    "src/cad/data.mbt": "64e552fa0afadb201a7d9432838c2775991c82340997acf490ed0c55f2b86731",
+    "src/cad/independent_review_algebraic_wbtest.mbt": "d551f1ab3701ecb61f3ed79c2ef1ca2701330358faac559aa120493731e73fd4",
+    "src/cad/independent_review_helpers_wbtest.mbt": "3936cf4563ab211c0b9015291a5e4cb9afed7c70b6cd4c32382522b536ac840c",
+    "src/cad/independent_review_integrity_wbtest.mbt": "1575ce5d66549ae4009f02b80d26025399612dea2aaa04693103c76fd1871a88",
+    "src/cad/independent_review_oracle_wbtest.mbt": "e8a66fa0163efe10df1dc3691c5e83418304a6dfeb7a5dff9d872129d8f60d69",
+    "src/cad/machine.mbt": "08d89ccaeaa2318bee8d2890110547bdf6f7a0f18dc0128fb2b47e59b3c2a3df",
+    "src/cad/prepare.mbt": "80e770b848ee66593c6749d00842f476a63cf12989c5d7080aa7a51b2bee913d",
+    "src/cad/quantify.mbt": "ebbc96a42c6804709367fea92bc38a24dca8303819e59b17020e321af491e1c9",
+    "src/cad/samples.mbt": "8a6fda7a7862b211181349009666eca211600e218cf9c0abade2aa4e552ef2aa",
+    "src/realclosed/independent_review_helpers_wbtest.mbt": "94bcfaa6294a1bc81c45d2c2f4a09989d12279f53c9a569a89a10762290f0155",
+    "src/realclosed/independent_review_oracle_wbtest.mbt": "8ca717b7dea487491cad339ccaf99f6798bcdfd29168b53fa26aaaf85dd074de",
+    "src/realclosed/realclosed.mbt": "584f73f8694010088c16ac7d01b1c108f92d03e4d9f3ba707f5708916659c46f",
+    "src/realclosed/solver_wbtest.mbt": "1143a24809913d21e1e587a1e26cf7e9a550ca2e4d73dfb3dfcd084915c118a6",
+    "tools/generate_cad_review.py": "150c79c614153ac0352070e5da7eb24439cbfa7299f5755050f9276606b8424e"
+  },
+  "check_deny_warn": "Finished. moon: ran 23 tasks, now up to date\n",
+  "generator_check": "Checked 18 CAD and 6 FO closed-form cases, plus 4 old-CAD2 complete base-cell comparisons.\n",
+  "purity_audit": "Purity gate passed: 246 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+  "oracle": {
+    "cad": [
+      {
+        "case": 0,
+        "name": "inverse",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x != 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 1,
+        "name": "scaled_square",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x > 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 2,
+        "name": "degree_drop_eq",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x <= 1/4",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 3,
+        "name": "degree_drop_strict",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x < 1/4",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 4,
+        "name": "square_forall",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Forall"
+        ],
+        "closed_form": "true",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 5,
+        "name": "square_strict_forall",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Forall"
+        ],
+        "closed_form": "false",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 6,
+        "name": "punctured_square",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x > 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 7,
+        "name": "negative_root_order",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x > 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 8,
+        "name": "shared_zero_guard",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x = 1",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 9,
+        "name": "root_implication",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Forall"
+        ],
+        "closed_form": "x <= 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 10,
+        "name": "irrational_holes",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "x^2 != 2",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 11,
+        "name": "universal_coefficient",
+        "arity": 2,
+        "free": 1,
+        "quantifiers": [
+          "Forall"
+        ],
+        "closed_form": "x^2 >= 2",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 12,
+        "name": "irrational_nullification_forall",
+        "arity": 3,
+        "free": 1,
+        "quantifiers": [
+          "Exists",
+          "Forall"
+        ],
+        "closed_form": "x^2 = 2",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 13,
+        "name": "nonlinear_shared_content",
+        "arity": 3,
+        "free": 2,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "y^2 = x",
+        "samples": [
+          {
+            "point": [
+              "-2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 14,
+        "name": "nonlinear_shared_guard",
+        "arity": 3,
+        "free": 2,
+        "quantifiers": [
+          "Exists"
+        ],
+        "closed_form": "false",
+        "samples": [
+          {
+            "point": [
+              "-2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 15,
+        "name": "nonlinear_shared_forall",
+        "arity": 3,
+        "free": 2,
+        "quantifiers": [
+          "Forall"
+        ],
+        "closed_form": "y^2 = x",
+        "samples": [
+          {
+            "point": [
+              "-2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 16,
+        "name": "four_variable_degenerate",
+        "arity": 4,
+        "free": 1,
+        "quantifiers": [
+          "Exists",
+          "Exists",
+          "Forall"
+        ],
+        "closed_form": "x != 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 17,
+        "name": "four_variable_parabola",
+        "arity": 4,
+        "free": 2,
+        "quantifiers": [
+          "Exists",
+          "Forall"
+        ],
+        "closed_form": "y = x^2",
+        "samples": [
+          {
+            "point": [
+              "-2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1",
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "0"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2",
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1",
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2",
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "-1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2",
+              "1"
+            ],
+            "expected": false
+          }
+        ]
+      }
+    ],
+    "first_order": [
+      {
+        "case": 0,
+        "name": "inverse_universal",
+        "free": 1,
+        "source": "@logic.Formula::Exists(@logic.Formula::Forall(@logic.Atom(review_poly(3, [(1, 1, [1, 1, 1]), (-1, 1, [0, 0, 1])]), @qf.EqualZero)))",
+        "closed_form": "x != 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 1,
+        "name": "negated_square",
+        "free": 1,
+        "source": "@logic.Negation(@logic.Formula::Exists(@logic.Atom(review_poly(2, [(-1, 1, [1, 0]), (1, 1, [0, 2])]), @qf.EqualZero)))",
+        "closed_form": "x < 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 2,
+        "name": "nonlinear_sibling_scopes",
+        "free": 1,
+        "source": "@logic.Conjunction(@logic.Formula::Exists(@logic.Atom(review_poly(2, [(-1, 1, [1, 0]), (1, 1, [0, 2])]), @qf.EqualZero)), @logic.Negation(@logic.Formula::Exists(@logic.Atom(review_poly(2, [(1, 1, [1, 0]), (1, 1, [0, 2])]), @qf.EqualZero))))",
+        "closed_form": "x > 0",
+        "samples": [
+          {
+            "point": [
+              "-3"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-2"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "-1"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "0"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "1/4"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-1/4"
+            ],
+            "expected": false
+          },
+          {
+            "point": [
+              "1/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "3/2"
+            ],
+            "expected": true
+          },
+          {
+            "point": [
+              "-3/2"
+            ],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 3,
+        "name": "inverse_implication",
+        "free": 0,
+        "source": "@logic.Formula::Forall(@logic.Disjunction(@logic.Atom(review_poly(1, [(1, 1, [1])]), @qf.EqualZero), @logic.Formula::Exists(@logic.Atom(review_poly(2, [(1, 1, [1, 1]), (-1, 1, [0, 0])]), @qf.EqualZero))))",
+        "closed_form": "true",
+        "samples": [
+          {
+            "point": [],
+            "expected": true
+          }
+        ]
+      },
+      {
+        "case": 4,
+        "name": "constant_forall_impossible",
+        "free": 0,
+        "source": "@logic.Formula::Exists(@logic.Formula::Forall(@logic.Atom(review_poly(2, [(1, 1, [1, 2]), (1, 1, [1, 0]), (-1, 1, [0, 0])]), @qf.EqualZero)))",
+        "closed_form": "false",
+        "samples": [
+          {
+            "point": [],
+            "expected": false
+          }
+        ]
+      },
+      {
+        "case": 5,
+        "name": "negated_universal_inverse",
+        "free": 0,
+        "source": "@logic.Negation(@logic.Formula::Forall(@logic.Formula::Exists(@logic.Atom(review_poly(2, [(1, 1, [1, 1]), (-1, 1, [0, 0])]), @qf.EqualZero))))",
+        "closed_form": "true",
+        "samples": [
+          {
+            "point": [],
+            "expected": true
+          }
+        ]
+      }
+    ],
+    "old_cad2_cases": [
+      0,
+      1,
+      2,
+      9
+    ],
+    "oracle": "Exact Fraction evaluation of independently derived closed forms; old CAD2 comparisons over complete old base cells",
+    "optional_stress": {
+      "matrix": "y*(y-x-1)=0 and y*(y-2*x-3)=0 and y!=0",
+      "closed_form": "x=-2",
+      "command": "tools/measure --cpu 8 .tools/moon/bin/moon -C .tools/cad-review-20261116 run comparison/stress --target native",
+      "default_suite": false,
+      "observed_limit": "Initial implementation exceeded a 10-second diagnostic cap for the full QE/checker case; no semantic result inferred."
+    }
+  },
+  "limits": [
+    "Finite exact examples and recomputed cell/root certificates do not formally prove arbitrary-input RCF completeness.",
+    "The optional original shared-factor stress did not finish under the 10-second diagnostic cap; no semantic result is claimed.",
+    "Package-test timings include compilation and harness and are not a speed comparison."
+  ]
+}

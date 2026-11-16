@@ -160,13 +160,19 @@ def main():
   if args.check:assert tokens(path.read_text())==tokens(source),str(path)+' fixture drift'
   else:path.write_text(source)
  ART.mkdir(parents=True,exist_ok=True)
- (ART/'old-cad2-comparison.mbtx').write_text(runner)
  comparison=ART/'comparison';comparison.mkdir(exist_ok=True)
  split=runner.index('\n\nfn review_poly')
  (ART/'moon.work').write_text('members = ["../..", "./comparison"]\n')
  (comparison/'moon.mod').write_text('name = "Hosi121/cadreview"\nversion = "0.0.0"\nimport { "Hosi121/morph@0.1.0" }\n')
  (comparison/'moon.pkg').write_text(runner[:split]+'\n\npkgtype(kind: "executable")\n')
  (comparison/'main.mbt').write_text(runner[split+2:])
+ stress=comparison/'stress';stress.mkdir(exist_ok=True)
+ (stress/'moon.pkg').write_text('import { "Hosi121/morph/cad" @cad, "Hosi121/morph/realcad" @qf, "Hosi121/morph/realformula" @logic, "Hosi121/morph/polynomial" @poly, "Hosi121/morph/testsupport" @oracle }\npkgtype(kind: "executable")\n')
+ helper=runner[runner.index('fn review_poly'):runner.index('fn budget()')]
+ stress_matrix=conj(atom(y*(y-x-1),'EqualZero',[x,y]),atom(y*(y-2*x-3),'EqualZero',[x,y]),atom(y,'NotZero',[x,y]))
+ stress_source=helper+'fn main raise {\n  println("prepare original shared-factor stress")\n  let problem=@cad.prepare(@oracle.nat(2), '+stress_matrix+').unwrap()\n  println("run original shared-factor stress")\n  let value=match @cad.run(@cad.start(problem),@oracle.nat(100000)).unwrap() { Complete(v)=>v; _=>fail("finite transition budget") }\n  println("check original shared-factor stress")\n  assert_true(@cad.check_result(problem,value,@cad.certificate(value)))\n  let qe=@cad.eliminate(value,@oracle.nat(1),@oracle.chain([@logic.Quantifier::Exists])).unwrap()\n  for x in [-3,-2,-1,0,1,2] { assert_eq(@cad.evaluate_formula(@cad.rational_point(@oracle.chain([@oracle.rational(x,1)])),@cad.quantifier_free(qe)).unwrap(),x == -2) }\n  println("original shared-factor stress verified")\n}\n'
+ (stress/'main.mbt').write_text(stress_source)
+ data['optional_stress']={'matrix':'y*(y-x-1)=0 and y*(y-2*x-3)=0 and y!=0','closed_form':'x=-2','command':'tools/measure --cpu 8 .tools/moon/bin/moon -C .tools/cad-review-20261116 run comparison/stress --target native','default_suite':False,'observed_limit':'Initial implementation exceeded a 10-second diagnostic cap for the full QE/checker case; no semantic result inferred.'}
  (ART/'oracle.json').write_text(json.dumps(data,indent=2)+'\n')
  print(f"{'Checked' if args.check else 'Wrote'} 18 CAD and 6 FO closed-form cases, plus 4 old-CAD2 complete base-cell comparisons.")
 if __name__=='__main__':main()
