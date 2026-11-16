@@ -212,12 +212,14 @@ fn checked_smt(problem : @smt.Problem, answer : @smt.Outcome) -> Bool {
 ///|
 fn main {
   let args = @env.args()
-  if args.length() != 4 {
+  if args.length() < 3 || args.length() > 5 {
     abort("usage: incrementalbench cad|smt full|pruned CASE")
   }
-  let layer = args[1]
-  let mode = args[2]
-  let name = args[3]
+  // Runtime prefixes differ: Node includes both its executable and script.
+  let offset = args.length() - 3
+  let layer = args[offset]
+  let mode = args[offset + 1]
+  let name = args[offset + 2]
   if mode != "full" && mode != "pruned" {
     abort("unknown mode")
   }
