@@ -712,3 +712,58 @@ After selecting sharing by default, all 26 CDCL tests pass native, JS, and
 Wasm GC, together with the warning-denying check and purity gate. Fresh exports
 again pass both pinned external checkers for all 16 positive cases, and all
 seven negative controls reject. The 64-bit CNF/DRUP hashes above are unchanged.
+
+## 入力準備を一走査へ統合
+
+共有Core/Binaryの正本blobを `ce5f494` に固定した作業基盤 `e0157dc` で比較した。
+以下は以前の78 ms入口や796 ms全queryと異なる基盤であり、それらとの直接比較には使わない。
+`start` と `start_scanning` は、各入力literalを一度だけAtomへ変換し、同じ走査で節の
+正規化と変数収集を行う。既出変数の判定は線形リストからBool-key trieへ変更した。
+旧実装は白箱テストへ保存した。
+
+節の順序、節内literal順序、最初に現れたpolarity、変数列の逆初出順を維持する。
+tautologyと判明した節でも残りの変数収集を続け、捨てた節だけに現れる変数もmodelへ残す。
+三変数三節19,683入力の初期Search、極性・重複・空節、65535ラベル、20,000節を比較した。
+pigeonholeと4bit miterでは一遷移ずつ全Paused状態を比較し、64bit miterと1,000個の
+六変数cohortでは最終model/proofと全Statisticsも一致する。
+
+同一native release ELF、CPU 10、共通mutex、各10サンプル。64bit入口はABBA順でも確認した。
+
+| 処理 | 二走査・線形収集 | 一走査・trie収集 |
+| --- | ---: | ---: |
+| 64bit入口、AB前半 | 25.99 ms ± 1.61 ms | 17.18 ms ± 2.76 ms |
+| 64bit入口、BA後半 | 29.10 ms ± 1.37 ms | 16.12 ms ± 1.92 ms |
+| 256-link入口 | 1.83 ms ± 152.58 µs | 850.77 µs ± 83.28 µs |
+| sparse65535全query | 775.90 µs ± 65.73 µs | 465.17 µs ± 20.81 µs |
+| 同じ二変数節20,000個の入口 | 37.00 ms ± 2.39 ms | 39.43 ms ± 5.78 ms |
+
+最後の行は区間が重なり、改善・退行のどちらも確定しない。64bitの5,602 literalについて、
+旧変数収集は270,500回のkey比較を行い、候補の既出検索は52,546 trie枝を訪問した。
+これは異なる種類の操作数であり、その比を速度倍率とは扱わない。
+ABBA比較ELFのSHA256は `e766b1b35a2bc9c63711f8ff327eebff2bcafbd679c476dbdcb4965678c7aaa4`。
+
+別の同一ELF内で、全queryを20対、実行順を交互に変えて比較した。全queryは毎回、入力準備、
+探索、RUP生成、hint生成、独立hint検査を含む。二走査は373.90 ms ± 23.13 ms、
+一走査は378.06 ms ± 55.44 msで、一走査は12/20対で速かった。比の中央値は1.0211、
+範囲0.7403–1.1299。対差は平均−4.16 ms、標準偏差43.23 msだった。
+一走査側に598.21 msのサンプルもあり、都合よく除外しない。この測定から64bit全queryの
+改善は主張しない。未変更の準備済みhint checker controlは17.25 ms ± 313.01 µs。
+
+| 別の全query比較 | 二走査 | 一走査 |
+| --- | ---: | ---: |
+| pigeonhole 6 into 5 | 19.88 ms ± 1.01 ms | 17.70 ms ± 513.09 µs |
+| 固定1,000個六変数3SAT cohort | 55.39 ms ± 2.10 ms | 52.08 ms ± 2.76 ms |
+
+cohortの区間も重なる。採用根拠は繰り返し確認した入口の改善、sparse labelの全query改善、
+完全に一致する探索状態であり、全入力での高速化という主張ではない。
+
+採用後、CDCLの36テストがnative/JS/Wasm GCで通過し、deny-warnとpurity gateも通過した。
+外部exportを作り直し、固定LRAT-TRIMとDRAT-trimが全16 positiveを受理、7 negativeを拒否した。
+64bit occurrence証拠は478追加、21,132 hints、CNF/DRUP SHA256は上記の値と同一だった。
+raw logsと両比較ELFは `.tools/cdcl-profile/preparation-*` に保存する。
+
+```sh
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/preparation_wbtest.mbt --target native --release -i 2
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/preparation_wbtest.mbt --target native --release -i 3
+/home/hosi/morph/tools/measure --cpu 10 tools/moon bench src/cdcl/preparation_wbtest.mbt --target native --release -i 5
+```

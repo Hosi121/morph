@@ -191,19 +191,6 @@ fn database(cnf : @sat.Cnf) -> Database {
 }
 
 ///|
-fn variables(cnf : @sat.Cnf) -> Lits {
-  @core.fold_left(cnf, Nil, fn(known, clause) {
-    @core.fold_left(clause, known, fn(known, literal) {
-      let value = atom(literal)
-      match @core.any(known, fn(other) { same_key(other, value) }) {
-        true => known
-        false => Cons(value, known)
-      }
-    })
-  })
-}
-
-///|
 pub fn start(cnf : @sat.Cnf) -> Search {
   let search = start_scanning(cnf)
   { ..search, watch: Some(watch_start(search.database)), }
@@ -212,15 +199,7 @@ pub fn start(cnf : @sat.Cnf) -> Search {
 ///|
 /// Retain the original scan engine for controlled comparisons.
 pub fn start_scanning(cnf : @sat.Cnf) -> Search {
-  {
-    database: database(cnf),
-    variables: variables(cnf),
-    watch: None,
-    trail: Nil,
-    level: Zero,
-    proof_rev: Nil,
-    statistics: empty_statistics(),
-  }
+  start_prepared(cnf)
 }
 
 ///|
