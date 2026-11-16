@@ -1,0 +1,7 @@
+i*i=-1: true; arithmetic checked: true
+(3-4i)/(3+4i)=-7/25-24i/25: true; arithmetic checked: true
+z^2+1: exactly 2 roots; i and -i verified: true
+isolated root -> exact conjugate -> other root: true; checked: true
+z^3-1: exactly 3 roots; full source-bound cover and multiplicities checked
+(z^2+1)^2: distinct roots=2; multiplicities=[2, 2]
+(z^2+1)^2(z-1): 3 roots; simple=1, double=2; factor and root covers checked: true

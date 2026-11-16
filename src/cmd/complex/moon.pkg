@@ -1,0 +1,11 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/complexalgebraic" @cx,
+  "Hosi121/morph/complexroots" @roots,
+  "Hosi121/morph/complexfactor" @factor,
+  "Hosi121/morph/zassenhaus",
+  "Hosi121/morph/testsupport" @oracle,
+}
+
+pkgtype(kind: "executable")

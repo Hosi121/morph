@@ -77,6 +77,17 @@ fn in_box(
 }
 
 ///|
+fn assert_cartesian_fixture(
+  coefficients : Array[(Int32, Int32)],
+  expected_real : Array[((Int32, Int32), Array[Int32])],
+  expected_imaginary : Array[((Int32, Int32), Array[Int32])],
+) -> Unit raise {
+  let expansion = cartesian(test_univariate(coefficients)).unwrap()
+  assert_eq(expansion.real, test_bivariate(expected_real))
+  assert_eq(expansion.imaginary, test_bivariate(expected_imaginary))
+}
+
+///|
 /// Independent Fraction/SymPy fixtures supply equations and disjoint rational
 /// coordinate boxes. Membership uses exact Tarski signs, never floating roots.
 fn assert_complex_fixture(
@@ -135,7 +146,8 @@ test "complex roots resume separating forms and computation without false empty 
     run(start(problem), Zero, @oracle.nat(100)).unwrap()
     is Paused(_, AttemptLimit),
   )
-  let state = match run(start(problem), Succ(Zero), Succ(Zero)).unwrap() {
+  let state = match
+    run(start_from(problem, @binary.zero()), Succ(Zero), Succ(Zero)).unwrap() {
     Paused(state, ComputationFuel) => state
     _ => abort("one step must pause while retaining the first form")
   }
@@ -230,4 +242,37 @@ test "isolated complex roots materialize exact coordinates with bound certificat
     @complex.real_part(number),
   )
   assert_false(check_materialization(found[0], swapped, proof))
+}
+
+///|
+test "explicit separating seed changes search preference while both covers are checked" {
+  let source = test_univariate([(1, 1), (0, 1), (1, 1)])
+  let problem = prepare(source).unwrap()
+  let preferred = match
+    run(
+      start_from(problem, @oracle.binary(2)),
+      @oracle.nat(3),
+      @oracle.nat(1000),
+    ).unwrap() {
+    Complete(value) => value
+    _ => abort("explicit nonzero form must separate the quadratic")
+  }
+  let reference = match
+    run(start_from(problem, @binary.zero()), @oracle.nat(3), @oracle.nat(1000)).unwrap() {
+    Complete(value) => value
+    _ => abort("explicit reference must separate the quadratic")
+  }
+  let first = certificate(preferred)
+  let old = certificate(reference)
+  assert_eq(
+    @oracle.int_of_binary(first.separation.unwrap().augmentation.seed),
+    2,
+  )
+  assert_eq(@oracle.int_of_binary(old.separation.unwrap().augmentation.seed), 1)
+  assert_true(check_result(source, preferred, first))
+  assert_true(check_result(source, reference, old))
+  assert_eq(
+    @oracle.array(roots(preferred)).length(),
+    @oracle.array(roots(reference)).length(),
+  )
 }

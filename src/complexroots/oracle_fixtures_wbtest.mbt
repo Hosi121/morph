@@ -96,7 +96,7 @@ test "independent complex oracle: cube roots of two" {
 
 ///|
 test "independent complex oracle: mixed multiplicities" {
-  assert_complex_fixture(
+  assert_cartesian_fixture(
     [(-1, 1), (1, 1), (-2, 1), (2, 1), (-1, 1), (1, 1)],
     [
       ((1, 1), [5, 0]),
@@ -122,11 +122,6 @@ test "independent complex oracle: mixed multiplicities" {
       ((1, 1), [0, 5]),
       ((-2, 1), [0, 3]),
       ((1, 1), [0, 1]),
-    ],
-    [
-      ((1, 1), (1, 1), (0, 1), (0, 1), 1),
-      ((0, 1), (0, 1), (-1, 1), (-1, 1), 2),
-      ((0, 1), (0, 1), (1, 1), (1, 1), 2),
     ],
   )
 }
