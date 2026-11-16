@@ -26,7 +26,7 @@ fn polynomial_degree(polynomial : @poly.Polynomial) -> @core.Nat? {
 
 ///|
 /// Horner evaluation inside this checked quotient field.
-fn evaluate_polynomial(
+pub fn evaluate_polynomial(
   value : Element,
   polynomial : @poly.Polynomial,
 ) -> Element? {

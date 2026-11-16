@@ -34,6 +34,8 @@ pub fn embedding(Field) -> @realalgebraic.RootCertificate
 
 pub fn equal(Element, Element) -> Bool
 
+pub fn evaluate_polynomial(Element, @polynomial.Polynomial) -> Element?
+
 pub fn field(@realminimal.Certificate, @core.Nat) -> Result[Field, FieldError]
 
 pub fn field_result(@realalgebraic.Number, @realminimal.Certificate, @core.Nat) -> Result[Field, FieldError]
