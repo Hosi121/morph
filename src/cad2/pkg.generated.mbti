@@ -1,0 +1,153 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cad2"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/numberfield",
+  "Hosi121/morph/orderedsturm",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/projection",
+  "Hosi121/morph/realcad",
+  "Hosi121/morph/realminimal",
+  "Hosi121/morph/relativecad",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn atoms(Problem) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn base_problem(Problem) -> @realcad.Problem
+
+pub fn certificate(Decomposition) -> Certificate
+
+pub fn check(Problem, Certificate, @core.Nat) -> Decomposition?
+
+pub fn eliminate_y(Decomposition, Quantifier) -> @core.Chain[Bool]
+
+pub fn fibre_problem(Problem, @numberfield.Field) -> Result[@relativecad.Problem, CadError]
+
+pub fn formula(Problem) -> @realcad.Formula
+
+pub fn prepare(@realcad.Formula) -> Result[Problem, CadError]
+
+pub fn problem_of(Decomposition) -> Problem
+
+pub fn projection_certificate(Problem) -> @projection.Certificate
+
+pub fn rebudget(Machine, Budget) -> Machine
+
+pub fn run(Machine, @core.Nat) -> Result[Progress, CadError]
+
+pub fn sentence(Decomposition, Quantifier, Quantifier) -> Bool
+
+pub fn specialize(@numberfield.Field, @polynomial.Polynomial) -> Result[@orderedsturm.Polynomial, CadError]
+
+pub fn stacks(Decomposition) -> @core.Chain[StackCertificate]
+
+pub fn start(Problem, Budget) -> Machine
+
+pub fn step(Machine) -> Result[Progress, CadError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Budget {
+  primes : @core.Chain[@binary.Binary]
+  lifting : @core.Nat
+  subsets : @core.Nat
+  verification : @core.Nat
+}
+pub fn Budget::equal(Self, Self) -> Bool
+pub fn Budget::not_equal(Self, Self) -> Bool
+pub fn Budget::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CadError {
+  NotBivariate
+  ProjectionFailure(@projection.ProjectionError)
+  BaseFailure
+  AlgebraicFailure
+  FieldFailure(@numberfield.FieldError)
+  RelativeFailure(@relativecad.CadError)
+  OrderedFailure(@orderedsturm.OrderedError)
+  InternalInvariant
+}
+pub fn CadError::equal(Self, Self) -> Bool
+pub fn CadError::not_equal(Self, Self) -> Bool
+pub fn CadError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  formula : @realcad.Formula
+  projection : @projection.Certificate
+  base : @realcad.Certificate
+  stacks : @core.Chain[StackCertificate]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Decomposition {
+  problem : Problem
+  certificate : Certificate
+}
+pub fn Decomposition::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type FieldProgress
+pub fn FieldProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Machine {
+  problem : Problem
+  budget : Budget
+  phase : Phase
+}
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+type Phase
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Problem {
+  formula : @realcad.Formula
+  atoms : @core.Chain[@polynomial.Polynomial]
+  projection : @projection.Certificate
+  base : @realcad.Problem
+}
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Complete(Decomposition)
+  Paused(Machine)
+  NeedsBudget(Machine, @realminimal.StopReason)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Quantifier {
+  Exists
+  Forall
+}
+pub fn Quantifier::equal(Self, Self) -> Bool
+pub fn Quantifier::not_equal(Self, Self) -> Bool
+pub fn Quantifier::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct StackCertificate {
+  sample : @realcad.Sample
+  minimal : @realminimal.Certificate
+  fibre : @relativecad.Certificate
+}
+pub fn StackCertificate::equal(Self, Self) -> Bool
+pub fn StackCertificate::not_equal(Self, Self) -> Bool
+pub fn StackCertificate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
