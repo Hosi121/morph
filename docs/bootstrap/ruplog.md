@@ -1,5 +1,7 @@
 # 節IDヒント付きRUP証拠
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `ruplog` は既存の `@cdcl.Proof = Rup(Chain[Clause])` を受け取り、各追加節にunit
 propagationの参照ID列を付ける。SAT APIと既存Proof型は変更しない。
 核は純ADT、Chain、Nat、Binary、不変Bool trieであり、組み込み数値・配列・可変状態・FFIを使わない。

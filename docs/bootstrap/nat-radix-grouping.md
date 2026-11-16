@@ -1,5 +1,7 @@
 # Natから三bitずつBinaryを作る
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 Natの値とcanonicalなBinaryを保ち、変換で作り直す中間Natと走査を減らす。
 前段の[二進分割の末尾共有](nat-tail-sharing.md)から、商を既存tailとして返す設計を引き継いだ。
 通常の`binary.from_nat`は0/1を既存factoryへ返し、それ以外をprivateの

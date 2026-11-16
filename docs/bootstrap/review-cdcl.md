@@ -1,5 +1,7 @@
 # CDCL / RUP の独立レビュー
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 レビュー対象：`31f80d68cc88cedb4bbf1b6dd58068f1c0a4b628`
 （scan版CDCL、2026-11-15、MoonBit v0.10.20）。
 `src/cdcl/cdcl.mbt` は変更せず、追加テストを `src/cdcl/review_wbtest.mbt` に置いた。

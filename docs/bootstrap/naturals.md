@@ -1,5 +1,7 @@
 # Nat変換をSATへ戻す
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 独立レビューの単一unit節（変数番号65535）は、旧`Binary.from_nat`の
 `successor(from_nat(rest))`でJS/Wasm GCのstackを使い切った。
 同時にSAT準備時間のprofileでも、この変換が支配していた。

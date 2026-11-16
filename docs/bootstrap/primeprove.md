@@ -1,5 +1,7 @@
 # certificate bankなしで生成するLucas証明
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `src/primeprove` は、外部で列挙した素数証明を一つも受け取らず、候補nから
 既存 `@primality.Certificate` を構築する。完成時には既存checkerを再実行し、
 元のnと一致する `Prime` とcertificateをopaqueな `Proof` にまとめて返す。

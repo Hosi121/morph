@@ -1,5 +1,11 @@
 # Characteristic-two polynomial arithmetic
 
+[ドキュメント](../../README.md) / [探索・改善記録](../README.md)
+
+このページはFp多項式・GF(2^m)・巡回RSの性能比較と原ログを保存します。
+採用した経路は[基礎部品の最適化](../../KERNELS.md)、算法の説明は[符号の章](../../handbook/coding-cryptography.md)を参照してください。
+CPU時間・wall時間・ホスト負荷の条件を分け、固定幅案などの棄却理由も残しています。
+
 The measured change replaces generic modular coefficient arithmetic in `Fp[x]`
 when the checked prime is two. Public construction still reduces arbitrary Binary
 coefficients, now by their low bit. Internal canonical coefficients contain only

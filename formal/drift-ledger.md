@@ -1,5 +1,7 @@
 # Spec / code / modelの対応記録
 
+[ドキュメント](../docs/README.md) / [形式検証](README.md)
+
 formal-methods-drift-guardの出力形式。現在の正本は厳密な自然数算術を保つというユーザー指示。
 機械で確認したモデル定理と、人手で対応を読んだ実装を分ける。
 

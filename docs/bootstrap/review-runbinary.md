@@ -1,5 +1,7 @@
 # runbinary 独立レビュー
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 対象：`3404abafbc81667dc9d67408d945728478678be2`
 （`runbinary.mbt`、2026-11-15、MoonBit v0.10.20）。
 レビューworktreeの基点は `cc6d243858814b361e83cd412ad092d3fb5bfe60`。

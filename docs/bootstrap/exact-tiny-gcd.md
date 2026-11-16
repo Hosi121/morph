@@ -1,5 +1,7 @@
 # 有限4bit GCDの表と分岐グラフ
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 対象は非負整数0〜15の全256入力対。公開APIは変えず、exactの私的なGCD候補を作る。
 Pythonは構築時だけmath.gcdを使い、生成されたMoonBitはBool tuple、ADT match、
 既存Binaryのcanonicalな不変定数だけで返す。近似・machine整数演算・配列・可変状態は核へ入れない。

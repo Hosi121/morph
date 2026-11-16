@@ -1,5 +1,7 @@
 # Binary比較のtail化とモデルの対応
 
+[ドキュメント](../docs/README.md) / [形式検証](README.md)
+
 公開APIと厳密な比較の意味を維持して、長い列を戻りがけに処理する再帰を除く。
 実装担当がsource/modelの対応を確認し、Leanと三backendの実行を検査した記録である。
 実装担当とは別の独立レビューや翻訳/refinement証明を実施したとは主張しない。

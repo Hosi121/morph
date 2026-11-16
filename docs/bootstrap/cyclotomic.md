@@ -1,5 +1,7 @@
 # 2冪次数の円分体
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `src/cyclotomic` は既存の `exact.Rational` と `polynomial.Polynomial`
 から、2冪次数 `N` の `QQ(ζ_N)` を構成する。浮動小数点、近似根、組み込みの複素数を使わない。
 

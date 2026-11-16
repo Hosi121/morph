@@ -1,5 +1,7 @@
 # 厳密整数の差分制約からSMTへ
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 SATが返すBool割当てに、整数の意味を戻すための最初の単位が`difference`。
 `Constraint{left,right,bound}`は`x_left−x_right<=bound`を表し、変数Zeroは定数0とする。
 整数は既存`exact.Integer`、IDはNatを入口にBinaryへcacheし、不変AVLを使う。

@@ -1,5 +1,7 @@
 # 大きい語の除算・剰余の追加探索（通常経路へ未採用）
 
+[ドキュメント](../../README.md) / [研究・探索記録](../README.md)
+
 基準sourceは`0ccff36`。source制約を維持したBool/Chain/ADTの試作である。
 `pair(Nat20000, zero)`は2^20000を表し、通常remainder(...,3)はJSで
 RangeErrorになった。これは数学的な値のモデルでは検出できない資源上の制約である。

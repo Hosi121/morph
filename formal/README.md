@@ -1,5 +1,7 @@
 # 基礎ADTのLeanモデル
 
+[ドキュメント](../docs/README.md)
+
 有限テストとは別に、Core・Binary・Comparison・Fold等のモデルの全称命題をLean 4.19.0で検査する。
 Mathlibや追加Leanライブラリは使わず、公式配布のStdだけを利用する。
 Leanは検証用で、MoonBitの計算核の依存ではない。
@@ -111,3 +113,16 @@ canonicalな場合の数値順序を検査する。sourceの先頭八段と四no
 [比較kernelの記録](../docs/bootstrap/binary-comparison.md)へ分けた。
 `tools/check_formal`はCoreに続けてBinary.oleanも再生成し、Comparisonが古いartifactをimportしない。
 function fingerprintは直前のcode-generation属性も含め、値を変えないinline方針の変更も検出する。
+
+## 対応レビューと変更記録
+
+| 資料 | 対象 |
+| --- | --- |
+| [Binaryの独立レビュー](REVIEW.md) | 初期の加算・変換モデルとMoonBitの構造対応 |
+| [Coreのレビュー](REVIEW-core.md) | prefix共有の追加分 |
+| [Nat変換のレビュー](REVIEW-nat-grouped.md) | 8進単位の変換、値・停止性・正規性 |
+| [比較のレビュー](REVIEW-comparison.md) | raw列の旧比較との一致、canonical値の順序 |
+| [対応の変更記録](drift-ledger.md) | 仕様・ソース・モデルを揃えた変更の経緯 |
+
+各レビューの領域数や実行結果はレビュー時点の記録です。
+横断検証の固定スナップショットは[検証ガイド](../docs/VALIDATION.md)から参照できます。

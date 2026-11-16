@@ -1,5 +1,7 @@
 # Core追加分の独立レビュー
 
+[ドキュメント](../docs/README.md) / [形式検証](README.md)
+
 担当：rootとは別のcyclotomic agent。対象sourceは17c206d、利用経路の説明は3cda1ca。
 source・Lean・文書・既存の実行ログを読むレビューで、checkerの独立再実行ではない。
 

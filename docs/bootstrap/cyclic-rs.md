@@ -1,5 +1,7 @@
 # Berlekamp–Massey と巡回符号
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 ## 汎用体上の最小漸化式
 
 `src/recurrence` は `rowreduce.Field[A]` を使うBerlekamp–Massey。

@@ -1,5 +1,7 @@
 # 厳密Rationalによる証拠付きLLL
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `src/lll` は行vectorを格子基底として、整数のrow basis Bをδ=3/4でLLL簡約する。
 対象はfull row rankの矩形行列で、依存行は初期境界で厳密に拒否する。
 空のrow basisはrank 0として任意のambient dimensionで扱う。

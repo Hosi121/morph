@@ -1,5 +1,17 @@
 # SAT engine bootstrap
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
+このページはSATエンジンを構築・計測した順序を保存する詳細記録です。
+現在の採用状況は[基礎部品の最適化](../KERNELS.md)、反証の形式は[RUPログ](ruplog.md)を参照してください。
+
+## 記録の要点
+
+- 採用した改善: first-open decision、conflict解析のassignment trie、backjumpのsuffix共有、一走査の入力準備、索引で同一性が確定した変数の直接読取り。
+- 証拠の維持: 探索trace・continuation・反証の一致と、外部チェッカーによる検査を別々に確認。
+- 保留した候補: lookupの分岐順、tail decision、conflictの早期打切りなど。局所計測だけで通常経路へ採用しない。
+- 以下の数値は各段階の固定条件に対する記録で、異なる系列の倍率を合成しない。
+
 ## Scan CDCL milestone
 
 Historical first milestone: commit `e52f521`. The current `start` selects the

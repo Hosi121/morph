@@ -34,7 +34,8 @@ def generate():
             dependencies.extend(re.findall(r'"Hosi121/morph/([^"\n]+)"', block[1]))
         packages.append((str(relative), len(kernels), tests, benches, sorted(dependencies)))
     lines = [
-        "# ソースから生成した一覧", "",
+        "# パッケージ一覧", "",
+        "[ドキュメント](README.md) / [アルゴリズム一覧](ALGORITHMS.md)", "",
         "`python3 tools/inventory.py`で再生成する。手書きの集計値を正本にしない。",
         "テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。",
         "bench欄もgroup数で、group内部の個別計測数とは異なる。", "",

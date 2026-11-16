@@ -1,5 +1,7 @@
 # 永続ROBDD
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `src/bdd` は `@circuit.Expr` を明示した変数順序のROBDDへ変換する。
 Bool、Chain、Nat、Binary、ADT、再帰だけで構成し、組み込み数値・配列・可変状態・FFIを
 核に使わない。節点表、unique table、applyのmemoは不変Bool trieである。

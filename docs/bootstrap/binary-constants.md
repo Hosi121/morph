@@ -1,5 +1,7 @@
 # Binary の共有定数
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `zero()` と `one()` の返す値は不変であり、共有しても値と API は変わらない。
 `constants.mbt` に package-private な `canonical_zero()` / `canonical_one()` を分離した。
 共有ファイル担当が公開 factory の body をこの helper に向け、main `66f48ae` で採用した。

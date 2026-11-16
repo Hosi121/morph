@@ -1,5 +1,7 @@
 # 末尾を共有する定数prefix
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `core.replicate_onto(n,value,tail)`は、既存tailへ同じ値をn回Consする。
 末尾再帰一回で済み、`append(replicate(n,value),tail)`の構築と走査を融合する。
 `core.replicate`もtail=Nilのwrapperへ変更し、Binaryのpairにも使う。

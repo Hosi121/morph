@@ -1,5 +1,7 @@
 # GF(256) からのAES bootstrap
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 仕様は [FIPS 197-upd1 (2023)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf)。
 公式中間値はNISTの [例示値一覧](https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/example-values) から取得した
 [AES-128](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/AES_Core128.pdf)、

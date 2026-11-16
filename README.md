@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="docs/ALGORITHMS.md">アルゴリズム一覧</a> ·
-  <a href="HANDBOOK.md">ハンドブック</a> ·
+  <a href="docs/README.md">ドキュメント</a> ·
   <a href="docs/TOUR.txt">実行例</a>
 </p>
 
@@ -60,7 +60,7 @@ tools/moon bench src/benchmarks --target native --release  # ベンチマーク
 ```
 
 正しさは、有限の総当たり、独立した実装との照合、問題ごとの証拠検査で確かめます。
-一部の基礎演算は Lean モデルでも証明しています。[形式検証の資料](formal/README.md)に、対象・実行手順・実装との対応範囲をまとめています。
+一部の基礎演算は Lean モデルでも証明しています。各検査の対象と限界は[検証ガイド](docs/VALIDATION.md)にまとめています。
 
 ## 詳しく読む
 

@@ -1,5 +1,7 @@
 # 素数体上の多項式
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `src/fppoly` は、チェック済みの `primefield.Field` を係数体とする一変数多項式を構成する。
 `primefield` の正式実装 `2d7e1c0` と検証追補 `3e6b190` に依存する。
 既存の `finitefield.Field` はTonelli–Shanks用の奇標数体なので、標数2を含むこの境界とは分ける。

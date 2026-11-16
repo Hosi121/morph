@@ -1,5 +1,7 @@
 # SATを基礎演算の検査へ使う
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 Boolean.Algebraへ同じ加算器プログラムを渡し、Boolとして実行する場合とExprの回路を作る場合を共有する。
 minterm、propagate、multiplexerの3種類を用意し、整数算術の真理値表とも照合する。
 固定幅語はlittle endian、繰り上がりを別出力に保持する。

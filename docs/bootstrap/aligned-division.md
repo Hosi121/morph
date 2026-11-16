@@ -1,5 +1,7 @@
 # 除算の桁幅差を制限する試作
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 この文書は初回試作の段階を記録する。現在の通常経路への採用と広げた検証は
 [adaptive-division](adaptive-division.md)にまとめた。
 

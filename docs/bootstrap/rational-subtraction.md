@@ -1,5 +1,7 @@
 # Rational 減算の中間 wrapper を除く
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 以前の段階では、零の積だけを採用し、直接減算と reciprocal の候補は採用に含めなかった。
 この記録は `exact-optimization.md` の第五段に残っている。
 今回は adaptive division/GCD と Binary/Rational 共有定数を含む基盤へ進んだため、

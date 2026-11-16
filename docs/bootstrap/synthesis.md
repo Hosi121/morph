@@ -1,5 +1,7 @@
 # SATでNAND回路を合成する
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 `synthesis`は真理値表から、指定個数以下の二入力NANDだけで作る回路を探す。
 これまで実装したSATを検証だけでなくプログラムの構成にも使う最初の単位である。
 設計の背景は[Haaswijkら, Classifying Functions with Exact Synthesis](https://msoeken.github.io/papers/2017_ismvl.pdf)。

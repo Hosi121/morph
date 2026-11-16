@@ -1,5 +1,7 @@
 # Binary Leanモデルの独立レビュー
 
+[ドキュメント](../docs/README.md) / [形式検証](README.md)
+
 レビュー対象はmainの `6ff31423dad6497471b5e4fec22617efa6fa22cd`。
 2026-11-15、実装担当とは別のagentがformal-methods-drift-guardの手順で、
 Leanモデル・MoonBit関数・source-map・実行harnessを確認した。

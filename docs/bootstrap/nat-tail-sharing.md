@@ -1,5 +1,7 @@
 # Natの商を既存の末尾として返す
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 直接の半分化に続き、quotientのNatを作り直す費用を除いた。
 `core.halve_nat`はfastとslowを同じ入力から開始し、二つ/一つずつSuccを消費する。
 fastが0ならslow自身、1ならslowのtailを返すと、長さはfloor(n/2)になる。

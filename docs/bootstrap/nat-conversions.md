@@ -1,5 +1,7 @@
 # Natを直接処理する共有基礎
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 ユーザー監査の`fppoly/irreducibility.mbt`二箇所と`cyclotomic/cyclotomic.mbt`では、
 floor(n/2)のためにNat→Binary→Natを作っていた。
 この経路を`core.half_nat`へ置き換えた。

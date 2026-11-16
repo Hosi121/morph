@@ -1,5 +1,7 @@
 # NAND synthesis independent review
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 対象は root の `6f3f0cc`。実装は変更せず、独立した
 `src/synthesis/review_wbtest.mbt` を追加した。追加7テストを native、JavaScript、
 Wasm GC で実行し、すべて通過した。この範囲で最小反例は見つからなかった。

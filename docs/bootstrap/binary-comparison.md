@@ -1,5 +1,7 @@
 # 大きいbit列を比較するときのstackを減らす
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 通常Binaryの比較を、長さに比例する再帰のunwindから、有限の先頭処理とtail loopへ移す。
 値、公開API、非canonicalな生のbit列に対する従来の振る舞いを保つ。
 特に生の列は長さを優先し、上位0を除去しない。`Cons(false,Nil)`は`Nil`より大きいと返す。

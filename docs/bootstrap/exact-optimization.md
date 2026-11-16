@@ -1,5 +1,7 @@
 # Integer/Rationalの同条件最適化
 
+[ドキュメント](../README.md) / [探索・改善記録](README.md)
+
 ユーザーの2026-11-15の優先指示に従い、上位算法の追加を止めて基礎算術を計測する。
 基点はnumber-theory-nextの `ed68ad4`。src/exactはその時点のmainと同一で、
 既存の交差約分とRationalの0/±1恒等則を維持する。
