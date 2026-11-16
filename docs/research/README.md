@@ -39,6 +39,7 @@
 | 複素代数的数と全根 | [因数分解・厳密演算・全根の接続と比較](complex-algebra-20261117.md) | [Fraction・SymPyの厳密な参照値](complex-oracle-20261117.md) |
 | 複素数体と絶対一生成元 | [K(i) の固定基底と α+i への変換](complex-fields-20261117.md) | [数体の参照値](complexfield-oracle-20261117.md)・[変換の参照値](complexprimitive-oracle-20261117.md) |
 | 自己同型と固定体 | [全自己同型・部分群・固定される体の接続](complex-galois-20261117.md) | [有限群の参照](complexautomorphism-oracle-20261117.md)・[不変部分空間の参照](fixedfield-oracle-20261117.md) |
+| 最小分解体とGalois群 | [共有座標から最小体・完全な根置換群への接続](complex-splitting-20261117.md) | [共通体](complexcohort-oracle-20261117.md)・[生成体](complexsubfield-oracle-20261117.md)・[返却値の独立レビュー](complexsplitting-review-20261117.md)・[置換群](splittinggalois-oracle-20261117.md) |
 | 最小多項式への正規化 | [不要な因子を除く](realminimal-20261116.md) | 同記録に既約性の確認と採用条件 |
 | 数体Q(α) | [剰余演算・Bézout逆元・実埋込み](numberfield-20261116.md) | 同記録に独立Fractionとの照合 |
 | 共通の実数体 | [primitive elementへの埋込み](compositum-20261116.md) | [独立レビュー](compositum-review-20261116.md) |

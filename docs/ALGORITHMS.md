@@ -21,6 +21,8 @@
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
 | 複素代数的数 | [実代数的座標・四則演算・共役・等号・証拠](../src/complexalgebraic) |
 | 複素数体 | [K(i) の基底・逆元・trace/norm・最小多項式](../src/complexfield)・[α+i と絶対一生成元への双方向変換](../src/complexprimitive) |
+| 共通体と生成部分体 | [複素代数的数の選択座標を共通K(i)へ移す](../src/complexcompositum)・[単項式基底による最小生成体と剰余表示](../src/complexsubfield) |
+| 分解体とGalois群 | [全根から最小分解体を構成](../src/complexsplitting)・[二項三次式の厳密根構成](../src/cubicradical)・[遅延置換探索と完全な体作用](../src/splittinggalois) |
 | 自己同型と固定体 | [明示分解した体の全自己同型と合成表](../src/complexautomorphism)・[部分群の不変部分空間・完全基底・座標変換](../src/fixedfield) |
 | 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
 | 多段の実代数拡大 | [選択根を順に加える四則演算・順序・相対実根](../src/realtower/api.mbt)・[二次式の厳密な符号判定](../src/realtower/quadratic.mbt) |

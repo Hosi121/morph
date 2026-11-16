@@ -33,6 +33,7 @@ tools/moon run src/cmd/main
 | 実閉体の量化消去、球の射影、三段平方根、非線形SMT | `tools/moon run src/cmd/realclosed` | [実閉体と非線形SMT](docs/REALCLOSED_TOUR.txt) |
 | 複素数の厳密演算、全根、複素数体と一生成元への変換 | `tools/moon run src/cmd/complex` | [複素代数](docs/COMPLEX_TOUR.txt) |
 | 明示した分解体の自己同型、部分群と固定体 | `tools/moon run src/cmd/galois` | [対称性と中間体](docs/GALOIS_TOUR.txt) |
+| 多項式から最小分解体とGalois群を構成する | `tools/moon run src/cmd/splitting` | [分解体と根置換](docs/SPLITTING_TOUR.txt) |
 
 準備・テストのコマンドと検証済みのツールチェーンは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
 表示と入力変換の例は [cmd/main](src/cmd/main/showcase.mbt) を参照してください。

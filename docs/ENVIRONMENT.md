@@ -26,6 +26,8 @@ bootstrapの既定値は公式のlatestです。後日の取得物が下記の�
 （[出力例](COMPLEX_TOUR.txt)）。
 `tools/moon run src/cmd/galois` は z⁴−2 の8自己同型・D4の関係・10中間体を検査して表示します
 （[対称性と中間体ツアー](GALOIS_TOUR.txt)）。
+`tools/moon run src/cmd/splitting` はQQ多項式からの最小分解体と群作用、三次式のS3、指定した四次根のD4を検査します
+（[分解体と根置換ツアー](SPLITTING_TOUR.txt)）。
 
 ## 開発時のコマンド
 
@@ -139,6 +141,9 @@ uv pip install --python .tools/complex-oracle-venv/bin/python -r tools/requireme
 .tools/complex-oracle-venv/bin/python tools/generate_complexprimitive_fixtures.py --check
 .tools/complex-oracle-venv/bin/python tools/generate_complexautomorphism_fixtures.py --check
 .tools/complex-oracle-venv/bin/python tools/generate_fixedfield_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_complexsubfield_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_complexcohort_fixtures.py --check
+.tools/complex-oracle-venv/bin/python tools/generate_splittinggalois_fixtures.py --check
 ```
 
 生成対象と照合方法は[独立参照](research/complex-oracle-20261117.md)、

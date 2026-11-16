@@ -44,6 +44,14 @@
 短時間例の起動費用・揺れと、八乗の打切りを保った記録であり、一般的な倍率を示しません。
 [平方](measurements/complex-field-square-native-20261117.json)・[八乗](measurements/complex-field-native-20261117.json)に全試行があります。
 
+## 最小分解体の構成
+
+QQ三次式から最小分解体までの[一般経路と専用経路の比較](research/complex-splitting-20261117.md#同じartifactでの三次式の比較)も記録しています。
+同じnative release artifact・CPU固定・最終checker込みで、専用経路は `t³−2` が中央値2.375秒、
+`t³−1` が1.168秒で各6回完了。一般経路は両入力とも6回を各5秒で打ち切りました。
+未完了の倍率は計算せず、[三乗根2](measurements/splitting-cubic-native-20261117.json)と
+[1の三乗根](measurements/splitting-unity-native-20261117.json)に全試行を残しています。
+
 ## 再現する
 
 Linuxで、既存被覆による理論節削減を一つの入力について比較する例です。

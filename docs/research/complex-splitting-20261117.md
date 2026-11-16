@@ -35,6 +35,12 @@ checker は元の選択根と各包含・輸送を再生し、返却順と実際
 完了した座標は停止後も保持し、未完了の一回の合成は次の段階予算で試し直す。
 最後に得る `L=K(i)` は全根を含むが、最小であるという主張は持たない。
 
+QQ 多項式の全根の場合には、複素共役の根も F に入る。
+従って `Re(z)=(z+conj(z))/2∈F`、`Im(z)=(z−conj(z))/(2i)∈F(i)` であり、
+この経路の共通体は `L=F(i)` となる。余分な拡大は高々二次である。
+任意の複素数の部分集合では共役を含むとは限らず、この上限を使えない。
+たとえば `∛2*ω` 一つだけなら生成体は非実三次体であり、同じ共通体の次数12から次数3へ縮む。
+
 ## 最小性を証明する単項式基底
 
 [complexsubfield](../../src/complexsubfield) は、根 `z₀,…,zₙ₋₁` に対して
@@ -123,6 +129,40 @@ producer はここで探索を終え、checker は不採用置換の完全な履
 得られるものは具体的な置換群と体作用である。
 `t³−2` の S3、`t⁴−2` の位数8の D4 は小さい独立モデルと照合する例であり、
 一般の群名認識、resolvent、固定体への新しい adapter をこの構成に含めない。
+
+## 同じartifactでの三次式の比較
+
+コード `4d3675c` の同じnative release artifactで、一般Cartesian経路と二項三次式の経路を比較した。
+Linux/WSL2、Core Ultra 7 255H、CPU 4に固定し、各入力をABBA順で3巡、各方式6回実行した。
+`moonc v0.10.20+65efd5b93`、GCC 13.3を使い、コンパイルは測定から除いた。
+
+両経路とも、起動、入力構築、全根、共通体、最小生成体、一生成元、
+元の多項式と返却値に束縛した最終checkerまでを含む。群の置換探索は含めない。
+
+| 入力 | 一般Cartesian経路 | 二項三次式の経路 |
+| --- | --- | --- |
+| `t³−2` | 6/6を各5秒で打切り | 6/6完了、中央値2.375秒、最小次数6 |
+| `t³−1` | 6/6を各5秒で打切り | 6/6完了、中央値1.168秒、最小次数2 |
+
+一般経路の完了時間がないので、倍率は計算しない。
+打切りは計算時間の観測であり、数学的な失敗判定ではない。
+Cartesian経路自体は別の回帰例で完了を確認している。
+専用経路は、適格な式だけで実三乗根と√3の合成を一回にまとめる選択であり、
+他の次数や係数で同じ時間になるという主張ではない。
+
+[三乗根2の生データ](../measurements/splitting-cubic-native-20261117.json)と
+[1の三乗根の生データ](../measurements/splitting-unity-native-20261117.json)に、
+source commit、artifact hash、CPU、試行順序、全出力と打切りを保存した。
+
+```sh
+tools/measure --cpu 4 tools/moon build src/cmd/splittingbench --target native --release
+tools/measure --cpu 4 python3 tools/compare_complex_roots.py \
+  --case splitting-cubic --abba-repetitions 3 --timeout-seconds 5 \
+  --artifact _build/native/release/build/cmd/splittingbench/splittingbench.exe \
+  --output .tools/splitting-cubic.json
+```
+
+`t³−1` は `--case splitting-unity` で比較する。
 
 ## 証拠の境界、予算、独立参照
 

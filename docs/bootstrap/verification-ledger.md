@@ -23,6 +23,10 @@ formal-methods-reconcilerの手順で、期待する性質・機械検査・信�
 | PRIM-1 | α+i の剰余表示が元の K(i) と双方向に一致する | [独立な冪行列と座標](../research/complexprimitive-oracle-20261117.md)、像の再評価・正規性・source/返却値の束縛 | 有限の2・4・6・8次例と実行時checker。一般のprimitive element定理は形式化していない |
 | GAL-1 | 合成表がその体の実際の自己同型を表す | [独立整数群・Fraction・厳密代入](../research/complexautomorphism-oracle-20261117.md)、別群表・根順・source/返却物の改竄検査 | 全根を同じ K(i) に指定する条件付き構成。汎用分解体探索や群分類ではない |
 | FIX-1 | 固定体の基底がすべての不変元を張る | [全17部分群の独立nullspace](../research/fixedfield-oracle-20261117.md)、固定性・独立性・rank/nullity・群作用の再検査 | C2/V4/D4の有限照合と問題ごとの証拠検査。Galois対応の一般的形式証明なし |
+| COHORT-1 | 共通体への移送が元の複素数の選択座標を保つ | [独立な実現・最小多項式・積](../research/complexcohort-oracle-20261117.md)、正規化と合成・既存座標の移送の再生 | 有限例と既存の実数体証拠を信頼。未完了の単独合成は再試行 |
+| GENFIELD-1 | 元が生成する最小体を返し、大きなambientを混ぜない | [独立な全単項式span](../research/complexsubfield-oracle-20261117.md)、単項式由来・閉性・rank・primitiveの検査 | 非実三次体を含む有限照合と問題別checker。一般の体論の形式証明なし |
+| SPLIT-1 | 分解体の根が元の多項式と正しい重複度を持つ | [独立の微分jet・返却値レビュー](../research/complexsplitting-review-20261117.md)、次数総和と生成体の最小性 | QQ一変数多項式が対象。固定燃料での完了や高次数の速度を保証しない |
+| FULLGAL-1 | 最小分解体上の群が正しい全自己同型を含む | [独立な置換集合・代入・合成表](../research/splittinggalois-oracle-20261117.md)、最小多項式・全根への作用・次数分の相異な像 | C1/C2/S3/D4の有限照合。完全性には標数零の分解体の次数上限を使い、一般的形式証明はない |
 | SYN-1 | NAND選択CNFは指定上限内の回路を表す | 2入力全16関数×0〜5gate、CNFを使わない全プログラム列挙との照合 | 有限問題の符号化検査。一般の入力数・gate数に対する形式証明なし |
 | SYN-2 | 合成結果は元の関数を計算する | model検査→selector復号→全真理値表の直接評価 | 全行を列挙できる問題に限定 |
 | SYN-3 | 下限証拠と上限の取り違えを拒否する | XORの3gate不可能証拠を4gate問題へ流用すると拒否 | 個別CNFに対するRUP受理。gate最小化と実時間最小化は異なる |

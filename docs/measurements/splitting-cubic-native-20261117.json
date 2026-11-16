@@ -1,0 +1,136 @@
+{
+  "utc": "2026-11-16T21:53:11.737824+00:00",
+  "backend": "native",
+  "source_commit": "4d3675c8f7eb3ec4a087897f1146ab70eb94d3b4",
+  "tracked_dirty": false,
+  "dirty_paths": [],
+  "code_dirty": false,
+  "artifact": "_build/native/release/build/cmd/splittingbench/splittingbench.exe",
+  "artifact_sha256": "65a07df9e300dbcfd164ecb5ba5196b344cc97dd97898252e129083937486383",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "source": "z^3-2",
+  "case": "splitting-cubic",
+  "scope": "process startup, input construction, complete roots, shared ambient, minimal generated subfield, primitive presentation and final source-bound checker; excludes compilation",
+  "timeout_seconds": 5.0,
+  "abba_repetitions": 3,
+  "runs": [
+    {
+      "repetition": 0,
+      "mode": "cartesian",
+      "seconds": 5.012512047003838,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 0,
+      "mode": "radical",
+      "seconds": 2.3450632620006218,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "radical",
+      "seconds": 2.3794686140026897,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "cartesian",
+      "seconds": 5.0109546950043296,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "cartesian",
+      "seconds": 5.0101889229990775,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 1,
+      "mode": "radical",
+      "seconds": 2.37050278300012,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "radical",
+      "seconds": 2.4008188169973437,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "cartesian",
+      "seconds": 5.007546228996944,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "cartesian",
+      "seconds": 5.01206608099892,
+      "censored": true,
+      "checked": false
+    },
+    {
+      "repetition": 2,
+      "mode": "radical",
+      "seconds": 2.4030873119991156,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "radical",
+      "seconds": 2.3689739320034278,
+      "exit_code": 0,
+      "censored": false,
+      "stdout": "{\"source\":\"z^3-2\",\"splitting_degree\":6,\"ambient_degree\":12,\"roots\":3,\"checked\":true}\n",
+      "stderr": "",
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "cartesian",
+      "seconds": 5.010374976001913,
+      "censored": true,
+      "checked": false
+    }
+  ],
+  "summary": {
+    "cartesian": {
+      "completed": 0,
+      "censored": 6,
+      "median_seconds_completed_only": null
+    },
+    "radical": {
+      "completed": 6,
+      "censored": 0,
+      "median_seconds_completed_only": 2.374985698501405
+    }
+  }
+}
