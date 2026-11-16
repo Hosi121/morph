@@ -1,0 +1,180 @@
+{
+  "utc": "2026-11-16T09:41:02.810174+00:00",
+  "workspace": "/home/hosi/morph-zassenhaus-20261116",
+  "original_manifest": "docs/research/tarski-20261116-artifacts.json",
+  "original_families": [
+    {
+      "path": "docs/research/zassenhaus-20261116-fixtures.json",
+      "sha256": "a53a8011f27b4dad2509b4ac41ee5ced9ec899bdff5b00bd3c533a99dcacb985",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/zassenhaus-20261116-validation.json",
+      "sha256": "9c4bb4ae6f8532881eaef0144a653d13decfd27051574b156a891a42df87e13e",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/zassenhaus-20261116.md",
+      "sha256": "9812f7e47ccff0a638498d9268b22e629e3300a8b144d41da16e565c27b3bd23",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_zassenhaus_fixtures.py",
+      "sha256": "930a019aa785b37e575cf063717e18b4f8229e607de8005e76c90a027512f8c6",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116-fixtures.json",
+      "sha256": "df3576efd90c71738b7b7b2327d5cc2842d15f2ab05004667c01163a6408c3a2",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116-validation.json",
+      "sha256": "67fbbf780ff4cc76b8c3aacb257bea2780ed0dd04c3383d039ced1aaa688cfa9",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realalgebraic-20261116.md",
+      "sha256": "8b7f34c266da613205e3e6d23026fdcbb2bdfb1f2073f73a580fedcb4cada236",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realalgebraic_fixtures.py",
+      "sha256": "fca918c619b0d4649a3569edf8d21abe78c60661f1386395d3f4af4a50fb2653",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-fixtures.json",
+      "sha256": "90a732dff89a0a7fdd03ba79d5e5c8f995e2de7dd083e5a0c9041e9b35753c1e",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-separation-fixtures.json",
+      "sha256": "269a3d4287af3276617d9a7c7bab3595595c354ce22373ac4fa35cd507f3a6d3",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-separation-pilot.json",
+      "sha256": "a816a4f49533f322bf2794a8129191bf7ee9e120e0ca4f2ebfcf6ac1f054c1cc",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116-validation.json",
+      "sha256": "f5e021ffcf6eda12854404021f6e9cdc2e71cc5c55898a5228643bb8866dd538",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/realvariety-20261116.md",
+      "sha256": "951df719ac6d86b8ec85e513bde82bcaa183d7b4eb3f3ce48b7cc4afdab63523",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realvariety_fixtures.py",
+      "sha256": "f0b563940a85f5aac73ee4d9c8f393c4fa315e428a05700ff9f1b4605d927aa6",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_realvariety_separation.py",
+      "sha256": "b1a2e0c715093f90fa484e70e271d5f09199dcc8d9cd56e13c551611bc9f6bfa",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116-fixtures.json",
+      "sha256": "b1081e1f13bf08afd51b53cd7c612171c62929859360b4538c4aa171c94c56f6",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116-validation.json",
+      "sha256": "c17849b7131fc43353e1af4e810e1d0b9a80a4ab77cd98be74e85bd8d328e36b",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/tarski-20261116.md",
+      "sha256": "a5ce7356d7b0ac0fca7bbbaeeb6ed9d315e346a13cd81079ffb6e8056d94ee2d",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_tarski_fixtures.py",
+      "sha256": "6fb4034d72462e1486671db50168e552789310498e355eaa940184dabadeaa4f",
+      "preserved": true
+    }
+  ],
+  "orderedsturm_frozen_commit": "9850b56",
+  "orderedsturm_files": [
+    {
+      "path": "docs/research/orderedsturm-20261116-fixtures.json",
+      "sha256": "dd4dc3b83da1b27b461e753e44162040d8f787c3ab68b8f40b3eaf96f356fc30",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/orderedsturm-20261116-validation.json",
+      "sha256": "e2d510f64749016a723fa7ea5b17c1c9f6ea1adf2d4f2970eaa8ffb1f3c225d4",
+      "preserved": true
+    },
+    {
+      "path": "docs/research/orderedsturm-20261116.md",
+      "sha256": "e83fb2c300a7f4e590717472bb69e56da9ff6060116c3f15466fd4cfe158c7c6",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/count.mbt",
+      "sha256": "fc2c59c866beb252e82fa3ba641edac567eddab63b9397901da71eb5ff97adee",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/fixtures_wbtest.mbt",
+      "sha256": "9ca1f5afe6df707708f8169c01e48112c8e152a3ae78924fbadecdab3445668d",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/isolation.mbt",
+      "sha256": "5f2494d5ee4f3d7bf8be69efc8ca5806ca660c30385c20b3d405105b74ffbc65",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/moon.pkg",
+      "sha256": "7ab15dd7901de4ea7c9910731ac1cd693a292e3e061b8c06e26c51220ce47b26",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/ordered_wbtest.mbt",
+      "sha256": "b1e57dfc77a156c11a95b6f158cc1a6188e2085d4386046baf22446c60d0fc30",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/pkg.generated.mbti",
+      "sha256": "18b1f89361590a8f33da5e6a326297fbd7171e415405635b5887f812ef56270a",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/polynomial.mbt",
+      "sha256": "a57fc441e65ddaf5792e2485f3bafc676262305a5bc871eda303290d71c0800b",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/scalar.mbt",
+      "sha256": "fd8da3fa64ed3a44c92298a40918a84367528471bc6dde1e662703b2f86304d5",
+      "preserved": true
+    },
+    {
+      "path": "src/orderedsturm/system.mbt",
+      "sha256": "7ca70320b0160541b671efa4c96710c9a81d77651b6e9a57cb670a6f94d6fac7",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_orderedsturm_fixtures.py",
+      "sha256": "cec3c65f755e37df66a29f938158ae909c5cf8e645775a2672bac14ec77640c0",
+      "preserved": true
+    },
+    {
+      "path": "tools/generate_orderedsturm_validation.py",
+      "sha256": "cd856f9570f48d0ada568911d3c96b21d9c1cffc89503dc9801235848ab64f95",
+      "preserved": true
+    }
+  ],
+  "additional_log_paths": [],
+  "separate_common_dir_copies": [],
+  "cpu": 8,
+  "serialization": "tools/measure shared git-common-dir lock",
+  "output": "All 19 original manifest files and 14 frozen orderedsturm files preserved byte-for-byte.\n"
+}

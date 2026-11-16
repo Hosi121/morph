@@ -1,0 +1,113 @@
+{
+  "utc": "2026-11-16T09:40:55.250084+00:00",
+  "cpu": 8,
+  "source": "706cb8b",
+  "dependency": "24d04ed",
+  "scope": "review tests/generators/note/artifacts only; no producer/checker modification",
+  "serialization": "tools/measure shared git-common-dir lock",
+  "timing_scope": "incremental command wall time, not an isolated algorithm benchmark",
+  "commands": [
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/compositum",
+        "--target",
+        "native",
+        "-f",
+        "*review*",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 201.927126,
+      "output": "Total tests: 18, passed: 18, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/compositum",
+        "--target",
+        "js",
+        "-f",
+        "*review*",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 151.029088,
+      "output": "Total tests: 18, passed: 18, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "test",
+        "src/compositum",
+        "--target",
+        "wasm-gc",
+        "-f",
+        "*review*",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 118.494838,
+      "output": "Total tests: 18, passed: 18, failed: 0.\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "check",
+        "src/compositum",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.161182,
+      "output": "Finished. moon: ran 1 task, now up to date\n"
+    },
+    {
+      "command": [
+        ".tools/moon/bin/moon",
+        "fmt",
+        "--check",
+        "src/compositum"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.242041,
+      "output": "Finished. moon: ran 8 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/generate_compositum_review_fixtures.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.569954,
+      "output": "{\"biquadratic\": 3, \"cartesian_comparisons\": 62, \"cartesian_degree8_to_field4\": 2, \"cases\": 15, \"dependent\": 12}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.512292,
+      "output": "Purity gate passed: 159 kernel files; no machine numerics, mutation, arrays or FFI.\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "706cb8b",
+        "--",
+        "src/compositum/checker.mbt",
+        "src/compositum/context.mbt",
+        "src/compositum/producer.mbt",
+        "src/compositum/moon.pkg",
+        "src/compositum/pkg.generated.mbti"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.004748,
+      "output": ""
+    }
+  ]
+}
