@@ -1,0 +1,34 @@
+Finished. moon: ran 170 tasks, now up to date
+Total tests: 28, passed: 28, failed: 0.
+Total tests: 28, passed: 28, failed: 0.
+Total tests: 28, passed: 28, failed: 0.
+[Hosi121/morph] bench binary/division_cohort_wbtest.mbt:4 ("division and gcd cohorts preserve small and wide controls") ok
+name                          time (mean ± σ)         range (min … max) 
+baseline divmod short128        90.49 µs ±   7.31 µs    80.05 µs … 104.92 µs  in 10 ×   1166 runs
+aligned divmod short128         48.99 µs ±   1.91 µs    45.75 µs …  51.27 µs  in 10 ×   1982 runs
+production divmod short128      46.09 µs ±   2.47 µs    42.18 µs …  50.64 µs  in 10 ×   2042 runs
+aligned remainder short128      41.34 µs ±   6.16 µs    32.26 µs …  49.15 µs  in 10 ×   2380 runs
+production remainder short128   41.58 µs ±   1.87 µs    39.11 µs …  44.58 µs  in 10 ×   2463 runs
+baseline gcd short128          407.94 µs ±  20.14 µs   369.48 µs … 434.20 µs  in 10 ×    234 runs
+aligned gcd short128           283.52 µs ±  12.37 µs   261.68 µs … 303.17 µs  in 10 ×    395 runs
+aligned gcd two short128       260.77 µs ±  12.70 µs   243.92 µs … 287.85 µs  in 10 ×    370 runs
+production gcd short128        262.91 µs ±   7.01 µs   254.05 µs … 278.08 µs  in 10 ×    363 runs
+baseline divmod near32           1.48 ms ± 104.39 µs     1.30 ms …   1.60 ms  in 10 ×     64 runs
+aligned divmod near32          271.67 µs ±  15.26 µs   252.74 µs … 299.64 µs  in 10 ×    369 runs
+production divmod near32       261.53 µs ±  13.27 µs   250.43 µs … 285.61 µs  in 10 ×    344 runs
+aligned remainder near32       269.11 µs ±  11.54 µs   250.33 µs … 290.10 µs  in 10 ×    399 runs
+production remainder near32    270.94 µs ±  12.09 µs   257.23 µs … 289.11 µs  in 10 ×    397 runs
+baseline gcd near32             26.82 ms ± 367.41 µs    26.33 ms …  27.54 ms  in 10 ×      4 runs
+aligned gcd near32              10.07 ms ± 195.34 µs     9.81 ms …  10.31 ms  in 10 ×     10 runs
+aligned gcd two near32          10.29 ms ± 379.02 µs     9.96 ms …  11.13 ms  in 10 ×     11 runs
+production gcd near32            9.95 ms ± 532.90 µs     8.87 ms …  10.68 ms  in 10 ×     10 runs
+baseline divmod wide32           3.76 ms ± 187.08 µs     3.55 ms …   3.98 ms  in 10 ×     28 runs
+aligned divmod wide32            3.60 ms ±  78.36 µs     3.45 ms …   3.71 ms  in 10 ×     29 runs
+production divmod wide32         3.74 ms ± 222.96 µs     3.44 ms …   4.04 ms  in 10 ×     29 runs
+aligned remainder wide32         3.58 ms ± 362.56 µs     2.96 ms …   4.03 ms  in 10 ×     28 runs
+production remainder wide32      3.73 ms ± 114.86 µs     3.58 ms …   3.96 ms  in 10 ×     27 runs
+baseline gcd wide32              5.65 ms ± 155.10 µs     5.45 ms …   5.94 ms  in 10 ×     17 runs
+aligned gcd wide32               4.87 ms ± 312.46 µs     4.22 ms …   5.27 ms  in 10 ×     20 runs
+aligned gcd two wide32           5.09 ms ± 206.75 µs     4.84 ms …   5.36 ms  in 10 ×     20 runs
+production gcd wide32            5.04 ms ± 180.82 µs     4.70 ms …   5.29 ms  in 10 ×     21 runs
+Total tests: 1, passed: 1, failed: 0.

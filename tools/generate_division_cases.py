@@ -36,6 +36,14 @@ def generate():
               '    let q = @oracle.binary_from_hex(q)',
               '    let r = @oracle.binary_from_hex(r)',
               '    let g = @oracle.binary_from_hex(g)',
+              '    if is_zero(b) {',
+              '      assert_eq(divmod(a, b), None)',
+              '      assert_eq(remainder(a, b), None)',
+              '    } else {',
+              '      assert_eq(divmod(a, b), Some((q, r)))',
+              '      assert_eq(remainder(a, b), Some(r))',
+              '    }',
+              '    assert_eq(gcd(a, b), g)',
               '    for cutoff in [3, 8] {', '      let limit = @oracle.nat(cutoff)',
               '      if is_zero(b) {',
               '        assert_eq(trial_divmod(a, b, limit), None)',
@@ -46,6 +54,7 @@ def generate():
               '      }',
               '      assert_eq(trial_gcd(a, b, limit), g)',
               '      assert_eq(trial_remainder_gcd(a, b, limit), g)',
+              '      assert_eq(trial_remainder_gcd_two(a, b, limit), g)',
               '    }', '  }', '}', '']
     return '\n'.join(lines)
 

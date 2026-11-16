@@ -279,12 +279,12 @@ pub fn divmod(a : Binary, b : Binary) -> (Binary, Binary)? {
       )
     _ =>
       match equal_prefix(a.bits, b.bits) {
-        false => Some(divide_bits(a.bits, b))
+        false => Some(divide_adaptively(a, b))
         true =>
           match compare(a, b) {
             Less => Some((zero(), a))
             Equal => Some((one(), zero()))
-            Greater => Some(divide_bits(a.bits, b))
+            Greater => Some(divide_adaptively(a, b))
           }
       }
   }
@@ -292,27 +292,7 @@ pub fn divmod(a : Binary, b : Binary) -> (Binary, Binary)? {
 
 ///|
 pub fn gcd(a : Binary, b : Binary) -> Binary {
-  match (a.bits, b.bits) {
-    (Nil, _) => b
-    (_, Nil) => a
-    (Cons(true, Nil), _) | (_, Cons(true, Nil)) => one()
-    _ =>
-      match equal_prefix(a.bits, b.bits) {
-        false => {
-          let (_, r) = divide_bits(a.bits, b)
-          gcd(b, r)
-        }
-        true =>
-          match compare(a, b) {
-            Equal => a
-            Less => gcd(b, a)
-            Greater => {
-              let (_, r) = divide_bits(a.bits, b)
-              gcd(b, r)
-            }
-          }
-      }
-  }
+  gcd_adaptively(a, b)
 }
 
 ///|

@@ -1,0 +1,21 @@
+[Hosi121/morph] bench binary/division_cohort_wbtest.mbt:4 ("division and gcd cohorts preserve small and wide controls") ok
+name                       time (mean ± σ)         range (min … max) 
+baseline divmod short128     87.21 µs ±   5.40 µs    79.88 µs … 100.07 µs  in 10 ×   1175 runs
+aligned divmod short128      50.19 µs ±   1.96 µs    47.11 µs …  53.71 µs  in 10 ×   1994 runs
+aligned remainder short128   43.29 µs ± 787.76 ns    42.30 µs …  44.72 µs  in 10 ×   2315 runs
+baseline gcd short128       444.68 µs ±  22.48 µs   409.26 µs … 480.23 µs  in 10 ×    252 runs
+aligned gcd short128        328.11 µs ±  15.59 µs   297.52 µs … 347.34 µs  in 10 ×    322 runs
+aligned gcd two short128    267.07 µs ±  14.36 µs   253.50 µs … 291.66 µs  in 10 ×    362 runs
+baseline divmod near32        1.51 ms ±  82.63 µs     1.42 ms …   1.65 ms  in 10 ×     70 runs
+aligned divmod near32       264.08 µs ±  16.44 µs   245.32 µs … 293.29 µs  in 10 ×    376 runs
+aligned remainder near32    261.82 µs ±  11.57 µs   249.20 µs … 285.59 µs  in 10 ×    371 runs
+baseline gcd near32          27.76 ms ±   1.74 ms    25.29 ms …  30.80 ms  in 10 ×      4 runs
+aligned gcd near32           10.25 ms ± 441.19 µs     9.69 ms …  10.97 ms  in 10 ×     10 runs
+aligned gcd two near32       10.10 ms ± 222.04 µs     9.77 ms …  10.46 ms  in 10 ×     10 runs
+baseline divmod wide32        3.74 ms ± 149.18 µs     3.54 ms …   3.97 ms  in 10 ×     28 runs
+aligned divmod wide32         3.75 ms ± 281.22 µs     3.45 ms …   4.31 ms  in 10 ×     29 runs
+aligned remainder wide32      3.59 ms ± 310.25 µs     3.02 ms …   3.99 ms  in 10 ×     26 runs
+baseline gcd wide32           5.81 ms ± 297.54 µs     5.49 ms …   6.47 ms  in 10 ×     17 runs
+aligned gcd wide32            4.77 ms ± 283.49 µs     4.38 ms …   5.29 ms  in 10 ×     22 runs
+aligned gcd two wide32        4.61 ms ± 294.63 µs     3.96 ms …   4.85 ms  in 10 ×     22 runs
+Total tests: 1, passed: 1, failed: 0.

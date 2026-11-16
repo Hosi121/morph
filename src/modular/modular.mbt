@@ -26,8 +26,8 @@ pub fn value(m : Modulus) -> @binary.Binary {
 
 ///|
 pub fn reduce(m : Modulus, a : @binary.Binary) -> @binary.Binary {
-  match @binary.divmod(a, m.value) {
-    Some((_, remainder)) => remainder
+  match @binary.remainder(a, m.value) {
+    Some(remainder) => remainder
     None => @binary.zero()
   }
 }

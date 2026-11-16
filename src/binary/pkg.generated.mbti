@@ -45,6 +45,8 @@ pub fn pair(@core.Nat, Binary) -> Binary
 
 pub fn power(Binary, Binary) -> Binary
 
+pub fn remainder(Binary, Binary) -> Binary?
+
 pub fn sqrt_rem(Binary) -> (Binary, Binary)
 
 pub fn stein_gcd(Binary, Binary) -> Binary
