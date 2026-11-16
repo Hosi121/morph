@@ -7,7 +7,7 @@ fn replay_step(
 ) -> Result[State, @zass.Verdict] {
   match step {
     Rational(value) => {
-      if rational_coordinate(input) != Some(value) {
+      if !rational_coordinate(input).equal(Some(value)) {
         return Err(@zass.Refuted)
       }
       Ok(with_coordinate(state, input, @nf.rational(state.field, value)))
@@ -105,7 +105,7 @@ fn authenticated_state(
   proof : Certificate,
   fuel : @core.Nat,
 ) -> Result[State, @zass.Verdict] {
-  if proof.sources != @core.map(inputs, @cx.certificate) {
+  if !proof.sources.equal(@core.map(inputs, @cx.certificate)) {
     return Err(@zass.Refuted)
   }
   let zero = match @real.rational(@exact.rational_zero()) {
@@ -132,7 +132,7 @@ fn authenticated_state(
     Err(verdict) => return Err(verdict)
   }
   if !@nf.certificate(state.field).equal(@nf.certificate(proof.field)) ||
-    proof.coordinates != @core.map(state.coordinates, @nf.representative) {
+    !proof.coordinates.equal(@core.map(state.coordinates, @nf.representative)) {
     return Err(@zass.Refuted)
   }
   Ok(state)
