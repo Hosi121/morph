@@ -1,0 +1,17 @@
+Before (suffix DAG baseline, original subtract):
+LLL3x3 callback 51651526 / 5113 = 10102 allocations per invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":2308.2095731051345,\"min\":194.85697542787287,\"max\":252.40907933985332,\"mean\":230.82095731051345,\"median\":230.72563325183376,\"variance\":299.6806226236089,\"std_dev\":17.311285989885583,\"std_dev_pct\":7.499876177446686,\"median_abs_dev\":14.38585629682153,\"median_abs_dev_pct\":6.235049003471397,\"quartiles\":[224.91309963325182,230.72563325183376,243.9157261613692],\"iqr\":19.00262652811739,\"batch_size\":409,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
+
+After (only mainf72c026 subtract dispatch):
+LLL3x3 callback 55000645 / 5873 = 9365 allocations per invocation
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":2267.6517940206186,\"min\":211.57274773195877,\"max\":241.7464297938144,\"mean\":226.76517940206185,\"median\":225.8456443298969,\"variance\":135.70156911343116,\"std_dev\":11.649101644050976,\"std_dev_pct\":5.137076898123212,\"median_abs_dev\":15.490160474845363,\"median_abs_dev_pct\":6.858737754631476,\"quartiles\":[217.46161649484537,225.8456443298969,238.5214860824742],\"iqr\":21.05986958762884,\"batch_size\":485,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----
