@@ -20,7 +20,7 @@ def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--artifact", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--case", choices=["complex-roots", "field-power", "field-square"], default="complex-roots")
+    parser.add_argument("--case", choices=["complex-roots", "field-power", "field-square", "splitting-cubic", "splitting-unity"], default="complex-roots")
     parser.add_argument("--abba-repetitions", type=int, default=3)
     parser.add_argument("--timeout-seconds", type=float, default=5.0)
     args = parser.parse_args()
@@ -39,6 +39,12 @@ def main():
         expected = {"source": "(z^2+1)^2(z-1)", "roots": 3,
                     "multiplicity_sum": 5, "checked": True}
         scope = "process startup, input construction, preparation/factorization, enumeration, final exact checker; excludes compilation"
+    elif args.case in {"splitting-cubic", "splitting-unity"}:
+        unity = args.case == "splitting-unity"
+        modes = ["cartesian-unity", "radical-unity"] if unity else ["cartesian", "radical"]
+        expected = {"source": "z^3-1" if unity else "z^3-2", "splitting_degree": 2 if unity else 6,
+                    "ambient_degree": 4 if unity else 12, "roots": 3, "checked": True}
+        scope = "process startup, input construction, complete roots, shared ambient, minimal generated subfield, primitive presentation and final source-bound checker; excludes compilation"
     else:
         square = args.case == "field-square"
         modes = ["coordinate-square", "field-square"] if square else ["coordinate", "field"]

@@ -9,6 +9,7 @@ pub(all) enum SplittingError {
   RootFailure(@roots.RootError)
   CompositumFailure(@cohort.CompositumError)
   SubfieldFailure(@sub.SubfieldError)
+  CubicFailure(@cube.CubicError)
   InternalInvariant
 }
 
@@ -41,6 +42,8 @@ pub(all) enum PauseReason {
   CompositumBudget(@cohort.StopReason)
   CompositumVerification
   PrimitiveTrials
+  CubicBudget(@cube.StopReason)
+  CubicVerification
 }
 
 ///|
@@ -63,6 +66,8 @@ pub extend NumberRoot with Debug::{to_repr}
 #derive(Debug)
 enum Phase {
   Factoring
+  Cubic(@cube.Search)
+  VerifyingCubic(@cube.Common, @cube.Certificate)
   Enumerating(@factor.Search)
   VerifyingRoots(@factor.RootFamily)
   Materializing(
@@ -113,6 +118,25 @@ fn source_error(source : @poly.Polynomial) -> SplittingError? {
 /// Fully automatic route: QQ factors -> complete complex roots -> exact shared
 /// ambient K(i) -> smallest generated subfield -> primitive quotient and roots.
 pub fn start(source : @poly.Polynomial) -> Result[Search, SplittingError] {
+  match source_error(source) {
+    Some(error) => Err(error)
+    None =>
+      if @cube.eligible(source) {
+        match @cube.start(source) {
+          Ok(state) => Ok({ source, phase: Cubic(state), })
+          Err(error) => Err(CubicFailure(error))
+        }
+      } else {
+        Ok({ source, phase: Factoring, })
+      }
+  }
+}
+
+///|
+/// Explicit general Cartesian route retained for reproducible comparison.
+pub fn start_cartesian(
+  source : @poly.Polynomial,
+) -> Result[Search, SplittingError] {
   match source_error(source) {
     Some(error) => Err(error)
     None => Ok({ source, phase: Factoring, })
@@ -182,6 +206,28 @@ pub fn advance(
     Ok(Paused({ source, phase, }, reason))
   }
   match search.phase {
+    Cubic(state) =>
+      match @cube.advance(state, work) {
+        Err(error) => Err(CubicFailure(error))
+        Ok(@cube.Paused(state, reason)) =>
+          pause(Cubic(state), CubicBudget(reason))
+        Ok(@cube.Ready(common, proof)) => next(VerifyingCubic(common, proof))
+      }
+    VerifyingCubic(common, proof) =>
+      match @cube.check_result(source, common, proof, work.verification) {
+        @zass.Undecided =>
+          pause(VerifyingCubic(common, proof), CubicVerification)
+        @zass.Refuted => Err(InternalInvariant)
+        @zass.Proven => {
+          let values = @core.map(@cube.roots(common), fn(value) {
+            Root::{ value, multiplicity: Succ(Zero), }
+          })
+          match start_from_roots(source, @cube.common_field(common), values) {
+            Ok(state) => advance(state, budget)
+            Err(error) => Err(error)
+          }
+        }
+      }
     Factoring =>
       match
         @factor.prepare(

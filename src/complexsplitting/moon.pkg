@@ -8,6 +8,7 @@ import {
   "Hosi121/morph/complexalgebraic" @cx,
   "Hosi121/morph/complexfactor" @factor,
   "Hosi121/morph/complexroots" @roots,
+  "Hosi121/morph/cubicradical" @cube,
   "Hosi121/morph/zassenhaus" @zass,
 }
 

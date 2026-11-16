@@ -1,0 +1,10 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/complexfield" @cf,
+  "Hosi121/morph/complexsplitting" @split,
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")

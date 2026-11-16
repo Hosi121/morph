@@ -9,6 +9,7 @@ import {
   "Hosi121/morph/complexsubfield",
   "Hosi121/morph/compositum",
   "Hosi121/morph/core",
+  "Hosi121/morph/cubicradical",
   "Hosi121/morph/polynomial",
   "Hosi121/morph/zassenhaus",
   "moonbitlang/core/debug",
@@ -46,6 +47,8 @@ pub fn solve_from_roots(@polynomial.Polynomial, @complexfield.Field, @core.Chain
 pub fn source(Splitting) -> @polynomial.Polynomial
 
 pub fn start(@polynomial.Polynomial) -> Result[Search, SplittingError]
+
+pub fn start_cartesian(@polynomial.Polynomial) -> Result[Search, SplittingError]
 
 pub fn start_from_roots(@polynomial.Polynomial, @complexfield.Field, @core.Chain[Root]) -> Result[Search, SplittingError]
 
@@ -86,6 +89,8 @@ pub(all) enum PauseReason {
   CompositumBudget(@complexcompositum.StopReason)
   CompositumVerification
   PrimitiveTrials
+  CubicBudget(@cubicradical.StopReason)
+  CubicVerification
 }
 pub fn PauseReason::equal(Self, Self) -> Bool
 pub fn PauseReason::not_equal(Self, Self) -> Bool
@@ -139,6 +144,7 @@ pub(all) enum SplittingError {
   RootFailure(@complexroots.RootError)
   CompositumFailure(@complexcompositum.CompositumError)
   SubfieldFailure(@complexsubfield.SubfieldError)
+  CubicFailure(@cubicradical.CubicError)
   InternalInvariant
 }
 pub fn SplittingError::to_repr(Self) -> @debug.Repr

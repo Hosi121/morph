@@ -118,6 +118,58 @@ test "automatic cubic unity roots shrink ambient quartic to quadratic" {
 }
 
 ///|
+test "binomial cubic automatic splitting removes the redundant quadratic extension" {
+  for
+    fixture in [
+      ([-2, 0, 0, 1], 6),
+      ([2, 0, 0, 1], 6),
+      ([-1, 0, 0, 8], 2),
+      ([14, 0, 0, -7], 6),
+    ] {
+    let (coefficients, expected) = fixture
+    let p = split_poly(coefficients)
+    let value = split_finish(start(p).unwrap(), 12)
+    assert_eq(@oracle.int_of_nat(degree(value)), expected)
+    assert_eq(@oracle.int_of_nat(@cf.degree(ambient(value))), 2 * expected)
+    assert_true(check_result(p, ambient(value), value, certificate(value)))
+    let i = @cf.imaginary_unit(ambient(value))
+    assert_false(@sub.contains(generated_field(value), i))
+    let values = @oracle.array(roots(value))
+    let imaginary_sqrt3 = @cf.divide(
+        @cf.subtract(values[1].value, values[2].value).unwrap(),
+        values[0].value,
+      )
+      .unwrap()
+      .unwrap()
+    assert_true(@sub.contains(generated_field(value), imaginary_sqrt3))
+    let sqrt3 = @cf.multiply(@cf.negate(i), imaginary_sqrt3).unwrap()
+    assert_false(@sub.contains(generated_field(value), sqrt3))
+  }
+}
+
+///|
+test "cubic fast path and generic Cartesian route share source-bound results" {
+  let p = split_poly([-1, 0, 0, 1])
+  let fast = split_finish(start(p).unwrap(), 12)
+  let generic = split_finish(start_cartesian(p).unwrap(), 12)
+  assert_eq(degree(fast), degree(generic))
+  assert_eq(@core.length(roots(fast)), @core.length(roots(generic)))
+  assert_true(check_result(p, ambient(fast), fast, certificate(fast)))
+  assert_true(check_result(p, ambient(generic), generic, certificate(generic)))
+  let budget = split_budget()
+  let state = start(split_poly([-2, 0, 0, 1])).unwrap()
+  let state = match
+    advance(state, {
+      ..budget,
+      algebra: { ..budget.algebra, coordinate: Zero, },
+    }).unwrap() {
+    Paused(state, CubicBudget(@cube.IsolationBudget)) => state
+    _ => abort("cubic isolation budget should pause")
+  }
+  assert_eq(@oracle.int_of_nat(degree(split_finish(state, 12))), 6)
+}
+
+///|
 test "supplied quartic splitting retains exact degree eight and monic quotient" {
   let field = split_real_field([-2, 0, 0, 0, 1], 1, 2)
   let p = split_poly([-2, 0, 0, 0, 1])
