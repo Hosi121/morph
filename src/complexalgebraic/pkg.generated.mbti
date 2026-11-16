@@ -2,26 +2,152 @@
 package "Hosi121/morph/complexalgebraic"
 
 import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
   "Hosi121/morph/realalgebraic",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn add(Number, Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
+
+pub fn arithmetic_advance(Arithmetic, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
+
+pub fn arithmetic_start(Number, Number, Operation) -> Result[Arithmetic, @realalgebraic.AlgebraError]
+
+pub fn certificate(Number) -> NumberCertificate
+
+pub fn check_arithmetic(ArithmeticCertificate) -> Bool
+
+pub fn check_arithmetic_for(Number, Number, Operation, Number, ArithmeticCertificate) -> Bool
+
+pub fn check_arithmetic_result(Number, ArithmeticCertificate) -> Bool
+
+pub fn check_equality(EqualityCertificate) -> Bool
+
+pub fn check_equality_for(Number, Number, Bool, EqualityCertificate) -> Bool
+
+pub fn check_equality_result(Bool, EqualityCertificate) -> Bool
+
+pub fn check_number(NumberCertificate) -> Bool
+
+pub fn conjugate(Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
+
+pub fn divide(Number, Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
+
+pub fn equal(Number, Number, @core.Nat) -> Result[EqualityProgress, @realalgebraic.AlgebraError]
+
+pub fn equality_advance(Equality, @core.Nat) -> Result[EqualityProgress, @realalgebraic.AlgebraError]
+
+pub fn equality_start(Number, Number) -> Result[Equality, @realalgebraic.AlgebraError]
+
 pub fn imaginary_part(Number) -> @realalgebraic.Number
+
+pub fn is_zero(Number) -> Bool
+
+pub fn multiply(Number, Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
+
+pub fn negate(Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
 
 pub fn number(@realalgebraic.Number, @realalgebraic.Number) -> Number
 
+pub fn rational(@exact.Rational, @exact.Rational) -> Result[Number, @realalgebraic.AlgebraError]
+
 pub fn real_part(Number) -> @realalgebraic.Number
+
+pub fn subtract(Number, Number, @core.Nat) -> Result[ArithmeticProgress, @realalgebraic.AlgebraError]
 
 // Errors
 
 // Types and methods
 #derive(@debug.Debug)
+pub struct Arithmetic {
+  // private fields
+}
+pub fn Arithmetic::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ArithmeticCertificate {
+  left : NumberCertificate
+  right : NumberCertificate
+  operation : Operation
+  steps : @core.Chain[StepCertificate]
+  result : NumberCertificate
+}
+pub fn ArithmeticCertificate::equal(Self, Self) -> Bool
+pub fn ArithmeticCertificate::not_equal(Self, Self) -> Bool
+pub fn ArithmeticCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum ArithmeticProgress {
+  ArithmeticReady(Number, ArithmeticCertificate)
+  ArithmeticPaused(Arithmetic)
+}
+pub fn ArithmeticProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Equality {
+  // private fields
+}
+pub fn Equality::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct EqualityCertificate {
+  left : NumberCertificate
+  right : NumberCertificate
+  real : @realalgebraic.ComparisonCertificate
+  imaginary : @realalgebraic.ComparisonCertificate
+  equal : Bool
+}
+pub fn EqualityCertificate::equal(Self, Self) -> Bool
+pub fn EqualityCertificate::not_equal(Self, Self) -> Bool
+pub fn EqualityCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum EqualityProgress {
+  EqualityReady(Bool, EqualityCertificate)
+  EqualityPaused(Equality)
+}
+pub fn EqualityProgress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
 pub struct Number {
-  real : @realalgebraic.Number
-  imaginary : @realalgebraic.Number
+  // private fields
 }
 pub fn Number::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct NumberCertificate {
+  real : @realalgebraic.RootCertificate
+  imaginary : @realalgebraic.RootCertificate
+}
+pub fn NumberCertificate::equal(Self, Self) -> Bool
+pub fn NumberCertificate::not_equal(Self, Self) -> Bool
+pub fn NumberCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Operation {
+  Addition
+  Subtraction
+  Multiplication
+  Division
+  Negation
+  Conjugation
+}
+pub fn Operation::equal(Self, Self) -> Bool
+pub fn Operation::not_equal(Self, Self) -> Bool
+pub fn Operation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StepCertificate {
+  BinaryStep(@realalgebraic.ArithmeticCertificate)
+  UnaryStep(@realalgebraic.UnaryCertificate)
+  DivisionStep(@realalgebraic.QuotientCertificate)
+  RationalStep(@realalgebraic.RootCertificate)
+}
+pub fn StepCertificate::equal(Self, Self) -> Bool
+pub fn StepCertificate::not_equal(Self, Self) -> Bool
+pub fn StepCertificate::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
