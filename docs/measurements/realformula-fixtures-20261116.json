@@ -1,0 +1,29 @@
+{
+  "generator": "tools/generate_realformula_fixtures.py",
+  "seed": 20261116,
+  "oracle": "Python Fraction direct original-tree interpreter; MoonBit independently interprets source and prenex",
+  "scope": "Nonempty finite-domain syntactic-normalization validation; not RCF quantifier-elimination proof",
+  "fixtures": 104,
+  "domains": [
+    [
+      -1,
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      -2,
+      -1
+    ],
+    [
+      0
+    ]
+  ],
+  "free_assignments": 956,
+  "true_assignments": 535,
+  "false_assignments": 421,
+  "maximum_prefix_binders": 7
+}

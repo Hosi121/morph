@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-16",
+  "moon_version": "0.1.20261104 (940aa18 2026-11-04)",
+  "package": "src/realformula",
+  "scope": "Scope-safe prenex syntax normalization; no RCF quantifier-elimination proof claim",
+  "cpu": 10,
+  "serialization": "tools/measure Git-common-directory performance lock",
+  "log_directory": ".tools/realformula-20261116",
+  "tests_per_backend": 112,
+  "backends": {
+    "wasm-gc": {"passed": 112, "failed": 0, "wall_seconds": 0.36, "max_rss_kib": 65244},
+    "js": {"passed": 112, "failed": 0, "wall_seconds": 0.40, "max_rss_kib": 79968},
+    "native": {"passed": 112, "failed": 0, "wall_seconds": 3.33, "max_rss_kib": 107716}
+  },
+  "command_template": "tools/measure --cpu 10 /usr/bin/time -v tools/moon test src/realformula --target TARGET",
+  "independent_finite_domain_fixtures": 104,
+  "finite_domain_free_assignments": 956,
+  "injective_renaming_maps": 65,
+  "injective_renaming_target_assignments": 3805,
+  "checks": [
+    "tools/measure --cpu 10 tools/moon check --deny-warn",
+    "tools/moon fmt --check src/realformula",
+    "python3 tools/generate_realformula_fixtures.py --check",
+    "python3 tools/audit_purity.py"
+  ],
+  "performance_claim": "Validation run only; no speedup or scalability comparison"
+}
