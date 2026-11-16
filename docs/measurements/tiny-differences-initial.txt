@@ -1,0 +1,172 @@
+difference-candidates-native.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1466 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         9.23 µs ± 115.61 ns     9.07 µs …   9.47 µs  in 10 ×  10722 runs
+equal fast small225       8.89 µs ± 294.91 ns     8.62 µs …   9.66 µs  in 10 ×  11597 runs
+compare first small225    2.87 µs ±  63.77 ns     2.80 µs …   2.99 µs  in 10 ×  34704 runs
+lookup first small225     2.72 µs ±  25.43 ns     2.67 µs …   2.75 µs  in 10 ×  36489 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1496 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128        11.22 µs ± 336.96 ns    10.88 µs …  11.72 µs  in 10 ×   8945 runs
+compare first byte128   11.46 µs ± 288.05 ns    11.15 µs …  11.99 µs  in 10 ×   8805 runs
+lookup first byte128    11.82 µs ± 317.20 ns    11.32 µs …  12.21 µs  in 10 ×   8426 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1524 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         9.70 µs ± 135.57 ns     9.58 µs …  10.03 µs  in 10 ×  10204 runs
+compare first wide7    5.80 µs ± 148.99 ns     5.64 µs …   6.14 µs  in 10 ×  17611 runs
+lookup first wide7     5.70 µs ±  72.35 ns     5.60 µs …   5.81 µs  in 10 ×  17293 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-candidates-js.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1466 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         7.43 µs ± 179.07 ns     7.26 µs …   7.88 µs  in 10 ×  12203 runs
+equal fast small225       7.07 µs ± 246.55 ns     6.79 µs …   7.44 µs  in 10 ×  14204 runs
+compare first small225    3.56 µs ±  65.88 ns     3.48 µs …   3.69 µs  in 10 ×  26217 runs
+lookup first small225     2.75 µs ± 102.07 ns     2.68 µs …   3.03 µs  in 10 ×  35181 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1496 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128         6.69 µs ± 201.11 ns     6.49 µs …   7.15 µs  in 10 ×  13366 runs
+compare first byte128    7.28 µs ± 120.22 ns     7.11 µs …   7.44 µs  in 10 ×  13215 runs
+lookup first byte128     7.51 µs ± 383.42 ns     6.92 µs …   8.00 µs  in 10 ×  13255 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1524 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         5.91 µs ± 174.35 ns     5.69 µs …   6.17 µs  in 10 ×  17019 runs
+compare first wide7    3.68 µs ±  79.06 ns     3.59 µs …   3.82 µs  in 10 ×  26237 runs
+lookup first wide7     3.64 µs ±  58.14 ns     3.53 µs …   3.72 µs  in 10 ×  28837 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-candidates-wasm.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1466 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         5.48 µs ± 114.28 ns     5.37 µs …   5.73 µs  in 10 ×  16206 runs
+equal fast small225       5.25 µs ± 112.34 ns     5.10 µs …   5.42 µs  in 10 ×  19471 runs
+compare first small225    3.06 µs ±  78.32 ns     2.98 µs …   3.25 µs  in 10 ×  32850 runs
+lookup first small225     2.92 µs ±  57.91 ns     2.85 µs …   3.05 µs  in 10 ×  33370 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1496 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128         4.78 µs ± 156.26 ns     4.66 µs …   5.12 µs  in 10 ×  21118 runs
+compare first byte128    4.93 µs ± 201.93 ns     4.78 µs …   5.33 µs  in 10 ×  21117 runs
+lookup first byte128     5.03 µs ± 244.21 ns     4.82 µs …   5.47 µs  in 10 ×  20271 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1524 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         4.21 µs ± 150.60 ns     4.05 µs …   4.53 µs  in 10 ×  22960 runs
+compare first wide7    2.67 µs ±  38.33 ns     2.62 µs …   2.74 µs  in 10 ×  39065 runs
+lookup first wide7     2.69 µs ±  63.02 ns     2.61 µs …   2.81 µs  in 10 ×  37486 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-outlined-native.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1404 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         9.78 µs ± 573.38 ns     9.14 µs …  10.81 µs  in 10 ×  10631 runs
+equal fast small225       9.23 µs ± 405.76 ns     8.70 µs …  10.06 µs  in 10 ×  11253 runs
+compare first small225    2.95 µs ±  89.23 ns     2.84 µs …   3.11 µs  in 10 ×  31595 runs
+lookup first small225     2.70 µs ± 134.46 ns     2.57 µs …   2.94 µs  in 10 ×  34202 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1434 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128        11.30 µs ± 271.94 ns    11.01 µs …  11.86 µs  in 10 ×   7082 runs
+compare first byte128   11.78 µs ± 291.58 ns    11.41 µs …  12.25 µs  in 10 ×   8989 runs
+lookup first byte128    11.43 µs ± 247.29 ns    11.05 µs …  11.78 µs  in 10 ×   8141 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1462 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         9.96 µs ± 235.34 ns     9.66 µs …  10.37 µs  in 10 ×  10271 runs
+compare first wide7    6.03 µs ± 218.16 ns     5.72 µs …   6.37 µs  in 10 ×  17394 runs
+lookup first wide7     5.98 µs ± 162.42 ns     5.75 µs …   6.29 µs  in 10 ×  15850 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-outlined-js.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1404 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         7.64 µs ± 368.26 ns     7.20 µs …   8.16 µs  in 10 ×  12193 runs
+equal fast small225       7.24 µs ± 347.07 ns     6.79 µs …   7.70 µs  in 10 ×  13721 runs
+compare first small225    3.55 µs ± 170.85 ns     3.38 µs …   3.83 µs  in 10 ×  27757 runs
+lookup first small225     2.69 µs ± 118.04 ns     2.59 µs …   2.91 µs  in 10 ×  36562 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1434 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128         6.86 µs ± 272.66 ns     6.56 µs …   7.25 µs  in 10 ×  14051 runs
+compare first byte128    7.01 µs ± 349.13 ns     6.70 µs …   7.57 µs  in 10 ×  14169 runs
+lookup first byte128     6.97 µs ± 440.63 ns     6.58 µs …   7.79 µs  in 10 ×  14982 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1462 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         6.17 µs ± 271.40 ns     5.92 µs …   6.71 µs  in 10 ×  15557 runs
+compare first wide7    3.82 µs ± 130.02 ns     3.65 µs …   4.02 µs  in 10 ×  26746 runs
+lookup first wide7     4.19 µs ± 320.61 ns     3.72 µs …   4.61 µs  in 10 ×  26746 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-outlined-wasm.txt:
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1404 ("same ELF difference order controls for nonzero small words") ok
+name                   time (mean ± σ)         range (min … max) 
+original small225         5.71 µs ± 233.21 ns     5.40 µs …   6.03 µs  in 10 ×  16639 runs
+equal fast small225       5.37 µs ±  89.27 ns     5.21 µs …   5.51 µs  in 10 ×  18653 runs
+compare first small225    3.03 µs ±  69.39 ns     2.92 µs …   3.12 µs  in 10 ×  30738 runs
+lookup first small225     2.99 µs ±  61.66 ns     2.91 µs …   3.06 µs  in 10 ×  30674 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1434 ("same ELF difference byte fallback controls") ok
+name                  time (mean ± σ)         range (min … max) 
+original byte128         4.76 µs ± 138.47 ns     4.59 µs …   4.98 µs  in 10 ×  21686 runs
+compare first byte128    4.92 µs ± 123.15 ns     4.74 µs …   5.13 µs  in 10 ×  20914 runs
+lookup first byte128     5.13 µs ± 273.09 ns     4.79 µs …   5.59 µs  in 10 ×  20038 runs
+[Hosi121/morph] bench binary/difference_candidates_wbtest.mbt:1462 ("same ELF difference wide and identity controls") ok
+name                time (mean ± σ)         range (min … max) 
+original wide7         4.13 µs ± 117.15 ns     4.00 µs …   4.31 µs  in 10 ×  22740 runs
+compare first wide7    2.76 µs ± 127.69 ns     2.62 µs …   2.97 µs  in 10 ×  34732 runs
+lookup first wide7     2.69 µs ±  47.77 ns     2.64 µs …   2.79 µs  in 10 ×  37443 runs
+Total tests: 3, passed: 3, failed: 0.
+
+
+difference-candidates-tests.txt:
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+
+
+tiny-differences-selected-tests.txt:
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_differences.mbt:922:4 ]
+     │
+ 922 │ fn subtract_adaptively(a : Binary, b : Binary) -> Binary? {
+     │    ─────────┬─────────  
+     │             ╰─────────── Warning (unused_value): Unused function 'subtract_adaptively'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_differences.mbt:922:4 ]
+     │
+ 922 │ fn subtract_adaptively(a : Binary, b : Binary) -> Binary? {
+     │    ─────────┬─────────  
+     │             ╰─────────── Warning (unused_value): Unused function 'subtract_adaptively'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+Warning: [0001]
+     ╭─[ /home/hosi/morph/.tools/agents/number-theory-next/src/binary/tiny_differences.mbt:922:4 ]
+     │
+ 922 │ fn subtract_adaptively(a : Binary, b : Binary) -> Binary? {
+     │    ─────────┬─────────  
+     │             ╰─────────── Warning (unused_value): Unused function 'subtract_adaptively'
+─────╯
+Total tests: 1, passed: 1, failed: 0.
+Total tests: 1, passed: 1, failed: 0.
+
+
+profile-remaining-arithmetic.txt:
+arithmetic fn=0 category=0 calls=53735 allocations=53735 avg=1.000
+arithmetic fn=0 category=1 calls=967230 allocations=3482028 avg=3.600
+arithmetic fn=0 category=2 calls=419133 allocations=2278364 avg=5.436
+arithmetic fn=1 category=1 calls=204193 allocations=601832 avg=2.947
+arithmetic fn=1 category=2 calls=1397110 allocations=7318707 avg=5.238
+arithmetic fn=1 category=3 calls=720049 allocations=7125261 avg=9.896
+arithmetic fn=2 category=0 calls=21496 allocations=21496 avg=1.000
+arithmetic fn=2 category=1 calls=1794754 allocations=1794754 avg=1.000
+arithmetic fn=2 category=2 calls=2332103 allocations=2332103 avg=1.000
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"bench_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"bench_wbtest.mbt","index":0,"message":"@BATCH_BENCH { \"summaries\": [{\"sum\":1109.3593640804597,\"min\":106.82926862068965,\"max\":115.70893339080459,\"mean\":110.93593640804598,\"median\":110.12034367816094,\"variance\":9.09935583264534,\"std_dev\":3.016513854210741,\"std_dev_pct\":2.719149404495367,\"median_abs_dev\":2.9580451768965563,\"median_abs_dev_pct\":2.6861931938223655,\"quartiles\":[108.95666350574713,110.12034367816094,112.5972235632184],\"iqr\":3.6405600574712764,\"batch_size\":870,\"runs\":10}] }"}
+----- END MOON TEST RESULT -----

@@ -146,10 +146,7 @@ fn subtract_bits(
 ///|
 /// Underflow is explicit, rather than silently saturating or wrapping.
 pub fn subtract(a : Binary, b : Binary) -> Binary? {
-  match compare(a, b) {
-    Less => None
-    _ => Some(from_bits(subtract_bits(a.bits, b.bits, false)))
-  }
+  subtract_adaptively(a, b)
 }
 
 ///|
