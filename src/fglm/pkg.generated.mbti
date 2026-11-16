@@ -1,0 +1,160 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/fglm"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/f4",
+  "Hosi121/morph/heap",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Basis) -> Certificate
+
+pub fn check(@f4.Basis, Certificate) -> Result[Bool, FglmError]
+
+pub fn compare_monomial(Order, @core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> @core.Ordering
+
+pub fn convert(@f4.Basis, Order, @core.Nat, @core.Nat) -> Result[Progress, FglmError]
+
+pub fn dimension(Basis) -> @core.Nat
+
+pub fn leading(Order, @polynomial.Polynomial) -> @polynomial.Term?
+
+pub fn normal_form(Order, @polynomial.Polynomial, @core.Chain[@polynomial.Polynomial]) -> Result[@polynomial.Polynomial, FglmError]
+
+pub fn order(Basis) -> Order
+
+pub fn pending(State) -> @core.Nat
+
+pub fn polynomials(Basis) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn run(State, @core.Nat) -> Result[Progress, FglmError]
+
+pub fn s_polynomial(Order, @polynomial.Polynomial, @polynomial.Polynomial) -> Result[@polynomial.Polynomial, FglmError]
+
+pub fn source_standard_monomials(Basis) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn standard_monomials(Basis) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn start(@f4.Basis, Order, @core.Nat) -> Result[Progress, FglmError]
+
+pub fn state_statistics(State) -> Statistics
+
+pub fn statistics(Basis) -> Statistics
+
+pub fn step(State) -> Result[Progress, FglmError]
+
+pub fn variables(Basis) -> @core.Nat
+
+pub fn verify(Basis) -> Result[Bool, FglmError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Basis {
+  source : @f4.Basis
+  certificate : Certificate
+  source_standard : @core.Chain[@core.Chain[@core.Nat]]
+  standard_monomials : @core.Chain[@core.Chain[@core.Nat]]
+  statistics : Statistics
+}
+pub fn Basis::equal(Self, Self) -> Bool
+pub fn Basis::not_equal(Self, Self) -> Bool
+pub fn Basis::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  order : Order
+  polynomials : @core.Chain[@polynomial.Polynomial]
+  relations : @core.Chain[Relation]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FglmError {
+  InvalidSource
+  PositiveDimension
+  DimensionMismatch
+  ZeroDivisor
+  InternalInvariant
+}
+pub fn FglmError::equal(Self, Self) -> Bool
+pub fn FglmError::not_equal(Self, Self) -> Bool
+pub fn FglmError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Order {
+  Lex
+  GradedLex
+  GrevLex
+}
+pub fn Order::equal(Self, Self) -> Bool
+pub fn Order::not_equal(Self, Self) -> Bool
+pub fn Order::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Basis)
+  Paused(State)
+  Undecided(StopReason)
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Relation {
+  monomial : @core.Chain[@core.Nat]
+  standard_monomials : @core.Chain[@core.Chain[@core.Nat]]
+  coefficients : @core.Chain[@exact.Rational]
+}
+pub fn Relation::equal(Self, Self) -> Bool
+pub fn Relation::not_equal(Self, Self) -> Bool
+pub fn Relation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  source : @f4.Basis
+  order : Order
+  source_standard : @core.Chain[@core.Chain[@core.Nat]]
+  queue : @heap.Heap[@core.Chain[@core.Nat]]
+  seen : @core.Chain[@core.Chain[@core.Nat]]
+  standards : @core.Chain[@core.Chain[@core.Nat]]
+  vectors : @core.Chain[@core.Chain[@exact.Rational]]
+  polynomials : @core.Chain[@polynomial.Polynomial]
+  relations : @core.Chain[Relation]
+  processed : @core.Nat
+  skipped : @core.Nat
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Statistics {
+  processed : @core.Nat
+  independent : @core.Nat
+  dependent : @core.Nat
+  skipped : @core.Nat
+}
+pub fn Statistics::equal(Self, Self) -> Bool
+pub fn Statistics::not_equal(Self, Self) -> Bool
+pub fn Statistics::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum StopReason {
+  DimensionLimit
+}
+pub fn StopReason::equal(Self, Self) -> Bool
+pub fn StopReason::not_equal(Self, Self) -> Bool
+pub fn StopReason::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
