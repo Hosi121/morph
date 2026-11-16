@@ -1,0 +1,7 @@
+z^2-1: minimal degree=1; group order=1; all roots and full group [checked]
+z^2+1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-1: minimal degree=2; group order=2; all roots and full group [checked]
+z^3-2: minimal degree=6; group order=6; all roots and full group [checked]
+z^3-2: Gal=S3; all six permutations, r^3=t^2=1 and t*r*t=r^-1 [checked]
+cubic ambient degree12 -> splitting degree6: i and sqrt3 excluded, i*sqrt3 included [checked]
+z^4-2 (supplied exact roots): minimal degree=8; Gal=D4; faithful root action and relations [checked]

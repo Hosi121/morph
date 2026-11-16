@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：103パッケージ、276ソース。
-核のテスト宣言：3975、bench group：212。
+算法の核：108パッケージ、292ソース。
+核のテスト宣言：4040、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -34,12 +34,16 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [circuit](../src/circuit) | 2 | 3 | 0 | `boolean`, `core`, `sat` |
 | [complexalgebraic](../src/complexalgebraic) | 5 | 10 | 0 | `core`, `exact`, `polynomial`, `realalgebraic` |
 | [complexautomorphism](../src/complexautomorphism) | 2 | 10 | 0 | `complexfield`, `core`, `numberfield` |
+| [complexcompositum](../src/complexcompositum) | 3 | 16 | 0 | `complexalgebraic`, `complexfield`, `compositum`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `zassenhaus` |
 | [complexfactor](../src/complexfactor) | 3 | 16 | 0 | `binary`, `complexroots`, `core`, `exact`, `polynomial`, `zassenhaus` |
 | [complexfield](../src/complexfield) | 5 | 27 | 0 | `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexprimitive](../src/complexprimitive) | 2 | 11 | 0 | `algebra`, `complexfield`, `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexroots](../src/complexroots) | 5 | 23 | 0 | `binary`, `complexalgebraic`, `core`, `exact`, `polynomial`, `realalgebraic`, `realvariety`, `sturm`, `tarski` |
+| [complexsplitting](../src/complexsplitting) | 3 | 13 | 0 | `complexalgebraic`, `complexcompositum`, `complexfactor`, `complexfield`, `complexroots`, `complexsubfield`, `compositum`, `core`, `cubicradical`, `polynomial`, `zassenhaus` |
+| [complexsubfield](../src/complexsubfield) | 4 | 20 | 0 | `complexfield`, `core`, `exact`, `linear`, `matrix`, `polynomial` |
 | [compositum](../src/compositum) | 3 | 47 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `realvariety`, `zassenhaus` |
 | [core](../src/core) | 3 | 4 | 0 | — |
+| [cubicradical](../src/cubicradical) | 3 | 5 | 0 | `complexfield`, `compositum`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `sturm`, `zassenhaus` |
 | [cyclicrs](../src/cyclicrs) | 1 | 21 | 0 | `binary`, `core`, `galois`, `recurrence` |
 | [cyclotomic](../src/cyclotomic) | 1 | 10 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [cyk](../src/cyk) | 1 | 3 | 0 | `core` |
@@ -108,6 +112,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [smt](../src/smt) | 1 | 5 | 0 | `cdcl`, `core`, `difference`, `sat` |
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |
 | [spanning](../src/spanning) | 1 | 2 | 0 | `binary`, `core`, `graph`, `heap`, `sorting` |
+| [splittinggalois](../src/splittinggalois) | 3 | 11 | 0 | `complexfield`, `complexsplitting`, `complexsubfield`, `core`, `exact`, `polynomial` |
 | [sturm](../src/sturm) | 1 | 3 | 0 | `core`, `exact`, `polynomial` |
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [tarski](../src/tarski) | 3 | 402 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm` |
