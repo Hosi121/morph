@@ -1,0 +1,447 @@
+{
+  "reference": "Z3 qfnra-nlsat with independent exact SMT-LIB replay",
+  "z3_version": "5.4.1.0",
+  "wheel_version": "5.4.1.0",
+  "libz3_sha256": "529c335663f5f3e9143fd98a963266090348052f0f9fd7bf5fe891aad6ca5b35",
+  "transport_source_sha256": "7dd1ab1bfc632c6b335fc0bf7a45343c55e8b2785cb5fd22b02ec37765f27dd0",
+  "reviewed_source_commit": "5e33f3a",
+  "pair_count": 18,
+  "exact_queries": 36,
+  "subset_sat": 9,
+  "subset_unsat": 9,
+  "scope": "Finite whole/subset pairs; target SAT must never be refuted; incomplete shortened covers can conservatively refuse a genuine UNSAT target. Extra projection polynomials are helpers, never assumptions.",
+  "cases": [
+    {
+      "name": "zero equality weakening is satisfiable",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=0.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (distinct (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "82bb49528f6bedfb4436db0a0b8952b1f654d371dfbfa85b306de37ca4af43b5",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (= (+ (* 1 x0)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "fee2fa3125e9f37f50f89be834bd26c0192d6ba96617ec0fb342ca05aa0542c5",
+          "model": "(define-fun x0 () Real\n  0.0)"
+        }
+      ]
+    },
+    {
+      "name": "zero disequality weakening is satisfiable",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=1.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (distinct (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "82bb49528f6bedfb4436db0a0b8952b1f654d371dfbfa85b306de37ca4af43b5",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (distinct (+ (* 1 x0)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "c34387336829dca312c09de9753334910e4261c805ac3ac9191d6448f14d81ed",
+          "model": "(define-fun x0 () Real\n  1.0)"
+        }
+      ]
+    },
+    {
+      "name": "positive square with redundant fixed point",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "x^2+1 is positive for every real x; x=3 is a redundant conjunct.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (< (+ (* 1 x0 x0) (* 1)) 0) (= (+ (* 1 x0) (* (- 3))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "69deb31a1bad3b8091b922bc440f4c4869c683387cc2cf9fbfa36d32d78a9f0b",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (< (+ (* 1 x0 x0) (* 1)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "10f84a442567f5a8ff050690479ffa3b57ed30b0e905a17d8046a9c978ac493d",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "negative scaling cannot refute a positive weakening",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=1 satisfies the target; the dropped negative-scale bound was essential.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (>= (+ (* (- 3) x0)) 0) (> (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "1272ca67dbc2db19f5fd40b6a9db389a0c66157eab54184f14b5b4e22c310e17",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (> (+ (* 1 x0)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "909e1fc125cf314cfc4edf8a6600b13cdf2dda14e95f19da94365cbba4402236",
+          "model": "(define-fun x0 () Real\n  1.0)"
+        }
+      ]
+    },
+    {
+      "name": "negative scaling joint conflict remains",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "-3x>=0 implies x<=0, incompatible with x>0.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (>= (+ (* (- 3) x0)) 0) (> (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "1272ca67dbc2db19f5fd40b6a9db389a0c66157eab54184f14b5b4e22c310e17",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (>= (+ (* (- 3) x0)) 0) (> (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "1272ca67dbc2db19f5fd40b6a9db389a0c66157eab54184f14b5b4e22c310e17",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "closed endpoint core shares auxiliary projection",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "x=2 forces x^2-4=0.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 2))) 0) (and (distinct (+ (* 1 x0 x0) (* (- 4))) 0) (>= (+ (* 1 x0)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "41dea4f092f72cca7a0a653eddac862524e23791faba0eb319982e6fa5c07167",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 2))) 0) (distinct (+ (* 1 x0 x0) (* (- 4))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "df5c68c5acd950ce0ef6f45323c275f34e0e9899e82565ffb17941dc84836f83",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "endpoint disequality alone has models",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=0 is a target model.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (= (+ (* 1 x0) (* (- 2))) 0) (and (distinct (+ (* 1 x0 x0) (* (- 4))) 0) (>= (+ (* 1 x0)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "41dea4f092f72cca7a0a653eddac862524e23791faba0eb319982e6fa5c07167",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (distinct (+ (* 1 x0 x0) (* (- 4))) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "6f816041f1e6dba091ad5e087df9864d51e0454bcec23c78bcfb459da7ec2419",
+          "model": "(define-fun x0 () Real\n  0.0)"
+        }
+      ]
+    },
+    {
+      "name": "negated equality target remains satisfiable",
+      "arity": 1,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=1 is a target model.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and (not (= (+ (* 1 x0)) 0)) (= (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "f07bdbc386e4a99662052e982a524edf6f63e0c4b03d686d962d63c388de08ab",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (not (= (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "d1e2d980f58683728a45a0877f5487837e7d8470f9e36b058e9edddbf15db4be",
+          "model": "(define-fun x0 () Real\n  1.0)"
+        }
+      ]
+    },
+    {
+      "name": "genuine UNSAT subset hidden by old shortened leaf",
+      "arity": 1,
+      "source_cover": "pruned",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": false,
+      "reason": "The target is UNSAT, but the source stops at a depth-zero false leaf before signs of x^2+1 are observed. Safe producer refusal is expected.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and false (< (+ (* 1 x0 x0) (* 1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "af28ea0eaa50110cdf58eb6a0c497f11f988e1c7a10e582b9b88b5c92f9e9e85",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (< (+ (* 1 x0 x0) (* 1)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "10f84a442567f5a8ff050690479ffa3b57ed30b0e905a17d8046a9c978ac493d",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "false target can discard the old tree",
+      "arity": 1,
+      "source_cover": "pruned",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "False is independent of all coordinates and needs no old subtree.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert (and false (< (+ (* 1 x0 x0) (* 1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "af28ea0eaa50110cdf58eb6a0c497f11f988e1c7a10e582b9b88b5c92f9e9e85",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(assert false)\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "c9c6dad75da810a1ddd897423cd7db35b8a0acc1220aad6f59ea2441200ae94e",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "irrational section reduced conflict",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "Both roots of x^2-2 nullify the coefficient of y, making d*y zero.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (> (+ (* 1 x0 x0 x1) (* (- 2) x1)) 0) (= (+ (* 1 x1) (* (- 3))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "604c2b2c5c2cf4a59fd776b2b108d89bb8407d3b7c3a9fa4eeec171305d9d2e5",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (> (+ (* 1 x0 x0 x1) (* (- 2) x1)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "08889a864ee5704ded55fa3ee0748d14d4c0bc7f8dd3b29cd60880ff11344880",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "irrational source does not forbid an independent suffix",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "Any x with y=3 is a target model.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0 x0) (* (- 2))) 0) (and (> (+ (* 1 x0 x0 x1) (* (- 2) x1)) 0) (= (+ (* 1 x1) (* (- 3))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "604c2b2c5c2cf4a59fd776b2b108d89bb8407d3b7c3a9fa4eeec171305d9d2e5",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (= (+ (* 1 x1) (* (- 3))) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "f6ed3c84289213a3ab0c252edf51b93e79890330fdf961b1311fbaf3c7017314",
+          "model": "(define-fun x1 () Real\n  3.0)"
+        }
+      ]
+    },
+    {
+      "name": "bilinear zero-factor core",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "x=0 forces xy-1=-1.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x0 x1) (* (- 1))) 0) (>= (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "97cf0f74e27dc5785283539083521f260e68e8eec5a351c4b2c8903b7cd5cd7d",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (= (+ (* 1 x0 x1) (* (- 1))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "77441184c07cbb2c283558cbafd1ae85e14a86f921711a01762e6dbab613a6cb",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "bilinear graph alone has a model",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=y=1.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0)) 0) (and (= (+ (* 1 x0 x1) (* (- 1))) 0) (>= (+ (* 1 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "97cf0f74e27dc5785283539083521f260e68e8eec5a351c4b2c8903b7cd5cd7d",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (= (+ (* 1 x0 x1) (* (- 1))) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "060f55df2d759dfb2c5ac40b60d7ec4121196c66363e1386a475bb563a430cb9",
+          "model": "(define-fun x0 () Real\n  1.0)\n(define-fun x1 () Real\n  1.0)"
+        }
+      ]
+    },
+    {
+      "name": "closed boundary keeps both required bounds",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "x=0,y=0 satisfies both bounds; strict-product conjunct caused the conflict.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (>= (+ (* 1 x0)) 0) (and (<= (+ (* 1 x0)) 0) (> (+ (* 1 x0 x1)) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "ccb98dc3bc735a8a35d69444f5faef9646a80fdd77dc7c3c645b0e4202599188",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (>= (+ (* 1 x0)) 0) (<= (+ (* 1 x0)) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "672b165defe815881062643e1aa16723795dfb7996edb11258f219fa0c1ae673",
+          "model": "(define-fun x0 () Real\n  0.0)"
+        }
+      ]
+    },
+    {
+      "name": "tautological helper only partitions geometry",
+      "arity": 2,
+      "source_cover": "pruned",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "The target positive-square contradiction is uniform in y; y-x is a geometric helper, not an assumption.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (< (+ (* 1 x0 x0) (* 1)) 0) (or (= (+ (* (- 1) x0) (* 1 x1)) 0) (not (= (+ (* (- 1) x0) (* 1 x1)) 0)))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "d58ca98b966480c6affbb470de4a84a72e2d00da811dae27dca563f10af7b029",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (< (+ (* 1 x0 x0) (* 1)) 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "6dbeb7d27abc5a8197b5b665d9c6e83d630d3c0818e5c05562dccd5d8397b7e4",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "exact rational nullification core",
+      "arity": 2,
+      "source_cover": "full",
+      "expected_refute_on_cover": true,
+      "subset_satisfiable": false,
+      "reason": "x=2/3 nullifies 3x-2 and leaves -1.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0) (* (/ (- 2) 3))) 0) (and (= (+ (* 3 x0 x1) (* (- 2) x1) (* (- 1))) 0) (= (+ (* 1 x1) (* (- 1))) 0))))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "c3383f76bfb72f3378884c31afb7b0c3fc6205ff6a130072cec391e6f8448966",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n(declare-fun x0 () Real)\n(declare-fun x1 () Real)\n(assert (and (= (+ (* 1 x0) (* (/ (- 2) 3))) 0) (= (+ (* 3 x0 x1) (* (- 2) x1) (* (- 1))) 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "5b74bd3aa075b34d9e496d5fb6113cb2e693a0f3c0ef2b42b64f9a0637484b37",
+          "model": null
+        }
+      ]
+    },
+    {
+      "name": "zero dimensional true target is not a refutation",
+      "arity": 0,
+      "source_cover": "full",
+      "expected_refute_on_cover": false,
+      "subset_satisfiable": true,
+      "reason": "The unique empty coordinate tuple satisfies 0=0.",
+      "queries": [
+        {
+          "kind": "whole",
+          "expected": "unsat",
+          "smt2": "(set-logic QF_NRA)\n\n(assert (and (< (+ (* 1)) 0) (= 0 0)))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "cddddc7c543dd78c2f88c19f7af7d7f0567006d4e5eb64477c6e875b3fbf6cd7",
+          "model": null
+        },
+        {
+          "kind": "subset",
+          "expected": "sat",
+          "smt2": "(set-logic QF_NRA)\n\n(assert (= 0 0))\n(check-sat-using qfnra-nlsat)\n",
+          "sha256": "cdb58cf319a93ea6c91bcd66e96ae3c4aac8008e42d58e6dc39b1f480674d9e5",
+          "model": ""
+        }
+      ]
+    }
+  ]
+}
