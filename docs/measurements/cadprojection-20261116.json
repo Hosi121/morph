@@ -1,0 +1,292 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Construction/checker verification, not a comparative performance benchmark",
+  "implementation_commit": "957da0dac846ea91e348d73e8bf6c8d59c01d3c8",
+  "cpu": 8,
+  "serialization": "tools/measure uses the shared Git common-directory flock; commands are not nested",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "sdk": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+  "sympy": "1.14.0",
+  "one_step_cases": 15,
+  "hierarchy_cases": 10,
+  "empty_hierarchy_max_arity_tested": 7,
+  "backends": {
+    "wasm-gc": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f \"elapsed_seconds=%e peak_rss_kib=%M\" .tools/moon/bin/moon test src/cadprojection --target wasm-gc",
+      "tests": 33,
+      "passed": 33,
+      "failed": 0,
+      "elapsed_seconds": 1.13,
+      "peak_rss_kib": 235448,
+      "stdout": "Total tests: 33, passed: 33, failed: 0.\nelapsed_seconds=1.13 peak_rss_kib=235448\n"
+    },
+    "js": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f \"elapsed_seconds=%e peak_rss_kib=%M\" .tools/moon/bin/moon test src/cadprojection --target js",
+      "tests": 33,
+      "passed": 33,
+      "failed": 0,
+      "elapsed_seconds": 0.87,
+      "peak_rss_kib": 120820,
+      "stdout": "Total tests: 33, passed: 33, failed: 0.\nelapsed_seconds=0.87 peak_rss_kib=120820\n"
+    },
+    "native": {
+      "command": "tools/measure --cpu 8 /usr/bin/time -f \"elapsed_seconds=%e peak_rss_kib=%M\" .tools/moon/bin/moon test src/cadprojection --target native",
+      "tests": 33,
+      "passed": 33,
+      "failed": 0,
+      "elapsed_seconds": 3.64,
+      "peak_rss_kib": 538556,
+      "stdout": "Total tests: 33, passed: 33, failed: 0.\nelapsed_seconds=3.64 peak_rss_kib=538556\n"
+    }
+  },
+  "fixture_check": "Checked 15 full Collins and 10 derivative-closed hierarchies; SymPy 1.14.0.\n",
+  "purity_audit": "Purity gate passed: 220 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+  "check_deny_warn": "Finished. moon: ran 13 tasks, now up to date\n",
+  "source_sha256": {
+    "src/cadprojection/boundaries_wbtest.mbt": "c97344cc29522397c0c454d04d6770d547dbbf8d705f1d6a346641e4eb143114",
+    "src/cadprojection/collins.mbt": "8084d744fe9dbfc59a2b404515a4bbbb78192f3aa4f2a5b5d9c6828340fa7f6c",
+    "src/cadprojection/helpers_wbtest.mbt": "b16529877a5bc663f22dff2f3e88c4c73e28216d7fffc8431d8becffdfa5bd21",
+    "src/cadprojection/hierarchy.mbt": "e4c6c13bc076babd0ac79441594d288c036e72c14ee1e7ade8aab9a1690d775f",
+    "src/cadprojection/oracle_wbtest.mbt": "b4e576a5bc0e167b00a7c030494fe60709ab48ea70f20c7bb60ce31d4e4d954d",
+    "src/cadprojection/projection.mbt": "0faaf9267dadfceec6e076d2413a3ac9baa11eb54f6a9a00bccc7a8781e23bb1",
+    "src/cadprojection/types.mbt": "fc0d40e22ac3984050b11f553bde4a47e4522ea265cffd073a57970ada5064d5",
+    "src/cadprojection/moon.pkg": "b720ad549a266b661402bd4aeb907723448a1163f7b32a20c6aa7cde3b25e0c3",
+    "src/cadprojection/pkg.generated.mbti": "d012184062685c5ec16032bfc1ef7fb647a5e605d51b4246a9b1fd63278ffb05",
+    "tools/generate_cadprojection.py": "22321345bb3c53e24fca7c8acd8201d9f6a97414eb37fbb1226ebefbc2616cf9"
+  },
+  "one_step_summary": [
+    {
+      "case": 0,
+      "arity": 1,
+      "atoms": 0,
+      "coefficients": 0,
+      "reducta": 0,
+      "principal_rows": 0,
+      "principal_values": 0
+    },
+    {
+      "case": 1,
+      "arity": 1,
+      "atoms": 2,
+      "coefficients": 2,
+      "reducta": 1,
+      "principal_rows": 1,
+      "principal_values": 1
+    },
+    {
+      "case": 2,
+      "arity": 2,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 10
+    },
+    {
+      "case": 3,
+      "arity": 2,
+      "atoms": 3,
+      "coefficients": 8,
+      "reducta": 5,
+      "principal_rows": 13,
+      "principal_values": 24
+    },
+    {
+      "case": 4,
+      "arity": 2,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 10
+    },
+    {
+      "case": 5,
+      "arity": 2,
+      "atoms": 2,
+      "coefficients": 6,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 12
+    },
+    {
+      "case": 6,
+      "arity": 3,
+      "atoms": 0,
+      "coefficients": 0,
+      "reducta": 0,
+      "principal_rows": 0,
+      "principal_values": 0
+    },
+    {
+      "case": 7,
+      "arity": 3,
+      "atoms": 3,
+      "coefficients": 3,
+      "reducta": 2,
+      "principal_rows": 3,
+      "principal_values": 3
+    },
+    {
+      "case": 8,
+      "arity": 3,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 5,
+      "principal_rows": 11,
+      "principal_values": 14
+    },
+    {
+      "case": 9,
+      "arity": 3,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 10
+    },
+    {
+      "case": 10,
+      "arity": 3,
+      "atoms": 2,
+      "coefficients": 6,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 15
+    },
+    {
+      "case": 11,
+      "arity": 4,
+      "atoms": 0,
+      "coefficients": 0,
+      "reducta": 0,
+      "principal_rows": 0,
+      "principal_values": 0
+    },
+    {
+      "case": 12,
+      "arity": 4,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 5,
+      "principal_rows": 11,
+      "principal_values": 14
+    },
+    {
+      "case": 13,
+      "arity": 4,
+      "atoms": 2,
+      "coefficients": 5,
+      "reducta": 4,
+      "principal_rows": 8,
+      "principal_values": 11
+    },
+    {
+      "case": 14,
+      "arity": 4,
+      "atoms": 2,
+      "coefficients": 6,
+      "reducta": 5,
+      "principal_rows": 11,
+      "principal_values": 15
+    }
+  ],
+  "hierarchy_summary": [
+    {
+      "case": 0,
+      "arity": 0,
+      "level_family_sizes": [
+        0
+      ]
+    },
+    {
+      "case": 1,
+      "arity": 1,
+      "level_family_sizes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": 2,
+      "arity": 1,
+      "level_family_sizes": [
+        0,
+        3
+      ]
+    },
+    {
+      "case": 3,
+      "arity": 1,
+      "level_family_sizes": [
+        0,
+        3
+      ]
+    },
+    {
+      "case": 4,
+      "arity": 2,
+      "level_family_sizes": [
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "case": 5,
+      "arity": 2,
+      "level_family_sizes": [
+        0,
+        17,
+        5
+      ]
+    },
+    {
+      "case": 6,
+      "arity": 3,
+      "level_family_sizes": [
+        0,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "case": 7,
+      "arity": 3,
+      "level_family_sizes": [
+        0,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "case": 8,
+      "arity": 4,
+      "level_family_sizes": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "case": 9,
+      "arity": 4,
+      "level_family_sizes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": [
+    "No claim that CAD lifting or quantifier elimination is implemented by this package.",
+    "No algorithm runtime/speedup claim; timings include incremental build and test harness.",
+    "The checker recomputes the construction; it does not formally prove the projection theorem."
+  ]
+}
