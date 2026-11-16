@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：65パッケージ、122ソース。
-核のテスト宣言：498、bench group：182。
+算法の核：69パッケージ、135ソース。
+核のテスト宣言：1005、bench group：182。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -17,10 +17,12 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [algebra](../src/algebra) | 1 | 0 | 0 | `binary`, `exact` |
 | [autodiff](../src/autodiff) | 2 | 2 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [avl](../src/avl) | 1 | 2 | 0 | `binary`, `core` |
+| [bch](../src/bch) | 3 | 28 | 0 | `binary`, `core`, `galois`, `recurrence` |
 | [bdd](../src/bdd) | 4 | 13 | 4 | `binary`, `circuit`, `core`, `sat` |
 | [binary](../src/binary) | 9 | 35 | 25 | `core` |
 | [bipartite](../src/bipartite) | 1 | 3 | 0 | `core` |
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
+| [blossom](../src/blossom) | 2 | 12 | 0 | `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
 | [cdcl](../src/cdcl) | 5 | 42 | 65 | `binary`, `core`, `sat` |
 | [cek](../src/cek) | 1 | 3 | 0 | `core`, `infer` |
@@ -59,6 +61,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [primefield](../src/primefield) | 1 | 5 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
 | [primeprove](../src/primeprove) | 1 | 8 | 8 | `binary`, `core`, `factor`, `primality` |
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
+| [realcad](../src/realcad) | 5 | 5 | 0 | `core`, `exact`, `polynomial`, `sturm` |
 | [recurrence](../src/recurrence) | 2 | 17 | 0 | `core`, `rowreduce` |
 | [reedsolomon](../src/reedsolomon) | 1 | 4 | 0 | `binary`, `core`, `finitefield`, `matrix`, `modular`, `rowreduce` |
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |
@@ -76,4 +79,5 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [trie](../src/trie) | 1 | 2 | 0 | `core` |
 | [unify](../src/unify) | 1 | 2 | 0 | `core` |
+| [zassenhaus](../src/zassenhaus) | 3 | 462 | 0 | `binary`, `core`, `exact`, `fppoly`, `modular`, `polynomial`, `primefield` |
 | [zeroone](../src/zeroone) | 1 | 5 | 0 | `core`, `exact`, `matrix`, `simplex` |

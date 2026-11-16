@@ -87,6 +87,7 @@
 | 回路の検証・合成 | [Bool式→CNF・等価性miter](../src/circuit/circuit.mbt)・[上限付きNAND合成](../src/synthesis/encoding.mbt) |
 | BDD | [永続ROBDD・異manager間の演算](../src/bdd/apply.mbt)・[厳密モデル数・存在/全称量化](../src/bdd/count.mbt) |
 | SMT | [差分制約・負閉路の証拠](../src/difference/difference.mbt)・[CDCLと整数差分理論の接続](../src/smt/smt.mbt) |
+| 実数多項式制約 | [一変数CAD・厳密な符号分割・存在/全称の決定と証拠検査](../src/realcad/prepare.mbt) |
 | 組合せ探索 | [Algorithm X・primary/secondary列のexact cover](../src/exactcover/exactcover.mbt)・[再開可能な全解列挙](../src/exactcover/enumerate.mbt) |
 | 制約のモデル化 | [Nクイーン](../src/puzzles/queens.mbt)・[4×4/9×9数独](../src/puzzles/sudoku.mbt) |
 

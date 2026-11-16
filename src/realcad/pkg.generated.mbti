@@ -1,0 +1,166 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/realcad"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/sturm",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn cells(Decomposition) -> @core.Chain[Cell]
+
+pub fn certificate(Decomposition) -> Certificate
+
+pub fn check(Problem, Certificate) -> Decomposition?
+
+pub fn check_witness(Problem, Sample) -> Bool
+
+pub fn counterexample(Decomposition) -> Sample?
+
+pub fn evaluate_sample(Problem, Sample) -> Bool?
+
+pub fn formula(Problem) -> Formula
+
+pub fn polynomials(Problem) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn prepare(Formula) -> Result[Problem, BuildError]
+
+pub fn problem_of(Decomposition) -> Problem
+
+pub fn root_polynomial(Problem) -> @polynomial.Polynomial
+
+pub fn roots(Decomposition) -> @core.Chain[@sturm.Interval]
+
+pub fn run(Machine, @core.Nat) -> Progress
+
+pub fn satisfying_cells(Decomposition) -> @core.Chain[Cell]
+
+pub fn start(Problem) -> Machine
+
+pub fn step(Machine) -> Progress
+
+pub fn universally_true(Decomposition) -> Bool
+
+pub fn witness(Decomposition) -> Sample?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type AtomInfo
+pub fn AtomInfo::equal(Self, Self) -> Bool
+pub fn AtomInfo::not_equal(Self, Self) -> Bool
+pub fn AtomInfo::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum BuildError {
+  NotUnivariate
+  ArithmeticFailure
+}
+pub fn BuildError::equal(Self, Self) -> Bool
+pub fn BuildError::not_equal(Self, Self) -> Bool
+pub fn BuildError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Cell {
+  sample : Sample
+  signs : @core.Chain[@core.Ordering]
+  holds : Bool
+}
+pub fn Cell::equal(Self, Self) -> Bool
+pub fn Cell::not_equal(Self, Self) -> Bool
+pub fn Cell::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  roots : @core.Chain[@sturm.Interval]
+  cells : @core.Chain[Cell]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Decomposition {
+  problem : Problem
+  certificate : Certificate
+}
+pub fn Decomposition::equal(Self, Self) -> Bool
+pub fn Decomposition::not_equal(Self, Self) -> Bool
+pub fn Decomposition::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Formula {
+  Truth(Bool)
+  Atom(@polynomial.Polynomial, Relation)
+  Negation(Formula)
+  Conjunction(Formula, Formula)
+  Disjunction(Formula, Formula)
+}
+pub fn Formula::equal(Self, Self) -> Bool
+pub fn Formula::not_equal(Self, Self) -> Bool
+pub fn Formula::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Machine {
+  problem : Problem
+  phase : Phase
+}
+pub fn Machine::equal(Self, Self) -> Bool
+pub fn Machine::not_equal(Self, Self) -> Bool
+pub fn Machine::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Phase
+pub fn Phase::equal(Self, Self) -> Bool
+pub fn Phase::not_equal(Self, Self) -> Bool
+pub fn Phase::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Problem {
+  formula : Formula
+  atoms : @core.Chain[AtomInfo]
+  system : @sturm.System
+}
+pub fn Problem::equal(Self, Self) -> Bool
+pub fn Problem::not_equal(Self, Self) -> Bool
+pub fn Problem::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Complete(Decomposition)
+  Paused(Machine)
+  Fault
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Relation {
+  LessZero
+  AtMostZero
+  EqualZero
+  NotZero
+  AtLeastZero
+  GreaterZero
+}
+pub fn Relation::equal(Self, Self) -> Bool
+pub fn Relation::not_equal(Self, Self) -> Bool
+pub fn Relation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Sample {
+  RationalPoint(@exact.Rational)
+  AlgebraicPoint(@sturm.Interval)
+}
+pub fn Sample::equal(Self, Self) -> Bool
+pub fn Sample::not_equal(Self, Self) -> Bool
+pub fn Sample::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
