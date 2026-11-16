@@ -52,6 +52,10 @@ pub fn start(Plan, @core.Chain[@binary.Binary]) -> Result[Search, DecodeError]
 
 pub fn terms(Interpolation) -> @core.Chain[Term]
 
+pub fn valid(Validation) -> Bool
+
+pub fn validate(Plan) -> Validation
+
 // Errors
 
 // Types and methods
@@ -151,6 +155,20 @@ pub(all) struct Term {
 pub fn Term::equal(Self, Self) -> Bool
 pub fn Term::not_equal(Self, Self) -> Bool
 pub fn Term::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Validation {
+  alphabet_complete : Bool
+  support_distinct : Bool
+  dimensions : Bool
+  multiplicity_indices : Bool
+  weighted_monomials : Bool
+  nonzero_kernel_guaranteed : Bool
+  factorization_bound : Bool
+}
+pub fn Validation::equal(Self, Self) -> Bool
+pub fn Validation::not_equal(Self, Self) -> Bool
+pub fn Validation::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
