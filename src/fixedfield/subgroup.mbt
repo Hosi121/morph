@@ -51,8 +51,9 @@ fn fixed_by(
   members : @core.Chain[@core.Nat],
   input : @cf.Element,
 ) -> Bool {
+  let maps = @aut.automorphisms(group)
   @core.all(members, fn(index) {
-    match @core.nth(@aut.automorphisms(group), index) {
+    match @core.nth(maps, index) {
       Some(map) =>
         match @aut.apply(map, input) {
           Ok(value) => @cf.equal(input, value)
@@ -97,6 +98,7 @@ fn actions(
   members : @core.Chain[@core.Nat],
 ) -> @core.Chain[@matrix.Matrix[@exact.Rational]]? {
   let field = @aut.source(group)
+  let maps = @aut.automorphisms(group)
   let basis = match ambient_basis(field) {
     Some(value) => value
     None => return None
@@ -107,7 +109,7 @@ fn actions(
     match todo {
       Nil => Some(Nil)
       Cons(index, rest) =>
-        match @core.nth(@aut.automorphisms(group), index) {
+        match @core.nth(maps, index) {
           Some(map) =>
             match (action(map, basis, @cf.degree(field)), go(rest)) {
               (Some(matrix), Some(tail)) => Some(Cons(matrix, tail))

@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：101パッケージ、270ソース。
-核のテスト宣言：3957、bench group：212。
+算法の核：103パッケージ、276ソース。
+核のテスト宣言：3972、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -33,8 +33,9 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [cek](../src/cek) | 1 | 3 | 0 | `core`, `infer` |
 | [circuit](../src/circuit) | 2 | 3 | 0 | `boolean`, `core`, `sat` |
 | [complexalgebraic](../src/complexalgebraic) | 5 | 10 | 0 | `core`, `exact`, `polynomial`, `realalgebraic` |
+| [complexautomorphism](../src/complexautomorphism) | 2 | 10 | 0 | `complexfield`, `core`, `numberfield` |
 | [complexfactor](../src/complexfactor) | 3 | 16 | 0 | `binary`, `complexroots`, `core`, `exact`, `polynomial`, `zassenhaus` |
-| [complexfield](../src/complexfield) | 4 | 27 | 0 | `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
+| [complexfield](../src/complexfield) | 5 | 27 | 0 | `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexprimitive](../src/complexprimitive) | 2 | 11 | 0 | `algebra`, `complexfield`, `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexroots](../src/complexroots) | 5 | 23 | 0 | `binary`, `complexalgebraic`, `core`, `exact`, `polynomial`, `realalgebraic`, `realvariety`, `sturm`, `tarski` |
 | [compositum](../src/compositum) | 3 | 47 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `realvariety`, `zassenhaus` |
@@ -55,6 +56,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [fft](../src/fft) | 1 | 3 | 0 | `core` |
 | [fglm](../src/fglm) | 4 | 89 | 0 | `core`, `exact`, `f4`, `heap`, `linear`, `matrix`, `polynomial`, `sorting` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
+| [fixedfield](../src/fixedfield) | 3 | 5 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
 | [fppoly](../src/fppoly) | 4 | 20 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
