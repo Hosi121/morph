@@ -53,13 +53,13 @@ Native, JS, and WasmGC each pass **185/185** executed tests. The driver checks t
 
 ## Correspondence lock and reproducibility
 
-The dedicated source map records the Lean file hash, seven relevant MoonBit function token hashes, both full polynomial source-file hashes, the original generic-evaluator hash, and a human-readable function correspondence. Normal validation rejects any map mismatch before compiling. A negative control mutates the gap expression in an artifact copy and confirms the drift gate detects it. These hashes detect changed correspondence; they do not prove translation. This review's model lives under `formal/reviews`, so the existing top-level formal source map is unchanged. Its established gate does not automatically cover this new model: use the dedicated review command.
+The dedicated source map records the Lean file hash, seven relevant MoonBit function token hashes, both full polynomial source-file hashes, the original generic-evaluator hash, and a human-readable function correspondence. Normal validation rejects any map mismatch before compiling. A negative control mutates the gap expression in an artifact copy and confirms the drift gate detects it. These hashes detect changed correspondence; they do not prove translation. At the review commit, this model lived under `formal/reviews` with a dedicated source map. After adoption in `00b220e`, integration commit `d15b936` also registered its seven source regions in the ordinary 31-region drift gate and added this model to `tools/check_formal`. The dedicated command additionally reruns the independent QQ oracle.
 
 ```sh
 tools/measure --cpu 10 python3 tools/review_sparse_horner.py \
-  --source-root /home/hosi/morph-evaluation-20261116
+  --source-root .
 ```
 
 After a real source/model change has been reviewed, `--record` explicitly renews the lock. Recording alone never performs a proof or a test. The `--lean` option can select another copy of the pinned Lean 4.19.0 checker. If the candidate is integrated into a different worktree, pass that path as `--source-root`; unchanged source hashes remain valid.
 
-Retained artifacts are `.tools/sparse-horner-review-20261116/validation.json`, `lean.log`, `lean-version.log`, `test-native.log`, `test-js.log`, `test-wasm-gc.log`, `fraction-fixtures.json`, `copied-source.json`, `drift-control.json`, and the complete isolated harness. Validation uses the shared CPU 10 lock; recorded incremental wall times are not benchmarks. This is a review-only local commit, with no adoption of the optimization, push, merge, or deployment. Previous algorithm branches and all artifacts remain preserved.
+Retained artifacts are `.tools/sparse-horner-review-20261116/validation.json`, `lean.log`, `lean-version.log`, `test-native.log`, `test-js.log`, `test-wasm-gc.log`, `fraction-fixtures.json`, `copied-source.json`, `drift-control.json`, and the complete isolated harness. Validation uses the shared CPU 10 lock; recorded incremental wall times are not benchmarks. The review commit itself made no adoption or performance decision. The later integration adopted the implementation; its [performance evidence](sparse-horner-20261116.md) is separate. Review artifacts and frozen executable hashes were preserved before removing the completed candidate worktree.

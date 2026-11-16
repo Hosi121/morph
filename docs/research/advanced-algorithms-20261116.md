@@ -40,3 +40,5 @@
 
 - 08:25 UTC: 第一段階の統合検査の完了を確認。`6934453`の計算核でnative/JS/Wasm GC各1,339テスト、24 Python、157純記号ソース、78API、既存Leanモデルが通過。各検査の[全出力](../measurements/advanced-20261116-first-validation.txt)を保存。
 - 追加のbootstrap: F4から零次元系の実解表現へ、パリティゲームからμ-calculusモデル検査へ進める。実代数的数の証拠と返却値の束縛も独立レビューで補強。
+
+- 09:08 UTC: 第二段階の統合検証`12db9d8`がnative/JS/WasmGC各1,874テスト、178純記号ソース、83API、31モデル対応領域で成功。[全出力](../measurements/advanced-20261116-second-validation.txt)。疎Hornerの採用、数体、FGLM、分離線形形式、μ-calculusまでを含む。
