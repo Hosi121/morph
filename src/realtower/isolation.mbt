@@ -31,7 +31,7 @@ fn bounding_interval(bound : @exact.Rational) -> @sturm.Interval {
 /// Strict Cauchy radius B > 1 + sum |a_i| for the monic squarefree polynomial.
 pub fn check_bound(value : System, proof : BoundCertificate) -> Bool {
   value.certificate.equal(proof.system) &&
-  check_system(value.polynomial, proof.system) &&
+  system_payload(value, proof.system) &&
   @exact.rational_compare(proof.bound, @exact.rational_zero()).equal(Greater) &&
   (match
     absolute_sum(value.polynomial.field, without_last(value.squarefree.values)) {
@@ -95,12 +95,12 @@ pub fn check_isolation_result(
   proof : SolutionCertificate,
 ) -> Bool {
   value.equal(result.system.polynomial) &&
-  result.system.certificate.equal(proof.system) &&
+  system_payload(result.system, proof.system) &&
   result.certificate.equal(proof) &&
   @core.map(result.roots, root_certificate).equal(proof.roots) &&
   @core.all(result.roots, fn(root) {
     value.equal(root.system.polynomial) &&
-    root.system.certificate.equal(proof.system)
+    system_payload(root.system, proof.system)
   }) &&
   check_isolation(value, proof)
 }

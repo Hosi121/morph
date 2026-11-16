@@ -246,3 +246,34 @@ test "no roots constants invalid intervals and semantic leading zeros" {
   assert_true(count_between(sys, interval(1, 1)) is Err(InvalidInterval))
   assert_true(root_in_interval(sys, interval(-2, 2)) is Err(InvalidInterval))
 }
+
+///|
+test "checkers bind opaque system and root and solution result payloads" {
+  let field = rational_field()
+  let input = p(field, [-2, 0, 1])
+  let sys = must(system(input))
+  let span = interval(-2, 2)
+  let forged : System = {
+    ..sys,
+    sequence: Cons(Cons(raw_one(field), Nil), Nil),
+  }
+  let false_count = must(count_between(forged, span))
+  assert_true(false_count.count.equal(Zero))
+  assert_false(check_count(forged, span, Zero, false_count))
+  let actual = must(count_between(sys, span))
+  let wrong_squarefree : System = { ..sys, squarefree: one(field), }
+  assert_false(check_count(wrong_squarefree, span, actual.count, actual))
+  let root = must(root_in_interval(sys, interval(1, 2)))
+  let broken_root : Root = { ..root, system: forged, }
+  assert_false(check_root_result(input, broken_root, root_certificate(root)))
+  assert_true(adjoin(broken_root) is Err(InvalidCertificate))
+  let result = finish(must(isolate(sys)), 100)
+  let proof = solution_certificate(result)
+  let broken_result : SolutionSet = { ..result, system: forged, }
+  assert_false(check_isolation_result(input, broken_result, proof))
+  let broken_roots : SolutionSet = {
+    ..result,
+    roots: @core.map(result.roots, fn(r) { Root::{ ..r, system: forged, } }),
+  }
+  assert_false(check_isolation_result(input, broken_roots, proof))
+}

@@ -48,3 +48,16 @@ PRS と符号決定は再計算する。
 6テストが native / wasm-gc / JS の各 backend で成功。
 [測定条件と検査範囲](../measurements/realtower-20261116.md)に記録した。
 次段階は独立な Fraction/SymPy による平坦な数体 oracle と相対根分離の照合。
+
+## Opaque 結果 payload の検査強化
+
+独立 review と自己点検により、外部から構築できない `System` の内部 sequence を
+white-box で別の多項式の sequence に差し替えた場合、初版 `check_count` が
+source 証明書だけを再計算して受理する例を確認した。例えば `x²-2` の source に
+`x²+1` の sequence を入れ、`(-2,2]` の根数0を与える例である。
+
+`system_payload` で source から正規の System 全体を再構築して照合するようにし、
+count、bound、Root、SolutionSet 内の squarefree/sequence を含む payload を束縛した。
+同じ差し替えを Root/SolutionSet に行う white-box 受入検査が native で成功した。
+外部クライアントに opaque 型の偽造を許す API はないが、checker の検査対象を
+公開証明書だけでなく返却結果全体にも揃えるための修正である。

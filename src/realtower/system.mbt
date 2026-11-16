@@ -25,6 +25,18 @@ pub fn system(value : Polynomial) -> Result[System, TowerError] {
 }
 
 ///|
+/// Bind opaque result data as well as the public certificate source.
+fn system_payload(value : System, proof : SystemCertificate) -> Bool {
+  value.certificate.equal(proof) &&
+  same_field(value.polynomial.field, proof.field) &&
+  value.polynomial.values.equal(proof.polynomial) &&
+  (match system(value.polynomial) {
+    Ok(expected) => expected.equal(value) && expected.certificate.equal(proof)
+    Err(_) => false
+  })
+}
+
+///|
 pub fn check_system(value : Polynomial, proof : SystemCertificate) -> Bool {
   same_field(value.field, proof.field) &&
   value.values.equal(proof.polynomial) &&
@@ -83,7 +95,7 @@ pub fn check_count(
   value.certificate.equal(proof.system) &&
   interval.equal(proof.interval) &&
   count.equal(proof.count) &&
-  check_system(value.polynomial, proof.system) &&
+  system_payload(value, proof.system) &&
   (match count_between(value, interval) {
     Ok(c) => c.equal(proof)
     Err(_) => false
@@ -136,7 +148,7 @@ pub fn check_root_result(
 ) -> Bool {
   value.equal(root.system.polynomial) &&
   root.certificate.equal(proof) &&
-  root.system.certificate.equal(proof.system) &&
+  system_payload(root.system, proof.system) &&
   check_root(value, proof)
 }
 
