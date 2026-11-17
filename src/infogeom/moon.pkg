@@ -4,6 +4,7 @@ import {
   "Hosi121/morph/probability",
   "Hosi121/morph/matrix",
   "Hosi121/morph/linear",
+  "Hosi121/morph/polynomial",
 }
 
 import {

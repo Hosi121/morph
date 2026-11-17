@@ -1,0 +1,119 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/infogeom"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/probability",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn alpha_lower(Model, @exact.Rational) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
+
+pub fn at(Family, @core.Chain[@exact.Rational]) -> Result[PolynomialPoint, FamilyError]
+
+pub fn cubic(Model) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
+
+pub fn dimension(Model) -> @core.Nat
+
+pub fn distribution(Model) -> @probability.Distribution
+
+pub fn family(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Family, FamilyError]
+
+pub fn family_dimension(Family) -> @core.Nat
+
+pub fn fisher(Model) -> @matrix.Matrix[@exact.Rational]
+
+pub fn jets(Model) -> @core.Chain[SampleJet]
+
+pub fn local_model(PolynomialPoint) -> Model
+
+pub fn metric_first(Model) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
+
+pub fn metric_second(PolynomialPoint) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]?
+
+pub fn model(@core.Nat, @core.Chain[SampleJet]) -> Result[Model, ModelError]
+
+pub fn natural_gradient(Model, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], ModelError]
+
+pub fn outcome_polynomials(Family) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn scores(Model) -> @matrix.Matrix[@exact.Rational]?
+
+// Errors
+
+// Types and methods
+pub struct Family {
+  dimension : @core.Nat
+  derivatives : @core.Chain[PolynomialDerivatives]
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FamilyError {
+  EmptyFamily
+  PolynomialDimension
+  NotNormalizedPolynomial
+  PointDimension
+  InvalidJet(ModelError)
+  InternalDerivative
+}
+pub fn FamilyError::equal(Self, Self) -> Bool
+pub fn FamilyError::not_equal(Self, Self) -> Bool
+pub fn FamilyError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Model {
+  dimension : @core.Nat
+  samples : @core.Chain[Sample]
+  distribution : @probability.Distribution
+  metric : @matrix.Matrix[@exact.Rational]
+}
+pub fn Model::equal(Self, Self) -> Bool
+pub fn Model::not_equal(Self, Self) -> Bool
+pub fn Model::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum ModelError {
+  EmptySampleSpace
+  DimensionMismatch
+  NotInterior
+  NotNormalized
+  DerivativeNotNormalized
+  HessianNotSymmetric
+  SingularInformation
+  InternalShape
+}
+pub fn ModelError::equal(Self, Self) -> Bool
+pub fn ModelError::not_equal(Self, Self) -> Bool
+pub fn ModelError::to_repr(Self) -> @debug.Repr
+
+type PolynomialDerivatives
+
+pub struct PolynomialPoint {
+  model : Model
+  third : @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
+}
+
+#derive(Eq, @debug.Debug)
+type Sample
+pub fn Sample::equal(Self, Self) -> Bool
+pub fn Sample::not_equal(Self, Self) -> Bool
+pub fn Sample::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SampleJet {
+  probability : @exact.Rational
+  gradient : @core.Chain[@exact.Rational]
+  hessian : @matrix.Matrix[@exact.Rational]
+}
+pub fn SampleJet::equal(Self, Self) -> Bool
+pub fn SampleJet::not_equal(Self, Self) -> Bool
+pub fn SampleJet::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Tensor = @core.Chain[@matrix.Matrix[@exact.Rational]]
+
+// Traits
