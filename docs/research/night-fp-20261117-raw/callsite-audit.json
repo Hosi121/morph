@@ -1,0 +1,56 @@
+{
+  "base": "ab22a4a22625f4beb2bd2a49b836f769c941ef90",
+  "falsified_premise": "modular.multiply does not re-reduce operands; it reduces only binary.multiply(a,b). Baseline fppoly.scale does not normalize scalar first.",
+  "baseline_modular_multiply": "pub fn multiply(\n  m : Modulus,\n  a : @binary.Binary,\n  b : @binary.Binary,\n) -> @binary.Binary {\n  reduce(m, @binary.multiply(a, b))\n}\n",
+  "baseline_public_scale": "pub fn scale(value : Polynomial, scalar : @binary.Binary) -> Polynomial {\n  match characteristic_two(value.field) {\n    true =>\n      return match @binary.odd(scalar) {\n        true => value\n        false => zero(value.field)\n      }\n    false => ()\n  }\n  let modulus = @primefield.modulus(value.field)\n  {\n    field: value.field,\n    coefficients: trim_reduced(\n      @core.map(value.coefficients, fn(coefficient) {\n        @modular.multiply(modulus, coefficient, scalar)\n      }),\n    ),\n  }\n}\n",
+  "invariants": [
+    "Opaque Polynomial stores reduced coefficients, trimmed at the high end.",
+    "multiply_coefficients receives only opaque polynomial coefficient chains.",
+    "divide_loop coefficient is a canonical leading coefficient and inverse_leading comes from modular.inverse, which returns signed_reduce.",
+    "Public scale accepts arbitrary Binary scalar; normalize it once before any canonical-only product helper.",
+    "Derivative exponent and public evaluate point can exceed p; their generic modular.multiply calls remain untouched.",
+    "GF2 dispatch and all three independent polynomial checker implementations remain unchanged."
+  ],
+  "unchanged_checks": [
+    {
+      "path": "src/fppoly/characteristic_two.mbt",
+      "sha256": "1a1a1c470339077ec6c927cef92c4432e05ff789f39ef9f22869e2c432c508d9",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/irreducibility.mbt",
+      "sha256": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/factorization.mbt",
+      "sha256": "9d1ee7da0b5d4c99a35611248e308c91e6e3e99800f61d4e761ee4b0fd76ff3d",
+      "unchanged": true
+    },
+    {
+      "function": "fn derivative_coefficients(",
+      "sha256": "8f2fd58c00b917db61d58eea2beaa6aba942265f71ef3e4c3e3541b62612c480",
+      "unchanged": true
+    },
+    {
+      "function": "pub fn derivative(",
+      "sha256": "eaaf751212b3c73a8c5fb5d46fcc3cb08c1221758d05f1802ae8e6f047cbf182",
+      "unchanged": true
+    },
+    {
+      "function": "pub fn evaluate(",
+      "sha256": "b7c4df1e74b21ef0c8bf3d64d2f1d149c76696cb905b2be52bbf9f5e249e49a2",
+      "unchanged": true
+    },
+    {
+      "function": "pub fn multiply(",
+      "sha256": "42f16f47c7e7f138f5cd9c0e7c1fa342aaaa8e9393073acc8e52ac66d52caa28",
+      "unchanged": true
+    },
+    {
+      "function": "pub fn divide(",
+      "sha256": "1d2ba18db224ed253d627a7e5d571b0e447c5dede7f58583c134fece41ba5d87",
+      "unchanged": true
+    }
+  ]
+}

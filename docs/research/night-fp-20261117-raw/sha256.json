@@ -1,0 +1,11 @@
+{
+  "after-initial-snapshot.json": "29d8fcd83f5c2f5ea1f8ef192a71cb6f372ff3d8425e3629f15e563f4ac91acd",
+  "api-diff.json": "1f030cf42c93ade70a8d3f51ec9d37b5f01ebcec47efd76e256f036196cdc2e9",
+  "before-snapshot.json": "ed6d4c0c44fa9604f3fc16b1c4c917670a8e5d581ee00129f26dc3181f63e8c6",
+  "calibration.json": "c43805b176c4165e1d4057277f834ea3f283059d343405b50afb7b9ea3979646",
+  "callsite-audit.json": "fddc49b500d71845498197697e14c7f31736b70c5d5efd04194c0f597c9a51e0",
+  "freeze_snapshot.py": "4f11ecbb0040b2c832f1f645588430da38e8eac22dbc86daea8a9da0ea4f14f8",
+  "initial-abba.json": "6ca9edf7bf518691ae66e373d8b85e6e69b52dcdb170899de1447d8f70ec3c51",
+  "validation.json": "e21f42d8bc33d0b46d4a3e26ff1fb2b1afa25d77df0ff887d9cd4d2d99017b17",
+  "../night-fp-20261117.md": "eaa626bcdeb135f4de355037b2817d7d14e131d87f4b2c780d0fdf905c9961f8"
+}
