@@ -1,0 +1,96 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/relativehomology"
+
+import {
+  "Hosi121/morph/chainhomology",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/homology",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ambient(Pair) -> @homology.Complex
+
+pub fn apply_connecting(ConnectingMap, @core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?
+
+pub fn boundary(Pair, @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn boundary_squared_zero(Pair, @core.Nat) -> Bool
+
+pub fn check_connecting(Pair, @core.Nat, @matrix.Matrix[@exact.Integer], ConnectingMap) -> Bool
+
+pub fn check_result(Pair, @core.Nat, @homology.ResultGroup, Certificate) -> Bool
+
+pub fn compute(Pair, @core.Nat, @core.Nat) -> Computation
+
+pub fn connect(Pair, @core.Nat, Certificate, @homology.Certificate) -> ConnectingMap?
+
+pub fn cycle_basis(Certificate) -> @core.Chain[@core.Chain[@exact.Integer]]
+
+pub fn inclusion(Pair, @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn lift(Pair, @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn pair(@homology.Complex, @homology.Complex) -> Pair?
+
+pub fn result(Certificate) -> @homology.ResultGroup
+
+pub fn simplices(Pair, @core.Nat) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn subcomplex(Pair) -> @homology.Complex
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : Pair
+  degree : @core.Nat
+  result : @homology.ResultGroup
+  chain : @chainhomology.Certificate
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Computation {
+  Computed(Certificate)
+  BudgetExhausted
+  InvalidWitness
+}
+pub fn Computation::equal(Self, Self) -> Bool
+pub fn Computation::not_equal(Self, Self) -> Bool
+pub fn Computation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ConnectingMap {
+  source : Pair
+  degree : @core.Nat
+  source_homology : Certificate
+  target_homology : @homology.Certificate
+  lifted_cycles : @matrix.Matrix[@exact.Integer]
+  boundary_cycles : @matrix.Matrix[@exact.Integer]
+  cycle_map : @matrix.Matrix[@exact.Integer]
+  source_left_inverse : @matrix.Matrix[@exact.Integer]
+  boundary_descent : @matrix.Matrix[@exact.Integer]
+  classes : @matrix.Matrix[@exact.Integer]
+}
+pub fn ConnectingMap::equal(Self, Self) -> Bool
+pub fn ConnectingMap::not_equal(Self, Self) -> Bool
+pub fn ConnectingMap::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Pair {
+  ambient : @homology.Complex
+  subcomplex : @homology.Complex
+}
+pub fn Pair::equal(Self, Self) -> Bool
+pub fn Pair::not_equal(Self, Self) -> Bool
+pub fn Pair::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
