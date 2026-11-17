@@ -1,0 +1,10 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/realtower" @tower,
+  "Hosi121/morph/sturm",
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/bench",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
