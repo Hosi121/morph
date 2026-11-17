@@ -1,0 +1,133 @@
+{
+  "base_commit": "7389c7f37f45ca6c1db4380fac226ce8ea4ece95",
+  "curve_source_commit": "7a7dac6",
+  "curve_oracle_commit": "9d1e516",
+  "pairing_source_freeze": "0661128",
+  "tests": {
+    "native": 8,
+    "wasm-gc": 8,
+    "js": 8
+  },
+  "counts": {
+    "line_cases": 216,
+    "small_miller_cases": 324,
+    "large_miller_cases": 1,
+    "tate_point_pairs": 1764,
+    "native_shift_evaluations": 5292,
+    "host_shift_evaluations": 63504,
+    "left_bilinear_equations": 50148,
+    "right_bilinear_equations": 63504,
+    "quotient_representative_equations": 3888,
+    "native_candidate_coordinates": 625
+  },
+  "cases": [
+    {
+      "order": 2,
+      "exponent": 12,
+      "quotient_size": 4,
+      "minimum_admissible_shifts": 32,
+      "left_kernel": [
+        0
+      ],
+      "right_kernel": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        12,
+        13,
+        33,
+        34
+      ],
+      "torsion_points": 4,
+      "image_points": 9,
+      "output_element_codes": [
+        1,
+        4
+      ]
+    },
+    {
+      "order": 3,
+      "exponent": 8,
+      "quotient_size": 9,
+      "minimum_admissible_shifts": 30,
+      "left_kernel": [
+        0
+      ],
+      "right_kernel": [
+        0,
+        9,
+        14,
+        35
+      ],
+      "torsion_points": 9,
+      "image_points": 4,
+      "output_element_codes": [
+        1,
+        7,
+        22
+      ]
+    },
+    {
+      "order": 6,
+      "exponent": 4,
+      "quotient_size": 36,
+      "minimum_admissible_shifts": 26,
+      "left_kernel": [
+        0
+      ],
+      "right_kernel": [
+        0
+      ],
+      "torsion_points": 36,
+      "image_points": 1,
+      "output_element_codes": [
+        1,
+        4,
+        7,
+        8,
+        22,
+        23
+      ]
+    }
+  ],
+  "large_miller": {
+    "at_index": 3,
+    "multiple": 0,
+    "p_index": 1,
+    "scalar": "1606938044258990275541962092341162602522202993782792835301393",
+    "value": 16
+  },
+  "raw_oracle_sha256": "b45cdbe2647c4e8273b4f178f6788c91d365f8ac783ecf30817ec4d9259b761e",
+  "gzip_oracle_sha256": "f1fc16be825e75f7c88094f98d55397d21c1a7909caae602833737a05151e32b",
+  "source_sha256": {
+    "src/pairing/data.mbt": "820d09ffb043274d1905cf4232895080385c50e6f74288f96c26ff8ecc4b2182",
+    "src/pairing/domain_wbtest.mbt": "b0432812268a264f52a0dde735bbb5d103b2c0c2d16e288c3a6a22178a4bd12e",
+    "src/pairing/host_fixtures_wbtest.mbt": "d4fdd049998fd1d818a5a2e12355ac659ef62784050ec3c1d30809c136d0cac7",
+    "src/pairing/miller.mbt": "03959f8016138215f9122a4b7e946b8529894847cfd82d08bcf722e4d6cc4297",
+    "src/pairing/moon.pkg": "a1b5c36d58ee35e2d41f3c204e23788c2f2665a5a205afaf1b78b39c9b582882",
+    "src/pairing/oracle_helpers_wbtest.mbt": "13a910301f0e7e4594c2a092069f2f491c84428d7575f6a8983aff97fad3d1fb",
+    "src/pairing/parameters.mbt": "7493b1b7bede0050e209c7a07762a6fd7ee96ff317062cdb618b9d33563130a9",
+    "src/pairing/pkg.generated.mbti": "16301b6b90a3dc386777df7fbea145ec4c17e08c0a931f951095dce01effa769",
+    "src/pairing/tate.mbt": "da32523643c34560b5c1737c7655c5535c921a81acaeb96bead3bde864b4049e",
+    "tools/extension-pairings-20261118-oracle.py": "1e15f6171634c5ad7a36eb8a19b004aab044a54710bd8ed5fbadaf3de5f8ace0"
+  },
+  "frozen_extensioncurve_production_sha256": {
+    "src/extensioncurve/curve.mbt": "5d9caf045b8c1536648407d5d4b58b9e0d43c063c09e0e2d846930ef5260dddf",
+    "src/extensioncurve/data.mbt": "22071d7479f10ab9d62f6a97fd5edd70fb920bacae08cd3883c6294ebadbc51a",
+    "src/extensioncurve/jacobian.mbt": "760a3fee0af2cc3699e51bce673584f47232ea903564c9c8d7d35416cf7ca17f"
+  },
+  "reference": "https://crypto.stanford.edu/pbc/notes/elliptic/tate.html",
+  "independence_limit": "Host arithmetic uses independent integer-polynomial field arithmetic and affine group operations; production and on-curve checks share galois/extensioncurve arithmetic. No formal software translation proof is claimed.",
+  "logs": {
+    "native-validated": "Total tests: 8, passed: 8, failed: 0.\n",
+    "wasm": "Total tests: 8, passed: 8, failed: 0.\n",
+    "js": "Total tests: 8, passed: 8, failed: 0.\n",
+    "check": "Finished. moon: ran 60 tasks, now up to date\n",
+    "purity": "Purity gate passed: 341 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "drift": "Formal drift gate passed: 32 reviewed source regions; not a translation proof.\n",
+    "fmt": "Finished. moon: ran 8 tasks, now up to date\n",
+    "oracle": "{\"prime_points\": 6, \"line_cases\": 216, \"miller_cases\": 324, \"extension_points\": 36, \"tate_cases\": [{\"order\": 2, \"exponent\": 12, \"quotient_size\": 4, \"minimum_admissible_shifts\": 32, \"host_shift_evaluations\": 5184, \"torsion_points\": 4, \"all_pairs\": 144}, {\"order\": 3, \"exponent\": 8, \"quotient_size\": 9, \"minimum_admissible_shifts\": 30, \"host_shift_evaluations\": 11664, \"torsion_points\": 9, \"all_pairs\": 324}, {\"order\": 6, \"exponent\": 4, \"quotient_size\": 36, \"minimum_admissible_shifts\": 26, \"host_shift_evaluations\": 46656, \"torsion_points\": 36, \"all_pairs\": 1296}]}\n"
+  }
+}
