@@ -1,0 +1,73 @@
+{
+  "utc": "2026-11-17T13:47:32.477042+00:00",
+  "decision": "not adopted; no performance comparison completed by hard deadline",
+  "validation_returned_utc": "2026-11-17 13:46:44 UTC",
+  "hard_worker_stop_utc": "2026-11-17 13:45:00 UTC",
+  "harness_commit": "c94a2bd",
+  "prototype_commit": "1a0b64012e578e733c40e0164bb4e498ac965ba3",
+  "baseline": {
+    "baseline": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+    "tracked_files": 1085,
+    "tracked_bytes_unchanged": true,
+    "tracked_source_sha256": "25dc4f59bea21ed568ce2383cf1217fed7d1f8d81e34813e868d93102099c05a",
+    "build_tasks": 38,
+    "harness_commit": "c94a2bd",
+    "protected_regions": {
+      "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+      "normal_form": "b0272c110051c89ff6195bec2e3826ba2765e43d1c580173bfee2075f251e1d8",
+      "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+      "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+      "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+      "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474",
+      "merge_terms": "dea0c40849c65a990a92534801a2e177e158572ef73663cd4ec52db363a40f2b",
+      "term_times": "bb8e8380e41d20f4b80a6a159a6b289b6f77d549cd03524dbd8243f117ab4fe3",
+      "monomial_product": "1f6aa7b0e9a936f70f86263bc461550d9ac6b12355478508b9b4333a04835f30",
+      "remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c"
+    },
+    "baseline_elf_sha256": "599657fc9c20efa8dee6677658316a7a7004c117ab9677ec289adcdc8efc7b34"
+  },
+  "performance_runs": 0,
+  "experimental_followups": 0,
+  "validation": {
+    "scoped_packages": [
+      "polynomial",
+      "groebner",
+      "f4",
+      "fglm",
+      "numberfield",
+      "complexfield"
+    ],
+    "tests_each_target": 444,
+    "targets": [
+      "wasm",
+      "js",
+      "native"
+    ],
+    "deny_warn": true,
+    "global_check_tasks": 774,
+    "api_info_tasks": 38,
+    "purity_files": 330,
+    "formal_drift_regions": 32,
+    "independent_fraction_fixtures": 28,
+    "protected_regions_unchanged": true
+  },
+  "memory_measured": false,
+  "large_rational_growth_measured": false,
+  "worktree_removed": false,
+  "push_performed": false,
+  "saved_artifacts": {
+    ".tools/night-product-20261117/baseline-4795f87.exe": {
+      "sha256": "599657fc9c20efa8dee6677658316a7a7004c117ab9677ec289adcdc8efc7b34",
+      "bytes": 744720
+    },
+    ".tools/night-product-20261117/candidate-initial.exe": {
+      "sha256": "72c4a0f4363d96b3b814cfee26e1dd975334793628c65a5a7d231dc363e83fee",
+      "bytes": 745056
+    }
+  },
+  "raw_sha256": {
+    "night-product-20261117-oracle.py": "7e14786259b2ea05283ceccaf2b5ca2b32764cc974504b72e73b1a62efd19e17",
+    "night-product-20261117-oracle-cases.json": "ce78e552a7c57bd9429dd094692ae50a390245491c7349a13075b581abd273d7",
+    "night-product-20261117-validation.txt": "8ca4ee8e3a65e4f4ab2c64a8973d100a2512c8edb5f9bf62677c4c15f8f8ad43"
+  }
+}

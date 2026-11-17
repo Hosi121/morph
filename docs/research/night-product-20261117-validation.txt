@@ -1,0 +1,20 @@
+RUN tools/moon test src/polynomial src/groebner src/f4 src/fglm src/numberfield src/complexfield --target wasm --deny-warn -j 1
+Total tests: 444, passed: 444, failed: 0.
+RUN tools/moon test src/polynomial src/groebner src/f4 src/fglm src/numberfield src/complexfield --target js --deny-warn -j 1
+Total tests: 444, passed: 444, failed: 0.
+RUN tools/moon test src/polynomial src/groebner src/f4 src/fglm src/numberfield src/complexfield --target native --deny-warn -j 1
+Total tests: 444, passed: 444, failed: 0.
+RUN tools/moon check --target all --deny-warn -j 1
+Finished. moon: ran 774 tasks, now up to date
+RUN tools/moon info src/polynomial src/cmd/nightproductbench --target all
+Finished. moon: ran 38 tasks, now up to date
+RUN python3 tools/audit_purity.py
+Purity gate passed: 330 kernel files; no machine numerics, mutation, arrays or FFI.
+RUN python3 tools/check_model_drift.py
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+RUN python3 docs/research/night-product-20261117-oracle.py --check
+28 independent full-product fixtures checked
+RUN tools/moon build src/cmd/nightproductbench --target native --release --deny-warn -j 1
+Finished. moon: ran 6 tasks, now up to date
+Artifacts:
+  Hosi121/morph/cmd/nightproductbench  native  /home/hosi/morph-night-nf/_build/native/release/build/cmd/nightproductbench/nightproductbench.exe
