@@ -74,3 +74,18 @@ fn char_two_multiply(
     }
   }
 }
+
+///|
+/// In characteristic two, cross terms cancel and each canonical coefficient
+/// squares to itself. Insert one zero between coefficients, sharing the final
+/// constant chain so the result has no trailing zero.
+fn char_two_square(
+  coefficients : @core.Chain[@binary.Binary],
+  zero : @binary.Binary,
+) -> @core.Chain[@binary.Binary] {
+  match coefficients {
+    Nil => Nil
+    Cons(_, Nil) => coefficients
+    Cons(head, rest) => Cons(head, Cons(zero, char_two_square(rest, zero)))
+  }
+}

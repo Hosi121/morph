@@ -673,6 +673,26 @@ fn product_remainder(
 }
 
 ///|
+/// Only the exponent loop's statically known base/base product uses this path.
+/// Arbitrary multiplication and odd-prime squaring retain the generic kernel.
+fn square_remainder(
+  base : Polynomial,
+  modulus : Polynomial,
+) -> Result[Polynomial, PolyError] {
+  if !characteristic_two(base.field) {
+    return product_remainder(base, base, modulus)
+  }
+  let square : Polynomial = {
+    field: base.field,
+    coefficients: char_two_square(base.coefficients, @binary.zero()),
+  }
+  match divide(square, modulus) {
+    Err(error) => Err(error)
+    Ok(division) => Ok(division.remainder)
+  }
+}
+
+///|
 fn power_loop(
   base : Polynomial,
   exponent : @binary.Binary,
@@ -686,7 +706,7 @@ fn power_loop(
         false => Ok(accumulator)
         true => product_remainder(accumulator, base, modulus)
       }
-      match (next, product_remainder(base, base, modulus)) {
+      match (next, square_remainder(base, modulus)) {
         (Ok(accumulator), Ok(square)) =>
           power_loop(square, @binary.half(exponent), modulus, accumulator)
         (Err(error), _) | (_, Err(error)) => Err(error)
