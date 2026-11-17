@@ -174,7 +174,9 @@ pub fn negate(value : Element) -> Element {
 }
 
 ///|
-fn combine(
+/// Add/subtract preserve the degree bound of both opaque canonical residues.
+/// Their polynomial operations also retain sorted unique terms and remove zeros.
+fn combine_canonical(
   a : Element,
   b : Element,
   operation : (@poly.Polynomial, @poly.Polynomial) -> Result[
@@ -187,21 +189,27 @@ fn combine(
   }
   match operation(a.residue, b.residue) {
     Err(_) => Err(InternalInvariant)
-    Ok(value) => element(a.field, value)
+    Ok(residue) => Ok({ field: a.field, residue, })
   }
 }
 
 ///|
 pub fn add(a : Element, b : Element) -> Result[Element, FieldError] {
-  combine(a, b, @poly.add)
+  combine_canonical(a, b, @poly.add)
 }
 
 ///|
 pub fn subtract(a : Element, b : Element) -> Result[Element, FieldError] {
-  combine(a, b, @poly.subtract)
+  combine_canonical(a, b, @poly.subtract)
 }
 
 ///|
 pub fn multiply(a : Element, b : Element) -> Result[Element, FieldError] {
-  combine(a, b, @poly.multiply)
+  if !same_field(a.field, b.field) {
+    return Err(DifferentField)
+  }
+  match @poly.multiply(a.residue, b.residue) {
+    Err(_) => Err(InternalInvariant)
+    Ok(value) => element(a.field, value)
+  }
 }
