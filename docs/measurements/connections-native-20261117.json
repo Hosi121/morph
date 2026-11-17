@@ -1,0 +1,222 @@
+{
+  "utc": "2026-11-17T00:37:55.751639+00:00",
+  "source_commit": "d1e738c873b229c36936d839da3971de99f45c8e",
+  "working_tree_status": [
+    " M HANDBOOK.md",
+    " M README.md",
+    " M docs/ALGORITHMS.md",
+    " M docs/INVENTORY.md",
+    " M docs/README.md",
+    " M docs/ROADMAP.md",
+    " M docs/research/README.md",
+    "?? docs/handbook/connections.md",
+    "?? docs/research/cross-domain-20261117.md"
+  ],
+  "source_manifest": {
+    "files": 806,
+    "sha256": "342ed89f41abfb34263594636a2a5e33e242a61af918ea5cdcfe7e0285647fae"
+  },
+  "artifact": "_build/native/release/build/cmd/connections/connections.exe",
+  "artifact_sha256": "2435a94c02d0a47e982e36eaa96adfe6e6c0bb603427abed40e7576c3cb7c240",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "backend": "native",
+  "profile": "release (caller-provided prebuilt artifact)",
+  "scope": "process startup, example construction, preparation, computation and all example result checks; excludes compilation",
+  "case_scope": {
+    "groups": "S4/A5/S5 complete group generation, derived series and replay checks",
+    "bernstein": "exact quadratic enclosure, subdivision proof, independent CAD check, strict/non-strict boundary witnesses",
+    "homology": "H0/H1/H2 for circle, disk, sphere, RP2 with integral certificate checks",
+    "presentation": "five abelianizations including independent RP2/torus simplicial H1 comparisons",
+    "galois": "x^3-2 complete splitting field, full exact Galois action, derived series and bound certificate checks"
+  },
+  "repetitions": 3,
+  "timeout_seconds": 30.0,
+  "runs": [
+    {
+      "repetition": 0,
+      "mode": "groups",
+      "seconds": 0.09164821700687753,
+      "exit_code": 0,
+      "stdout": "S4: derived orders 24 -> 12 -> 4 -> 1; solvable=true [checked]\nA5: derived orders 60; solvable=false [checked]\nS5: derived orders 120 -> 60; solvable=false [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "bernstein",
+      "seconds": 0.0012283000032766722,
+      "exit_code": 0,
+      "stdout": "x^2-x+3/8 on [0,1]: initial Bernstein enclosure [-1/8,3/8] [checked]\n  one midpoint split: p>0; 2 certified leaves [checked]\n  same polynomial: p>0 on all real x by CAD [checked]\nx on [0,1]: x>0 refuted at x=0; x>=0 certified [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "homology",
+      "seconds": 0.0073646489981911145,
+      "exit_code": 0,
+      "stdout": "circle: H0=Z; H1=Z; H2=0; Euler=0 [checked]\nfilled triangle: H0=Z; H1=0; H2=0; Euler=1 [checked]\nsphere: H0=Z; H1=0; H2=Z; Euler=2 [checked]\nreal projective plane: H0=Z; H1=Z/2; H2=0; Euler=1 [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "presentation",
+      "seconds": 0.010557071000221185,
+      "exit_code": 0,
+      "stdout": "RP2: <a | a^2> abelianization = H1 from simplicial boundaries = Z/2 [checked]\ntorus: <a,b | [a,b]> abelianization = H1 from simplicial boundaries = Z^2 [checked]\nKlein bottle presentation: abelianization Z + Z/2 [checked]\n<a,b | a^2,b^3,(ab)^2>: abelianization Z/2 [checked]\ntriangle (2,3,5) presentation: abelianization 0; this alone does not imply a trivial group [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 0,
+      "mode": "galois",
+      "seconds": 15.578042819994153,
+      "exit_code": 0,
+      "stdout": "z^3-2: full Galois action -> derived orders 6 -> 3 -> 1; solvable by radicals [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "groups",
+      "seconds": 0.08481070199923124,
+      "exit_code": 0,
+      "stdout": "S4: derived orders 24 -> 12 -> 4 -> 1; solvable=true [checked]\nA5: derived orders 60; solvable=false [checked]\nS5: derived orders 120 -> 60; solvable=false [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "bernstein",
+      "seconds": 0.0010731729998951778,
+      "exit_code": 0,
+      "stdout": "x^2-x+3/8 on [0,1]: initial Bernstein enclosure [-1/8,3/8] [checked]\n  one midpoint split: p>0; 2 certified leaves [checked]\n  same polynomial: p>0 on all real x by CAD [checked]\nx on [0,1]: x>0 refuted at x=0; x>=0 certified [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "homology",
+      "seconds": 0.01002363300358411,
+      "exit_code": 0,
+      "stdout": "circle: H0=Z; H1=Z; H2=0; Euler=0 [checked]\nfilled triangle: H0=Z; H1=0; H2=0; Euler=1 [checked]\nsphere: H0=Z; H1=0; H2=Z; Euler=2 [checked]\nreal projective plane: H0=Z; H1=Z/2; H2=0; Euler=1 [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "presentation",
+      "seconds": 0.009392068997840397,
+      "exit_code": 0,
+      "stdout": "RP2: <a | a^2> abelianization = H1 from simplicial boundaries = Z/2 [checked]\ntorus: <a,b | [a,b]> abelianization = H1 from simplicial boundaries = Z^2 [checked]\nKlein bottle presentation: abelianization Z + Z/2 [checked]\n<a,b | a^2,b^3,(ab)^2>: abelianization Z/2 [checked]\ntriangle (2,3,5) presentation: abelianization 0; this alone does not imply a trivial group [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 1,
+      "mode": "galois",
+      "seconds": 14.610805926997273,
+      "exit_code": 0,
+      "stdout": "z^3-2: full Galois action -> derived orders 6 -> 3 -> 1; solvable by radicals [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "groups",
+      "seconds": 0.08746071199857397,
+      "exit_code": 0,
+      "stdout": "S4: derived orders 24 -> 12 -> 4 -> 1; solvable=true [checked]\nA5: derived orders 60; solvable=false [checked]\nS5: derived orders 120 -> 60; solvable=false [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "bernstein",
+      "seconds": 0.0009898749995045364,
+      "exit_code": 0,
+      "stdout": "x^2-x+3/8 on [0,1]: initial Bernstein enclosure [-1/8,3/8] [checked]\n  one midpoint split: p>0; 2 certified leaves [checked]\n  same polynomial: p>0 on all real x by CAD [checked]\nx on [0,1]: x>0 refuted at x=0; x>=0 certified [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "homology",
+      "seconds": 0.007229003997053951,
+      "exit_code": 0,
+      "stdout": "circle: H0=Z; H1=Z; H2=0; Euler=0 [checked]\nfilled triangle: H0=Z; H1=0; H2=0; Euler=1 [checked]\nsphere: H0=Z; H1=0; H2=Z; Euler=2 [checked]\nreal projective plane: H0=Z; H1=Z/2; H2=0; Euler=1 [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "presentation",
+      "seconds": 0.00854894000076456,
+      "exit_code": 0,
+      "stdout": "RP2: <a | a^2> abelianization = H1 from simplicial boundaries = Z/2 [checked]\ntorus: <a,b | [a,b]> abelianization = H1 from simplicial boundaries = Z^2 [checked]\nKlein bottle presentation: abelianization Z + Z/2 [checked]\n<a,b | a^2,b^3,(ab)^2>: abelianization Z/2 [checked]\ntriangle (2,3,5) presentation: abelianization 0; this alone does not imply a trivial group [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    },
+    {
+      "repetition": 2,
+      "mode": "galois",
+      "seconds": 14.751520759004052,
+      "exit_code": 0,
+      "stdout": "z^3-2: full Galois action -> derived orders 6 -> 3 -> 1; solvable by radicals [checked]\n",
+      "stderr": "",
+      "censored": false,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "groups": {
+      "completed_and_checked": 3,
+      "censored": 0,
+      "median_seconds_completed_only": 0.08746071199857397
+    },
+    "bernstein": {
+      "completed_and_checked": 3,
+      "censored": 0,
+      "median_seconds_completed_only": 0.0010731729998951778
+    },
+    "homology": {
+      "completed_and_checked": 3,
+      "censored": 0,
+      "median_seconds_completed_only": 0.0073646489981911145
+    },
+    "presentation": {
+      "completed_and_checked": 3,
+      "censored": 0,
+      "median_seconds_completed_only": 0.009392068997840397
+    },
+    "galois": {
+      "completed_and_checked": 3,
+      "censored": 0,
+      "median_seconds_completed_only": 14.751520759004052
+    }
+  },
+  "all_checked": true,
+  "hardware_observed_after_run": {
+    "cpu_model": "Intel(R) Core(TM) Ultra 7 255H"
+  }
+}

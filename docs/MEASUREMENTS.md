@@ -52,6 +52,33 @@ QQ三次式から最小分解体までの[一般経路と専用経路の比較](
 未完了の倍率は計算せず、[三乗根2](measurements/splitting-cubic-native-20261117.json)と
 [1の三乗根](measurements/splitting-unity-native-20261117.json)に全試行を残しています。
 
+## 群・不等式・位相をつなぐ実行例
+
+コード `d1e738c` の同じnative release artifactで、五つの異なる処理を各3回測りました。
+Core Ultra 7 255H、WSL2、CPU 4固定。プロセス起動、例の構築、準備、計算、
+各例の結果検査を含み、コンパイルを除きます。全15試行が掲載出力と一致しました。
+異なる入力・処理の時間なので、行同士から算法の速度比は計算しません。
+
+| 実行例に含まれる処理 | 中央値 |
+| --- | ---: |
+| S4・A5・S5の全群生成、導来列と再計算検査 | 87.461 ms |
+| 二次式のBernstein包囲・細分証明・CADの別経路・端点の反例 | 1.073 ms |
+| 円・円板・球面・射影平面のH0/H1/H2と整数証拠検査 | 7.365 ms |
+| 五つの群表示の可換化と、射影平面・トーラスの単体H1との比較 | 9.392 ms |
+| `z³−2` の分解体・全Galois作用・導来列・入力と結果に束縛した検査 | 14.752秒 |
+
+最後の行は、以前の「分解体まで」の2.375秒より広い処理を含むため、直接の比較には使いません。
+短い処理には起動費用と揺れも含み、三試行から一般の実用規模を保証しません。
+入力と検査内容は[掲載出力](CONNECTIONS_TOUR.txt)、
+全生値・source manifest・artifact hashは[計測データ](measurements/connections-native-20261117.json)にあります。
+
+```sh
+tools/measure --cpu 4 tools/moon build src/cmd/connections --target native --release -j 1
+tools/measure --cpu 4 python3 tools/measure_connections.py \
+  --artifact _build/native/release/build/cmd/connections/connections.exe \
+  --repetitions 3 --timeout-seconds 30 --output .tools/connections.json
+```
+
 ## 再現する
 
 Linuxで、既存被覆による理論節削減を一つの入力について比較する例です。

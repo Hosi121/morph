@@ -1,0 +1,45 @@
+{
+  "utc": "2026-11-17T00:44:10.150051+00:00",
+  "worktrees": [
+    {
+      "path": "/home/hosi/morph-permgroup",
+      "branch": "explore/permgroup-20261117",
+      "head": "adec2a13621d44e08aa1339f59e70eb824cbd736",
+      "status": "",
+      "patches": [
+        "- 83a510461156d40ce9bf2b0abea2bf2af82a5fd3",
+        "- 09b716939a1a9108f158bac54d94eb7cb41d9914",
+        "- 5ca19e9e48af0f73fb8cf9be69979e57c8590da2",
+        "- adec2a13621d44e08aa1339f59e70eb824cbd736"
+      ],
+      "removed": true
+    },
+    {
+      "path": "/home/hosi/morph-bernstein",
+      "branch": "explore/bernstein-20261117",
+      "head": "7c450a86a8e90e67728593d4477450b6cc4005ff",
+      "status": "",
+      "patches": [
+        "- 7dd6b7bf6bb1914a884f462f8af440cbd5472c3a",
+        "- 7c450a86a8e90e67728593d4477450b6cc4005ff"
+      ],
+      "removed": true
+    },
+    {
+      "path": "/home/hosi/morph-homology",
+      "branch": "explore/homology-20261117",
+      "head": "97d9ce9612e5ed938c4c02016dfa67d3bfffb24c",
+      "status": "",
+      "patches": [
+        "- 97d9ce9612e5ed938c4c02016dfa67d3bfffb24c"
+      ],
+      "removed": true
+    }
+  ],
+  "bundle": ".tools/cross-domain-20261117/workers.bundle",
+  "bundle_sha256": "2b5828de08a73b25bf8bfd1e3fb079089c347b1dfc37417db0cb11774e2bfbb7",
+  "bundle_verified": true,
+  "bundle_prerequisite": "62b579a03e8b9ce2cfb34af49e002dc63fd4ec07",
+  "branches_retained": true,
+  "remaining_worktrees": "worktree /home/hosi/morph\nHEAD 6cf0f287e78a5ec8ed96ad4c4e726c33b3e9b41f\nbranch refs/heads/main\n\n"
+}

@@ -1,0 +1,332 @@
+{
+  "source_commit": "6cf0f287e78a5ec8ed96ad4c4e726c33b3e9b41f",
+  "started_utc": "2026-11-17T00:39:13.397126+00:00",
+  "scope": "whole repository and cross-domain connections tour",
+  "wrapper": "tools/measure --cpu 4 python3 -u .tools/cross-domain-20261117/validate.py",
+  "environment": {
+    "affinity": [
+      4
+    ],
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "moon": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "commands": [
+    {
+      "command": [
+        "tools/check"
+      ],
+      "exit_code": 0,
+      "seconds": 1507.1001120670044,
+      "test_totals": [
+        4091,
+        4091
+      ]
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 813.2513588110005,
+      "test_totals": [
+        4091
+      ]
+    },
+    {
+      "command": [
+        "tools/check_formal"
+      ],
+      "exit_code": 0,
+      "seconds": 17.69211322800038,
+      "test_totals": []
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 32.89531784999963,
+      "test_totals": [],
+      "tour_matches": true,
+      "source_commit": "9bccd5aa2ea5544a5f3cf2dbbb6714e13cde9e4a"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 27.62228054299976,
+      "test_totals": [],
+      "tour_matches": true,
+      "source_commit": "9bccd5aa2ea5544a5f3cf2dbbb6714e13cde9e4a"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 21.800058318999618,
+      "test_totals": [],
+      "tour_matches": true,
+      "source_commit": "9bccd5aa2ea5544a5f3cf2dbbb6714e13cde9e4a"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0,
+      "test_totals": []
+    }
+  ],
+  "all_passed": true,
+  "resumptions": [
+    {
+      "utc": "2026-11-17T07:19:01.213145+00:00",
+      "completed_commands_reused": 1,
+      "interrupted_command": [
+        "tools/moon",
+        "test",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "previous_attempt_outcome": "No completed result was retained and the previous process is no longer running; no test verdict inferred.",
+      "wrapper": "tools/measure --cpu 4 python3 -u .tools/cross-domain-20261117/resume_validation.py"
+    }
+  ],
+  "cli_fix_commit": "9bccd5aa2ea5544a5f3cf2dbbb6714e13cde9e4a",
+  "superseded_tour_attempts": [
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 0,
+      "seconds": 61.82024823199936,
+      "test_totals": [],
+      "tour_matches": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn"
+      ],
+      "exit_code": 1,
+      "seconds": 1.3532243370000288,
+      "test_totals": [],
+      "tour_matches": false
+    }
+  ],
+  "cli_argument_checks": [
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups"
+      ],
+      "seconds": 0.26582213599976967,
+      "exit_code": 0,
+      "expected_rejection": false,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "--",
+        "invalid-mode"
+      ],
+      "seconds": 13.03184390000024,
+      "exit_code": 134,
+      "expected_rejection": true,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups",
+        "homology"
+      ],
+      "seconds": 16.36865239600047,
+      "exit_code": 134,
+      "expected_rejection": true,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups"
+      ],
+      "seconds": 0.5429856969994944,
+      "exit_code": 0,
+      "expected_rejection": false,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "--",
+        "invalid-mode"
+      ],
+      "seconds": 0.2768166949999795,
+      "exit_code": 1,
+      "expected_rejection": true,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups",
+        "homology"
+      ],
+      "seconds": 0.24584132099971612,
+      "exit_code": 1,
+      "expected_rejection": true,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups"
+      ],
+      "seconds": 0.23592429000018456,
+      "exit_code": 0,
+      "expected_rejection": false,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "--",
+        "invalid-mode"
+      ],
+      "seconds": 0.10894384600032936,
+      "exit_code": 1,
+      "expected_rejection": true,
+      "passed": true
+    },
+    {
+      "command": [
+        "tools/moon",
+        "run",
+        "src/cmd/connections",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "--",
+        "groups",
+        "homology"
+      ],
+      "seconds": 0.11844446400027664,
+      "exit_code": 1,
+      "expected_rejection": true,
+      "passed": true
+    }
+  ],
+  "math_kernels_match_frozen_commit": true,
+  "cli_patch_scope": [
+    "src/cmd/connections/main.mbt"
+  ],
+  "finished_utc": "2026-11-17T07:41:51.454548+00:00",
+  "pure_kernel_sources": 302,
+  "api_snapshots": 127,
+  "formal_regions": 32,
+  "maintenance_tests": 24,
+  "validated_math_kernels_match_frozen_commit": true,
+  "native_mode": "release",
+  "tour_sha256": "3991e4f3d4f5649f0f7eaa3bfe614b9db0ef571e2fa1a961b55f9eb5694b7f91"
+}

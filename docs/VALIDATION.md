@@ -7,27 +7,33 @@
 
 ## 検証済みスナップショット
 
-2026-11-17（JST）に、コード `701e789` を固定して統合検証しました。
-複素数の共通体への移送、単項式基底による最小生成体、一生成元の剰余表示、
-QQ多項式からの最小分解体と全Galois作用まで含みます。
-以後の文書編集を、新しいコードの実行検証として数えるものではありません。
+2026-11-17（JST）に、コード `6cf0f28` の計算核を固定して統合検証しました。
+有限置換群と導来列、Galois作用からの根号可解性、Bernstein細分証明、
+整数ホモロジー、群表示の可換化と分野間ツアーを含みます。
+ツアーの起動引数だけを `9bccd5a` で修正し、その部分は3バックエンドで別に照合しました。
+以後の文書編集を、新しい計算核の実行検証として数えるものではありません。
 
 | 検査 | 結果 |
 | --- | --- |
-| native（release） / JS / WasmGC | 各4,041テスト成功 |
+| native（release） / JS / WasmGC | 各4,091テスト成功。新規50宣言を追加 |
 | Pythonの保守ゲート | 24テスト成功 |
-| 純記号制約 | 292核ソースが通過 |
-| 公開API | 121生成スナップショットが一致 |
-| Lean | 32対応領域の差分検査と全モデルが通過 |
-| 独立照合・証拠検査 | 共通体9例、非実三次体と12次→6次を含む生成体11例、C1/C2/S3/D4の全置換集合と146合成、既存fixture、source・返却物の改竄検査が通過 |
-| 実行例 | 複素代数・全10中間体・最小分解体と群作用の各ツアーが3バックエンドで掲載出力と一致 |
+| 純記号制約 | 302核ソースが通過 |
+| 公開API | 127生成スナップショットが一致 |
+| Lean | 32対応領域の差分検査と既存の全モデルが通過。今回の新算法全体の形式証明ではない |
+| 独立照合・証拠検査 | C1〜C8・V4・S3・D4・A4・S4・A5・S5、7つのBernstein係数fixture、167複体×4次数、射影平面の全3003最大minor、群表示の小行列式モデル、入力・結果・証拠の改竄検査が通過 |
+| 実行例 | 起動修正後のツアーが3バックエンドで掲載出力と一致。モード指定・不正引数の9起動ケースも通過 |
 
-正本は[環境・コマンド・集計](measurements/complex-splitting-20261117-validation.json)と
-[全出力](measurements/complex-splitting-20261117-validation.txt)です。
-[最小分解体とGalois群の設計・独立参照・同条件比較](research/complex-splitting-20261117.md)に根拠をまとめています。
-一般経路は消去と置換探索の費用を持ち、高次数の実用速度や、体論と実装全体の形式証明までは示しません。
-作業用worktreeは全パッチの反映とGitアーカイブを確認して削除しました
-（[片付け記録](measurements/complex-splitting-20261117-cleanup.json)）。
+正本は[環境・コマンド・集計](measurements/connections-20261117-validation.json)と
+[全出力](measurements/connections-20261117-validation.txt)です。
+計測は[全15試行の生データ](measurements/connections-native-20261117.json)、
+現在の入口は[群・不等式・位相の接続](handbook/connections.md)、
+数学的根拠と独立参照は[探索記録](research/cross-domain-20261117.md)から辿れます。
+
+燃料の意味は算法ごとに異なり、実時間や大規模入力での完了を保証しません。
+Bernstein細分は零集合で未確定のままになり得ます。
+根号可解性の判定は根号式の生成とは区別します。
+今回の3作業用worktreeは全パッチの反映とGitアーカイブを確認して削除しました
+（[片付け記録](measurements/connections-20261117-cleanup.json)）。
 
 ## 変更したときに実行する
 
@@ -66,6 +72,7 @@ CPU番号は環境に合わせて指定します。
 
 | コード | 段階 | 記録 |
 | --- | --- | --- |
+| `701e789` | 最小分解体・共通体・完全Galois作用、各4,041テスト | [集計](measurements/complex-splitting-20261117-validation.json)・[出力](measurements/complex-splitting-20261117-validation.txt) |
 | `0c79742` | K(i)・一生成元・明示自己同型と固定体、各3,976テスト | [集計](measurements/complex-galois-20261117-validation.json)・[出力](measurements/complex-galois-20261117-validation.txt) |
 | `060a66f` | K(i) と一生成元表示の追加範囲、各38テスト | [集計](measurements/complex-fields-20261117-validation.json)・[出力](measurements/complex-fields-20261117-validation.txt) |
 | `4aa8668` | 複素代数の演算・全根・因数分解の接続、各3,920テスト | [集計](measurements/complex-algebra-20261117-validation.json)・[出力](measurements/complex-algebra-20261117-validation.txt) |
