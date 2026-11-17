@@ -1,0 +1,175 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/csscode"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/core",
+  "Hosi121/morph/homology",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/rowreduce",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Code) -> Certificate
+
+pub fn check_distance(Code, Axis, DistanceWitness, @core.Nat) -> DistanceCheck
+
+pub fn check_parameters(Code, Parameters, Certificate) -> Bool
+
+pub fn check_rank(@matrix.Matrix[Bool], RankWitness) -> Bool
+
+pub fn checks(Code, Axis) -> @matrix.Matrix[Bool]
+
+pub fn commute(@matrix.Matrix[Bool], @matrix.Matrix[Bool]) -> Bool
+
+pub fn field() -> @rowreduce.Field[Bool]
+
+pub fn from_complex(@homology.Complex, @core.Nat) -> Code?
+
+pub fn in_stabilizer(Code, Axis, @core.Chain[Bool]) -> Bool?
+
+pub fn is_logical(Code, Axis, @core.Chain[Bool]) -> Bool?
+
+pub fn parameters(Code) -> Parameters
+
+pub fn progress(DistanceState) -> (@core.Nat, @core.Nat)
+
+pub fn resume_check(CheckState, @core.Nat) -> DistanceCheck
+
+pub fn run_distance(DistanceState, @core.Nat) -> DistanceSearch
+
+pub fn scalars() -> @algebra.Semiring[Bool]
+
+pub fn start_distance(Code, Axis) -> DistanceState
+
+pub fn syndrome(Code, Axis, @core.Chain[Bool]) -> @core.Chain[Bool]?
+
+pub fn validate(@matrix.Matrix[Bool], @matrix.Matrix[Bool]) -> Code?
+
+pub fn weight(@core.Chain[Bool]) -> @core.Nat
+
+pub fn xor(Bool, Bool) -> Bool
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Axis {
+  X
+  Z
+}
+pub fn Axis::equal(Self, Self) -> Bool
+pub fn Axis::not_equal(Self, Self) -> Bool
+pub fn Axis::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : Code
+  result : Parameters
+  x_rank : RankWitness
+  z_rank : RankWitness
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct CheckState {
+  search : DistanceState
+  witness : DistanceWitness
+}
+pub fn CheckState::equal(Self, Self) -> Bool
+pub fn CheckState::not_equal(Self, Self) -> Bool
+pub fn CheckState::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Code {
+  hx : @matrix.Matrix[Bool]
+  hz : @matrix.Matrix[Bool]
+  x_rank : RankWitness
+  z_rank : RankWitness
+}
+pub fn Code::equal(Self, Self) -> Bool
+pub fn Code::not_equal(Self, Self) -> Bool
+pub fn Code::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum DistanceCheck {
+  CheckPaused(CheckState)
+  Verified
+  Rejected
+}
+pub fn DistanceCheck::equal(Self, Self) -> Bool
+pub fn DistanceCheck::not_equal(Self, Self) -> Bool
+pub fn DistanceCheck::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum DistanceSearch {
+  Paused(DistanceState)
+  Found(DistanceWitness)
+  NoLogical
+}
+pub fn DistanceSearch::equal(Self, Self) -> Bool
+pub fn DistanceSearch::not_equal(Self, Self) -> Bool
+pub fn DistanceSearch::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct DistanceState {
+  source : Code
+  axis : Axis
+  next_weight : @core.Nat
+  frontier : @core.Chain[Node]
+  checked : @core.Nat
+}
+pub fn DistanceState::equal(Self, Self) -> Bool
+pub fn DistanceState::not_equal(Self, Self) -> Bool
+pub fn DistanceState::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct DistanceWitness {
+  source : Code
+  axis : Axis
+  vector : @core.Chain[Bool]
+  distance : @core.Nat
+}
+pub fn DistanceWitness::equal(Self, Self) -> Bool
+pub fn DistanceWitness::not_equal(Self, Self) -> Bool
+pub fn DistanceWitness::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Node {
+  remaining : @core.Nat
+  choose : @core.Nat
+  prefix : @core.Chain[Bool]
+}
+pub fn Node::equal(Self, Self) -> Bool
+pub fn Node::not_equal(Self, Self) -> Bool
+pub fn Node::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Parameters {
+  physical : @core.Nat
+  rank_x : @core.Nat
+  rank_z : @core.Nat
+  logical : @core.Nat
+}
+pub fn Parameters::equal(Self, Self) -> Bool
+pub fn Parameters::not_equal(Self, Self) -> Bool
+pub fn Parameters::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RankWitness {
+  source : @matrix.Matrix[Bool]
+  reduced : @matrix.Matrix[Bool]
+  transform : @matrix.Matrix[Bool]
+  inverse_transform : @matrix.Matrix[Bool]
+  pivots : @core.Chain[@core.Nat]
+}
+pub fn RankWitness::equal(Self, Self) -> Bool
+pub fn RankWitness::not_equal(Self, Self) -> Bool
+pub fn RankWitness::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

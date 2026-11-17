@@ -1,0 +1,13 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/rowreduce",
+  "Hosi121/morph/homology",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"
