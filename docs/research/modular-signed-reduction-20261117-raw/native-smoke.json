@@ -1,0 +1,312 @@
+[
+  {
+    "variant": "before",
+    "payload": {
+      "case": "negative-reduced",
+      "iterations": 8000,
+      "result": [
+        "0000",
+        "ffff",
+        "7fff",
+        "0fff",
+        "8001",
+        ""
+      ],
+      "elapsed_us": 27612.983,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"negative-reduced\",\"iterations\":8000,\"result\":[\"0000\",\"ffff\",\"7fff\",\"0fff\",\"8001\",\"\"],\"elapsed_us\":27612.983,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "negative-reduced",
+      "iterations": 8000,
+      "result": [
+        "0000",
+        "ffff",
+        "7fff",
+        "0fff",
+        "8001",
+        ""
+      ],
+      "elapsed_us": 24833.994,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"negative-reduced\",\"iterations\":8000,\"result\":[\"0000\",\"ffff\",\"7fff\",\"0fff\",\"8001\",\"\"],\"elapsed_us\":24833.994,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "before",
+    "payload": {
+      "case": "negative-unreduced",
+      "iterations": 600,
+      "result": [
+        "",
+        "0000",
+        "",
+        "0bbd",
+        "fbb9",
+        ""
+      ],
+      "elapsed_us": 103276.393,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"negative-unreduced\",\"iterations\":600,\"result\":[\"\",\"0000\",\"\",\"0bbd\",\"fbb9\",\"\"],\"elapsed_us\":103276.393,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "negative-unreduced",
+      "iterations": 600,
+      "result": [
+        "",
+        "0000",
+        "",
+        "0bbd",
+        "fbb9",
+        ""
+      ],
+      "elapsed_us": 99732.869,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"negative-unreduced\",\"iterations\":600,\"result\":[\"\",\"0000\",\"\",\"0bbd\",\"fbb9\",\"\"],\"elapsed_us\":99732.869,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "before",
+    "payload": {
+      "case": "zero-tiny-boundaries",
+      "iterations": 5000,
+      "result": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "0",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "elapsed_us": 8656.227,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"zero-tiny-boundaries\",\"iterations\":5000,\"result\":[[\"\",\"\",\"\",\"\",\"\",\"\"],[\"\",\"\",\"\",\"0\",\"\",\"\"],[\"\",\"\",\"\",\"\"]],\"elapsed_us\":8656.227,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "zero-tiny-boundaries",
+      "iterations": 5000,
+      "result": [
+        [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "0",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "elapsed_us": 8400.203,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"zero-tiny-boundaries\",\"iterations\":5000,\"result\":[[\"\",\"\",\"\",\"\",\"\",\"\"],[\"\",\"\",\"\",\"0\",\"\",\"\"],[\"\",\"\",\"\",\"\"]],\"elapsed_us\":8400.203,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "before",
+    "payload": {
+      "case": "positive-control",
+      "iterations": 8000,
+      "result": [
+        "",
+        "",
+        "",
+        "",
+        "8",
+        "0001",
+        "0000"
+      ],
+      "elapsed_us": 5391.8460000000005,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"positive-control\",\"iterations\":8000,\"result\":[\"\",\"\",\"\",\"\",\"8\",\"0001\",\"0000\"],\"elapsed_us\":5391.8460000000005,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "positive-control",
+      "iterations": 8000,
+      "result": [
+        "",
+        "",
+        "",
+        "",
+        "8",
+        "0001",
+        "0000"
+      ],
+      "elapsed_us": 5532.789,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"positive-control\",\"iterations\":8000,\"result\":[\"\",\"\",\"\",\"\",\"8\",\"0001\",\"0000\"],\"elapsed_us\":5532.789,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "before",
+    "payload": {
+      "case": "inverse-field",
+      "iterations": 300,
+      "result": [
+        [
+          null,
+          "",
+          "8001",
+          "6aa",
+          "9e1",
+          "ffff",
+          "0000",
+          null,
+          "8001",
+          "d361"
+        ],
+        [
+          null,
+          "",
+          "8001",
+          "6aa",
+          "9e1",
+          "ffff",
+          "0000",
+          null,
+          "8001",
+          "d361"
+        ],
+        [
+          null,
+          "",
+          "0001",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "0001"
+        ]
+      ],
+      "elapsed_us": 11919.462,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"inverse-field\",\"iterations\":300,\"result\":[[null,\"\",\"8001\",\"6aa\",\"9e1\",\"ffff\",\"0000\",null,\"8001\",\"d361\"],[null,\"\",\"8001\",\"6aa\",\"9e1\",\"ffff\",\"0000\",null,\"8001\",\"d361\"],[null,\"\",\"0001\",null,null,null,null,null,\"0001\"]],\"elapsed_us\":11919.462,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "inverse-field",
+      "iterations": 300,
+      "result": [
+        [
+          null,
+          "",
+          "8001",
+          "6aa",
+          "9e1",
+          "ffff",
+          "0000",
+          null,
+          "8001",
+          "d361"
+        ],
+        [
+          null,
+          "",
+          "8001",
+          "6aa",
+          "9e1",
+          "ffff",
+          "0000",
+          null,
+          "8001",
+          "d361"
+        ],
+        [
+          null,
+          "",
+          "0001",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "0001"
+        ]
+      ],
+      "elapsed_us": 12640.934000000001,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"inverse-field\",\"iterations\":300,\"result\":[[null,\"\",\"8001\",\"6aa\",\"9e1\",\"ffff\",\"0000\",null,\"8001\",\"d361\"],[null,\"\",\"8001\",\"6aa\",\"9e1\",\"ffff\",\"0000\",null,\"8001\",\"d361\"],[null,\"\",\"0001\",null,null,null,null,null,\"0001\"]],\"elapsed_us\":12640.934000000001,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "before",
+    "payload": {
+      "case": "one-shot",
+      "iterations": 1,
+      "result": [
+        "7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      ],
+      "elapsed_us": 350.142,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"one-shot\",\"iterations\":1,\"result\":[\"7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff\"],\"elapsed_us\":350.142,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "variant": "after-initial",
+    "payload": {
+      "case": "one-shot",
+      "iterations": 1,
+      "result": [
+        "7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      ],
+      "elapsed_us": 322.858,
+      "checked": true
+    },
+    "stdout": "{\"case\":\"one-shot\",\"iterations\":1,\"result\":[\"7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff\"],\"elapsed_us\":322.858,\"checked\":true}\n",
+    "stderr": ""
+  }
+]

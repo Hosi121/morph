@@ -1,0 +1,22 @@
+diff --git a/src/modular/modular.mbt b/src/modular/modular.mbt
+index cbd7626..be24c68 100644
+--- a/src/modular/modular.mbt
++++ b/src/modular/modular.mbt
+@@ -121,7 +121,16 @@ pub fn signed_reduce(m : Modulus, a : @exact.Integer) -> @binary.Binary {
+   let remainder = reduce(m, @exact.magnitude(a))
+   match @exact.negative(a) {
+     false => remainder
+-    true => subtract(m, @binary.zero(), remainder)
++    // The residue above is already below the modulus; negate it directly.
++    true =>
++      match @binary.is_zero(remainder) {
++        true => remainder
++        false =>
++          match @binary.subtract(m.value, remainder) {
++            Some(difference) => difference
++            None => @binary.zero()
++          }
++      }
+   }
+ }
+ 

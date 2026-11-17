@@ -1,0 +1,208 @@
+{
+  "raw_file": "before-aa-control.json.gz",
+  "uncompressed_sha256": "d43a5ce4a4445e50f249c5b94c4eb8c0d84434951736e1ff20dc4456d670aa5d",
+  "compressed_sha256": "e2790edcb9396282946e1b54c792b75c78bcb81a1575ebac731fc0c7cfd033f0",
+  "runs": 60,
+  "all_checked": true,
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "before": {
+    "commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "artifact_sha256": "117de24a8e9e2eac866848c49b1ec687c00d90fe166fc56e4a7328f103d9afa9",
+    "source_manifest_sha256": "ff2fd435acf032b829094a96ecfd7f3611629268d33b77227501f0e110785ccb",
+    "harness": {
+      "main.mbt": "aa42e2507b75c98d7405669f193a1f888e5121fd9e79913b1e1f4986be5dc93b",
+      "moon.pkg": "f65d777ec71f72aaf9e4c1d89bd21a89de146749610708d2575e099aebee442b"
+    }
+  },
+  "after": {
+    "commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "artifact_sha256": "117de24a8e9e2eac866848c49b1ec687c00d90fe166fc56e4a7328f103d9afa9",
+    "source_manifest_sha256": "ff2fd435acf032b829094a96ecfd7f3611629268d33b77227501f0e110785ccb",
+    "harness": {
+      "main.mbt": "aa42e2507b75c98d7405669f193a1f888e5121fd9e79913b1e1f4986be5dc93b",
+      "moon.pkg": "f65d777ec71f72aaf9e4c1d89bd21a89de146749610708d2575e099aebee442b"
+    }
+  },
+  "summary": {
+    "negative-reduced": {
+      "process_ns": {
+        "medians": {
+          "before": 29830160.5,
+          "after": 30105016.5
+        },
+        "ranges": {
+          "before": [
+            28296367,
+            31191092
+          ],
+          "after": [
+            28340860,
+            32146811
+          ]
+        },
+        "before_over_after": 0.99087009302918,
+        "block_ratios": [
+          1.0017834990137338,
+          0.9687888090816762,
+          0.9865336240553984,
+          0.9910948544278773,
+          0.9620078502732872
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 27653.912999999993,
+          "after": 28059.093999999997
+        },
+        "ranges": {
+          "before": [
+            26311.357,
+            29138.24
+          ],
+          "after": [
+            26310.288,
+            30037.05
+          ]
+        },
+        "before_over_after": 0.9855597261978593,
+        "block_ratios": [
+          1.0078147582227264,
+          0.9627360731736998,
+          0.9808362096980934,
+          0.9891298632576935,
+          0.9638029455278828
+        ]
+      }
+    },
+    "positive-control": {
+      "process_ns": {
+        "medians": {
+          "before": 8152611.0,
+          "after": 7757412.5
+        },
+        "ranges": {
+          "before": [
+            7278367,
+            9677477
+          ],
+          "after": [
+            7148902,
+            9019663
+          ]
+        },
+        "before_over_after": 1.0509446287663573,
+        "block_ratios": [
+          1.050504511676675,
+          1.1219271565296067,
+          1.105324728461463,
+          0.9617084997147747,
+          1.0633697030025777
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 6320.857,
+          "after": 5983.4580000000005
+        },
+        "ranges": {
+          "before": [
+            5414.947,
+            7591.305
+          ],
+          "after": [
+            5468.908,
+            6272.213
+          ]
+        },
+        "before_over_after": 1.0563886301199072,
+        "block_ratios": [
+          1.1275491778261126,
+          1.045400925525687,
+          1.102020802143897,
+          0.9741589015102884,
+          1.0489715658963412
+        ]
+      }
+    },
+    "one-shot": {
+      "process_ns": {
+        "medians": {
+          "before": 1381466.0,
+          "after": 1475901.0
+        },
+        "ranges": {
+          "before": [
+            1213971,
+            2590217
+          ],
+          "after": [
+            1193020,
+            2724531
+          ]
+        },
+        "before_over_after": 0.9360153560435287,
+        "block_ratios": [
+          0.692955761959989,
+          0.9619269678339477,
+          0.934154257888337,
+          0.685557592725651,
+          1.2937449859920276
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 306.9315,
+          "after": 305.115
+        },
+        "ranges": {
+          "before": [
+            299.048,
+            464.184
+          ],
+          "after": [
+            283.446,
+            361.78700000000003
+          ]
+        },
+        "before_over_after": 1.005953492945283,
+        "block_ratios": [
+          1.3263700707438153,
+          1.0047481331203867,
+          0.9653010743385911,
+          1.1382886846037896,
+          1.0080034887385132
+        ]
+      }
+    }
+  },
+  "full_result_by_case": {
+    "negative-reduced": [
+      "0000",
+      "ffff",
+      "7fff",
+      "0fff",
+      "8001",
+      ""
+    ],
+    "positive-control": [
+      "",
+      "",
+      "",
+      "",
+      "8",
+      "0001",
+      "0000"
+    ],
+    "one-shot": [
+      "7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    ]
+  }
+}

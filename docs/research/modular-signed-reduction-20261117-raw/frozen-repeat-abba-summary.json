@@ -1,0 +1,427 @@
+{
+  "raw_file": "frozen-repeat-abba.json.gz",
+  "uncompressed_sha256": "02f038a2b02c3104f52f7874727d374c0044c5128fb11943639525351b1ca46b",
+  "compressed_sha256": "9f9118459303d2a5331756936410cb2ce9fecf61850abc36faa1a494cd3655a8",
+  "runs": 120,
+  "all_checked": true,
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "before": {
+    "commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "artifact_sha256": "117de24a8e9e2eac866848c49b1ec687c00d90fe166fc56e4a7328f103d9afa9",
+    "source_manifest_sha256": "ff2fd435acf032b829094a96ecfd7f3611629268d33b77227501f0e110785ccb",
+    "harness": {
+      "main.mbt": "aa42e2507b75c98d7405669f193a1f888e5121fd9e79913b1e1f4986be5dc93b",
+      "moon.pkg": "f65d777ec71f72aaf9e4c1d89bd21a89de146749610708d2575e099aebee442b"
+    }
+  },
+  "after": {
+    "commit": "d926e01c86f044c956e5b1f9509a349ac167d087",
+    "artifact_sha256": "722157586e1fea49f2b325444b0c4ab1f5d7d7fc1e6d6ffda9d2ca76f7e87329",
+    "source_manifest_sha256": "89ee584d18898cbef5d702afcf4a91a590e9d9782baac8fbc50ae4a246bd13d7",
+    "harness": {
+      "main.mbt": "aa42e2507b75c98d7405669f193a1f888e5121fd9e79913b1e1f4986be5dc93b",
+      "moon.pkg": "f65d777ec71f72aaf9e4c1d89bd21a89de146749610708d2575e099aebee442b"
+    }
+  },
+  "summary": {
+    "negative-reduced": {
+      "process_ns": {
+        "medians": {
+          "before": 27450780.5,
+          "after": 25497965.5
+        },
+        "ranges": {
+          "before": [
+            25478423,
+            30200261
+          ],
+          "after": [
+            23606574,
+            29932525
+          ]
+        },
+        "before_over_after": 1.0765870908406399,
+        "block_ratios": [
+          1.08572002889197,
+          1.1379800242748788,
+          1.0648892501546228,
+          1.0486384539269142,
+          1.0205056303711968
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 25408.703999999998,
+          "after": 23494.7065
+        },
+        "ranges": {
+          "before": [
+            22926.897,
+            28162.535
+          ],
+          "after": [
+            21289.357,
+            26897.940000000002
+          ]
+        },
+        "before_over_after": 1.0814650525640743,
+        "block_ratios": [
+          1.07795283212087,
+          1.1446384440990447,
+          1.0711991996864163,
+          1.0828517108979985,
+          1.0196886683366515
+        ]
+      }
+    },
+    "negative-unreduced": {
+      "process_ns": {
+        "medians": {
+          "before": 98613976.0,
+          "after": 98559988.5
+        },
+        "ranges": {
+          "before": [
+            93623279,
+            104263440
+          ],
+          "after": [
+            95373804,
+            102877753
+          ]
+        },
+        "before_over_after": 1.000547762848004,
+        "block_ratios": [
+          1.017080752209855,
+          1.0096711461749175,
+          0.9686227715793706,
+          0.9853657269814358,
+          0.9990173514035823
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 96317.554,
+          "after": 96063.06149999998
+        },
+        "ranges": {
+          "before": [
+            91148.34700000001,
+            101801.54000000001
+          ],
+          "after": [
+            93138.924,
+            100188.817
+          ]
+        },
+        "before_over_after": 1.002649223291723,
+        "block_ratios": [
+          1.0203744001262784,
+          1.0102648612775107,
+          0.9676931992844107,
+          0.9886428411103488,
+          0.9995752079008422
+        ]
+      }
+    },
+    "zero-tiny-boundaries": {
+      "process_ns": {
+        "medians": {
+          "before": 10170547.0,
+          "after": 9798194.0
+        },
+        "ranges": {
+          "before": [
+            9267396,
+            13429460
+          ],
+          "after": [
+            9237598,
+            12809127
+          ]
+        },
+        "before_over_after": 1.0380022073455577,
+        "block_ratios": [
+          1.124885781247779,
+          0.8781803685691681,
+          1.035119559672628,
+          0.9225794959308931,
+          1.033706771574528
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 8170.2145,
+          "after": 7813.775
+        },
+        "ranges": {
+          "before": [
+            7595.26,
+            11536.044
+          ],
+          "after": [
+            7215.459,
+            10459.999
+          ]
+        },
+        "before_over_after": 1.04561681133639,
+        "block_ratios": [
+          1.1806679030449758,
+          0.8901871306488676,
+          1.0964526407625772,
+          0.8975288560746666,
+          1.068914419132408
+        ]
+      }
+    },
+    "positive-control": {
+      "process_ns": {
+        "medians": {
+          "before": 6930258.0,
+          "after": 7623386.0
+        },
+        "ranges": {
+          "before": [
+            5835404,
+            7860953
+          ],
+          "after": [
+            5746410,
+            10401043
+          ]
+        },
+        "before_over_after": 0.9090787217123729,
+        "block_ratios": [
+          0.9041076267513951,
+          0.9704177837420529,
+          0.9639550463667033,
+          0.9983646068071754,
+          0.676756320523652
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 5234.434,
+          "after": 5760.7425
+        },
+        "ranges": {
+          "before": [
+            5040.289,
+            6048.878
+          ],
+          "after": [
+            5080.253,
+            7516.808
+          ]
+        },
+        "before_over_after": 0.9086387735608734,
+        "block_ratios": [
+          0.9337643541609435,
+          0.9719339613092477,
+          0.9386992329909701,
+          0.9417332478526964,
+          0.7242847429052828
+        ]
+      }
+    },
+    "inverse-field": {
+      "process_ns": {
+        "medians": {
+          "before": 15316281.0,
+          "after": 15005247.0
+        },
+        "ranges": {
+          "before": [
+            14183890,
+            18059469
+          ],
+          "after": [
+            14203582,
+            15817592
+          ]
+        },
+        "before_over_after": 1.0207283492234416,
+        "block_ratios": [
+          1.002168704334491,
+          1.005078782062287,
+          1.062282069529455,
+          1.1071607875304303,
+          1.0265692832884337
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 12355.3695,
+          "after": 12130.048999999999
+        },
+        "ranges": {
+          "before": [
+            11505.637,
+            15407.561
+          ],
+          "after": [
+            11371.735,
+            12922.744
+          ]
+        },
+        "before_over_after": 1.0185753989946786,
+        "block_ratios": [
+          1.0139452289261501,
+          1.0129857113025411,
+          1.0495949626173195,
+          1.1309028512580617,
+          0.9938503465859705
+        ]
+      }
+    },
+    "one-shot": {
+      "process_ns": {
+        "medians": {
+          "before": 1366283.0,
+          "after": 1307159.5
+        },
+        "ranges": {
+          "before": [
+            1163802,
+            2451439
+          ],
+          "after": [
+            1123824,
+            1417624
+          ]
+        },
+        "before_over_after": 1.0452305170103573,
+        "block_ratios": [
+          0.9961085594180575,
+          1.1662773813491931,
+          1.0816726476148457,
+          1.5460283917585507,
+          1.0222306624359072
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 294.457,
+          "after": 285.04200000000003
+        },
+        "ranges": {
+          "before": [
+            255.716,
+            367.369
+          ],
+          "after": [
+            257.048,
+            331.094
+          ]
+        },
+        "before_over_after": 1.0330302201079138,
+        "block_ratios": [
+          0.9414128987273895,
+          1.2538567279840784,
+          1.0441178351689115,
+          0.9560048423811379,
+          0.954497389293768
+        ]
+      }
+    }
+  },
+  "full_result_by_case": {
+    "negative-reduced": [
+      "0000",
+      "ffff",
+      "7fff",
+      "0fff",
+      "8001",
+      ""
+    ],
+    "negative-unreduced": [
+      "",
+      "0000",
+      "",
+      "0bbd",
+      "fbb9",
+      ""
+    ],
+    "zero-tiny-boundaries": [
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "0",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ]
+    ],
+    "positive-control": [
+      "",
+      "",
+      "",
+      "",
+      "8",
+      "0001",
+      "0000"
+    ],
+    "inverse-field": [
+      [
+        null,
+        "",
+        "8001",
+        "6aa",
+        "9e1",
+        "ffff",
+        "0000",
+        null,
+        "8001",
+        "d361"
+      ],
+      [
+        null,
+        "",
+        "8001",
+        "6aa",
+        "9e1",
+        "ffff",
+        "0000",
+        null,
+        "8001",
+        "d361"
+      ],
+      [
+        null,
+        "",
+        "0001",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "0001"
+      ]
+    ],
+    "one-shot": [
+      "7b7407fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    ]
+  }
+}

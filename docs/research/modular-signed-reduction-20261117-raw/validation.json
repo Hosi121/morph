@@ -1,0 +1,34 @@
+{
+  "baseline-build": {
+    "sha256": "976a5fb70c11a59632f4fca82a336a5d2e4e4cbbf89dffa2c71cd4815f38f538",
+    "text": "Finished. moon: ran 41 tasks, now up to date\nArtifacts:\n  Hosi121/morph/cmd/conversionmodularbench  native  /home/hosi/morph-conversion-modular-before/_build/native/release/build/cmd/conversionmodularbench/conversionmodularbench.exe\n"
+  },
+  "candidate-build": {
+    "sha256": "bf7843d1cf994d0af9fb38bccb94bcd5b7efc7f6ae1347c4c57e4baf8343923b",
+    "text": "Finished. moon: ran 41 tasks, now up to date\nArtifacts:\n  Hosi121/morph/cmd/conversionmodularbench  native  /home/hosi/morph-conversion-modular/_build/native/release/build/cmd/conversionmodularbench/conversionmodularbench.exe\n"
+  },
+  "native-initial": {
+    "sha256": "8a4e7a01c3f5026ef0c27a47b536bea8872fe1fab2d6d673da8ccd9aea407092",
+    "text": "Total tests: 13, passed: 13, failed: 0.\n"
+  },
+  "native-final": {
+    "sha256": "8a4e7a01c3f5026ef0c27a47b536bea8872fe1fab2d6d673da8ccd9aea407092",
+    "text": "Total tests: 13, passed: 13, failed: 0.\n"
+  },
+  "js-final": {
+    "sha256": "8a4e7a01c3f5026ef0c27a47b536bea8872fe1fab2d6d673da8ccd9aea407092",
+    "text": "Total tests: 13, passed: 13, failed: 0.\n"
+  },
+  "wasm-gc-final": {
+    "sha256": "8a4e7a01c3f5026ef0c27a47b536bea8872fe1fab2d6d673da8ccd9aea407092",
+    "text": "Total tests: 13, passed: 13, failed: 0.\n"
+  },
+  "info-final": {
+    "sha256": "2987817259f1ba9f98be0bacda42c847ea21b7cab3f3d161a9b9b2bad4ccb787",
+    "text": "Finished. moon: ran 5 tasks, now up to date\n"
+  },
+  "fmt-final": {
+    "sha256": "81a677771334385895bc0ebfef26a4af4d319fd300182f0918976f6e1f185489",
+    "text": "Finished. moon: ran 1 task, now up to date\n"
+  }
+}

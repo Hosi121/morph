@@ -1,0 +1,21 @@
+{
+  "before": {
+    "generated_c": "/home/hosi/morph-conversion-modular/.tools/modular-signed-reduction-20261117/before.c.gz",
+    "source_path": "/home/hosi/morph-conversion-modular-before/_build/native/release/build/cmd/conversionmodularbench/conversionmodularbench.c",
+    "uncompressed_sha256": "82f080ba9d0ab4ea7d3410b62733c448fa6444561bbf63230f82e077bdca801d",
+    "compressed_sha256": "77c2f1a5efe40388015ee80d03bd03da5a65245d5b8785b05580e8c323466e3f",
+    "uncompressed_bytes": 1937663
+  },
+  "after-initial": {
+    "generated_c": "/home/hosi/morph-conversion-modular/.tools/modular-signed-reduction-20261117/after-initial.c.gz",
+    "source_path": "/home/hosi/morph-conversion-modular/_build/native/release/build/cmd/conversionmodularbench/conversionmodularbench.c",
+    "uncompressed_sha256": "ac020bbcfa4e83b835a3f620178fc2a5e09b7b99931a667510cb5db393f84664",
+    "compressed_sha256": "d53d19a15e6b0f652277e379a5ad07bf7d7ed57845894ef9eaa5f1bedfa8497b",
+    "uncompressed_bytes": 1935350
+  },
+  "trial_source": {
+    "path": "rejected-trial-modular.mbt",
+    "sha256": "b165997434ece157261189aaf47b9574c9d6c585baaf888e0b6835c2e138805e",
+    "commit": "d926e01c86f044c956e5b1f9509a349ac167d087"
+  }
+}

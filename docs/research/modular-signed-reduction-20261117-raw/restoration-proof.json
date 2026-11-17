@@ -1,0 +1,12 @@
+{
+  "base": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+  "restoration_commit": "547cbb246914bbae7a45f81abe77cef7edcb1b33",
+  "final_production_source_diff": [],
+  "signed_reduce_file_sha256": "c02f8650ff641dc0e1ea5a615f139320b4bcaec45a47c3a5743b6cfde02d05db",
+  "api_interfaces_unchanged": [
+    "src/modular/pkg.generated.mbti",
+    "src/primefield/pkg.generated.mbti"
+  ],
+  "scoped_purity": "src/modular/modular.mbt passes existing audit_purity token model",
+  "retained_tests_patch_sha256": "d306021a0b7e35a63dc7bebec2c724f64d4964053e3b67984d7a629cd2d6610a"
+}
