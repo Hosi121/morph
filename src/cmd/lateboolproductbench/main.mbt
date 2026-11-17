@@ -312,7 +312,7 @@ fn product_fixtures(
           ([[true, false]], 2, [], 0),
           ([[]], 0, [], 0),
         ],
-        20000,
+        100000,
       )
     "sparse" =>
       (
@@ -326,7 +326,7 @@ fn product_fixtures(
             16,
           ),
         ],
-        1000,
+        5000,
       )
     "dense" | "zero" =>
       (
@@ -344,7 +344,7 @@ fn product_fixtures(
             24,
           ),
         ],
-        1000,
+        5000,
       )
     _ => abort("unknown product fixture")
   }
