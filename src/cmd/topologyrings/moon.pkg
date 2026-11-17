@@ -1,0 +1,15 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/homology" @hom,
+  "Hosi121/morph/cohomology" @co,
+  "Hosi121/morph/relativehomology" @rel,
+  "Hosi121/morph/collapse",
+  "Hosi121/morph/filteredcollapse" @fc,
+  "Hosi121/morph/persistence" @ph,
+  "Hosi121/morph/rips",
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")

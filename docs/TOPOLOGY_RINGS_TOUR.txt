@@ -1,0 +1,7 @@
+torus and S1 v S1 v S2: same integer H0=Z, H1=Z^2, H2=Z [checked]
+GF(2) cup product: torus a*b is nonzero; wedge a*b is zero [checked]
+RP2: GF(2) cohomology ring has a^2 nonzero and a^3=0 [checked]
+(disk,boundary): H2=Z; connecting map to H1(boundary)=Z is an isomorphism [checked]
+(interval,endpoints): connecting map sends 1 to (-1,1) in Z^2 [checked]
+filled triangle: 7 simplices -> 1, with exact integer I/P/H identities [checked]
+square Rips: 15 simplices -> 11; grade barcode including H1=[1,2) preserved [checked]
