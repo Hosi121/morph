@@ -126,9 +126,55 @@ pub fn solve(
   input : @matrix.Matrix[Bool],
   rhs : @core.Chain[Bool],
 ) -> @rowreduce.Solution[Bool]? {
-  match factor(input) {
+  let width = @matrix.width(input)
+  match @core.zip(@matrix.rows(input), rhs) {
     None => None
-    Some(value) => solve_factor(value, rhs)
+    Some(pairs) => {
+      let augmented = @core.map(pairs, fn(pair) {
+        let (row, value) = pair
+        @core.append(row, Cons(value, Nil))
+      })
+      match @matrix.matrix(Succ(width), augmented) {
+        None => None
+        Some(matrix) =>
+          match rref(matrix) {
+            None => None
+            Some(reduced) => {
+              let rows = @matrix.rows(reduced.matrix)
+              let inconsistent = @core.any(rows, fn(row) {
+                @core.all(@core.take(width, row), fn(value) { !value }) &&
+                @core.nth(row, width).equal(Some(true))
+              })
+              if inconsistent {
+                Some(Inconsistent)
+              } else {
+                match
+                  @core.zip(
+                    reduced.pivots,
+                    @core.take(@core.length(reduced.pivots), rows),
+                  ) {
+                  None => None
+                  Some(pairs) => {
+                    let particular = @core.map(@core.indices(width), fn(
+                      column,
+                    ) {
+                      match row_for(pairs, column) {
+                        None => false
+                        Some(row) => @core.nth(row, width).equal(Some(true))
+                      }
+                    })
+                    let basis = nullspace(width, pairs)
+                    match basis {
+                      Nil => Some(Unique(particular))
+                      _ => Some(Affine(particular, basis))
+                    }
+                  }
+                }
+              }
+            }
+          }
+      }
+    }
   }
 }
 

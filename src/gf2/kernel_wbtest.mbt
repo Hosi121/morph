@@ -75,6 +75,7 @@ fn validate_case(
     )
     let expected = @rowreduce.solve(field(), source, rhs)
     assert_eq(solve_factor(decomposition, rhs), expected)
+    assert_eq(solve(source, rhs), expected)
   }
   assert_eq(
     solve_factor(
