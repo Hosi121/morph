@@ -1,9 +1,12 @@
 Bayes posterior = [1/7, 6/7]
 Simplex Fisher (mixture coordinates) = [[8, 2], [2, 5]]
+Simplex Amari-Chentsov squared norm = 4
+Simplex Amari-Chentsov trace = [4, 1]
 Simplex alpha=-1, scalar curvature = 0
 Simplex alpha=0, scalar curvature = 1/2
 Simplex alpha=1, scalar curvature = 0
 Simplex alpha=2, scalar curvature = -3/2
+Gaussian Amari-Chentsov squared norm = 14
 Gaussian Fisher (natural coordinates) = [[1, 0], [0, 2]]
 Gaussian scalar curvature = -1
 Markov stationary = [2/3, 1/3]

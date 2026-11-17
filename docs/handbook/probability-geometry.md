@@ -75,6 +75,45 @@ Fisher行列の特異性は、正の確率とは別の条件である。
 特異な場合は `SingularInformation` とし、任意の擬似逆行列を選ばない。
 自然勾配は点でのベクトルであり、有限幅の更新後にもパラメータ領域に残ることは保証しない。
 
+## Amari–Chentsovテンソルを使う
+
+`infogeom.amari_chentsov(model)` は、scoreの3次モーメント
+`T_ijk = E[score_i score_j score_k]` を返す。
+従来の `cubic` は同じ量を返す互換名として残す。
+規約は `T = Γ^(-1) − Γ^(+1)` で、差に1/2を含めない。
+対称な共変3階テンソルであり、接続係数とは座標変換の規則が異なる。
+[Nielsenの定義と期待α接続](https://arxiv.org/abs/1808.08271)に従う。
+
+[statgeometry.amari_chentsov](../../src/statgeometry/amari_chentsov.mbt) は、非退化なFisher計量と組み合わせ、
+検査済みの `AmariChentsov` を構築する。
+
+| API | 返す量 |
+| --- | --- |
+| `covariant()` | `T_ijk`、成分の軸順は `[i,j,k]` |
+| `difference()` | `K^k_ij = g^(kl) T_ijl`、最後の添字を上げた形 |
+| `contravariant()` | 全添字を上げた `T^(ijk)` |
+| `evaluate(u,v,w)` | 接ベクトルに作用した有理数 `T(u,v,w)` |
+| `product(u,v)` | `g(K(u,v),w) = T(u,v,w)` を満たす接ベクトル |
+| `trace()` | 共変ベクトル `tau_i = Σjk g^(jk) T_ijk` |
+| `norm_squared()` | scalar `Σijk T_ijk T^(ijk)` |
+
+`Γ^(α) = Γ^(0) − α K/2` なので、双対接続の差を接ベクトルへ作用させられる。
+`product` は対称な双線形演算だが、一般に結合法則を仮定しない。
+計量の逆行列と添字上げを構築時に共有し、ノルムはrank 6のテンソル積を展開せず計算する。
+特異なFisher行列は `Metric(SingularMetric)` とし、元の共変テンソルだけなら引き続き取得できる。
+ベクトルの次元違反は拒否し、0次元ではノルム0・trace空列となる。
+
+`pullback_amari_chentsov(model,J)` は長方形Jacobianによる共変テンソルの引き戻し。
+可逆な座標変換ではノルムの二乗は不変、traceは共変ベクトルとして変換する。
+固定比率で標本を分割する十分なMarkov埋込みについても、Fisher計量と3次テンソルの一致を検査している。
+これは一般の粗視化に対する3次テンソルの単調性や、Chentsovの一意性定理の実装証明ではない。
+
+Gaussianでは `gaussian.information(source)` から `fisher()` と `amari_chentsov()` を取得できる。
+この経路は2・3次cumulantまでで止め、4次cumulantを必要としない。
+`statgeometry.gaussian_amari_chentsov(source)` は同じ計量とテンソルから上記の演算を提供する。
+自然座標の統計量は `X_i`、続いて `X_i X_j (i≤j)` の順。
+1変量Gaussianの族では `norm_squared() = 14` を位置・scaleの異なる有理点で確認する。
+
 ## 多項式モデルから微分を生成する
 
 [polynomial.mbt](../../src/infogeom/polynomial.mbt) は、既存の疎多項式と記号微分を再利用する。

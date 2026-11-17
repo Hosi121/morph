@@ -9,6 +9,7 @@ import {
   "Hosi121/morph/matrix",
   "Hosi121/morph/polynomial",
   "Hosi121/morph/riemann",
+  "Hosi121/morph/tensor",
   "moonbitlang/core/debug",
 }
 
@@ -26,6 +27,8 @@ pub fn expectation_with(Moments, @polynomial.Polynomial) -> Result[(@exact.Ratio
 pub fn fisher_jet(Gaussian) -> Result[@riemann.MetricJet, GaussianError]
 
 pub fn gaussian(@core.Chain[@exact.Rational], @matrix.Matrix[@exact.Rational]) -> Result[Gaussian, GaussianError]
+
+pub fn information(Gaussian) -> Result[Information, GaussianError]
 
 pub fn mean(Gaussian) -> @core.Chain[@exact.Rational]
 
@@ -65,6 +68,19 @@ pub(all) enum GaussianError {
 pub fn GaussianError::equal(Self, Self) -> Bool
 pub fn GaussianError::not_equal(Self, Self) -> Bool
 pub fn GaussianError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Information {
+  source : Gaussian
+  metric : @matrix.Matrix[@exact.Rational]
+  cubic : @tensor.Tensor[@exact.Rational]
+}
+pub fn Information::amari_chentsov(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn Information::equal(Self, Self) -> Bool
+pub fn Information::fisher(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn Information::not_equal(Self, Self) -> Bool
+pub fn Information::parent(Self) -> Gaussian
+pub fn Information::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub struct Moments {

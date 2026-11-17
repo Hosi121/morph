@@ -58,6 +58,7 @@
 | 有限確率 | [有理分布・期待値・条件付け・Bayes更新・独立積と周辺化](../src/probability/distribution.mbt) |
 | 確率核・Bayes逆核 | [長方形の確率核・合成・事後分布](../src/probability/channel.mbt)・[モデルの粗視化と微分](../src/infogeom/channel.mbt) |
 | 情報幾何 | [確率2-jet・Fisher行列・cubic tensor・α接続・自然勾配](../src/infogeom/model.mbt) |
+| Amari–Chentsov | [明示的な3次scoreモーメントAPI](../src/infogeom/model.mbt)・[接ベクトルへの作用・添字上げ・trace・不変ノルム](../src/statgeometry/amari_chentsov.mbt)・[Gaussianの2/3次cumulant](../src/gaussian/information.mbt) |
 | α接続の曲率 | [確率3-jetから接続を微分](../src/infogeom/alpha.mbt)・[一般αの曲率・Ricci・scalar](../src/statgeometry/alpha.mbt) |
 | 高階テンソル | [shape付き不変テンソル・置換](../src/tensor/tensor.mbt)・[縮約と一軸の線形変換](../src/tensor/contraction.mbt) |
 | モデルから曲率へ | [多項式の3階微分](../src/infogeom/polynomial.mbt)・[Fisher計量jetからRiemann/Ricci曲率へ接続](../src/statgeometry/geometry.mbt) |

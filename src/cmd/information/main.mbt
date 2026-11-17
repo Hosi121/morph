@@ -232,6 +232,12 @@ fn demo() -> Unit {
     "Simplex Fisher (mixture coordinates) = " +
     matrix_text(@infogeom.fisher(@infogeom.local_model(point))),
   )
+  let cubic = @statgeometry.amari_chentsov(@infogeom.local_model(point)).unwrap()
+  println(
+    "Simplex Amari-Chentsov squared norm = " +
+    rational_text(cubic.norm_squared()),
+  )
+  println("Simplex Amari-Chentsov trace = " + vector_text(cubic.trace()))
   for alpha in [-1, 0, 1, 2] {
     let value = @statgeometry.alpha_geometry(point, q(alpha, 1)).unwrap()
     println(
@@ -240,6 +246,14 @@ fn demo() -> Unit {
     )
   }
   let normal = @gaussian.fisher_jet(standard_gaussian(1)).unwrap()
+  println(
+    "Gaussian Amari-Chentsov squared norm = " +
+    rational_text(
+      @statgeometry.gaussian_amari_chentsov(standard_gaussian(1))
+      .unwrap()
+      .norm_squared(),
+    ),
+  )
   println(
     "Gaussian Fisher (natural coordinates) = " +
     matrix_text(@riemann.metric(normal)),

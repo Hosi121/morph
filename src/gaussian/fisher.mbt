@@ -232,12 +232,12 @@ fn tensor_value(
 }
 
 ///|
-/// Fisher metric two-jet in natural coordinates (linear/quadratic statistics).
-/// Second, third and fourth cumulants are evaluated by exact Gaussian moments.
-/// No density values, quadrature or finite-difference approximations are used.
-pub fn fisher_jet(
+fn prepare_information(
   source : Gaussian,
-) -> Result[@riemann.MetricJet, GaussianError] {
+) -> Result[
+  (@tensor.Tensor[@exact.Rational], @tensor.Tensor[@exact.Rational], Cumulants),
+  GaussianError,
+] {
   let statistics = match sufficient_statistics(source) {
     Some(value) => value
     None => return Err(InternalShape)
@@ -248,7 +248,6 @@ pub fn fisher_jet(
   }
   let state = Cumulants::{ moments: plan, centered, products: @avl.empty(), }
   let d = @core.length(centered)
-  let indices = @core.indices(d)
   let (metric, state) = match
     build_tensor(Cons(d, Cons(d, Nil)), state, joint) {
     Ok(value) => value
@@ -259,6 +258,24 @@ pub fn fisher_jet(
     Ok(value) => value
     Err(error) => return Err(error)
   }
+  Ok((metric, first_tensor, state))
+}
+
+///|
+
+///|
+/// Fisher metric two-jet in natural coordinates (linear/quadratic statistics).
+/// Second, third and fourth cumulants are evaluated by exact Gaussian moments.
+/// No density values, quadrature or finite-difference approximations are used.
+pub fn fisher_jet(
+  source : Gaussian,
+) -> Result[@riemann.MetricJet, GaussianError] {
+  let (metric, first_tensor, state) = match prepare_information(source) {
+    Ok(value) => value
+    Err(error) => return Err(error)
+  }
+  let d = @core.length(state.centered)
+  let indices = @core.indices(d)
   let (second_tensor, _) = match
     build_tensor(Cons(d, Cons(d, Cons(d, Cons(d, Nil)))), state, fn(
       state,

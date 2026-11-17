@@ -2,7 +2,9 @@
 package "Hosi121/morph/statgeometry"
 
 import {
+  "Hosi121/morph/core",
   "Hosi121/morph/exact",
+  "Hosi121/morph/gaussian",
   "Hosi121/morph/infogeom",
   "Hosi121/morph/matrix",
   "Hosi121/morph/riemann",
@@ -31,11 +33,19 @@ pub fn alpha_riemann(AlphaGeometry) -> @tensor.Tensor[@exact.Rational]
 
 pub fn alpha_scalar(AlphaGeometry) -> @exact.Rational
 
+pub fn amari_chentsov(@infogeom.Model) -> Result[AmariChentsov, GeometryError]
+
+pub fn amari_chentsov_tensor(@infogeom.Model) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
+
 pub fn cubic_tensor(@infogeom.Model) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
 
 pub fn curvature(@infogeom.ModelPoint) -> Result[@riemann.Curvature, GeometryError]
 
 pub fn fisher_jet(@infogeom.ModelPoint) -> Result[@riemann.MetricJet, GeometryError]
+
+pub fn gaussian_amari_chentsov(@gaussian.Gaussian) -> Result[AmariChentsov, GeometryError]
+
+pub fn pullback_amari_chentsov(@infogeom.Model, @matrix.Matrix[@exact.Rational]) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
 
 pub fn pullback_cubic(@infogeom.Model, @matrix.Matrix[@exact.Rational]) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
 
@@ -60,10 +70,32 @@ pub fn AlphaGeometry::not_equal(Self, Self) -> Bool
 pub fn AlphaGeometry::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
+pub struct AmariChentsov {
+  metric : @matrix.Matrix[@exact.Rational]
+  covariant : @tensor.Tensor[@exact.Rational]
+  difference : @tensor.Tensor[@exact.Rational]
+  contravariant : @tensor.Tensor[@exact.Rational]
+  trace : @core.Chain[@exact.Rational]
+  norm_squared : @exact.Rational
+}
+pub fn AmariChentsov::contravariant(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn AmariChentsov::covariant(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn AmariChentsov::difference(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn AmariChentsov::equal(Self, Self) -> Bool
+pub fn AmariChentsov::evaluate(Self, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Result[@exact.Rational, GeometryError]
+pub fn AmariChentsov::metric(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn AmariChentsov::norm_squared(Self) -> @exact.Rational
+pub fn AmariChentsov::not_equal(Self, Self) -> Bool
+pub fn AmariChentsov::product(Self, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], GeometryError]
+pub fn AmariChentsov::to_repr(Self) -> @debug.Repr
+pub fn AmariChentsov::trace(Self) -> @core.Chain[@exact.Rational]
+
+#derive(Eq, @debug.Debug)
 pub(all) enum GeometryError {
   MissingDerivative
   Metric(@riemann.JetError)
   Tensor(@tensor.TensorError)
+  Gaussian(@gaussian.GaussianError)
 }
 pub fn GeometryError::equal(Self, Self) -> Bool
 pub fn GeometryError::not_equal(Self, Self) -> Bool

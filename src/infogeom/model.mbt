@@ -279,8 +279,16 @@ fn cubic_entry(
 }
 
 ///|
-pub fn cubic(model : Model) -> Tensor? {
+/// Amari-Chentsov covariant tensor T_ijk = E[score_i score_j score_k].
+/// This convention fixes T = Gamma^(-1) - Gamma^(+1), with no factor one-half.
+pub fn amari_chentsov(model : Model) -> Tensor? {
   tensor(model.dimension, fn(i, j, k) { cubic_entry(model, i, j, k) })
+}
+
+///|
+/// Compatibility name for amari_chentsov.
+pub fn cubic(model : Model) -> Tensor? {
+  amari_chentsov(model)
 }
 
 ///|

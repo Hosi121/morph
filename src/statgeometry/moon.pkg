@@ -7,9 +7,11 @@ import {
   "Hosi121/morph/tensor",
   "Hosi121/morph/infogeom",
   "Hosi121/morph/riemann",
+  "Hosi121/morph/gaussian",
 }
 
 import {
   "Hosi121/morph/polynomial",
+  "Hosi121/morph/probability",
   "Hosi121/morph/testsupport" @oracle,
 } for "wbtest"

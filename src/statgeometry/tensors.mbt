@@ -19,13 +19,21 @@ fn from_slices(
 }
 
 ///|
-pub fn cubic_tensor(
+pub fn amari_chentsov_tensor(
   model : @infogeom.Model,
 ) -> Result[@tensor.Tensor[@exact.Rational], GeometryError] {
-  match @infogeom.cubic(model) {
+  match @infogeom.amari_chentsov(model) {
     None => Err(MissingDerivative)
     Some(slices) => from_slices(@infogeom.dimension(model), slices)
   }
+}
+
+///|
+/// Compatibility name for the covariant Amari-Chentsov tensor.
+pub fn cubic_tensor(
+  model : @infogeom.Model,
+) -> Result[@tensor.Tensor[@exact.Rational], GeometryError] {
+  amari_chentsov_tensor(model)
 }
 
 ///|
@@ -61,12 +69,12 @@ pub fn alpha_raised(
 ///|
 /// Pull back the covariant cubic tensor with J[old parameter,new parameter].
 /// Unlike connection coefficients, cubic tensors need only first derivatives.
-pub fn pullback_cubic(
+pub fn pullback_amari_chentsov(
   model : @infogeom.Model,
   jacobian : @matrix.Matrix[@exact.Rational],
 ) -> Result[@tensor.Tensor[@exact.Rational], GeometryError] {
   let transformed = @matrix.transpose(jacobian)
-  let cubic = match cubic_tensor(model) {
+  let cubic = match amari_chentsov_tensor(model) {
     Ok(value) => value
     Err(error) => return Err(error)
   }
@@ -87,6 +95,15 @@ pub fn pullback_cubic(
         Ok(value) => change(value, Succ(Succ(Zero)))
       }
   }
+}
+
+///|
+/// Compatibility name for pullback_amari_chentsov.
+pub fn pullback_cubic(
+  model : @infogeom.Model,
+  jacobian : @matrix.Matrix[@exact.Rational],
+) -> Result[@tensor.Tensor[@exact.Rational], GeometryError] {
+  pullback_amari_chentsov(model, jacobian)
 }
 
 ///|
