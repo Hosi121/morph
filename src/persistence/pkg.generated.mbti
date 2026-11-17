@@ -1,0 +1,105 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/persistence"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn barcode(Certificate) -> @core.Chain[Bar]
+
+pub fn boundary_columns(Filtration) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn check_result(Filtration, @core.Chain[Bar], Certificate) -> Bool
+
+pub fn entries(Filtration) -> @core.Chain[Entry]
+
+pub fn pairs(Certificate) -> @core.Chain[Pairing]
+
+pub fn run(State, @core.Nat, @core.Nat) -> Computation
+
+pub fn start(Filtration) -> State
+
+pub fn validate(@core.Chain[Entry]) -> Filtration?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Bar {
+  dimension : @core.Nat
+  birth : @exact.Rational
+  death : @exact.Rational?
+  birth_simplex : @core.Nat
+  death_simplex : @core.Nat?
+}
+pub fn Bar::equal(Self, Self) -> Bool
+pub fn Bar::not_equal(Self, Self) -> Bool
+pub fn Bar::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : Filtration
+  reduced : @core.Chain[@core.Chain[@core.Nat]]
+  change : @core.Chain[@core.Chain[@core.Nat]]
+  pairings : @core.Chain[Pairing]
+  bars : @core.Chain[Bar]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Computation {
+  Done(Certificate)
+  Paused(State)
+  InvalidWitness
+}
+pub fn Computation::equal(Self, Self) -> Bool
+pub fn Computation::not_equal(Self, Self) -> Bool
+pub fn Computation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Entry {
+  simplex : @core.Chain[@core.Nat]
+  grade : @exact.Rational
+}
+pub fn Entry::equal(Self, Self) -> Bool
+pub fn Entry::not_equal(Self, Self) -> Bool
+pub fn Entry::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Filtration {
+  entries : @core.Chain[Entry]
+}
+pub fn Filtration::equal(Self, Self) -> Bool
+pub fn Filtration::not_equal(Self, Self) -> Bool
+pub fn Filtration::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Pairing {
+  birth : @core.Nat
+  death : @core.Nat
+}
+pub fn Pairing::equal(Self, Self) -> Bool
+pub fn Pairing::not_equal(Self, Self) -> Bool
+pub fn Pairing::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  source : Filtration
+  remaining : @core.Chain[@core.Chain[@core.Nat]]
+  reduced_rev : @core.Chain[@core.Chain[@core.Nat]]
+  change_rev : @core.Chain[@core.Chain[@core.Nat]]
+  index : @core.Nat
+  active : (@core.Chain[@core.Nat], @core.Chain[@core.Nat])?
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
