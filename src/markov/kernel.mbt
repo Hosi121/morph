@@ -35,7 +35,7 @@ pub extend MarkovError with Debug::{to_repr}
 
 ///|
 fn nonnegative(value : @exact.Rational) -> Bool {
-  @exact.rational_compare(value, @exact.rational_zero()) != Less
+  !(@exact.rational_compare(value, @exact.rational_zero()) is Less)
 }
 
 ///|
@@ -48,11 +48,11 @@ fn probability(
   count : @core.Nat,
   values : @core.Chain[@exact.Rational],
 ) -> Result[Unit, MarkovError] {
-  if @core.length(values) != count {
+  if !@core.length(values).equal(count) {
     Err(DimensionMismatch)
   } else if !@core.all(values, nonnegative) {
     Err(NegativeProbability)
-  } else if sum(values) != @exact.rational_one() {
+  } else if !sum(values).equal(@exact.rational_one()) {
     Err(NotNormalized)
   } else {
     Ok(())
@@ -73,7 +73,7 @@ pub fn kernel(
           if !@core.all(rows, fn(row) { @core.all(row, nonnegative) }) {
             Err(NegativeProbability)
           } else if !@core.all(rows, fn(row) {
-              sum(row) == @exact.rational_one()
+              sum(row).equal(@exact.rational_one())
             }) {
             Err(NotNormalized)
           } else {
@@ -193,7 +193,7 @@ pub fn evolve(
 ///|
 /// Apply first, then second: mu -> (mu first) second.
 pub fn compose(first : Kernel, second : Kernel) -> Result[Kernel, MarkovError] {
-  if states(first) != states(second) {
+  if !states(first).equal(states(second)) {
     Err(DimensionMismatch)
   } else {
     match @matrix.multiply(first.transition, second.transition, arithmetic()) {

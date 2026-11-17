@@ -89,11 +89,10 @@ fn linear_stationary(
   vector : @core.Chain[@exact.Rational],
   mass : @exact.Rational,
 ) -> Bool {
-  @core.length(vector) == states(value) &&
-  sum(vector) == mass &&
+  @core.length(vector).equal(states(value)) &&
+  sum(vector).equal(mass) &&
   @core.all(@core.indices(states(value)), fn(index) {
-    coordinate(@matrix.rows(value.transition), vector, index) ==
-    @core.nth(vector, index)
+    coordinate_equal(value, vector, vector, index)
   })
 }
 
@@ -105,7 +104,7 @@ pub fn check_stationary_family(
   value : Kernel,
   family : StationaryFamily,
 ) -> Bool {
-  if value != family.context ||
+  if !value.equal(family.context) ||
     !linear_stationary(value, family.origin, @exact.rational_one()) ||
     !@core.all(family.directions, fn(direction) {
       linear_stationary(value, direction, @exact.rational_zero())
@@ -121,8 +120,10 @@ pub fn check_stationary_family(
         match (@linear.rref(equations), @linear.rref(directions)) {
           (Some(system), Some(basis)) => {
             let dimension = @core.length(basis.pivots)
-            dimension == @core.length(family.directions) &&
-            @core.add(@core.length(system.pivots), dimension) == states(value)
+            dimension.equal(@core.length(family.directions)) &&
+            @core.add(@core.length(system.pivots), dimension).equal(
+              states(value),
+            )
           }
           _ => false
         }
@@ -195,7 +196,7 @@ pub fn stationary_member(
       _ => None
     }
   }
-  if @core.length(parameters) != @core.length(family.directions) {
+  if !@core.length(parameters).equal(@core.length(family.directions)) {
     Err(DimensionMismatch)
   } else {
     match combine(parameters, family.directions, family.origin) {

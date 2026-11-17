@@ -36,8 +36,7 @@ pub fn check_evolution(
     ) {
     (Ok(_), Ok(_)) =>
       @core.all(@core.indices(states(value)), fn(index) {
-        coordinate(@matrix.rows(value.transition), distribution, index) ==
-        @core.nth(actual, index)
+        coordinate_equal(value, distribution, actual, index)
       })
     _ => false
   }
@@ -49,7 +48,8 @@ pub fn check_composition(
   second : Kernel,
   actual : Kernel,
 ) -> Bool {
-  if states(first) != states(second) || states(first) != states(actual) {
+  if !states(first).equal(states(second)) ||
+    !states(first).equal(states(actual)) {
     false
   } else {
     match
@@ -61,5 +61,22 @@ pub fn check_composition(
           check_evolution(second, distribution, result)
         })
     }
+  }
+}
+
+///|
+fn coordinate_equal(
+  value : Kernel,
+  weights : @core.Chain[@exact.Rational],
+  expected : @core.Chain[@exact.Rational],
+  index : @core.Nat,
+) -> Bool {
+  match
+    (
+      coordinate(@matrix.rows(value.transition), weights, index),
+      @core.nth(expected, index),
+    ) {
+    (Some(actual), Some(expected)) => actual.equal(expected)
+    _ => false
   }
 }
