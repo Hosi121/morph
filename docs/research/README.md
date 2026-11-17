@@ -13,6 +13,7 @@
 | --- | --- |
 | [体の専用化と再利用](field-kernels-20261117.md) | 三担当の採否、CSS・コホモロジーへの接続、複素積の不採用案 |
 | [GF(2)専用核](gf2-kernel-20261117.md) | Bool消去、再利用分解、変換の逆再生、独立oracleと30比較 |
+| [Fp多項式の正規形](canonical-fp-20261117.md) | opaqueな係数の界限、Optionによる補正、独立oracleと公開API比較 |
 | [有理数の零行共有](rational-elimination-20261117.md) | 正規形の条件、Fraction参照、疎・密と上位callerの比較 |
 | [素体の標数2](prime-arithmetic-20261117.md) | 未還元入力のparity辞書、一般剰余の不採用、未変更対照の揺れ |
 

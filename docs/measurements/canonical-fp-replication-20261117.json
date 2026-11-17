@@ -1,0 +1,1154 @@
+{
+  "utc": "2026-11-17T11:43:09.742742+00:00",
+  "before": {
+    "root": "/home/hosi/morph-canonical-before",
+    "commit": "03d6584c4ceba92d4567b5af42d7e62e14aca93b",
+    "working_tree": [
+      "?? src/cmd/canonicalfpbench/"
+    ],
+    "source_manifest_sha256": "8e5cb1aabebf652cdac650b5e41df237b5fc953f312bf3c83fa1f21cb6021070",
+    "source_file_count": 876,
+    "artifact": "/home/hosi/morph-canonical-before/_build/native/release/build/cmd/canonicalfpbench/canonicalfpbench.exe",
+    "artifact_sha256": "18bcbea56bcde195f60be767bde4111e4b0db4c4427e420b4c72c92fcf13712d",
+    "harness": {
+      "main.mbt": "c14296c63aff882d1177b5c30e3f9fe1c49008d5fad5402756846aabfa1d054f",
+      "moon.pkg": "0a8388a4ce5b9957c7028f13230badbc56a85424ff13a6206dd8041f9e87ccd3"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "100c34a2bf0871e3fa30e97d399f5c6dfb8b515f",
+    "working_tree": [
+      "M docs/CALL_PATHS.md",
+      " M docs/INVENTORY.md",
+      "?? docs/measurements/canonical-fp-20261117.json",
+      "?? docs/measurements/canonical-fp-control-20261117.json"
+    ],
+    "source_manifest_sha256": "ce4b04b79f0b916a9892fc0f68a82135992244d86959a7c8af60ccb1b2d156f6",
+    "source_file_count": 877,
+    "artifact": "/home/hosi/morph/_build/native/release/build/cmd/canonicalfpbench/canonicalfpbench.exe",
+    "artifact_sha256": "c1ff0cb8a1193e4929e1ebb364fedb8d3e0b1dd2c2a2d68a968637774ad7166c",
+    "harness": {
+      "main.mbt": "c14296c63aff882d1177b5c30e3f9fe1c49008d5fad5402756846aabfa1d054f",
+      "moon.pkg": "0a8388a4ce5b9957c7028f13230badbc56a85424ff13a6206dd8041f9e87ccd3"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "add17-unequal",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 117869819,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 107137071,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 104892015,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 113366998,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 112719074,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 100826350,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 109401483,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 123352682,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 135987571,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 117412721,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 114823665,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 120393625,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 133622727,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 127689041,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 109332624,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 124049038,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 117175353,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 100507906,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 104699591,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17-unequal",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 113549149,
+      "payload": {
+        "case": "add17-unequal",
+        "iterations": 150000,
+        "checksum": 188849181,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add17-unequal\",\"iterations\":150000,\"checksum\":188849181,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 144983927,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 135267389,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 147696047,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 154713798,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 145222478,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 136469076,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 136135177,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 140113983,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143150101,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 138509337,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 141744408,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 150080132,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 149944156,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 133021486,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 130916179,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 143808168,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 135393869,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 127193185,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 135288705,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537-cancel",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 136875425,
+      "payload": {
+        "case": "add65537-cancel",
+        "iterations": 40000,
+        "checksum": 656400212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"add65537-cancel\",\"iterations\":40000,\"checksum\":656400212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 99433787,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 94214778,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 96027168,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 98765967,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 105554655,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 95758212,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 108938897,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 95577069,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 99570073,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 121766086,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 101085126,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 94900074,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 109093538,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 101489148,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 94990475,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 95962015,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 97593775,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 99806085,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 99056990,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "char2-control",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 98018183,
+      "payload": {
+        "case": "char2-control",
+        "iterations": 600000,
+        "checksum": 421598369,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"char2-control\",\"iterations\":600000,\"checksum\":421598369,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "add17-unequal": {
+      "process_ns": {
+        "medians": {
+          "before": 119131722.0,
+          "after": 108234847.5
+        },
+        "ranges": {
+          "before": [
+            112719074,
+            135987571
+          ],
+          "after": [
+            100507906,
+            127689041
+          ]
+        },
+        "before_over_after": 1.100678060270746,
+        "block_ratios": [
+          1.0905900759294882,
+          1.1229329277251314,
+          1.1039665248666073,
+          1.0871232593864362,
+          1.1243473331775984
+        ]
+      }
+    },
+    "add65537-cancel": {
+      "process_ns": {
+        "medians": {
+          "before": 144396047.5,
+          "after": 135711941.0
+        },
+        "ranges": {
+          "before": [
+            135393869,
+            154713798
+          ],
+          "after": [
+            127193185,
+            147696047
+          ]
+        },
+        "before_over_after": 1.0639892586902135,
+        "block_ratios": [
+          1.0591394041454882,
+          1.046705830374554,
+          1.0463026390601846,
+          1.1129609864511,
+          1.0372879210828603
+        ]
+      }
+    },
+    "char2-control": {
+      "process_ns": {
+        "medians": {
+          "before": 98392075.0,
+          "after": 99431537.5
+        },
+        "ranges": {
+          "before": [
+            94900074,
+            109093538
+          ],
+          "after": [
+            94214778,
+            121766086
+          ]
+        },
+        "before_over_after": 0.9895459476325608,
+        "block_ratios": [
+          1.0418299337623471,
+          0.9825821428674891,
+          0.8726456780499807,
+          1.0436479359490627,
+          0.9836514797933201
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}

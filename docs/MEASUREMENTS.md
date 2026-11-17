@@ -15,6 +15,15 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## Fp多項式の正規形を利用する比較
+
+[既存ADTの界限を使う加算・符号反転](research/canonical-fp-20261117.md)を、
+同じ公開API harnessの基準・採用native releaseで比較しました。CPU4、5組のABBA、
+全係数照合込みの8例160プロセスです。原始演算だけの計測とは区別します。
+[全生値](measurements/canonical-fp-20261117.json)、
+[同じELFの対照](measurements/canonical-fp-control-20261117.json)、
+[一回限りの再測定](measurements/canonical-fp-replication-20261117.json)を残しています。
+
 ## 体の算法・線形代数の専用化
 
 いずれもnative release、CPU 4、共有ロックです。異なる行の倍率を合成しません。

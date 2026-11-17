@@ -37,6 +37,7 @@
 
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
 | --- | --- | --- |
+| Fp多項式の正規形 | 公開add/negate/subtract→乗算・多項式除算 | [係数の界限を再利用](research/canonical-fp-20261117.md)。nativeの符号反転1.39/1.11倍、減算1.12倍、除算1.10倍。全係数照合込み。加算の小差とGF(2)の対照は限定して解釈 |
 | Fp多項式の係数と除算 | Galois、巡回RS、AESの表生成 | [Fp(2)と除算](bootstrap/gf2-performance/README.md)。同じ検査済みfieldの係数、幅、scale/shiftを再利用。CPU時間とwall時間を別に記録 |
 | GF(2^m)の積 | Galois.multiply→RSの符号化/復号、AESの有限体演算 | [可変長Bool列](bootstrap/gf2-performance/README.md)。同一CPU timer系列でGF256積5.225→0.942 µs、RS255は7.510→5.000 ms。固定幅案はRSを悪化させたため棄却 |
 | 多段実代数の二次式の符号 | realtowerのscalar sign→相対Sturm・任意変数CAD | [厳密な親体比較](research/realtower-20261116.md)。凍結native debug・深さ3の相対二次式1例で1.564/1.633 s→0.0227/0.0201 s。可約・従属・shifted queryの独立70テスト×3 backend。高次数一般PRSは維持 |

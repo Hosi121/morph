@@ -7,7 +7,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：123パッケージ、325ソース。
-核のテスト宣言：4359、bench group：212。
+核のテスト宣言：4362、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -67,7 +67,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
-| [fppoly](../src/fppoly) | 4 | 20 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
+| [fppoly](../src/fppoly) | 4 | 23 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
