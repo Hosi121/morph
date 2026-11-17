@@ -131,15 +131,56 @@ fn row_negate(
 }
 
 ///|
+/// Traverse the stored rows directly. Validate the retained width even when
+/// there are no rows, so zero-by-n matrices retain column-index semantics.
+fn update_columns(
+  input : @matrix.Matrix[@exact.Integer],
+  a : @core.Nat,
+  b : @core.Nat,
+  update : (@core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?,
+) -> @matrix.Matrix[@exact.Integer]? {
+  fn walk(
+    rows : @core.Chain[@core.Chain[@exact.Integer]],
+  ) -> @core.Chain[@core.Chain[@exact.Integer]]? {
+    match rows {
+      Nil => Some(Nil)
+      Cons(row, rest) =>
+        match (update(row), walk(rest)) {
+          (Some(row), Some(rest)) => Some(Cons(row, rest))
+          _ => None
+        }
+    }
+  }
+  match
+    (
+      @core.compare(a, @matrix.width(input)),
+      @core.compare(b, @matrix.width(input)),
+    ) {
+    (Less, Less) =>
+      match walk(@matrix.rows(input)) {
+        Some(rows) => @matrix.matrix(@matrix.width(input), rows)
+        None => None
+      }
+    _ => None
+  }
+}
+
+///|
 fn column_swap(
   input : @matrix.Matrix[@exact.Integer],
   a : @core.Nat,
   b : @core.Nat,
 ) -> @matrix.Matrix[@exact.Integer]? {
-  match row_swap(@matrix.transpose(input), a, b) {
-    Some(transposed) => Some(@matrix.transpose(transposed))
-    None => None
-  }
+  update_columns(input, a, b, fn(row) {
+    match (@core.nth(row, a), @core.nth(row, b)) {
+      (Some(x), Some(y)) =>
+        match replace(row, a, y) {
+          Some(row) => replace(row, b, x)
+          None => None
+        }
+      _ => None
+    }
+  })
 }
 
 ///|
@@ -149,8 +190,11 @@ fn column_add(
   source : @core.Nat,
   factor : @exact.Integer,
 ) -> @matrix.Matrix[@exact.Integer]? {
-  match row_add(@matrix.transpose(input), target, source, factor) {
-    Some(transposed) => Some(@matrix.transpose(transposed))
-    None => None
-  }
+  update_columns(input, target, source, fn(row) {
+    match (@core.nth(row, target), @core.nth(row, source)) {
+      (Some(x), Some(y)) =>
+        replace(row, target, @exact.add(x, @exact.multiply(factor, y)))
+      _ => None
+    }
+  })
 }
