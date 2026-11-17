@@ -15,7 +15,7 @@ fn pair(lower : Array[Int32], upper : Array[Int32]) -> Pair {
 
 ///|
 fn finished(source : @homology.Complex) -> Sequence {
-  match run(start(source), @oracle.nat(2000)) {
+  match run(start(source), @oracle.nat(10000)) {
     Stalled(witness) => witness
     _ => abort("small collapse search should finish")
   }
@@ -137,6 +137,21 @@ test "circle sphere and projective plane stay while dangling trees disappear" {
   assert_eq(witness.target, circle)
   assert_eq(@core.length(witness.steps), @oracle.nat(2))
   verify_sequence(dangling, witness)
+  // A genuine contraction preserves integral torsion, not just field ranks.
+  let torsion_source = @homology.closure(
+    @core.append(
+      @homology.all_simplices(projective_plane()),
+      @oracle.chain([simplex([0, 6]), simplex([6, 7])]),
+    ),
+  ).unwrap()
+  let torsion_sequence = finished(torsion_source)
+  assert_eq(torsion_sequence.target, projective_plane())
+  assert_eq(@core.length(torsion_sequence.steps), @oracle.nat(2))
+  verify_sequence(torsion_source, torsion_sequence)
+  assert_eq(
+    homology_result(torsion_sequence.target, 1).torsion,
+    @oracle.chain([@oracle.binary(2)]),
+  )
 }
 
 ///|
@@ -216,6 +231,23 @@ test "untrusted witness orientation matrices maps and endpoint tampering is reje
 
 ///|
 test "immutable continuation meters candidate attempts and sequences bind actual endpoints" {
+  let edge = generated([[0, 1]])
+  // Lexicographic candidates: ([0],[0]) fails, ([0],[0,1]) contracts,
+  // then the remaining vertex's only candidate fails and exhausts the search.
+  let after_two = match run(start(edge), @oracle.nat(2)) {
+    Paused(next) => next
+    _ => abort("two attempts must pause after the edge contraction")
+  }
+  assert_eq(@core.length(sequence(after_two).steps), @oracle.nat(1))
+  match run(after_two, @oracle.nat(1)) {
+    Stalled(witness) =>
+      assert_true(check_sequence(edge, witness.target, witness))
+    _ => abort("the third attempt must finish the edge search")
+  }
+  assert_eq(
+    run(start(generated([])), @oracle.nat(0)),
+    Stalled({ source: generated([]), target: generated([]), steps: @core.Nil, }),
+  )
   let source = generated([[0, 1, 2]])
   let initial = start(source)
   assert_eq(run(initial, @oracle.nat(0)), Paused(initial))
