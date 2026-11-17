@@ -7,10 +7,10 @@ struct OracleMatrix {
 }
 
 ///|
-extend OracleMatrix with Eq::{equal, not_equal}
+pub extend OracleMatrix with Eq::{equal, not_equal}
 
 ///|
-extend OracleMatrix with Debug::{to_repr}
+pub extend OracleMatrix with Debug::{to_repr}
 
 ///|
 fn oracle_matrix(
