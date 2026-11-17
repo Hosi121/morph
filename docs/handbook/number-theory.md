@@ -109,7 +109,7 @@ p=17,a=b=2の19点の群では全19³=6859組の結合則、
 | --- | --- | --- |
 | 標数>3の拡大体上の曲線（実装済み） | 既存`galois.Field`の演算、点の検査 | `Curve`・`Point`に体と曲線を保持する専用の検査境界 |
 | Jacobian座標（実装済み） | 体の積・平方、既存affine参照 | 射影的な等号、例外点の分岐、座標を取り出す時の正規化 |
-| Miller法とTateペアリング | 二進スカラー再帰、曲線演算、拡大体の冪 | 直線関数の評価、零・極の扱い、対象のねじれ点と最終冪への束縛 |
+| Miller法とTate評価（実装済み） | 二進スカラー再帰、曲線演算、拡大体の冪 | shifted divisor、零・極の明示的な拒否、ねじれ点と最終冪への束縛 |
 | 点数計算・因数分解など | Frobenius、多項式、CRT、GCD、曲線演算 | Frobenius・CRTによる点数計算や、曲線を用いる素因子探索 |
 
 Jacobian座標は`x=X/Z², y=Y/Z³`と表し、加算・倍算の式とaffineへ戻す正規化を分けられる。
@@ -119,7 +119,11 @@ Jacobian座標は`x=X/Z², y=Y/Z³`と表し、加算・倍算の式とaffineへ
 [独立参照と検証記録](../research/extension-curves-20261118.md)に保存した。
 この機能追加だけから実速度の改善は結論しない。
 Miller法は二進列に沿う平方・乗算と曲線の倍算・加算を組み合わせるため、既存の再帰構造を使える。
-[Tateペアリングの計算法](https://crypto.stanford.edu/pbc/notes/elliptic/tate.html)を基に、まず小さい体で全値と双線形性を検査する候補になる。
+[pairing](../../src/pairing) は補助点Sを明示して `f_l(P)(Q+S)/f_l(P)(S)` を評価し、最終冪を取る。
+Qは商 `E(F)/lE(F)` の代表とし、Pとは別の条件で扱う。Millerの途中に零・極が現れる場合は明示的なエラーを返す。
+[Tateペアリングの計算法](https://crypto.stanford.edu/pbc/notes/elliptic/tate.html)を参照し、
+小さい拡大体で全値・補助点の違い・双線形性・商上の核を独立参照と照合した。
+定義域と一般性の制約は[実装と検証の記録](../research/extension-pairings-20261118.md)を参照する。
 
 点数計算の接続は[Counting Points](https://crypto.stanford.edu/pbc/notes/elliptic/count.html)、
 因数分解の方向はLenstraの[原論文](https://annals.math.princeton.edu/1987/126-3/p09)を設計資料にする。

@@ -11,6 +11,27 @@ ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央
 過去のジョブを再実行する処理ではなく、記録の整合性を検査するものです。
 実行結果の数学的な正しさや、ベンチマークの代表性を証明するものではありません。
 
+## 確率・情報幾何の検証の到達段階
+
+実装と個別検証は[2026-11-18の記録](research/probability-geometry-20261118.md)、
+現行の入口は[確率と情報幾何](handbook/probability-geometry.md)を参照してください。
+確率、Markov、微分幾何、テンソル、Gaussian、微分形式、単体積分、拡大体曲線とペアリングを追加しました。
+個別の3target検証、独立oracle、純記号制約の結果を保持しています。
+これらを合計して、最終統合版全体の3target成功とは扱いません。
+
+固定ソース `569c6c3` の全体検証はgraph 180 package、runtime 161 package、空CLIの省略19 packageまで確定しました。
+初期化の終了を待たず次段を起動したため `FileNotFoundError` となり、完了stageは0です。
+予算の期限を超えたため再実行せず、ジョブを止めて保存しました。
+[停止時の状態](measurements/information-geometry-20261118-status.json)と
+[未実行の初期化record](measurements/information-geometry-20261118-checkpoint-initialization.json.gz)を残しています。
+record内の `running` は初期化時の値で、実行中のジョブはありません。
+次回は新しいsource commitでrecordを初期化し、終了を確認してから `--stage next` を一段ずつ実行します。
+
+新しい[情報幾何の完全出力の証拠検査](../tools/check_information_evidence.py)と
+73件のPython検査は実行済みです。情報幾何のCLI出力はwasm-gc・JS・nativeで一致を確認しました。
+実際のモデルを含む100プロセスの比較は、全成分の独立有理参照・source archive・slotと要約を検査しています。
+追加した独立Sympy照合の期待値、曲線式の証明書、Whitney形式は未完成としてmainから除外しました。
+
 ## 変更範囲を段階ごとに検査する
 
 [check_affected.py](../tools/check_affected.py)は、基準からの変更と旧・現のimport graphから逆依存を選び、

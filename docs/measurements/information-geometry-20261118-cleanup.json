@@ -1,0 +1,82 @@
+{
+  "status": "archived_and_removed",
+  "deadline": "2026-11-17T21:02:46Z",
+  "source_commit": "569c6c3ef7d2135c193c4d179cad4206644e2cbe",
+  "bundle": ".tools/information-geometry-20261118/cleanup/session-all-refs.bundle",
+  "bundle_sha256": "c68598682fbdf065146e891c9851a5eb5824531f49744a2d83011c8da7ea35d4",
+  "removed_branches": [
+    "explore/extension-curves-20261118",
+    "explore/markov-20261118",
+    "explore/riemann-20261118",
+    "explore/information-baseline-20261118",
+    "explore/tensor-baseline-20261118"
+  ],
+  "worktrees": [
+    {
+      "path": "/home/hosi/morph-extension-curves",
+      "head": "00cc52a872d5c1e657cdb99e8fb95cc2029340c4",
+      "preserved_file_count": 11,
+      "archive": ".tools/information-geometry-20261118/cleanup/morph-extension-curves-untracked.tar.gz",
+      "archive_sha256": "60651d1f90963c93fdc70a5312b2c2a8ba8b032581adb02414d79671e308d0f8",
+      "matched_main_scopes": [
+        "src/extensioncurve",
+        "src/pairing"
+      ],
+      "removed_utc": "2026-11-17T21:08:27.611879+00:00"
+    },
+    {
+      "path": "/home/hosi/morph-markov",
+      "head": "a56ac585988e5688b1293e9b21924210e0fced29",
+      "preserved_file_count": 4,
+      "archive": ".tools/information-geometry-20261118/cleanup/morph-markov-untracked.tar.gz",
+      "archive_sha256": "3cbcabf6188e951021bc6f7fb159e0c82fd8ff9901baf992730ce76c8612e9f9",
+      "matched_main_scopes": [
+        "src/markov",
+        "src/forms",
+        "src/simplexforms"
+      ],
+      "removed_utc": "2026-11-17T21:08:27.748581+00:00"
+    },
+    {
+      "path": "/home/hosi/morph-riemann",
+      "head": "e74036fbf5eff128af39ce84785399d342021474",
+      "preserved_file_count": 71,
+      "archive": ".tools/information-geometry-20261118/cleanup/morph-riemann-untracked.tar.gz",
+      "archive_sha256": "3b840eedd9e2e9f2ccbdca75e321226a1e4832d0897d6168ea5644779066b07e",
+      "matched_main_scopes": [
+        "src/riemann",
+        "src/tensor",
+        "src/cmd/tensorbench"
+      ],
+      "removed_utc": "2026-11-17T21:08:27.888948+00:00"
+    },
+    {
+      "path": "/home/hosi/morph-information-review",
+      "head": "4607b3dfb74799d4e7bee91b92ed1f35fe4230f6",
+      "preserved_file_count": 2,
+      "archive": ".tools/information-geometry-20261118/cleanup/morph-information-review-untracked.tar.gz",
+      "archive_sha256": "572590a6cbe563a122f8d642df436337c6ff6940558420b92f7273e286b5f75b",
+      "matched_main_scopes": [],
+      "removed_utc": "2026-11-17T21:08:27.953230+00:00"
+    },
+    {
+      "path": "/home/hosi/morph-information-baseline",
+      "head": "d04504474f81aa1910df0f59df70aa5ce670063f",
+      "preserved_file_count": 0,
+      "archive": null,
+      "archive_sha256": null,
+      "matched_main_scopes": [],
+      "removed_utc": "2026-11-17T21:08:28.015628+00:00"
+    },
+    {
+      "path": "/home/hosi/morph-tensor-baseline",
+      "head": "974f0a684e8e99cf8f6e71ef2b9e47374da7103d",
+      "preserved_file_count": 0,
+      "archive": null,
+      "archive_sha256": null,
+      "matched_main_scopes": [],
+      "removed_utc": "2026-11-17T21:08:28.071946+00:00"
+    }
+  ],
+  "retained": "Root _build and ignored .tools evidence archives intentionally retained; no task worktrees remain."
+}

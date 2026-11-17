@@ -19,6 +19,7 @@
 | tensor | 検査済みshape、置換、積、縮約、軸に沿った線形変換、cursorによる走査 |
 | gaussian | 永続memoを持つStein再帰、多項式期待値、2〜4次cumulantから自然座標のFisher計量jet |
 | forms | 有理多項式係数の外積・外微分・縮約・Lie微分、pullback、radial homotopyと閉形式のprimitive |
+| simplexforms | 向き付き有理単体への微分形式の厳密積分、全境界を束縛するStokes証拠 |
 | extensioncurve・pairing | 拡大体上のJacobian群演算、Miller関数とshift divisorによるreduced Tate評価 |
 
 例として、確率単体の断面曲率 `1/4`、一般αでは `(1−α²)/4`、
@@ -62,14 +63,30 @@ ELFと生成Cはローカルの作業archiveにも保存する。
 `tools/check_information_evidence.py` は全slot・全数値・再集計・source archiveを通常検査する。
 欠損・重複slot・誤った結果・timing改変のnegative controlも含む。
 
-## 検証と継続作業
+## 期限で止めた検証と未完成の作業
 
 各成果の3バックエンド検証、独立Fraction・有限体参照と適用範囲は個別記録にある。
-この最初の統合版を固定して全repository検査を行い、source commit・全コマンド・結果を
-[検証ガイド](../VALIDATION.md)へ追記する。検証中の結果を完了扱いしない。
-追加の独立したGaussian log-partition微分と一般α曲率のレビュー、
-曲線式の多項式証拠、微分形式の単体上の積分とWhitney形式も別の段階で扱う。
-これらの成果は、統合と検証が済む前に上表へ含めない。
+統合後のTensor・statgeometry・Gaussianはnative 28/28も確認した。
+一方、最終版全体の3バックエンド検証は完了していない。
+180 packageのgraphと161 runtime packageを確定したが、次段を初期化完了前に起動した手順ミスで
+recordが見つからず停止した。maintenanceを含め、完了した全体stageは0。
+期限は2026-11-18 06:02:46 JSTで、超過の確認後は新しい実装・実験を止め、保存と引継ぎを行った。
+保存recordの `running` は初期化時の値であり、現在ジョブが実行中である意味ではない。
+到達段階は[検証ガイド](../VALIDATION.md)と[停止時の記録](../measurements/information-geometry-20261118-status.json)を参照。
+
+未完成の作業はmainへ混ぜず、復元用のpatch・期待値・sourceをローカルarchiveへ保存する。
+
+| 未完成の作業 | 保存したものと未確認の点 |
+| --- | --- |
+| 追加の独立Sympy照合 | Gaussianと一般α曲率の5,306有理成分の期待値を生成。実装との最終照合は0完了 |
+| curveidentity | ホストで加算・倍算などの零剰余と誤式の反例を確認。MoonBitのproducer/checkerとWB helpersは未完成・未ビルド |
+| Whitney形式 | 未コミットのsourceとpatch。最新版のnative型検査のみで、専用oracle・テスト・API生成は未実施 |
+
+単体の積分・Stokesの最初の区切りは統合済みで、未完成のWhitney形式とは分ける。
 
 表現境界の修正と過去のstdoutの限界は[数値表示の記録](numeric-serialization-20261118.md)を参照。
 既存のLeanモデルとdrift gateは維持し、新しい数学パッケージ全体の形式証明とは区別する。
+
+採用済みpackageのworker版との一致、Git bundle、未完成source、性能のELF・生成C・profileを検査保存した後、
+六つの作業用worktreeと五つのbranchを片付けた。[片付けの記録](../measurements/information-geometry-20261118-cleanup.json)を参照。
+ローカルの `.tools/information-geometry-20261118/` は再開用のarchiveとして保持する。

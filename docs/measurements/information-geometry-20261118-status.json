@@ -1,0 +1,27 @@
+{
+  "status": "stopped_at_budget",
+  "budget_start_utc": "2026-11-17T17:02:46Z",
+  "deadline_utc": "2026-11-17T21:02:46Z",
+  "observed_after_deadline_utc": "2026-11-17T21:04:44Z",
+  "frozen_source_commit": "569c6c3ef7d2135c193c4d179cad4206644e2cbe",
+  "full_repository": true,
+  "graph_packages": 180,
+  "runtime_packages": 161,
+  "skipped_zero_test_commands": 19,
+  "completed_full_regression_stages": [],
+  "active_jobs": false,
+  "initialization_started_utc": "2026-11-17T21:04:58.746770+00:00",
+  "initialization_record_sha256": "1a246d5faa85ba7fe7c483c447c469bd9a4eb9a197492ba4d10f95ef3e8a1806",
+  "stage_attempt": {
+    "exit_code": 1,
+    "error": "FileNotFoundError: checkpoint1/run.json",
+    "cause": "Stage was launched before initialization completed; no heavy stage started."
+  },
+  "individual_validation": "See package reports and root observed checks; not a complete three-target pass of final integration. Python73 and full information-tour outputs on three targets passed; integrated Tensor/statgeometry/Gaussian native28 passed.",
+  "unfinished": {
+    "independent_review": "5306 expected QQ components generated; zero completed implementation comparisons.",
+    "curveidentity": "Host polynomial checks only; MoonBit producer/checker incomplete, not built or adopted.",
+    "whitney": "Prepared source native typecheck only; no dedicated tests/oracle/API, not adopted."
+  },
+  "restart": "Initialize a new clean-source --full record at final HEAD, then wait for each stage in sequence."
+}
