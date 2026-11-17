@@ -1,0 +1,21 @@
+{
+  "baseline": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+  "candidate": "3831050",
+  "unchanged_outside_monic": true,
+  "protected_byte_identical": [
+    "src/polynomial/unit_product.mbt",
+    "src/exact/exact.mbt",
+    "src/polynomial/pkg.generated.mbti",
+    "src/realalgebraic/pkg.generated.mbti"
+  ],
+  "scope_purity": [
+    "src/polynomial/polynomial.mbt",
+    "src/polynomial/monic_identity.mbt"
+  ],
+  "harness_main_sha256": "4c7fbe854027ba0ea4b496c2fd09ea7343d27aa8899965b65dbc71dd59328268",
+  "comparison_script_sha256": "0adfc65a691c980b44645150d511ee01549b65d1117b50525744debc303b928f",
+  "complete_production_diff": [
+    "src/polynomial/monic_identity.mbt",
+    "src/polynomial/polynomial.mbt"
+  ]
+}

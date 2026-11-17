@@ -1,0 +1,12 @@
+{
+  "before": {
+    "path": "/home/hosi/morph-conversion-modular/.tools/monic-identity-20261117/before.c.gz",
+    "uncompressed_sha256": "a49d35a183ba804362dc9a2e700908e210e8e6c81e7181791ec681354efbbb46",
+    "compressed_sha256": "c29587b0ad037298e632789f0ad941857ddda7739ce78d113a1d10d98b98f2ff"
+  },
+  "after-initial": {
+    "path": "/home/hosi/morph-conversion-modular/.tools/monic-identity-20261117/after-initial.c.gz",
+    "uncompressed_sha256": "df374d3d35bc8c6a0b5d5d811a17740abf80ff3e181cdc5b29fc3e8aeaa09ad0",
+    "compressed_sha256": "1874f96e2fdbec116962f0eeb05c3fba5b2f22baadcbf23cd63fc6db576c557b"
+  }
+}

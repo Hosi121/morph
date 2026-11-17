@@ -1,0 +1,66 @@
+diff --git a/src/polynomial/monic_identity.mbt b/src/polynomial/monic_identity.mbt
+new file mode 100644
+index 0000000..f13eb12
+--- /dev/null
++++ b/src/polynomial/monic_identity.mbt
+@@ -0,0 +1,18 @@
++///|
++/// Canonical QQ is +1 exactly when its nonnegative numerator magnitude and
++/// denominator each have the single one bit. Getters share the existing ADTs.
++fn monic_positive_one(coefficient : @exact.Rational) -> Bool {
++  let numerator = @exact.numerator(coefficient)
++  match @exact.negative(numerator) {
++    true => false
++    false =>
++      match
++        (
++          @binary.bits(@exact.magnitude(numerator)),
++          @binary.bits(@exact.denominator(coefficient)),
++        ) {
++        (Cons(true, Nil), Cons(true, Nil)) => true
++        _ => false
++      }
++  }
++}
+diff --git a/src/polynomial/polynomial.mbt b/src/polynomial/polynomial.mbt
+index ec66e09..4876473 100644
+--- a/src/polynomial/polynomial.mbt
++++ b/src/polynomial/polynomial.mbt
+@@ -468,18 +468,25 @@ pub fn monic(p : Polynomial) -> Polynomial {
+   match p.terms {
+     Nil => p
+     Cons(leading, _) =>
+-      match @exact.nonzero(leading.coefficient) {
+-        None => p
+-        Some(coefficient) => {
+-          let factor = @exact.reciprocal(coefficient)
+-          {
+-            variables: p.variables,
+-            terms: @core.map(p.terms, fn(term) {
+-              {
+-                coefficient: @exact.rational_multiply(factor, term.coefficient),
+-                exponents: term.exponents,
+-              }
+-            }),
++      if monic_positive_one(leading.coefficient) {
++        p
++      } else {
++        match @exact.nonzero(leading.coefficient) {
++          None => p
++          Some(coefficient) => {
++            let factor = @exact.reciprocal(coefficient)
++            {
++              variables: p.variables,
++              terms: @core.map(p.terms, fn(term) {
++                {
++                  coefficient: @exact.rational_multiply(
++                    factor,
++                    term.coefficient,
++                  ),
++                  exponents: term.exponents,
++                }
++              }),
++            }
+           }
+         }
+       }

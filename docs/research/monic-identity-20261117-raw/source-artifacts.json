@@ -1,0 +1,17 @@
+{
+  "before-polynomial.mbt": {
+    "file": "before-polynomial.mbt.gz",
+    "uncompressed_sha256": "0466ea53034dd8cf2510a30e79680da230956c3e1f1c5cb8160abae6dc743e87",
+    "compressed_sha256": "f6eff85f7143edb85b88338b1ced706625801253ee06b66360dfb709639fc4b2"
+  },
+  "after-polynomial.mbt": {
+    "file": "after-polynomial.mbt.gz",
+    "uncompressed_sha256": "db8c662f74a1835d9e0d915bb30baf344b7045abd8d305602288e0b073083414",
+    "compressed_sha256": "e4396ee4a05bfd9253a0ba1e8f00bfa38ec794eaaa4cf506da3468322c88bae7"
+  },
+  "monic_identity.mbt": {
+    "file": "monic_identity.mbt.gz",
+    "uncompressed_sha256": "bf5f6ae52414d8fd8f368a1a6236a3f54d71d17c1b34c818f4d711c96a5c4ffe",
+    "compressed_sha256": "a82a3913124f23f08af3d4c4e8958346a64f98991aa03d31959230112d685f84"
+  }
+}
