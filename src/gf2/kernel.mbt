@@ -75,18 +75,18 @@ fn eliminate_once(
   basis : @core.Chain[Bool],
   column : @core.Nat,
 ) -> @core.Chain[Bool]? {
-  match (column, row) {
-    (Zero, Cons(true, _)) => Some(xor_rows(row, basis))
-    (Succ(rest), Cons(x, xs)) => {
-      let tail : @core.Chain[Bool] = match basis {
-        Nil => Nil
-        Cons(_, tail) => tail
-      }
+  match (column, row, basis) {
+    (Zero, Cons(true, _), _) => Some(xor_rows(row, basis))
+    (Succ(rest), Cons(x, xs), Cons(_, tail)) =>
       match eliminate_once(xs, tail, rest) {
         None => None
         Some(updated) => Some(Cons(x, updated))
       }
-    }
+    (Succ(rest), Cons(x, xs), Nil) =>
+      match eliminate_once(xs, Nil, rest) {
+        None => None
+        Some(updated) => Some(Cons(x, updated))
+      }
     _ => None
   }
 }
