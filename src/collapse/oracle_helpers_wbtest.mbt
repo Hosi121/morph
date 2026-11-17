@@ -7,6 +7,12 @@ struct OracleMatrix {
 }
 
 ///|
+extend OracleMatrix with Eq::{equal, not_equal}
+
+///|
+extend OracleMatrix with Debug::{to_repr}
+
+///|
 fn oracle_matrix(
   height : Int32,
   width : Int32,
