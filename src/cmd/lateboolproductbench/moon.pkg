@@ -1,0 +1,11 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/gf2",
+  "Hosi121/morph/cohomology" @co,
+  "Hosi121/morph/homology" @hom,
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
