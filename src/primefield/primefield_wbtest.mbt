@@ -147,3 +147,37 @@ test "GF two arithmetic works with generic Gauss Jordan reduction" {
     Some(@rowreduce.Unique(@oracle.chain([1, 0].map(@oracle.binary)))),
   )
 }
+
+///|
+test "GF two dictionary accepts wide unreduced inputs with exact parity" {
+  let ops = arithmetic(field(@oracle.binary(2)).unwrap())
+  let inputs = [
+    ("0", 0),
+    ("1", 1),
+    ("2", 0),
+    ("3", 1),
+    ("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe", 0),
+    ("8000000000000000000000000000000000000000000000000000000000000001", 1),
+  ]
+  for (source, parity) in inputs {
+    let a = @oracle.binary_from_hex(source)
+    assert_eq((ops.negate)(a), @oracle.binary(parity))
+    assert_eq(
+      (ops.inverse)(a),
+      if parity == 0 {
+        None
+      } else {
+        Some(@oracle.binary(1))
+      },
+    )
+    for (other_source, other_parity) in inputs {
+      let b = @oracle.binary_from_hex(other_source)
+      assert_eq((ops.add)(a, b), @oracle.binary((parity + other_parity) % 2))
+      assert_eq(
+        (ops.subtract)(a, b),
+        @oracle.binary((parity + other_parity) % 2),
+      )
+      assert_eq((ops.multiply)(a, b), @oracle.binary(parity * other_parity))
+    }
+  }
+}
