@@ -1,5 +1,11 @@
 # Balanced polynomial product rows, 2026-11-17 final night round
 
+## 親による追加比較と現在の判断
+
+担当停止時点では未計測でした。その後、親が実装・harness・実行ファイルを変えずに5分以内の初回比較を行い、120試行の完全一致を確認して採用しました。疎な多変数積1.420倍、不均衡な疎積1.504倍でした。密な単変数積・小入力の差は未確定、実メモリ削減は主張しません。
+
+追加測定と最終検証は[夜間の統合記録](night-kernels-20261117.md)にまとめます。下記は担当停止時点の記録です。
+
 Production baseline: `4795f875270eb026cda25b7e509a0e60e8e6abb2`.
 One mechanism is evaluated: group the sorted term-times rows of ordinary public
 `polynomial.multiply` into adjacent pairs and repeat those merges until one row

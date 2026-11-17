@@ -1,0 +1,158 @@
+{
+  "utc": "2026-11-17T13:49:36.358059+00:00",
+  "before": {
+    "root": "/home/hosi/morph-night-r3-before",
+    "commit": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+    "working_tree": [
+      "?? src/cmd/nightconvolutionbench/",
+      "?? src/cmd/nightcursorbench/",
+      "?? src/cmd/nightproductbench/"
+    ],
+    "source_manifest_sha256": "a212c41f6f50ebfab3b9cd342dfb8ad822fdb48bd214cd731ee7303528753fc0",
+    "source_file_count": 922,
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/before.exe",
+    "artifact_sha256": "0c096e1640588aecdbae5dbe6555a4591c0fbdf2972d338036c2e1f38c933da5",
+    "harness": {
+      "main.mbt": "10aca450c3d551d3952fc788322475b2cd0ec2134149f77a8fe8c96282b15352",
+      "moon.pkg": "669fef8303907671837ddfa340eb6281146767b2607620702d54cc0e2f8f6780"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-night-fp",
+    "commit": "68e0461cd81405d183fd6432b73068512d443caf",
+    "working_tree": [],
+    "source_manifest_sha256": "3f9029e143175f3d98d4e3a4c9ad4166555b1f6e082ccdef4171e3ad8e65b5ee",
+    "source_file_count": 919,
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/candidate-untimed.exe",
+    "artifact_sha256": "b1f698fa3fa9a76f93fe793f7a02e93a0d36489109b3dff831be42c6aaf1883d",
+    "harness": {
+      "main.mbt": "10aca450c3d551d3952fc788322475b2cd0ec2134149f77a8fe8c96282b15352",
+      "moon.pkg": "669fef8303907671837ddfa340eb6281146767b2607620702d54cc0e2f8f6780"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "sparse257": {
+      "process_ns": {
+        "medians": {
+          "before": 54575358.5,
+          "after": 47818245.5
+        },
+        "ranges": {
+          "before": [
+            50037807,
+            60002849
+          ],
+          "after": [
+            43624954,
+            53245784
+          ]
+        },
+        "before_over_after": 1.1413082585809218,
+        "block_ratios": [
+          1.1391785959463714,
+          1.1397296253989122,
+          1.1037805362570512,
+          1.0970299998908728,
+          1.1593993348468992
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 51613.259999999995,
+          "after": 45211.753000000004
+        },
+        "ranges": {
+          "before": [
+            47040.354,
+            53814.93
+          ],
+          "after": [
+            41167.952,
+            50594.5
+          ]
+        },
+        "before_over_after": 1.1415894446738217,
+        "block_ratios": [
+          1.1043896587374642,
+          1.142656444087606,
+          1.1113536119076148,
+          1.0996508474509923,
+          1.1604374783189242
+        ]
+      }
+    },
+    "gf2-control": {
+      "process_ns": {
+        "medians": {
+          "before": 25900828.5,
+          "after": 25982743.5
+        },
+        "ranges": {
+          "before": [
+            25056707,
+            27888612
+          ],
+          "after": [
+            25199043,
+            27863144
+          ]
+        },
+        "before_over_after": 0.9968473306138745,
+        "block_ratios": [
+          0.991895535895965,
+          0.9616169532064458,
+          1.0202530982334361,
+          0.9835585299142872,
+          0.9861333383070017
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 23841.0215,
+          "after": 23807.879500000003
+        },
+        "ranges": {
+          "before": [
+            22808.875,
+            25583.733
+          ],
+          "after": [
+            23061.563000000002,
+            25332.214
+          ]
+        },
+        "before_over_after": 1.001392060137065,
+        "block_ratios": [
+          0.9745437385946099,
+          0.9680002084027141,
+          1.018175619189663,
+          0.9895841626718583,
+          0.9843533796824073
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 40,
+  "lossless_full_record": {
+    "path": "docs/measurements/night-round3-control-nightconvolutionbench-20261117.json.gz",
+    "sha256": "e2300f4e16c790323566d453833f1c36e2ba1760452fef014cf7c424abf5d03f",
+    "uncompressed_sha256": "bc499500aefc6141eb1fd6b674bfa739a5bc24c8f207ede73a00455693fa85b8"
+  },
+  "bounded_extension_note": "Root-only measurement of already frozen artifacts after13:45workerstop, maximum5minutes before final source freeze; no code changes or follow-up variants."
+}

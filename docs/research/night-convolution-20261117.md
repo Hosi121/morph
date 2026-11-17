@@ -1,5 +1,11 @@
 # Odd-prime convolution row dispatch: incomplete trial, 2026-11-17
 
+## 親による追加比較と現在の判断
+
+担当停止時点では未計測でした。その後、親が凍結済み実行ファイルを5分以内で比較し、初回120試行と対照40試行すべての完全一致を確認して採用しました。疎積は初回1.197倍・再比較1.141倍、零積は初回4.363倍でした。GF(2)対照は初回0.955倍・再比較0.997倍で、回帰の可能性も残します。一般の密な積や上位powerの一律な改善は主張しません。
+
+追加測定と最終検証は[夜間の統合記録](night-kernels-20261117.md)にまとめます。下記は担当停止時点の記録です。
+
 This trial is not adoption-ready. The firm worker stop was 13:45 UTC; a clock
 check at 13:46 UTC showed that the worker had exceeded it before performing the
 required source comparison and final verification. Exploration/heavy work stopped.

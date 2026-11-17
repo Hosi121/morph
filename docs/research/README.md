@@ -11,6 +11,9 @@
 
 | 記録 | 保存している内容 |
 | --- | --- |
+| [積の平衡merge](night-product-20261117.md) | 期限時点の未計測記録と、親による凍結比較・採用判断 |
+| [Fp畳み込みの行共有](night-convolution-20261117.md) | 零・単位係数の行分岐、初回比較とGF(2)対照の再測定 |
+| [未採用の行cursor](night-cursors-20261117.md) | 密・幅広の改善と、小・疎行列の回帰で見送ったADT試作 |
 | [商を作らない正規形](night-normal-form-20261117.md) | 余り専用の多変数還元、独立Fraction・旧divideと上位Buchbergerの比較 |
 | [Fpの正規化済みHorner](night-evaluation-20261117.md) | 任意長の評価点・定数・listdecodeと共有検査の限界 |
 | [GF(2)消去の走査融合](night-gf2-elimination-20261117.md) | 最初の不採用、参照カウントを調整した再試作と小さい回帰 |

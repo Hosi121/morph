@@ -104,6 +104,24 @@ QQ多項式は415、Fp・listdecodeは66、GF(2)・コホモロジー・CSSは19
 担当別の値と統合後の値では、リンクされるソースや生成コードの配置も異なります。
 同じ入力でも差の大きさや符号が変わる小差があり、特に幅広RREF、factor、上位CSS・encodeの一律な改善は主張しません。
 
+## 最後の探索と採否
+
+第三巡の基準は`4795f87`です。13:45 UTCの担当停止時点で、積二案は性能未計測でした。
+親がすでに凍結されていたソース・harness・実行ファイルを変更せず、5分以内で初回比較だけを追加しました。
+FpのGF(2)対照には同じ実行ファイルで一回だけ再比較を行いました。未完了の担当検査は、最終の統合検証で補います。
+
+| 対象 | 判断 | 比較と限界 |
+| --- | --- | --- |
+| QQ多項式の積 | 採用 | sorted product rowを平衡merge。疎な多変数積1.420倍、不均衡な疎積1.504倍。密な単変数・小入力の差は未確定。全rowの構築費用と中間有理数・実メモリの影響は残る |
+| 奇標数Fpの畳み込み | 採用 | 係数の行ごとに零を省き、単位係数では入力列を共有。疎積は初回1.197倍・再比較1.141倍、零積は4.363倍。GF(2)対照は0.955/0.997で、速度保証にはしない |
+| GF(2)のactive row cursor | 不採用 | 密行列1.204倍・幅広1.420倍に対し、小入力0.784倍、疎行列0.939倍。全5組で小・疎が遅く、上位CSSの差も未確定。製品コードへ統合しない |
+
+[QQ積の要約](../measurements/night-round3-nightproductbench-20261117.json)・[完全な生値](../measurements/night-round3-nightproductbench-20261117.json.gz)、
+[Fp積の要約](../measurements/night-round3-nightconvolutionbench-20261117.json)・[完全な生値](../measurements/night-round3-nightconvolutionbench-20261117.json.gz)、
+[Fp対照の要約](../measurements/night-round3-control-nightconvolutionbench-20261117.json)・[完全な生値](../measurements/night-round3-control-nightconvolutionbench-20261117.json.gz)を保存しました。
+QQ・Fp各120、Fp対照40、cursor120プロセスがすべて完全な出力の検査を通過しています。
+未採用cursorのソース・生成C・実行ファイルもhashを照合して保存し、[見送りの記録](night-cursors-20261117.md)へ残しています。
+
 ## 調査で撤回した前提
 
 `modular.multiply`はすでに積だけを還元しており、両オペランドを再還元する処理はありませんでした。
