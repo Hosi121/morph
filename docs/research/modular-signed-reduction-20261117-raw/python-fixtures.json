@@ -1,0 +1,80 @@
+[
+  {
+    "modulus_hex": "2",
+    "negative": true,
+    "magnitude_hex": "1",
+    "residue_hex": "1"
+  },
+  {
+    "modulus_hex": "2",
+    "negative": true,
+    "magnitude_hex": "2",
+    "residue_hex": "0"
+  },
+  {
+    "modulus_hex": "11",
+    "negative": true,
+    "magnitude_hex": "10",
+    "residue_hex": "1"
+  },
+  {
+    "modulus_hex": "11",
+    "negative": true,
+    "magnitude_hex": "11",
+    "residue_hex": "0"
+  },
+  {
+    "modulus_hex": "11",
+    "negative": true,
+    "magnitude_hex": "12",
+    "residue_hex": "10"
+  },
+  {
+    "modulus_hex": "10001",
+    "negative": true,
+    "magnitude_hex": "10000",
+    "residue_hex": "1"
+  },
+  {
+    "modulus_hex": "10001",
+    "negative": true,
+    "magnitude_hex": "10001",
+    "residue_hex": "0"
+  },
+  {
+    "modulus_hex": "10001",
+    "negative": true,
+    "magnitude_hex": "10002",
+    "residue_hex": "10000"
+  },
+  {
+    "modulus_hex": "10001",
+    "negative": true,
+    "magnitude_hex": "f123456789abcdeff123456789abcdeff123456789abcdeff123456789abcdef",
+    "residue_hex": "9ddf"
+  },
+  {
+    "modulus_hex": "10001",
+    "negative": false,
+    "magnitude_hex": "f123456789abcdeff123456789abcdeff123456789abcdeff123456789abcdef",
+    "residue_hex": "6222"
+  },
+  {
+    "modulus_hex": "7fffffffffffffffffffffffffffffff",
+    "negative": true,
+    "magnitude_hex": "f123456789abcdeff123456789abcdeff123456789abcdeff123456789abcdef",
+    "residue_hex": "2c962fc962fc96302c962fc962fc962d"
+  },
+  {
+    "modulus_hex": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed",
+    "negative": true,
+    "magnitude_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "residue_hex": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffe02ede"
+  },
+  {
+    "modulus_hex": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed",
+    "negative": false,
+    "magnitude_hex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "residue_hex": "1fd10f"
+  }
+]
