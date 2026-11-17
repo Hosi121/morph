@@ -6,6 +6,7 @@ import {
   "Hosi121/morph/exact",
   "Hosi121/morph/f4",
   "Hosi121/morph/heap",
+  "Hosi121/morph/linearspan",
   "Hosi121/morph/polynomial",
   "moonbitlang/core/debug",
 }
@@ -127,6 +128,7 @@ pub struct State {
   seen : @core.Chain[@core.Chain[@core.Nat]]
   standards : @core.Chain[@core.Chain[@core.Nat]]
   vectors : @core.Chain[@core.Chain[@exact.Rational]]
+  span_state : @linearspan.State
   polynomials : @core.Chain[@polynomial.Polynomial]
   relations : @core.Chain[Relation]
   processed : @core.Nat

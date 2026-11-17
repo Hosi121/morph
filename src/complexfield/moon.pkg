@@ -1,4 +1,5 @@
 import {
+  "Hosi121/morph/linearspan",
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/numberfield" @nf,

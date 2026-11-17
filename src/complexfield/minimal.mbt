@@ -76,59 +76,53 @@ pub fn minimal_polynomial(
   fn dependence(
     remaining : @core.Nat,
     k : @core.Nat,
-    columns : @core.Chain[@core.Chain[@exact.Rational]],
+    span : @linearspan.State,
     power : Element,
   ) -> @poly.Polynomial? {
     match remaining {
       Zero => None
       Succ(rest) =>
-        match vector_matrix(d, columns) {
-          None => None
-          Some(matrix) =>
-            match @linear.solve(matrix, coordinates(power)) {
-              Some(@linear.Unique(coefficients)) =>
-                match @core.zip(@core.indices(k), coefficients) {
-                  None => None
-                  Some(entries) =>
-                    match
-                      @poly.polynomial(
-                        Succ(Zero),
-                        Cons(
-                          {
-                            coefficient: @exact.rational_one(),
-                            exponents: Cons(k, Nil),
-                          },
-                          @core.map(entries, fn(entry) {
-                            let (i, c) = entry
-                            @poly.Term::{
-                              coefficient: @exact.rational_negate(c),
-                              exponents: Cons(i, Nil),
-                            }
-                          }),
-                        ),
-                      ) {
-                      Ok(polynomial) => Some(polynomial)
-                      Err(_) => None
-                    }
-                }
-              Some(@linear.Inconsistent) =>
-                match multiply(power, value) {
-                  Ok(next) =>
-                    dependence(
-                      rest,
-                      Succ(k),
-                      @core.append(columns, Cons(coordinates(power), Nil)),
-                      next,
-                    )
+        match @linearspan.insert(span, coordinates(power)) {
+          Ok(@linearspan.Dependent(coefficients)) =>
+            match @core.zip(@core.indices(k), coefficients) {
+              None => None
+              Some(entries) =>
+                match
+                  @poly.polynomial(
+                    Succ(Zero),
+                    Cons(
+                      {
+                        coefficient: @exact.rational_one(),
+                        exponents: Cons(k, Nil),
+                      },
+                      @core.map(entries, fn(entry) {
+                        let (i, c) = entry
+                        @poly.Term::{
+                          coefficient: @exact.rational_negate(c),
+                          exponents: Cons(i, Nil),
+                        }
+                      }),
+                    ),
+                  ) {
+                  Ok(polynomial) => Some(polynomial)
                   Err(_) => None
                 }
-              _ => None
             }
+          Ok(@linearspan.Independent(next_span)) =>
+            match multiply(power, value) {
+              Ok(next) => dependence(rest, Succ(k), next_span, next)
+              Err(_) => None
+            }
+          _ => None
         }
     }
   }
-  match
-    dependence(d, Succ(Zero), Cons(coordinates(one(value.field)), Nil), value) {
+  let initial = match
+    @linearspan.insert(@linearspan.empty(d), coordinates(one(value.field))) {
+    Ok(@linearspan.Independent(span)) => span
+    _ => return Err(InternalInvariant)
+  }
+  match dependence(d, Succ(Zero), initial, value) {
     Some(polynomial) =>
       if check_minimal_polynomial(value, polynomial) {
         Ok(polynomial)

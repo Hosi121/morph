@@ -1,0 +1,57 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/linearspan"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn dimension(State) -> @core.Nat
+
+pub fn empty(@core.Nat) -> State
+
+pub fn insert(State, @core.Chain[@exact.Rational]) -> Result[Insertion, SpanError]
+
+pub fn rank(State) -> @core.Nat
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type Column
+pub fn Column::equal(Self, Self) -> Bool
+pub fn Column::not_equal(Self, Self) -> Bool
+pub fn Column::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Insertion {
+  Dependent(@core.Chain[@exact.Rational])
+  Independent(State)
+}
+pub fn Insertion::equal(Self, Self) -> Bool
+pub fn Insertion::not_equal(Self, Self) -> Bool
+pub fn Insertion::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SpanError {
+  DimensionMismatch
+}
+pub fn SpanError::equal(Self, Self) -> Bool
+pub fn SpanError::not_equal(Self, Self) -> Bool
+pub fn SpanError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  dimension : @core.Nat
+  rank : @core.Nat
+  columns : @core.Chain[Column]
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

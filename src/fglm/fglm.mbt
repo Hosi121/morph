@@ -35,6 +35,7 @@ pub struct State {
   seen : @core.Chain[@core.Chain[@core.Nat]]
   standards : @core.Chain[@core.Chain[@core.Nat]]
   vectors : @core.Chain[@core.Chain[@exact.Rational]]
+  span_state : @linearspan.State
   polynomials : @core.Chain[@poly.Polynomial]
   relations : @core.Chain[Relation]
   processed : @core.Nat
@@ -178,42 +179,22 @@ fn combine_vectors(
 }
 
 ///|
-/// Solve A*c=v with known independent columns, then check the exact dependence
-/// witness by reconstructing v. Affine solutions violate the state invariant.
-fn span(
-  vectors : @core.Chain[@core.Chain[@exact.Rational]],
+fn cached_span(
+  state : State,
   vector : @core.Chain[@exact.Rational],
-) -> Result[Span, FglmError] {
-  let dimension = @core.length(vector)
-  if !@core.all(vectors, fn(v) {
-      @core.compare(@core.length(v), dimension).equal(Equal)
-    }) {
-    return Err(InternalInvariant)
-  }
-  let rows = @core.map(@core.indices(dimension), fn(i) {
-    @core.map(vectors, fn(v) {
-      match @core.nth(v, i) {
-        Some(x) => x
-        None => @exact.rational_zero()
-      }
-    })
-  })
-  match @matrix.matrix(@core.length(vectors), rows) {
-    None => Err(InternalInvariant)
-    Some(matrix) =>
-      match @linear.solve(matrix, vector) {
-        Some(@linear.Inconsistent) => Ok(Independent)
-        Some(@linear.Unique(coefficients)) =>
-          match combine_vectors(vectors, coefficients, dimension) {
-            Some(actual) =>
-              if actual.equal(vector) {
-                Ok(Dependent(coefficients))
-              } else {
-                Err(InternalInvariant)
-              }
-            None => Err(InternalInvariant)
+) -> Result[(Span, @linearspan.State), FglmError] {
+  match @linearspan.insert(state.span_state, vector) {
+    Err(_) => Err(InternalInvariant)
+    Ok(@linearspan.Independent(next)) => Ok((Independent, next))
+    Ok(@linearspan.Dependent(coefficients)) =>
+      match combine_vectors(state.vectors, coefficients, @core.length(vector)) {
+        Some(actual) =>
+          if actual.equal(vector) {
+            Ok((Dependent(coefficients), state.span_state))
+          } else {
+            Err(InternalInvariant)
           }
-        _ => Err(InternalInvariant)
+        None => Err(InternalInvariant)
       }
   }
 }
@@ -276,6 +257,7 @@ pub fn start(
           seen: Cons(one, Nil),
           standards: Nil,
           vectors: Nil,
+          span_state: @linearspan.empty(@core.length(source_standard)),
           polynomials: Nil,
           relations: Nil,
           processed: Zero,
@@ -363,9 +345,9 @@ pub fn step(state : State) -> Result[Progress, FglmError] {
               match coordinates(normal, state.source_standard) {
                 None => Err(InternalInvariant)
                 Some(vector) =>
-                  match span(state.vectors, vector) {
+                  match cached_span(state, vector) {
                     Err(error) => Err(error)
-                    Ok(Independent) => {
+                    Ok((Independent, next_span)) => {
                       if !@core.compare(
                           @core.length(state.standards),
                           @core.length(state.source_standard),
@@ -381,6 +363,7 @@ pub fn step(state : State) -> Result[Progress, FglmError] {
                       Ok(
                         Paused({
                           ..current,
+                          span_state: next_span,
                           queue,
                           seen,
                           standards: @core.append(state.standards, Cons(m, Nil)),
@@ -391,7 +374,7 @@ pub fn step(state : State) -> Result[Progress, FglmError] {
                         }),
                       )
                     }
-                    Ok(Dependent(coefficients)) => {
+                    Ok((Dependent(coefficients), _)) => {
                       let relation : Relation = {
                         monomial: m,
                         standard_monomials: state.standards,
@@ -419,7 +402,7 @@ pub fn step(state : State) -> Result[Progress, FglmError] {
 
 ///|
 /// Fuel counts heap pops (including pruned multiples) plus finalization. A pop
-/// may perform a full source normal form and an exact linear solve.
+/// may perform a full source normal form and an exact incremental reduction.
 pub fn run(state : State, fuel : @core.Nat) -> Result[Progress, FglmError] {
   match fuel {
     Zero => Ok(Paused(state))
