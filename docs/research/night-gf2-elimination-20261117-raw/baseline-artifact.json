@@ -1,0 +1,11 @@
+{
+  "commit": "a9604b1",
+  "artifact_sha256": "40d750744a5d31a45bc7f0205b45932b3f9e9825476b8d482f60f6c4263eccbf",
+  "sources": {
+    "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+    "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+    "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+    "src/cmd/nighteliminatebench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+    "src/cmd/nighteliminatebench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+  }
+}

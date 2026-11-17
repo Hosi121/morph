@@ -1,0 +1,14 @@
+{
+  "commit": "73a67ee",
+  "artifact_sha256": "cc3c9451bd81c4a5b39c89a9d8f68541463a234b2e2275adbce4fb00fb050f7d",
+  "sources": {
+    "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+    "src/gf2/night_elimination_wbtest.mbt": "877529ffdc14dd45e3c75466ba049da418dfd6accddb598ca69460a87abba4cf",
+    "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+    "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+    "src/cmd/nighteliminatebench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+    "src/cmd/nighteliminatebench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+  },
+  "generated_c_sha256": "7668dc638972c17f5ebfed616baf5b5c5c9310f152e0123566959cb583cc736e",
+  "excerpt_sha256": "6f752afb2eb3285af8cd80829121d88897b2e41fc086a6eaf2522f7fa1b23ea0"
+}

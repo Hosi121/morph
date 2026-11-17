@@ -1,0 +1,93 @@
+static void* _M0FP37Hosi1215morph3gf215eliminate__once(
+  void* _M0L3rowS988,
+  void* _M0L5basisS991,
+  void* _M0L6columnS987
+) {
+  #line 73 "/home/hosi/morph-night-gf2/src/gf2/kernel.mbt"
+  switch (Moonbit_object_tag(_M0L6columnS987)) {
+    case 0: {
+      switch (Moonbit_object_tag(_M0L3rowS988)) {
+        case 1: {
+          struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons* _M0L7_2aConsS989 =
+            (struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L3rowS988;
+          int32_t _M0L4_2axS990 = _M0L7_2aConsS989->$0;
+          if (_M0L4_2axS990 == 1) {
+            void* _M0L6_2atmpS2970;
+            #line 73 "/home/hosi/morph-night-gf2/src/gf2/kernel.mbt"
+            _M0L6_2atmpS2970
+            = _M0FP37Hosi1215morph3gf29xor__rows(_M0L3rowS988, _M0L5basisS991);
+            return _M0L6_2atmpS2970;
+          } else {
+            goto join_986;
+          }
+          break;
+        }
+        default: {
+          goto join_986;
+          break;
+        }
+      }
+      break;
+    }
+    default: {
+      struct _M0DTP37Hosi1215morph4core3Nat4Succ* _M0L7_2aSuccS992 =
+        (struct _M0DTP37Hosi1215morph4core3Nat4Succ*)_M0L6columnS987;
+      void* _M0L7_2arestS993 = _M0L7_2aSuccS992->$0;
+      switch (Moonbit_object_tag(_M0L3rowS988)) {
+        case 1: {
+          struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons* _M0L7_2aConsS994 =
+            (struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L3rowS988;
+          int32_t _M0L4_2axS995 = _M0L7_2aConsS994->$0;
+          void* _M0L5_2axsS996 = _M0L7_2aConsS994->$1;
+          void* _M0L4tailS997;
+          void* _M0L7_2abindS999;
+          switch (Moonbit_object_tag(_M0L5basisS991)) {
+            case 0: {
+              _M0L4tailS997
+              = (struct moonbit_object*)&moonbit_constant_constructor_0 + 1;
+              break;
+            }
+            default: {
+              struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons* _M0L7_2aConsS998 =
+                (struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L5basisS991;
+              void* _M0L8_2afieldS4200 = _M0L7_2aConsS998->$1;
+              moonbit_incref_cycle_free(_M0L8_2afieldS4200);
+              _M0L4tailS997 = _M0L8_2afieldS4200;
+              break;
+            }
+          }
+          #line 73 "/home/hosi/morph-night-gf2/src/gf2/kernel.mbt"
+          _M0L7_2abindS999
+          = _M0FP37Hosi1215morph3gf215eliminate__once(_M0L5_2axsS996, _M0L4tailS997, _M0L7_2arestS993);
+          moonbit_decref_cycle_free(_M0L4tailS997);
+          if (_M0L7_2abindS999 == 0) {
+            if (_M0L7_2abindS999) {
+              moonbit_decref_cycle_free(_M0L7_2abindS999);
+            }
+            return 0;
+          } else {
+            void* _M0L7_2aSomeS1000 = _M0L7_2abindS999;
+            void* _M0L10_2aupdatedS1001 = _M0L7_2aSomeS1000;
+            void* _M0L4ConsS2969 =
+              (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons));
+            Moonbit_object_header(_M0L4ConsS2969)->meta
+            = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 44, 1);
+            ((struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L4ConsS2969)->$0
+            = _M0L4_2axS995;
+            ((struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L4ConsS2969)->$1
+            = _M0L10_2aupdatedS1001;
+            return _M0L4ConsS2969;
+          }
+          break;
+        }
+        default: {
+          goto join_986;
+          break;
+        }
+      }
+      break;
+    }
+  }
+  join_986:;
+  return 0;
+}
