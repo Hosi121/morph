@@ -200,3 +200,46 @@ test "product Bernoulli family is flat while redundant coordinates have no metri
   )
   assert_true(fisher_jet(redundant) is Err(Metric(SingularMetric)))
 }
+
+///|
+test "natural exponential coordinates recover the same constant simplex curvature" {
+  let base = match
+    @infogeom.family(
+      @oracle.nat(2),
+      @oracle.chain([
+        polynomial(2, [(1, [1, 0])]),
+        polynomial(2, [(1, [0, 1])]),
+        polynomial(2, [(1, [0, 0]), (-1, [1, 0]), (-1, [0, 1])]),
+      ]),
+    ) {
+    Ok(value) => value
+    Err(_) => abort("family")
+  }
+  for a in 1..<4 {
+    for b in 1..<(6 - a) {
+      let at = match @infogeom.at(base, @oracle.chain([q(a, 6), q(b, 6)])) {
+        Ok(value) => value
+        Err(_) => abort("point")
+      }
+      let distribution = @infogeom.distribution(@infogeom.local_model(at))
+      let statistics = match
+        @matrix.matrix(
+          @oracle.nat(2),
+          @oracle.chain([
+            @oracle.chain([q(1, 1), q(0, 1)]),
+            @oracle.chain([q(0, 1), q(1, 1)]),
+            @oracle.chain([q(0, 1), q(0, 1)]),
+          ]),
+        ) {
+        Some(value) => value
+        None => abort("statistics")
+      }
+      let natural = match
+        @infogeom.exponential_point(distribution, statistics) {
+        Ok(value) => value
+        Err(_) => abort("natural jet")
+      }
+      check_constant_curvature(required(curvature(natural)), q(1, 4), q(1, 2))
+    }
+  }
+}

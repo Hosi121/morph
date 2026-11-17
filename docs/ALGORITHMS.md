@@ -57,8 +57,9 @@
 | 確率核・Bayes逆核 | [長方形の確率核・合成・事後分布](../src/probability/channel.mbt)・[モデルの粗視化と微分](../src/infogeom/channel.mbt) |
 | 情報幾何 | [確率2-jet・Fisher行列・cubic tensor・α接続・自然勾配](../src/infogeom/model.mbt) |
 | モデルから曲率へ | [多項式の3階微分](../src/infogeom/polynomial.mbt)・[Fisher計量jetからRiemann/Ricci曲率へ接続](../src/statgeometry/geometry.mbt) |
+| 指数型分布族 | [十分統計量・中心モーメントによる厳密な自然座標の局所3-jet](../src/infogeom/exponential.mbt) |
 | 微分幾何 | [検査済み計量jet](../src/riemann/jet.mbt)・[Levi-Civita接続](../src/riemann/connection.mbt)・[曲率](../src/riemann/curvature.mbt) |
-| 有限Markov連鎖 | [検査済み確率核・厳密な時間発展と行列累乗](../src/markov/kernel.mbt) |
+| 有限Markov連鎖 | [検査済み確率核・時間発展](../src/markov/kernel.mbt)・[定常分布の全アフィン解](../src/markov/stationary.mbt)・[到達確率と有限/無限の平均時間](../src/markov/hitting.mbt) |
 
 <a id="groups-topology"></a>
 

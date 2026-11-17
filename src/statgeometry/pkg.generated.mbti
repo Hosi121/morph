@@ -8,9 +8,9 @@ import {
 }
 
 // Values
-pub fn curvature(@infogeom.PolynomialPoint) -> Result[@riemann.Curvature, GeometryError]
+pub fn curvature(@infogeom.ModelPoint) -> Result[@riemann.Curvature, GeometryError]
 
-pub fn fisher_jet(@infogeom.PolynomialPoint) -> Result[@riemann.MetricJet, GeometryError]
+pub fn fisher_jet(@infogeom.ModelPoint) -> Result[@riemann.MetricJet, GeometryError]
 
 // Errors
 

@@ -13,13 +13,15 @@ import {
 // Values
 pub fn alpha_lower(Model, @exact.Rational) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
 
-pub fn at(Family, @core.Chain[@exact.Rational]) -> Result[PolynomialPoint, FamilyError]
+pub fn at(Family, @core.Chain[@exact.Rational]) -> Result[ModelPoint, FamilyError]
 
 pub fn cubic(Model) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
 
 pub fn dimension(Model) -> @core.Nat
 
 pub fn distribution(Model) -> @probability.Distribution
+
+pub fn exponential_point(@probability.Distribution, @matrix.Matrix[@exact.Rational]) -> Result[ModelPoint, ModelError]
 
 pub fn family(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Family, FamilyError]
 
@@ -29,19 +31,23 @@ pub fn fisher(Model) -> @matrix.Matrix[@exact.Rational]
 
 pub fn jets(Model) -> @core.Chain[SampleJet]
 
-pub fn local_model(PolynomialPoint) -> Model
+pub fn local_model(ModelPoint) -> Model
 
 pub fn metric_first(Model) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
 
-pub fn metric_second(PolynomialPoint) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]?
+pub fn metric_second(ModelPoint) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]?
 
 pub fn model(@core.Nat, @core.Chain[SampleJet]) -> Result[Model, ModelError]
+
+pub fn model_point(Model, @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]) -> Result[ModelPoint, ModelError]
 
 pub fn natural_gradient(Model, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], ModelError]
 
 pub fn outcome_polynomials(Family) -> @core.Chain[@polynomial.Polynomial]
 
 pub fn scores(Model) -> @matrix.Matrix[@exact.Rational]?
+
+pub fn third_derivatives(ModelPoint) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
 
 pub fn through(Model, @probability.Channel) -> Result[Model, ModelError]
 
@@ -88,18 +94,22 @@ pub(all) enum ModelError {
   DerivativeNotNormalized
   HessianNotSymmetric
   SingularInformation
+  ThirdDerivativeShape
+  ThirdDerivativeSymmetry
+  ThirdDerivativeNotNormalized
   InternalShape
 }
 pub fn ModelError::equal(Self, Self) -> Bool
 pub fn ModelError::not_equal(Self, Self) -> Bool
 pub fn ModelError::to_repr(Self) -> @debug.Repr
 
-type PolynomialDerivatives
-
-pub struct PolynomialPoint {
+#alias(PolynomialPoint)
+pub struct ModelPoint {
   model : Model
   third : @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
 }
+
+type PolynomialDerivatives
 
 #derive(Eq, @debug.Debug)
 type Sample

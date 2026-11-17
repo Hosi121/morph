@@ -24,6 +24,9 @@ pub(all) enum ModelError {
   DerivativeNotNormalized
   HessianNotSymmetric
   SingularInformation
+  ThirdDerivativeShape
+  ThirdDerivativeSymmetry
+  ThirdDerivativeNotNormalized
   InternalShape
 }
 
