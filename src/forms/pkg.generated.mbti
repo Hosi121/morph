@@ -1,0 +1,72 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/forms"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Form, Form) -> Result[Form, FormError]
+
+pub fn degree(Form) -> @core.Nat
+
+pub fn exterior_derivative(Form) -> Result[Form, FormError]
+
+pub fn form(@core.Nat, @core.Nat, @core.Chain[Term]) -> Result[Form, FormError]
+
+pub fn is_zero(Form) -> Bool
+
+pub fn negate(Form) -> Form
+
+pub fn scalar(@polynomial.Polynomial) -> Form
+
+pub fn terms(Form) -> @core.Chain[Term]
+
+pub fn variables(Form) -> @core.Nat
+
+pub fn wedge(Form, Form) -> Result[Form, FormError]
+
+pub fn zero(@core.Nat, @core.Nat) -> Form
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Form {
+  variables : @core.Nat
+  degree : @core.Nat
+  terms : @core.Chain[Term]
+}
+pub fn Form::equal(Self, Self) -> Bool
+pub fn Form::not_equal(Self, Self) -> Bool
+pub fn Form::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FormError {
+  CoefficientDimension
+  ComponentDegree
+  IndexOutOfRange
+  DimensionMismatch
+  DegreeMismatch
+  ZeroDegree
+  NotClosed
+  InternalInvariant
+}
+pub fn FormError::equal(Self, Self) -> Bool
+pub fn FormError::not_equal(Self, Self) -> Bool
+pub fn FormError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Term {
+  coefficient : @polynomial.Polynomial
+  indices : @core.Chain[@core.Nat]
+}
+pub fn Term::equal(Self, Self) -> Bool
+pub fn Term::not_equal(Self, Self) -> Bool
+pub fn Term::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
