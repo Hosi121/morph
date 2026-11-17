@@ -43,6 +43,10 @@ pub fn outcome_polynomials(Family) -> @core.Chain[@polynomial.Polynomial]
 
 pub fn scores(Model) -> @matrix.Matrix[@exact.Rational]?
 
+pub fn through(Model, @probability.Channel) -> Result[Model, ModelError]
+
+pub fn through_family(Family, @probability.Channel) -> Result[Family, FamilyError]
+
 // Errors
 
 // Types and methods

@@ -8,9 +8,19 @@ import {
 }
 
 // Values
+pub fn apply(Channel, Distribution) -> Distribution?
+
 pub fn bayes(Distribution, @core.Chain[@exact.Rational]) -> Distribution?
 
+pub fn bayesian_inverse(Channel, Distribution) -> Channel?
+
 pub fn bernoulli(@exact.Rational) -> Distribution?
+
+pub fn channel(@core.Chain[Distribution]) -> Channel?
+
+pub fn channel_rows(Channel) -> @core.Chain[Distribution]
+
+pub fn compose_channels(Channel, Channel) -> Channel?
 
 pub fn condition(Distribution, @core.Chain[Bool]) -> Distribution?
 
@@ -22,6 +32,8 @@ pub fn event_probability(Distribution, @core.Chain[Bool]) -> @exact.Rational?
 
 pub fn expectation(Distribution, @core.Chain[@exact.Rational]) -> @exact.Rational?
 
+pub fn input_size(Channel) -> @core.Nat
+
 pub fn is_interior(Distribution) -> Bool
 
 pub fn mass(Distribution, @core.Nat) -> @exact.Rational?
@@ -31,6 +43,10 @@ pub fn masses(Distribution) -> @core.Chain[@exact.Rational]
 pub fn mixture(Distribution, Distribution, @exact.Rational) -> Distribution?
 
 pub fn normalize(@core.Chain[@exact.Rational]) -> Distribution?
+
+pub fn output_size(Channel) -> @core.Nat
+
+pub fn posterior(Channel, Distribution, @core.Nat) -> Distribution?
 
 pub fn product(Distribution, Distribution) -> Distribution
 
@@ -47,6 +63,15 @@ pub fn variance(Distribution, @core.Chain[@exact.Rational]) -> @exact.Rational?
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Channel {
+  rows : @core.Chain[Distribution]
+  output_size : @core.Nat
+}
+pub fn Channel::equal(Self, Self) -> Bool
+pub fn Channel::not_equal(Self, Self) -> Bool
+pub fn Channel::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Distribution {
   masses : @core.Chain[@exact.Rational]

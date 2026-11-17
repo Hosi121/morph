@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/statgeometry"
+
+import {
+  "Hosi121/morph/infogeom",
+  "Hosi121/morph/riemann",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn curvature(@infogeom.PolynomialPoint) -> Result[@riemann.Curvature, GeometryError]
+
+pub fn fisher_jet(@infogeom.PolynomialPoint) -> Result[@riemann.MetricJet, GeometryError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum GeometryError {
+  MissingDerivative
+  Metric(@riemann.JetError)
+}
+pub fn GeometryError::equal(Self, Self) -> Bool
+pub fn GeometryError::not_equal(Self, Self) -> Bool
+pub fn GeometryError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

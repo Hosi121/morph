@@ -54,7 +54,11 @@
 | 分野 | 実装と入口 |
 | --- | --- |
 | 有限確率 | [有理分布・期待値・条件付け・Bayes更新・独立積と周辺化](../src/probability/distribution.mbt) |
+| 確率核・Bayes逆核 | [長方形の確率核・合成・事後分布](../src/probability/channel.mbt)・[モデルの粗視化と微分](../src/infogeom/channel.mbt) |
 | 情報幾何 | [確率2-jet・Fisher行列・cubic tensor・α接続・自然勾配](../src/infogeom/model.mbt) |
+| モデルから曲率へ | [多項式の3階微分](../src/infogeom/polynomial.mbt)・[Fisher計量jetからRiemann/Ricci曲率へ接続](../src/statgeometry/geometry.mbt) |
+| 微分幾何 | [検査済み計量jet](../src/riemann/jet.mbt)・[Levi-Civita接続](../src/riemann/connection.mbt)・[曲率](../src/riemann/curvature.mbt) |
+| 有限Markov連鎖 | [検査済み確率核・厳密な時間発展と行列累乗](../src/markov/kernel.mbt) |
 
 <a id="groups-topology"></a>
 
