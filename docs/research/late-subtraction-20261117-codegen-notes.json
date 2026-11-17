@@ -1,0 +1,14 @@
+{
+  "initial_source_commit": "88e7453",
+  "initial_source_blob_sha256": "0f23161c1e3b906a422d425f8d5604e261c2e752020cdca50247177bb65c21a8",
+  "initial_generated_C_inspection": "Initial merge_subtract Nil-left branch called generic core.map specialized to Term->Term with a static callback closure; generated C included closure release after map. Left-only branch recursion/incref/allocation pattern matched old merge_terms. Observed from tool output before regeneration; full initial C file was overwritten by the bounded follow-up build.",
+  "initial_generic_callee": "_M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph10polynomial4TermRP37Hosi1215morph10polynomial4TermE",
+  "interpretation_limit": "Generated C motivated a bounded source specialization; native assembly callback overhead and the cause of initial slowdown were not independently established. GCC may optimize generated C further.",
+  "followup_source_commit": "c013ca5",
+  "followup_actual_excerpt": "late-subtraction-20261117-codegen-suffix.txt",
+  "followup_excerpt_sha256": "b84ee321e41283c20165e544da5b009513cae2a166df2dc5a26cdf8b3832614b",
+  "variant_scope": "Direct immutable right-only suffix recursion replaces generic map; negative output terms are constructed after the recursive suffix is ready; no input-shape heuristic or third variant.",
+  "followup_raw_excerpt": "late-subtraction-20261117-codegen-suffix.txt.gz",
+  "followup_raw_excerpt_sha256": "96d7ce7d7af1085d8141d48f4d1d75f8ca9b795f6f075a105cd1989be157a062",
+  "followup_excerpt_normalization": "Readable excerpt strips trailing whitespace only; gzip retains exact extracted function bytes. Function definitions selected by headers ending in an opening brace, not prototypes."
+}

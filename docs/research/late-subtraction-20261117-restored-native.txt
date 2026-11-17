@@ -1,0 +1,4 @@
+RUN tools/moon test src/polynomial src/groebner --target native --deny-warn -j 1
+Total tests: 142, passed: 142, failed: 0.
+RUN python3 tools/audit_purity.py
+Purity gate passed: 330 kernel files; no machine numerics, mutation, arrays or FFI.

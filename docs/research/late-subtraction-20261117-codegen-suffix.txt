@@ -1,0 +1,189 @@
+static void* _M0FP37Hosi1215morph10polynomial15merge__subtract(
+  void* _M0L1aS4373,
+  void* _M0L1bS4374
+) {
+  #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+  switch (Moonbit_object_tag(_M0L1aS4373)) {
+    case 0: {
+      #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+      return _M0FP37Hosi1215morph10polynomial25negate__subtraction__tail(_M0L1bS4374);
+      break;
+    }
+    default: {
+      switch (Moonbit_object_tag(_M0L1bS4374)) {
+        case 0: {
+          moonbit_incref_cycle_free(_M0L1aS4373);
+          return _M0L1aS4373;
+          break;
+        }
+        default: {
+          struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons* _M0L7_2aConsS4375 =
+            (struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_M0L1aS4373;
+          struct _M0TP37Hosi1215morph10polynomial4Term* _M0L4_2axS4376 =
+            _M0L7_2aConsS4375->$0;
+          void* _M0L5_2axtS4377 = _M0L7_2aConsS4375->$1;
+          struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons* _M0L7_2aConsS4378 =
+            (struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_M0L1bS4374;
+          struct _M0TP37Hosi1215morph10polynomial4Term* _M0L4_2ayS4379 =
+            _M0L7_2aConsS4378->$0;
+          void* _M0L5_2aytS4380 = _M0L7_2aConsS4378->$1;
+          void* _M0L9exponentsS8266 = _M0L4_2axS4376->$1;
+          void* _M0L9exponentsS8267 = _M0L4_2ayS4379->$1;
+          int32_t _M0L7_2abindS4381;
+          #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+          _M0L7_2abindS4381
+          = _M0FP37Hosi1215morph10polynomial17compare__monomial(_M0L9exponentsS8266, _M0L9exponentsS8267);
+          switch (_M0L7_2abindS4381) {
+            case 2: {
+              void* _M0L6_2atmpS8256;
+              void* _block_9548;
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L6_2atmpS8256
+              = _M0FP37Hosi1215morph10polynomial15merge__subtract(_M0L5_2axtS4377, _M0L1bS4374);
+              moonbit_incref_cycle_free(_M0L4_2axS4376);
+              _block_9548
+              = (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons));
+              Moonbit_object_header(_block_9548)->meta
+              = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 24, 1);
+              ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9548)->$0
+              = _M0L4_2axS4376;
+              ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9548)->$1
+              = _M0L6_2atmpS8256;
+              return _block_9548;
+              break;
+            }
+
+            case 0: {
+              struct _M0TP37Hosi1215morph5exact8Rational* _M0L11coefficientS8261 =
+                _M0L4_2ayS4379->$0;
+              struct _M0TP37Hosi1215morph5exact8Rational* _M0L6_2atmpS8259;
+              void* _M0L9exponentsS8260;
+              struct _M0TP37Hosi1215morph10polynomial4Term* _M0L6_2atmpS8257;
+              void* _M0L6_2atmpS8258;
+              void* _block_9549;
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L6_2atmpS8259
+              = _M0FP37Hosi1215morph5exact16rational__negate(_M0L11coefficientS8261);
+              _M0L9exponentsS8260 = _M0L4_2ayS4379->$1;
+              moonbit_incref_cycle_free(_M0L9exponentsS8260);
+              _M0L6_2atmpS8257
+              = (struct _M0TP37Hosi1215morph10polynomial4Term*)moonbit_malloc(sizeof(struct _M0TP37Hosi1215morph10polynomial4Term));
+              Moonbit_object_header(_M0L6_2atmpS8257)->meta
+              = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 0, 0);
+              _M0L6_2atmpS8257->$0 = _M0L6_2atmpS8259;
+              _M0L6_2atmpS8257->$1 = _M0L9exponentsS8260;
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L6_2atmpS8258
+              = _M0FP37Hosi1215morph10polynomial15merge__subtract(_M0L1aS4373, _M0L5_2aytS4380);
+              _block_9549
+              = (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons));
+              Moonbit_object_header(_block_9549)->meta
+              = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 24, 1);
+              ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9549)->$0
+              = _M0L6_2atmpS8257;
+              ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9549)->$1
+              = _M0L6_2atmpS8258;
+              return _block_9549;
+              break;
+            }
+            default: {
+              struct _M0TP37Hosi1215morph5exact8Rational* _M0L11coefficientS8264 =
+                _M0L4_2axS4376->$0;
+              struct _M0TP37Hosi1215morph5exact8Rational* _M0L11coefficientS8265 =
+                _M0L4_2ayS4379->$0;
+              struct _M0TP37Hosi1215morph5exact8Rational* _M0L6_2atmpS8262;
+              void* _M0L9exponentsS8263;
+              struct _M0TP37Hosi1215morph10polynomial4Term* _M0L8combinedS4382;
+              void* _M0L4restS4383;
+              int32_t _M0L7_2abindS4384;
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L6_2atmpS8262
+              = _M0FP37Hosi1215morph5exact18rational__subtract(_M0L11coefficientS8264, _M0L11coefficientS8265);
+              _M0L9exponentsS8263 = _M0L4_2axS4376->$1;
+              moonbit_incref_cycle_free(_M0L9exponentsS8263);
+              _M0L8combinedS4382
+              = (struct _M0TP37Hosi1215morph10polynomial4Term*)moonbit_malloc(sizeof(struct _M0TP37Hosi1215morph10polynomial4Term));
+              Moonbit_object_header(_M0L8combinedS4382)->meta
+              = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 0, 0);
+              _M0L8combinedS4382->$0 = _M0L6_2atmpS8262;
+              _M0L8combinedS4382->$1 = _M0L9exponentsS8263;
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L4restS4383
+              = _M0FP37Hosi1215morph10polynomial15merge__subtract(_M0L5_2axtS4377, _M0L5_2aytS4380);
+              #line 4 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+              _M0L7_2abindS4384
+              = _M0FP37Hosi1215morph10polynomial7nonzero(_M0L8combinedS4382);
+              if (_M0L7_2abindS4384 == 1) {
+                void* _block_9550 =
+                  (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons));
+                Moonbit_object_header(_block_9550)->meta
+                = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 24, 1);
+                ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9550)->$0
+                = _M0L8combinedS4382;
+                ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9550)->$1
+                = _M0L4restS4383;
+                return _block_9550;
+              } else {
+                moonbit_decref_cycle_free(_M0L8combinedS4382);
+                return _M0L4restS4383;
+              }
+              break;
+            }
+          }
+          break;
+        }
+      }
+      break;
+    }
+  }
+}
+
+static void* _M0FP37Hosi1215morph10polynomial25negate__subtraction__tail(
+  void* _M0L5termsS4366
+) {
+  #line 40 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+  switch (Moonbit_object_tag(_M0L5termsS4366)) {
+    case 0: {
+      return (struct moonbit_object*)&moonbit_constant_constructor_0 + 1;
+      break;
+    }
+    default: {
+      struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons* _M0L7_2aConsS4367 =
+        (struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_M0L5termsS4366;
+      struct _M0TP37Hosi1215morph10polynomial4Term* _M0L7_2atermS4368 =
+        _M0L7_2aConsS4367->$0;
+      void* _M0L7_2arestS4369 = _M0L7_2aConsS4367->$1;
+      void* _M0L4tailS4370;
+      struct _M0TP37Hosi1215morph5exact8Rational* _M0L11coefficientS8253;
+      struct _M0TP37Hosi1215morph5exact8Rational* _M0L6_2atmpS8251;
+      void* _M0L9exponentsS8252;
+      struct _M0TP37Hosi1215morph10polynomial4Term* _M0L6_2atmpS8250;
+      void* _block_9551;
+      #line 40 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+      _M0L4tailS4370
+      = _M0FP37Hosi1215morph10polynomial25negate__subtraction__tail(_M0L7_2arestS4369);
+      _M0L11coefficientS8253 = _M0L7_2atermS4368->$0;
+      #line 40 "/home/hosi/morph-late-poly/src/polynomial/subtraction.mbt"
+      _M0L6_2atmpS8251
+      = _M0FP37Hosi1215morph5exact16rational__negate(_M0L11coefficientS8253);
+      _M0L9exponentsS8252 = _M0L7_2atermS4368->$1;
+      moonbit_incref_cycle_free(_M0L9exponentsS8252);
+      _M0L6_2atmpS8250
+      = (struct _M0TP37Hosi1215morph10polynomial4Term*)moonbit_malloc(sizeof(struct _M0TP37Hosi1215morph10polynomial4Term));
+      Moonbit_object_header(_M0L6_2atmpS8250)->meta
+      = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 0, 0);
+      _M0L6_2atmpS8250->$0 = _M0L6_2atmpS8251;
+      _M0L6_2atmpS8250->$1 = _M0L9exponentsS8252;
+      _block_9551
+      = (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons));
+      Moonbit_object_header(_block_9551)->meta
+      = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 24, 1);
+      ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9551)->$0
+      = _M0L6_2atmpS8250;
+      ((struct _M0DTP37Hosi1215morph4core5ChainGRP37Hosi1215morph10polynomial4TermE4Cons*)_block_9551)->$1
+      = _M0L4tailS4370;
+      return _block_9551;
+      break;
+    }
+  }
+}

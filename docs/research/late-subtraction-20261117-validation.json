@@ -1,0 +1,209 @@
+{
+  "utc": "2026-11-17T14:37:36.095107+00:00",
+  "decision": "REJECT generic fused subtraction; retain old production composition",
+  "baseline": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+  "harness_commit": "36db45b",
+  "rejected_source_commits": {
+    "initial": "88e7453",
+    "suffix": "c013ca5"
+  },
+  "restoration_commit": "6f3ccf6",
+  "production_polynomial_restored_byte_identical": true,
+  "public_interface_byte_identical": true,
+  "performance_followups_used": 1,
+  "performance_runs": 240,
+  "all_full_checks_passed": true,
+  "phases": {
+    "initial": {
+      "runs": 120,
+      "all_checked": true,
+      "before": {
+        "root": "/home/hosi/morph-late-before",
+        "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+        "working_tree": [
+          "?? src/cmd/latepolybench/"
+        ],
+        "source_manifest_sha256": "f55baa2f97a186ba4c812479875b1fac40ed3a090dcaefabef18d45a3b6faaed",
+        "source_file_count": 927,
+        "artifact": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/baseline-a39f323.exe",
+        "artifact_sha256": "82a81155d4be869d82a43de848f2cc0b12a6b4e7f2102c8a4a28bda4082f4e96",
+        "harness": {
+          "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+          "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+        },
+        "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+      },
+      "after": {
+        "root": "/home/hosi/morph-late-poly",
+        "commit": "88e74539872152334b954bd239a18f609527580d",
+        "working_tree": [
+          "?? docs/research/late-subtraction-20261117.md"
+        ],
+        "source_manifest_sha256": "84fed3ffcce300ffe0c0e61e57f3b78334ad06e284f3ddf2de706cc9da8b471b",
+        "source_file_count": 929,
+        "artifact": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/candidate-initial.exe",
+        "artifact_sha256": "ba7e2f2ea881860ae25cc71ed09957f50a6357c0f1d497c629c74918d9c3cce7",
+        "harness": {
+          "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+          "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+        },
+        "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+      },
+      "uncompressed_sha256": "5e281c73951633b6cb61daf29edc1d15d983b402e9143dfef598ade911fc0ee8",
+      "compressed_sha256": "db151809d40f646f16696f8b29f15f56d093f12ba5dead14b2c6df4e12f5c8a4",
+      "baseline_audit": {
+        "baseline": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+        "tracked_files": 1097,
+        "tracked_bytes_unchanged": true,
+        "tracked_source_sha256": "dae56af8890d16ad42c68d096a78940905af3473f01a976c63e8e5792d74df82",
+        "baseline_build_tasks": 38,
+        "harness_commit": "36db45b",
+        "protected_regions_sha256": {
+          "add": "6582f5e217126a2a61bee54b566e016b2d3ef3f7830420bad8a57f60c3a7edbf",
+          "negate": "d5b456b6487b43895032e764a0aedaedc11debaa083e4f99654ceb860c3160ca",
+          "multiply": "23a078099806da8a60504ca1a6b526e0db5e5b29f698b95a4b366a59efe97ef3",
+          "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+          "normal_form": "b0272c110051c89ff6195bec2e3826ba2765e43d1c580173bfee2075f251e1d8",
+          "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+          "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+          "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+          "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474",
+          "merge_terms": "dea0c40849c65a990a92534801a2e177e158572ef73663cd4ec52db363a40f2b",
+          "term_times": "bb8e8380e41d20f4b80a6a159a6b289b6f77d549cd03524dbd8243f117ab4fe3",
+          "monomial_product": "1f6aa7b0e9a936f70f86263bc461550d9ac6b12355478508b9b4333a04835f30",
+          "remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c",
+          "balanced_product.mbt": "b54266d4c79fafe9e91d54cfa676c11af8779ec81006e66eadcc7179244c4a76"
+        }
+      }
+    },
+    "suffix": {
+      "runs": 120,
+      "all_checked": true,
+      "before": {
+        "root": "/home/hosi/morph-late-before",
+        "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+        "working_tree": [
+          "?? src/cmd/lateboolproductbench/",
+          "?? src/cmd/latefrobeniusbench/",
+          "?? src/cmd/latepolybench/"
+        ],
+        "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+        "source_file_count": 931,
+        "artifact": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/baseline-a39f323.exe",
+        "artifact_sha256": "82a81155d4be869d82a43de848f2cc0b12a6b4e7f2102c8a4a28bda4082f4e96",
+        "harness": {
+          "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+          "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+        },
+        "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+      },
+      "after": {
+        "root": "/home/hosi/morph-late-poly",
+        "commit": "c013ca50b3da53714055a9d2f280431858e1c2f0",
+        "working_tree": [
+          "?? docs/research/late-subtraction-20261117-initial.json.gz",
+          "?? docs/research/late-subtraction-20261117-summary.json",
+          "?? docs/research/late-subtraction-20261117.md"
+        ],
+        "source_manifest_sha256": "c9abe4d1fd13da7b423771ab81a6ec1d79a4d6b947d34ab210cf46980d5b2630",
+        "source_file_count": 929,
+        "artifact": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/candidate-suffix.exe",
+        "artifact_sha256": "d26f38e4b5e794a7098b1e89d5c932e698114b2056247585636e9c57a350ab96",
+        "harness": {
+          "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+          "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+        },
+        "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+      },
+      "uncompressed_sha256": "2cd03e871becce49f3ffd5a46e35aad61e7342b2cb6b13d344a5d44584abd735",
+      "compressed_sha256": "ee4b643a4e5e75bdf06afd82fe454c2336e2b24e9bc11bcc878de6b073076398",
+      "baseline_audit": {
+        "baseline": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+        "tracked_files": 1097,
+        "tracked_bytes_unchanged": true,
+        "tracked_source_sha256": "dae56af8890d16ad42c68d096a78940905af3473f01a976c63e8e5792d74df82",
+        "baseline_build_tasks": 38,
+        "harness_commit": "36db45b",
+        "protected_regions_sha256": {
+          "add": "6582f5e217126a2a61bee54b566e016b2d3ef3f7830420bad8a57f60c3a7edbf",
+          "negate": "d5b456b6487b43895032e764a0aedaedc11debaa083e4f99654ceb860c3160ca",
+          "multiply": "23a078099806da8a60504ca1a6b526e0db5e5b29f698b95a4b366a59efe97ef3",
+          "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+          "normal_form": "b0272c110051c89ff6195bec2e3826ba2765e43d1c580173bfee2075f251e1d8",
+          "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+          "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+          "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+          "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474",
+          "merge_terms": "dea0c40849c65a990a92534801a2e177e158572ef73663cd4ec52db363a40f2b",
+          "term_times": "bb8e8380e41d20f4b80a6a159a6b289b6f77d549cd03524dbd8243f117ab4fe3",
+          "monomial_product": "1f6aa7b0e9a936f70f86263bc461550d9ac6b12355478508b9b4333a04835f30",
+          "remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c",
+          "balanced_product.mbt": "b54266d4c79fafe9e91d54cfa676c11af8779ec81006e66eadcc7179244c4a76"
+        }
+      }
+    }
+  },
+  "validation": {
+    "initial_native": {
+      "tests": 142,
+      "passed": 142
+    },
+    "suffix_native": {
+      "tests": 142,
+      "passed": 142
+    },
+    "suffix_wasm": {
+      "tests": 142,
+      "passed": 142
+    },
+    "suffix_js": {
+      "tests": 142,
+      "passed": 142
+    },
+    "global_static_deny_warn_tasks": 1918,
+    "scoped_api_info_tasks": 38,
+    "prototype_purity_files": 331,
+    "formal_regions": 32,
+    "fraction_fixtures": 31,
+    "restored_native": {
+      "tests": 142,
+      "passed": 142
+    },
+    "restored_purity_files": 330
+  },
+  "checker_bodies_changed": false,
+  "checker_shared_dependency_limit": "The prototype changes arithmetic used by checkers; checker success alone is not independent arithmetic evidence. Old composition and host Fraction data supplement it.",
+  "memory_peak_measured": false,
+  "native_assembly_attribution_established": false,
+  "private_prototypes_required_for_reproduction": false,
+  "patches_checked_without_baseline_edits": true,
+  "push_performed": false,
+  "worktree_removed": false,
+  "artifact_hashes": {
+    "baseline-a39f323.exe": "82a81155d4be869d82a43de848f2cc0b12a6b4e7f2102c8a4a28bda4082f4e96",
+    "candidate-initial.exe": "ba7e2f2ea881860ae25cc71ed09957f50a6357c0f1d497c629c74918d9c3cce7",
+    "candidate-suffix.exe": "d26f38e4b5e794a7098b1e89d5c932e698114b2056247585636e9c57a350ab96"
+  },
+  "evidence_sha256": {
+    "late-subtraction-20261117-codegen-notes.json": "b158e3cec13f0453ed34c2edc7335b433ad5d6eebb71ef3b6d2a4929ea80def9",
+    "late-subtraction-20261117-codegen-suffix.txt": "b84ee321e41283c20165e544da5b009513cae2a166df2dc5a26cdf8b3832614b",
+    "late-subtraction-20261117-codegen-suffix.txt.gz": "8ecda82cf92c6543a54661e6c29f2529e60bbe607fb8362c1b1766f0e8790e71",
+    "late-subtraction-20261117-final-validation.txt": "0ec38a451880a380521867f70f3e2e979eaabe31b64fdcef5bcbf307d9e7c5d8",
+    "late-subtraction-20261117-initial-native.txt": "86ed2674e6f2fe1ddf68a6dca2043202a83eb6e99a6e1ae4d17d9a0afb8eba1a",
+    "late-subtraction-20261117-initial.json.gz": "db151809d40f646f16696f8b29f15f56d093f12ba5dead14b2c6df4e12f5c8a4",
+    "late-subtraction-20261117-initial.patch": "051c9d13822b48f0854e20948b304126942dd9422c1b3a83ee9b3ccb66efe043",
+    "late-subtraction-20261117-oracle-cases.json": "07d81cb9f00e0ffb39ce8c9cce4736002de763dd643309f0a70076e479234c78",
+    "late-subtraction-20261117-oracle.py": "df5ff35ad981ae48e80b89754c01831fc9e28ba06b4b231d0f0aa167c17868e8",
+    "late-subtraction-20261117-restored-native.txt": "3cca76c4942b7ef4ce1d0395f6da1440c9975f4a7fef8c914bb65d9c4817489a",
+    "late-subtraction-20261117-suffix-native.txt": "7a6043df27eec1c4bbe26b77500855d7fee4a954b0b88720132cfc3624fae197",
+    "late-subtraction-20261117-suffix-summary.json": "c3b38a3782889d8594b7b69719a5b33ff0d00e2edc181cac2de294687ece6d6e",
+    "late-subtraction-20261117-suffix.json.gz": "ee4b643a4e5e75bdf06afd82fe454c2336e2b24e9bc11bcc878de6b073076398",
+    "late-subtraction-20261117-suffix.patch": "3eed6a2504072faae8f443d3fb46eafb28cf2ed2ff30aefc4d1de6f766155e41",
+    "late-subtraction-20261117-summary.json": "b1b4f9e73d2038c842ad933776698560da3d23735681f987abdf319247cc40ef"
+  },
+  "rejection_scope": "Generic replacement rejected; complete equal-polynomial cancellation is the clear targeted experimental result.",
+  "public_patch_apply_flags": [
+    "--check",
+    "--unidiff-zero"
+  ]
+}

@@ -1,0 +1,71 @@
+diff --git a/src/polynomial/polynomial.mbt b/src/polynomial/polynomial.mbt
+index fbd7980..2f74abd 100644
+--- a/src/polynomial/polynomial.mbt
++++ b/src/polynomial/polynomial.mbt
+@@ -218 +218,5 @@ pub fn subtract(
+-  add(a, negate(b))
++  match @core.compare(a.variables, b.variables) {
++    Equal =>
++      Ok({ variables: a.variables, terms: merge_subtract(a.terms, b.terms), })
++    _ => Err(DimensionMismatch)
++  }
+diff --git a/src/polynomial/subtraction.mbt b/src/polynomial/subtraction.mbt
+new file mode 100644
+index 0000000..f92ab47
+--- /dev/null
++++ b/src/polynomial/subtraction.mbt
+@@ -0,0 +1,54 @@
++///|
++/// Subtract sorted canonical term lists without materializing a negated input.
++/// A right-only term is negated only when it becomes part of the output.
++fn merge_subtract(
++  a : @core.Chain[Term],
++  b : @core.Chain[Term],
++) -> @core.Chain[Term] {
++  match (a, b) {
++    (Nil, _) => negate_subtraction_tail(b)
++    (_, Nil) => a
++    (Cons(x, xt), Cons(y, yt)) =>
++      match compare_monomial(x.exponents, y.exponents) {
++        Greater => Cons(x, merge_subtract(xt, b))
++        Less =>
++          Cons(
++            {
++              coefficient: @exact.rational_negate(y.coefficient),
++              exponents: y.exponents,
++            },
++            merge_subtract(a, yt),
++          )
++        Equal => {
++          let combined : Term = {
++            coefficient: @exact.rational_subtract(x.coefficient, y.coefficient),
++            exponents: x.exponents,
++          }
++          let rest = merge_subtract(xt, yt)
++          match nonzero(combined) {
++            true => Cons(combined, rest)
++            false => rest
++          }
++        }
++      }
++  }
++}
++
++///|
++/// Emit the right-only suffix directly, avoiding a generic map callback and
++/// constructing negative output terms after the recursive suffix is ready.
++fn negate_subtraction_tail(terms : @core.Chain[Term]) -> @core.Chain[Term] {
++  match terms {
++    Nil => Nil
++    Cons(term, rest) => {
++      let tail = negate_subtraction_tail(rest)
++      Cons(
++        {
++          coefficient: @exact.rational_negate(term.coefficient),
++          exponents: term.exponents,
++        },
++        tail,
++      )
++    }
++  }
++}

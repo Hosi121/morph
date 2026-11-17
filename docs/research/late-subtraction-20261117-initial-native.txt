@@ -1,0 +1,6 @@
+RUN tools/moon test src/polynomial src/groebner --target native --deny-warn -j 1
+Total tests: 142, passed: 142, failed: 0.
+RUN tools/moon build src/cmd/latepolybench --target native --release --deny-warn -j 1
+Finished. moon: ran 38 tasks, now up to date
+Artifacts:
+  Hosi121/morph/cmd/latepolybench  native  /home/hosi/morph-late-poly/_build/native/release/build/cmd/latepolybench/latepolybench.exe
