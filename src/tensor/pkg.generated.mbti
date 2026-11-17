@@ -1,0 +1,69 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/tensor"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A] at(Tensor[A], @core.Chain[@core.Nat]) -> Result[A, TensorError]
+
+pub fn[A] contract(@algebra.Semiring[A], Tensor[A], @core.Nat, @core.Nat) -> Result[Tensor[A], TensorError]
+
+pub fn[A] entries(Tensor[A]) -> @core.Chain[A]
+
+pub fn[A] from_flat(@core.Chain[@core.Nat], @core.Chain[A]) -> Result[Tensor[A], TensorError]
+
+pub fn[A, B] map(Tensor[A], (A) -> B) -> Tensor[B]
+
+pub fn[A] mode_product(Tensor[A], @core.Nat, @matrix.Matrix[A], @algebra.Semiring[A]) -> Result[Tensor[A], TensorError]
+
+pub fn[A] permute(Tensor[A], @core.Chain[@core.Nat]) -> Result[Tensor[A], TensorError]
+
+pub fn[A] product(@algebra.Semiring[A], Tensor[A], Tensor[A]) -> Tensor[A]
+
+pub fn[A] rank(Tensor[A]) -> @core.Nat
+
+pub fn[A] shape(Tensor[A]) -> @core.Chain[@core.Nat]
+
+pub fn[A] tabulate(@core.Chain[@core.Nat], (@core.Chain[@core.Nat]) -> A) -> Tensor[A]
+
+pub fn[A, B, C] zip(Tensor[A], Tensor[B], (A, B) -> C) -> Result[Tensor[C], TensorError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Tensor[A] {
+  dimensions : @core.Chain[@core.Nat]
+  values : @core.Chain[A]
+}
+pub fn[A : Eq] Tensor::equal(Self[A], Self[A]) -> Bool
+pub fn[A : Eq] Tensor::not_equal(Self[A], Self[A]) -> Bool
+pub fn[A : @debug.Debug] Tensor::to_repr(Self[A]) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum TensorError {
+  EntryCountMismatch
+  CoordinateRankMismatch
+  CoordinateOutOfBounds
+  ShapeMismatch
+  AxisOutOfBounds
+  RepeatedAxis
+  AxisSizeMismatch
+  PermutationRankMismatch
+  PermutationOutOfBounds
+  PermutationNotBijective
+  ModeWidthMismatch
+  InternalShape
+}
+pub fn TensorError::equal(Self, Self) -> Bool
+pub fn TensorError::not_equal(Self, Self) -> Bool
+pub fn TensorError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
