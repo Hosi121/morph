@@ -37,173 +37,6 @@ pub extend Certificate with Eq::{equal, not_equal}
 pub extend Certificate with Debug::{to_repr}
 
 ///|
-fn result_of(form : @smith.Decomposition) -> ResultGroup {
-  let quotient = @smith.cokernel(form)
-  {
-    free_rank: @smith.free_rank(quotient),
-    torsion: @smith.torsion_factors(quotient),
-  }
-}
-
-///|
-fn recheck(form : @smith.Decomposition) -> Bool {
-  @smith.check(
-    @smith.original(form),
-    @smith.left(form),
-    @smith.diagonal(form),
-    @smith.right(form),
-  )
-  is Some(_)
-}
-
-///|
-fn inverse_pair(
-  a : @matrix.Matrix[@exact.Integer],
-  b : @matrix.Matrix[@exact.Integer],
-) -> Bool {
-  let identity = @matrix.identity(@matrix.width(a), integers())
-  @core.compare(@matrix.height(a), @matrix.width(a)) is Equal &&
-  @matrix.multiply(a, b, integers()).equal(Some(identity)) &&
-  @matrix.multiply(b, a, integers()).equal(Some(identity))
-}
-
-///|
-fn bottom(
-  coordinates : @matrix.Matrix[@exact.Integer],
-  rank : @core.Nat,
-) -> @matrix.Matrix[@exact.Integer]? {
-  @matrix.matrix(
-    @matrix.width(coordinates),
-    @core.drop(rank, @matrix.rows(coordinates)),
-  )
-}
-
-///|
-/// Binds the certificate to the actual requested source, degree, and returned
-/// group. Reconstructs boundaries and verifies both Smith witnesses, the full
-/// integer coordinate change, chain identity, leading zeros and group result.
-/// It never calls Smith search, rational inversion, or homology computation.
-pub fn check_result(
-  complex : Complex,
-  degree : @core.Nat,
-  actual : ResultGroup,
-  witness : Certificate,
-) -> Bool {
-  let bound = witness.source.equal(complex) &&
-    witness.degree.equal(degree) &&
-    witness.result.equal(actual) &&
-    validate(complex.faces).equal(Some(complex))
-  match bound {
-    false => false
-    true =>
-      match (boundary(complex, degree), boundary(complex, Succ(degree))) {
-        (Some(a), Some(b)) => {
-          let form = witness.boundary_form
-          let r = @smith.rank(form)
-          let valid_coordinates = @matrix.multiply(
-            witness.right_inverse,
-            b,
-            integers(),
-          ).equal(Some(witness.coordinates))
-          let leading_zero = @core.all(
-            @core.take(r, @matrix.rows(witness.coordinates)),
-            fn(row) { @core.all(row, zero) },
-          )
-          @smith.original(form).equal(a) &&
-          recheck(form) &&
-          boundary_squared_zero(complex, degree) &&
-          inverse_pair(@smith.right(form), witness.right_inverse) &&
-          valid_coordinates &&
-          leading_zero &&
-          bottom(witness.coordinates, r).equal(
-            Some(@smith.original(witness.image_form)),
-          ) &&
-          recheck(witness.image_form) &&
-          result_of(witness.image_form).equal(actual)
-        }
-        _ => false
-      }
-  }
-}
-
-///|
-/// Access the witnessed result; use check_result with the actual return value
-/// when accepting a certificate from an untrusted producer.
-pub fn result(witness : Certificate) -> ResultGroup {
-  witness.result
-}
-
-///|
-/// Full Z-basis of cycles in the original lexicographic simplex coordinates.
-/// These are generators of ker(d_k), before quotienting by boundaries.
-pub fn cycle_basis(
-  witness : Certificate,
-) -> @core.Chain[@core.Chain[@exact.Integer]] {
-  @core.drop(
-    @smith.rank(witness.boundary_form),
-    @matrix.rows(@matrix.transpose(@smith.right(witness.boundary_form))),
-  )
-}
-
-///|
-fn integer_inverse(
-  input : @matrix.Matrix[@exact.Integer],
-) -> @matrix.Matrix[@exact.Integer]? {
-  fn integral_row(
-    row : @core.Chain[@exact.Rational],
-  ) -> @core.Chain[@exact.Integer]? {
-    match row {
-      Nil => Some(Nil)
-      Cons(value, rest) =>
-        match
-          (
-            @binary.compare(@exact.denominator(value), @binary.one()),
-            integral_row(rest),
-          ) {
-          (Equal, Some(rest)) => Some(Cons(@exact.numerator(value), rest))
-          _ => None
-        }
-    }
-  }
-  fn integral_rows(
-    rows : @core.Chain[@core.Chain[@exact.Rational]],
-  ) -> @core.Chain[@core.Chain[@exact.Integer]]? {
-    match rows {
-      Nil => Some(Nil)
-      Cons(row, rest) =>
-        match (integral_row(row), integral_rows(rest)) {
-          (Some(row), Some(rest)) => Some(Cons(row, rest))
-          _ => None
-        }
-    }
-  }
-  let rationals = @matrix.matrix(
-    @matrix.width(input),
-    @core.map(@matrix.rows(input), fn(row) { @core.map(row, @exact.whole) }),
-  )
-  match rationals {
-    None => None
-    Some(rationals) =>
-      match @linear.inverse(rationals) {
-        None => None
-        Some(inverse) =>
-          match integral_rows(@matrix.rows(inverse)) {
-            None => None
-            Some(rows) =>
-              match @matrix.matrix(@matrix.width(inverse), rows) {
-                Some(candidate) =>
-                  match inverse_pair(input, candidate) {
-                    true => Some(candidate)
-                    false => None
-                  }
-                None => None
-              }
-          }
-      }
-  }
-}
-
-///|
 #derive(Eq, Debug)
 pub(all) enum Computation {
   Computed(Certificate)
@@ -218,10 +51,72 @@ pub extend Computation with Eq::{equal, not_equal}
 pub extend Computation with Debug::{to_repr}
 
 ///|
-/// Run the existing Smith machine twice, each with at most fuel transitions.
-/// A paused search is reported explicitly and never returned as a homology
-/// result. Rational inversion is reused only to obtain the integral V^-1;
-/// the checker verifies its two integer inverse identities independently.
+fn engine(
+  a : @matrix.Matrix[@exact.Integer],
+  b : @matrix.Matrix[@exact.Integer],
+  witness : Certificate,
+) -> @chainhomology.Certificate {
+  {
+    boundary: a,
+    next_boundary: b,
+    result: {
+      free_rank: witness.result.free_rank,
+      torsion: witness.result.torsion,
+    },
+    boundary_form: witness.boundary_form,
+    right_inverse: witness.right_inverse,
+    coordinates: witness.coordinates,
+    image_form: witness.image_form,
+  }
+}
+
+///|
+/// Checks the actual source, degree and result, then the common matrix-pair witness.
+/// Runs no Smith search or inversion.
+pub fn check_result(
+  complex : Complex,
+  degree : @core.Nat,
+  actual : ResultGroup,
+  witness : Certificate,
+) -> Bool {
+  let bound = witness.source.equal(complex) &&
+    witness.degree.equal(degree) &&
+    witness.result.equal(actual) &&
+    validate(complex.faces).equal(Some(complex))
+  match bound {
+    false => false
+    true =>
+      match (boundary(complex, degree), boundary(complex, Succ(degree))) {
+        (Some(a), Some(b)) =>
+          @chainhomology.check_result(
+            a,
+            b,
+            { free_rank: actual.free_rank, torsion: actual.torsion, },
+            engine(a, b, witness),
+          )
+        _ => false
+      }
+  }
+}
+
+///|
+pub fn result(witness : Certificate) -> ResultGroup {
+  witness.result
+}
+
+///|
+/// Full integer cycle basis in lexicographic simplex coordinates.
+pub fn cycle_basis(
+  witness : Certificate,
+) -> @core.Chain[@core.Chain[@exact.Integer]] {
+  @core.drop(
+    @smith.rank(witness.boundary_form),
+    @matrix.rows(@matrix.transpose(@smith.right(witness.boundary_form))),
+  )
+}
+
+///|
+/// Delegates the two Smith searches to the shared matrix-pair engine.
 pub fn compute(
   complex : Complex,
   degree : @core.Nat,
@@ -229,42 +124,27 @@ pub fn compute(
 ) -> Computation {
   match (boundary(complex, degree), boundary(complex, Succ(degree))) {
     (Some(a), Some(b)) =>
-      match @smith.run(@smith.start(a), fuel) {
-        Paused(_) => BudgetExhausted
-        Fault(_) => InvalidWitness
-        Done(form) =>
-          match integer_inverse(@smith.right(form)) {
-            None => InvalidWitness
-            Some(inverse) =>
-              match @matrix.multiply(inverse, b, integers()) {
-                None => InvalidWitness
-                Some(coordinates) =>
-                  match bottom(coordinates, @smith.rank(form)) {
-                    None => InvalidWitness
-                    Some(image) =>
-                      match @smith.run(@smith.start(image), fuel) {
-                        Paused(_) => BudgetExhausted
-                        Fault(_) => InvalidWitness
-                        Done(image_form) => {
-                          let actual = result_of(image_form)
-                          let witness = Certificate::{
-                            source: complex,
-                            degree,
-                            result: actual,
-                            boundary_form: form,
-                            right_inverse: inverse,
-                            coordinates,
-                            image_form,
-                          }
-                          match check_result(complex, degree, actual, witness) {
-                            true => Computed(witness)
-                            false => InvalidWitness
-                          }
-                        }
-                      }
-                  }
-              }
+      match @chainhomology.compute(a, b, fuel) {
+        BudgetExhausted => BudgetExhausted
+        InvalidWitness => InvalidWitness
+        Computed(c) => {
+          let witness = Certificate::{
+            source: complex,
+            degree,
+            result: {
+              free_rank: c.result.free_rank,
+              torsion: c.result.torsion,
+            },
+            boundary_form: c.boundary_form,
+            right_inverse: c.right_inverse,
+            coordinates: c.coordinates,
+            image_form: c.image_form,
           }
+          match check_result(complex, degree, witness.result, witness) {
+            true => Computed(witness)
+            false => InvalidWitness
+          }
+        }
       }
     _ => InvalidWitness
   }

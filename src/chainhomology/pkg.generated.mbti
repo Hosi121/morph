@@ -1,0 +1,75 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/chainhomology"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/smith",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn apply_matrix(@matrix.Matrix[@exact.Integer], @core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?
+
+pub fn bottom(@matrix.Matrix[@exact.Integer], @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn canonical_columns(@smith.Decomposition, @matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn chain_identity(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> Bool
+
+pub fn check_result(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], ResultGroup, Certificate) -> Bool
+
+pub fn compute(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer], @core.Nat) -> Computation
+
+pub fn cycle_basis(Certificate) -> @core.Chain[@core.Chain[@exact.Integer]]
+
+pub fn integer_inverse(@matrix.Matrix[@exact.Integer]) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn integers() -> @algebra.Semiring[@exact.Integer]
+
+pub fn inverse_pair(@matrix.Matrix[@exact.Integer], @matrix.Matrix[@exact.Integer]) -> Bool
+
+pub fn leading_zero(@matrix.Matrix[@exact.Integer], @core.Nat) -> Bool
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  boundary : @matrix.Matrix[@exact.Integer]
+  next_boundary : @matrix.Matrix[@exact.Integer]
+  result : ResultGroup
+  boundary_form : @smith.Decomposition
+  right_inverse : @matrix.Matrix[@exact.Integer]
+  coordinates : @matrix.Matrix[@exact.Integer]
+  image_form : @smith.Decomposition
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Computation {
+  Computed(Certificate)
+  BudgetExhausted
+  InvalidWitness
+}
+pub fn Computation::equal(Self, Self) -> Bool
+pub fn Computation::not_equal(Self, Self) -> Bool
+pub fn Computation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ResultGroup {
+  free_rank : @core.Nat
+  torsion : @core.Chain[@binary.Binary]
+}
+pub fn ResultGroup::equal(Self, Self) -> Bool
+pub fn ResultGroup::not_equal(Self, Self) -> Bool
+pub fn ResultGroup::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
