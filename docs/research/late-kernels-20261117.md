@@ -2,7 +2,7 @@
 
 [研究記録](README.md) / [基礎部品の最適化](../KERNELS.md)
 
-利用者の延長指示を受け、検証済みの`a39f323`を基準に次の候補を比較しています。
+利用者の延長指示を受け、検証済みの`a39f323`を基準に六候補を比較し、四件を採用しました。
 前の[夜間の8件](night-kernels-20261117.md)は3バックエンド各3,603テスト、1,080回の公開API比較まで完了してpush済みです。
 この記録では、その後の採否と検証を分けて扱います。
 
@@ -78,3 +78,61 @@ PIDの再利用・ソースやログのずれ・同じrecordの二重実行も�
 一巡目と合わせて採用4件、見送り2件です。担当別の照合と統合版の検証を区別し、
 最終版の固定ソースで逆依存の3バックエンド検査と公開API比較を行います。
 26時までに最終検証・push・片付けを行います。
+
+## 最終統合版の公開API比較
+
+固定ソース`a63dcbc`で全6系列・36入力・720プロセスが全結果と検査に成功しました。
+起動・構築・結果と証拠の検査を含むnative release、CPU4、5組のABBAです。
+基準は一巡目の3CLIが`a39f323`、二巡目が`905d23d`です。
+
+| 公開CLI / 入力 | 基準÷統合版 | 有利なblock数 |
+| --- | ---: | ---: |
+| `latepolybench` / `full-cancellation` | 1.007 | 3/5 |
+| `latepolybench` / `interleaved` | 0.986 | 3/5 |
+| `latepolybench` / `block-disjoint` | 0.999 | 2/5 |
+| `latepolybench` / `mixed-rational` | 0.985 | 2/5 |
+| `latepolybench` / `small-zero-errors` | 1.077 | 5/5 |
+| `latepolybench` / `buchberger` | 1.019 | 4/5 |
+| `latefrobeniusbench` / `dense-f2-power16` | 1.379 | 5/5 |
+| `latefrobeniusbench` / `sparse-f2-power32` | 1.774 | 5/5 |
+| `latefrobeniusbench` / `irreducibility-setup8` | 1.190 | 5/5 |
+| `latefrobeniusbench` / `odd17-control` | 1.060 | 5/5 |
+| `latefrobeniusbench` / `lowdegree-f2` | 1.142 | 5/5 |
+| `latefrobeniusbench` / `setup-one-shot-f2` | 1.233 | 5/5 |
+| `lateboolproductbench` / `tiny-and-shapes` | 1.062 | 5/5 |
+| `lateboolproductbench` / `sparse` | 1.175 | 5/5 |
+| `lateboolproductbench` / `dense` | 1.241 | 5/5 |
+| `lateboolproductbench` / `zero` | 1.191 | 5/5 |
+| `lateboolproductbench` / `cohomology-circle` | 0.980 | 2/5 |
+| `lateboolproductbench` / `cohomology-torus` | 1.018 | 5/5 |
+| `lateunitbench` / `unit-plus` | 1.547 | 5/5 |
+| `lateunitbench` / `unit-minus` | 1.483 | 5/5 |
+| `lateunitbench` / `nonunit-controls` | 1.017 | 4/5 |
+| `lateunitbench` / `dense-control` | 0.993 | 3/5 |
+| `lateunitbench` / `tiny-zero-errors` | 1.075 | 5/5 |
+| `lateunitbench` / `nf-upper` | 1.169 | 5/5 |
+| `lateremainderbench` / `dense-f2-power16` | 1.196 | 5/5 |
+| `lateremainderbench` / `sparse-f2-power32` | 1.190 | 5/5 |
+| `lateremainderbench` / `irreducibility-setup8` | 1.126 | 5/5 |
+| `lateremainderbench` / `odd17-control` | 1.028 | 4/5 |
+| `lateremainderbench` / `lowdegree-f2` | 1.110 | 5/5 |
+| `lateremainderbench` / `setup-one-shot-f2` | 1.184 | 5/5 |
+| `latebasisbench` / `tiny` | 1.015 | 2/5 |
+| `latebasisbench` / `sparse` | 0.959 | 1/5 |
+| `latebasisbench` / `dense` | 1.008 | 3/5 |
+| `latebasisbench` / `fullrank` | 0.997 | 2/5 |
+| `latebasisbench` / `zerorank` | 1.018 | 2/5 |
+| `latebasisbench` / `cohomology-torus` | 0.976 | 1/5 |
+
+QQ減算とGF(2)基底生成は元の実装の対照です。統合による共有演算・コード配置と実行時の変動も含み、
+それらの小差を見送った試作の効果へ帰属しません。奇標数、非単位積、小入力、コホモロジー全体の差も省かず掲載しています。
+F2の一巡目比較には二巡目の余り専用経路も作用するため、既知平方だけの効果として読みません。
+各結果はこの有限入力・環境での値で、他の大きさ・係数長・バックエンドの速度保証ではありません。メモリ量は未測定です。
+
+[最終計測の入口](../MEASUREMENTS.md#延長枠の最終実装を比較する)に全6系列の要約と完全なgzipを、
+[検証ガイド](../VALIDATION.md#26時枠に採用した4件の統合検証)に固定ソースの89 package・3 target検査をまとめました。
+[契約・経緯](../measurements/late-kernels-20261117-orchestration.json)と
+[片付けの記録](../measurements/late-kernels-20261117-cleanup.json)も保存しています。
+採用・見送りのソース、全ELF、生成C、ログとGit bundleをhash照合して保存し、五つのworktree・六branchを片付けました。
+
+奇標数のpowerも二巡目の余り専用還元の対象です。最終版の`odd17-control`は、一巡目の平方だけに対する未変更対照とは区別します。

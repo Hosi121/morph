@@ -15,6 +15,24 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 延長枠の最終実装を比較する
+
+ソース`a63dcbc`の6公開CLI・36入力・720プロセスです。native release・CPU4・共通ロック・5組のABBA、
+起動・構築・通常API・全結果と証拠の検査を含みます。コンパイルは除きます。
+
+| 系列 | 基準 | 要約・全生値 |
+| --- | --- | --- |
+| 未変更のQQ減算とGröbner対照 | `a39f323` | [要約](measurements/late-final-latepolybench-20261117.json)・[全生値](measurements/late-final-latepolybench-20261117.json.gz) |
+| F2平方と余り専用還元の統合 | `a39f323` | [要約](measurements/late-final-latefrobeniusbench-20261117.json)・[全生値](measurements/late-final-latefrobeniusbench-20261117.json.gz) |
+| Bool積とコホモロジー | `a39f323` | [要約](measurements/late-final-lateboolproductbench-20261117.json)・[全生値](measurements/late-final-lateboolproductbench-20261117.json.gz) |
+| QQ単位積とnumberfield | `905d23d` | [要約](measurements/late-final-lateunitbench-20261117.json)・[全生値](measurements/late-final-lateunitbench-20261117.json.gz) |
+| Fp余り専用power | `905d23d` | [要約](measurements/late-final-lateremainderbench-20261117.json)・[全生値](measurements/late-final-lateremainderbench-20261117.json.gz) |
+| 未変更のGF(2)基底生成対照 | `905d23d` | [要約](measurements/late-final-latebasisbench-20261117.json)・[全生値](measurements/late-final-latebasisbench-20261117.json.gz) |
+
+全生値は完全なstdout/stderr、出力、時間とソース・harness・ELFのhashを含み、損失のないgzipで保存します。
+要約に圧縮前後のSHA256があります。未採用の減算・係数列の試作を、最終版の成果へ数えません。
+[担当別・統合後の比較と制約](research/late-kernels-20261117.md)から、生値と見送りの再現パッチへ進めます。
+
 ## 夜間の最終実装を比較する
 
 ソース`a39f323`の9公開CLI・54入力を、巡ごとの基準とnative release・CPU4・共有ロック・5 ABBA組で比較しました。

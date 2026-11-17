@@ -1,0 +1,368 @@
+{
+  "utc": "2026-11-17T15:41:04.962308+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-before/_build/native/release/build/cmd/latepolybench/latepolybench.exe",
+    "artifact_sha256": "82a81155d4be869d82a43de848f2cc0b12a6b4e7f2102c8a4a28bda4082f4e96",
+    "harness": {
+      "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+      "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "working_tree": [
+      "M docs/bootstrap/nat-conversions.md",
+      " M docs/handbook/field-kernels.md",
+      " M docs/research/README.md",
+      "?? docs/research/conversion-audit-20261117-numeric.json",
+      "?? docs/research/conversion-audit-20261117-numeric.md",
+      "?? docs/research/conversion-audit-20261117-review.json",
+      "?? docs/research/conversion-audit-20261117-structured.json",
+      "?? docs/research/conversion-audit-20261117-structured.md",
+      "?? docs/research/conversion-audit-20261117.md"
+    ],
+    "source_manifest_sha256": "d8694b149c9c6edf6dbd0ac438d83a6b124d66a2213d4a58d274f3aa86b9fc94",
+    "source_file_count": 947,
+    "artifact": "/home/hosi/morph/_build/native/release/build/cmd/latepolybench/latepolybench.exe",
+    "artifact_sha256": "ec5656fb3fa3056a940699e64c4546bc3f9e4083750ef824871b2d2e20f6ddb4",
+    "harness": {
+      "main.mbt": "f41d48f409caf237f04b369136fedc5b8e09763b58e0e15c958a7ea342a2a9d6",
+      "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "full-cancellation": {
+      "process_ns": {
+        "medians": {
+          "before": 53546225.5,
+          "after": 53173398.5
+        },
+        "ranges": {
+          "before": [
+            51731957,
+            55972235
+          ],
+          "after": [
+            51368621,
+            64609264
+          ]
+        },
+        "before_over_after": 1.007011532279623,
+        "block_ratios": [
+          1.0034513014678477,
+          0.9696047973038178,
+          1.0420631779335654,
+          0.8797384129880993,
+          1.0412161385052734
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 51542.0835,
+          "after": 51005.7665
+        },
+        "ranges": {
+          "before": [
+            49575.71100000001,
+            53831.947
+          ],
+          "after": [
+            49195.982,
+            62540.213
+          ]
+        },
+        "before_over_after": 1.0105148307103669,
+        "block_ratios": [
+          1.0055010814918097,
+          0.9681769518144415,
+          1.04869501759786,
+          0.8750717806807047,
+          1.0423414316927793
+        ]
+      }
+    },
+    "interleaved": {
+      "process_ns": {
+        "medians": {
+          "before": 166270636.0,
+          "after": 168549585.0
+        },
+        "ranges": {
+          "before": [
+            158515078,
+            175967740
+          ],
+          "after": [
+            162465821,
+            172541212
+          ]
+        },
+        "before_over_after": 0.986479058966535,
+        "block_ratios": [
+          1.0079481680959752,
+          1.0620956916424062,
+          0.9701077621074922,
+          1.000774199780695,
+          0.9318315924403607
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 163895.6715,
+          "after": 166338.95799999998
+        },
+        "ranges": {
+          "before": [
+            156357.301,
+            173416.57
+          ],
+          "after": [
+            160263.70199999993,
+            170171.95500000002
+          ]
+        },
+        "before_over_after": 0.9853113995099092,
+        "block_ratios": [
+          1.006786310546161,
+          1.0618595976004837,
+          0.9703302212645267,
+          1.0005247534388018,
+          0.9325070609525186
+        ]
+      }
+    },
+    "block-disjoint": {
+      "process_ns": {
+        "medians": {
+          "before": 173258875.5,
+          "after": 173472654.0
+        },
+        "ranges": {
+          "before": [
+            163853951,
+            186463561
+          ],
+          "after": [
+            167459178,
+            186841274
+          ]
+        },
+        "before_over_after": 0.9987676530273181,
+        "block_ratios": [
+          0.9819223088774466,
+          1.0004309931861708,
+          0.9982444264323381,
+          1.0091076112780288,
+          0.9334753203625534
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 170957.1615,
+          "after": 170908.946
+        },
+        "ranges": {
+          "before": [
+            161126.168,
+            184019.168
+          ],
+          "after": [
+            165055.913,
+            184460.421
+          ]
+        },
+        "before_over_after": 1.0002821122072802,
+        "block_ratios": [
+          0.9814657758096696,
+          0.9998273058850345,
+          0.9990693163903637,
+          1.0082468913008216,
+          0.9292871883740738
+        ]
+      }
+    },
+    "mixed-rational": {
+      "process_ns": {
+        "medians": {
+          "before": 196979381.0,
+          "after": 200006479.0
+        },
+        "ranges": {
+          "before": [
+            175385001,
+            276772388
+          ],
+          "after": [
+            173167019,
+            251925121
+          ]
+        },
+        "before_over_after": 0.9848650002983154,
+        "block_ratios": [
+          0.996517678615003,
+          1.0203788338728523,
+          0.9741847999816663,
+          1.1735314725261672,
+          0.9437495802818664
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 194399.19,
+          "after": 197384.66950000002
+        },
+        "ranges": {
+          "before": [
+            172711.761,
+            274096.25800000003
+          ],
+          "after": [
+            171906.692,
+            249270.274
+          ]
+        },
+        "before_over_after": 0.9848748157211874,
+        "block_ratios": [
+          0.9959823446307305,
+          1.0161187704519494,
+          0.9745262474523022,
+          1.1758077625649255,
+          0.9434271481359121
+        ]
+      }
+    },
+    "small-zero-errors": {
+      "process_ns": {
+        "medians": {
+          "before": 97998738.0,
+          "after": 91014616.5
+        },
+        "ranges": {
+          "before": [
+            89420021,
+            237539332
+          ],
+          "after": [
+            86677983,
+            102130292
+          ]
+        },
+        "before_over_after": 1.07673626246615,
+        "block_ratios": [
+          1.1099285510055235,
+          1.0510953231983922,
+          1.0438414802587388,
+          1.7391526674728495,
+          1.062148068265003
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 95407.3675,
+          "after": 88889.95999999999
+        },
+        "ranges": {
+          "before": [
+            86456.31599999999,
+            234714.995
+          ],
+          "after": [
+            84511.581,
+            99782.115
+          ]
+        },
+        "before_over_after": 1.073319950869592,
+        "block_ratios": [
+          1.1069910814556352,
+          1.0496183641806038,
+          1.0376314648679872,
+          1.7569817859971741,
+          1.0606815563577126
+        ]
+      }
+    },
+    "buchberger": {
+      "process_ns": {
+        "medians": {
+          "before": 154123160.5,
+          "after": 151271794.5
+        },
+        "ranges": {
+          "before": [
+            139371154,
+            188143743
+          ],
+          "after": [
+            137140402,
+            199280588
+          ]
+        },
+        "before_over_after": 1.018849290506698,
+        "block_ratios": [
+          1.0542623732592995,
+          0.8455603043460108,
+          1.0618009205415588,
+          1.0049242405497008,
+          1.0492417757303305
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 151770.651,
+          "after": 148841.2015
+        },
+        "ranges": {
+          "before": [
+            137098.642,
+            185767.704
+          ],
+          "after": [
+            134766.99300000002,
+            196725.691
+          ]
+        },
+        "before_over_after": 1.0196817109138965,
+        "block_ratios": [
+          1.0554347570908151,
+          0.8445054467209162,
+          1.0635986374012487,
+          1.005259208498417,
+          1.050604699532349
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 120,
+  "lossless_full_record": {
+    "path": "docs/measurements/late-final-latepolybench-20261117.json.gz",
+    "sha256": "948aa3e031f355bb9c87ce188c741706788be1aea29a8380abf85bfbb43889d0",
+    "uncompressed_sha256": "00d16c119390d2c9ddd8ae9c12ddc8d77bbeb5350198988e6290773521e2a2ed",
+    "format": "gzip-compressed UTF-8 JSON; retains every complete stdout/result, timing and provenance"
+  }
+}

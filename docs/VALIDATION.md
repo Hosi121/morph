@@ -25,6 +25,34 @@ python3 tools/check_affected.py --record .tools/affected/run.json --status
 HEADやソースが変わった場合は、別のrecordで検査します。
 既存APIの差分には`--allow-interface`による明示したreview対象が必要で、全体のmodule/compiler変更はこの範囲検証で代用しません。
 
+## 26時枠に採用した4件の統合検証
+
+コード`a63dcbc`を固定し、基準`a39f323`からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は89 packageで、テスト用importも含みます。無変更の無関係なテストまで再実行した全体検証とは区別します。
+
+| バックエンド | 成功数 |
+| --- | ---: |
+| wasm-gc | 3,667 |
+| js | 3,667 |
+| native release | 3,667 |
+
+Python43テスト、163公開APIスナップショット、全targetの型検査、整形・生成物・333核ソースの純記号制約が通過しました。
+既存APIのsnapshotは基準と一致し、六つの測定CLIのsnapshotだけが追加です。
+既存Lean全モデルと32対応領域の差分検査も通過しました。新しい最適化全体の形式証明ではありません。
+六つの公開CLI・36入力・720プロセスが、完全な結果と証拠の検査に成功しました。
+不採用の減算融合とGF(2)係数列の準備は統合せず、最終CLIでは元の生成器を対照に使っています。
+GF(2)自身のcheckerは専用Bool積と演算を共有するため、旧generic積・独立Bool参照も使います。
+
+[環境・ソース・対象graph・全コマンド](measurements/late-kernels-20261117-validation.json)、
+[完全な検証ログ](measurements/late-kernels-20261117-validation.txt)、[実行したrunnerの同一コピー](measurements/late-kernels-20261117-harness.py)、
+[最終比較driver](measurements/late-kernels-20261117-comparison-driver.py)を保存しました。
+最初のmaintenanceも成功しましたが、追加CLIの生成interfaceをcommitした後に全段を新しいrecordで実行しました。
+[最初の記録](measurements/late-kernels-20261117-first-maintenance.json)を残し、完了済みの別ソースの実行を最終記録へ混ぜていません。
+
+[採否と測定](research/late-kernels-20261117.md)、[契約・担当範囲・経緯](measurements/late-kernels-20261117-orchestration.json)、
+[片付けの証跡](measurements/late-kernels-20261117-cleanup.json)を参照してください。
+五つの作業用worktree・六branchは、Git bundle、採否両方のパッチ、生成C、ELF、ログを保存しhashを検査して片付けました。
+
 ## 夜間に採用した共通部品の統合検証
 
 コード `a39f323` を固定し、基準 `ab22a4a` からの変更と旧・現のimport graphの逆依存を検査しました。

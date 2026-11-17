@@ -1,0 +1,228 @@
+{
+  "utc": "2026-11-17T15:41:34.123509+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-before/_build/native/release/build/cmd/lateboolproductbench/lateboolproductbench.exe",
+    "artifact_sha256": "884a4b1394b1e8c440be31ede5bd6d28d4d956ca50fd6d6844a69254f3d859ea",
+    "harness": {
+      "main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+      "moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "working_tree": [
+      "M docs/bootstrap/nat-conversions.md",
+      " M docs/handbook/field-kernels.md",
+      " M docs/research/README.md",
+      "?? docs/measurements/late-final-latefrobeniusbench-20261117.json",
+      "?? docs/measurements/late-final-latefrobeniusbench-20261117.json.gz",
+      "?? docs/measurements/late-final-latepolybench-20261117.json",
+      "?? docs/measurements/late-final-latepolybench-20261117.json.gz",
+      "?? docs/research/conversion-audit-20261117-numeric.json",
+      "?? docs/research/conversion-audit-20261117-numeric.md",
+      "?? docs/research/conversion-audit-20261117-review.json",
+      "?? docs/research/conversion-audit-20261117-structured.json",
+      "?? docs/research/conversion-audit-20261117-structured.md",
+      "?? docs/research/conversion-audit-20261117.md"
+    ],
+    "source_manifest_sha256": "d8694b149c9c6edf6dbd0ac438d83a6b124d66a2213d4a58d274f3aa86b9fc94",
+    "source_file_count": 947,
+    "artifact": "/home/hosi/morph/_build/native/release/build/cmd/lateboolproductbench/lateboolproductbench.exe",
+    "artifact_sha256": "ffe454248e0a6da7363e67139e0959c3c92388ca658ea4f034dc23eaa6e3bc15",
+    "harness": {
+      "main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+      "moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "tiny-and-shapes": {
+      "process_ns": {
+        "medians": {
+          "before": 107625293.5,
+          "after": 101340642.5
+        },
+        "ranges": {
+          "before": [
+            104617797,
+            116076003
+          ],
+          "after": [
+            96892094,
+            104010031
+          ]
+        },
+        "before_over_after": 1.0620151090911034,
+        "block_ratios": [
+          1.0939523928796484,
+          1.0483210080299223,
+          1.0867550485804436,
+          1.065051064731095,
+          1.0706484088546668
+        ]
+      }
+    },
+    "sparse": {
+      "process_ns": {
+        "medians": {
+          "before": 197448737.0,
+          "after": 168098815.5
+        },
+        "ranges": {
+          "before": [
+            193109015,
+            209029977
+          ],
+          "after": [
+            159728732,
+            177913441
+          ]
+        },
+        "before_over_after": 1.1745992166137542,
+        "block_ratios": [
+          1.1993036199921316,
+          1.1888975847471204,
+          1.2126808201983597,
+          1.1648789333788474,
+          1.1714788694555573
+        ]
+      }
+    },
+    "dense": {
+      "process_ns": {
+        "medians": {
+          "before": 327192360.0,
+          "after": 263607194.0
+        },
+        "ranges": {
+          "before": [
+            306008074,
+            367462048
+          ],
+          "after": [
+            258317379,
+            303971207
+          ]
+        },
+        "before_over_after": 1.2412118009192117,
+        "block_ratios": [
+          1.2850699301562334,
+          1.1820389197352736,
+          1.2909333955487965,
+          1.2501221744054034,
+          1.1676604143365852
+        ]
+      }
+    },
+    "zero": {
+      "process_ns": {
+        "medians": {
+          "before": 293310695.5,
+          "after": 246244330.5
+        },
+        "ranges": {
+          "before": [
+            280278658,
+            317647515
+          ],
+          "after": [
+            238130004,
+            258408306
+          ]
+        },
+        "before_over_after": 1.1911368473110897,
+        "block_ratios": [
+          1.1359215844116712,
+          1.2070884229808756,
+          1.2337095864992134,
+          1.1930360497543786,
+          1.1785692369638072
+        ]
+      }
+    },
+    "cohomology-circle": {
+      "process_ns": {
+        "medians": {
+          "before": 110113902.5,
+          "after": 112353469.5
+        },
+        "ranges": {
+          "before": [
+            104718688,
+            113589338
+          ],
+          "after": [
+            106810718,
+            144160180
+          ]
+        },
+        "before_over_after": 0.9800667748849536,
+        "block_ratios": [
+          0.9612783167552688,
+          1.0062250187745558,
+          1.0113572449663777,
+          0.8425021931829841,
+          0.9600865957908906
+        ]
+      }
+    },
+    "cohomology-torus": {
+      "process_ns": {
+        "medians": {
+          "before": 239294341.0,
+          "after": 235070737.5
+        },
+        "ranges": {
+          "before": [
+            233514244,
+            265262867
+          ],
+          "after": [
+            227353198,
+            244022557
+          ]
+        },
+        "before_over_after": 1.017967372480805,
+        "block_ratios": [
+          1.008822817638648,
+          1.0875726460518886,
+          1.0051186843624091,
+          1.055106313629454,
+          1.0078077588484977
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 120,
+  "lossless_full_record": {
+    "path": "docs/measurements/late-final-lateboolproductbench-20261117.json.gz",
+    "sha256": "a2e52deb2be098b44f9e0f02bbe8eda6a635f8bc507e072e5d8beb4af8411601",
+    "uncompressed_sha256": "62555104e40c0e7af8b2cb04bf2edc015e4f4b015577b4cf9c5005d62a176099",
+    "format": "gzip-compressed UTF-8 JSON; retains every complete stdout/result, timing and provenance"
+  }
+}

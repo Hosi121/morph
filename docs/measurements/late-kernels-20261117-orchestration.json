@@ -1,0 +1,267 @@
+{
+  "contract": {
+    "baseline": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "objective": "User extended work to26:00 JST (02:00 nextday); further optimize ordinary pureADT algorithm paths after current checkpoint.",
+    "deadline_utc": "2026-11-17T17:00:00+00:00",
+    "initial_decision_checkpoint_utc": "2026-11-17T15:00:00+00:00",
+    "worker_finish_utc": "2026-11-17T15:15:00+00:00",
+    "final_source_freeze_latest_utc": "2026-11-17T16:00:00+00:00",
+    "write_sets": {
+      "poly": [
+        "polynomial.mbt subtract/privatehelper or new subtraction.mbt",
+        "own tests/cmd latepolybench/docs/unique raw"
+      ],
+      "fp": [
+        "fppoly characteristic_two square+power_loop squarecall only",
+        "own tests/cmd latefrobeniusbench/docs/unique raw"
+      ],
+      "gf2": [
+        "gf2 existingpublicmultiply/privateBoolkernel",
+        "cohomology.compute incoming_coordinates producercall only",
+        "own tests/cmd lateboolproductbench/docs/unique raw"
+      ]
+    },
+    "constraints": [
+      "Pure immutable ADTs only in kernels; exact results/API/errors/context/fuel/order/certs preserved",
+      "Checker algorithms stay byte-identical; changing shared arithmetic dependencies must be stated and tested against old/independentoracles",
+      "One mechanism+max1followup each, max6frozenpubliccases,5ABBA fullresultchecks inclsetup/negativecontrols",
+      "All heavyjobs sameCPU4lock,-j1, no shared_build; baselinecopy+buildINSIDElock, trackedlibsneveredit",
+      "Existing root84packagevalidation+9CLI finalbenchmark queuedfirst; new jobs may wait, no bypassing lock",
+      "Startnative correctness andinitialcomparisonbefore broadfinalchecks; finalscoped3targets only ownlib+1\u20132directconsumers, rootowns broadglobalregression",
+      "Milestonecommits, independentoracles/reports, exactharness/source/ELFhashes, rawlosslessgzippreferred; onlyrootintegrates/pushes/cleans"
+    ]
+  },
+  "round2-contract": {
+    "baseline": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+    "baseline_worktree": "/home/hosi/morph-late-r2-before",
+    "mechanisms": {
+      "poly": "Q polynomial multiplication by constant +/-1 identity with immutable sharing; no generic subtraction replacement",
+      "fp": "Fp remainder-only reduction on modular-power product/square, public divide retained as oracle",
+      "gf2": "prepare column/pivot layout for nullspace coefficient extraction instead of repeated row nth"
+    },
+    "constraints": "Inheritcontract.json: pureADT/exactvalues/API/errors/order/checkers retained; max6frozenpubliccases5ABBAfulloutputs; oneinitial+max1boundedfollowup; allheavyjobsCPU4lock/-j1, onlyrootintegrates/pushes/cleans; initialnative+timing before finalscoped3targets",
+    "initial_decision_utc": "2026-11-17T15:10:00+00:00",
+    "worker_stop_utc": "2026-11-17T15:25:00+00:00",
+    "source_freeze_latest_utc": "2026-11-17T15:40:00+00:00",
+    "overall_deadline_utc": "2026-11-17T17:00:00+00:00",
+    "note": "Final source exploration round; preserve\u22651h for finalstagedverification/comparisons/docs/archive."
+  },
+  "dag": {
+    "nodes": [
+      "old-checkpoint-validation-finalcomparison",
+      "poly",
+      "fp",
+      "gf2",
+      "integration",
+      "finalvalidation",
+      "publish-cleanup"
+    ],
+    "edges": [
+      [
+        "old-checkpoint-validation-finalcomparison",
+        "poly"
+      ],
+      [
+        "old-checkpoint-validation-finalcomparison",
+        "fp"
+      ],
+      [
+        "old-checkpoint-validation-finalcomparison",
+        "gf2"
+      ],
+      [
+        "poly",
+        "integration"
+      ],
+      [
+        "fp",
+        "integration"
+      ],
+      [
+        "gf2",
+        "integration"
+      ],
+      [
+        "integration",
+        "finalvalidation"
+      ],
+      [
+        "finalvalidation",
+        "publish-cleanup"
+      ]
+    ]
+  },
+  "trace": [
+    {
+      "utc": "2026-11-17T14:05:43.904282+00:00",
+      "event": "extended-budget-start",
+      "base": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+      "deadline_jst": "2026-11-18 02:00",
+      "note": "Oldcheckpointmainremainsfrozen; workerheavyjobsqueuebehindalreadyrunningvalidation+finalbench."
+    },
+    {
+      "utc": "2026-11-17T14:48:14.824593+00:00",
+      "event": "final-extended-exploration-start",
+      "base": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+      "prior_decisions": {
+        "subtraction": "rejected",
+        "F2square": "adopted",
+        "Boolproduct": "adopted"
+      }
+    },
+    {
+      "utc": "2026-11-17T15:43:42.156683+00:00",
+      "event": "finalverification-comparison-cleanup-complete",
+      "source": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+      "packages": 89,
+      "checked_public_processes": 720,
+      "adopted": 4,
+      "rejected": 2,
+      "new_source_exploration": "stopped after round2",
+      "remaining_worktrees": [
+        "/home/hosi/morph  a63dcbc [main]"
+      ]
+    }
+  ],
+  "round1-artifact-handoff": [
+    {
+      "source": "/home/hosi/morph-late-gf2/docs/research/late-bool-product-20261117-raw/bool-product-baseline.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/bool-product-baseline.exe",
+      "sha256": "884a4b1394b1e8c440be31ede5bd6d28d4d956ca50fd6d6844a69254f3d859ea"
+    },
+    {
+      "source": "/home/hosi/morph-late-gf2/docs/research/late-bool-product-20261117-raw/baseline-source",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/baseline-source",
+      "files": {
+        "generated/lateboolproductbench.c": "1775b0f49a7b852b141f4a25fcae82e467398c99870a4b0715668cc1db7ec025",
+        "src/csscode/csscode.mbt": "18bcd517fe90d9a162bd98c4b7fd5b69f0cbb8c364c43b2027b79a3825c69c33",
+        "src/cohomology/cohomology.mbt": "53dbe7ba32d4982a7de0459eba0d1b99953ba3fa4255e46a07771c8a546b8ced",
+        "src/cohomology/pkg.generated.mbti": "d387eddc2d8787a10652ac37742ea5969039ffa1b357ae175869eff5e8fcd31e",
+        "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+        "src/cmd/lateboolproductbench/main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+        "src/cmd/lateboolproductbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-late-gf2/docs/research/late-bool-product-20261117-raw/bool-product-candidate.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/bool-product-candidate.exe",
+      "sha256": "90d513c340dc596fc32c208077628c1bfaffa4d5dfcc71ca41d9fb69ba2ead5d"
+    },
+    {
+      "source": "/home/hosi/morph-late-gf2/docs/research/late-bool-product-20261117-raw/candidate-source",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/candidate-source",
+      "files": {
+        "generated/lateboolproductbench.c": "2e3d516fc075104eada7aecb956b68d60a89568c728a16a6098b7f75796ba7df",
+        "src/csscode/csscode.mbt": "18bcd517fe90d9a162bd98c4b7fd5b69f0cbb8c364c43b2027b79a3825c69c33",
+        "src/cohomology/late_product_wbtest.mbt": "66f8f6a2ea1b6cb0fdd03d1d6dc7d9ae496c01dfa6d7d931059f4325a6189a0d",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/cohomology/pkg.generated.mbti": "d387eddc2d8787a10652ac37742ea5969039ffa1b357ae175869eff5e8fcd31e",
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/late_product_wbtest.mbt": "a24cc50b41863f4fcadc6ee6c9a883cdef79c7d1f754fab7a36717222e4390e2",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+        "src/cmd/lateboolproductbench/main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+        "src/cmd/lateboolproductbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/baseline-a39f323.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/poly-baseline-a39f323.exe",
+      "sha256": "82a81155d4be869d82a43de848f2cc0b12a6b4e7f2102c8a4a28bda4082f4e96"
+    },
+    {
+      "source": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/candidate-initial.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/poly-candidate-initial.exe",
+      "sha256": "ba7e2f2ea881860ae25cc71ed09957f50a6357c0f1d497c629c74918d9c3cce7"
+    },
+    {
+      "source": "/home/hosi/morph-late-poly/.tools/late-subtraction-20261117/candidate-suffix.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/poly-candidate-suffix.exe",
+      "sha256": "d26f38e4b5e794a7098b1e89d5c932e698114b2056247585636e9c57a350ab96"
+    },
+    {
+      "source": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/fp-before.exe",
+      "sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713"
+    },
+    {
+      "source": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/after-initial.exe",
+      "archive": "/home/hosi/morph/.tools/late-kernels-20261117/artifacts/round1/fp-after-initial.exe",
+      "sha256": "066f56bf4810a28d8bd7a57dd26a64990d7cf3b6319f8eb462bfc19e8ff54895"
+    }
+  ],
+  "round2-artifact-handoff": [
+    {
+      "from": "/home/hosi/morph-late-poly/.tools/late-poly-unit-20261117/baseline-905d23d.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/poly-baseline-905d23d.exe",
+      "sha256": "109e19766141d0accdfba4a2a11ae121217e3a543300a84b80a4e4d4789b5c11",
+      "mode": "0o755"
+    },
+    {
+      "from": "/home/hosi/morph-late-poly/.tools/late-poly-unit-20261117/candidate-initial.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/poly-candidate-initial.exe",
+      "sha256": "90020d91d99b3867a6090823e7b1b538b0aa423c9cf6a1a155c5bde9cc1dbbb6",
+      "mode": "0o755"
+    },
+    {
+      "from": "/home/hosi/morph-late-fp/.tools/late-fp-remainder-20261117/before.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/fp-before.exe",
+      "sha256": "79c217e9a205c34dd4be8a02cc736634baae59df7221daf0e05231788cfcaf31",
+      "mode": "0o755"
+    },
+    {
+      "from": "/home/hosi/morph-late-fp/.tools/late-fp-remainder-20261117/after-initial.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/fp-after-initial.exe",
+      "sha256": "e9455ce0b747888efe7ad1395fdad0d3784d9e7b0f41663614025dc015aa39a1",
+      "mode": "0o755"
+    },
+    {
+      "from": "/home/hosi/morph-late-gf2/docs/research/late-basis-20261117-raw/baseline-source",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/baseline-source",
+      "files": {
+        "generated/latebasisbench.c": "d9849112b712e8b2261b1e82e9b292707ba377a165897954f37d5b030322693c",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/latebasisbench/main.mbt": "91409feb58cd80d4db8651807ac674a26d1107139b1e2c6db7443bc486903e93",
+        "src/cmd/latebasisbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      }
+    },
+    {
+      "from": "/home/hosi/morph-late-gf2/docs/research/late-basis-20261117-raw/candidate-source",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/candidate-source",
+      "files": {
+        "generated/latebasisbench.c": "e00d560ffc0e8bb2be56b7a9be3175ff19d3467786c96e77a508d534219e28d8",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/late_basis_wbtest.mbt": "9a071b95219c94678abddf51a3e2055b8c9290076c981357dc8f5e30471e959f",
+        "src/gf2/basis.mbt": "54794b1bdfb1cb79a1237ad715715e3d77a7aab71fa99eca2020c82b031040cb",
+        "src/gf2/solve.mbt": "e501d7824bb716a4b38cd94fecce40e7e259be5de1d68c5213796b698d00e537",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/latebasisbench/main.mbt": "91409feb58cd80d4db8651807ac674a26d1107139b1e2c6db7443bc486903e93",
+        "src/cmd/latebasisbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      }
+    },
+    {
+      "from": "/home/hosi/morph-late-gf2/docs/research/late-basis-20261117-raw/basis-baseline.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/basis-baseline.exe",
+      "sha256": "4801ed8b45b114b7ce983d33a12d010b4f53cf4a1e060315be4c6e410d92cf8c"
+    },
+    {
+      "from": "/home/hosi/morph-late-gf2/docs/research/late-basis-20261117-raw/basis-candidate.exe",
+      "archive": ".tools/late-kernels-20261117/artifacts/round2/basis-candidate.exe",
+      "sha256": "04484b6fabaab8e77eab5286758dd5111801fb6fb65d2e3d42fbbfd2500f42da"
+    }
+  ],
+  "comparison_driver_sha256": "ef2dcf39c88ffc7201700e582da58597f522afe15d1bd6c114dfda2e16727cae",
+  "worker_cleanup_script_sha256": "b485f3000f0710c85c8a62a1bc12ba6866174ece6fb59cac1559742160439d95",
+  "baseline_cleanup_script_sha256": "68a80fbbd6f667ae0d3d6795736aa1092bab5fe063a7e2f4be8c85d253a33468"
+}
