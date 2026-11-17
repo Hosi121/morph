@@ -1,0 +1,15 @@
+{
+  "note": "Lossless gzip preserves original diff bytes, including whitespace-only context. Retained support applied before compression; production trial not integrated.",
+  "patches": {
+    "rejected-trial.patch": {
+      "path": "docs/research/modular-signed-reduction-20261117-raw/rejected-trial.patch.gz",
+      "uncompressed_sha256": "9042b22aaea9192e61174ef2500660363ea5513ca0bcc00519f8a697e204c73a",
+      "gzip_sha256": "d7544ef957d5995905b5d3487ab4194f5acf0775f2dee6f8e94b39b8aac28acd"
+    },
+    "retained-tests.patch": {
+      "path": "docs/research/modular-signed-reduction-20261117-raw/retained-tests.patch.gz",
+      "uncompressed_sha256": "d306021a0b7e35a63dc7bebec2c724f64d4964053e3b67984d7a629cd2d6610a",
+      "gzip_sha256": "4edd1ea7595240d78be66c29542f990a25fa0cf26b5f567bd7c963a84a418816"
+    }
+  }
+}

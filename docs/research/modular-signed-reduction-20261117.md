@@ -22,7 +22,7 @@ Public subtract/reduce/extended_gcd/inverse and all checkers remained byte-ident
 during the trial. There was no new API, helper, machine arithmetic, array or mutable
 state in production. The positive branch was semantically unchanged; this fact
 alone does not invalidate its measured adverse result. Full candidate source and
-the [minimal rejected patch](modular-signed-reduction-20261117-raw/rejected-trial.patch)
+the [minimal rejected patch](modular-signed-reduction-20261117-raw/rejected-trial.patch.gz)
 are retained as evidence. Restoration commit `547cbb2` restored the whole modular
 source file, with [zero production diff/API/purity proof](modular-signed-reduction-20261117-raw/restoration-proof.json).
 
@@ -114,7 +114,7 @@ retain exact per-file and aggregate source hashes, compiler, ELF hash and commit
 retains compressed/uncompressed hashes for both native generated sources.
 
 Root already integrated the harness. The standalone
-[retained tests patch](modular-signed-reduction-20261117-raw/retained-tests.patch)
+[retained tests patch](modular-signed-reduction-20261117-raw/retained-tests.patch.gz)
 is relative to harness commit 65a3e52 and contains only the new WB file and unique
 fixture guard update. Apply that support patch and this evidence commit without
 cherry-picking the rejected production trial or restoration commit. Production

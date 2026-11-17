@@ -5,7 +5,7 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
-`tools/check`の`check_evidence.py`は、公開した比較JSONと完全なgzipの圧縮前後のhash、
+`tools/check`の`check_evidence.py`は、`docs/measurements`の共通形式の比較JSONと完全なgzipの圧縮前後のhash、
 ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央値・範囲・block比を検査します。
 検証ログは公開ファイルのhashと各コマンドのbyte位置・hashを照合します。
 過去のジョブを再実行する処理ではなく、記録の整合性を検査するものです。
