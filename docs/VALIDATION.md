@@ -27,6 +27,9 @@ Python 27テスト、148公開APIスナップショット、全targetの型検�
 [環境・ソース・選択graph・全コマンド](measurements/algorithm-kernels-20261117-validation.json)、
 [全出力](measurements/algorithm-kernels-20261117-validation.txt)、[実行harness](measurements/algorithm-kernels-20261117-harness.py)を保存しました。
 全出力の各コマンド部分はバイト位置とSHA256でも検査できます。
+増分spanの15個のベクトル列・120判断のFraction参照は、
+[再生成ゲート](../tools/generate_linearspan_fixtures.py)でMoonBit fixtureと凍結JSONの両方を照合します。
+`tools/check`にも含めているため、元の生成スクリプトを手動で実行する必要はありません。
 [五候補の採否と440試行](research/algorithm-kernels-20261117.md)、
 [担当範囲と統合](measurements/algorithm-kernels-20261117-orchestration.json)、
 [基準ライブラリの同一性](measurements/algorithm-kernels-20261117-baseline-invariance.json)も残しています。
