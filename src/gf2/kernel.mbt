@@ -68,28 +68,26 @@ fn xor_rows(
 }
 
 ///|
-/// Earlier columns are already zero in the basis, so only XOR the active suffix.
-fn xor_suffix(
+/// Locate the pivot and apply its suffix XOR in one immutable traversal.
+/// None preserves the original whole row; Some also records that Add occurred.
+fn eliminate_once(
   row : @core.Chain[Bool],
   basis : @core.Chain[Bool],
   column : @core.Nat,
-) -> @core.Chain[Bool] {
-  match (column, row, basis) {
-    (Zero, _, _) => xor_rows(row, basis)
-    (Succ(rest), Cons(x, xs), Cons(_, ys)) => Cons(x, xor_suffix(xs, ys, rest))
-    _ => row
-  }
-}
-
-///|
-fn eliminate(
-  row : @core.Chain[Bool],
-  basis : @core.Chain[Bool],
-  column : @core.Nat,
-) -> @core.Chain[Bool] {
-  match @core.nth(row, column) {
-    Some(true) => xor_suffix(row, basis, column)
-    _ => row
+) -> @core.Chain[Bool]? {
+  match (column, row) {
+    (Zero, Cons(true, _)) => Some(xor_rows(row, basis))
+    (Succ(rest), Cons(x, xs)) => {
+      let tail : @core.Chain[Bool] = match basis {
+        Nil => Nil
+        Cons(_, tail) => tail
+      }
+      match eliminate_once(xs, tail, rest) {
+        None => None
+        Some(updated) => Some(Cons(x, updated))
+      }
+    }
+    _ => None
   }
 }
 
@@ -167,8 +165,9 @@ fn reduce(
             match rows {
               Nil => (Nil, log)
               Cons(row, tail) => {
-                let nonzero = @core.nth(row, column) is Some(true)
-                let next : @core.Chain[Operation] = if tracked && nonzero {
+                let eliminated = eliminate_once(row, chosen, column)
+                let next : @core.Chain[Operation] = if tracked &&
+                  eliminated is Some(_) {
                   Cons(Add(target, base), log)
                 } else {
                   log
@@ -176,10 +175,9 @@ fn reduce(
                 let (lower, finished) = below(tail, Succ(target), next)
                 (
                   Cons(
-                    if nonzero {
-                      xor_suffix(row, chosen, column)
-                    } else {
-                      row
+                    match eliminated {
+                      Some(updated) => updated
+                      None => row
                     },
                     lower,
                   ),
@@ -206,13 +204,23 @@ fn reduce(
           ) -> (@core.Chain[Bool], @core.Chain[Operation]) {
             match (bases, pivots) {
               (Cons(basis, bt), Cons(pivot, pt)) => {
-                let nonzero = @core.nth(row, pivot) is Some(true)
-                let next : @core.Chain[Operation] = if tracked && nonzero {
+                let eliminated = eliminate_once(row, basis, pivot)
+                let next : @core.Chain[Operation] = if tracked &&
+                  eliminated is Some(_) {
                   Cons(Add(base, source), log)
                 } else {
                   log
                 }
-                above(eliminate(row, basis, pivot), bt, pt, Succ(source), next)
+                above(
+                  match eliminated {
+                    Some(updated) => updated
+                    None => row
+                  },
+                  bt,
+                  pt,
+                  Succ(source),
+                  next,
+                )
               }
               _ => (row, log)
             }
