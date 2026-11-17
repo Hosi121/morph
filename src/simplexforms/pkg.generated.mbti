@@ -1,0 +1,104 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/simplexforms"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/forms",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn ambient(Simplex) -> @core.Nat
+
+pub fn boundary(Simplex) -> @core.Chain[BoundaryFace]
+
+pub fn boundary_integral(Simplex, @forms.Form) -> Result[@exact.Rational, IntegrationError]
+
+pub fn check_boundary(Simplex, @core.Chain[BoundaryFace]) -> Bool
+
+pub fn check_integral(Simplex, @forms.Form, @exact.Rational) -> Bool
+
+pub fn check_parameterization(Simplex, @forms.PolynomialMap) -> Bool
+
+pub fn check_stokes(StokesCertificate) -> Bool
+
+pub fn dimension(Simplex) -> @core.Nat
+
+pub fn face(Simplex, @core.Chain[@core.Nat]) -> Result[Simplex, IntegrationError]
+
+pub fn integrate(Simplex, @forms.Form) -> Result[@exact.Rational, IntegrationError]
+
+pub fn parameterization(Simplex) -> Result[@forms.PolynomialMap, IntegrationError]
+
+pub fn simplex(@core.Nat, @core.Chain[@core.Chain[@exact.Rational]]) -> Result[Simplex, IntegrationError]
+
+pub fn standard(@core.Nat) -> Simplex
+
+pub fn stokes(Simplex, @forms.Form) -> Result[StokesCertificate, IntegrationError]
+
+pub fn vertices(Simplex) -> @core.Chain[@core.Chain[@exact.Rational]]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct BoundaryFace {
+  omitted : @core.Nat
+  negative : Bool
+  simplex : Simplex
+}
+pub fn BoundaryFace::equal(Self, Self) -> Bool
+pub fn BoundaryFace::not_equal(Self, Self) -> Bool
+pub fn BoundaryFace::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct FaceIntegral {
+  oriented : BoundaryFace
+  integral : @exact.Rational
+}
+pub fn FaceIntegral::equal(Self, Self) -> Bool
+pub fn FaceIntegral::not_equal(Self, Self) -> Bool
+pub fn FaceIntegral::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum IntegrationError {
+  EmptySimplex
+  VertexDimension
+  DimensionMismatch
+  DegreeMismatch
+  InvalidVertex
+  EmptyFace
+  FormFailure(@forms.FormError)
+  InternalInvariant
+}
+pub fn IntegrationError::equal(Self, Self) -> Bool
+pub fn IntegrationError::not_equal(Self, Self) -> Bool
+pub fn IntegrationError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Simplex {
+  ambient : @core.Nat
+  dimension : @core.Nat
+  vertices : @core.Chain[@core.Chain[@exact.Rational]]
+}
+pub fn Simplex::equal(Self, Self) -> Bool
+pub fn Simplex::not_equal(Self, Self) -> Bool
+pub fn Simplex::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct StokesCertificate {
+  simplex : Simplex
+  integrand : @forms.Form
+  differential : @forms.Form
+  interior : @exact.Rational
+  faces : @core.Chain[FaceIntegral]
+  boundary : @exact.Rational
+}
+pub fn StokesCertificate::equal(Self, Self) -> Bool
+pub fn StokesCertificate::not_equal(Self, Self) -> Bool
+pub fn StokesCertificate::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

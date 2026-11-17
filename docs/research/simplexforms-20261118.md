@@ -45,8 +45,37 @@ Primary formulas were checked against
 Section 4.3. The latter uses unnormalized phi with integral 1/k!; this package's
 Whitney form is k! times phi so its own oriented face integral is one.
 
-This API-freeze milestone makes no implementation/test claim. Planned validation
-uses a dedicated independent Fraction polynomial-integration oracle for all
-monomials/faces, complete Stokes certificates, degeneracy/mismatch/point cases,
-Whitney normalization and full polynomial cochain identities. Production remains
-pure immutable ADT recursion. Root owns integration, shared gates and cleanup.
+## Milestone 1: exact integration and checked Stokes data
+
+Simplex construction, ordered faces/standard simplex, affine parameterization,
+integration, boundary integration, and complete Stokes certificates are
+implemented. `check_parameterization` verifies both degree-at-most-one and every
+standard vertex image. In particular, a nonlinear map with the right endpoint
+values is rejected. Dimension and degree errors precede any zero shortcut.
+
+The producer evaluates factorial-quotient moments. `check_integral` instead starts
+at mass 1/k! and applies the increment recurrence for each exponent using rational
+products. The Stokes checker verifies the exact source differential, each original
+omission and parity, every face value by this recurrence, the complete ordered
+face list, the boundary sum and the original equality. It does not call the
+boundary builder, integral producer, factorial or Stokes producer. Parameterization,
+polynomial pullback/d and exact arithmetic are shared dependencies, not a
+whole-program independent proof.
+
+`tools/generate_simplexforms_fixtures.py --check` uses independent Fraction/indexed
+polynomial dictionaries and Jacobian-minor pullback from the host forms oracle.
+It integrates by repeatedly expanding the bound `0<=x_last<=1-sum(others)` and
+performing exact univariate polynomial integration. It never uses the production
+factorial or checker moment formulas. The corpus has 224 complete oriented
+integrals, including standard monomials through four variables and rational,
+embedded/degenerate affine examples. Another 48 cases compare the full Stokes
+differential, every face geometry/sign/integral, and the total. Handwritten tests
+cover malformed vertices/faces, 0-dimensional cases, nonlinear parameterization,
+and certificate tampering by dropped/reordered faces, sign, value and differential.
+
+Milestone 1 passes **275 tests on each of native, JS and wasm-gc with deny-warn**,
+generated API, generator --check, format, and the full repository purity gate.
+Production remains pure immutable ADT recursion. Whitney normalization and full
+polynomial cochain identities are the next bounded milestone. No performance or
+global manifold-cohomology claim is made. Root owns integration, shared gates and
+cleanup; existing homology/cohomology sources remain unchanged.
