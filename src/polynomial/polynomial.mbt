@@ -458,10 +458,7 @@ pub fn normal_form(
   dividend : Polynomial,
   divisors : @core.Chain[Polynomial],
 ) -> Result[Polynomial, PolyError] {
-  match divide(dividend, divisors) {
-    Err(error) => Err(error)
-    Ok(division) => Ok(division.remainder)
-  }
+  remainder_only(dividend, divisors)
 }
 
 ///|
