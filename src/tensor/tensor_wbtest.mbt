@@ -518,3 +518,174 @@ test "Boolean semirings and prime-field dictionaries remain generic" {
   }).unwrap()
   assert_eq(host_entries(mixed), [1, 2])
 }
+
+///|
+type Fraction = (Int32, Int32)
+
+///|
+fn host_fraction(numerator : Int32, denominator : Int32) -> Fraction {
+  let mut a = if numerator < 0 { -numerator } else { numerator }
+  let mut b = denominator
+  while b != 0 {
+    let remainder = a % b
+    a = b
+    b = remainder
+  }
+  (numerator / a, denominator / a)
+}
+
+///|
+fn host_add(a : Fraction, b : Fraction) -> Fraction {
+  let (an, ad) = a
+  let (bn, bd) = b
+  host_fraction(an * bd + bn * ad, ad * bd)
+}
+
+///|
+fn host_multiply(a : Fraction, b : Fraction) -> Fraction {
+  let (an, ad) = a
+  let (bn, bd) = b
+  host_fraction(an * bn, ad * bd)
+}
+
+///|
+fn fraction(value : Fraction) -> @exact.Rational {
+  let (n, d) = value
+  @oracle.rational(n, d)
+}
+
+///|
+fn fractions(values : Array[Fraction]) -> @core.Chain[@exact.Rational] {
+  @oracle.chain(values.map(fraction))
+}
+
+///|
+test "nonintegral QQ rank-five index raising matches independent fraction loops" {
+  let inverses : Array[Array[Array[Fraction]]] = [
+    [],
+    [[(2, 3)]],
+    [[(3, 5), (-1, 5)], [(-1, 5), (2, 5)]],
+    [
+      [(7, 19), (-2, 19), (1, 19)],
+      [(-2, 19), (6, 19), (-3, 19)],
+      [(1, 19), (-3, 19), (11, 19)],
+    ],
+  ]
+  for n in 0..<4 {
+    let coefficients = inverses[n]
+    let g_values = []
+    for row in coefficients {
+      for value in row {
+        g_values.push(value)
+      }
+    }
+    let g = from_flat(nat_list([n, n]), fractions(g_values)).unwrap()
+    let cube_values = host_coordinates([n, n, n]).map(fn(index) {
+      let sum = index[0] + index[1] + index[2]
+      host_fraction(sum + 1, sum + 2)
+    })
+    let cube = from_flat(nat_list([n, n, n]), fractions(cube_values)).unwrap()
+    let combined = product(@algebra.rationals(), g, cube)
+    let raised = contract(
+      @algebra.rationals(),
+      combined,
+      @oracle.nat(1),
+      @oracle.nat(2),
+    ).unwrap()
+    let expected = host_coordinates([n, n, n]).map(fn(index) {
+      let mut value = (0, 1)
+      for a in 0..<n {
+        value = host_add(
+          value,
+          host_multiply(
+            coefficients[index[0]][a],
+            cube_values[host_offset([n, n, n], [a, index[1], index[2]])],
+          ),
+        )
+      }
+      fraction(value)
+    })
+    assert_eq(host_shape(raised), [n, n, n])
+    assert_eq(@oracle.array(entries(raised)), expected)
+    let linear = @matrix.matrix(
+      @oracle.nat(n),
+      @oracle.chain(coefficients.map(fractions)),
+    ).unwrap()
+    assert_eq(
+      mode_product(cube, @oracle.nat(0), linear, @algebra.rationals()),
+      Ok(raised),
+    )
+    let rearranged = permute(combined, nat_list([2, 0, 3, 1, 4])).unwrap()
+    assert_eq(
+      contract(@algebra.rationals(), rearranged, @oracle.nat(0), @oracle.nat(3)),
+      Ok(raised),
+    )
+  }
+  let scalar = from_flat(nat_list([]), fractions([(2, 3)])).unwrap()
+  let other = from_flat(nat_list([]), fractions([(-5, 7)])).unwrap()
+  assert_eq(
+    entries(product(@algebra.rationals(), scalar, other)),
+    fractions([(-10, 21)]),
+  )
+  assert_eq(at(scalar, nat_list([])), Ok(fraction((2, 3))))
+}
+
+///|
+test "cubic pullback evaluates a QQ trilinear form and zero-dimensional form" {
+  for n in [0, 2] {
+    let values = host_coordinates([n, n, n]).map(fn(index) {
+      host_fraction(
+        index[0] + 2 * index[1] + 3 * index[2] + 1,
+        index[0] + index[1] + index[2] + 2,
+      )
+    })
+    let cube = from_flat(nat_list([n, n, n]), fractions(values)).unwrap()
+    let direction = Array::makei(n, fn(i) {
+      if i == 0 {
+        (1, 2)
+      } else {
+        (-2, 3)
+      }
+    })
+    let linear = @matrix.matrix(
+      @oracle.nat(n),
+      @oracle.chain([fractions(direction)]),
+    ).unwrap()
+    let first = mode_product(cube, @oracle.nat(0), linear, @algebra.rationals()).unwrap()
+    let second = mode_product(
+      first,
+      @oracle.nat(1),
+      linear,
+      @algebra.rationals(),
+    ).unwrap()
+    let third = mode_product(
+      second,
+      @oracle.nat(2),
+      linear,
+      @algebra.rationals(),
+    ).unwrap()
+    let mut expected = (0, 1)
+    for index in host_coordinates([n, n, n]) {
+      let weight = host_multiply(
+        direction[index[0]],
+        host_multiply(direction[index[1]], direction[index[2]]),
+      )
+      expected = host_add(
+        expected,
+        host_multiply(weight, values[host_offset([n, n, n], index)]),
+      )
+    }
+    assert_eq(host_shape(third), [1, 1, 1])
+    assert_eq(entries(third), fractions([expected]))
+  }
+}
+
+///|
+test "generic construction and permutation do not require Eq on entries" {
+  let function = fn() { true }
+  let value = from_flat(nat_list([1]), @oracle.chain([function])).unwrap()
+  let actual = permute(value, nat_list([0])).unwrap()
+  assert_true(at(actual, nat_list([0])).unwrap()())
+  let mapped = map(actual, fn(f) { f() })
+  assert_eq(@oracle.array(entries(mapped)), [true])
+}
