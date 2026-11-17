@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-11-17T15:55:34.667218+00:00",
+  "production_restored": true,
+  "production_api_sha256": "10afe5d99e19401f236c2eb3abc308eaa99e529fca013dc976ad90d2c9334e90",
+  "protected_bytes_match_baseline": {
+    "src/realtower/raw.mbt": "0a421ed9931f403643dad5b98900738dd28a48c022b11b512372f5da8d91c210",
+    "src/realtower/data.mbt": "c83ab9c0e46292cfb66a19bc4412b2be9fc65a1195d69e4a4ce56fdadfd9053b",
+    "src/realtower/scalar.mbt": "35312ddeffd009b5d80d58344653ace9501a25b10144689838d2494e4a731c43",
+    "src/realtower/system.mbt": "cd1b0f5f12614b134a86f0251f82a020267ee29f637138e987e18c36f56d63f4",
+    "src/realtower/polynomial.mbt": "e09c13c27b8b44f84596aa05657e9f0f97e87be9baea16a72a1cd3e12a029c0e",
+    "src/realtower/quadratic.mbt": "ac2958e01ba2126bf173117dec3b041307b389c58bee88624ffded37eacd15ac",
+    "src/realtower/isolation.mbt": "9e53ab78b5b5de80af204804659f36b9a767dc8ff033ba16cf4f2be9cea12059",
+    "src/realtower/pkg.generated.mbti": "48a058b85073d57c9902b165a24a600996c1e3d74dab15ecf9c74cc01c968da8",
+    "src/realtower/moon.pkg": "32e24dabfba52692df9eed668ca5a139d4b7758ca19aae0b0257434896749e7c"
+  },
+  "final_production_diff_vs_a63": "empty",
+  "new_realtower_files": [
+    "src/realtower/conversion_constants_wbtest.mbt",
+    "src/realtower/conversion_fraction_fixtures_wbtest.mbt"
+  ],
+  "restored_source_manifest": {
+    "sha256": "82fd1db4b95465807de648203d6ec937b82931d46e5d181442d50b82e1d8a720",
+    "files": 951
+  },
+  "baseline_source_manifest": {
+    "sha256": "745ceea5245350f1b17dabca3b4d099e994f9e8f3fdcf6a87e9f8ebadf90d817",
+    "files": 949
+  },
+  "baseline_tracked_src_tools_module_formal_diff": "empty",
+  "public_api_mbti_equal_baseline": true,
+  "experimental_native_tests": {
+    "initial": 101,
+    "followup": 101
+  },
+  "final_tests": {
+    "native": 101,
+    "wasm-gc": 101,
+    "js": 101
+  },
+  "independent_fraction_rows": 12,
+  "independent_fraction_depths": 5,
+  "checked_fraction_instances": 60,
+  "log_hashes": {
+    "native-initial.log": "6adcc2a1f76975dd1cb227d4caa06917457b261586dc224b4c7d7525b44ef3bc",
+    "native-followup.log": "6adcc2a1f76975dd1cb227d4caa06917457b261586dc224b4c7d7525b44ef3bc",
+    "final-native.log": "6adcc2a1f76975dd1cb227d4caa06917457b261586dc224b4c7d7525b44ef3bc",
+    "final-wasm.log": "6adcc2a1f76975dd1cb227d4caa06917457b261586dc224b4c7d7525b44ef3bc",
+    "final-js.log": "6adcc2a1f76975dd1cb227d4caa06917457b261586dc224b4c7d7525b44ef3bc",
+    "final-check.log": "4d7ee67113a3c67f6bc9418ad70601b544d4a687c102efd6fa71c4df58660d5e",
+    "final-info.log": "eb1875444060c71da21f9243322349795bddcbb1ffc0dc6fc2138db8987f2cba",
+    "final-fmt.log": "c1f73bc1b843e10e0fbbdacec72e4826c48bb9caea6b672df68ecd74cc0a9b0a",
+    "final-oracle.log": "ae3a75ea5ded206036fc9345e998e3998f7184b5bb04727a6ce6c76e19d208d7",
+    "final-purity.log": "8fc269d147c124b4d8014c2e795bc05ce8657471eb656a6975e896728772f1f8",
+    "final-drift.log": "846fa4cb4c2fd462b967881ea3e608f9820505d268a186deaf49b7c48e8357cc"
+  },
+  "checks": {
+    "native-initial.log": "Total tests: 101, passed: 101, failed: 0.\n",
+    "native-followup.log": "Total tests: 101, passed: 101, failed: 0.\n",
+    "final-native.log": "Total tests: 101, passed: 101, failed: 0.\n",
+    "final-wasm.log": "Total tests: 101, passed: 101, failed: 0.\n",
+    "final-js.log": "Total tests: 101, passed: 101, failed: 0.\n",
+    "final-check.log": "Finished. moon: ran 45 tasks, now up to date\n",
+    "final-info.log": "Finished. moon: ran 27 tasks, now up to date\n",
+    "final-fmt.log": "Finished. moon: ran 17 tasks, now up to date\nFinished. moon: ran 2 tasks, now up to date\n",
+    "final-oracle.log": "tower Fraction fixtures match independent generator\n",
+    "final-purity.log": "Purity gate passed: 333 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "final-drift.log": "Formal drift gate passed: 32 reviewed source regions; not a translation proof.\n"
+  }
+}

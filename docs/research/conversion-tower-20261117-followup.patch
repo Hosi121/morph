@@ -1,0 +1,25 @@
+diff --git a/src/realtower/api.mbt b/src/realtower/api.mbt
+index daba959..1cd3c25 100644
+--- a/src/realtower/api.mbt
++++ b/src/realtower/api.mbt
+@@ -12,11 +12,15 @@ pub fn same_field(a : Field, b : Field) -> Bool {
+ fn raw_rational(field : Field, q : @exact.Rational) -> Representation {
+   match field.context {
+     Rationals => Base(q)
+-    Extension(parent, _, _) =>
+-      Fraction(
+-        Cons(raw_rational(parent, q), Nil),
+-        Cons(raw_rational(parent, @exact.rational_one()), Nil),
+-      )
++    Extension(parent, _, _) => {
++      let value = raw_rational(parent, q)
++      // A constant's denominator is the singleton parent unit chain.
++      let unit = match value {
++        Base(_) => Base(@exact.rational_one())
++        Fraction(_, denominator) => Fraction(denominator, denominator)
++      }
++      Fraction(Cons(value, Nil), Cons(unit, Nil))
++    }
+   }
+ }
+ 

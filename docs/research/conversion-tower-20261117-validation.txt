@@ -1,0 +1,43 @@
+native-initial.log
+Total tests: 101, passed: 101, failed: 0.
+
+
+native-followup.log
+Total tests: 101, passed: 101, failed: 0.
+
+
+final-native.log
+Total tests: 101, passed: 101, failed: 0.
+
+
+final-wasm.log
+Total tests: 101, passed: 101, failed: 0.
+
+
+final-js.log
+Total tests: 101, passed: 101, failed: 0.
+
+
+final-check.log
+Finished. moon: ran 45 tasks, now up to date
+
+
+final-info.log
+Finished. moon: ran 27 tasks, now up to date
+
+
+final-fmt.log
+Finished. moon: ran 17 tasks, now up to date
+Finished. moon: ran 2 tasks, now up to date
+
+
+final-oracle.log
+tower Fraction fixtures match independent generator
+
+
+final-purity.log
+Purity gate passed: 333 kernel files; no machine numerics, mutation, arrays or FFI.
+
+
+final-drift.log
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.

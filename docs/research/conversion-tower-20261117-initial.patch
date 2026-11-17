@@ -1,0 +1,42 @@
+diff --git a/src/realtower/api.mbt b/src/realtower/api.mbt
+index daba959..5041248 100644
+--- a/src/realtower/api.mbt
++++ b/src/realtower/api.mbt
+@@ -8,15 +8,32 @@ pub fn same_field(a : Field, b : Field) -> Bool {
+   a.equal(b)
+ }
+ 
++///|
++fn raw_rational_pair(
++  field : Field,
++  q : @exact.Rational,
++) -> (Representation, Representation) {
++  match field.context {
++    Rationals => (Base(q), Base(@exact.rational_one()))
++    Extension(parent, _, _) => {
++      let (value, unit) = raw_rational_pair(parent, q)
++      let denominator : @core.Chain[Representation] = Cons(unit, Nil)
++      (
++        Fraction(Cons(value, Nil), denominator),
++        Fraction(denominator, denominator),
++      )
++    }
++  }
++}
++
+ ///|
+ fn raw_rational(field : Field, q : @exact.Rational) -> Representation {
+   match field.context {
+     Rationals => Base(q)
+-    Extension(parent, _, _) =>
+-      Fraction(
+-        Cons(raw_rational(parent, q), Nil),
+-        Cons(raw_rational(parent, @exact.rational_one()), Nil),
+-      )
++    Extension(parent, _, _) => {
++      let (value, unit) = raw_rational_pair(parent, q)
++      Fraction(Cons(value, Nil), Cons(unit, Nil))
++    }
+   }
+ }
+ 
