@@ -31,6 +31,33 @@ python3 tools/check_affected.py --record .tools/affected/run.json --status
 HEADやソースが変わった場合は、別のrecordで検査します。
 既存APIの差分には`--allow-interface`による明示したreview対象が必要で、全体のmodule/compiler変更はこの範囲検証で代用しません。
 
+## 変換監査後の2件の統合検証
+
+コード`1a51057`を固定し、基準`a63dcbc`からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は108 packageです。WBだけを変更したownerの逆依存も保守的に含めます。
+全repositoryの無変更テストを実行し直した記録とは区別します。
+
+| バックエンド | 成功数 |
+| --- | ---: |
+| wasm-gc | 3,816 |
+| js | 3,816 |
+| native release | 3,816 |
+
+Python55テスト、167コンパイラ生成interface、全targetの型検査、整形・生成物・334核ソースの純記号制約が通過しました。
+既存の公開interfaceは基準とbyte一致で、四つの測定CLIだけが追加です。
+既存Lean全モデルと32対応領域の差分検査も通過しました。monicや共有helperの全実装を形式証明したものではありません。
+同じ基準に対する4公開CLI・24入力・480プロセスの完全な出力と証拠の照合も成功しました。
+棄却した定数・剰余の実装は統合していません。最終CLIは元の生成器を使い、採用変更の上位への影響や変動を測る対照です。
+
+[ソース・環境・対象graph・全コマンド](measurements/conversion-kernels-20261117-validation.json)、
+[全検証ログ](measurements/conversion-kernels-20261117-validation.txt)、[実行したrunnerの同一コピー](measurements/conversion-kernels-20261117-harness.py)、
+[比較driver](measurements/conversion-kernels-20261117-comparison-driver.py)を保存しました。
+checker本体を保っても共有するmonicは変わるため、旧monic・旧列helper・独立Fraction/小整数参照を併用しています。
+
+[採否と全比較](research/conversion-kernels-20261117.md)、[分担・契約・経緯](measurements/conversion-kernels-20261117-orchestration.json)、
+[片付けの記録](measurements/conversion-kernels-20261117-cleanup.json)を参照してください。
+六つの作業用worktree・四branchを、採用と棄却のソース・生成C・ELF・ログ・Git bundleを検査保存して片付けました。
+
 ## 26時枠に採用した4件の統合検証
 
 コード`a63dcbc`を固定し、基準`a39f323`からの変更と旧・現のimport graphの逆依存を検査しました。

@@ -15,6 +15,22 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 変換監査後の統合版を比較する
+
+ソース`1a51057`を基準`a63dcbc`と比較した4公開CLI・24入力・480プロセスです。
+native release・CPU4・共通ロック・5 ABBA組で、起動・構築・全結果と証拠の検査を含みます。コンパイルは除きます。
+
+| 系列 | 要約・完全な生値 |
+| --- | --- |
+| 元の多段体構築・実乗算の対照 | [要約](measurements/conversion-final-towerconstantbench-20261117.json)・[全生値](measurements/conversion-final-towerconstantbench-20261117.json.gz) |
+| 元の符号付き剰余・逆元の対照 | [要約](measurements/conversion-final-conversionmodularbench-20261117.json)・[全生値](measurements/conversion-final-conversionmodularbench-20261117.json.gz) |
+| Smith座標と写像・連結写像 | [要約](measurements/conversion-final-smithcontextbench-20261117.json)・[全生値](measurements/conversion-final-smithcontextbench-20261117.json.gz) |
+| monicとresultant caller | [要約](measurements/conversion-final-conversionmonicbench-20261117.json)・[全生値](measurements/conversion-final-conversionmonicbench-20261117.json.gz) |
+
+完全なstdout/stderr、出力、全時間、harness/source/ELFのhashを損失なくgzip保存し、要約に圧縮前後のSHA256を載せます。
+[個別の採否・負の結果・protocol修正](research/conversion-kernels-20261117.md)と、統合後の全caseを併記しています。
+同じ基準・同じ公開入力の比較であり、初回・再比較・内側とprocessの時間を合成しません。
+
 ## 延長枠の最終実装を比較する
 
 ソース`a63dcbc`の6公開CLI・36入力・720プロセスです。native release・CPU4・共通ロック・5組のABBA、

@@ -40,3 +40,49 @@ stdoutとpayload、全結果、標本から再計算した集計値、byte位置
 過去の実行を再現したことや、数学的な正しさをこの整合性検査だけで証明したことにはしません。
 
 担当別の最終scoped検査と、親が固定した統合ソースの逆依存検査・公開比較を分けて記録します。
+
+## 固定した統合版の比較と検証
+
+コード`1a51057`の全4系列・24入力・480プロセスが完全な結果と証拠の検査に成功しました。
+全て基準`a63dcbc`、native release・CPU4・5組ABBAです。
+
+| 公開CLI / 入力 | 基準÷統合版 | 有利なblock数 |
+| --- | ---: | ---: |
+| `towerconstantbench` / `embed-base` | 1.037 | 3/5 |
+| `towerconstantbench` / `embed-depth1` | 1.010 | 4/5 |
+| `towerconstantbench` / `embed-depth2` | 0.987 | 2/5 |
+| `towerconstantbench` / `embed-depth3-4` | 0.991 | 1/5 |
+| `towerconstantbench` / `multiply-depth2` | 0.986 | 1/5 |
+| `towerconstantbench` / `cold-setup-depth2` | 1.043 | 4/5 |
+| `conversionmodularbench` / `negative-reduced` | 1.006 | 3/5 |
+| `conversionmodularbench` / `negative-unreduced` | 0.989 | 1/5 |
+| `conversionmodularbench` / `zero-tiny-boundaries` | 1.021 | 4/5 |
+| `conversionmodularbench` / `positive-control` | 1.012 | 3/5 |
+| `conversionmodularbench` / `inverse-field` | 1.022 | 3/5 |
+| `conversionmodularbench` / `one-shot` | 0.907 | 4/5 |
+| `smithcontextbench` / `empty` | 1.021 | 3/5 |
+| `smithcontextbench` / `one` | 1.108 | 3/5 |
+| `smithcontextbench` / `many` | 1.106 | 5/5 |
+| `smithcontextbench` / `bases` | 1.131 | 5/5 |
+| `smithcontextbench` / `induced` | 0.998 | 2/5 |
+| `smithcontextbench` / `connecting` | 0.917 | 2/5 |
+| `conversionmonicbench` / `dense-monic` | 1.087 | 5/5 |
+| `conversionmonicbench` / `sparse-monic` | 1.053 | 4/5 |
+| `conversionmonicbench` / `rational-multivar` | 1.051 | 5/5 |
+| `conversionmonicbench` / `fallback-dense` | 0.983 | 2/5 |
+| `conversionmonicbench` / `zero-tiny-controls` | 1.094 | 4/5 |
+| `conversionmonicbench` / `resultant-caller` | 1.017 | 3/5 |
+
+棄却した定数共有・剰余案の本体は入っていません。その二つのCLIは元の生成器の対照です。
+採用した共有算術の上位への影響や実行時の変動も含み、比を棄却した機構の成功へ数えません。
+小さいcase・複合対照・上位全体の差は一般化せず、異なる系列の倍率も合成しません。メモリは未測定です。
+
+[全系列の要約・lossless gzip](../MEASUREMENTS.md#変換監査後の統合版を比較する)、
+[固定ソースの3バックエンド検証](../VALIDATION.md#変換監査後の2件の統合検証)、
+[契約・担当・実際の順序](../measurements/conversion-kernels-20261117-orchestration.json)、
+[片付けの証跡](../measurements/conversion-kernels-20261117-cleanup.json)を保存しました。
+六つのworktree・四branchと、別commit objectで保持した塔のsupport patchをGit bundleへ保存し、
+source・ELF・全生成C・生値・ログのhashを照合して片付けました。
+
+次に広げる曲線・拡大体・ペアリングは、[数論のハンドブック](../handbook/number-theory.md#curves-and-extensions)に
+未実装の候補として整理しました。
