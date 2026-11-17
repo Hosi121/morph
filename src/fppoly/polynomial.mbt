@@ -172,6 +172,40 @@ fn compatible(a : Polynomial, b : Polynomial) -> Bool {
 }
 
 ///|
+/// Private Polynomial coefficients and modular products lie in [0,p).
+/// Their sum is below 2p, so a single checked subtraction chooses its unique
+/// canonical residue. The opaque Polynomial boundary supplies this condition;
+/// arbitrary Binary inputs must still use modular.add.
+fn add_reduced(
+  modulus : @modular.Modulus,
+  a : @binary.Binary,
+  b : @binary.Binary,
+) -> @binary.Binary {
+  let sum = @binary.add(a, b)
+  match @binary.subtract(sum, @modular.value(modulus)) {
+    None => sum
+    Some(difference) => difference
+  }
+}
+
+///|
+/// Zero remains zero; a nonzero reduced coefficient has 0 < p-a < p.
+/// The fallback is defensive and is unreachable for an opaque Polynomial.
+fn negate_reduced(
+  modulus : @modular.Modulus,
+  value : @binary.Binary,
+) -> @binary.Binary {
+  match @binary.is_zero(value) {
+    true => value
+    false =>
+      match @binary.subtract(@modular.value(modulus), value) {
+        Some(difference) => difference
+        None => @modular.subtract(modulus, @binary.zero(), value)
+      }
+  }
+}
+
+///|
 fn add_coefficients(
   modulus : @modular.Modulus,
   a : @core.Chain[@binary.Binary],
@@ -181,7 +215,7 @@ fn add_coefficients(
     (Nil, _) => b
     (_, Nil) => a
     (Cons(x, xs), Cons(y, ys)) =>
-      Cons(@modular.add(modulus, x, y), add_coefficients(modulus, xs, ys))
+      Cons(add_reduced(modulus, x, y), add_coefficients(modulus, xs, ys))
   }
 }
 
@@ -229,7 +263,7 @@ pub fn negate(value : Polynomial) -> Polynomial {
   {
     field: value.field,
     coefficients: @core.map(value.coefficients, fn(coefficient) {
-      @modular.subtract(modulus, @binary.zero(), coefficient)
+      negate_reduced(modulus, coefficient)
     }),
   }
 }
