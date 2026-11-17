@@ -1,0 +1,38 @@
+{
+  "baseline": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+  "candidate": "40328a1",
+  "harness": "ff324e1",
+  "recommendation": "reject due tiny/sparse penalties and uncertain consumer gain",
+  "validation": "native GF2 10/10; no 3-target/global/purity checks completed for this trial before hard stop",
+  "variants": {
+    "baseline": {
+      "artifact_sha256": "e97a07142c5ab75bdf0406a02c295cd9d3c7f2891f9da99e9f199b8f7ad174b0",
+      "sources": {
+        "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightcursorbench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nightcursorbench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      },
+      "generated_c_sha256": "7e5cc1eb295e533c53f7571d809b34504b9e28801ee0e03586a4309c19b55566"
+    },
+    "candidate": {
+      "artifact_sha256": "bb46745248ecc187b4bf9223662a1bf10108afb091c28f65cbe1a8e2800ef991",
+      "sources": {
+        "src/gf2/kernel.mbt": "8a3b81366473ebb6de7347fb7d3c5b35493a4587f6fd705e857698bf159da2b5",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightcursorbench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nightcursorbench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971",
+        "src/gf2/cursor.mbt": "c0522ffd35d1aa294440f81d9107c215282edb457d99dc5d8285839f800949be",
+        "src/gf2/night_cursor_wbtest.mbt": "6253f82d87f6748b692c633bf98e102db1d06bfc446c09dddd0d31809d779c77"
+      },
+      "generated_c_sha256": "3cade181fad50645d923a2c8f2ca26cacdfe1dd2df6ffac01aa563924336ede7"
+    }
+  },
+  "checker_region_sha256": "de97da2c007ee493650010ba97f9e15646cfa75beef2d34df58dc4fa005fb3df",
+  "raw_sha256": "3dba1bf4000ff02c6b8cb8f8a4de05d016cab37ac85afa60de0ad6ee809e18bf",
+  "gzip_sha256": "39d3758f213545ea7de7715f3d0e6a003d6494f637983d87ac5d792dae6ec96c",
+  "raw_bytes": 4575254,
+  "gzip_bytes": 140269
+}
