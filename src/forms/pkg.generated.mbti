@@ -10,6 +10,8 @@ import {
 // Values
 pub fn add(Form, Form) -> Result[Form, FormError]
 
+pub fn check_primitive(Form, Form) -> Bool
+
 pub fn contract(VectorField, Form) -> Result[Form?, FormError]
 
 pub fn degree(Form) -> @core.Nat
@@ -22,7 +24,21 @@ pub fn is_zero(Form) -> Bool
 
 pub fn lie_derivative(VectorField, Form) -> Result[Form, FormError]
 
+pub fn map_coordinates(PolynomialMap) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn map_source(PolynomialMap) -> @core.Nat
+
+pub fn map_target(PolynomialMap) -> @core.Nat
+
 pub fn negate(Form) -> Form
+
+pub fn polynomial_map(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[PolynomialMap, FormError]
+
+pub fn primitive(Form) -> Result[Form, FormError]
+
+pub fn pullback(PolynomialMap, Form) -> Result[Form, FormError]
+
+pub fn radial_homotopy(Form) -> Result[Form?, FormError]
 
 pub fn scalar(@polynomial.Polynomial) -> Form
 
@@ -67,6 +83,16 @@ pub(all) enum FormError {
 pub fn FormError::equal(Self, Self) -> Bool
 pub fn FormError::not_equal(Self, Self) -> Bool
 pub fn FormError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct PolynomialMap {
+  source : @core.Nat
+  target : @core.Nat
+  coordinates : @core.Chain[@polynomial.Polynomial]
+}
+pub fn PolynomialMap::equal(Self, Self) -> Bool
+pub fn PolynomialMap::not_equal(Self, Self) -> Bool
+pub fn PolynomialMap::to_repr(Self) -> @debug.Repr
 
 #derive(Eq, @debug.Debug)
 pub(all) struct Term {

@@ -2,7 +2,7 @@
 """Independent Fraction/dictionary/permutation oracle for polynomial forms."""
 from argparse import ArgumentParser
 from fractions import Fraction as Q
-from itertools import product
+from itertools import product, combinations, permutations
 from pathlib import Path
 from random import Random
 import shutil
@@ -75,6 +75,60 @@ def lie_direct(a,vector,n):
     return normalize(raw)
 
 
+def one(n):
+    return {(0,)*n:Q(1)}
+
+
+def substitute(p,coordinates,m):
+    result = {}
+    for exponents,q in p.items():
+        term = {(0,)*m:q}
+        for exponent,coordinate in zip(exponents,coordinates):
+            for _ in range(exponent): term = multiply_poly(term,coordinate)
+        result = add_poly(result,term)
+    return result
+
+
+def determinant(matrix,n):
+    """Polynomial Leibniz determinant; no production wedge or chain normalizer."""
+    result = {}
+    for permutation in permutations(range(len(matrix))):
+        inversions = sum(permutation[i]>permutation[j] for i in range(len(matrix)) for j in range(i+1,len(matrix)))
+        term = {(0,)*n:Q(-1 if inversions%2 else 1)}
+        for i,j in enumerate(permutation): term = multiply_poly(term,matrix[i][j])
+        result = add_poly(result,term)
+    return result
+
+
+def pullback(a,coordinates,m):
+    jacobian = [[differentiate_poly(p,j) for j in range(m)] for p in coordinates]
+    raw = []
+    for key,p in a.items():
+        coefficient = substitute(p,coordinates,m)
+        for source_indices in combinations(range(m),len(key)):
+            minor = [[jacobian[i][j] for j in source_indices] for i in key]
+            raw.append((multiply_poly(coefficient,determinant(minor,m)),source_indices))
+    return normalize(raw)
+
+
+def homotopy_integral(a,n,k):
+    """Pull back along F(t,x)=tx, select dt terms, and integrate t in [0,1].
+
+    This does not use the production (r+k)^-1 Euler-contraction formula.
+    """
+    coordinates = []
+    for i in range(n):
+        exponent = [0]*(n+1); exponent[0] = exponent[i+1] = 1
+        coordinates.append({tuple(exponent):Q(1)})
+    extended = pullback(a,coordinates,n+1)
+    raw = []
+    for indices,p in extended.items():
+        if not indices or indices[0] != 0: continue
+        integrated = poly([(q/Q(exponent[0]+1),exponent[1:]) for exponent,q in p.items()])
+        raw.append((integrated,tuple(i-1 for i in indices[1:])))
+    return normalize(raw)
+
+
 def render_poly(p):
     return "["+", ".join(f"({q.numerator}, {q.denominator}, {list(e)})" for e,q in sorted(p.items(),reverse=True))+"]"
 
@@ -132,14 +186,43 @@ def render():
                 lines += ["///|",f'test "Fraction contraction and direct coordinate Lie {cartan_count}" {{',
                           f"  fraction_cartan_fixture({n}, {k}, {raw_text(raw)}, {vector_source}, {interior}, {form_text(lie_direct(a,vector,n))})","}",""]
                 cartan_count += 1
-    return "\n".join(lines),len(cases),wedge_count,cartan_count
+    pullback_count = 0
+    for m in range(4):
+        for n in range(4):
+            for k in range(n+2):
+                for _ in range(2):
+                    raw = random_raw(rng,n,k)
+                    coordinates = [poly([(Q(rng.randrange(-2,3),rng.choice([1,2,3])),[rng.randrange(3) for _ in range(m)])
+                                         for _ in range(2)]) for _ in range(n)]
+                    expected = pullback(normalize(raw),coordinates,m)
+                    coordinate_text = "["+", ".join(render_poly(p) for p in coordinates)+"]"
+                    lines += ["///|",f'test "Fraction determinant pullback and d commute {pullback_count}" {{',
+                              f"  fraction_pullback_fixture({m}, {n}, {k}, {coordinate_text}, {raw_text(raw)}, {form_text(expected)})","}",""]
+                    pullback_count += 1
+    homotopy_cases = [(n,k,random_raw(rng,n,k)) for n in range(5) for k in range(n+2) for _ in range(3)]
+    for n in range(1,5):
+        for k in range(1,n+1):
+            for _ in range(3):
+                closed_form = exterior(normalize(random_raw(rng,n,k-1)),n)
+                homotopy_cases.append((n,k,[(p,i) for i,p in closed_form.items()]))
+    for index,(n,k,raw) in enumerate(homotopy_cases):
+        a = normalize(raw)
+        expected = "None" if not k else "Some("+form_text(homotopy_integral(a,n,k))+")"
+        remainder = {key:dict(p) for key,p in a.items()}
+        if not k and () in remainder:
+            remainder[()].pop((0,)*n,None)
+            if not remainder[()]: remainder.pop(())
+        closed = "true" if not exterior(a,n) else "false"
+        lines += ["///|",f'test "Fraction integrated radial homotopy and primitive {index}" {{',
+                  f"  fraction_homotopy_fixture({n}, {k}, {raw_text(raw)}, {expected}, {form_text(remainder)}, {closed})","}",""]
+    return "\n".join(lines),len(cases),wedge_count,cartan_count,pullback_count,len(homotopy_cases)
 
 
 def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--check",action="store_true")
     args = parser.parse_args()
-    source,normalizations,wedges,cartan = render()
+    source,normalizations,wedges,cartan,pullbacks,homotopies = render()
     formatter = ROOT / ".tools/moon/bin/moonfmt"
     executable = str(formatter) if formatter.exists() else shutil.which("moonfmt")
     if executable is None: raise SystemExit("moonfmt required for reproducible fixtures")
@@ -148,7 +231,7 @@ def main():
         if not OUTPUT.is_file() or OUTPUT.read_text()!=source: raise SystemExit("Forms Fraction fixture drift: "+str(OUTPUT))
     else:
         OUTPUT.parent.mkdir(parents=True,exist_ok=True); OUTPUT.write_text(source)
-    print(f"{normalizations} exact normalizations/derivatives, {wedges} wedges, {cartan} contractions/direct Lie results.")
+    print(f"{normalizations} normalizations/derivatives, {wedges} wedges, {cartan} contractions/Lie, {pullbacks} determinant pullbacks, {homotopies} integrated homotopies.")
 
 
 if __name__ == "__main__": main()
