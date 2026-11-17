@@ -1,0 +1,93 @@
+[
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/gf2",
+      "src/cohomology",
+      "src/csscode",
+      "--target",
+      "native",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "seconds": 44.08447421399978,
+    "exit_code": 0,
+    "stdout": "Total tests: 195, passed: 195, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/gf2",
+      "src/cohomology",
+      "src/csscode",
+      "--target",
+      "js",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "seconds": 4.160661839000568,
+    "exit_code": 0,
+    "stdout": "Total tests: 195, passed: 195, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/gf2",
+      "src/cohomology",
+      "src/csscode",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "seconds": 3.3312749389997407,
+    "exit_code": 0,
+    "stdout": "Total tests: 195, passed: 195, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "info",
+      "src/gf2"
+    ],
+    "seconds": 0.03823347400066268,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Finished. moon: no work to do\n"
+  },
+  {
+    "command": [
+      "python3",
+      "tools/audit_purity.py"
+    ],
+    "seconds": 0.35831015199983085,
+    "exit_code": 0,
+    "stdout": "Purity gate passed: 327 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "check",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "seconds": 11.523290487999475,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 570 tasks, now up to date\n"
+  }
+]

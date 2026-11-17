@@ -1,0 +1,30 @@
+{
+  "baseline_commit": "ab22a4a22625f4beb2bd2a49b836f769c941ef90",
+  "candidate_commit": "db9690f6e0dbb729f14f50ff2b1a5ddc9841e3ab",
+  "harness_commit": "d90ed45",
+  "variants": {
+    "before": {
+      "artifact_sha256": "6a4f8768ad5a58968f6c7f1392885bfc96ef602c0da78fa839fe2aee8b906dfd",
+      "sources": {
+        "src/gf2/solve.mbt": "c3526ccec3b90ed45d615732ea380f1b293966840685733b6a472947cba219d5",
+        "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightgf2bench/main.mbt": "4440bc16d74ebd5c3bfd79931f1c2d27806aa76aa39c466d3f840cc97518ba5d",
+        "src/cmd/nightgf2bench/moon.pkg": "28a011a325904f4d8984d6626e1eab27f62cee837446af30a7d5bc0121382ebc"
+      }
+    },
+    "after": {
+      "artifact_sha256": "8eeec0eed3083a074c6d48d091a6d5143c7e4c19d801e344769927e2416b0b0f",
+      "sources": {
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightgf2bench/main.mbt": "4440bc16d74ebd5c3bfd79931f1c2d27806aa76aa39c466d3f840cc97518ba5d",
+        "src/cmd/nightgf2bench/moon.pkg": "28a011a325904f4d8984d6626e1eab27f62cee837446af30a7d5bc0121382ebc"
+      }
+    }
+  },
+  "cpu": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        42 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               16\nOn-line CPU(s) list:                  0-15\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Core(TM) Ultra 7 255H\nCPU family:                           6\nModel:                                197\nThread(s) per core:                   1\nCore(s) per socket:                   16\nSocket(s):                            1\nStepping:                             2\nBogoMIPS:                             7372.79\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities\nVirtualization:                       VT-x\nHypervisor vendor:                    Microsoft\nVirtualization type:                  full\nL1d cache:                            768 KiB (16 instances)\nL1i cache:                            1 MiB (16 instances)\nL2 cache:                             48 MiB (16 instances)\nL3 cache:                             24 MiB (1 instance)\nNUMA node(s):                         1\nNUMA node0 CPU(s):                    0-15\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Not affected\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected\n",
+  "measurement_command": "tools/measure --cpu 4 python3 tools/compare_field_kernels.py --before <baseline-exe> --after <candidate-exe> --before-root /home/hosi/morph-night-before --after-root /home/hosi/morph-night-gf2 --harness src/cmd/nightgf2bench --case tiny --case sparse --case dense --case solve-reuse --case solve-setup --case cohomology-torus --groups 5 --output docs/research/night-gf2-20261117-raw/monotone-abba.json",
+  "build_command": "tools/measure --cpu 4 tools/moon build src/cmd/nightgf2bench --target native --release -j 1 --deny-warn"
+}
