@@ -8,6 +8,7 @@ import {
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
   "Hosi121/morph/polynomial",
+  "Hosi121/morph/riemann",
   "moonbitlang/core/debug",
 }
 
@@ -22,6 +23,8 @@ pub fn expectation(Gaussian, @polynomial.Polynomial) -> Result[@exact.Rational, 
 
 pub fn expectation_with(Moments, @polynomial.Polynomial) -> Result[(@exact.Rational, Moments), GaussianError]
 
+pub fn fisher_jet(Gaussian) -> Result[@riemann.MetricJet, GaussianError]
+
 pub fn gaussian(@core.Chain[@exact.Rational], @matrix.Matrix[@exact.Rational]) -> Result[Gaussian, GaussianError]
 
 pub fn mean(Gaussian) -> @core.Chain[@exact.Rational]
@@ -35,6 +38,8 @@ pub fn moments(Gaussian) -> Moments
 pub fn moments_source(Moments) -> Gaussian
 
 pub fn precision(Gaussian) -> @matrix.Matrix[@exact.Rational]
+
+pub fn sufficient_statistics(Gaussian) -> @core.Chain[@polynomial.Polynomial]?
 
 // Errors
 
@@ -55,6 +60,7 @@ pub(all) enum GaussianError {
   NotSymmetric
   NotPositiveDefinite
   InternalShape
+  Geometry(@riemann.JetError)
 }
 pub fn GaussianError::equal(Self, Self) -> Bool
 pub fn GaussianError::not_equal(Self, Self) -> Bool

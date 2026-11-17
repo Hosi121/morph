@@ -5,6 +5,7 @@ pub(all) enum GaussianError {
   NotSymmetric
   NotPositiveDefinite
   InternalShape
+  Geometry(@riemann.JetError)
 }
 
 ///|

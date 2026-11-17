@@ -23,6 +23,11 @@ python3 docs/research/late-poly-unit-20261117-oracle.py --check
 python3 tools/generate_signed_residue_n04.py --check
 python3 tools/generate_tower_constant_fixtures.py --check
 python3 tools/generate_monic_identity_n05.py --check
+python3 tools/generate_markov_fixtures.py --check
+python3 tools/generate_riemann_fixtures.py --check
+python3 tools/generate_forms_fixtures.py --check
+python3 tools/generate_gaussian_fixtures.py --check
+python3 tools/extension-curves-20261118-oracle.py --check
 python3 tools/generate_homology_fixtures.py --check
 python3 tools/generate_persistence_fixtures.py --check
 python3 tools/generate_simplicialmap_fixtures.py --check

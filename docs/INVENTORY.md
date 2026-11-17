@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：133パッケージ、364ソース。
-核のテスト宣言：5055、bench group：212。
+算法の核：133パッケージ、367ソース。
+核のテスト宣言：5263、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -68,11 +68,11 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
-| [forms](../src/forms) | 3 | 328 | 0 | `core`, `polynomial` |
+| [forms](../src/forms) | 5 | 533 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
-| [gaussian](../src/gaussian) | 2 | 5 | 0 | `avl`, `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial` |
+| [gaussian](../src/gaussian) | 3 | 8 | 0 | `avl`, `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `riemann`, `tensor` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
 | [gf2](../src/gf2) | 3 | 13 | 0 | `algebra`, `core`, `matrix`, `rowreduce` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
