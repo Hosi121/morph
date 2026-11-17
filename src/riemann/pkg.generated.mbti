@@ -23,6 +23,10 @@ pub fn connection(MetricJet) -> Connection
 
 pub fn connection_jet(Connection) -> MetricJet
 
+pub fn covariant_derivative(Connection, @core.Chain[@exact.Rational], @matrix.Matrix[@exact.Rational]) -> @matrix.Matrix[@exact.Rational]?
+
+pub fn covariant_derivative_covector(Connection, @core.Chain[@exact.Rational], @matrix.Matrix[@exact.Rational]) -> @matrix.Matrix[@exact.Rational]?
+
 pub fn curvature(Connection) -> Curvature
 
 pub fn curvature_connection(Curvature) -> Connection
@@ -31,15 +35,23 @@ pub fn dimension(MetricJet) -> @core.Nat
 
 pub fn first_derivatives(MetricJet) -> @core.Chain[@matrix.Matrix[@exact.Rational]]
 
+pub fn geodesic_acceleration(Connection, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
+
 pub fn inverse_metric(MetricJet) -> @matrix.Matrix[@exact.Rational]
 
 pub fn is_positive_definite(MetricJet) -> Bool
+
+pub fn lower_index(MetricJet, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
 
 pub fn lowered_riemann(Curvature) -> @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
 
 pub fn metric(MetricJet) -> @matrix.Matrix[@exact.Rational]
 
 pub fn metric_jet(@matrix.Matrix[@exact.Rational], @core.Chain[@matrix.Matrix[@exact.Rational]], @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]) -> Result[MetricJet, JetError]
+
+pub fn pairing(MetricJet, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> @exact.Rational?
+
+pub fn raise_index(MetricJet, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
 
 pub fn ricci(Curvature) -> @core.Chain[@core.Chain[@exact.Rational]]
 
@@ -48,6 +60,8 @@ pub fn riemann(Curvature) -> @core.Chain[@core.Chain[@core.Chain[@core.Chain[@ex
 pub fn scalar_curvature(Curvature) -> @exact.Rational
 
 pub fn second_derivatives(MetricJet) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
+
+pub fn sectional_curvature(Curvature, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> @exact.Rational?
 
 // Errors
 

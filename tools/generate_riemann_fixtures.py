@@ -191,6 +191,42 @@ def sphere(point, radius=Q(1), transform=None, shear=False):
              for j in range(n)] for i in range(n)]
 
 
+def transform_components(values, rank, matrix, contravariant_first=False):
+    n = len(matrix)
+    inv = inverse(matrix)
+    def entry(coordinates):
+        total = Q(0)
+        for old in itertools.product(range(n), repeat=rank):
+            value = values
+            for index in old:
+                value = value[index]
+            for axis, (a, i) in enumerate(zip(old, coordinates)):
+                value *= inv[i][a] if axis == 0 and contravariant_first else matrix[a][i]
+            total += value
+        return total
+    def build(prefix):
+        return entry(prefix) if len(prefix) == rank else [build(prefix + (i,)) for i in range(n)]
+    return build(())
+
+
+def affine_fixture(original):
+    matrix = [[Q(1), Q(1), Q(0)], [Q(0), Q(1), Q(1)], [Q(0), Q(0), Q(1)]]
+    g = transform_components(original['metric'], 2, matrix)
+    d = transform_components(original['first'], 3, matrix)
+    h = transform_components(original['second'], 4, matrix)
+    n = len(g)
+    expressions = [[D2(g[i][j], tuple(d[k][i][j] for k in range(n)),
+                       tuple(tuple(h[k][l][i][j] for l in range(n)) for k in range(n)))
+                    for j in range(n)] for i in range(n)]
+    changed = fixture('general_three_dimensional_affine_chart', expressions)
+    for key, rank, contra in [('first_kind', 3, False), ('second_kind', 3, True),
+                              ('lower', 4, False), ('upper', 4, True), ('ricci', 2, False)]:
+        assert changed[key] == transform_components(original[key], rank, matrix, contra)
+    assert changed['scalar'] == original['scalar']
+    assert changed['positive'] == original['positive']
+    return changed
+
+
 def fixtures():
     z2 = D2.constant(0, 2)
     cases = [fixture('dimension_zero', [], Q(0)),
@@ -222,6 +258,7 @@ def fixtures():
                        tuple(tuple(h[k][l][i][j] for l in range(n)) for k in range(n)))
                     for j in range(n)] for i in range(n)]
     cases.append(fixture('general_three_dimensional_jet', expressions))
+    cases.append(affine_fixture(cases[-1]))
     # Affine-coordinate scalar invariance at the same sphere point.
     transformed = next(f for f in cases if f['name'] == 'sphere_affine_chart')
     original = fixture('unemitted_affine_reference', sphere([Q(1, 2), Q(0)]), Q(1))
