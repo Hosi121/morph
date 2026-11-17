@@ -96,7 +96,7 @@ pub struct State {
   change_rev : @core.Chain[@core.Chain[@core.Nat]]
   index : @core.Nat
   active : (@core.Chain[@core.Nat], @core.Chain[@core.Nat])?
-  owners : @avl.OrderedMap[@core.Nat, (@core.Chain[@core.Nat], @core.Chain[@core.Nat])]
+  owners : @avl.OrderedMap[@core.Nat, (@core.Chain[@core.Nat], @core.Chain[@core.Nat])]?
 }
 pub fn State::equal(Self, Self) -> Bool
 pub fn State::not_equal(Self, Self) -> Bool

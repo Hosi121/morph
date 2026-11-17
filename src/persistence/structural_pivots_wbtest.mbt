@@ -95,17 +95,22 @@ fn structural_same_progress(actual : State, legacy : State) -> Bool {
 
 ///|
 fn structural_cache_valid(state : State) -> Bool {
-  let expected = @oracle.array(state.reduced_rev)
-    .filter(fn(column) { column is Cons(_, _) })
-    .length()
-  let cached = @oracle.array(@avl.entries(state.owners))
-  cached.length() == expected &&
-  cached.all(fn(entry) {
-    let (pivot, (r, v)) = entry
-    @core.last(r) == Some(pivot) &&
-    structural_legacy_collision(state.reduced_rev, state.change_rev, pivot) ==
-    Some((r, v))
-  })
+  match state.owners {
+    None => true
+    Some(owners) => {
+      let expected = @oracle.array(state.reduced_rev)
+        .filter(fn(column) { column is Cons(_, _) })
+        .length()
+      let cached = @oracle.array(@avl.entries(owners))
+      cached.length() == expected &&
+      cached.all(fn(entry) {
+        let (pivot, (r, v)) = entry
+        @core.last(r) == Some(pivot) &&
+        structural_legacy_collision(state.reduced_rev, state.change_rev, pivot) ==
+        Some((r, v))
+      })
+    }
+  }
 }
 
 ///|
@@ -152,6 +157,20 @@ test "structural corrupt opaque cache cannot manufacture an accepted certificate
     Paused(state) => state
     _ => abort("five triangle columns must pause")
   }
-  let broken = { ..prefix, owners: @avl.empty(), }
+  let broken = { ..prefix, owners: Some(@avl.empty()), }
   assert_eq(run(broken, @oracle.nat(100), @oracle.nat(100)), InvalidWitness)
+}
+
+///|
+test "structural collision-free inputs do not build pivot tree metadata" {
+  let source = input([[0], [1], [2], [0, 1], [1, 2]], Array::make(5, (0, 1)))
+  let state = match run(start(source), @oracle.nat(100), @oracle.nat(4)) {
+    Paused(state) => state
+    _ => abort("one collision-free column remains")
+  }
+  assert_eq(state.owners, None)
+  assert_eq(
+    run(state, @oracle.nat(100), @oracle.nat(1)),
+    Done(completed(source)),
+  )
 }
