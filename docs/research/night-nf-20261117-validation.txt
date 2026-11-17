@@ -1,0 +1,14 @@
+RUN tools/moon test src/numberfield src/complexfield --target js --deny-warn -j 1
+Total tests: 173, passed: 173, failed: 0.
+RUN tools/moon test src/numberfield src/complexfield --target native --deny-warn -j 1
+Total tests: 173, passed: 173, failed: 0.
+RUN tools/moon check --target all --deny-warn -j 1
+Finished. moon: ran 1837 tasks, now up to date
+RUN tools/moon info src/numberfield src/cmd/nightnfbench --target all
+Finished. moon: ran 94 tasks, now up to date
+RUN python3 tools/audit_purity.py
+Purity gate passed: 328 kernel files; no machine numerics, mutation, arrays or FFI.
+RUN tools/moon build src/cmd/nightnfbench --target native --release --deny-warn -j 1
+Finished. moon: ran 6 tasks, now up to date
+Artifacts:
+  Hosi121/morph/cmd/nightnfbench  native  /home/hosi/morph-night-nf/_build/native/release/build/cmd/nightnfbench/nightnfbench.exe

@@ -1,0 +1,153 @@
+{
+  "utc": "2026-11-17T13:07:54.793082+00:00",
+  "decision": "adopt for clear repeated ordinary NF multiply and complex caller gains; setup/one-shot uncertainty retained",
+  "source_commit": "ae808a4b41d0a937ab715e6f071805a2355fde4d",
+  "harness_commit": "d26d45b",
+  "followups_used": 1,
+  "baseline_build": {
+    "baseline": "ab22a4a22625f4beb2bd2a49b836f769c941ef90",
+    "build_command": "tools/measure --cpu 4 tools/moon -C /home/hosi/morph-night-before build src/cmd/nightnfbench --target native --release --deny-warn -j 1",
+    "build_tasks": 52,
+    "tracked_baseline_source_unchanged": true,
+    "tracked_source_files": 1058,
+    "tracked_source_sha256": "ebc8edaf3c0a735bbbfb8fd9f8e7ce65e6032eb140bb913442940bb369eefb92",
+    "artifact_sha256": "ac9d572b0f8571f2ca0ed0a1498bcd7bbed756083e67763373f488fda4760137",
+    "harness_commit": "d26d45b",
+    "harness": {
+      "main.mbt": "bb97eaed142bb0f27472e26682b7e5df471e26c76ff49503f16c58b789a35f5a",
+      "moon.pkg": "e86bce4765ebeefe6131b5632e02ddeaf8db581392c69c3d256d6a3ebd4c16c8"
+    }
+  },
+  "source_manifest_stable_between_candidate_reports": true,
+  "artifacts_and_harness_stable_between_reports": true,
+  "validation": [
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "wasm",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 173,
+      "passed": 173,
+      "failed": 0,
+      "log": "separate tool response"
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 173,
+      "passed": 173,
+      "failed": 0,
+      "log": "night-nf-20261117-validation.txt"
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 173,
+      "passed": 173,
+      "failed": 0,
+      "log": "night-nf-20261117-validation.txt"
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "check",
+        "--target",
+        "all",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "passed": true,
+      "tasks": 1837
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "info",
+        "src/numberfield",
+        "src/cmd/nightnfbench",
+        "--target",
+        "all"
+      ],
+      "passed": true,
+      "tasks": 94
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "passed": true,
+      "kernel_files": 328
+    }
+  ],
+  "timing": {
+    "initial": {
+      "runs": 120,
+      "all_checked": true
+    },
+    "controls": {
+      "runs": 40,
+      "all_checked": true
+    }
+  },
+  "public_signatures_changed": false,
+  "opaque_field_private_cache_added": true,
+  "checker_algorithms_changed": false,
+  "worktree_removed": false,
+  "push_performed": false,
+  "limitations": [
+    "Setup/one-shot process ratios reverse signs across initial/follow-up; small penalties remain possible",
+    "Setup loops reuse a normalized certificate; certificate generation is counted once in whole-process timing",
+    "No guaranteed amortization threshold inferred",
+    "No memory/large-degree/application-wide or other-machine performance measurement"
+  ],
+  "raw_sha256": {
+    "night-nf-20261117-initial.json": "dcb5209ff6a857dc9e54a5c423c059825c76e72741ed019bee210b8b3af48879",
+    "night-nf-20261117-controls.json": "040934014f84483f46f138b09760e435220cee16aaa74e2ba6e47460653d779b",
+    "night-nf-20261117-validation.txt": "ecac3313d8cb0ae388238b8632ec86938b6cbaf6013f9d708f54884463743a42"
+  }
+}
