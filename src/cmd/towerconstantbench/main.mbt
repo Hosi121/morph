@@ -80,11 +80,10 @@ fn check_values(
 
 ///|
 fn result_json(values : Array[@tower.Scalar]) -> String {
-  "[" +
-  values
-  .map(fn(value) { "\"\{@tower.representative(value).to_repr()}\"" })
-  .join(",") +
-  "]"
+  let representations : Array[Json] = values.map(fn(value) {
+    Json::string("\{@tower.representative(value).to_repr()}")
+  })
+  Json::array(representations).stringify()
 }
 
 ///|
