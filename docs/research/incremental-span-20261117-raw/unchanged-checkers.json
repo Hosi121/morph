@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/numberfield/minimal.mbt",
+    "checkers_sha256": "fb00ece2c8ad99f15429ecb216a91c9ccf74e9b092098b8e595b028acd088c84",
+    "unchanged": true
+  },
+  {
+    "file": "src/complexfield/minimal.mbt",
+    "checkers_sha256": "06ebb698ad56fd335e921a71d68af5e1778eb29b73c0e41e12790247271f8d69",
+    "unchanged": true
+  },
+  {
+    "file": "src/fglm/certificate.mbt",
+    "sha256": "49780ee9dcfd47a0d4afc300669de83a495c2ce3119c44ef6200931267cc888f",
+    "unchanged": true
+  }
+]

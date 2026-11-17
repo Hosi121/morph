@@ -1,0 +1,9 @@
+{
+  "fraction-fixtures.json": "5cae967452227e0a5d40fb4984ef118a81e088be253dfb56723a5aefdbf96c66",
+  "generate_fraction_fixtures.py": "bba594243a5e3146ee6e5c4961ef32889feae8323c9394d6aeca0b302ce03032",
+  "harness-calibration-smoke.json": "a1775170a0a29f6899aaff6922d94eb4388501b8f9eecc484645024cfd85a567",
+  "public-abba.json": "e5afc663579e8196ba2cfc6314f42574ec62e2843a3fd3d827157fbfc063f6d0",
+  "scoped-targets.json": "39859d807a7f67426ce339a3d23f558a8edca45a01b02f96863379cfe6895389",
+  "unchanged-checkers.json": "4df0a9848182f6ec103b86efe5e08840aecc358776e7c1d7da34c729bca01b04",
+  "validation.json": "8eadee201fd32fe57de77746c8b1d8faaf46a8cef2268629d4522c368952d7b1"
+}

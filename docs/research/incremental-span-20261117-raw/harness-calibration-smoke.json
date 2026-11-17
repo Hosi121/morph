@@ -1,0 +1,54 @@
+{
+  "note": "Pre-calibration checked smoke of the original solver. These small batches motivated the fixed 40x repetition calibration before any source comparison; no speed claim uses these values. The smoke executable was superseded by the final release build.",
+  "harness_milestone": "0e20768",
+  "cases": [
+    {
+      "case": "nf2",
+      "iterations": 100,
+      "elapsed_us": 1762.497,
+      "checked": true
+    },
+    {
+      "case": "nf6",
+      "iterations": 30,
+      "elapsed_us": 2677.349,
+      "checked": true
+    },
+    {
+      "case": "nf6-subfield",
+      "iterations": 30,
+      "elapsed_us": 705.061,
+      "checked": true
+    },
+    {
+      "case": "cf2-tiny",
+      "iterations": 100,
+      "elapsed_us": 2510.148,
+      "checked": true
+    },
+    {
+      "case": "cf4",
+      "iterations": 50,
+      "elapsed_us": 3529.734,
+      "checked": true
+    },
+    {
+      "case": "cf8",
+      "iterations": 10,
+      "elapsed_us": 2612.746,
+      "checked": true
+    },
+    {
+      "case": "fglm3",
+      "iterations": 15,
+      "elapsed_us": 1101.8120000000001,
+      "checked": true
+    },
+    {
+      "case": "fglm8",
+      "iterations": 3,
+      "elapsed_us": 996.912,
+      "checked": true
+    }
+  ]
+}

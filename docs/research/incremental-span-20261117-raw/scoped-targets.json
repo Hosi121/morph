@@ -1,0 +1,36 @@
+{
+  "scope": [
+    "src/linearspan",
+    "src/numberfield",
+    "src/complexfield",
+    "src/fglm"
+  ],
+  "jobs": 1,
+  "deny_warn": true,
+  "observations": [
+    {
+      "target": "native",
+      "tests": 273,
+      "passed": 273,
+      "failed": 0,
+      "source_commit": "3d32908",
+      "raw_log": "validation.json"
+    },
+    {
+      "target": "wasm-gc",
+      "tests": 273,
+      "passed": 273,
+      "failed": 0,
+      "stdout": "Total tests: 273, passed: 273, failed: 0.\n",
+      "source_note": "consumer implementation including incremental_cache_wbtest; before final formatting and interface generation only"
+    },
+    {
+      "target": "js",
+      "tests": 273,
+      "passed": 273,
+      "failed": 0,
+      "stdout": "Total tests: 273, passed: 273, failed: 0.\n",
+      "source_note": "consumer implementation including incremental_cache_wbtest; before final formatting and interface generation only"
+    }
+  ]
+}
