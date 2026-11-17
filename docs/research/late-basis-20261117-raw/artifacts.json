@@ -37,5 +37,11 @@
   "raw_sha256": "ed74bc60f4c45e368f0f765b623acc1e168f9832b1cc7b69f24d549e69533549",
   "gzip_sha256": "1668a4d39394f88c85057d9cf875462d5311d951959f95638f4e25d261f1b68f",
   "raw_bytes": 3970526,
-  "gzip_bytes": 106091
+  "gzip_bytes": 106091,
+  "baseline_relative_patch": {
+    "path": "docs/research/late-basis-20261117-raw/candidate.patch.gz",
+    "gzip_sha256": "60d95648fbe9d70a3ec86e521e445f873d573a3a0c6192b845638ed6b3290576",
+    "uncompressed_sha256": "60bf49421c32ba3e0ad13fc37f99e54246bbb7c30be3811e9b1b024028a7f7d8",
+    "note": "Lossless gzip preserves the original reproduction diff, including whitespace-only context lines."
+  }
 }

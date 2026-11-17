@@ -15,6 +15,9 @@
 | [減算融合の見送り](late-subtraction-20261117.md) | 限定的な相殺の改善、二案の一般入力・上位処理と再現パッチ |
 | [既知のFrobenius平方](late-frobenius-20261117.md) | 係数の零挿入、modular powerと体の構築、奇標数対照 |
 | [Bool行列積と生成側の接続](late-bool-product-20261117.md) | callbackを省く積、shape、generic検査と共有依存の区別 |
+| [Fpの余り専用power](late-fp-remainder-20261117.md) | 捨てていた商を作らず、公開divideと全出力を照合 |
+| [QQ多項式の単位積](late-poly-unit-20261117.md) | 正規な±1の判定、immutableな結果共有、独立Fraction参照 |
+| [係数列の準備の見送り](late-basis-20261117.md) | GF(2)の全基底・affine solveの一致と小・疎・密の回帰 |
 | [積の平衡merge](night-product-20261117.md) | 期限時点の未計測記録と、親による凍結比較・採用判断 |
 | [Fp畳み込みの行共有](night-convolution-20261117.md) | 零・単位係数の行分岐、初回比較とGF(2)対照の再測定 |
 | [未採用の行cursor](night-cursors-20261117.md) | 密・幅広の改善と、小・疎行列の回帰で見送ったADT試作 |

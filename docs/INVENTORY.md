@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：124パッケージ、331ソース。
-核のテスト宣言：4500、bench group：212。
+算法の核：124パッケージ、333ソース。
+核のテスト宣言：4542、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -67,11 +67,11 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
-| [fppoly](../src/fppoly) | 4 | 32 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
+| [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
-| [gf2](../src/gf2) | 3 | 11 | 0 | `algebra`, `core`, `matrix`, `rowreduce` |
+| [gf2](../src/gf2) | 3 | 13 | 0 | `algebra`, `core`, `matrix`, `rowreduce` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
 | [groebner](../src/groebner) | 1 | 46 | 0 | `core`, `exact`, `polynomial`, `sorting` |
 | [heap](../src/heap) | 1 | 2 | 0 | `core` |
@@ -93,7 +93,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [parity](../src/parity) | 4 | 7 | 0 | `core` |
 | [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
 | [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
-| [polynomial](../src/polynomial) | 4 | 96 | 8 | `binary`, `core`, `exact` |
+| [polynomial](../src/polynomial) | 5 | 134 | 8 | `binary`, `core`, `exact` |
 | [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |

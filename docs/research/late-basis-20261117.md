@@ -78,7 +78,7 @@ provenance and block ratios are losslessly retained in
 uncompressed SHA-256/byte counts and artifact hashes. Gzip decompression was
 verified byte-for-byte before removing the duplicate raw JSON.
 
-[candidate.patch](late-basis-20261117-raw/candidate.patch) reproduces the full
+[candidate.patch.gz](late-basis-20261117-raw/candidate.patch.gz) reproduces the full
 trial source/harness/test change from clean baseline `905d23d`; it is
 historical evidence and is not for production adoption.
 [retained-tests.patch](late-basis-20261117-raw/retained-tests.patch) adds only

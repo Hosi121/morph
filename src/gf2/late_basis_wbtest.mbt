@@ -1,0 +1,113 @@
+///|
+fn late_basis_old_vector(
+  columns : @core.Chain[@core.Nat],
+  pairs : @core.Chain[(@core.Nat, @core.Chain[Bool])],
+  free_column : @core.Nat,
+) -> @core.Chain[Bool] {
+  match (columns, pairs) {
+    (Nil, _) => Nil
+    (Cons(column, rest), Nil) =>
+      Cons(
+        column.equal(free_column),
+        late_basis_old_vector(rest, Nil, free_column),
+      )
+    (Cons(column, rest), Cons((pivot, row), tail)) =>
+      match @core.compare(column, pivot) {
+        Less =>
+          Cons(
+            column.equal(free_column),
+            late_basis_old_vector(rest, pairs, free_column),
+          )
+        Equal =>
+          Cons(
+            @core.nth(row, free_column).equal(Some(true)),
+            late_basis_old_vector(rest, tail, free_column),
+          )
+        Greater => late_basis_old_vector(columns, tail, free_column)
+      }
+  }
+}
+
+///|
+fn late_basis_old_nullspace(
+  width : @core.Nat,
+  pairs : @core.Chain[(@core.Nat, @core.Chain[Bool])],
+) -> @core.Chain[@core.Chain[Bool]] {
+  let columns = @core.indices(width)
+  @core.map(free_columns(columns, pairs), fn(free_column) {
+    late_basis_old_vector(columns, pairs, free_column)
+  })
+}
+
+///|
+test "late prepared basis matches frozen row nth on sparse dense and rank boundaries" {
+  for
+    (height, width) in [
+      (0, 0),
+      (0, 11),
+      (7, 0),
+      (1, 3),
+      (8, 32),
+      (16, 32),
+      (24, 12),
+    ] {
+    for seed in 0..<5 {
+      let rows = Array::makei(height, fn(i) {
+        Array::makei(width, fn(j) {
+          if seed == 0 {
+            false
+          } else if seed == 1 {
+            i == j
+          } else if seed == 2 {
+            j == i * 3 || j == 25 + i % 7
+          } else {
+            ((i + 1) * 197 + (j + 1) * 269 + i * j * 137 + seed) % 521 % 2 == 0
+          }
+        })
+      })
+      let source = input(width, rows)
+      let factor = factor(source).unwrap()
+      let reduced = reduction(factor)
+      let pairs = @core.zip(
+        reduced.pivots,
+        @core.take(@core.length(reduced.pivots), @matrix.rows(reduced.matrix)),
+      ).unwrap()
+      let expected = late_basis_old_nullspace(@oracle.nat(width), pairs)
+      assert_eq(nullspace_factor(factor), expected)
+      let homogeneous = @rowreduce.solve(
+        field(),
+        source,
+        @core.replicate(@oracle.nat(height), false),
+      ).unwrap()
+      let host_expected = match homogeneous {
+        Affine(_, basis) => basis
+        Unique(_) => @core.Nil
+        Inconsistent => abort("homogeneous inconsistency")
+      }
+      assert_eq(expected, host_expected)
+    }
+  }
+}
+
+///|
+test "late coefficient layout ignores augmented RHS and preserves all small affine solves" {
+  for height in 0..<=2 {
+    for width in 0..<=3 {
+      for bits in 0..<(1 << (height * width)) {
+        let rows = Array::makei(height, fn(i) {
+          Array::makei(width, fn(j) { (bits & (1 << (i * width + j))) != 0 })
+        })
+        let source = input(width, rows)
+        let factor = factor(source).unwrap()
+        for rhs_bits in 0..<(1 << height) {
+          let rhs = @oracle.chain(
+            Array::makei(height, fn(i) { (rhs_bits & (1 << i)) != 0 }),
+          )
+          let expected = @rowreduce.solve(field(), source, rhs)
+          assert_eq(solve(source, rhs), expected)
+          assert_eq(solve_factor(factor, rhs), expected)
+        }
+      }
+    }
+  }
+}
