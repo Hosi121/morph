@@ -1,0 +1,12 @@
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl. Total   Incl. Total    Name
+CPU           CPU
+ sec.      %   sec.      %
+0.118 100.00  0.118 100.00   <Total>
+0.024  20.34  0.045  38.14   moonbit_drop_object
+0.021  17.80  0.021  17.80   mi_free
+0.020  16.95  0.020  16.95   _mi_page_malloc_zero
+0.016  13.56  0.033  27.97   _M0FP37Hosi1215morph4core3add
+
+Print limit set to 5

@@ -1,0 +1,1 @@
+Purity gate passed: 341 kernel files; no machine numerics, mutation, arrays or FFI.

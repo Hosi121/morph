@@ -1,0 +1,17 @@
+{
+  "all_baseline_tracked_bytes_still_match": true,
+  "tracked_blobs": 2359,
+  "baseline_blob_manifest_sha256": "14705d9fcff93b45fe3ae7b2f3061ec7cacf0b54cbaae451e6215170752705f3",
+  "public_tensor_api_unchanged": true,
+  "tensor_construction_lookup_permutation_map_product_byte_identical": true,
+  "frozen_cli_files_unchanged": true,
+  "legacy_canonical_sha256": {
+    "sum_terms": "e3aa7af88e0f0bd2e66c969f1c5110c7d4b7102c25d85b2d8de71114efeb3512",
+    "remove_axes": "9417ec79584c41dfdf1b9e218cd5284003b25a5e0c19a01403534be0de213312",
+    "diagonal_coordinates": "4479c8e86d64022bbbe0e2f15c72b1aa7ed5626cf71d4b8e1cf43d60afebc122",
+    "contract": "77c4b321858a1cec614a0d7181c98b591f16b9dca3cfe7b1b932ef6586d06485",
+    "replace": "f2a51a91291d7e277fd68d082bf8eeb5d9906b603b6a058e362c3a371621f9da",
+    "mode_product": "e96508feaeb6b1550a8db09ee8febebd94feb1c66b68ddfafdd0661e94ec7210"
+  },
+  "six_legacy_functions_match_after_rename_and_sdk_formatting": true
+}

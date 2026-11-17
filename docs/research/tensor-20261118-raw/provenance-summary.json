@@ -1,0 +1,18 @@
+{
+  "baseline": {
+    "root": "/home/hosi/morph-tensor-baseline",
+    "commit": "974f0a684e8e99cf8f6e71ef2b9e47374da7103d",
+    "source_manifest_sha256": "d80cea07a178cfaa6f21c17ecf364d0e3fc94c9f6e6b25eafa471200f6f2a663",
+    "elf_sha256": "4d26230d584e8fb34eefb20b08f109c6b0b39fe86148c7f25d2e8eec1114e268",
+    "generated_c_sha256": "20e4d5041ec6b9cf391120e19512b70a25234353f05029826d4502323e45b5a2",
+    "source_file_count": 977
+  },
+  "candidate": {
+    "root": "/home/hosi/morph-riemann",
+    "commit": "5aa15273bb3e66c79dfc49bad786fc918e6cacec",
+    "source_manifest_sha256": "5c8b88c5834faa34f76d9bf9fcf39d7483c3bf82e0b064365aa0951399016790",
+    "elf_sha256": "8ba1a927d8a2052b67e314b36fd75035883651a781bc0b310ddd3e73bb8d9334",
+    "generated_c_sha256": "bde25def2778800ac62b4cd0a48440329ad4ace9b884f6c5cd1a1d679c62de45",
+    "source_file_count": 979
+  }
+}

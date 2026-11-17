@@ -1,0 +1,3 @@
+Finished. moon: ran 38 tasks, now up to date
+Artifacts:
+  Hosi121/morph/cmd/tensorbench  native  /home/hosi/morph-tensor-baseline/_build/native/release/build/cmd/tensorbench/tensorbench.exe

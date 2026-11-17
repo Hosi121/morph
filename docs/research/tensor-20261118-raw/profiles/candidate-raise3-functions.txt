@@ -1,0 +1,31 @@
+Print limit set to 40
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl. Total   Incl. Total    Name
+CPU           CPU
+ sec.      %   sec.      %
+0.016 100.00  0.016 100.00   <Total>
+0.005  31.25  0.009  56.25   moonbit_drop_object
+0.003  18.75  0.003  18.75   _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE
+0.003  18.75  0.003  18.75   mi_free
+0.002  12.50  0.002  12.50   _mi_page_malloc_zero
+0.001   6.25  0.002  12.50   _M0FP37Hosi1215morph5exact15exact__quotient
+0.001   6.25  0.001   6.25   _M0FP37Hosi1215morph5exact21small__gcd__magnitude.isra.0
+0.001   6.25  0.001   6.25   scan_regular_object
+0.      0.    0.016 100.00   <static>@0x2a145 (<libc.so.6>)
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph5exact14common__factor
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph5exact17integer__quotient
+0.      0.    0.004  25.00   _M0FP37Hosi1215morph5exact22short__exact__quotient
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph5exact23rational__add_2edyncall
+0.      0.    0.011  68.75   _M0FP37Hosi1215morph5exact28rational__multiply_2edyncall
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph5exact9normalize
+0.      0.    0.002  12.50   _M0FP37Hosi1215morph6binary10stein__gcd
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph6binary4half
+0.      0.    0.012  75.00   _M0FP37Hosi1215morph6tensor11cursor__dotGRP37Hosi1215morph5exact8RationalEC6112l75
+0.      0.    0.001   6.25   _M0FP37Hosi1215morph6tensor12cursor__rowsGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.013  81.25   _M0FP37Hosi1215morph6tensor15cursor__columnsGRP37Hosi1215morph5exact8RationalE.part.0
+0.      0.    0.014  87.50   _M0FP37Hosi1215morph6tensor20cursor__mode__prefixGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.013  81.25   _M0FP37Hosi1215morph6tensor21cursor__mapped__blockGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.013  81.25   _M0FP37Hosi1215morph6tensor21cursor__mapped__blockGRP37Hosi1215morph5exact8RationalEC6117l95
+0.      0.    0.016 100.00   __libc_start_main
+0.      0.    0.016 100.00   main

@@ -1,0 +1,46 @@
+Print limit set to 40
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl. Total   Incl. Total    Name
+CPU           CPU
+ sec.      %   sec.      %
+0.147 100.00  0.147 100.00   <Total>
+0.033  22.45  0.054  36.73   moonbit_drop_object
+0.023  15.65  0.023  15.65   _mi_page_malloc_zero
+0.022  14.97  0.022  14.97   mi_free
+0.021  14.29  0.021  14.29   _M0FP37Hosi1215morph4core3nthGRP37Hosi1215morph5exact8RationalE
+0.008   5.44  0.034  23.13   _M0FP37Hosi1215morph4core3add
+0.007   4.76  0.007   4.76   mi_malloc
+0.005   3.40  0.005   3.40   _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE
+0.004   2.72  0.006   4.08   _M0FP37Hosi1215morph6binary4half
+0.003   2.04  0.003   2.04   _M0FP37Hosi1215morph4core7compare
+0.003   2.04  0.105  71.43   _M0FP37Hosi1215morph6tensor2atGRP37Hosi1215morph5exact8RationalE
+0.002   1.36  0.013   8.84   _M0FP37Hosi1215morph5exact22short__exact__quotient
+0.002   1.36  0.003   2.04   _M0FP37Hosi1215morph6binary14subtract__bits.part.0
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph4core6appendGRP37Hosi1215morph5exact8RationalE
+0.001   0.68  0.014   9.52   _M0FP37Hosi1215morph4core8multiply.part.0
+0.001   0.68  0.004   2.72   _M0FP37Hosi1215morph5exact15exact__quotient
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph5exact20tiny__gcd__magnitude.isra.0
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph5exact6negate
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph6binary10from__bits
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph6binary15increment__bits
+0.001   0.68  0.001   0.68   _M0FP37Hosi1215morph6tensor11coordinates
+0.001   0.68  0.003   2.04   _M0FP37Hosi1215morph6tensor21diagonal__coordinates
+0.001   0.68  0.114  77.55   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalEC5986l98
+0.001   0.68  0.001   0.68   _M0IP37Hosi1215morph4core3NatPB2Eq5equal
+0.001   0.68  0.001   0.68   _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph4core3NatE
+0.001   0.68  0.001   0.68   _mi_deferred_free
+0.001   0.68  0.001   0.68   scan_regular_object
+0.      0.    0.147 100.00   <static>@0x2a145 (<libc.so.6>)
+0.      0.    0.026  17.69   _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.001   0.68   _M0FP37Hosi1215morph5exact14common__factor
+0.      0.    0.002   1.36   _M0FP37Hosi1215morph5exact17integer__quotient
+0.      0.    0.004   2.72   _M0FP37Hosi1215morph5exact23rational__add_2edyncall
+0.      0.    0.026  17.69   _M0FP37Hosi1215morph5exact28rational__multiply_2edyncall
+0.      0.    0.008   5.44   _M0FP37Hosi1215morph6binary10stein__gcd
+0.      0.    0.113  76.87   _M0FP37Hosi1215morph6tensor10sum__termsGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.027  18.37   _M0FP37Hosi1215morph6tensor16concatenate__mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.116  78.91   _M0FP37Hosi1215morph6tensor16tabulate__resultGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.026  17.69   _M0FP37Hosi1215morph6tensor7productGRP37Hosi1215morph5exact8RationalEC5968l300
+0.      0.    0.116  78.91   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.109  74.15   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalEC5993l99

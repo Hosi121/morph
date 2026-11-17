@@ -1,0 +1,30 @@
+{
+  "baseline-source.tar.gz": {
+    "bytes": 1346067,
+    "sha256": "3514b88cecfa6559012c217b1695f8b6764bf70d885eaeb0572adb75093668e6"
+  },
+  "baseline.c.gz": {
+    "bytes": 145077,
+    "sha256": "2cc1a15a11596b41cb637df2af3e2a2e3e172e39e7a44b06ea4bd7a7ca48797f"
+  },
+  "baseline.exe": {
+    "bytes": 645256,
+    "sha256": "4d26230d584e8fb34eefb20b08f109c6b0b39fe86148c7f25d2e8eec1114e268"
+  },
+  "candidate-source.tar.gz": {
+    "bytes": 1348183,
+    "sha256": "fc676f60fa16dc243556d345d4349218ede235ebdb1725e53418f0bc6b45d535"
+  },
+  "candidate.c.gz": {
+    "bytes": 149882,
+    "sha256": "2f5c247f67cf829d968c67e6eaaa3e9f00d956b86354e265a7a0ce74bfa058c0"
+  },
+  "candidate.exe": {
+    "bytes": 648872,
+    "sha256": "8ba1a927d8a2052b67e314b36fd75035883651a781bc0b310ddd3e73bb8d9334"
+  },
+  "profile-experiments.tar.gz": {
+    "bytes": 9705383,
+    "sha256": "bf0aeb7b5ab206416c887d0e84822c82796dda731b49a0f48187bc8e29d1c1e0"
+  }
+}

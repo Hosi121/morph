@@ -1,0 +1,23 @@
+Print limit set to 40
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl. Total   Incl. Total    Name
+CPU           CPU
+ sec.      %   sec.      %
+0.006 100.00  0.006 100.00   <Total>
+0.002  33.33  0.002  33.33   _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGbE
+0.001  16.67  0.002  33.33   _M0FP37Hosi1215morph5exact15exact__quotient
+0.001  16.67  0.001  16.67   _M0FP37Hosi1215morph6binary8multiply
+0.001  16.67  0.001  16.67   mi_free
+0.001  16.67  0.002  33.33   moonbit_drop_object
+0.      0.    0.002  33.33   <static>@0x2a145 (<libc.so.6>)
+0.      0.    0.003  50.00   _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.001  16.67   _M0FP37Hosi1215morph5exact17integer__quotient
+0.      0.    0.003  50.00   _M0FP37Hosi1215morph5exact28rational__multiply_2edyncall
+0.      0.    0.003  50.00   _M0FP37Hosi1215morph6tensor16concatenate__mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.001  16.67   _M0FP37Hosi1215morph6tensor24cursor__contract__prefixGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.003  50.00   _M0FP37Hosi1215morph6tensor7productGRP37Hosi1215morph5exact8RationalEC6089l300
+0.      0.    0.002  33.33   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.001  16.67   _M0IP37Hosi1215morph4core5ChainPB2Eq5equalGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.002  33.33   __libc_start_main
+0.      0.    0.006 100.00   main

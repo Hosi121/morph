@@ -1,0 +1,30 @@
+Print limit set to 40
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl. Total   Incl. Total    Name
+CPU           CPU
+ sec.      %   sec.      %
+0.013 100.00  0.013 100.00   <Total>
+0.006  46.15  0.006  46.15   _mi_page_malloc_zero
+0.004  30.77  0.004  30.77   mi_free
+0.001   7.69  0.001   7.69   _M0FP37Hosi1215morph5exact15exact__quotient
+0.001   7.69  0.002  15.38   _M0FP37Hosi1215morph6tensor21diagonal__coordinates
+0.001   7.69  0.001   7.69   mi_malloc
+0.      0.    0.013 100.00   <static>@0x2a145 (<libc.so.6>)
+0.      0.    0.005  38.46   _M0FP37Hosi1215morph4core3add
+0.      0.    0.002  15.38   _M0FP37Hosi1215morph4core3mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.001   7.69   _M0FP37Hosi1215morph5exact23rational__add_2edyncall
+0.      0.    0.001   7.69   _M0FP37Hosi1215morph5exact28rational__multiply_2edyncall
+0.      0.    0.001   7.69   _M0FP37Hosi1215morph5exact3add
+0.      0.    0.010  76.92   _M0FP37Hosi1215morph6tensor10sum__termsGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.002  15.38   _M0FP37Hosi1215morph6tensor16concatenate__mapGRP37Hosi1215morph5exact8RationalRP37Hosi1215morph5exact8RationalE
+0.      0.    0.011  84.62   _M0FP37Hosi1215morph6tensor16tabulate__resultGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.006  46.15   _M0FP37Hosi1215morph6tensor2atGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.002  15.38   _M0FP37Hosi1215morph6tensor7productGRP37Hosi1215morph5exact8RationalEC5968l300
+0.      0.    0.011  84.62   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalE
+0.      0.    0.011  84.62   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalEC5986l98
+0.      0.    0.008  61.54   _M0FP37Hosi1215morph6tensor8contractGRP37Hosi1215morph5exact8RationalEC5993l99
+0.      0.    0.011  84.62   _M0FP37Hosi1215morph6tensor8traverseGRP37Hosi1215morph4core5ChainGRP37Hosi1215morph4core3NatERP37Hosi1215morph5exact8RationalE
+0.      0.    0.013 100.00   __libc_start_main
+0.      0.    0.013 100.00   main
+0.      0.    0.003  23.08   moonbit_drop_object
