@@ -14,6 +14,8 @@ pub fn check_composition(Kernel, Kernel, Kernel) -> Bool
 
 pub fn check_evolution(Kernel, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Bool
 
+pub fn check_hitting(Kernel, @core.Chain[@core.Nat], Hitting) -> Bool
+
 pub fn check_stationary(Kernel, @core.Chain[@exact.Rational]) -> Bool
 
 pub fn check_stationary_family(Kernel, StationaryFamily) -> Bool
@@ -23,6 +25,18 @@ pub fn compose(Kernel, Kernel) -> Result[Kernel, MarkovError]
 pub fn evolve(Kernel, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], MarkovError]
 
 pub fn evolve_steps(Kernel, @core.Chain[@exact.Rational], @binary.Binary) -> Result[@core.Chain[@exact.Rational], MarkovError]
+
+pub fn expected_hitting_times(Hitting) -> @core.Chain[HittingTime]
+
+pub fn hitting(Kernel, @core.Chain[@core.Nat]) -> Result[Hitting, MarkovError]
+
+pub fn hitting_kernel(Hitting) -> Kernel
+
+pub fn hitting_paths(Hitting) -> @core.Chain[@core.Chain[@core.Nat]?]
+
+pub fn hitting_probabilities(Hitting) -> @core.Chain[@exact.Rational]
+
+pub fn hitting_targets(Hitting) -> @core.Chain[@core.Nat]
 
 pub fn identity(@core.Nat) -> Result[Kernel, MarkovError]
 
@@ -49,6 +63,27 @@ pub fn unique_stationary(Kernel) -> Result[@core.Chain[@exact.Rational], MarkovE
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Hitting {
+  context : Kernel
+  targets : @core.Chain[Bool]
+  chances : @core.Chain[@exact.Rational]
+  times : @core.Chain[HittingTime]
+  paths : @core.Chain[@core.Chain[@core.Nat]?]
+}
+pub fn Hitting::equal(Self, Self) -> Bool
+pub fn Hitting::not_equal(Self, Self) -> Bool
+pub fn Hitting::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum HittingTime {
+  Finite(@exact.Rational)
+  Infinite
+}
+pub fn HittingTime::equal(Self, Self) -> Bool
+pub fn HittingTime::not_equal(Self, Self) -> Bool
+pub fn HittingTime::to_repr(Self) -> @debug.Repr
+
 #derive(Eq, @debug.Debug)
 pub struct Kernel {
   transition : @matrix.Matrix[@exact.Rational]
