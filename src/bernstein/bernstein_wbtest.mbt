@@ -108,7 +108,9 @@ test "bound checker rejects original-source, box, coefficient, tensor and bound 
   let other_box = test_box([(@oracle.rational(-1, 1), @oracle.rational(1, 1))])
   assert_false(check_bound(p, other_box, c))
   assert_false(check_bound(p, box, { ..c, source: different, }))
+  assert_false(check_bound(different, box, { ..c, source: different, }))
   assert_false(check_bound(p, box, { ..c, box: other_box, }))
+  assert_false(check_bound(p, other_box, { ..c, box: other_box, }))
   assert_false(check_bound(p, box, { ..c, lower: @oracle.rational(1, 8), }))
   assert_false(check_bound(p, box, { ..c, upper: @oracle.rational(1, 1), }))
   assert_false(check_bound(p, box, { ..c, degrees: degree(3), }))
@@ -347,5 +349,107 @@ test "certificate tree checks source, claim, exact partition coverage, axis and 
       }
     }
     _ => abort("split tree")
+  }
+}
+
+///|
+test "bivariate longest-side subdivision covers four quarter boxes" {
+  let p = test_poly(2, [
+    (@oracle.rational(1, 1), [2, 0]),
+    (@oracle.rational(-1, 1), [1, 0]),
+    (@oracle.rational(1, 1), [0, 2]),
+    (@oracle.rational(-1, 1), [0, 1]),
+    (@oracle.rational(5, 8), [0, 0]),
+  ])
+  let box = test_box([
+    (@oracle.rational(0, 1), @oracle.rational(1, 1)),
+    (@oracle.rational(0, 1), @oracle.rational(1, 1)),
+  ])
+  let degrees = @oracle.chain([@oracle.nat(2), @oracle.nat(2)])
+  let initial = required(bound(p, box, degrees))
+  assert_eq(initial.lower, @oracle.rational(-3, 8))
+  let outcome = required(certify(p, box, degrees, Positive, @oracle.nat(3)))
+  assert_true(check_outcome(p, box, Positive, outcome))
+  let state = match outcome {
+    Certified(state) => state
+    _ => abort("four quarters")
+  }
+  assert_eq(
+    tree_counts(state.tree),
+    (@oracle.nat(4), @oracle.nat(3), @oracle.nat(0)),
+  )
+  match state.tree {
+    Split(_, x, Split(_, yleft, _, _), Split(_, yright, _, _)) => {
+      assert_eq(x, @oracle.nat(0))
+      assert_eq(yleft, @oracle.nat(1))
+      assert_eq(yright, @oracle.nat(1))
+    }
+    _ => abort("expected longest-axis choices")
+  }
+}
+
+///|
+test "dyadic interior zero can certify nonnegativity after splitting" {
+  let p = test_poly(1, [(@oracle.rational(1, 1), [2])])
+  let box = test_box([(@oracle.rational(-1, 1), @oracle.rational(1, 1))])
+  let outcome = required(
+    certify(p, box, degree(2), Nonnegative, @oracle.nat(1)),
+  )
+  assert_true(check_outcome(p, box, Nonnegative, outcome))
+  assert_true(
+    match outcome {
+      Certified(_) => true
+      _ => false
+    },
+  )
+  let strict = required(certify(p, box, degree(2), Positive, @oracle.nat(0)))
+  assert_true(check_outcome(p, box, Positive, strict))
+  match strict {
+    Counterexample(state, witness) => {
+      assert_eq(witness.point, @oracle.chain([@oracle.rational(0, 1)]))
+      assert_false(
+        check_outcome(
+          p,
+          box,
+          Positive,
+          Counterexample(state, { ..witness, value: @oracle.rational(1, 1), }),
+        ),
+      )
+    }
+    _ => abort("strict zero witness")
+  }
+}
+
+///|
+test "zero constants, negative constants and empty-dimensional domain" {
+  let zero = @poly.zero(@oracle.nat(1))
+  let nonnegative = required(
+    certify(zero, unit_box(), degree(0), Nonnegative, @oracle.nat(0)),
+  )
+  assert_true(check_outcome(zero, unit_box(), Nonnegative, nonnegative))
+  assert_true(
+    match nonnegative {
+      Certified(_) => true
+      _ => false
+    },
+  )
+  let strict = required(
+    certify(zero, unit_box(), degree(0), Positive, @oracle.nat(0)),
+  )
+  assert_true(
+    match strict {
+      Counterexample(_, _) => true
+      _ => false
+    },
+  )
+  assert_true(check_outcome(zero, unit_box(), Positive, strict))
+  let negative = test_poly(0, [(@oracle.rational(-1, 3), [])])
+  let result = required(
+    certify(negative, @core.Nil, @core.Nil, Nonnegative, @oracle.nat(0)),
+  )
+  assert_true(check_outcome(negative, @core.Nil, Nonnegative, result))
+  match result {
+    Counterexample(_, witness) => assert_eq(witness.point, @core.Nil)
+    _ => abort("empty-dimensional constant witness")
   }
 }

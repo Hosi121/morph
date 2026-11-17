@@ -28,7 +28,7 @@ pub extend CertificateTree with Eq::{equal, not_equal}
 pub extend CertificateTree with Debug::{to_repr}
 
 ///|
-/// Public resumable state. resume validates all fields and the entire existing
+/// Public resumable state. resume_search validates all fields and the entire existing
 /// tree, including every certified leaf, before trusting a supplied state.
 #derive(Eq, Debug)
 pub(all) struct SearchState {
