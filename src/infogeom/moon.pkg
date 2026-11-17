@@ -1,0 +1,11 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/probability",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/linear",
+}
+
+import {
+  "Hosi121/morph/testsupport" @oracle,
+} for "wbtest"
