@@ -1,0 +1,115 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/presentation"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/smith",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Abelianization) -> Certificate
+
+pub fn check(Presentation, Certificate) -> Bool
+
+pub fn check_result(Presentation, Abelianization, Certificate) -> Bool
+
+pub fn checked_presentation(@core.Nat, @core.Chain[@core.Chain[Letter]]) -> Presentation?
+
+pub fn cokernel(Abelianization) -> @smith.Cokernel
+
+pub fn decomposition(Abelianization) -> @smith.Decomposition
+
+pub fn exponent_sums(Presentation, @core.Chain[Letter]) -> @core.Chain[@exact.Integer]?
+
+pub fn finite_order(Abelianization) -> @binary.Binary?
+
+pub fn free_rank(Abelianization) -> @core.Nat
+
+pub fn from_certificate(Presentation, Certificate) -> Abelianization?
+
+pub fn generator_count(Presentation) -> @core.Nat
+
+pub fn inverse_word(@core.Chain[Letter]) -> @core.Chain[Letter]
+
+pub fn reduce_word(@core.Chain[Letter]) -> @core.Chain[Letter]
+
+pub fn relation_matrix(Presentation) -> @matrix.Matrix[@exact.Integer]
+
+pub fn relators(Presentation) -> @core.Chain[@core.Chain[Letter]]
+
+pub fn run(State, @core.Nat) -> Status
+
+pub fn source(Abelianization) -> Presentation
+
+pub fn start(Presentation) -> State
+
+pub fn torsion_factors(Abelianization) -> @core.Chain[@binary.Binary]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Abelianization {
+  // private fields
+}
+pub fn Abelianization::equal(Self, Self) -> Bool
+pub fn Abelianization::not_equal(Self, Self) -> Bool
+pub fn Abelianization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  generators : @core.Nat
+  relators : @core.Chain[@core.Chain[Letter]]
+  relations : @matrix.Matrix[@exact.Integer]
+  left : @matrix.Matrix[@exact.Integer]
+  diagonal : @matrix.Matrix[@exact.Integer]
+  right : @matrix.Matrix[@exact.Integer]
+  free : @core.Nat
+  torsion : @core.Chain[@binary.Binary]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Letter {
+  generator : @core.Nat
+  inverse : Bool
+}
+pub fn Letter::equal(Self, Self) -> Bool
+pub fn Letter::not_equal(Self, Self) -> Bool
+pub fn Letter::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Presentation {
+  // private fields
+}
+pub fn Presentation::equal(Self, Self) -> Bool
+pub fn Presentation::not_equal(Self, Self) -> Bool
+pub fn Presentation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  // private fields
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Status {
+  Done(Abelianization, Certificate)
+  Paused(State)
+  Fault(State)
+}
+pub fn Status::equal(Self, Self) -> Bool
+pub fn Status::not_equal(Self, Self) -> Bool
+pub fn Status::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
