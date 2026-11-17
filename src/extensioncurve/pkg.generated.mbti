@@ -1,0 +1,89 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/extensioncurve"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/galois",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn add(Point, Point) -> Result[Point, CurveError]
+
+pub fn check_point(Point) -> Bool
+
+pub fn coefficients(Curve) -> (@galois.Element, @galois.Element)
+
+pub fn coordinates(Point) -> Result[Coordinates, CurveError]
+
+pub fn curve(@galois.Field, @galois.Element, @galois.Element) -> Result[Curve, CurveError]
+
+pub fn double(Point) -> Result[Point, CurveError]
+
+pub fn equal(Point, Point) -> Result[Bool, CurveError]
+
+pub fn field(Curve) -> @galois.Field
+
+pub fn infinity(Curve) -> Point
+
+pub fn is_infinity(Point) -> Bool
+
+pub fn negate(Point) -> Point
+
+pub fn normalize(Point) -> Result[Point, CurveError]
+
+pub fn parent(Point) -> Curve
+
+pub fn point(Curve, @galois.Element, @galois.Element) -> Result[Point, CurveError]
+
+pub fn same_curve(Curve, Curve) -> Bool
+
+pub fn scale(Point, @binary.Binary) -> Result[Point, CurveError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Coordinates {
+  AtInfinity
+  Affine(@galois.Element, @galois.Element)
+}
+pub fn Coordinates::equal(Self, Self) -> Bool
+pub fn Coordinates::not_equal(Self, Self) -> Bool
+pub fn Coordinates::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Curve {
+  field : @galois.Field
+  a : @galois.Element
+  b : @galois.Element
+}
+pub fn Curve::equal(Self, Self) -> Bool
+pub fn Curve::not_equal(Self, Self) -> Bool
+pub fn Curve::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CurveError {
+  FieldMismatch
+  DifferentCurve
+  UnsupportedCharacteristic
+  SingularCurve
+  InvalidPoint
+  FieldFailure(@galois.FieldError)
+}
+pub fn CurveError::equal(Self, Self) -> Bool
+pub fn CurveError::not_equal(Self, Self) -> Bool
+pub fn CurveError::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Point {
+  curve : Curve
+  x : @galois.Element
+  y : @galois.Element
+  z : @galois.Element
+}
+pub fn Point::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
