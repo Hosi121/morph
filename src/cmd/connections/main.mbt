@@ -389,9 +389,30 @@ fn galois_demo() -> Unit {
 }
 
 ///|
+/// Node supplies both its executable and script path; native and moonrun
+/// supply one program prefix. Keep this host detail outside symbolic kernels.
+#cfg(target="js")
+fn argument_prefix() -> Int32 {
+  2
+}
+
+///|
+#cfg(not(target="js"))
+fn argument_prefix() -> Int32 {
+  1
+}
+
+///|
 fn main {
   let args = @env.args()
-  let mode = if args.length() > 1 { args[1] } else { "all" }
+  let prefix = argument_prefix()
+  let mode = if args.length() <= prefix {
+    "all"
+  } else if args.length() == prefix + 1 {
+    args[prefix]
+  } else {
+    abort("expected at most one mode argument")
+  }
   match mode {
     "groups" => group_demo()
     "bernstein" => bernstein_demo()
