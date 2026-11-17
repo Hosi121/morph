@@ -21,6 +21,7 @@
 | 実数の不等式と量化を扱う | [実数制約の入口](docs/handbook/real-constraints.md#入出力から入口を選ぶ) → [CAD・量化消去](docs/handbook/real-constraints.md#任意変数のcadと実閉体の量化消去) / [非線形SMT](docs/handbook/real-constraints.md#非線形実数smtへ接続する) |
 | 別の分野へ部品をつなぐ | [置換群・不等式・整数ホモロジー](docs/handbook/connections.md) |
 | 図形の変化と符号をつなぐ | [持続ホモロジー・誘導写像・CSS符号](docs/handbook/topology.md) |
+| 穴の積・部分空間・簡約を調べる | [コホモロジー環・相対群・単体崩壊](docs/handbook/cohomology-relative-collapse.md) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
 環境の準備とコマンドは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
@@ -77,6 +78,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | [実数制約と量化消去](docs/handbook/real-constraints.md) | 実代数的数、多段拡大、CAD、一階の量化消去、量化なしの非線形SMT |
 | [群・不等式・位相の接続](docs/handbook/connections.md) | 導来列と根号可解性、Bernstein包囲と細分、整数ホモロジーとSmith標準形 |
 | [位相と符号](docs/handbook/topology.md) | 有理点群のRips持続性、整数誘導写像、境界からCSS符号・論理商・最小重みへ |
+| [コホモロジー環・相対群・崩壊](docs/handbook/cohomology-relative-collapse.md) | cup積による区別、整数の連結準同型、通常・filtered chain contraction |
 | [線形代数と最適化](docs/handbook/linear-optimization.md) | 半環、Gauss–Jordan、Smith標準形、LLL、単体法、0/1最適化 |
 | [グラフ](docs/handbook/graphs.md) | BFS、Dijkstra、SCC、全域森、最大流、二部マッチング |
 | [論理と制約解決](docs/handbook/logic-constraints.md) | SAT・CDCL、回路、BDD、SMT、exact cover、数独 |

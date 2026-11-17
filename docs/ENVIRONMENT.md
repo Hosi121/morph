@@ -161,6 +161,9 @@ tools/measure --cpu 4 python3 tools/generate_homology_fixtures.py --check
 tools/measure --cpu 4 python3 tools/generate_persistence_fixtures.py --check
 tools/measure --cpu 4 python3 tools/generate_simplicialmap_fixtures.py --check
 tools/measure --cpu 4 python3 tools/generate_csscode_fixtures.py --check
+tools/measure --cpu 4 python3 tools/generate_cohomology_fixtures.py --check
+tools/measure --cpu 4 python3 tools/generate_relativehomology_fixtures.py --check
+tools/measure --cpu 4 python3 tools/generate_collapse_fixtures.py --check
 ```
 
 通常の `tools/check` でもこれらの生成差分を検査します。
@@ -169,3 +172,5 @@ tools/measure --cpu 4 python3 tools/generate_csscode_fixtures.py --check
 持続性では[prefix間のrank invariant](research/persistence-20261117.md)、
 単体写像では[全小頂点写像と整数の向き](research/simplicialmap-20261117.md)、
 CSSでは[bitmaskによる論理商と最小重み](research/csscode-20261117.md)を独立に計算します。
+[cup積のset-span参照](research/cohomology-20261117.md)、[相対鎖と連結写像](research/relativehomology-20261117.md)、
+[崩壊の整数行列](research/collapse-20261117.md)も、独立な有限集合・有理数・数値配列で照合します。

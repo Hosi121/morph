@@ -13,6 +13,7 @@
 | 分解体と群の実行例 | [対称性と中間体](GALOIS_TOUR.txt)・[最小分解体と根置換](SPLITTING_TOUR.txt) |
 | 群・不等式・位相の部品をつなぐ | [分野をまたぐ計算](handbook/connections.md) |
 | 点群・図形の写像・符号をつなぐ | [位相と符号](handbook/topology.md)・[実行例](TOPOLOGY_TOUR.txt) |
+| 同じ穴の数の空間を区別し、相対群・簡約を計算する | [積・相対群・崩壊](handbook/cohomology-relative-collapse.md)・[実行例](TOPOLOGY_RINGS_TOUR.txt) |
 
 ## 設計と限界を読む
 

@@ -17,6 +17,9 @@ python3 tools/generate_homology_fixtures.py --check
 python3 tools/generate_persistence_fixtures.py --check
 python3 tools/generate_simplicialmap_fixtures.py --check
 python3 tools/generate_csscode_fixtures.py --check
+python3 tools/generate_cohomology_fixtures.py --check
+python3 tools/generate_relativehomology_fixtures.py --check
+python3 tools/generate_collapse_fixtures.py --check
 tools/moon fmt --check
 python3 tools/generate_comparison_candidates.py --check
 tools/moon check --deny-warn

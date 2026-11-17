@@ -10,6 +10,7 @@
 QQ多項式から共通体・最小生成体・一生成元へ進み、最小分解体と全Galois作用を自動構成する経路も接続しています。
 有限置換群の導来列へつなぐ根号可解性、箱上のBernstein証明、整数ホモロジーも追加しています。
 位相では、有理点群のRips持続ホモロジー、整数の誘導写像、境界からのCSS符号も接続しています。
+GF(2)のコホモロジー環、整数の相対群と連結写像、持続性を保つ単体崩壊も扱います。
 部品の接続は[厳密代数の計算経路](handbook/algebraic-solving.md)、
 入力・出力・証拠の使い分けは[実数制約の章](handbook/real-constraints.md)、
 確認済みの検査と対象ソースは[検証ガイド](VALIDATION.md)を参照してください。
@@ -35,6 +36,7 @@ QQ多項式から共通体・最小生成体・一生成元へ進み、最小分
 | 単体複体の整数ホモロジー | 整数サイクル格子をSmith基底で表し、自由部分とねじれを得る | [境界・基底・独立照合](research/homology-20261117.md) |
 | 群表示の可換化 | 有限の関係語を指数和行列へ移し、Smith余核で自由部分とねじれを得る | [関係式・独立小行列式・位相との接続](research/presentation-20261117.md) |
 | 持続性・写像・符号 | 有理点群のGF(2)バーコード、整数誘導準同型、CSS論理商と最小重み | [位相と符号](handbook/topology.md)・[探索と検査](research/topology-20261117.md) |
+| コホモロジー環・相対群・崩壊 | cup積表、部分複体に対する整数群と連結準同型、検査可能な簡約 | [積・相対群・単体崩壊](handbook/cohomology-relative-collapse.md)・[探索と検査](research/topology-rings-20261117.md) |
 
 ## 現在の探索経路と残る課題
 
@@ -71,7 +73,7 @@ QQ多項式から共通体・最小生成体・一生成元へ進み、最小分
 | --- | --- | --- |
 | 分解体・Galois群の規模拡大と根号式の構成 | QQ分解、共通体、[最小分解体・完全な群作用](handbook/complex-splitting.md)、[導来列と根号可解性](handbook/connections.md)、[固定体](handbook/galois-fixed-fields.md) | d²の消去と階乗の置換探索、群分類・resolvent、新しい群から固定体へのadapter、根号塔の構成 |
 | 証明を組み合わせる不等式処理 | CAD、根の符号、[Bernstein包囲と細分](handbook/connections.md) | SOS・Positivstellensatz証明の生成、実時間に応じた経路選択、零集合の扱い |
-| 位相の追加不変量 | [整数ホモロジー](handbook/connections.md)、[持続性と誘導写像](handbook/topology.md)、Smith標準形 | コホモロジーのcup積、基本群表示の抽出、複体の簡約、多パラメータ持続性 |
+| 位相の追加不変量 | [持続性と誘導写像](handbook/topology.md)、[cup積・相対群・崩壊](handbook/cohomology-relative-collapse.md)、Smith標準形 | 整数係数のcup積、積のpullback自然性、長完全列の全写像、基本群表示、多パラメータ持続性 |
 | 実代数集合の連結成分と経路 | CAD、実根、実解の一変数表現 | 特異点、セルの接続関係、roadmap |
 | Schoof/SEAの楕円曲線点数計算 | 有限体、拡大体、多項式、楕円曲線、CRT | 除算多項式、torsion、Frobenius作用、traceの復元 |
 

@@ -60,6 +60,9 @@
 | 単体写像・誘導準同型 | [退化と向きを含むchain map](../src/simplicialmap/map.mbt)・[整数Smith座標への誘導写像](../src/simplicialmap/induced.mbt) |
 | 持続ホモロジー | [GF(2)疎列還元と中断・再開](../src/persistence/reduction.mbt)・[変換恒等式とバーコードの検査](../src/persistence/certificate.mbt) |
 | 有理点群の位相 | [二乗距離によるVietoris–Rips filtrationと全単体被覆の検査](../src/rips/rips.mbt) |
+| コホモロジー環 | [完全な二進商基底](../src/cohomology/cohomology.mbt)・[Alexander–Whitney cup積](../src/cohomology/cup.mbt)・[全次数の積表](../src/cohomology/ring.mbt) |
+| 相対ホモロジー | [部分複体で割った整数群](../src/relativehomology/homology.mbt)・[連結準同型と境界への下降](../src/relativehomology/connecting.mbt) |
+| 単体崩壊 | [整数chain contractionの検査](../src/collapse/certificate.mbt)・[再開可能な探索](../src/collapse/search.mbt)・[gradeを保つ簡約](../src/filteredcollapse/filtered.mbt) |
 
 <a id="symbolic-computation"></a>
 
