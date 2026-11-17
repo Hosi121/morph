@@ -295,17 +295,14 @@ pub fn canonical_columns(
   source_left_inverse : @matrix.Matrix[@exact.Integer],
 ) -> @matrix.Matrix[@exact.Integer]? {
   fn normalize(
-    form : @smith.Decomposition,
+    group : @smith.Cokernel,
     columns : @core.Chain[@core.Chain[@exact.Integer]],
   ) -> @core.Chain[@core.Chain[@exact.Integer]]? {
     match columns {
       Nil => Some(Nil)
       Cons(column, rest) =>
         match
-          (
-            @smith.class_coordinates(@smith.cokernel(form), column),
-            normalize(form, rest),
-          ) {
+          (@smith.class_coordinates(group, column), normalize(group, rest)) {
           (Some(column), Some(rest)) => Some(Cons(column, rest))
           _ => None
         }
@@ -313,8 +310,15 @@ pub fn canonical_columns(
   }
   match @matrix.multiply(cycle_map, source_left_inverse, integers()) {
     None => None
-    Some(lift) =>
-      match normalize(target_image, @matrix.rows(@matrix.transpose(lift))) {
+    Some(lift) => {
+      let columns = @matrix.rows(@matrix.transpose(lift))
+      // Empty products retain the old path without preparing a cokernel.
+      let normalized : @core.Chain[@core.Chain[@exact.Integer]]? = match
+        columns {
+        Nil => Some(Nil)
+        Cons(_, _) => normalize(@smith.cokernel(target_image), columns)
+      }
+      match normalized {
         None => None
         Some(columns) =>
           match @matrix.matrix(@matrix.height(lift), columns) {
@@ -322,5 +326,6 @@ pub fn canonical_columns(
             Some(rows) => Some(@matrix.transpose(rows))
           }
       }
+    }
   }
 }
