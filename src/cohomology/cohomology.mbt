@@ -110,14 +110,25 @@ fn incoming(
 }
 
 ///|
-fn rank_witness(input : @matrix.Matrix[Bool]) -> @csscode.RankWitness? {
-  match @matrix.matrix(@matrix.width(input), Nil) {
+fn factor_witness(factor : @gf2.Factorization) -> @csscode.RankWitness? {
+  match @gf2.certificate(factor) {
     None => None
-    Some(empty) =>
-      match @csscode.validate(input, empty) {
-        None => None
-        Some(code) => Some(@csscode.certificate(code).x_rank)
-      }
+    Some(proof) =>
+      Some({
+        source: proof.source,
+        reduced: proof.reduced,
+        transform: proof.transform,
+        inverse_transform: proof.inverse_transform,
+        pivots: proof.pivots,
+      })
+  }
+}
+
+///|
+fn rank_witness(input : @matrix.Matrix[Bool]) -> @csscode.RankWitness? {
+  match @gf2.factor(input) {
+    None => None
+    Some(factor) => factor_witness(factor)
   }
 }
 
@@ -241,95 +252,79 @@ pub fn validate_certificate(
 ///|
 /// Compute ker(delta_k)/im(delta_(k-1)), preserving explicit representatives.
 pub fn compute(source : @homology.Complex, degree : @core.Nat) -> Cohomology? {
-  match (coboundary(source, degree), incoming(source, degree)) {
-    (Some(delta), Some(previous)) =>
-      match (rank_witness(delta), rank_witness(previous)) {
-        (Some(outgoing_rank), Some(incoming_rank)) => {
-          let n = @matrix.width(delta)
-          let zero = @core.replicate(@matrix.height(delta), false)
-          let kernel = match @rowreduce.solve(@csscode.field(), delta, zero) {
-            Some(Affine(_, basis)) => Some(basis)
-            Some(Unique(_)) => Some(Nil)
-            _ => None
-          }
-          match (kernel, select_columns(previous, incoming_rank.pivots)) {
-            (Some(kernel), Some(boundaries)) =>
-              match @matrix.matrix(n, @core.append(boundaries, kernel)) {
-                None => None
-                Some(candidates) =>
-                  match rank_witness(@matrix.transpose(candidates)) {
-                    None => None
-                    Some(cycle_rank) =>
-                      match
-                        select_columns(
-                          @matrix.transpose(candidates),
-                          cycle_rank.pivots,
-                        ) {
-                        None => None
-                        Some(cycles) => {
-                          let unit = @matrix.identity(n, @csscode.scalars())
-                          match select_columns(unit, outgoing_rank.pivots) {
-                            None => None
-                            Some(complement) =>
-                              match
-                                @matrix.matrix(
-                                  n,
-                                  @core.append(cycles, complement),
-                                ) {
-                                None => None
-                                Some(rows) => {
-                                  let basis = @matrix.transpose(rows)
-                                  match
-                                    @rowreduce.inverse(@csscode.field(), basis) {
-                                    None => None
-                                    Some(inverse_basis) =>
-                                      match
-                                        @matrix.multiply(
-                                          inverse_basis,
-                                          previous,
-                                          @csscode.scalars(),
-                                        ) {
-                                        None => None
-                                        Some(incoming_coordinates) => {
-                                          let representatives = @core.drop(
-                                            @core.length(boundaries),
-                                            cycles,
-                                          )
-                                          let result = Group::{
-                                            rank: @core.length(representatives),
-                                            coboundaries: boundaries,
-                                            representatives,
-                                          }
-                                          let witness = Certificate::{
-                                            source,
-                                            degree,
-                                            result,
-                                            outgoing_rank,
-                                            incoming_rank,
-                                            basis,
-                                            inverse_basis,
-                                            incoming_coordinates,
-                                          }
-                                          validate_certificate(
-                                            source, degree, result, witness,
-                                          )
-                                        }
-                                      }
-                                  }
-                                }
-                              }
-                          }
-                        }
-                      }
-                  }
-              }
-            _ => None
-          }
-        }
-        _ => None
-      }
-    _ => None
+  let (delta, previous) = match
+    (coboundary(source, degree), incoming(source, degree)) {
+    (Some(a), Some(b)) => (a, b)
+    _ => return None
   }
+  let (outgoing_factor, incoming_factor) = match
+    (@gf2.factor(delta), @gf2.factor(previous)) {
+    (Some(a), Some(b)) => (a, b)
+    _ => return None
+  }
+  let (outgoing_rank, incoming_rank) = match
+    (factor_witness(outgoing_factor), factor_witness(incoming_factor)) {
+    (Some(a), Some(b)) => (a, b)
+    _ => return None
+  }
+  // Reuse the actual reduction for the nullspace, without another elimination.
+  let kernel = @gf2.nullspace_factor(outgoing_factor)
+  let boundaries = match select_columns(previous, incoming_rank.pivots) {
+    Some(value) => value
+    None => return None
+  }
+  let n = @matrix.width(delta)
+  let candidates = match @matrix.matrix(n, @core.append(boundaries, kernel)) {
+    Some(value) => @matrix.transpose(value)
+    None => return None
+  }
+  let cycle_rank = match rank_witness(candidates) {
+    Some(value) => value
+    None => return None
+  }
+  let cycles = match select_columns(candidates, cycle_rank.pivots) {
+    Some(value) => value
+    None => return None
+  }
+  let complement = match
+    select_columns(
+      @matrix.identity(n, @csscode.scalars()),
+      outgoing_rank.pivots,
+    ) {
+    Some(value) => value
+    None => return None
+  }
+  let basis = match @matrix.matrix(n, @core.append(cycles, complement)) {
+    Some(value) => @matrix.transpose(value)
+    None => return None
+  }
+  let inverse_basis = match @gf2.inverse(basis) {
+    Some(value) => value
+    None => return None
+  }
+  let incoming_coordinates = match
+    @matrix.multiply(inverse_basis, previous, @csscode.scalars()) {
+    Some(value) => value
+    None => return None
+  }
+  let representatives = @core.drop(@core.length(boundaries), cycles)
+  let result = Group::{
+    rank: @core.length(representatives),
+    coboundaries: boundaries,
+    representatives,
+  }
+  let witness = Certificate::{
+    source,
+    degree,
+    result,
+    outgoing_rank,
+    incoming_rank,
+    basis,
+    inverse_basis,
+    incoming_coordinates,
+  }
+  // Keep the original generic matrix checker as an independent trust boundary.
+  validate_certificate(source, degree, result, witness)
 }
 
 ///|

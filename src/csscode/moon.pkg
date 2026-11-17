@@ -5,6 +5,7 @@ import {
   "Hosi121/morph/algebra",
   "Hosi121/morph/matrix",
   "Hosi121/morph/rowreduce",
+  "Hosi121/morph/gf2",
   "Hosi121/morph/homology",
 }
 

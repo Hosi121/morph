@@ -146,62 +146,24 @@ pub fn check_rank(input : @matrix.Matrix[Bool], witness : RankWitness) -> Bool {
 
 ///|
 fn rank_witness(input : @matrix.Matrix[Bool]) -> RankWitness? {
-  let n = @matrix.width(input)
-  let h = @matrix.height(input)
-  let identity = @matrix.identity(h, scalars())
-  match @core.zip(@matrix.rows(input), @matrix.rows(identity)) {
+  match @gf2.factor(input) {
     None => None
-    Some(pairs) =>
-      match
-        @matrix.matrix(
-          @core.add(n, h),
-          @core.map(pairs, fn(pair) {
-            let (row, unit) = pair
-            @core.append(row, unit)
-          }),
-        ) {
+    Some(factor) =>
+      match @gf2.certificate(factor) {
         None => None
-        Some(augmented) =>
-          match @rowreduce.rref(field(), augmented) {
-            None => None
-            Some(reduction) => {
-              let rows = @matrix.rows(reduction.matrix)
-              match
-                (
-                  @matrix.matrix(
-                    n,
-                    @core.map(rows, fn(row) { @core.take(n, row) }),
-                  ),
-                  @matrix.matrix(
-                    h,
-                    @core.map(rows, fn(row) { @core.drop(n, row) }),
-                  ),
-                ) {
-                (Some(reduced), Some(transform)) =>
-                  match
-                    (
-                      @rowreduce.inverse(field(), transform),
-                      canonical_pivots(reduced),
-                    ) {
-                    (Some(inverse_transform), Some(pivots)) => {
-                      let witness = RankWitness::{
-                        source: input,
-                        reduced,
-                        transform,
-                        inverse_transform,
-                        pivots,
-                      }
-                      match check_rank(input, witness) {
-                        true => Some(witness)
-                        false => None
-                      }
-                    }
-                    _ => None
-                  }
-                _ => None
-              }
-            }
+        Some(proof) => {
+          let witness = RankWitness::{
+            source: proof.source,
+            reduced: proof.reduced,
+            transform: proof.transform,
+            inverse_transform: proof.inverse_transform,
+            pivots: proof.pivots,
           }
+          match check_rank(input, witness) {
+            true => Some(witness)
+            false => None
+          }
+        }
       }
   }
 }
