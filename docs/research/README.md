@@ -11,6 +11,9 @@
 
 | 記録 | 保存している内容 |
 | --- | --- |
+| [商を作らない正規形](night-normal-form-20261117.md) | 余り専用の多変数還元、独立Fraction・旧divideと上位Buchbergerの比較 |
+| [Fpの正規化済みHorner](night-evaluation-20261117.md) | 任意長の評価点・定数・listdecodeと共有検査の限界 |
+| [GF(2)消去の走査融合](night-gf2-elimination-20261117.md) | 最初の不採用、参照カウントを調整した再試作と小さい回帰 |
 | [夜間の共通部品改善](night-kernels-20261117.md) | 固定法乗算、Fpスカラー、GF(2)零空間の採否と反証された前提 |
 | [固定法の余り専用計算](night-nf-20261117.md) | 数体の準備費用・一回利用・複素平方の比較 |
 | [正規係数の積とスカラー共有](night-fp-20261117.md) | 任意のpublic scalarを保つ内部境界と有限体の対照 |
