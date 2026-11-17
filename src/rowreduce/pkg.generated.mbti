@@ -12,9 +12,15 @@ pub fn[A] determinant(Field[A], @matrix.Matrix[A]) -> A?
 
 pub fn[A] inverse(Field[A], @matrix.Matrix[A]) -> @matrix.Matrix[A]?
 
+pub fn[A] inverse_with_zero(Field[A], (A) -> Bool, @matrix.Matrix[A]) -> @matrix.Matrix[A]?
+
 pub fn[A] rref(Field[A], @matrix.Matrix[A]) -> Reduction[A]?
 
+pub fn[A] rref_with_zero(Field[A], (A) -> Bool, @matrix.Matrix[A]) -> Reduction[A]?
+
 pub fn[A] solve(Field[A], @matrix.Matrix[A], @core.Chain[A]) -> Solution[A]?
+
+pub fn[A] solve_with_zero(Field[A], (A) -> Bool, @matrix.Matrix[A], @core.Chain[A]) -> Solution[A]?
 
 // Errors
 

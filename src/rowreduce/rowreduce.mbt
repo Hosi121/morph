@@ -85,8 +85,21 @@ fn[A] eliminate(
   basis : @core.Chain[A],
   column : @core.Nat,
 ) -> @core.Chain[A] {
-  match (@core.nth(row, column), @core.zip(row, basis)) {
-    (Some(factor), Some(cells)) =>
+  match @core.nth(row, column) {
+    Some(factor) => subtract_row(field, row, basis, factor)
+    None => row
+  }
+}
+
+///|
+fn[A] subtract_row(
+  field : Field[A],
+  row : @core.Chain[A],
+  basis : @core.Chain[A],
+  factor : A,
+) -> @core.Chain[A] {
+  match @core.zip(row, basis) {
+    Some(cells) =>
       @core.map(cells, fn(cell) {
         let (old, pivot) = cell
         (field.subtract)(old, (field.multiply)(factor, pivot))
@@ -99,6 +112,36 @@ fn[A] eliminate(
 /// Gauss-Jordan elimination with a supplied exact field dictionary and row pivoting.
 /// None is an internal shape guard; every checked Matrix should return Some.
 pub fn[A] rref(field : Field[A], input : @matrix.Matrix[A]) -> Reduction[A]? {
+  rref_using(field, input, fn(row, basis, column) {
+    eliminate(field, row, basis, column)
+  })
+}
+
+///|
+/// Input and operations must use canonical field values, and the predicate must
+/// recognize field zero exactly. Rows with a zero elimination
+/// coefficient are reused without rebuilding their cells. No Eq constraint or
+/// extra inverse calls are imposed on the field dictionary.
+pub fn[A] rref_with_zero(
+  field : Field[A],
+  is_zero : (A) -> Bool,
+  input : @matrix.Matrix[A],
+) -> Reduction[A]? {
+  rref_using(field, input, fn(row, basis, column) {
+    match @core.nth(row, column) {
+      Some(factor) if is_zero(factor) => row
+      Some(factor) => subtract_row(field, row, basis, factor)
+      None => row
+    }
+  })
+}
+
+///|
+fn[A] rref_using(
+  field : Field[A],
+  input : @matrix.Matrix[A],
+  eliminate_row : (@core.Chain[A], @core.Chain[A], @core.Nat) -> @core.Chain[A],
+) -> Reduction[A]? {
   fn reduce(
     rows : @core.Chain[@core.Chain[A]],
     todo : @core.Nat,
@@ -115,7 +158,7 @@ pub fn[A] rref(field : Field[A], input : @matrix.Matrix[A]) -> Reduction[A]? {
               (field.multiply)(x, inverse)
             })
             let below = @core.map(others, fn(row) {
-              eliminate(field, row, normalized, column)
+              eliminate_row(row, normalized, column)
             })
             let (lower_rows, lower_pivots, lower_factor) = reduce(
               below,
@@ -129,7 +172,7 @@ pub fn[A] rref(field : Field[A], input : @matrix.Matrix[A]) -> Reduction[A]? {
             ) -> @core.Chain[A] {
               match (bases, pivots) {
                 (Cons(basis, bt), Cons(pivot, pt)) =>
-                  clear_above(eliminate(field, row, basis, pivot), bt, pt)
+                  clear_above(eliminate_row(row, basis, pivot), bt, pt)
                 _ => row
               }
             }
@@ -199,6 +242,36 @@ pub fn[A] solve(
   a : @matrix.Matrix[A],
   b : @core.Chain[A],
 ) -> Solution[A]? {
+  solve_using(field, a, b, fn(input) { rref(field, input) }, fn(x) {
+    nonzero(field, x) is None
+  })
+}
+
+///|
+/// Exact-zero-aware solve; uses the same pivot and free-variable ordering as solve.
+pub fn[A] solve_with_zero(
+  field : Field[A],
+  is_zero : (A) -> Bool,
+  a : @matrix.Matrix[A],
+  b : @core.Chain[A],
+) -> Solution[A]? {
+  solve_using(
+    field,
+    a,
+    b,
+    fn(input) { rref_with_zero(field, is_zero, input) },
+    is_zero,
+  )
+}
+
+///|
+fn[A] solve_using(
+  field : Field[A],
+  a : @matrix.Matrix[A],
+  b : @core.Chain[A],
+  reduce : (@matrix.Matrix[A]) -> Reduction[A]?,
+  is_zero : (A) -> Bool,
+) -> Solution[A]? {
   let n = @matrix.width(a)
   match @core.zip(@matrix.rows(a), b) {
     None => None
@@ -210,25 +283,16 @@ pub fn[A] solve(
       match @matrix.matrix(Succ(n), augmented) {
         None => None
         Some(matrix) =>
-          match rref(field, matrix) {
+          match reduce(matrix) {
             None => None
             Some(reduced) => {
               let zero = field.zero
               let contradictory = @core.any(@matrix.rows(reduced.matrix), fn(
                 row,
               ) {
-                let left_zero = @core.all(@core.take(n, row), fn(x) {
-                  match nonzero(field, x) {
-                    None => true
-                    Some(_) => false
-                  }
-                })
+                let left_zero = @core.all(@core.take(n, row), is_zero)
                 match (@core.nth(row, n), left_zero) {
-                  (Some(rhs), true) =>
-                    match nonzero(field, rhs) {
-                      Some(_) => true
-                      None => false
-                    }
+                  (Some(rhs), true) => !is_zero(rhs)
                   _ => false
                 }
               })
@@ -311,6 +375,27 @@ pub fn[A] inverse(
   field : Field[A],
   input : @matrix.Matrix[A],
 ) -> @matrix.Matrix[A]? {
+  inverse_using(field, input, fn(matrix) { rref(field, matrix) })
+}
+
+///|
+/// Exact-zero-aware inverse, with the same singular and shape guards as inverse.
+pub fn[A] inverse_with_zero(
+  field : Field[A],
+  is_zero : (A) -> Bool,
+  input : @matrix.Matrix[A],
+) -> @matrix.Matrix[A]? {
+  inverse_using(field, input, fn(matrix) {
+    rref_with_zero(field, is_zero, matrix)
+  })
+}
+
+///|
+fn[A] inverse_using(
+  field : Field[A],
+  input : @matrix.Matrix[A],
+  reduce : (@matrix.Matrix[A]) -> Reduction[A]?,
+) -> @matrix.Matrix[A]? {
   let n = @matrix.width(input)
   match @core.compare(@matrix.height(input), n) {
     Equal => {
@@ -336,7 +421,7 @@ pub fn[A] inverse(
             ) {
             None => None
             Some(augmented) =>
-              match rref(field, augmented) {
+              match reduce(augmented) {
                 None => None
                 Some(reduced) =>
                   match @core.zip(reduced.pivots, columns) {

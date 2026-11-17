@@ -33,7 +33,7 @@ pub extend Reduction with Debug::{to_repr}
 
 ///|
 pub fn rref(input : @matrix.Matrix[@exact.Rational]) -> Reduction? {
-  match @rowreduce.rref(arithmetic(), input) {
+  match @rowreduce.rref_with_zero(arithmetic(), is_zero, input) {
     None => None
     Some(reduction) =>
       Some({
@@ -74,7 +74,7 @@ pub fn solve(
   a : @matrix.Matrix[@exact.Rational],
   b : @core.Chain[@exact.Rational],
 ) -> Solution? {
-  match @rowreduce.solve(arithmetic(), a, b) {
+  match @rowreduce.solve_with_zero(arithmetic(), is_zero, a, b) {
     None => None
     Some(Unique(solution)) => Some(Unique(solution))
     Some(Affine(particular, basis)) => Some(Affine(particular, basis))
@@ -86,5 +86,10 @@ pub fn solve(
 pub fn inverse(
   input : @matrix.Matrix[@exact.Rational],
 ) -> @matrix.Matrix[@exact.Rational]? {
-  @rowreduce.inverse(arithmetic(), input)
+  @rowreduce.inverse_with_zero(arithmetic(), is_zero, input)
+}
+
+///|
+fn is_zero(value : @exact.Rational) -> Bool {
+  @binary.is_zero(@exact.magnitude(@exact.numerator(value)))
 }
