@@ -14,23 +14,59 @@ fn row_for(
 }
 
 ///|
+/// Both internal callers supply increasing canonical RREF pivots.
+/// Both cursors increase: a pivot passed once never needs another scan.
+fn free_columns(
+  columns : @core.Chain[@core.Nat],
+  pairs : @core.Chain[(@core.Nat, @core.Chain[Bool])],
+) -> @core.Chain[@core.Nat] {
+  match (columns, pairs) {
+    (Nil, _) => Nil
+    (_, Nil) => columns
+    (Cons(column, rest), Cons((pivot, _), tail)) =>
+      match @core.compare(column, pivot) {
+        Less => Cons(column, free_columns(rest, pairs))
+        Equal => free_columns(rest, tail)
+        Greater => free_columns(columns, tail)
+      }
+  }
+}
+
+///|
+fn nullspace_vector(
+  columns : @core.Chain[@core.Nat],
+  pairs : @core.Chain[(@core.Nat, @core.Chain[Bool])],
+  free_column : @core.Nat,
+) -> @core.Chain[Bool] {
+  match (columns, pairs) {
+    (Nil, _) => Nil
+    (Cons(column, rest), Nil) =>
+      Cons(column.equal(free_column), nullspace_vector(rest, Nil, free_column))
+    (Cons(column, rest), Cons((pivot, row), tail)) =>
+      match @core.compare(column, pivot) {
+        Less =>
+          Cons(
+            column.equal(free_column),
+            nullspace_vector(rest, pairs, free_column),
+          )
+        Equal =>
+          Cons(
+            @core.nth(row, free_column).equal(Some(true)),
+            nullspace_vector(rest, tail, free_column),
+          )
+        Greater => nullspace_vector(columns, tail, free_column)
+      }
+  }
+}
+
+///|
 fn nullspace(
   width : @core.Nat,
   pairs : @core.Chain[(@core.Nat, @core.Chain[Bool])],
 ) -> @core.Chain[@core.Chain[Bool]] {
   let columns = @core.indices(width)
-  let free = @core.filter(columns, fn(column) { row_for(pairs, column) is None })
-  @core.map(free, fn(free_column) {
-    @core.map(columns, fn(column) {
-      match @core.compare(column, free_column) {
-        Equal => true
-        _ =>
-          match row_for(pairs, column) {
-            None => false
-            Some(row) => @core.nth(row, free_column).equal(Some(true))
-          }
-      }
-    })
+  @core.map(free_columns(columns, pairs), fn(free_column) {
+    nullspace_vector(columns, pairs, free_column)
   })
 }
 
