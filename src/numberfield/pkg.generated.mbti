@@ -98,6 +98,7 @@ pub fn Element::to_repr(Self) -> @debug.Repr
 pub struct Field {
   proof : @realminimal.Certificate
   degree : @core.Nat
+  // private fields
 }
 pub fn Field::to_repr(Self) -> @debug.Repr
 

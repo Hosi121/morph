@@ -20,6 +20,7 @@ pub extend FieldError with Debug::{to_repr}
 pub struct Field {
   proof : @minimal.Certificate
   degree : @core.Nat
+  priv reduction : @poly.Polynomial
 }
 
 ///|
@@ -76,7 +77,12 @@ pub fn field(
         Cons({ exponents: Cons(d, Nil), .. }, _) =>
           match d {
             Zero => Err(InvalidCertificate)
-            Succ(_) => Ok({ proof, degree: d, })
+            Succ(_) =>
+              Ok({
+                proof,
+                degree: d,
+                reduction: @poly.negate(@poly.monic(proof.result.polynomial)),
+              })
           }
         _ => Err(InvalidCertificate)
       }
@@ -210,6 +216,10 @@ pub fn multiply(a : Element, b : Element) -> Result[Element, FieldError] {
   }
   match @poly.multiply(a.residue, b.residue) {
     Err(_) => Err(InternalInvariant)
-    Ok(value) => element(a.field, value)
+    Ok(product) =>
+      match prepared_remainder(product, a.field.reduction, a.field.degree) {
+        Err(error) => Err(error)
+        Ok(residue) => Ok({ field: a.field, residue, })
+      }
   }
 }
