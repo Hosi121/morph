@@ -1,0 +1,123 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/bernstein"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn bound(@polynomial.Polynomial, @core.Chain[Axis], @core.Chain[@core.Nat]) -> Result[BoundCertificate, BernsteinError]
+
+pub fn certify(@polynomial.Polynomial, @core.Chain[Axis], @core.Chain[@core.Nat], Relation, @core.Nat) -> Result[Outcome, BernsteinError]
+
+pub fn check_bound(@polynomial.Polynomial, @core.Chain[Axis], BoundCertificate) -> Bool
+
+pub fn check_outcome(@polynomial.Polynomial, @core.Chain[Axis], Relation, Outcome) -> Bool
+
+pub fn check_witness(@polynomial.Polynomial, @core.Chain[Axis], Relation, Witness) -> Bool
+
+pub fn resume_search(SearchState, @core.Nat) -> Result[Outcome, BernsteinError]
+
+pub fn tree_counts(CertificateTree) -> (@core.Nat, @core.Nat, @core.Nat)
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Axis {
+  lower : @exact.Rational
+  upper : @exact.Rational
+}
+pub fn Axis::equal(Self, Self) -> Bool
+pub fn Axis::not_equal(Self, Self) -> Bool
+pub fn Axis::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum BernsteinError {
+  DimensionMismatch
+  DegenerateBox
+  InsufficientDegree
+  InvalidCertificate
+}
+pub fn BernsteinError::equal(Self, Self) -> Bool
+pub fn BernsteinError::not_equal(Self, Self) -> Bool
+pub fn BernsteinError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct BoundCertificate {
+  source : @polynomial.Polynomial
+  box : @core.Chain[Axis]
+  degrees : @core.Chain[@core.Nat]
+  coefficients : @core.Chain[Coefficient]
+  lower : @exact.Rational
+  upper : @exact.Rational
+}
+pub fn BoundCertificate::equal(Self, Self) -> Bool
+pub fn BoundCertificate::not_equal(Self, Self) -> Bool
+pub fn BoundCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum CertificateTree {
+  Open(@core.Chain[Axis])
+  Leaf(BoundCertificate)
+  Split(@core.Chain[Axis], @core.Nat, CertificateTree, CertificateTree)
+}
+pub fn CertificateTree::equal(Self, Self) -> Bool
+pub fn CertificateTree::not_equal(Self, Self) -> Bool
+pub fn CertificateTree::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Coefficient {
+  index : @core.Chain[@core.Nat]
+  value : @exact.Rational
+}
+pub fn Coefficient::equal(Self, Self) -> Bool
+pub fn Coefficient::not_equal(Self, Self) -> Bool
+pub fn Coefficient::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Outcome {
+  Certified(SearchState)
+  Counterexample(SearchState, Witness)
+  Paused(SearchState)
+}
+pub fn Outcome::equal(Self, Self) -> Bool
+pub fn Outcome::not_equal(Self, Self) -> Bool
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Relation {
+  Nonnegative
+  Positive
+}
+pub fn Relation::equal(Self, Self) -> Bool
+pub fn Relation::not_equal(Self, Self) -> Bool
+pub fn Relation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct SearchState {
+  source : @polynomial.Polynomial
+  box : @core.Chain[Axis]
+  degrees : @core.Chain[@core.Nat]
+  relation : Relation
+  tree : CertificateTree
+}
+pub fn SearchState::equal(Self, Self) -> Bool
+pub fn SearchState::not_equal(Self, Self) -> Bool
+pub fn SearchState::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Witness {
+  point : @core.Chain[@exact.Rational]
+  value : @exact.Rational
+}
+pub fn Witness::equal(Self, Self) -> Bool
+pub fn Witness::not_equal(Self, Self) -> Bool
+pub fn Witness::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
