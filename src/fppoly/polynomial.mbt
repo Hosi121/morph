@@ -625,18 +625,23 @@ pub fn derivative(value : Polynomial) -> Polynomial {
 
 ///|
 pub fn evaluate(value : Polynomial, point : @binary.Binary) -> @binary.Binary {
+  // Empty and constant polynomials never need to inspect an arbitrary point.
+  match value.coefficients {
+    Nil => return @binary.zero()
+    Cons(coefficient, Nil) => return coefficient
+    _ => ()
+  }
+  let modulus = @primefield.modulus(value.field)
+  let point = @modular.reduce(modulus, point)
   fn horner(coefficients : @core.Chain[@binary.Binary]) -> @binary.Binary {
     match coefficients {
       Nil => @binary.zero()
+      Cons(coefficient, Nil) => coefficient
       Cons(coefficient, rest) =>
-        @modular.add(
-          @primefield.modulus(value.field),
+        add_reduced(
+          modulus,
           coefficient,
-          @modular.multiply(
-            @primefield.modulus(value.field),
-            point,
-            horner(rest),
-          ),
+          multiply_reduced(modulus, point, horner(rest)),
         )
     }
   }
