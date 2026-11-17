@@ -168,7 +168,15 @@ fn fixture(mode : String) -> (Array[Array[Bool]], Int32, Int32) {
           }
         })
       })
-      (rows, 32, if mode == "dense" || mode == "solve-reuse" { 2000 } else { 500 })
+      (
+        rows,
+        32,
+        if mode == "dense" || mode == "solve-reuse" {
+          2000
+        } else {
+          500
+        },
+      )
     }
     _ => abort("unknown matrix fixture")
   }
