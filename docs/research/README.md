@@ -16,6 +16,8 @@
 | [拡大体上の楕円曲線](extension-curves-20261118.md) | Jacobian座標、体と曲線の文脈、独立affine参照の全点対・三つ組 |
 | [点での微分幾何](riemann-20261118.md) | 計量jetの検査、接続と曲率、独立Fraction参照 |
 | [高階テンソルの共通部品](tensor-20261118.md) | shape・置換・縮約・mode product、零次元と演算辞書 |
+| [多項式の微分形式](forms-20261118.md) | 外積と外微分、次数と符号、縮約とCartanのLie微分 |
+| [Gaussianの厳密モーメント](gaussian-20261118.md) | Stein再帰・不変memoization、独立Wick pairingとの照合 |
 | [有限Markov連鎖](markov-20261118.md) | 確率核・時間発展の規約、検査と独立参照 |
 
 ## 体の算法とカーネル
