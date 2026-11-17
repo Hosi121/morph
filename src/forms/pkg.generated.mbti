@@ -10,6 +10,8 @@ import {
 // Values
 pub fn add(Form, Form) -> Result[Form, FormError]
 
+pub fn contract(VectorField, Form) -> Result[Form?, FormError]
+
 pub fn degree(Form) -> @core.Nat
 
 pub fn exterior_derivative(Form) -> Result[Form, FormError]
@@ -18,6 +20,8 @@ pub fn form(@core.Nat, @core.Nat, @core.Chain[Term]) -> Result[Form, FormError]
 
 pub fn is_zero(Form) -> Bool
 
+pub fn lie_derivative(VectorField, Form) -> Result[Form, FormError]
+
 pub fn negate(Form) -> Form
 
 pub fn scalar(@polynomial.Polynomial) -> Form
@@ -25,6 +29,12 @@ pub fn scalar(@polynomial.Polynomial) -> Form
 pub fn terms(Form) -> @core.Chain[Term]
 
 pub fn variables(Form) -> @core.Nat
+
+pub fn vector_components(VectorField) -> @core.Chain[@polynomial.Polynomial]
+
+pub fn vector_field(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[VectorField, FormError]
+
+pub fn vector_variables(VectorField) -> @core.Nat
 
 pub fn wedge(Form, Form) -> Result[Form, FormError]
 
@@ -66,6 +76,15 @@ pub(all) struct Term {
 pub fn Term::equal(Self, Self) -> Bool
 pub fn Term::not_equal(Self, Self) -> Bool
 pub fn Term::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct VectorField {
+  variables : @core.Nat
+  components : @core.Chain[@polynomial.Polynomial]
+}
+pub fn VectorField::equal(Self, Self) -> Bool
+pub fn VectorField::not_equal(Self, Self) -> Bool
+pub fn VectorField::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

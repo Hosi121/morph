@@ -56,6 +56,25 @@ def wedge(a,b):
     return normalize([(multiply_poly(p,q),i+j) for i,p in a.items() for j,q in b.items()])
 
 
+def contract(a,vector):
+    return normalize([( {e:q*(-1 if position%2 else 1) for e,q in multiply_poly(p,vector[index]).items()},
+                        key[:position]+key[position+1:])
+                      for key,p in a.items() for position,index in enumerate(key)])
+
+
+def lie_direct(a,vector,n):
+    """Coordinate formula, independent of production Cartan d/i composition."""
+    raw = []
+    for key,p in a.items():
+        directional = {}
+        for i in range(n): directional = add_poly(directional,multiply_poly(vector[i],differentiate_poly(p,i)))
+        raw.append((directional,key))
+        for position,index in enumerate(key):
+            for j in range(n):
+                raw.append((multiply_poly(p,differentiate_poly(vector[index],j)),key[:position]+(j,)+key[position+1:]))
+    return normalize(raw)
+
+
 def render_poly(p):
     return "["+", ".join(f"({q.numerator}, {q.denominator}, {list(e)})" for e,q in sorted(p.items(),reverse=True))+"]"
 
@@ -100,14 +119,27 @@ def render():
                     lines += ["///|",f'test "Fraction wedge and graded identities {wedge_count}" {{',
                               f"  fraction_wedge_fixture({n}, {p}, {q}, {raw_text(a)}, {raw_text(b)}, {form_text(expected)})","}",""]
                     wedge_count += 1
-    return "\n".join(lines),len(cases),wedge_count
+    cartan_count = 0
+    for n in range(5):
+        for k in range(n+2):
+            for _ in range(3):
+                raw = random_raw(rng,n,k)
+                vector = [poly([(Q(rng.randrange(-3,4),rng.choice([1,2,3])),[rng.randrange(3) for _ in range(n)])
+                                for _ in range(2)]) for _ in range(n)]
+                a = normalize(raw)
+                interior = "None" if not k else "Some("+form_text(contract(a,vector))+")"
+                vector_source = "["+", ".join(render_poly(p) for p in vector)+"]"
+                lines += ["///|",f'test "Fraction contraction and direct coordinate Lie {cartan_count}" {{',
+                          f"  fraction_cartan_fixture({n}, {k}, {raw_text(raw)}, {vector_source}, {interior}, {form_text(lie_direct(a,vector,n))})","}",""]
+                cartan_count += 1
+    return "\n".join(lines),len(cases),wedge_count,cartan_count
 
 
 def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument("--check",action="store_true")
     args = parser.parse_args()
-    source,normalizations,wedges = render()
+    source,normalizations,wedges,cartan = render()
     formatter = ROOT / ".tools/moon/bin/moonfmt"
     executable = str(formatter) if formatter.exists() else shutil.which("moonfmt")
     if executable is None: raise SystemExit("moonfmt required for reproducible fixtures")
@@ -116,7 +148,7 @@ def main():
         if not OUTPUT.is_file() or OUTPUT.read_text()!=source: raise SystemExit("Forms Fraction fixture drift: "+str(OUTPUT))
     else:
         OUTPUT.parent.mkdir(parents=True,exist_ok=True); OUTPUT.write_text(source)
-    print(f"{normalizations} exact normalizations/derivatives and {wedges} wedges with graded identities.")
+    print(f"{normalizations} exact normalizations/derivatives, {wedges} wedges, {cartan} contractions/direct Lie results.")
 
 
 if __name__ == "__main__": main()
