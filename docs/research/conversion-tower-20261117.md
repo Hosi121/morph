@@ -10,7 +10,7 @@ The initial variant (`81f7667`, measured snapshot `47e0aad`) returns `(q_rep, on
 
 For depth h, source Representation constructor calls change from 2^(h+1)-1 to 2h+1 (heights 0..4: old 1/3/7/15/31, candidate 1/3/5/7/9). Source Cons calls change from 2^(h+1)-2 to 2h. The first variant also creates transient tuples, confirmed in generated C; the follow-up eliminates that helper/type. These are construction facts, not measured heap savings or whole-operation complexity: structural Eq, Debug and exact sign/checker computations can still revisit both logical branches. Peak RAM, allocations and retained heap were not measured.
 
-raw.mbt, including raw_one and raw_multiply equality order, all other arithmetic, checkers, Field/context data and public interfaces remain byte-identical throughout. Both patches touch only api.mbt. The final production difference is empty.
+raw.mbt, including raw_one and raw_multiply equality order, all other arithmetic, checkers, Field/context data and public interfaces remain byte-identical throughout. Both losslessly compressed patches touch only api.mbt; decompress before git apply. The final production difference is empty.
 
 ## Correctness and frozen public cases
 
@@ -54,7 +54,7 @@ The initial tuple variant has weak deep-only improvement and negative shallow/se
 
 After restoring the baseline production code, realtower passes native, wasm-gc and JS: **101/101 each**, with deny-warn. Scoped all-target static check passes (45 tasks); API info passes (27 tasks) and realtower's generated public interface is byte-identical. Formatting and the independent generator --check pass; global purity passes 333 production kernel files; formal drift passes 32 reviewed regions and explicitly is not a translation proof. Root owns broader integration checks; this worker does not rerun unrelated package graphs.
 
-Reproduce by building baseline a63dcbc and either applying the corresponding api-only patch or checking out the measured snapshot, copying the same frozen towerconstantbench files to both dedicated trees, and saving each native release ELF before another build. Use tools/measure --cpu 4 with moon build/test -j1 (moon info has no jobs option). Then run tools/compare_field_kernels.py with the six frozen case names and --groups 5. Exact original driver arguments, source/executable/harness hashes, compiler/platform strings, all block medians/ranges and raw/gzip checksums are in the summary and raw reports.
+Reproduce by building baseline a63dcbc and either decompressing and applying the corresponding api-only patch or checking out the measured snapshot, copying the same frozen towerconstantbench files to both dedicated trees, and saving each native release ELF before another build. Use tools/measure --cpu 4 with moon build/test -j1 (moon info has no jobs option). Then run tools/compare_field_kernels.py with the six frozen case names and --groups 5. Exact original driver arguments, source/executable/harness hashes, compiler/platform strings, all block medians/ranges and raw/gzip checksums are in the summary and raw reports.
 
 | Variant | Measured source | Source manifest SHA-256 | ELF SHA-256 |
 |---|---|---|---|
@@ -67,7 +67,7 @@ Evidence:
 - [Initial full checked raw, gzip](conversion-tower-20261117-initial.json.gz) and [follow-up full checked raw, gzip](conversion-tower-20261117-followup.json.gz).
 - [Summary, all block ratios, source/ELF/harness and raw/gzip hashes](conversion-tower-20261117-summary.json).
 - [Validation receipt](conversion-tower-20261117-validation.json) and [full validation logs](conversion-tower-20261117-validation.txt).
-- [Initial production-only patch](conversion-tower-20261117-initial.patch) and [follow-up production-only patch](conversion-tower-20261117-followup.patch).
+- [Initial production-only patch](conversion-tower-20261117-initial.patch.gz) and [follow-up production-only patch](conversion-tower-20261117-followup.patch.gz).
 - [Zero-sample protocol report](conversion-tower-20261117-protocol-v0.json.gz) and [protocol error log](conversion-tower-20261117-protocol-v0.txt).
 - [Independent Fraction generator](../../tools/generate_tower_constant_fixtures.py); root may register its --check in the shared gate.
 

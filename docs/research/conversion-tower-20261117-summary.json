@@ -777,5 +777,19 @@
       "bytes": 3764401,
       "sha256": "39cd2fed6c5f8c69d2c1e7fc26048af8a62f8eec5f77323189bbc3adecfa23e4"
     }
+  },
+  "production_patches": {
+    "initial": {
+      "path": "conversion-tower-20261117-initial.patch.gz",
+      "raw_bytes": 1173,
+      "raw_sha256": "b1f13ac2b3475d356ac226bcdd423a52bd04bf7d1d6a85d76c0d1adeefc91fd3",
+      "gzip_sha256": "3eac373513346cd93c2fec50e823bf1735645d4fbc0a373c092159c43e3f8c7c"
+    },
+    "followup": {
+      "path": "conversion-tower-20261117-followup.patch.gz",
+      "raw_bytes": 884,
+      "raw_sha256": "72f2b1b6418e556d489f5f511ca46eac97d6360f930ac38653359b95f14254cc",
+      "gzip_sha256": "d539b087f2499891954e813035efb09a7f830f3df0e894733c2bf280d6379954"
+    }
   }
 }
