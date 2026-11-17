@@ -45,6 +45,18 @@
 | CADの根を加える表現 | cadのlifting・証人再構成 | [同一根を持つ低次数atom](research/cad-20261116.md)。unionの被覆は維持し、定義次数を抑える。同条件の三段平方根1例で6.517/6.487 s→1.300/1.301 s。別の改善倍率とは合成しない |
 | 一変数多項式の評価 | 公開polynomial.evaluate→Sturm・実数制約・実代数計算 | [疎Horner](research/sparse-horner-20261116.md)。同じnative ELFの密な6評価2.51→0.336 ms、実数制約の次数8例1.59→0.490 s。√2の小例は横ばい。JSにも局所改善、WasmGCの短い対照は揺れが大きい。独立QQと降順を前提にしたLeanモデル |
 
+## 数体と増分線形従属
+
+| 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
+| --- | --- | --- |
+| 数体の正規代表元 | numberfield.add/subtract | [次数の界限](research/nf-kernels-20261117.md)で再簡約を省く。統合後の公開APIは次数1/4で1.455/1.262倍。体の一致検査と乗算の簡約は維持 |
+| 一回の座標抽出 | numberfield・complexfield・乗算行列 | [整列項の走査](research/algorithm-kernels-20261117.md)。座標3例は2.535〜4.368倍、乗算行列は1.234倍 |
+| 不変なQQ span | 数体・複素数体の最小多項式、FGLM | [新しい列だけを還元](research/incremental-span-20261117.md)。統合後の最小多項式は1.258〜1.607倍、FGLMは1.166/1.379倍。検査器を維持しFractionと旧系で照合 |
+| Smithの直接列操作 | Smith→整数ホモロジー・商群など | [転置を省く](research/structural-kernels-20261117.md)。統合後の小・長方形・密行列は1.060/1.560/1.069倍。旧U/D/V・燃料遷移とも一致 |
+
+[統合後440試行](research/algorithm-kernels-20261117.md)は起動・入力・結果検査を含むnative releaseの比較です。
+数体乗算の対照には約3.5%の時間増加もあります。すべての経路で速くなるとは主張しません。
+
 ## 体上の消去と再利用
 
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
@@ -73,6 +85,7 @@
 
 ## 採用しなかった候補と独立実装
 
+- [持続性のpivot索引二案](research/structural-kernels-20261117.md)は、常時・必要時構築とも安定した改善がなく、不採用です。本体とAPIを基準へ復元しました。
 - [全加算器の12候補](bootstrap/adder-search.md)は、全8条件の等価性をLeanでも確認しましたが、実測で遅いため通常の式を変更していません。
 - [一般剰余への追加比較と複素三積](research/field-kernels-20261117.md)は、対照の回帰があり不採用です。複素積は本体を変更していません。
 - [長語除算の追加実験](research/wide-kernels/README.md)は、JSのスタック制約を避けてもnative剰余が悪化するため未採用です。

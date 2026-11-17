@@ -15,6 +15,21 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 数体・線形従属・Smithの統合比較
+
+[五候補の採否](research/algorithm-kernels-20261117.md)を、元の基準と四機構を採用した統合コードで比較しました。
+同じCLI、native release、CPU4、共有ロック、5組のABBA、全結果・検査込みです。
+
+| 系列 | 入力・試行数 | 全生値 |
+| --- | --- | --- |
+| 数体の加減算・座標・乗算行列・対照 | 8入力・160プロセス | [統合後](measurements/algorithm-kernels-nfkernelbench-20261117.json) |
+| 最小多項式・FGLM | 8入力・160プロセス | [統合後](measurements/algorithm-kernels-spanbench-20261117.json) |
+| Smith・復元した持続性の対照 | 6入力・120プロセス | [統合後](measurements/algorithm-kernels-structuralbench-20261117.json) |
+
+担当ごとの段階比較と不採用索引も[数体](research/nf-kernels-20261117.md)、
+[増分従属](research/incremental-span-20261117.md)、[構造改善](research/structural-kernels-20261117.md)へ残しています。
+全体のプロセス時間と内側の演算・検査時間は区別します。数体乗算の対照は比0.966で、回帰も記録しています。
+
 ## Fp多項式の正規形を利用する比較
 
 [既存ADTの界限を使う加算・符号反転](research/canonical-fp-20261117.md)を、

@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：123パッケージ、325ソース。
-核のテスト宣言：4362、bench group：212。
+算法の核：124パッケージ、327ソース。
+核のテスト宣言：4388、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -40,7 +40,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [complexautomorphism](../src/complexautomorphism) | 2 | 10 | 0 | `complexfield`, `core`, `numberfield` |
 | [complexcompositum](../src/complexcompositum) | 3 | 16 | 0 | `complexalgebraic`, `complexfield`, `compositum`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `realminimal`, `zassenhaus` |
 | [complexfactor](../src/complexfactor) | 3 | 16 | 0 | `binary`, `complexroots`, `core`, `exact`, `polynomial`, `zassenhaus` |
-| [complexfield](../src/complexfield) | 5 | 27 | 0 | `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
+| [complexfield](../src/complexfield) | 5 | 28 | 0 | `core`, `exact`, `linear`, `linearspan`, `matrix`, `numberfield`, `polynomial` |
 | [complexprimitive](../src/complexprimitive) | 2 | 11 | 0 | `algebra`, `complexfield`, `core`, `exact`, `linear`, `matrix`, `numberfield`, `polynomial` |
 | [complexroots](../src/complexroots) | 5 | 23 | 0 | `binary`, `complexalgebraic`, `core`, `exact`, `polynomial`, `realalgebraic`, `realvariety`, `sturm`, `tarski` |
 | [complexsplitting](../src/complexsplitting) | 3 | 13 | 0 | `complexalgebraic`, `complexcompositum`, `complexfactor`, `complexfield`, `complexroots`, `complexsubfield`, `compositum`, `core`, `cubicradical`, `polynomial`, `zassenhaus` |
@@ -63,7 +63,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [f4](../src/f4) | 3 | 71 | 0 | `core`, `exact`, `groebner`, `linear`, `matrix`, `polynomial`, `sorting` |
 | [factor](../src/factor) | 3 | 17 | 4 | `binary`, `core`, `modular`, `primality` |
 | [fft](../src/fft) | 1 | 3 | 0 | `core` |
-| [fglm](../src/fglm) | 4 | 89 | 0 | `core`, `exact`, `f4`, `heap`, `linear`, `matrix`, `polynomial`, `sorting` |
+| [fglm](../src/fglm) | 4 | 90 | 0 | `core`, `exact`, `f4`, `heap`, `linearspan`, `polynomial`, `sorting` |
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
@@ -79,6 +79,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [huffman](../src/huffman) | 1 | 2 | 0 | `binary`, `core`, `heap` |
 | [infer](../src/infer) | 1 | 4 | 0 | `core`, `unify` |
 | [linear](../src/linear) | 1 | 6 | 0 | `bareiss`, `binary`, `core`, `exact`, `matrix`, `rowreduce` |
+| [linearspan](../src/linearspan) | 1 | 17 | 0 | `core`, `exact` |
 | [listdecode](../src/listdecode) | 6 | 39 | 0 | `binary`, `core`, `fppoly`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [lll](../src/lll) | 5 | 9 | 4 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix`, `smith` |
 | [lz78](../src/lz78) | 1 | 3 | 0 | `binary`, `bitcodec`, `core`, `trie` |
@@ -87,11 +88,11 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [modular](../src/modular) | 3 | 5 | 0 | `algebra`, `binary`, `core`, `exact` |
 | [mucalc](../src/mucalc) | 5 | 153 | 0 | `core`, `parity` |
 | [ntt](../src/ntt) | 1 | 3 | 0 | `binary`, `core`, `fft`, `modular` |
-| [numberfield](../src/numberfield) | 5 | 139 | 1 | `core`, `exact`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `realminimal`, `sturm`, `zassenhaus` |
+| [numberfield](../src/numberfield) | 6 | 142 | 1 | `core`, `exact`, `linear`, `linearspan`, `matrix`, `polynomial`, `realalgebraic`, `realminimal`, `sturm`, `zassenhaus` |
 | [orderedsturm](../src/orderedsturm) | 5 | 48 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `sturm`, `tarski` |
 | [parity](../src/parity) | 4 | 7 | 0 | `core` |
 | [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
-| [persistence](../src/persistence) | 4 | 7 | 0 | `core`, `exact` |
+| [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
 | [polynomial](../src/polynomial) | 2 | 4 | 8 | `binary`, `core`, `exact` |
 | [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
@@ -123,7 +124,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [signcad](../src/signcad) | 3 | 9 | 0 | `core`, `polynomial`, `realcad`, `realformula` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |
 | [simplicialmap](../src/simplicialmap) | 3 | 29 | 0 | `algebra`, `binary`, `core`, `exact`, `homology`, `linear`, `matrix`, `smith` |
-| [smith](../src/smith) | 5 | 13 | 3 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix` |
+| [smith](../src/smith) | 5 | 15 | 3 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix` |
 | [smt](../src/smt) | 1 | 5 | 0 | `cdcl`, `core`, `difference`, `sat` |
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |
 | [spanning](../src/spanning) | 1 | 2 | 0 | `binary`, `core`, `graph`, `heap`, `sorting` |
