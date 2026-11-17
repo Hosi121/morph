@@ -1,0 +1,225 @@
+{
+  "utc": "2026-11-17T12:42:12.408027+00:00",
+  "integrated_source": "ffc66b789c6455deed8dbcaa8d4d2503d09212ff",
+  "worktrees": [
+    {
+      "path": "/home/hosi/morph-algo-numberfield",
+      "branch": "perf/algo-numberfield-20261117",
+      "tip": "8fd70eb4a12e86845a220eda79cdde86b03b7770",
+      "status_before": "clean",
+      "patch_equivalence": [
+        "- a2b3655485e9bc4fd6b662a90e6d927abc421f73",
+        "- 48847aa5febd972329f4a4f6512e8c88633f8ac1",
+        "- a1c3f3c14b49b030be07bf8a248d2059106f7430",
+        "- 8fd70eb4a12e86845a220eda79cdde86b03b7770"
+      ],
+      "removed": true
+    },
+    {
+      "path": "/home/hosi/morph-algo-incremental",
+      "branch": "perf/algo-incremental-20261117",
+      "tip": "77cb23f4b05fe6961aadea52cd57c7db97e84ac4",
+      "status_before": "clean",
+      "patch_equivalence": [
+        "- 0e20768fae3ec1f6959488df7f16d1784014c795",
+        "- cf78f53a54221babc7dae5ac0c035c9e48c2784c",
+        "- 871cdb655c35c37c829073384d0235ec10560e8b",
+        "- 3d329088ebb142f06b31007ebd5692fb85320624",
+        "- 77cb23f4b05fe6961aadea52cd57c7db97e84ac4"
+      ],
+      "removed": true
+    },
+    {
+      "path": "/home/hosi/morph-algo-matrix-topology",
+      "branch": "perf/algo-matrix-topology-20261117",
+      "tip": "d1a5c0052b7de91b6d74b54acbae385f4856d104",
+      "status_before": "clean",
+      "patch_equivalence": [
+        "- 031efaf71f05275f21aaed523d52f7b72d19616a",
+        "- c50caea7c1855cdda2abd97e8b32ba18c431419e",
+        "- 9359c7d00c3e274b11f9ee73f443e1daeeaed5bc",
+        "- b2fcb3ce7b225f1a8009c5d28539177bf52eedb7",
+        "- 3674953af7ee639fc9e91cf24f34692072ba8cfb",
+        "- d1a5c0052b7de91b6d74b54acbae385f4856d104"
+      ],
+      "removed": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/nf-addsub.exe",
+      "sha256": "9622010031028d49d809ba5368eb7eef1cc076395e2a6a4312b15351da8cd7b1",
+      "bytes": 837784
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/nf-combined.exe",
+      "sha256": "d286c1b4e7c425e24398236e745993db7af7c11aef6060094fa9e9d6831d8c54",
+      "bytes": 837184
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/nfkernelbench-before.exe",
+      "sha256": "ca8e0279a10c583306fcc8c123cb33a48efd046830ffc54e3feebcf51bf863f4",
+      "bytes": 837632
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/nfkernelbench-integrated-6d6ea94.exe",
+      "sha256": "d31e388feff290c3503f1dd39ba9952e8a0e07e34fac71cfcc291249429112de",
+      "bytes": 837168
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/span-standalone.exe",
+      "sha256": "58a36bcb56bd53bccf7adf2fb784797c922f3c1ef9edc847860556b4f7463747",
+      "bytes": 998232
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/spanbench-before.exe",
+      "sha256": "03b68c1f075293754ffd66dc2f502421a80a8964d39879429f4a07e8b704a9ca",
+      "bytes": 1008184
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/spanbench-integrated-6d6ea94.exe",
+      "sha256": "61b7142ecb57c9d46eb4bf4f5fac45d8f7fee32593be49b905f060e6d63a4e0d",
+      "bytes": 997960
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/eager-source/src/persistence/moon.pkg",
+      "sha256": "90a4fd4e750589b497d3a75114c531671f98f054f9e526f09606843a17072888",
+      "bytes": 147
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/eager-source/src/persistence/pkg.generated.mbti",
+      "sha256": "22c92986d0b30e93a8002481f4fbeaeb2a751f0091e89cee4920d7e5034aaecd",
+      "bytes": 2861
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/eager-source/src/persistence/reduction.mbt",
+      "sha256": "cf743d93d47992728172b4621fc5b166879b2758fd85c053da77a887a641f14d",
+      "bytes": 4215
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/eager-source/src/smith/operations.mbt",
+      "sha256": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+      "bytes": 4875
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/cmd/structuralbench/main.mbt",
+      "sha256": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+      "bytes": 11010
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/cmd/structuralbench/moon.pkg",
+      "sha256": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52",
+      "bytes": 240
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/persistence/moon.pkg",
+      "sha256": "551e03b23de05015164bf73703aa94cada6f0d7c1f4a0d3bc50d76d19465faa9",
+      "bytes": 124
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/persistence/pkg.generated.mbti",
+      "sha256": "cb90a261b0ac72e943a6852d9d2bad7650990d5c7371b9b94f3210cba596f5f7",
+      "bytes": 2750
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/persistence/reduction.mbt",
+      "sha256": "64f7a633abee314de299350e34fca60a911d5e147b0d2fb3833b6efcb10a3e7c",
+      "bytes": 4175
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/persistence/structural_pivots_wbtest.mbt",
+      "sha256": "019b678048a5b03faed08d37206b0d7e6b7a2955db8ed460a129555a97655e0b",
+      "bytes": 4805
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/smith/operations.mbt",
+      "sha256": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+      "bytes": 4875
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source/src/smith/structural_columns_wbtest.mbt",
+      "sha256": "da70abe8eb0bc07c3436b5f8690c06b80a867c1e8917cff9f2fd4d52d999943d",
+      "bytes": 9743
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source/src/persistence/moon.pkg",
+      "sha256": "90a4fd4e750589b497d3a75114c531671f98f054f9e526f09606843a17072888",
+      "bytes": 147
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source/src/persistence/pkg.generated.mbti",
+      "sha256": "8c8049053bd1d0ba5bb2bbe44ad95065b14caec5d7dc8b377f11d3a248508f9c",
+      "bytes": 2862
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source/src/persistence/reduction.mbt",
+      "sha256": "1f9b2449bc6789949180ea6acd029d74c84562d216801be093bb27ff7ef3da26",
+      "bytes": 5754
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source/src/persistence/structural_pivots_wbtest.mbt",
+      "sha256": "16d067d4455d42381f9a8ae9b8df32a7fd6c5600da9e21496a6fbe6f3371a070",
+      "bytes": 5820
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source/src/smith/operations.mbt",
+      "sha256": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+      "bytes": 4875
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-eager-9359c7d.exe",
+      "sha256": "f26c377144f704ce40a13532f23f88eda71bdaddedc29b3acc209b948b608726",
+      "bytes": 717128
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-final-3674953.exe",
+      "sha256": "38afa8f0c0013858a3827bbd14314512705f7d58ff1862fe7ccc7f42d7e41bd8",
+      "bytes": 712280
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-lazy-b2fcb3c.exe",
+      "sha256": "75350f7b6329544e51a5c86ec43ccb68b6f47dbe4cda88dafed40948c44aa4d0",
+      "bytes": 721488
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structuralbench-before.exe",
+      "sha256": "8795e2118e1a40f1d21013cc3713fd142b21e92daf1d8abb52746a5566292be2",
+      "bytes": 711928
+    },
+    {
+      "path": ".tools/algorithm-kernels-20261117/artifacts/structuralbench-integrated-6d6ea94.exe",
+      "sha256": "aa13800259277617f9a2e194eb4728c3f926575e1173678e309137839dfd37b6",
+      "bytes": 712256
+    }
+  ],
+  "bundle": {
+    "path": ".tools/algorithm-kernels-20261117/worker-milestones.bundle",
+    "sha256": "bb65b0bbd631de626ecb2d803d4f3a83cee661186570be1bcc6c83b02791bd41",
+    "verification": "The bundle contains these 4 refs:\nffc66b789c6455deed8dbcaa8d4d2503d09212ff refs/heads/main\n8fd70eb4a12e86845a220eda79cdde86b03b7770 refs/heads/perf/algo-numberfield-20261117\n77cb23f4b05fe6961aadea52cd57c7db97e84ac4 refs/heads/perf/algo-incremental-20261117\nd1a5c0052b7de91b6d74b54acbae385f4856d104 refs/heads/perf/algo-matrix-topology-20261117\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n/home/hosi/morph/.tools/algorithm-kernels-20261117/worker-milestones.bundle is okay\n"
+  },
+  "baseline": {
+    "path": "/home/hosi/morph-algo-before",
+    "commit": "2e33ef5612940efa555c0a3380a0bb34190cd159",
+    "untracked_copies": {
+      "src/cmd/nfkernelbench/main.mbt": "cc00a40e4a7d2470ed124221722e7105914eb3d8d4ef6cf314c9990039d78ea8",
+      "src/cmd/nfkernelbench/moon.pkg": "367bbc9702496bd3d36b48dd866404559ea9b6abb3d19a6cea640bef3840980f",
+      "src/cmd/spanbench/main.mbt": "d59c119b22a6bc8d0cc7265e7225db33e1a482c21ef913ccee7db90fe97a4d14",
+      "src/cmd/spanbench/moon.pkg": "41a4c652ce4d6d2b85e95b63ed3ae24357b9ff261af58d4b6427f39f289c81fa",
+      "src/cmd/structuralbench/main.mbt": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+      "src/cmd/structuralbench/moon.pkg": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52"
+    },
+    "library_invariance_record": ".tools/algorithm-kernels-20261117/baseline-invariance.json",
+    "removed": true
+  },
+  "worker_stage_snapshot": {
+    "path": "/home/hosi/morph-algo-numberfield/.tools/nf-stage1-source",
+    "commit": "48847aa5febd972329f4a4f6512e8c88633f8ac1",
+    "source_manifest_matches": true,
+    "elf_hash_matches": true,
+    "clean_before_remove": true,
+    "removed": true
+  },
+  "remaining_worktrees": [
+    "/home/hosi/morph  ffc66b7 [main]"
+  ]
+}

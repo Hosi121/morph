@@ -1,0 +1,256 @@
+{
+  "contract": {
+    "baseline": "2e33ef5612940efa555c0a3380a0bb34190cd159",
+    "work_base": "93878f2fb57ad965e3cd73f2dd2ce1aaf2b1882d",
+    "objective": "Five code-grounded algorithm optimizations: canonical NF add/sub, coordinate scans, incremental rational dependence, direct Smith column operations, persistence pivot indexing",
+    "constraints": [
+      "pure immutable ADTs; no primitive numerics/arrays/mutation/FFI in kernels",
+      "exact outputs and context binding; keep independent certificate checkers",
+      "public function signatures/errors/certificate contracts retained; nf.coordinates additive API and opaque state cache fields permitted",
+      "shared CPU4 performance lock, -j1 builds; source-to-source public API ABBA with full results/checks",
+      "one pass per listed mechanism; at most one bounded ablation or control follow-up each, then adopt/reject",
+      "commits per milestone, handbook/research, full affected verification, main push and archive/cleanup"
+    ],
+    "workers": {
+      "numberfield": [
+        "src/numberfield/field.mbt",
+        "src/numberfield/coordinates.mbt",
+        "src/numberfield/linear.mbt",
+        "src/complexfield/coordinates.mbt",
+        "new scoped wbtests",
+        "own cmd bench/report/raw"
+      ],
+      "incremental": [
+        "src/linearspan/** new",
+        "src/numberfield/minimal.mbt",
+        "src/complexfield/minimal.mbt",
+        "src/fglm/**",
+        "consumer moon.pkg imports",
+        "own cmd bench/report/raw"
+      ],
+      "matrix_topology": [
+        "src/smith/**",
+        "src/persistence/**",
+        "own cmd bench/report/raw"
+      ]
+    },
+    "frozen_interfaces": [
+      "numberfield.coordinates(Element)->Chain[Rational] now public, identical old body; used by minimal polynomial unchanged",
+      "numberfield.coefficient(Polynomial,Nat)->Rational package-private unchanged signature",
+      "complexfield.coordinates(Element)->Chain[Rational] unchanged signature",
+      "all consumer APIs retain results and checks; new linearspan API owned entirely by incremental worker"
+    ],
+    "budget": {
+      "workers": 3,
+      "mechanisms": 5,
+      "max_cases_per_worker": 8,
+      "blocks": 5,
+      "stop": "each mechanism measured and accepted or rejected, affected validation/documentation/commit/push/cleanup complete"
+    }
+  },
+  "dag": {
+    "nodes": [
+      "shared-coordinate-boundary",
+      "NF-canonical-and-coordinates",
+      "incremental-span-consumers",
+      "smith-and-persistence",
+      "integration",
+      "public-final-comparisons",
+      "validation",
+      "publish-cleanup"
+    ],
+    "edges": [
+      [
+        "shared-coordinate-boundary",
+        "NF-canonical-and-coordinates"
+      ],
+      [
+        "shared-coordinate-boundary",
+        "incremental-span-consumers"
+      ],
+      [
+        "shared-coordinate-boundary",
+        "smith-and-persistence"
+      ],
+      [
+        "NF-canonical-and-coordinates",
+        "integration"
+      ],
+      [
+        "incremental-span-consumers",
+        "integration"
+      ],
+      [
+        "smith-and-persistence",
+        "integration"
+      ],
+      [
+        "integration",
+        "public-final-comparisons"
+      ],
+      [
+        "public-final-comparisons",
+        "validation"
+      ],
+      [
+        "validation",
+        "publish-cleanup"
+      ]
+    ]
+  },
+  "trace": [
+    {
+      "utc": "2026-11-17T12:19:24.893648+00:00",
+      "event": "preflight-boundary",
+      "source": "93878f2fb57ad965e3cd73f2dd2ce1aaf2b1882d",
+      "note": "Moved old NF coordinates body unchanged to public shared function so worker write sets are disjoint."
+    },
+    {
+      "utc": "2026-11-17T12:40:03.342912+00:00",
+      "event": "integration-comparison-complete",
+      "source": "6d6ea945cad5ac2d12e5cb12148a29d39979e4f4",
+      "processes": 440,
+      "all_checked": true,
+      "adopted": [
+        "canonical-nf-addsub",
+        "one-pass-coordinates",
+        "incremental-rational-span",
+        "direct-smith-columns"
+      ],
+      "rejected": [
+        "eager-persistence-index",
+        "lazy-persistence-index"
+      ],
+      "limitation": "NF multiply control process ratio 0.966; no general speed guarantee. Persistence library restored byte-for-byte."
+    },
+    {
+      "utc": "2026-11-17T12:58:57.077779+00:00",
+      "event": "verification-and-cleanup-complete",
+      "source": "ffc66b789c6455deed8dbcaa8d4d2503d09212ff",
+      "packages": 46,
+      "commands": [
+        {
+          "name": "maintenance",
+          "test_totals": [],
+          "returncode": 0
+        },
+        {
+          "name": "check-js",
+          "test_totals": [],
+          "returncode": 0
+        },
+        {
+          "name": "check-native",
+          "test_totals": [],
+          "returncode": 0
+        },
+        {
+          "name": "tests-wasm-gc",
+          "test_totals": [
+            [
+              "1140",
+              "1140",
+              "0"
+            ]
+          ],
+          "returncode": 0
+        },
+        {
+          "name": "tests-js",
+          "test_totals": [
+            [
+              "1140",
+              "1140",
+              "0"
+            ]
+          ],
+          "returncode": 0
+        },
+        {
+          "name": "tests-native",
+          "test_totals": [
+            [
+              "1140",
+              "1140",
+              "0"
+            ]
+          ],
+          "returncode": 0
+        },
+        {
+          "name": "formal",
+          "test_totals": [],
+          "returncode": 0
+        }
+      ],
+      "cleanup_record": "docs/measurements/algorithm-kernels-20261117-cleanup.json"
+    }
+  ],
+  "integrated_artifacts": [
+    {
+      "file": ".tools/algorithm-kernels-20261117/artifacts/nfkernelbench-integrated-6d6ea94.exe",
+      "sha256": "d31e388feff290c3503f1dd39ba9952e8a0e07e34fac71cfcc291249429112de"
+    },
+    {
+      "file": ".tools/algorithm-kernels-20261117/artifacts/spanbench-integrated-6d6ea94.exe",
+      "sha256": "61b7142ecb57c9d46eb4bf4f5fac45d8f7fee32593be49b905f060e6d63a4e0d"
+    },
+    {
+      "file": ".tools/algorithm-kernels-20261117/artifacts/structuralbench-integrated-6d6ea94.exe",
+      "sha256": "aa13800259277617f9a2e194eb4728c3f926575e1173678e309137839dfd37b6"
+    }
+  ],
+  "structural_handoff": [
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/structural-final-3674953.exe",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-final-3674953.exe",
+      "sha256": "38afa8f0c0013858a3827bbd14314512705f7d58ff1862fe7ccc7f42d7e41bd8"
+    },
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/structural-lazy-b2fcb3c.exe",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-lazy-b2fcb3c.exe",
+      "sha256": "75350f7b6329544e51a5c86ec43ccb68b6f47dbe4cda88dafed40948c44aa4d0"
+    },
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/lazy-source",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/lazy-source",
+      "files": {
+        "src/smith/operations.mbt": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+        "src/persistence/structural_pivots_wbtest.mbt": "16d067d4455d42381f9a8ae9b8df32a7fd6c5600da9e21496a6fbe6f3371a070",
+        "src/persistence/reduction.mbt": "1f9b2449bc6789949180ea6acd029d74c84562d216801be093bb27ff7ef3da26",
+        "src/persistence/moon.pkg": "90a4fd4e750589b497d3a75114c531671f98f054f9e526f09606843a17072888",
+        "src/persistence/pkg.generated.mbti": "8c8049053bd1d0ba5bb2bbe44ad95065b14caec5d7dc8b377f11d3a248508f9c"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/final-source",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/final-source",
+      "files": {
+        "src/smith/operations.mbt": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+        "src/smith/structural_columns_wbtest.mbt": "da70abe8eb0bc07c3436b5f8690c06b80a867c1e8917cff9f2fd4d52d999943d",
+        "src/persistence/structural_pivots_wbtest.mbt": "019b678048a5b03faed08d37206b0d7e6b7a2955db8ed460a129555a97655e0b",
+        "src/persistence/reduction.mbt": "64f7a633abee314de299350e34fca60a911d5e147b0d2fb3833b6efcb10a3e7c",
+        "src/persistence/moon.pkg": "551e03b23de05015164bf73703aa94cada6f0d7c1f4a0d3bc50d76d19465faa9",
+        "src/persistence/pkg.generated.mbti": "cb90a261b0ac72e943a6852d9d2bad7650990d5c7371b9b94f3210cba596f5f7",
+        "src/cmd/structuralbench/main.mbt": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+        "src/cmd/structuralbench/moon.pkg": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/eager-source",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/eager-source",
+      "files": {
+        "src/smith/operations.mbt": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+        "src/persistence/reduction.mbt": "cf743d93d47992728172b4621fc5b166879b2758fd85c053da77a887a641f14d",
+        "src/persistence/moon.pkg": "90a4fd4e750589b497d3a75114c531671f98f054f9e526f09606843a17072888",
+        "src/persistence/pkg.generated.mbti": "22c92986d0b30e93a8002481f4fbeaeb2a751f0091e89cee4920d7e5034aaecd"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-algo-matrix-topology/docs/research/structural-kernels-20261117-raw/structural-eager-9359c7d.exe",
+      "archive": ".tools/algorithm-kernels-20261117/artifacts/structural/structural-eager-9359c7d.exe",
+      "sha256": "f26c377144f704ce40a13532f23f88eda71bdaddedc29b3acc209b948b608726"
+    }
+  ],
+  "comparison_driver_sha256": "56c6f278929045fa37b486b0d199d63baf9795782e605be064bde0e00ffbb936"
+}

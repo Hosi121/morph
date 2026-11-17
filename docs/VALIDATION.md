@@ -5,6 +5,34 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
+## 数体・増分線形従属・Smithの算法改善
+
+コード `ffc66b7` を固定し、基準 `2e33ef5` からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は46 packageで、テスト専用importも含みます。無変更の無関係なpackageを再実行した全体検証ではありません。
+
+| バックエンド | 結果 |
+| --- | --- |
+| wasm-gc | 1,140テスト成功 |
+| js | 1,140テスト成功 |
+| native release | 1,140テスト成功 |
+
+Python 27テスト、148公開APIスナップショット、全targetの型検査、整形・生成物・327核ソースの純記号制約が通過しました。
+既存Lean全モデルと32対応領域の差分検査も通過しました。新しい増分spanや数体最適化の全実装を形式証明したものではありません。
+最小多項式・FGLM・Smithの既存検査算法は維持し、旧方式、独立Fraction・行列式、停止と再開、次元違いなどを照合しました。
+生成と検査には共通の演算もあります。有限なoracleとの照合と、独立した全実装の証明は区別します。
+
+公開APIは`numberfield.coordinates`と新しい`linearspan`を追加し、opaqueなFGLM状態にcacheを保持します。
+既存の関数の結果・エラー・証拠の条件を維持し、不採用にした持続性の本体・import・APIは基準と同じバイト列へ復元しました。
+
+[環境・ソース・選択graph・全コマンド](measurements/algorithm-kernels-20261117-validation.json)、
+[全出力](measurements/algorithm-kernels-20261117-validation.txt)、[実行harness](measurements/algorithm-kernels-20261117-harness.py)を保存しました。
+全出力の各コマンド部分はバイト位置とSHA256でも検査できます。
+[五候補の採否と440試行](research/algorithm-kernels-20261117.md)、
+[担当範囲と統合](measurements/algorithm-kernels-20261117-orchestration.json)、
+[基準ライブラリの同一性](measurements/algorithm-kernels-20261117-baseline-invariance.json)も残しています。
+四つの作業用worktreeと三branchは、全パッチ反映、Git bundle検査、ソース・実行ファイルの保存を確認して削除しました。
+担当が使った段階別スナップショットの削除も含め、[片付けの記録](measurements/algorithm-kernels-20261117-cleanup.json)にあります。
+
 ## Fp多項式の正規形を使う演算
 
 コード `7749ddc` を固定し、基準 `03d6584` からの変更と旧・現のimport graphの逆依存を検査しました。
