@@ -236,13 +236,13 @@ fn main {
   }
   let expected = operation()
   let started = @bench.monotonic_clock_start()
-  for _ in 0..<iterations {
+  for _ in 0..<(iterations * 40) {
     if operation() != expected {
       abort("unstable full result")
     }
   }
   let elapsed_us = @bench.monotonic_clock_end(started)
   println(
-    "{\"case\":\"\{name}\",\"iterations\":\{iterations},\"result\":\{expected},\"elapsed_us\":\{elapsed_us},\"checked\":true}",
+    "{\"case\":\"\{name}\",\"iterations\":\{iterations * 40},\"result\":\{expected},\"elapsed_us\":\{elapsed_us},\"checked\":true}",
   )
 }
