@@ -79,6 +79,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | [群・不等式・位相の接続](docs/handbook/connections.md) | 導来列と根号可解性、Bernstein包囲と細分、整数ホモロジーとSmith標準形 |
 | [位相と符号](docs/handbook/topology.md) | 有理点群のRips持続性、整数誘導写像、境界からCSS符号・論理商・最小重みへ |
 | [コホモロジー環・相対群・崩壊](docs/handbook/cohomology-relative-collapse.md) | cup積による区別、整数の連結準同型、通常・filtered chain contraction |
+| [体の共通算法と専用カーネル](docs/handbook/field-kernels.md) | 型と演算の辞書、正規形と零判定、GF(2)分解の再利用、同条件の採否 |
 | [線形代数と最適化](docs/handbook/linear-optimization.md) | 半環、Gauss–Jordan、Smith標準形、LLL、単体法、0/1最適化 |
 | [グラフ](docs/handbook/graphs.md) | BFS、Dijkstra、SCC、全域森、最大流、二部マッチング |
 | [論理と制約解決](docs/handbook/logic-constraints.md) | SAT・CDCL、回路、BDD、SMT、exact cover、数独 |

@@ -1,0 +1,31 @@
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:79 ("complex4_qi") ok
+time (mean ± σ)         range (min … max) 
+   9.64 µs ± 487.85 ns     9.17 µs …  10.46 µs  in 10 ×  10046 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:85 ("complex3_qi") ok
+time (mean ± σ)         range (min … max) 
+  24.62 µs ±   1.16 µs    23.01 µs …  25.99 µs  in 10 ×   3255 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:91 ("complex4_quadratic") ok
+time (mean ± σ)         range (min … max) 
+ 271.13 µs ±  27.27 µs   241.69 µs … 332.57 µs  in 10 ×    336 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:97 ("complex3_quadratic") ok
+time (mean ± σ)         range (min … max) 
+ 333.19 µs ±  23.20 µs   306.68 µs … 369.16 µs  in 10 ×    274 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:103 ("complex4_quartic") ok
+time (mean ± σ)         range (min … max) 
+ 771.49 µs ±  58.68 µs   674.83 µs … 857.71 µs  in 10 ×    126 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:109 ("complex3_quartic") ok
+time (mean ± σ)         range (min … max) 
+   1.16 ms ±  76.55 µs     1.07 ms …   1.29 ms  in 10 ×     94 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:115 ("complex4_real") ok
+time (mean ± σ)         range (min … max) 
+  30.72 µs ±   1.26 µs    28.69 µs …  32.40 µs  in 10 ×   3569 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:121 ("complex3_real") ok
+time (mean ± σ)         range (min … max) 
+  55.92 µs ±   3.79 µs    49.24 µs …  60.49 µs  in 10 ×   1772 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:127 ("complex4_cancel") ok
+time (mean ± σ)         range (min … max) 
+ 206.02 µs ±  20.28 µs   170.34 µs … 228.75 µs  in 10 ×    414 runs
+[Hosi121/morph] bench complexfield/product_candidate_wbtest.mbt:133 ("complex3_cancel") ok
+time (mean ± σ)         range (min … max) 
+ 155.51 µs ±  10.78 µs   139.11 µs … 173.67 µs  in 10 ×    642 runs
+Total tests: 10, passed: 10, failed: 0.

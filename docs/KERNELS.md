@@ -44,6 +44,16 @@
 | CADの根を加える表現 | cadのlifting・証人再構成 | [同一根を持つ低次数atom](research/cad-20261116.md)。unionの被覆は維持し、定義次数を抑える。同条件の三段平方根1例で6.517/6.487 s→1.300/1.301 s。別の改善倍率とは合成しない |
 | 一変数多項式の評価 | 公開polynomial.evaluate→Sturm・実数制約・実代数計算 | [疎Horner](research/sparse-horner-20261116.md)。同じnative ELFの密な6評価2.51→0.336 ms、実数制約の次数8例1.59→0.490 s。√2の小例は横ばい。JSにも局所改善、WasmGCの短い対照は揺れが大きい。独立QQと降順を前提にしたLeanモデル |
 
+## 体上の消去と再利用
+
+| 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
+| --- | --- | --- |
+| GF(2)専用消去と保持した分解 | CSS rank、コホモロジーのrank・零空間・基底 | [公開APIの変更前後](research/field-kernels-20261117.md)。nativeのCSS4例は2.57〜3.10倍、円周1.83倍、トーラス3.11倍。既存の汎用証拠検査込み、Bool列のまま |
+| 有理数の零係数で行を共有 | 公開linear→整数chain逆・数体の線形系 | [正規形を条件にした零判定](research/rational-elimination-20261117.md)。単位行列3.00倍、疎逆1.90倍、chain逆1.59倍。密な行列・最小多項式等の改善は未確定 |
+| 素体のp=2辞書 | 公開primefield.fieldの加減乗・逆元 | [任意長入力のparity](research/prime-arithmetic-20261117.md)。直接混合演算1.46/1.77倍、逆元7.87倍。Fppoly上位例に改善なし、奇標数の小差は未解決 |
+
+使い分けは[共通算法と専用カーネル](handbook/field-kernels.md)を参照してください。
+
 ## 行列式
 
 [Bareissの採用](research/bareiss-adoption-20261116.md)で、`linear.determinant`を整数保存消去へ接続しました。
@@ -63,6 +73,7 @@
 ## 採用しなかった候補と独立実装
 
 - [全加算器の12候補](bootstrap/adder-search.md)は、全8条件の等価性をLeanでも確認しましたが、実測で遅いため通常の式を変更していません。
+- [一般剰余への追加比較と複素三積](research/field-kernels-20261117.md)は、対照の回帰があり不採用です。複素積は本体を変更していません。
 - [長語除算の追加実験](research/wide-kernels/README.md)は、JSのスタック制約を避けてもnative剰余が悪化するため未採用です。
 - `runbinary`は圧縮に特化した独立実装で、通常のBinary全体のバックエンドにはしていません。
 - `core.gcd`と`core.interleave`は内部利用のない公開APIです。局所的な速さだけで、変換費用を無視して接続することはしません。

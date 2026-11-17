@@ -1,0 +1,136 @@
+///|
+// Trial only: exact three-product complex multiplication. The same context
+// guard, Result propagation, and checked constructor as the production path.
+fn three_product(a : Element, b : Element) -> Result[Element, FieldError] {
+  if !same_context(a, b) {
+    return Err(DifferentField)
+  }
+  let ac = match lift(@nf.multiply(a.real, b.real)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let bd = match lift(@nf.multiply(a.imaginary, b.imaginary)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let ab = match lift(@nf.add(a.real, a.imaginary)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let cd = match lift(@nf.add(b.real, b.imaginary)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let sum = match lift(@nf.multiply(ab, cd)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let real = match lift(@nf.subtract(ac, bd)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let rest = match lift(@nf.subtract(sum, ac)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  let imaginary = match lift(@nf.subtract(rest, bd)) {
+    Ok(x) => x
+    Err(e) => return Err(e)
+  }
+  element(a.field, real, imaginary)
+}
+
+///|
+fn product_fixture(kind : Int32) -> (Element, Element) {
+  let k = if kind == 0 {
+    cf_real_field([0, 1], (-1, 1), (0, 1))
+  } else if kind == 1 || kind == 3 || kind == 4 {
+    cf_real_field([-2, 0, 1], (1, 1), (2, 1))
+  } else {
+    cf_real_field([1, 0, -10, 0, 1], (3, 1), (4, 1))
+  }
+  let f = field(k)
+  let a = @nf.element(k, cf_poly([(1, 3), (2, 5), (-1, 7), (3, 11)])).unwrap()
+  let b = @nf.element(k, cf_poly([(-2, 7), (3, 5), (1, 13), (2, 3)])).unwrap()
+  let c = @nf.element(k, cf_poly([(5, 7), (1, 2), (-3, 5), (1, 3)])).unwrap()
+  let d = @nf.element(k, cf_poly([(1, 11), (-2, 3), (4, 7), (-1, 5)])).unwrap()
+  if kind == 3 {
+    (element(f, a, @nf.zero(k)).unwrap(), element(f, c, @nf.zero(k)).unwrap())
+  } else if kind == 4 {
+    (element(f, a, @nf.negate(a)).unwrap(), element(f, c, d).unwrap())
+  } else {
+    (element(f, a, b).unwrap(), element(f, c, d).unwrap())
+  }
+}
+
+///|
+test "three-product trial matches exact public multiplication" {
+  for kind in 0..<5 {
+    let (a, b) = product_fixture(kind)
+    assert_true(equal(three_product(a, b).unwrap(), multiply(a, b).unwrap()))
+    assert_true(equal(three_product(b, a).unwrap(), multiply(b, a).unwrap()))
+  }
+  let (a, _) = product_fixture(0)
+  let (b, _) = product_fixture(1)
+  assert_true(three_product(a, b) is Err(DifferentField))
+}
+
+///|
+test "complex4_qi" (b : @bench.T) {
+  let (a, c) = product_fixture(0)
+  b.bench(fn() { b.keep(multiply(a, c).unwrap()) })
+}
+
+///|
+test "complex3_qi" (b : @bench.T) {
+  let (a, c) = product_fixture(0)
+  b.bench(fn() { b.keep(three_product(a, c).unwrap()) })
+}
+
+///|
+test "complex4_quadratic" (b : @bench.T) {
+  let (a, c) = product_fixture(1)
+  b.bench(fn() { b.keep(multiply(a, c).unwrap()) })
+}
+
+///|
+test "complex3_quadratic" (b : @bench.T) {
+  let (a, c) = product_fixture(1)
+  b.bench(fn() { b.keep(three_product(a, c).unwrap()) })
+}
+
+///|
+test "complex4_quartic" (b : @bench.T) {
+  let (a, c) = product_fixture(2)
+  b.bench(fn() { b.keep(multiply(a, c).unwrap()) })
+}
+
+///|
+test "complex3_quartic" (b : @bench.T) {
+  let (a, c) = product_fixture(2)
+  b.bench(fn() { b.keep(three_product(a, c).unwrap()) })
+}
+
+///|
+test "complex4_real" (b : @bench.T) {
+  let (a, c) = product_fixture(3)
+  b.bench(fn() { b.keep(multiply(a, c).unwrap()) })
+}
+
+///|
+test "complex3_real" (b : @bench.T) {
+  let (a, c) = product_fixture(3)
+  b.bench(fn() { b.keep(three_product(a, c).unwrap()) })
+}
+
+///|
+test "complex4_cancel" (b : @bench.T) {
+  let (a, c) = product_fixture(4)
+  b.bench(fn() { b.keep(multiply(a, c).unwrap()) })
+}
+
+///|
+test "complex3_cancel" (b : @bench.T) {
+  let (a, c) = product_fixture(4)
+  b.bench(fn() { b.keep(three_product(a, c).unwrap()) })
+}

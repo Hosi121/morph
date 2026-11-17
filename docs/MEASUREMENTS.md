@@ -15,6 +15,21 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 体の算法・線形代数の専用化
+
+いずれもnative release、CPU 4、共有ロックです。異なる行の倍率を合成しません。
+
+| 比較 | 計測の範囲 | 生データ・判断 |
+| --- | --- | --- |
+| GF(2)専用核 | 同一artifactの30比較・5 ABBA組、600検査済みプロセス | [専用核の記録](research/gf2-kernel-20261117.md)・[全生値](research/raw/gf2-kernel-abba-20261117.json) |
+| CSS・コホモロジー | 同一harnessを旧版・採用版でビルド、6例・120プロセス。起動・入力・通常API・証拠検査込み | [比較表と条件](research/field-kernels-20261117.md)・[最終生値](measurements/gf2-consumers-20261117.json) |
+| 有理数の行共有 | 8公開API例・160プロセス。内側は各入力生成・演算・検査、warm-upは外。別に100未変更対照 | [比較と限界](research/rational-elimination-20261117.md)・[全生値](measurements/rational-elimination-20261117.json)・[対照](measurements/rational-elimination-control-20261117.json) |
+| 素体・剰余 | 起動・入力構築・独立oracle込み、採用180・不採用280・未変更対照100プロセス | [全比較と生値へのリンク](research/prime-arithmetic-20261117.md) |
+| 複素三積 | 同一artifactのSDK適応bench一回、入力は内側の外。不採用判断用 | [ソース・条件・5対照](research/field-kernels-20261117.md#複素積の不採用案) |
+
+未変更ELFでも数%の変動が見られます。疎な有理数系と直接GF(2)系には改善があり、
+密な有理数系・奇標数・上位Fppolyには改善を主張しません。メモリ削減は未測定です。
+
 ## 実数制約・SMTの比較
 
 | 比較 | 条件・採否 | 生データ |

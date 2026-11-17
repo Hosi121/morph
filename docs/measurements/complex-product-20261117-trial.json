@@ -1,0 +1,48 @@
+{
+  "baseline_math_commit": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+  "candidate": "(a+b)(c+d)-ac-bd for imaginary component, ac-bd real; same contexts/constructors",
+  "adopted": false,
+  "reason": "Regressions in Q(i), general quadratic/quartic and real-only controls outweigh one cancellation-cohort improvement. Bounded candidate rejected, no speedup claim.",
+  "scope": "One same-native-ELF adaptive benchmark pass; fixture construction outside b.bench interval; full result checks done in separate 5-fixture exact-equivalence test. This is prototype rejection evidence, not a final public-API optimization comparison.",
+  "command": [
+    "tools/measure",
+    "--cpu",
+    "4",
+    "tools/moon",
+    "bench",
+    "src/complexfield/product_candidate_wbtest.mbt",
+    "--target",
+    "native",
+    "--release",
+    "--deny-warn",
+    "-j",
+    "1"
+  ],
+  "trial_source_sha256": "7cdbf880ab012abd072234a7b4962e50efb3a2754721cc665df2e2771e371a73",
+  "log_sha256": "a3b31f79a167abbb15696544a1b3e779e186aecbb363517d8c797b5e6ca11984",
+  "artifact_sha256": "189c17f8e51fa32fcc9c149d03191819f8d808afc26355ec82c64eabf10b23f8",
+  "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "cpu": 4,
+  "results_mean_us": {
+    "qi": {
+      "original4": 9.64,
+      "candidate3": 24.62
+    },
+    "quadratic": {
+      "original4": 271.13,
+      "candidate3": 333.19
+    },
+    "quartic": {
+      "original4": 771.49,
+      "candidate3": 1160
+    },
+    "real": {
+      "original4": 30.72,
+      "candidate3": 55.92
+    },
+    "cancellation": {
+      "original4": 206.02,
+      "candidate3": 155.51
+    }
+  }
+}
