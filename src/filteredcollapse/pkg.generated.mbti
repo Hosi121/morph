@@ -1,0 +1,73 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/filteredcollapse"
+
+import {
+  "Hosi121/morph/collapse",
+  "Hosi121/morph/core",
+  "Hosi121/morph/persistence",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn attempts(State) -> @core.Nat
+
+pub fn check_result(@persistence.Filtration, @persistence.Filtration, Certificate) -> Bool
+
+pub fn check_stalled(@persistence.Filtration, @persistence.Filtration, Certificate) -> Bool
+
+pub fn check_step(@persistence.Filtration, @persistence.Filtration, Step) -> Bool
+
+pub fn elementary(@persistence.Filtration, @collapse.Pair) -> Step?
+
+pub fn run(State, @core.Nat) -> Progress
+
+pub fn start(@persistence.Filtration) -> State
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : @persistence.Filtration
+  target : @persistence.Filtration
+  steps : @core.Chain[Step]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Progress {
+  Paused(State)
+  Stalled(Certificate)
+  InvalidWitness
+}
+pub fn Progress::equal(Self, Self) -> Bool
+pub fn Progress::not_equal(Self, Self) -> Bool
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct State {
+  source : @persistence.Filtration
+  current : @persistence.Filtration
+  remaining : @core.Chain[@collapse.Pair]
+  reversed_steps : @core.Chain[Step]
+  attempts : @core.Nat
+}
+pub fn State::equal(Self, Self) -> Bool
+pub fn State::not_equal(Self, Self) -> Bool
+pub fn State::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Step {
+  source : @persistence.Filtration
+  target : @persistence.Filtration
+  contraction : @collapse.Certificate
+}
+pub fn Step::equal(Self, Self) -> Bool
+pub fn Step::not_equal(Self, Self) -> Bool
+pub fn Step::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
