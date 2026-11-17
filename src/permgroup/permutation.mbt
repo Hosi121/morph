@@ -44,7 +44,11 @@ pub fn checked_permutation(
   images : @core.Chain[@core.Nat],
 ) -> Permutation? {
   let result : Permutation = { degree, images, }
-  if valid_permutation(result) { Some(result) } else { None }
+  if valid_permutation(result) {
+    Some(result)
+  } else {
+    None
+  }
 }
 
 ///|

@@ -1,40 +1,50 @@
 ///|
 // Deliberately independent machine-array model, confined to the test boundary.
-fn model_equal(left : Array[Int], right : Array[Int]) -> Bool {
-  if left.length() != right.length() { return false }
+fn model_equal(left : Array[Int32], right : Array[Int32]) -> Bool {
+  if left.length() != right.length() {
+    return false
+  }
   for index in 0..<left.length() {
-    if left[index] != right[index] { return false }
+    if left[index] != right[index] {
+      return false
+    }
   }
   true
 }
 
 ///|
-fn model_contains(elements : Array[Array[Int]], value : Array[Int]) -> Bool {
+fn model_contains(elements : Array[Array[Int32]], value : Array[Int32]) -> Bool {
   for element in elements {
-    if model_equal(element, value) { return true }
+    if model_equal(element, value) {
+      return true
+    }
   }
   false
 }
 
 ///|
-fn model_same(left : Array[Array[Int]], right : Array[Array[Int]]) -> Bool {
+fn model_same(left : Array[Array[Int32]], right : Array[Array[Int32]]) -> Bool {
   left.length() == right.length() && left.all(x => model_contains(right, x))
 }
 
 ///|
-fn model_compose(left : Array[Int], right : Array[Int]) -> Array[Int] {
-  [for point in right => left[point]]
+fn model_compose(left : Array[Int32], right : Array[Int32]) -> Array[Int32] {
+  [
+    for point in right => left[point]
+  ]
 }
 
 ///|
-fn model_inverse(value : Array[Int]) -> Array[Int] {
+fn model_inverse(value : Array[Int32]) -> Array[Int32] {
   let result = Array::make(value.length(), 0)
-  for point, image in value { result[image] = point }
+  for point, image in value {
+    result[image] = point
+  }
   result
 }
 
 ///|
-fn model_commutator(left : Array[Int], right : Array[Int]) -> Array[Int] {
+fn model_commutator(left : Array[Int32], right : Array[Int32]) -> Array[Int32] {
   model_compose(
     model_compose(model_inverse(left), model_inverse(right)),
     model_compose(left, right),
@@ -42,19 +52,24 @@ fn model_commutator(left : Array[Int], right : Array[Int]) -> Array[Int] {
 }
 
 ///|
-fn model_closure(n : Int, generators : Array[Array[Int]]) -> Array[Array[Int]] {
-  let elements = [[for point in 0..<n => point]]
+fn model_closure(
+  n : Int32,
+  generators : Array[Array[Int32]],
+) -> Array[Array[Int32]] {
+  let elements = [[ for point in 0..<n => point ]]
   for cursor = 0; cursor < elements.length(); cursor = cursor + 1 {
     for generator in generators {
       let product = model_compose(elements[cursor], generator)
-      if !model_contains(elements, product) { elements.push(product) }
+      if !model_contains(elements, product) {
+        elements.push(product)
+      }
     }
   }
   elements
 }
 
 ///|
-fn model_derived(elements : Array[Array[Int]]) -> Array[Array[Int]] {
+fn model_derived(elements : Array[Array[Int32]]) -> Array[Array[Int32]] {
   let generators = []
   for left in elements {
     for right in elements {
@@ -68,11 +83,13 @@ fn model_derived(elements : Array[Array[Int]]) -> Array[Array[Int]] {
 }
 
 ///|
-fn model_series(elements : Array[Array[Int]]) -> Array[Array[Array[Int]]] {
+fn model_series(elements : Array[Array[Int32]]) -> Array[Array[Array[Int32]]] {
   let result = [elements]
   for current = elements; current.length() > 1; {
     let next = model_derived(current)
-    if model_same(current, next) { break }
+    if model_same(current, next) {
+      break
+    }
     result.push(next)
     continue next
   }
@@ -80,7 +97,7 @@ fn model_series(elements : Array[Array[Int]]) -> Array[Array[Array[Int]]] {
 }
 
 ///|
-fn test_permutation(value : Array[Int]) -> Permutation {
+fn test_permutation(value : Array[Int32]) -> Permutation {
   checked_permutation(
     @oracle.nat(value.length()),
     @oracle.chain(value.map(@oracle.nat)),
@@ -88,22 +105,27 @@ fn test_permutation(value : Array[Int]) -> Permutation {
 }
 
 ///|
-fn model_images(value : Permutation) -> Array[Int] {
+fn model_images(value : Permutation) -> Array[Int32] {
   @oracle.array(images(value)).map(@oracle.int_of_nat)
 }
 
 ///|
-fn model_elements(group : FiniteGroup) -> Array[Array[Int]] {
+fn model_elements(group : FiniteGroup) -> Array[Array[Int32]] {
   @oracle.array(group_elements(group)).map(model_images)
 }
 
 ///|
-fn test_group(n : Int, generators : Array[Array[Int]], fuel? : Int = 100) -> FiniteGroup {
-  match generate(
-    @oracle.nat(n),
-    @oracle.chain(generators.map(test_permutation)),
-    @oracle.nat(fuel),
-  ) {
+fn test_group(
+  n : Int32,
+  generators : Array[Array[Int32]],
+  fuel~ : Int32 = 100,
+) -> FiniteGroup {
+  match
+    generate(
+      @oracle.nat(n),
+      @oracle.chain(generators.map(test_permutation)),
+      @oracle.nat(fuel),
+    ) {
     Complete(group) => group
     _ => abort("test fixture did not complete")
   }
@@ -111,10 +133,10 @@ fn test_group(n : Int, generators : Array[Array[Int]], fuel? : Int = 100) -> Fin
 
 ///|
 fn assert_model_group(
-  n : Int,
-  generators : Array[Array[Int]],
-  expected_order : Int,
-  expected_series : Array[Int],
+  n : Int32,
+  generators : Array[Array[Int32]],
+  expected_order : Int32,
+  expected_series : Array[Int32],
   solvable : Bool,
 ) -> Unit raise {
   let group = test_group(n, generators, fuel=expected_order)
@@ -133,29 +155,40 @@ fn assert_model_group(
     assert_eq(stage.length(), expected_series[index])
   }
   assert_eq(is_solvable(proof), solvable)
-  assert_true(verify_certificate(@oracle.nat(n), group_generators(group), proof))
+  assert_true(
+    verify_certificate(@oracle.nat(n), group_generators(group), proof),
+  )
   assert_true(check_result(group, proof))
-  let reversed = [for index in 0..<generators.length() =>
-    generators[generators.length() - index - 1]]
+  let reversed = [
+    for index in 0..<generators.length() => {
+      generators[generators.length() - index - 1]
+    }
+  ]
   let reordered = test_group(n, reversed, fuel=expected_order)
   assert_eq(analyze(reordered), proof)
-  assert_true(verify_certificate(
-    @oracle.nat(n),
-    @oracle.chain(reversed.map(test_permutation)),
-    proof,
-  ))
+  assert_true(
+    verify_certificate(
+      @oracle.nat(n),
+      @oracle.chain(reversed.map(test_permutation)),
+      proof,
+    ),
+  )
 }
 
 ///|
-fn all_model_permutations(n : Int) -> Array[Array[Int]] {
-  fn expand(prefix : Array[Int], n : Int) -> Array[Array[Int]] {
-    if prefix.length() == n { return [prefix] }
+fn all_model_permutations(n : Int32) -> Array[Array[Int32]] {
+  fn expand(prefix : Array[Int32], n : Int32) -> Array[Array[Int32]] {
+    if prefix.length() == n {
+      return [prefix]
+    }
     let result = []
     for point in 0..<n {
       if !prefix.contains(point) {
         let next = prefix.copy()
         next.push(point)
-        for permutation in expand(next, n) { result.push(permutation) }
+        for permutation in expand(next, n) {
+          result.push(permutation)
+        }
       }
     }
     result
@@ -176,21 +209,34 @@ test "checked permutations and composition against exhaustive array models" {
       assert_eq(apply(p, @oracle.nat(n)), None)
       for right in models {
         let q = test_permutation(right)
-        assert_true(model_equal(
-          model_images(compose(p, q).unwrap()),
-          model_compose(left, right),
-        ))
-        assert_true(model_equal(
-          model_images(commutator(p, q).unwrap()),
-          model_commutator(left, right),
-        ))
+        assert_true(
+          model_equal(
+            model_images(compose(p, q).unwrap()),
+            model_compose(left, right),
+          ),
+        )
+        assert_true(
+          model_equal(
+            model_images(commutator(p, q).unwrap()),
+            model_commutator(left, right),
+          ),
+        )
       }
     }
   }
   let three = @oracle.nat(3)
-  assert_eq(checked_permutation(three, @oracle.chain([0, 1].map(@oracle.nat))), None)
-  assert_eq(checked_permutation(three, @oracle.chain([0, 0, 2].map(@oracle.nat))), None)
-  assert_eq(checked_permutation(three, @oracle.chain([0, 1, 3].map(@oracle.nat))), None)
+  assert_eq(
+    checked_permutation(three, @oracle.chain([0, 1].map(@oracle.nat))),
+    None,
+  )
+  assert_eq(
+    checked_permutation(three, @oracle.chain([0, 0, 2].map(@oracle.nat))),
+    None,
+  )
+  assert_eq(
+    checked_permutation(three, @oracle.chain([0, 1, 3].map(@oracle.nat))),
+    None,
+  )
   assert_eq(compose(identity(three), identity(@oracle.nat(2))), None)
   assert_eq(commutator(identity(three), identity(@oracle.nat(2))), None)
 }
@@ -200,8 +246,16 @@ test "composition associativity and canonical comparison on all S3 elements" {
   let values = all_model_permutations(3).map(test_permutation)
   for i in 0..<values.length() {
     for j in 0..<values.length() {
-      assert_eq(compare(values[i], values[j]),
-        if i < j { @core.Less } else if i == j { Equal } else { Greater })
+      assert_eq(
+        compare(values[i], values[j]),
+        if i < j {
+          @core.Less
+        } else if i == j {
+          Equal
+        } else {
+          Greater
+        },
+      )
       for k in 0..<values.length() {
         assert_eq(
           compose(compose(values[i], values[j]).unwrap(), values[k]),
@@ -230,18 +284,36 @@ test "fuel exhaustion is resumable and never a completed group" {
     _ => abort("the sixth step completes S3")
   }
   assert_eq(order(group), @oracle.nat(6))
-  assert_eq(generate(degree, Cons(identity(@oracle.nat(2)), Nil), @oracle.nat(20)), InvalidGenerators)
+  assert_eq(
+    generate(degree, Cons(identity(@oracle.nat(2)), Nil), @oracle.nat(20)),
+    InvalidGenerators,
+  )
   // White-box adversary bypasses the private checked constructor.
-  let invalid : Permutation = { degree, images: @oracle.chain([0, 0, 0].map(@oracle.nat)), }
-  assert_eq(generate(degree, Cons(invalid, Nil), @oracle.nat(20)), InvalidGenerators)
+  let invalid : Permutation = {
+    degree,
+    images: @oracle.chain([0, 0, 0].map(@oracle.nat)),
+  }
+  assert_eq(
+    generate(degree, Cons(invalid, Nil), @oracle.nat(20)),
+    InvalidGenerators,
+  )
 }
 
 ///|
 test "cyclic groups C1 through C8 and degree-zero trivial group" {
   assert_model_group(0, [], 1, [1], true)
   for n in 1..<9 {
-    assert_model_group(n, [[for i in 0..<n => (i + 1) % n]], n,
-      if n == 1 { [1] } else { [n, 1] }, true)
+    assert_model_group(
+      n,
+      [[ for i in 0..<n => (i + 1) % n ]],
+      n,
+      if n == 1 {
+        [1]
+      } else {
+        [n, 1]
+      },
+      true,
+    )
   }
 }
 
@@ -273,7 +345,13 @@ test "A5 completes and is nontrivial perfect by independent all-commutator closu
 ///|
 test "S4 and S5 distinguish eventual triviality from a proper perfect terminal group" {
   assert_model_group(4, [[1, 0, 2, 3], [1, 2, 3, 0]], 24, [24, 12, 4, 1], true)
-  assert_model_group(5, [[1, 0, 2, 3, 4], [1, 2, 3, 4, 0]], 120, [120, 60], false)
+  assert_model_group(
+    5,
+    [[1, 0, 2, 3, 4], [1, 2, 3, 4, 0]],
+    120,
+    [120, 60],
+    false,
+  )
 }
 
 ///|
@@ -325,7 +403,15 @@ test "certificates reject context results series conclusion and element tamperin
   assert_false(check_result(wrong_result, proof))
   let duplicates = @core.append(generators, generators)
   assert_true(verify_certificate(degree, duplicates, proof))
-  let fake : Permutation = { degree, images: @oracle.chain([0, 0, 0].map(@oracle.nat)), }
+  let fake : Permutation = {
+    degree,
+    images: @oracle.chain([0, 0, 0].map(@oracle.nat)),
+  }
   assert_false(verify_certificate(degree, Cons(fake, Nil), proof))
-  assert_false(verify_certificate(degree, generators, { ..proof, elements: Cons(fake, proof.elements), }))
+  assert_false(
+    verify_certificate(degree, generators, {
+      ..proof,
+      elements: Cons(fake, proof.elements),
+    }),
+  )
 }

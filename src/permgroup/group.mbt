@@ -82,11 +82,14 @@ pub fn order(group : FiniteGroup) -> @core.Nat {
 ///|
 pub fn contains(group : FiniteGroup, value : Permutation) -> Bool {
   group.degree.equal(value.degree) &&
-  (@avl.lookup(group.members, value, compare) is Some(_))
+  @avl.lookup(group.members, value, compare) is Some(_)
 }
 
 ///|
-fn extend_frontier(state : GenerationState, element : Permutation) -> GenerationState {
+fn extend_frontier(
+  state : GenerationState,
+  element : Permutation,
+) -> GenerationState {
   @core.fold_left(state.group.generators, state, fn(current, generator) {
     let product = compose_same(element, generator)
     if contains(current.group, product) {
@@ -106,14 +109,20 @@ fn extend_frontier(state : GenerationState, element : Permutation) -> Generation
 ///|
 /// Each unit of fuel processes one discovered element against every generator.
 /// Exhaustion preserves the exact frontier and never asserts completion.
-pub fn resume_generation(state : GenerationState, fuel : @core.Nat) -> Generation {
+pub fn resume_generation(
+  state : GenerationState,
+  fuel : @core.Nat,
+) -> Generation {
   match @core.dequeue(state.frontier) {
     None => Complete(state.group)
     Some((element, rest)) =>
       match fuel {
         Zero => Pending(state)
         Succ(remaining) =>
-          resume_generation(extend_frontier({ ..state, frontier: rest, }, element), remaining)
+          resume_generation(
+            extend_frontier({ ..state, frontier: rest, }, element),
+            remaining,
+          )
       }
   }
 }
@@ -138,7 +147,10 @@ pub fn generate(
     generators: keys(permutation_set(generators)),
     members: @avl.put(@avl.empty(), unit, (), compare),
   }
-  resume_generation({ group, frontier: @core.enqueue(@core.queue(), unit), }, fuel)
+  resume_generation(
+    { group, frontier: @core.enqueue(@core.queue(), unit), },
+    fuel,
+  )
 }
 
 ///|
