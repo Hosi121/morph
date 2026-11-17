@@ -37,6 +37,7 @@ tools/moon run src/cmd/main
 | 置換群、不等式の細分証明、整数ホモロジーをつなぐ | `tools/moon run src/cmd/connections` | [分野をまたぐ計算](docs/CONNECTIONS_TOUR.txt) |
 | 点群の穴の寿命、整数誘導写像、位相からCSS符号へ | `tools/moon run src/cmd/topology` | [位相と符号](docs/TOPOLOGY_TOUR.txt) |
 | 同じ穴の数をcup積で区別し、相対群・図形の簡約を扱う | `tools/moon run src/cmd/topologyrings` | [積・相対群・崩壊](docs/TOPOLOGY_RINGS_TOUR.txt) |
+| 確率からFisher計量・α曲率・Gaussian・Markov連鎖へ | `tools/moon run src/cmd/information` | [確率と情報幾何](docs/INFORMATION_TOUR.txt) |
 
 準備・テストのコマンドと検証済みのツールチェーンは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
 表示と入力変換の例は [cmd/main](src/cmd/main/showcase.mbt) を参照してください。

@@ -2,6 +2,9 @@
 
 [ハンドブック](../../HANDBOOK.md) / [アルゴリズム一覧](../ALGORITHMS.md#probability-geometry)
 
+実行例は `tools/moon run src/cmd/information`。出力全体は[ツアー](../INFORMATION_TOUR.txt)に保存し、
+`tools/check_information_tour.py` で実行結果との一致を検査する。
+
 ## 有限分布を正確に扱う
 
 [probability](../../src/probability) は、順序を固定した有限標本空間上の有理数の確率ベクトルを扱う。
