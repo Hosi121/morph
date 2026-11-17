@@ -1,0 +1,47 @@
+{
+  "time_utc": "2026-11-17T09:33:20.161732+00:00",
+  "integrated_main": "72f166a9336e16c60f08d4e655ec433a5c152f6b",
+  "workers": [
+    {
+      "branch": "topology/cohomology-20261117",
+      "path": "/home/hosi/morph-cohomology",
+      "head": "e22db9f5b3bbc156f1799d594bea65d23ae40503",
+      "status_before": "",
+      "git_cherry_main": [
+        "- a227a36fba9db96739af41083433beffa93513b5",
+        "- 4d8ddad4677a60005b67788b8ef00c3816e70959",
+        "- e22db9f5b3bbc156f1799d594bea65d23ae40503"
+      ],
+      "path_absent_after": true
+    },
+    {
+      "branch": "topology/relative-20261117",
+      "path": "/home/hosi/morph-relative",
+      "head": "a00434c774d1ed46ce8c2ac6d7a13420bdd0aaae",
+      "status_before": "",
+      "git_cherry_main": [
+        "- efc3fddfdd6b5290a52f5cb45868976c531f6f87",
+        "- 24d6852c1d55f155ec871840541c9f2aeacb636a",
+        "- a00434c774d1ed46ce8c2ac6d7a13420bdd0aaae"
+      ],
+      "path_absent_after": true
+    },
+    {
+      "branch": "topology/collapse-20261117",
+      "path": "/home/hosi/morph-collapse",
+      "head": "20f8ebcb91544d10950cf022c724c2309f1409de",
+      "status_before": "",
+      "git_cherry_main": [
+        "- 6ab03f8cb3e5e108e99c4397788b2cefa8bee864",
+        "- 20f8ebcb91544d10950cf022c724c2309f1409de"
+      ],
+      "path_absent_after": true
+    }
+  ],
+  "bundle": {
+    "path": ".tools/topology-rings-20261117/workers.bundle",
+    "sha256": "00aa04ec00689c0a21a1ca0e0457370024073c197d1ab5ebae706fa1a99037de",
+    "verify": ".tools/topology-rings-20261117/workers.bundle is okay\nThe bundle contains these 3 refs:\ne22db9f5b3bbc156f1799d594bea65d23ae40503 refs/heads/topology/cohomology-20261117\na00434c774d1ed46ce8c2ac6d7a13420bdd0aaae refs/heads/topology/relative-20261117\n20f8ebcb91544d10950cf022c724c2309f1409de refs/heads/topology/collapse-20261117\nThe bundle requires this ref:\n8997862f889c9f8bfdbdc72f739e2afa77e05c00 \nThe bundle uses this hash algorithm: sha1"
+  },
+  "remaining_worktrees": "/home/hosi/morph  72f166a [main]"
+}

@@ -5,7 +5,34 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
-## 検証済みスナップショット
+## 積・相対群・崩壊の影響範囲検証
+
+コード `72f166a` で、変更した7 packageと旧・現のimport graph上の逆依存を検査しました。
+対象は11 package、各バックエンド255テストです。無変更の数体・CAD等を全件再実行した記録ではありません。
+前回の全4,142テストの記録は下に残しています。今回の追加宣言は207で、現在の全宣言数と今回の実行成功数は別です。
+
+| 検査 | 結果 |
+| --- | --- |
+| WasmGC / JS / native release | 影響範囲の各255テスト成功。旧homology、simplicialmap、CSSと新規核を含む |
+| 全体の保守・型・ソース制約 | Python 24テスト、323核ソース、138公開API、全体の警告なし型検査が通過 |
+| 共通化の互換性 | 既存homologyの公開APIスナップショットは変更なし |
+| 既存Lean・対応差分 | 既存全モデルと32対応領域が通過。新しい核全体の形式証明ではない |
+| cup積の独立照合 | 167小複体、269,883 cochain対、49,923 cocycle対、トーラス・wedge・RP2の積 |
+| 相対群の独立照合 | 315小対の境界・rank・連結写像、整数minorとRP2のねじれ |
+| 崩壊の独立照合 | 167複体・9,781候補・340収縮、整数I/P/Hの各成分と恒等式、改変拒否 |
+| filtered adapter・ツアー | 同grade・全非零成分のgradeを検査。ツアー3バックエンド・21起動ケースが一致 |
+
+正本は[ソース・選択graph・コマンド・生値](measurements/topology-rings-20261117-validation.json)、
+[全出力](measurements/topology-rings-20261117-validation.txt)、
+[実行したharness](measurements/topology-rings-20261117-harness.py)です。
+対象は `chainhomology`, `cmd/connections`, `cmd/topology`, `cmd/topologyrings`, `cohomology`, `collapse`, `csscode`, `filteredcollapse`, `homology`, `relativehomology`, `simplicialmap`。
+全体の型検査で見つけたテスト補助型のtrait宣言を修正し、失敗した二試行も同データに保存しています。
+使い方は[コホモロジー環・相対群・崩壊](handbook/cohomology-relative-collapse.md)、
+判断理由は[探索記録](research/topology-rings-20261117.md)にまとめました。
+3作業用worktreeは全パッチ反映とGitアーカイブを確認して削除しました
+（[片付け記録](measurements/topology-rings-20261117-cleanup.json)）。
+
+## 全体検証済みスナップショット（前回）
 
 2026-11-17（JST）にコード `93a2913` を固定して統合検証しました。
 有理点群のVietoris–Rips filtration、GF(2)持続ホモロジー、整数誘導準同型、
