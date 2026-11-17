@@ -74,3 +74,82 @@ test "cohomology certificate binds actual group source degree and identities" {
     }),
   )
 }
+
+///|
+test "basis checker accepts a new representative with a complete transported inverse" {
+  let source = complex([[0, 1], [0, 2], [1, 2]])
+  let space = compute(source, @oracle.nat(1)).unwrap()
+  let old = certificate(space)
+  // Add the first coboundary to H's representative. This involutory change
+  // is verified by matrix identities rather than matching solver output.
+  let change = @matrix.matrix(
+    @oracle.nat(3),
+    @oracle.chain([mask_bits(3, 5), mask_bits(3, 2), mask_bits(3, 4)]),
+  ).unwrap()
+  let basis = @matrix.multiply(old.basis, change, @csscode.scalars()).unwrap()
+  let inverse_basis = @matrix.multiply(
+    change,
+    old.inverse_basis,
+    @csscode.scalars(),
+  ).unwrap()
+  let incoming_coordinates = @matrix.multiply(
+    change,
+    old.incoming_coordinates,
+    @csscode.scalars(),
+  ).unwrap()
+  let group = {
+    ..old.result,
+    representatives: @core.drop(@oracle.nat(2), columns(basis)),
+  }
+  let moved = {
+    ..old,
+    result: group,
+    basis,
+    inverse_basis,
+    incoming_coordinates,
+  }
+  assert_true(check_result(source, @oracle.nat(1), group, moved))
+  let imported = validate_certificate(source, @oracle.nat(1), group, moved).unwrap()
+  let chosen = representative(imported, mask_bits(1, 1)).unwrap()
+  assert_eq(
+    equivalent(space, chosen, representative(space, mask_bits(1, 1)).unwrap()),
+    Some(true),
+  )
+  assert_false(
+    check_result(source, @oracle.nat(1), group, {
+      ..moved,
+      inverse_basis: old.inverse_basis,
+    }),
+  )
+}
+
+///|
+test "paired forged results cannot bypass the basis and image identities" {
+  let source = complex([[0, 1], [0, 2], [1, 2]])
+  let space = compute(source, @oracle.nat(1)).unwrap()
+  let good = certificate(space)
+  let bad = {
+    ..good.result,
+    representatives: @core.Cons(mask_bits(3, 0), Nil),
+  }
+  assert_false(
+    check_result(source, @oracle.nat(1), bad, { ..good, result: bad, }),
+  )
+  let zero_basis = @matrix.matrix(
+    @oracle.nat(3),
+    @oracle.chain([mask_bits(3, 0), mask_bits(3, 0), mask_bits(3, 0)]),
+  ).unwrap()
+  assert_false(
+    check_result(source, @oracle.nat(1), good.result, {
+      ..good,
+      basis: zero_basis,
+      inverse_basis: zero_basis,
+    }),
+  )
+  assert_false(
+    check_result(source, @oracle.nat(1), good.result, {
+      ..good,
+      incoming_coordinates: zero_basis,
+    }),
+  )
+}

@@ -268,6 +268,20 @@ test "actual cup witnesses bind both cocycles classes source and result" {
       result: { ..actual, cochain: mask_bits(3, 0), },
     }),
   )
+  for
+    forged in [
+      { ..actual, value: mask_bits(1, 0), },
+      { ..actual, cochain: mask_bits(3, 0), },
+      { ..actual, left_class: mask_bits(1, 0), },
+      { ..actual, right_class: mask_bits(1, 0), },
+    ] {
+    assert_false(
+      check_product(zero, unit, one, cycle, one, forged, {
+        ..good,
+        result: forged,
+      }),
+    )
+  }
   let boundary = @core.nth(result(one).coboundaries, @oracle.nat(0)).unwrap()
   assert_true(
     check_representative_independence(
@@ -290,6 +304,146 @@ test "actual cup witnesses bind both cocycles classes source and result" {
       cycle,
       one,
     ),
+  )
+}
+
+///|
+test "torus and wedge share integer homology but cup rings distinguish them" {
+  let torus = complex([
+    [0, 1, 2],
+    [1, 2, 4],
+    [1, 3, 4],
+    [1, 3, 6],
+    [0, 1, 5],
+    [1, 5, 6],
+    [2, 3, 5],
+    [2, 4, 5],
+    [2, 3, 6],
+    [0, 2, 6],
+    [0, 3, 4],
+    [0, 3, 5],
+    [4, 5, 6],
+    [0, 4, 6],
+  ])
+  let wedge = complex([
+    [0, 1],
+    [1, 2],
+    [0, 2],
+    [0, 3],
+    [3, 4],
+    [0, 4],
+    [0, 5, 6],
+    [0, 5, 7],
+    [0, 6, 7],
+    [5, 6, 7],
+  ])
+  let rings = [compute_ring(torus).unwrap(), compute_ring(wedge).unwrap()]
+  for index, source in [torus, wedge] {
+    let ring = rings[index]
+    assert_eq(
+      @oracle.array(ring_result(ring).groups).map(fn(group) {
+        @oracle.int_of_nat(group.rank)
+      }),
+      [1, 2, 1],
+    )
+    for d, rank in [1, 2, 1] {
+      match @homology.compute(source, @oracle.nat(d), @oracle.nat(2000)) {
+        Computed(witness) => {
+          assert_eq(witness.result.free_rank, @oracle.nat(rank))
+          assert_eq(witness.result.torsion, Nil)
+          assert_true(
+            @homology.check_result(
+              source,
+              @oracle.nat(d),
+              witness.result,
+              witness,
+            ),
+          )
+        }
+        _ =>
+          abort("focused integer-homology fixture exceeded its finite budget")
+      }
+    }
+    let a = mask_bits(2, 1)
+    let b = mask_bits(2, 2)
+    assert_eq(
+      multiply(ring, @oracle.nat(1), a, @oracle.nat(1), a),
+      Some(mask_bits(1, 0)),
+    )
+    assert_eq(
+      multiply(ring, @oracle.nat(1), b, @oracle.nat(1), b),
+      Some(mask_bits(1, 0)),
+    )
+    assert_eq(
+      multiply(ring, @oracle.nat(1), a, @oracle.nat(1), b),
+      Some(mask_bits(1, if index == 0 { 1 } else { 0 })),
+    )
+    assert_eq(
+      multiply(ring, @oracle.nat(1), b, @oracle.nat(1), a),
+      Some(mask_bits(1, if index == 0 { 1 } else { 0 })),
+    )
+  }
+}
+
+///|
+test "projective plane square and disconnected degree zero units are exact" {
+  let plane = complex([
+    [0, 1, 2],
+    [0, 2, 3],
+    [0, 1, 5],
+    [0, 4, 5],
+    [0, 3, 4],
+    [1, 2, 4],
+    [1, 3, 4],
+    [1, 3, 5],
+    [2, 3, 5],
+    [2, 4, 5],
+  ])
+  let ring = compute_ring(plane).unwrap()
+  assert_eq(
+    @oracle.array(ring_result(ring).groups).map(fn(group) {
+      @oracle.int_of_nat(group.rank)
+    }),
+    [1, 1, 1],
+  )
+  assert_eq(
+    multiply(
+      ring,
+      @oracle.nat(1),
+      mask_bits(1, 1),
+      @oracle.nat(1),
+      mask_bits(1, 1),
+    ),
+    Some(mask_bits(1, 1)),
+  )
+  let disconnected = compute_ring(complex([[0], [1]])).unwrap()
+  assert_eq(ring_result(disconnected).unit, mask_bits(2, 3))
+  assert_eq(
+    multiply(
+      disconnected,
+      @oracle.nat(0),
+      mask_bits(2, 1),
+      @oracle.nat(0),
+      mask_bits(2, 1),
+    ),
+    Some(mask_bits(2, 1)),
+  )
+  assert_eq(
+    multiply(
+      disconnected,
+      @oracle.nat(0),
+      mask_bits(2, 1),
+      @oracle.nat(0),
+      mask_bits(2, 2),
+    ),
+    Some(mask_bits(2, 0)),
+  )
+  let empty = compute_ring(complex([])).unwrap()
+  assert_eq(ring_result(empty).unit, Nil)
+  assert_eq(ring_result(empty).table, Nil)
+  assert_eq(
+    multiply(empty, @oracle.nat(0), Nil, @oracle.nat(0), Nil),
+    Some(Nil),
   )
 }
 
