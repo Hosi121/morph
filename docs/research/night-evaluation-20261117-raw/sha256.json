@@ -1,0 +1,12 @@
+{
+  "after-initial-snapshot.json": "5e7cda7610d1b7b0beb2e22a35e717636af081c7cf9eca0b69bff76635c8dd19",
+  "api-diff.json": "a108cc54279a1e180a532e660e57cca5fe1149ab9220421ad667ad4e1efd8433",
+  "artifact-sizes.json": "e26d40f1914756c20160a46da3955c756650f002d558d4d11e934acd6d60b8b9",
+  "before-snapshot.json": "1ef3c5b3dc3c78cdd9d739d9fd4c912a90ecb91d7f341efd8b5483caf0b60e80",
+  "calibration.json": "c7e51b79aabe42368675315fb0c3620b56183310d8b8090a955a06f6323fd99f",
+  "callsite-audit.json": "ba61655f10345e65fdae78a663e9620a7700de88a42585347f3e27a3ea16afdd",
+  "freeze_snapshot.py": "860c926a9911d468cfc355ef5eb0331d63449729d9ccfbdcc86c604d9bbe452c",
+  "initial-abba.json": "e821c8e504aa1bf7b03199144fe79379c82777c1a08eb4921833ce9805a65044",
+  "validation.json": "0d818ca306142f02afc6964a49c16554fc3f7da500e23418b5d8d74327169da1",
+  "../night-evaluation-20261117.md": "f90ecc4cd2ae1b0dfa10b7e1dfd0257964ea92b11eab3544fec553ad139978e9"
+}

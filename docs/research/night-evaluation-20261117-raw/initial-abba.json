@@ -1,0 +1,3375 @@
+{
+  "utc": "2026-11-17T13:16:01.150095+00:00",
+  "before": {
+    "root": "/home/hosi/morph-night-r2-before",
+    "commit": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+    "working_tree": [
+      "?? src/cmd/nighteliminatebench/",
+      "?? src/cmd/nightevalbench/",
+      "?? src/cmd/nightnormalbench/"
+    ],
+    "source_manifest_sha256": "3ab00b0da9a82a6fdd06055a5f805063053a1643abbb4bfe309d5cfec92c33f1",
+    "source_file_count": 911,
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-evaluation-20261117/before.exe",
+    "artifact_sha256": "94c5e4904b89f81172af1aa71b59a28c097359ae844ab5c3d66f86205632bda3",
+    "harness": {
+      "main.mbt": "51a07b72d3b0980ec113d04f756dd27d2249b0da2afdfb78a826acabb68fa974",
+      "moon.pkg": "b6d7f79e4df9861b10a7194036d0343281db7db7473c4ef3ac824bdcabde72d8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-night-fp",
+    "commit": "9f635cafea404a60b0b3254f7b6ffb53780099d1",
+    "working_tree": [
+      "?? docs/research/night-evaluation-20261117-raw/"
+    ],
+    "source_manifest_sha256": "b689c33195ee422ee248cd465e06e42797d2d0d7d61e39be6bb0d57f35be4a5b",
+    "source_file_count": 908,
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-evaluation-20261117/after-initial.exe",
+    "artifact_sha256": "3a5ff877152a33f00c5413813e0d7b6947b5780095c7d6b484d46d06d9b22e37",
+    "harness": {
+      "main.mbt": "51a07b72d3b0980ec113d04f756dd27d2249b0da2afdfb78a826acabb68fa974",
+      "moon.pkg": "b6d7f79e4df9861b10a7194036d0343281db7db7473c4ef3ac824bdcabde72d8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "odd65537-reduced",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 70378967,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 67319.85,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":67319.85,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 76443256,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 73047.85999999999,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":73047.85999999999,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 77413546,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 72133.959,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":72133.959,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 87353121,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 83779.625,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":83779.625,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 75197519,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 71298.291,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":71298.291,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 70579100,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 66651.545,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":66651.545,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 68481539,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 65514.98,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":65514.98,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 73013555,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 70101.23700000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":70101.23700000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 70457635,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 67109.666,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":67109.666,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 76975172,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 73592.967,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":73592.967,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 81962949,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 77635.07,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":77635.07,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 87045234,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 83171.91900000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":83171.91900000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 77710156,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 72770.946,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":72770.946,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 74174092,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 70731.398,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":70731.398,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 71247553,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 67969.37800000003,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":67969.37800000003,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 73270235,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 69615.58,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":69615.58,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 75498673,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 72186.368,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":72186.368,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 68887265,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 65188.959,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":65188.959,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 70388284,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 66914.664,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":66914.664,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd65537-reduced",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 73012730,
+      "payload": {
+        "case": "odd65537-reduced",
+        "iterations": 200,
+        "result": [
+          29264,
+          28182,
+          33968
+        ],
+        "elapsed_us": 69436.517,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":69436.517,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 183947205,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 173795.18,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":173795.18,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 12952175,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10381.65,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10381.65,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 12937609,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10470.482,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10470.482,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 178447540,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 169803.711,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":169803.711,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 173668481,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 164127.89800000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":164127.89800000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 13198738,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10441.460000000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10441.460000000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 13392778,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10812.802,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10812.802,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 166932640,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 156493.97400000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":156493.97400000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 184314753,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 175377.51,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":175377.51,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 13001806,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10215.293,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10215.293,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 12879856,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 10062.52,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":10062.52,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 177255718,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 169127.396,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":169127.396,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 181709262,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 172739.42500000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":172739.42500000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 15560680,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 11379.366,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":11379.366,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 16085369,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 12189.985,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":12189.985,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 173422069,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 164693.027,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":164693.027,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 193698697,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 179417.63300000003,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":179417.63300000003,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 15135469,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 12097.422,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":12097.422,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 13343762,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 11087.913,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":11087.913,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "odd257-unreduced",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 194217277,
+      "payload": {
+        "case": "odd257-unreduced",
+        "iterations": 25,
+        "result": [
+          3,
+          90,
+          153,
+          3,
+          90,
+          67,
+          232
+        ],
+        "elapsed_us": 184078.025,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":25,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":184078.025,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 42787814,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 40273.281,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":40273.281,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 42120036,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 39907.079,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":39907.079,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 43494540,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 41022.108,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":41022.108,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 45304439,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 42909.817,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":42909.817,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 46310158,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 43883.282,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":43883.282,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 43081884,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 40473.544,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":40473.544,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 43358205,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 41044.921,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":41044.921,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 43061351,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 40890.089,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":40890.089,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 43730465,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 41502.897000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":41502.897000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 38065780,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 35598.584,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":35598.584,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 42351173,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 40177.506,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":40177.506,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 42029761,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 39704.643000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":39704.643000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 47579321,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 45369.014,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":45369.014,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 37770884,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 35542.497,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":35542.497,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 35551902,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 33477.89199999999,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":33477.89199999999,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 45070419,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 42732.161,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":42732.161,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 51077410,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 48807.325000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":48807.325000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 41089850,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 38798.294,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":38798.294,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 45586154,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 43440.147000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":43440.147000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "gf2-mixed",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 44243997,
+      "payload": {
+        "case": "gf2-mixed",
+        "iterations": 9000,
+        "result": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "elapsed_us": 41372.378000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":9000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":41372.378000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 38075978,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 35906.228,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":35906.228,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 19492809,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 17040.349000000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":17040.349000000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 24129450,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 21332.084,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":21332.084,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 34810195,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 32703.926,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":32703.926,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 35323717,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 33299.094,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":33299.094,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 18782670,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 16683.769,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":16683.769,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 21522027,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 18773.646,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":18773.646,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 33683633,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 31404.743000000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":31404.743000000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 32767013,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 30315.746,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":30315.746,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 25284906,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 22535.582000000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":22535.582000000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 20922620,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 18695.417,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":18695.417,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 33640525,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 31546.911,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":31546.911,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 33468740,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 31128.539,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":31128.539,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 20108090,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 17845.46,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":17845.46,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 20717758,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 18511.436,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":18511.436,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 31831414,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 29658.627,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":29658.627,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 31635739,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 29406.038,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":29406.038,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 23748083,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 20890.423,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":20890.423,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 22530283,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 19769.486,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":19769.486,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "tiny-constant",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 33393496,
+      "payload": {
+        "case": "tiny-constant",
+        "iterations": 150000,
+        "result": [
+          0,
+          16,
+          0,
+          16
+        ],
+        "elapsed_us": 31084.607,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"tiny-constant\",\"iterations\":150000,\"result\":[0,16,0,16],\"elapsed_us\":31084.607,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 56333702,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 53967.003000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":53967.003000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 41217897,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 38745.967000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":38745.967000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 40246425,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 37420.8,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":37420.8,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 52732105,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 50223.929000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":50223.929000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 50701620,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 48065.424,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":48065.424,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 45438246,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 42875.563,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":42875.563,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 44331455,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 41648.828,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":41648.828,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 59300933,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 56448.586,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":56448.586,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 58246712,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 55027.068,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":55027.068,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 45330772,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 42791.064,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":42791.064,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 40825683,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 38254.077,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":38254.077,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 60034741,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 57547.547,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":57547.547,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 53985007,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 51588.455,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":51588.455,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 43331646,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 40802.744,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":40802.744,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 47041837,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 44531.766,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":44531.766,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 50208251,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 47573.672,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":47573.672,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 51106758,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 48617.299,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":48617.299,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 41244404,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 38482.162000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":38482.162000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 46261270,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 43621.475,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":43621.475,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "setup-one-shot17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 51033189,
+      "payload": {
+        "case": "setup-one-shot17",
+        "iterations": 30000,
+        "result": 10,
+        "elapsed_us": 48749.243,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":30000,\"result\":10,\"elapsed_us\":48749.243,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 67678052,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 64103.167,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":64103.167,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 61244039,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 58700.873,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":58700.873,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 58807305,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 56096.572999999975,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":56096.572999999975,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 66853766,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 63374.89,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":63374.89,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 56628132,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 54093.767,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":54093.767,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 61762782,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 58387.882,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":58387.882,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 58488267,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 55925.959,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":55925.959,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 58641669,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 55891.506,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":55891.506,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 63103894,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 60302.155,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":60302.155,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 56601863,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 53875.880000000005,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":53875.880000000005,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 56594683,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 54161.294,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":54161.294,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 66408002,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 63611.101,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":63611.101,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 60285038,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 57718.105,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":57718.105,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 56991393,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 53856.746,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":53856.746,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 54533488,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 52017.843,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":52017.843,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 56579442,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 54161.513,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":54161.513,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 55236990,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 52395.421,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":52395.421,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 55280575,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 52357.191,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":52357.191,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 63133014,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 60310.31099999999,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":60310.31099999999,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "listdecode-encode17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 55671469,
+      "payload": {
+        "case": "listdecode-encode17",
+        "iterations": 1500,
+        "result": [
+          16,
+          3,
+          4,
+          7,
+          0,
+          2,
+          7,
+          12,
+          11,
+          7,
+          9,
+          15,
+          16,
+          5,
+          9,
+          9,
+          4
+        ],
+        "elapsed_us": 53082.845,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":1500,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":53082.845,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "odd65537-reduced": {
+      "process_ns": {
+        "medians": {
+          "before": 74233877.0,
+          "after": 72710822.5
+        },
+        "ranges": {
+          "before": [
+            70378967,
+            87353121
+          ],
+          "after": [
+            68481539,
+            81962949
+          ]
+        },
+        "before_over_after": 1.0209467373306085,
+        "block_ratios": [
+          1.0251876156895552,
+          1.065801761489101,
+          0.9909697435016235,
+          1.038225024892271,
+          1.066313535048424
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 70699.764,
+          "after": 69350.388
+        },
+        "ranges": {
+          "before": [
+            67109.666,
+            83779.625
+          ],
+          "after": [
+            65188.959,
+            77635.07
+          ]
+        },
+        "before_over_after": 1.0194573677078778,
+        "block_ratios": [
+          1.0407603103526346,
+          1.0698588617654887,
+          0.9937415573277594,
+          1.0265733913413722,
+          1.0720590532176395
+        ]
+      }
+    },
+    "odd257-unreduced": {
+      "process_ns": {
+        "medians": {
+          "before": 180078401.0,
+          "after": 13271250.0
+        },
+        "ranges": {
+          "before": [
+            166932640,
+            194217277
+          ],
+          "after": [
+            12879856,
+            16085369
+          ]
+        },
+        "before_over_after": 13.569061015352736,
+        "block_ratios": [
+          13.99759631057563,
+          12.8086387026599,
+          13.97014113699499,
+          11.22198006455719,
+          13.621012940974424
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 171271.56800000003,
+          "after": 10641.642
+        },
+        "ranges": {
+          "before": [
+            156493.97400000002,
+            184078.025
+          ],
+          "after": [
+            10062.52,
+            12189.985
+          ]
+        },
+        "before_over_after": 16.09446812813286,
+        "block_ratios": [
+          16.477878185309784,
+          15.085062562981486,
+          16.989253525515792,
+          14.31657799996275,
+          15.677826436409052
+        ]
+      }
+    },
+    "gf2-mixed": {
+      "process_ns": {
+        "medians": {
+          "before": 44657208.0,
+          "after": 42235604.5
+        },
+        "ranges": {
+          "before": [
+            42029761,
+            51077410
+          ],
+          "after": [
+            35551902,
+            45586154
+          ]
+        },
+        "before_over_after": 1.057335594663976,
+        "block_ratios": [
+          1.0289398968698975,
+          1.0339127369477836,
+          1.066444609011734,
+          1.2635872837674227,
+          1.0997439037452625
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 42117.529,
+          "after": 40042.292499999996
+        },
+        "ranges": {
+          "before": [
+            39704.643000000004,
+            48807.325000000004
+          ],
+          "after": [
+            33477.89199999999,
+            43440.147000000004
+          ]
+        },
+        "before_over_after": 1.0518261160996216,
+        "block_ratios": [
+          1.0278504095191268,
+          1.039928450566384,
+          1.0716776228491074,
+          1.2764514410372276,
+          1.0965638684711934
+        ]
+      }
+    },
+    "tiny-constant": {
+      "process_ns": {
+        "medians": {
+          "before": 33554632.5,
+          "after": 21222323.5
+        },
+        "ranges": {
+          "before": [
+            31635739,
+            38075978
+          ],
+          "after": [
+            18782670,
+            25284906
+          ]
+        },
+        "before_over_after": 1.5811007922860096,
+        "block_ratios": [
+          1.6708482016027644,
+          1.7121416394719453,
+          1.437158483663462,
+          1.5994806525512955,
+          1.4051756926767898
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 31266.641000000003,
+          "after": 18734.5315
+        },
+        "ranges": {
+          "before": [
+            29406.038,
+            35906.228
+          ],
+          "after": [
+            16683.769,
+            22535.582000000002
+          ]
+        },
+        "before_over_after": 1.6689310325160787,
+        "block_ratios": [
+          1.788006353415224,
+          1.8248323235069448,
+          1.5003919017339356,
+          1.6719569789456172,
+          1.4877220950002619
+        ]
+      }
+    },
+    "setup-one-shot17": {
+      "process_ns": {
+        "medians": {
+          "before": 53358556.0,
+          "after": 43831550.5
+        },
+        "ranges": {
+          "before": [
+            50208251,
+            60034741
+          ],
+          "after": [
+            40246425,
+            47041837
+          ]
+        },
+        "before_over_after": 1.217354973559514,
+        "block_ratios": [
+          1.3388168503998596,
+          1.225386202411435,
+          1.3728681501577567,
+          1.1529184727781268,
+          1.1672379896188216
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 50906.192,
+          "after": 41225.786
+        },
+        "ranges": {
+          "before": [
+            47573.672,
+            57547.547
+          ],
+          "after": [
+            37420.8,
+            44531.766
+          ]
+        },
+        "before_over_after": 1.2348143465354426,
+        "block_ratios": [
+          1.3679316597486668,
+          1.2364952738908228,
+          1.3890359571340618,
+          1.162040152336962,
+          1.1858980376228643
+        ]
+      }
+    },
+    "listdecode-encode17": {
+      "process_ns": {
+        "medians": {
+          "before": 59463353.5,
+          "after": 57739830.0
+        },
+        "ranges": {
+          "before": [
+            55236990,
+            67678052
+          ],
+          "after": [
+            54533488,
+            63133014
+          ]
+        },
+        "before_over_after": 1.0298498194400643,
+        "block_ratios": [
+          1.1206190078138567,
+          0.958576261567581,
+          1.1441329314058752,
+          1.0478780963684686,
+          0.9366193520238627
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 56804.8055,
+          "after": 55043.6265
+        },
+        "ranges": {
+          "before": [
+            52395.421,
+            64103.167
+          ],
+          "after": [
+            52017.843,
+            60310.31099999999
+          ]
+        },
+        "before_over_after": 1.031996056800509,
+        "block_ratios": [
+          1.1104607414349623,
+          0.9621343490680188,
+          1.146950178463572,
+          1.0567183217117375,
+          0.9361906861128422
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}

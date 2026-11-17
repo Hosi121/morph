@@ -1,0 +1,38 @@
+[
+  {
+    "case": "odd65537-reduced",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"odd65537-reduced\",\"iterations\":200,\"result\":[29264,28182,33968],\"elapsed_us\":68127.47499999998,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "odd257-unreduced",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"odd257-unreduced\",\"iterations\":100,\"result\":[3,90,153,3,90,67,232],\"elapsed_us\":664547.942,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "gf2-mixed",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"gf2-mixed\",\"iterations\":3000,\"result\":[1,1,1,1,1,1,1],\"elapsed_us\":14316.206,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "tiny-constant",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"tiny-constant\",\"iterations\":30000,\"result\":[0,16,0,16],\"elapsed_us\":6441.932,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "setup-one-shot17",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"setup-one-shot17\",\"iterations\":10000,\"result\":10,\"elapsed_us\":17345.405,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "listdecode-encode17",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"listdecode-encode17\",\"iterations\":3000,\"result\":[16,3,4,7,0,2,7,12,11,7,9,15,16,5,9,9,4],\"elapsed_us\":114478.609,\"checked\":true}\n",
+    "stderr": ""
+  }
+]

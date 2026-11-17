@@ -1,0 +1,40 @@
+{
+  "base": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+  "production_edit": "Only fppoly.evaluate body changes; prefix/suffix of polynomial.mbt are byte-identical.",
+  "baseline_evaluate": "pub fn evaluate(value : Polynomial, point : @binary.Binary) -> @binary.Binary {\n  fn horner(coefficients : @core.Chain[@binary.Binary]) -> @binary.Binary {\n    match coefficients {\n      Nil => @binary.zero()\n      Cons(coefficient, rest) =>\n        @modular.add(\n          @primefield.modulus(value.field),\n          coefficient,\n          @modular.multiply(\n            @primefield.modulus(value.field),\n            point,\n            horner(rest),\n          ),\n        )\n    }\n  }\n  horner(value.coefficients)\n}\n",
+  "invariant": "Opaque coefficients, once-reduced point and each Horner accumulator lie below p; product is canonical; sum is below 2p, so one checked subtraction suffices.",
+  "constant_rationale": "Empty and constant cases must precede point reduction; arbitrary huge point has no effect on their value and previously needed no expensive normalization.",
+  "shared_checker_limit": "listdecode.check_candidate calls encode, which calls fppoly.evaluate. Checker success alone is not independent evidence for Horner arithmetic; the fixture and tests additionally use host Int64 oracle values and retain generic legacy arithmetic.",
+  "unchanged_sources": [
+    {
+      "path": "src/fppoly/characteristic_two.mbt",
+      "sha256": "1a1a1c470339077ec6c927cef92c4432e05ff789f39ef9f22869e2c432c508d9",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/irreducibility.mbt",
+      "sha256": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/factorization.mbt",
+      "sha256": "9d1ee7da0b5d4c99a35611248e308c91e6e3e99800f61d4e761ee4b0fd76ff3d",
+      "unchanged": true
+    },
+    {
+      "path": "src/listdecode/plan.mbt",
+      "sha256": "6f5c504070f6fe73e415e0f2ad321f79d76a6d29e066640a4071c069ea925b83",
+      "unchanged": true
+    },
+    {
+      "path": "src/listdecode/search.mbt",
+      "sha256": "de49e580843779debdd4aedfba0b53de70747c3007e8c6905e14398fc47be9c3",
+      "unchanged": true
+    },
+    {
+      "path": "src/listdecode/interpolate.mbt",
+      "sha256": "fc198dcda4c579e950f9b8ed882f4737d7411b4bb520e1dc8b293b64951b2c23",
+      "unchanged": true
+    }
+  ]
+}

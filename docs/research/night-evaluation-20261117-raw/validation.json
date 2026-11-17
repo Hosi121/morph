@@ -1,0 +1,93 @@
+[
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/listdecode",
+      "--target",
+      "native",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 3.379155133000495,
+    "stdout": "Total tests: 66, passed: 66, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/listdecode",
+      "--target",
+      "wasm-gc",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 2.680060261000108,
+    "stdout": "Total tests: 66, passed: 66, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/listdecode",
+      "--target",
+      "js",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 4.315463185000226,
+    "stdout": "Total tests: 66, passed: 66, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "info",
+      "src/fppoly",
+      "src/listdecode",
+      "src/cmd/nightevalbench",
+      "--target",
+      "all"
+    ],
+    "exit_code": 0,
+    "seconds": 1.969225071999972,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 63 tasks, now up to date\n"
+  },
+  {
+    "command": [
+      "tools/moon",
+      "check",
+      "--target",
+      "all",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 11.912036166999314,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 408 tasks, now up to date\n"
+  },
+  {
+    "command": [
+      "python3",
+      "tools/audit_purity.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.35013875599997846,
+    "stdout": "Purity gate passed: 328 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "stderr": ""
+  }
+]
