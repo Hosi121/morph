@@ -1,0 +1,18 @@
+{
+  "src/chainhomology/chainhomology.mbt": {
+    "whole_before_sha256": "dfbc70c5ea4d5335bc30e9cf018a28e411300b867588668ada1ea1c3b8b99fa6",
+    "whole_after_sha256": "104936c21d280ae9c11bbcb0dd780238ded92b94622126b2392d9be648dda477",
+    "all_bytes_outside_canonical_columns_identical": true,
+    "outside_sha256": "68300d0a93dfff2b2f976f4269d66830bcf2f25d939610752f79b89657b4117f",
+    "legacy_oracle_nonwhitespace_identical": true
+  },
+  "src/simplicialmap/induced.mbt": {
+    "whole_before_sha256": "46038ec5ed3d6411306745cdd9d4eee2faa4a0850dd7ce8fcd5e13769e7377e0",
+    "whole_after_sha256": "6aa074ed42498138eee4c41a04f01fa25981c4a2b04bff90cfdc5ad41624dffa",
+    "all_bytes_outside_canonical_columns_identical": true,
+    "outside_sha256": "7d6e55918b2602e6170ee8973d287765e1d5f97e10a7427634866571b1fbd72d",
+    "legacy_oracle_nonwhitespace_identical": true
+  },
+  "public_api_diff": "empty",
+  "smith_and_relativehomology_production_bytes_unchanged": true
+}

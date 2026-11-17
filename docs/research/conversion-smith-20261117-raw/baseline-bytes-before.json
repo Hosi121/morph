@@ -1,0 +1,8 @@
+{
+  "baseline": "/home/hosi/morph-conversion-smith-before",
+  "ref": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+  "tracked_blob_count": 2211,
+  "all_bytes_match": true,
+  "mismatches": [],
+  "blob_manifest_sha256": "a780ac45a38b27f6806ef25e3625a274a49bf62e472a67bf04d1ab6c46989a7e"
+}
