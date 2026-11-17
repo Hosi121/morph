@@ -8,6 +8,7 @@
 実数体 K に i を加えた基底計算と、α+i による一生成元の表現も使えます。
 全根を同じ体で指定できる場合は、全自己同型と部分群の固定体も計算できます。
 QQ多項式から共通体・最小生成体・一生成元へ進み、最小分解体と全Galois作用を自動構成する経路も接続しています。
+有限置換群の導来列へつなぐ根号可解性、箱上のBernstein証明、整数ホモロジーも追加しています。
 部品の接続は[厳密代数の計算経路](handbook/algebraic-solving.md)、
 入力・出力・証拠の使い分けは[実数制約の章](handbook/real-constraints.md)、
 確認済みの検査と対象ソースは[検証ガイド](VALIDATION.md)を参照してください。
@@ -28,6 +29,10 @@ QQ多項式から共通体・最小生成体・一生成元へ進み、最小分
 | 基底を持つ複素数体 | K(i) の四則演算・trace/norm・最小多項式、α+i による絶対一生成元の双方向変換 | [設計](handbook/complex-fields.md)・[数体の独立参照](research/complexfield-oracle-20261117.md)・[変換の独立参照](research/complexprimitive-oracle-20261117.md) |
 | 明示分解した体の対称性 | 全自己同型・合成表、部分群の固定体の完全基底と座標。z⁴−2 では D4 と全10中間体 | [設計](handbook/galois-fixed-fields.md)・[群の参照](research/complexautomorphism-oracle-20261117.md)・[固定体の参照](research/fixedfield-oracle-20261117.md) |
 | 最小分解体と完全なGalois作用 | QQ多項式の全根を共通体へ移し、単項式基底で最小体を確定する。一生成元と根置換群を返す | [設計](handbook/complex-splitting.md)・[生成体の参照](research/complexsubfield-oracle-20261117.md)・[群作用の参照](research/splittinggalois-oracle-20261117.md) |
+| 有限置換群と可解性 | 生成元の閉包、交換子群と導来列。完全なGalois作用から根号可解性へ接続 | [分野の接続](handbook/connections.md)・[独立置換モデル](research/permgroup-20261117.md) |
+| 箱上の多項式不等式 | 正確なBernstein係数で包囲し、細分木または有理反例を検査する | [恒等式と幾何の検査](research/bernstein-20261117.md) |
+| 単体複体の整数ホモロジー | 整数サイクル格子をSmith基底で表し、自由部分とねじれを得る | [境界・基底・独立照合](research/homology-20261117.md) |
+| 群表示の可換化 | 有限の関係語を指数和行列へ移し、Smith余核で自由部分とねじれを得る | [関係式・独立小行列式・位相との接続](research/presentation-20261117.md) |
 
 ## 現在の探索経路と残る課題
 
@@ -62,7 +67,9 @@ QQ多項式から共通体・最小生成体・一生成元へ進み、最小分
 
 | 目標 | 使える部品 | 大きな不足 |
 | --- | --- | --- |
-| 分解体・Galois群の規模拡大と根号可解性 | QQ分解、共通体、[最小分解体・完全な群作用](handbook/complex-splitting.md)、[固定体](handbook/galois-fixed-fields.md) | d²の消去と階乗の置換探索、群分類・resolvent、新しい群から固定体へのadapter |
+| 分解体・Galois群の規模拡大と根号式の構成 | QQ分解、共通体、[最小分解体・完全な群作用](handbook/complex-splitting.md)、[導来列と根号可解性](handbook/connections.md)、[固定体](handbook/galois-fixed-fields.md) | d²の消去と階乗の置換探索、群分類・resolvent、新しい群から固定体へのadapter、根号塔の構成 |
+| 証明を組み合わせる不等式処理 | CAD、根の符号、[Bernstein包囲と細分](handbook/connections.md) | SOS・Positivstellensatz証明の生成、実時間に応じた経路選択、零集合の扱い |
+| 位相の追加不変量 | [単体境界と整数ホモロジー](handbook/connections.md)、Smith標準形 | persistent homology、コホモロジーの積、基本群表示の抽出、複体の簡約 |
 | 実代数集合の連結成分と経路 | CAD、実根、実解の一変数表現 | 特異点、セルの接続関係、roadmap |
 | Schoof/SEAの楕円曲線点数計算 | 有限体、拡大体、多項式、楕円曲線、CRT | 除算多項式、torsion、Frobenius作用、traceの復元 |
 

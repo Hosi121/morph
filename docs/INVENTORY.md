@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：108パッケージ、292ソース。
-核のテスト宣言：4040、bench group：212。
+算法の核：113パッケージ、302ソース。
+核のテスト宣言：4090、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -21,6 +21,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [bch](../src/bch) | 3 | 28 | 0 | `binary`, `core`, `galois`, `recurrence` |
 | [bdd](../src/bdd) | 4 | 13 | 4 | `binary`, `circuit`, `core`, `sat` |
 | [berkowitz](../src/berkowitz) | 2 | 76 | 0 | `algebra`, `binary`, `core`, `exact`, `matrix` |
+| [bernstein](../src/bernstein) | 2 | 17 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [binary](../src/binary) | 9 | 35 | 25 | `core` |
 | [bipartite](../src/bipartite) | 1 | 3 | 0 | `core` |
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
@@ -63,10 +64,12 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
 | [fppoly](../src/fppoly) | 4 | 20 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
+| [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
 | [groebner](../src/groebner) | 1 | 46 | 0 | `core`, `exact`, `polynomial`, `sorting` |
 | [heap](../src/heap) | 1 | 2 | 0 | `core` |
+| [homology](../src/homology) | 2 | 10 | 0 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix`, `smith` |
 | [huffman](../src/huffman) | 1 | 2 | 0 | `binary`, `core`, `heap` |
 | [infer](../src/infer) | 1 | 4 | 0 | `core`, `unify` |
 | [linear](../src/linear) | 1 | 3 | 0 | `bareiss`, `core`, `exact`, `matrix`, `rowreduce` |
@@ -81,8 +84,10 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [numberfield](../src/numberfield) | 5 | 139 | 1 | `core`, `exact`, `linear`, `matrix`, `polynomial`, `realalgebraic`, `realminimal`, `sturm`, `zassenhaus` |
 | [orderedsturm](../src/orderedsturm) | 5 | 48 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `sturm`, `tarski` |
 | [parity](../src/parity) | 4 | 7 | 0 | `core` |
+| [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
 | [polynomial](../src/polynomial) | 2 | 4 | 8 | `binary`, `core`, `exact` |
 | [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
+| [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |
 | [primefield](../src/primefield) | 1 | 5 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
 | [primeprove](../src/primeprove) | 1 | 8 | 8 | `binary`, `core`, `factor`, `primality` |

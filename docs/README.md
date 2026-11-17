@@ -11,6 +11,7 @@
 | 基礎算法と代数の実行例 | [基本ツアー](TOUR.txt)・[厳密代数とモデル検査](ADVANCED_TOUR.txt) |
 | 実数制約と複素根の実行例 | [実閉体と非線形SMT](REALCLOSED_TOUR.txt)・[複素代数](COMPLEX_TOUR.txt) |
 | 分解体と群の実行例 | [対称性と中間体](GALOIS_TOUR.txt)・[最小分解体と根置換](SPLITTING_TOUR.txt) |
+| 群・不等式・位相の部品をつなぐ | [分野をまたぐ計算](handbook/connections.md) |
 
 ## 設計と限界を読む
 

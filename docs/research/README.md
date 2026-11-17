@@ -40,6 +40,7 @@
 | 複素数体と絶対一生成元 | [K(i) の固定基底と α+i への変換](complex-fields-20261117.md) | [数体の参照値](complexfield-oracle-20261117.md)・[変換の参照値](complexprimitive-oracle-20261117.md) |
 | 自己同型と固定体 | [全自己同型・部分群・固定される体の接続](complex-galois-20261117.md) | [有限群の参照](complexautomorphism-oracle-20261117.md)・[不変部分空間の参照](fixedfield-oracle-20261117.md) |
 | 最小分解体とGalois群 | [共有座標から最小体・完全な根置換群への接続](complex-splitting-20261117.md) | [共通体](complexcohort-oracle-20261117.md)・[生成体](complexsubfield-oracle-20261117.md)・[返却値の独立レビュー](complexsplitting-review-20261117.md)・[置換群](splittinggalois-oracle-20261117.md) |
+| 箱上の多項式の包囲と正性 | [Bernstein基底と細分証明](bernstein-20261117.md) | 同記録に独立Fraction基底展開・二変数細分・証拠改竄の照合 |
 | 最小多項式への正規化 | [不要な因子を除く](realminimal-20261116.md) | 同記録に既約性の確認と採用条件 |
 | 数体Q(α) | [剰余演算・Bézout逆元・実埋込み](numberfield-20261116.md) | 同記録に独立Fractionとの照合 |
 | 共通の実数体 | [primitive elementへの埋込み](compositum-20261116.md) | [独立レビュー](compositum-review-20261116.md) |
@@ -60,12 +61,21 @@
 | 二進BCH符号 | [構成・系統符号化・代数的訂正](bch-20261116.md) |
 | GSリスト復号 | [多重度補間とRoth–Ruckenstein](listdecode-20261116.md) |
 
+## 群・位相
+
+| テーマ | 記録と検査 |
+| --- | --- |
+| 有限置換群 | [閉包・導来列・可解性](permgroup-20261117.md)：C1〜C8、V4、S3、D4、A4、S4、A5、S5を独立置換モデルと照合 |
+| 整数ホモロジー | [向き付き境界とSmith基底](homology-20261117.md)：小複体の全列挙、射影平面のねじれ、トーラス、独立な最大minorのgcd |
+| 群表示の可換化 | [関係式の指数和からSmith余核へ](presentation-20261117.md)：独立な小行列式モデル、位相との対応、可換化0を持つ非自明な群 |
+
 ## 横断的な探索と未採用の試作
 
 | 記録 | 保存している内容 |
 | --- | --- |
 | [任意変数の実閉体ソルバ](realclosed-20261116.md) | 多段の実代数拡大からCAD・量化消去・非線形SMTをつないだ経緯 |
 | [複雑な算法への挑戦](advanced-algorithms-20261116.md) | 実数制約・計算代数・ゲーム・符号の探索と統合の経緯 |
+| [群・不等式・位相の接続](cross-domain-20261117.md) | 独立した三分野の作業契約、Galois作用と導来列への接続、共通部品の検証 |
 | [探索とリファクタリングの履歴](HISTORY.md) | 初期の動機、実装、表現コストの見直し、検証の経緯 |
 | [長語除算・剰余の試作](wide-kernels/README.md) | 逆順fold、末尾再帰、有限prefix、unrollの比較。通常経路へ未採用 |
 

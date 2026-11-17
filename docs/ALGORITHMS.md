@@ -45,6 +45,19 @@
 | 離散対数 | [baby-step giant-step・最小位数と部分群境界](../src/discretelog/discretelog.mbt) |
 | 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](../src/elliptic/elliptic.mbt) |
 
+<a id="groups-topology"></a>
+
+## 群・位相
+
+共通部品をつなぐ考え方と入力例は[群・不等式・位相の接続](handbook/connections.md)を参照。
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 有限置換群 | [生成元からの再開可能な閉包・部分群・正規性](../src/permgroup/group.mbt)・[導来列と可解性](../src/permgroup/certificate.mbt) |
+| 根号可解性 | [完全なGalois作用から導来列へ接続](../src/galoissolvability/analysis.mbt) |
+| 群表示の可換化 | [符号付き語・自由簡約・指数和行列](../src/presentation/words.mbt)・[Smith余核・自由部分とねじれ・証拠検査](../src/presentation/abelianization.mbt) |
+| 整数ホモロジー | [単体複体と向き付き境界](../src/homology/complex.mbt)・[Smith基底による核・像の整数商とねじれ](../src/homology/homology.mbt) |
+
 <a id="symbolic-computation"></a>
 
 ## 変換・記号計算
@@ -68,6 +81,7 @@
 | 任意変数の射影 | [導関数で閉じた全Collins階層・入力束縛](../src/cadprojection/hierarchy.mbt) |
 | 微分 | [式ADTの記号微分・半環解釈](../src/autodiff/expression.mbt)・[前向き/逆向き自動微分](../src/autodiff/autodiff.mbt) |
 | 厳密幾何 | [凸包・線分交差・面積・Bézier評価](../src/geometry/geometry.mbt) |
+| 箱上の不等式 | [Bernstein基底の厳密な包囲と恒等式検査](../src/bernstein/bernstein.mbt)・[再開可能な細分証明と有理反例](../src/bernstein/subdivision.mbt) |
 
 <a id="linear-optimization"></a>
 

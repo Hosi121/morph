@@ -19,6 +19,7 @@
 | 対称性から中間体を取り出す | [自己同型と固定体](docs/handbook/galois-fixed-fields.md) |
 | 多項式から分解体と群を構成する | [最小分解体とGalois群](docs/handbook/complex-splitting.md) |
 | 実数の不等式と量化を扱う | [実数制約の入口](docs/handbook/real-constraints.md#入出力から入口を選ぶ) → [CAD・量化消去](docs/handbook/real-constraints.md#任意変数のcadと実閉体の量化消去) / [非線形SMT](docs/handbook/real-constraints.md#非線形実数smtへ接続する) |
+| 別の分野へ部品をつなぐ | [置換群・不等式・整数ホモロジー](docs/handbook/connections.md) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
 環境の準備とコマンドは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
@@ -73,6 +74,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | [自己同型と固定体](docs/handbook/galois-fixed-fields.md) | 明示分解した体の自己同型、合成表、部分群に固定される体の完全な基底 |
 | [最小分解体とGalois群](docs/handbook/complex-splitting.md) | 共通体への埋込み、根の単項式基底、最小の生成体、一生成元と完全な根置換群 |
 | [実数制約と量化消去](docs/handbook/real-constraints.md) | 実代数的数、多段拡大、CAD、一階の量化消去、量化なしの非線形SMT |
+| [群・不等式・位相の接続](docs/handbook/connections.md) | 導来列と根号可解性、Bernstein包囲と細分、整数ホモロジーとSmith標準形 |
 | [線形代数と最適化](docs/handbook/linear-optimization.md) | 半環、Gauss–Jordan、Smith標準形、LLL、単体法、0/1最適化 |
 | [グラフ](docs/handbook/graphs.md) | BFS、Dijkstra、SCC、全域森、最大流、二部マッチング |
 | [論理と制約解決](docs/handbook/logic-constraints.md) | SAT・CDCL、回路、BDD、SMT、exact cover、数独 |
