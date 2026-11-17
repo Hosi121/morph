@@ -1,0 +1,4896 @@
+{
+  "utc": "2026-11-17T10:00:48.652540+00:00",
+  "before": {
+    "root": "/home/hosi/morph-perf-baseline",
+    "commit": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+    "working_tree": [
+      "?? src/cmd/primebench/",
+      "?? src/cmd/rationalbench/"
+    ],
+    "source_manifest_sha256": "8ec0265d396c97c43f54f770bff2d3a3c98817c1c8915a7498e34eb2d453c913",
+    "source_file_count": 863,
+    "artifact": "/home/hosi/morph-perf-baseline/_build/native/release/build/cmd/primebench/primebench.exe",
+    "artifact_sha256": "c255117912c49e5cd1aa1d78eae9d0946ef6798302392f10fbd0dc77c9106cbb",
+    "harness": {
+      "main.mbt": "69a3d45e7b804f16362a20f08985b5d242a49cbb24a41f6f80e0d22d5c876be9",
+      "moon.pkg": "e30bd9a86f76bcdd3e30787c6d516d55fb50d359a03281fad14fadd041a80d25"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/tmp/morph-prime-canonical-source-20261117",
+    "commit": "cf385490a84524b94506a9594288b9e73ecea043",
+    "working_tree": [],
+    "source_manifest_sha256": "7eb5a1b98d19dcb27dd33284ded522a584fa31daad5b561c4ef2d7abdc240898",
+    "source_file_count": 861,
+    "artifact": "/tmp/morph-prime-canonical-20261117.exe",
+    "artifact_sha256": "b730bf7fadec4b4c58b1d3553438d912c790239edf24b3faf4742df15de28a9e",
+    "harness": {
+      "main.mbt": "69a3d45e7b804f16362a20f08985b5d242a49cbb24a41f6f80e0d22d5c876be9",
+      "moon.pkg": "e30bd9a86f76bcdd3e30787c6d516d55fb50d359a03281fad14fadd041a80d25"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "reduce-small",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 358391643,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 228845141,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 232594328,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 389031912,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 354661691,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 210183604,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 208525004,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 369708783,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 341260446,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 217462636,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 223595028,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 346267711,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 365724389,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 222683982,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 237120088,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 364085870,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 338614975,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 201294682,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 232673562,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-small",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 365769831,
+      "payload": {
+        "mode": "reduce-small",
+        "checksum": 94000000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-small\",\"checksum\":94000000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 111235005,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 115549231,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 120642968,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 120197069,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 108492280,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 109536871,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 118817784,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 110979086,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 110953863,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 140441781,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 111911452,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 116193716,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 122700050,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 118560700,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 108195656,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 109258130,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 103213775,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 116194030,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 111183433,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-near",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 111107233,
+      "payload": {
+        "mode": "reduce-near",
+        "checksum": 830399937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-near\",\"checksum\":830399937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1221141757,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1202948808,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1205778834,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1223744465,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1219784895,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1235801078,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1292713242,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 926834005,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1122779495,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1202436479,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1235083451,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1220696931,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1277817574,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1257723505,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1270811779,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1214237579,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1203736751,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1295926733,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1264935821,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-unreduced",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1283898196,
+      "payload": {
+        "mode": "reduce-unreduced",
+        "checksum": 963524937,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-unreduced\",\"checksum\":963524937,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 269067671,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 229776937,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 228124101,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 219928861,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 221388368,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 223230748,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 233282574,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 207181442,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 252814253,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 248570927,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 241986915,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 239946154,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 221708128,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 221694562,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 209320642,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 229822684,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 238948503,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 224254438,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 225831480,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-256",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 217301248,
+      "payload": {
+        "mode": "reduce-256",
+        "checksum": 27607710,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-256\",\"checksum\":27607710,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 244478817,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 261086294,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 246843048,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 244161216,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 282505836,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 255716474,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 261425468,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 257204048,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 260247386,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 251847592,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 265913166,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 252295977,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 283854508,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 256161896,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 276506584,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 262067704,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 267829937,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 253336849,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 279612582,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "reduce-1024",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 273190332,
+      "payload": {
+        "mode": "reduce-1024",
+        "checksum": 8670000,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"reduce-1024\",\"checksum\":8670000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 285066564,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 336874684,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 348047445,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 283592280,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 299758523,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 333811152,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 324674184,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 292877329,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 271187080,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 326013711,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 338952336,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 305401562,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 285311247,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 342575996,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 339498944,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 297789467,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 292279074,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 353466737,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 339367620,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 292732695,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 295449820,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 339427500,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 354989044,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 277323196,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 295110102,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 376459402,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 385890843,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 307739520,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 319772612,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 345146187,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 385103211,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 310994024,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 309981193,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 324850613,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 356528620,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 310801584,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 291631545,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 347486897,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 362963483,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 310104851,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 535951370,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 505711556,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 535499372,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 521050107,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 521043161,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 531105902,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 529769460,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 501186485,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 515775658,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 508608244,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 551914133,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 536650896,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 515950368,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 524435525,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 510615566,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 517046603,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 491462496,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 556525748,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 513283060,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 491240219,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 303941441,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 314625056,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 304697938,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 296338244,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 334435653,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 329626580,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 327710185,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 332991016,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 341567432,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 330805495,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 327487662,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 323421093,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 332495611,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 307993133,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 329407665,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 318106245,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 338231134,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 299542580,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 318513788,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 321302272,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1140389091,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1118479120,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1258297069,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1199968876,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1218874502,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1203981366,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1280700281,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1336123848,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1298121944,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1212098112,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1169461759,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1160451026,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1169109429,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1277830847,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1225002626,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1201944256,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1152615903,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1072268778,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1204646018,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1203906062,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 299262419,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 319199876,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 333788531,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 323016971,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 317611635,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 298092737,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 274001739,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 308874742,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 290430845,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 288314873,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 316227713,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 300091369,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 311819985,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 327544182,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 308593033,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 302259359,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 294294250,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 308023551,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 339654818,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 293564248,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 371001900,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 422331392,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 413561817,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 369118503,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 356768513,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 424575870,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 395177975,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 378650012,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 363960892,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 406911731,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 325354336,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 371016662,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 405945160,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 360663057,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 391635039,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 328784063,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 380102241,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 360113263,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 351186408,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 397583778,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 137544023,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 134034861,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 132866954,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 135989135,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 135655026,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 146885175,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 141009514,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 138825379,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 140826258,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 143000673,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 144385715,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 145441810,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143010940,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 122342398,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 125150360,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 122553767,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 123652533,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 141115182,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 112576039,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 129999786,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 409774275,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 335458181,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 386034134,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 418233528,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 374044095,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 435136389,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 428954376,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 510768434,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 518872027,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 523896180,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 503291523,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 413649564,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 475198334,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 425109879,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 468611891,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 473291101,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 467094819,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 441719074,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 439338610,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 493135742,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "reduce-small": {
+      "process_ns": {
+        "medians": {
+          "before": 361238756.5,
+          "after": 223139505.0
+        },
+        "ranges": {
+          "before": [
+            338614975,
+            389031912
+          ],
+          "after": [
+            201294682,
+            237120088
+          ]
+        },
+        "before_over_after": 1.6188919864279523,
+        "block_ratios": [
+          1.6197651159311646,
+          1.7300109435533744,
+          1.5588169373698946,
+          1.5872200935498462,
+          1.6231252303336738
+        ]
+      }
+    },
+    "reduce-near": {
+      "process_ns": {
+        "medians": {
+          "before": 111043159.5,
+          "after": 115871630.5
+        },
+        "ranges": {
+          "before": [
+            103213775,
+            122700050
+          ],
+          "after": [
+            108195656,
+            140441781
+          ]
+        },
+        "before_over_after": 0.9583291356204744,
+        "block_ratios": [
+          0.9798463919631825,
+          0.9610987172562784,
+          0.9001175705167209,
+          1.0229401463833718,
+          0.9425780601659717
+        ]
+      }
+    },
+    "reduce-unreduced": {
+      "process_ns": {
+        "medians": {
+          "before": 1220240913.0,
+          "after": 1246762291.5
+        },
+        "ranges": {
+          "before": [
+            926834005,
+            1283898196
+          ],
+          "after": [
+            1202436479,
+            1295926733
+          ]
+        },
+        "before_over_after": 0.9787277986503011,
+        "block_ratios": [
+          1.015011485470386,
+          0.8489645018106917,
+          0.961418365100301,
+          0.9855726233164164,
+          0.971405100642508
+        ]
+      }
+    },
+    "reduce-256": {
+      "process_ns": {
+        "medians": {
+          "before": 225765406.0,
+          "after": 226977790.5
+        },
+        "ranges": {
+          "before": [
+            207181442,
+            269067671
+          ],
+          "after": [
+            209320642,
+            248570927
+          ]
+        },
+        "before_over_after": 0.9946585765183048,
+        "block_ratios": [
+          1.067908765037567,
+          0.9387892737114909,
+          1.0044899190501575,
+          1.0475983394776023,
+          1.0136947919352588
+        ]
+      }
+    },
+    "reduce-1024": {
+      "process_ns": {
+        "medians": {
+          "before": 261157545.0,
+          "after": 258624095.0
+        },
+        "ranges": {
+          "before": [
+            244161216,
+            283854508
+          ],
+          "after": [
+            246843048,
+            279612582
+          ]
+        },
+        "before_over_after": 1.00979587768108,
+        "block_ratios": [
+          0.9620236371380962,
+          1.0436397440762986,
+          0.9899231548173838,
+          1.0248817651083841,
+          1.0151437219566146
+        ]
+      }
+    },
+    "field2": {
+      "process_ns": {
+        "medians": {
+          "before": 292505884.5,
+          "after": 339159978.0
+        },
+        "ranges": {
+          "before": [
+            271187080,
+            305401562
+          ],
+          "after": [
+            324674184,
+            353466737
+          ]
+        },
+        "before_over_after": 0.8624422204084469,
+        "block_ratios": [
+          0.8302532797856207,
+          0.8999985566876769,
+          0.8670948608598659,
+          0.8548924462757714,
+          0.8443746518765668
+        ]
+      }
+    },
+    "field2-unreduced": {
+      "process_ns": {
+        "medians": {
+          "before": 308860356.5,
+          "after": 355758832.0
+        },
+        "ranges": {
+          "before": [
+            277323196,
+            319772612
+          ],
+          "after": [
+            324850613,
+            385890843
+          ]
+        },
+        "before_over_after": 0.8681734048980687,
+        "block_ratios": [
+          0.824826281788586,
+          0.7907777638347844,
+          0.8637687860168561,
+          0.9110679441561437,
+          0.846978779855111
+        ]
+      }
+    },
+    "inverse2": {
+      "process_ns": {
+        "medians": {
+          "before": 516498485.5,
+          "after": 527102492.5
+        },
+        "ranges": {
+          "before": [
+            491240219,
+            536650896
+          ],
+          "after": [
+            505711556,
+            556525748
+          ]
+        },
+        "before_over_after": 0.979882457110559,
+        "block_ratios": [
+          1.0151655621117337,
+          0.9635718601974659,
+          0.992366193136913,
+          0.9980154409595227,
+          0.9185778876107366
+        ]
+      }
+    },
+    "field17": {
+      "process_ns": {
+        "medians": {
+          "before": 327958352.0,
+          "after": 323000725.0
+        },
+        "ranges": {
+          "before": [
+            296338244,
+            341567432
+          ],
+          "after": [
+            299542580,
+            330805495
+          ]
+        },
+        "before_over_after": 1.0153486559511593,
+        "block_ratios": [
+          0.9692514097094868,
+          1.015349672401178,
+          1.0101707999373901,
+          1.020710764783197,
+          1.067108827200046
+        ]
+      }
+    },
+    "field65537": {
+      "process_ns": {
+        "medians": {
+          "before": 1200956566.0,
+          "after": 1208372065.0
+        },
+        "ranges": {
+          "before": [
+            1140389091,
+            1336123848
+          ],
+          "after": [
+            1072268778,
+            1280700281
+          ]
+        },
+        "before_over_after": 0.9938632320170361,
+        "block_ratios": [
+          0.9846774710346949,
+          1.0283000854797235,
+          1.0323372508656115,
+          0.9473477602798547,
+          1.0349627351624449
+        ]
+      }
+    },
+    "add17": {
+      "process_ns": {
+        "medians": {
+          "before": 301175364.0,
+          "after": 312410373.0
+        },
+        "ranges": {
+          "before": [
+            290430845,
+            323016971
+          ],
+          "after": [
+            274001739,
+            339654818
+          ]
+        },
+        "before_over_after": 0.96403765696986,
+        "block_ratios": [
+          0.9529715739654777,
+          1.0950750326769454,
+          0.9768082971742871,
+          0.9653252938518933,
+          0.9076395416873958
+        ]
+      }
+    },
+    "add65537": {
+      "process_ns": {
+        "medians": {
+          "before": 371009281.0,
+          "after": 393406507.0
+        },
+        "ranges": {
+          "before": [
+            328784063,
+            405945160
+          ],
+          "after": [
+            325354336,
+            424575870
+          ]
+        },
+        "before_over_after": 0.9430684912387582,
+        "block_ratios": [
+          0.885424591360689,
+          0.8971211656835839,
+          1.0037028712952774,
+          0.9766463944367074,
+          1.0933310539939782
+        ]
+      }
+    },
+    "poly2": {
+      "process_ns": {
+        "medians": {
+          "before": 136766579.0,
+          "after": 137522187.5
+        },
+        "ranges": {
+          "before": [
+            122553767,
+            145441810
+          ],
+          "after": [
+            112576039,
+            146885175
+          ]
+        },
+        "before_over_after": 0.9945055520586451,
+        "block_ratios": [
+          1.0248456272206317,
+          0.9534055871381497,
+          0.9961086535525128,
+          1.0730201123703182,
+          0.9998466561048244
+        ]
+      }
+    },
+    "poly17": {
+      "process_ns": {
+        "medians": {
+          "before": 470192960.0,
+          "after": 437237499.5
+        },
+        "ranges": {
+          "before": [
+            374044095,
+            518872027
+          ],
+          "after": [
+            335458181,
+            523896180
+          ]
+        },
+        "before_over_after": 1.0753719901373646,
+        "block_ratios": [
+          1.147632186491134,
+          1.0239810038937287,
+          0.9078395197649675,
+          1.0612804418986013,
+          1.0898611730398347
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}

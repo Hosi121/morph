@@ -1,0 +1,3170 @@
+{
+  "utc": "2026-11-17T10:02:59.596521+00:00",
+  "before": {
+    "root": "/home/hosi/morph-perf-baseline",
+    "commit": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+    "working_tree": [
+      "?? src/cmd/primebench/",
+      "?? src/cmd/rationalbench/"
+    ],
+    "source_manifest_sha256": "8ec0265d396c97c43f54f770bff2d3a3c98817c1c8915a7498e34eb2d453c913",
+    "source_file_count": 863,
+    "artifact": "/home/hosi/morph-perf-baseline/_build/native/release/build/cmd/primebench/primebench.exe",
+    "artifact_sha256": "c255117912c49e5cd1aa1d78eae9d0946ef6798302392f10fbd0dc77c9106cbb",
+    "harness": {
+      "main.mbt": "69a3d45e7b804f16362a20f08985b5d242a49cbb24a41f6f80e0d22d5c876be9",
+      "moon.pkg": "e30bd9a86f76bcdd3e30787c6d516d55fb50d359a03281fad14fadd041a80d25"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-perf-prime",
+    "commit": "5c8577a951fce5a040d017eaf8534e1e77262a7b",
+    "working_tree": [
+      "M src/modular/modular.mbt",
+      "?? docs/research/prime-arithmetic-20261117.md",
+      "?? src/cmd/primebench/results/"
+    ],
+    "source_manifest_sha256": "cfaf1e51d98351d876514d0a949b9014d6cb40da1f98a21f6ce6e7b42c628cce",
+    "source_file_count": 861,
+    "artifact": "/tmp/morph-prime-two-20261117.exe",
+    "artifact_sha256": "074c6ed464ebba7c54edf7d96d80221699c2c25c15b60546e4b555652f5cd364",
+    "harness": {
+      "main.mbt": "69a3d45e7b804f16362a20f08985b5d242a49cbb24a41f6f80e0d22d5c876be9",
+      "moon.pkg": "e30bd9a86f76bcdd3e30787c6d516d55fb50d359a03281fad14fadd041a80d25"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 365437456,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 227836279,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 174972822,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 265065759,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 278545647,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 157163237,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 152289855,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 303125617,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 253093129,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 160337645,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 176814298,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 276813187,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 257396458,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 267749982,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 231033901,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 262495566,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 265576939,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 194526498,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 198048455,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 303449932,
+      "payload": {
+        "mode": "field2",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 275174216,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 172694668,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 169235074,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 292417641,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 292873370,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 189582212,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 160137859,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 248889599,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 259703677,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 156261606,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 149497074,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 251758015,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 317904861,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 169631288,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 159878004,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 290075122,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 319350281,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 173730419,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 158484213,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field2-unreduced",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 293455457,
+      "payload": {
+        "mode": "field2-unreduced",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field2-unreduced\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 441573787,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 63691319,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 79445868,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 512381462,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 501423569,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 60899413,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 72458954,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 474816287,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 452988796,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 59667485,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 59083051,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 542352496,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 474569186,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 63139262,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 57873148,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 429980339,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 486003643,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 55332366,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 54693109,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "inverse2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 442833633,
+      "payload": {
+        "mode": "inverse2",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"inverse2\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 131257173,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 143926195,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 142119218,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 146459757,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 128260699,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 130153094,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 141300379,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 138127905,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 133910216,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 142868408,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 134201790,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 135497362,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 132126172,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 137239286,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 130088767,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 130989516,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 127873508,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 125850626,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 110992707,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly2",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 140296929,
+      "payload": {
+        "mode": "poly2",
+        "checksum": 2187,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly2\",\"checksum\":2187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 327080550,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 290201438,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 297848217,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 296078673,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 341143351,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 356420112,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 411537509,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 264875551,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 323836125,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 301221025,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 310573007,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 299756811,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 357938546,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 366264774,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 323893727,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 282871404,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 284513635,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 304610986,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 318813551,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 291779469,
+      "payload": {
+        "mode": "field17",
+        "checksum": 0,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field17\",\"checksum\":0,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1185231723,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1191600367,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1164674888,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1129113579,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1138124478,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1080984780,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1222755187,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1153907597,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1190770114,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1101060428,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1076036517,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 742690529,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 976688528,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1130739656,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1120678961,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1157454385,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1161239579,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1148077054,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1173102060,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "field65537",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1172105365,
+      "payload": {
+        "mode": "field65537",
+        "checksum": 57346,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"field65537\",\"checksum\":57346,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 297103484,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 306920878,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 306595973,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 272957692,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 296994100,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 308269804,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 317023838,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 340942940,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 302890196,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 297025002,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 297093193,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 291623931,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 328345436,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 304372703,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 325930707,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 298253271,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 272762076,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 288492067,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 292929140,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 323025133,
+      "payload": {
+        "mode": "add17",
+        "checksum": 1,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add17\",\"checksum\":1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 402889297,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 376451756,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 388869003,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 389329935,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 399631242,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 410814958,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 371614298,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 358641752,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 365769333,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 391366369,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 402429873,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 374986489,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 373162435,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 376728873,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 393622606,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 389257297,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 403898875,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 386074842,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 383285310,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "add65537",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 406416039,
+      "payload": {
+        "mode": "add65537",
+        "checksum": 26878,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"add65537\",\"checksum\":26878,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 417197608,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 422316635,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 403186366,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 414579621,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 448693287,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 477452152,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 429453067,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 406270841,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 456890686,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 399637957,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 433798630,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 423981788,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 438196385,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 423835523,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 465572884,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 413222867,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 434153329,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 429857226,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 396621586,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "poly17",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 410625220,
+      "payload": {
+        "mode": "poly17",
+        "checksum": 35743,
+        "checked": true
+      },
+      "stdout": "{\"mode\":\"poly17\",\"checksum\":35743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "field2": {
+      "process_ns": {
+        "medians": {
+          "before": 271195063.0,
+          "after": 185670398.0
+        },
+        "ranges": {
+          "before": [
+            253093129,
+            365437456
+          ],
+          "after": [
+            152289855,
+            267749982
+          ]
+        },
+        "before_over_after": 1.4606262814172457,
+        "block_ratios": [
+          1.5652655648413465,
+          1.879675075277645,
+          1.5717136650166064,
+          1.0423192122268312,
+          1.449473193976285
+        ]
+      }
+    },
+    "field2-unreduced": {
+      "process_ns": {
+        "medians": {
+          "before": 291246381.5,
+          "after": 164686466.5
+        },
+        "ranges": {
+          "before": [
+            248889599,
+            319350281
+          ],
+          "after": [
+            149497074,
+            189582212
+          ]
+        },
+        "before_over_after": 1.7684900750481523,
+        "block_ratios": [
+          1.6599663243099807,
+          1.5491331894416778,
+          1.6727626244330986,
+          1.8451072481440067,
+          1.8446079099851327
+        ]
+      }
+    },
+    "inverse2": {
+      "process_ns": {
+        "medians": {
+          "before": 474692736.5,
+          "after": 60283449.0
+        },
+        "ranges": {
+          "before": [
+            429980339,
+            542352496
+          ],
+          "after": [
+            54693109,
+            79445868
+          ]
+        },
+        "before_over_after": 7.874346016599017,
+        "block_ratios": [
+          6.664622024463846,
+          7.320424492000566,
+          8.381783573591617,
+          7.474849273723248,
+          8.442020141244562
+        ]
+      }
+    },
+    "poly2": {
+      "process_ns": {
+        "medians": {
+          "before": 133018194.0,
+          "after": 135720538.0
+        },
+        "ranges": {
+          "before": [
+            127873508,
+            146459757
+          ],
+          "after": [
+            110992707,
+            143926195
+          ]
+        },
+        "before_over_after": 0.980088908872436,
+        "block_ratios": [
+          0.9708840532954115,
+          0.9813416680802607,
+          0.972344120532227,
+          0.9842427124548728,
+          1.132269309011962
+        ]
+      }
+    },
+    "field17": {
+      "process_ns": {
+        "medians": {
+          "before": 297917742.0,
+          "after": 314693279.0
+        },
+        "ranges": {
+          "before": [
+            264875551,
+            357938546
+          ],
+          "after": [
+            290201438,
+            411537509
+          ]
+        },
+        "before_over_after": 0.9466924204631647,
+        "block_ratios": [
+          1.0597051077259794,
+          0.78913065698973,
+          1.0192857455007014,
+          0.9284967859868468,
+          0.9243991370201715
+        ]
+      }
+    },
+    "field65537": {
+      "process_ns": {
+        "medians": {
+          "before": 1155680991.0,
+          "after": 1139408355.0
+        },
+        "ranges": {
+          "before": [
+            742690529,
+            1190770114
+          ],
+          "after": [
+            1076036517,
+            1222755187
+          ]
+        },
+        "before_over_after": 1.0142816540958224,
+        "block_ratios": [
+          0.982204985215108,
+          0.9949178760764191,
+          0.8880912021122698,
+          0.9479103072549568,
+          1.0052412284457597
+        ]
+      }
+    },
+    "add17": {
+      "process_ns": {
+        "medians": {
+          "before": 297678377.5,
+          "after": 305484338.0
+        },
+        "ranges": {
+          "before": [
+            272762076,
+            340942940
+          ],
+          "after": [
+            288492067,
+            325930707
+          ]
+        },
+        "before_over_after": 0.9744472644617218,
+        "block_ratios": [
+          0.9291695494114472,
+          1.020219936923651,
+          1.0006664195833963,
+          0.9941223497426422,
+          1.0247084245071232
+        ]
+      }
+    },
+    "add65537": {
+      "process_ns": {
+        "medians": {
+          "before": 389293616.0,
+          "after": 387471922.5
+        },
+        "ranges": {
+          "before": [
+            358641752,
+            406416039
+          ],
+          "after": [
+            371614298,
+            410814958
+          ]
+        },
+        "before_over_after": 1.0047014851766454,
+        "block_ratios": [
+          1.0351466658700683,
+          0.9691265864424681,
+          0.933181316320719,
+          0.9897037297698237,
+          1.053232237065483
+        ]
+      }
+    },
+    "poly17": {
+      "process_ns": {
+        "medians": {
+          "before": 420589698.0,
+          "after": 426644295.0
+        },
+        "ranges": {
+          "before": [
+            406270841,
+            456890686
+          ],
+          "after": [
+            396621586,
+            477452152
+          ]
+        },
+        "before_over_after": 0.9858087941853295,
+        "block_ratios": [
+          1.007600490843037,
+          0.9427271010114233,
+          1.0569160122556511,
+          0.9572871644780844,
+          1.0221418102125526
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}
