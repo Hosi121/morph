@@ -1,0 +1,10 @@
+import {
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/groebner" @gb,
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/bench",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
