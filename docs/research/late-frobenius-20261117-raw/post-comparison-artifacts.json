@@ -1,0 +1,17 @@
+{
+  "artifacts": [
+    {
+      "label": "before",
+      "bytes": 650856,
+      "sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713",
+      "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe"
+    },
+    {
+      "label": "after-initial",
+      "bytes": 650920,
+      "sha256": "066f56bf4810a28d8bd7a57dd26a64990d7cf3b6319f8eb462bfc19e8ff54895",
+      "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/after-initial.exe"
+    }
+  ],
+  "baseline_tracked_libraries_unchanged": true
+}

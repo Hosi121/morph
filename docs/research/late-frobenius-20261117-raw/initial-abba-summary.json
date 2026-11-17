@@ -1,0 +1,604 @@
+{
+  "utc": "2026-11-17T14:27:52.830447+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe",
+    "artifact_sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-late-fp",
+    "commit": "5c92b506e887b908ee13e8e5b5cb737dbe659b77",
+    "working_tree": [
+      "?? docs/research/late-frobenius-20261117-raw/"
+    ],
+    "source_manifest_sha256": "bc00fd965e9658124dd65ee1c274af3b58105f862762ca09e2c6d8b2b41eae82",
+    "source_file_count": 928,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/after-initial.exe",
+    "artifact_sha256": "066f56bf4810a28d8bd7a57dd26a64990d7cf3b6319f8eb462bfc19e8ff54895",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "dense-f2-power16": {
+      "process_ns": {
+        "medians": {
+          "before": 45375437.5,
+          "after": 38803689.5
+        },
+        "ranges": {
+          "before": [
+            42930688,
+            48799676
+          ],
+          "after": [
+            35629054,
+            42108463
+          ]
+        },
+        "before_over_after": 1.1693588440862048,
+        "block_ratios": [
+          1.1368620998634014,
+          1.1565276669250748,
+          1.1715406337960403,
+          1.185927242820557,
+          1.2022496537142957
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 42970.567500000005,
+          "after": 36235.3005
+        },
+        "ranges": {
+          "before": [
+            39949.874,
+            46462.416
+          ],
+          "after": [
+            33558.612,
+            39711.675
+          ]
+        },
+        "before_over_after": 1.1858758422605054,
+        "block_ratios": [
+          1.1597043440507206,
+          1.1724113627607946,
+          1.184815618927407,
+          1.1945378490649774,
+          1.1992109358925074
+        ]
+      }
+    },
+    "sparse-f2-power32": {
+      "process_ns": {
+        "medians": {
+          "before": 24737244.0,
+          "after": 17344836.5
+        },
+        "ranges": {
+          "before": [
+            22922657,
+            29499483
+          ],
+          "after": [
+            15563718,
+            22465755
+          ]
+        },
+        "before_over_after": 1.426202201444793,
+        "block_ratios": [
+          1.4024385712462648,
+          1.4439154328031978,
+          1.4234557823046827,
+          1.3406792112478632,
+          1.7385238262923484
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 22303.8195,
+          "after": 14879.693
+        },
+        "ranges": {
+          "before": [
+            20424.605,
+            27231.966
+          ],
+          "after": [
+            13360.587,
+            19812.861
+          ]
+        },
+        "before_over_after": 1.4989435265902329,
+        "block_ratios": [
+          1.436263260970134,
+          1.5637943706895405,
+          1.4689588664726472,
+          1.3692507616685614,
+          1.8131375337016014
+        ]
+      }
+    },
+    "irreducibility-setup8": {
+      "process_ns": {
+        "medians": {
+          "before": 84917853.0,
+          "after": 79429500.5
+        },
+        "ranges": {
+          "before": [
+            80140332,
+            97808935
+          ],
+          "after": [
+            74715598,
+            86611192
+          ]
+        },
+        "before_over_after": 1.0690971549040522,
+        "block_ratios": [
+          1.0777262920888886,
+          1.0305605385838759,
+          1.0913172085818286,
+          1.078324071242072,
+          1.1093110439427747
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 82669.238,
+          "after": 77041.1955
+        },
+        "ranges": {
+          "before": [
+            77867.241,
+            95405.383
+          ],
+          "after": [
+            72565.397,
+            84508.826
+          ]
+        },
+        "before_over_after": 1.0730523775426095,
+        "block_ratios": [
+          1.0838171924017304,
+          1.035694754397701,
+          1.0947926058026638,
+          1.0797522435807312,
+          1.1133241919603953
+        ]
+      }
+    },
+    "odd17-control": {
+      "process_ns": {
+        "medians": {
+          "before": 122038486.5,
+          "after": 127109649.0
+        },
+        "ranges": {
+          "before": [
+            112703290,
+            139714346
+          ],
+          "after": [
+            117210153,
+            132169105
+          ]
+        },
+        "before_over_after": 0.9601040319134231,
+        "block_ratios": [
+          1.0490098198211943,
+          1.0064643092821046,
+          0.9640028249229535,
+          0.9585091548892738,
+          0.9244846705433776
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 117558.35749999997,
+          "after": 122173.89050000001
+        },
+        "ranges": {
+          "before": [
+            106954.979,
+            134857.274
+          ],
+          "after": [
+            112980.484,
+            127572.07400000001
+          ]
+        },
+        "before_over_after": 0.9622216090433819,
+        "block_ratios": [
+          1.0528882198856533,
+          1.0082331882482543,
+          0.9639967674456095,
+          0.9662227957744057,
+          0.9163441643172803
+        ]
+      }
+    },
+    "lowdegree-f2": {
+      "process_ns": {
+        "medians": {
+          "before": 70204725.0,
+          "after": 68107015.0
+        },
+        "ranges": {
+          "before": [
+            67128661,
+            76808062
+          ],
+          "after": [
+            66176560,
+            76005077
+          ]
+        },
+        "before_over_after": 1.0308002046485227,
+        "block_ratios": [
+          1.0042247628238679,
+          1.0491629490995198,
+          1.0446116375131342,
+          1.0326659801795957,
+          1.0129498797744048
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 67925.868,
+          "after": 65744.46999999999
+        },
+        "ranges": {
+          "before": [
+            65048.97,
+            74558.643
+          ],
+          "after": [
+            63702.536,
+            73859.73700000001
+          ]
+        },
+        "before_over_after": 1.0331799465415117,
+        "block_ratios": [
+          1.00355484153823,
+          1.0523220606705344,
+          1.0466350756929614,
+          1.0390762719977642,
+          1.014670680965779
+        ]
+      }
+    },
+    "setup-one-shot-f2": {
+      "process_ns": {
+        "medians": {
+          "before": 85500702.5,
+          "after": 81846838.0
+        },
+        "ranges": {
+          "before": [
+            80188480,
+            95773642
+          ],
+          "after": [
+            77526231,
+            86106132
+          ]
+        },
+        "before_over_after": 1.0446427081275882,
+        "block_ratios": [
+          1.0997172168730742,
+          1.0140805018609607,
+          1.0224013543905168,
+          1.0866349331429304,
+          1.0330920846018705
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 82806.29250000001,
+          "after": 79713.821
+        },
+        "ranges": {
+          "before": [
+            77027.52,
+            93545.85800000001
+          ],
+          "after": [
+            75401.95400000003,
+            84135.289
+          ]
+        },
+        "before_over_after": 1.0387946715037033,
+        "block_ratios": [
+          1.1033229550001655,
+          1.0148200563133418,
+          1.0152196010856858,
+          1.0819226009916565,
+          1.0335639308998212
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 120,
+  "checked_outputs": {
+    "dense-f2-power16": {
+      "case": "dense-f2-power16",
+      "iterations": 300,
+      "result": [
+        1
+      ],
+      "checked": true
+    },
+    "sparse-f2-power32": {
+      "case": "sparse-f2-power32",
+      "iterations": 80,
+      "result": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "checked": true
+    },
+    "irreducibility-setup8": {
+      "case": "irreducibility-setup8",
+      "iterations": 1200,
+      "result": [
+        [
+          [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                1,
+                1,
+                0,
+                1,
+                1,
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                1
+              ],
+              [
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ]
+            ],
+            [
+              [
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                1
+              ],
+              [
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1
+              ]
+            ]
+          ]
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        256,
+        8
+      ],
+      "checked": true
+    },
+    "odd17-control": {
+      "case": "odd17-control",
+      "iterations": 50,
+      "result": [
+        12
+      ],
+      "checked": true
+    },
+    "lowdegree-f2": {
+      "case": "lowdegree-f2",
+      "iterations": 40000,
+      "result": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        []
+      ],
+      "checked": true
+    },
+    "setup-one-shot-f2": {
+      "case": "setup-one-shot-f2",
+      "iterations": 20000,
+      "result": [
+        0,
+        1
+      ],
+      "checked": true
+    }
+  },
+  "archive": {
+    "filename": "initial-abba.json.gz",
+    "uncompressed_sha256": "1f7889747513a2c62a0f18ba524d7dbf007f57692645c57257f09ed27547b0f2",
+    "compressed_sha256": "1391cc718d5f9834db0718908495d82e59d4c9449da64d421f71874f13a807ff",
+    "uncompressed_bytes": 146677,
+    "compressed_bytes": 6664
+  }
+}

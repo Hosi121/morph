@@ -1,0 +1,8 @@
+{
+  "scope": [
+    "src/fppoly/characteristic_two.mbt",
+    "src/fppoly/polynomial.mbt"
+  ],
+  "passed": true,
+  "note": "Only changed production files checked; root owns full global regression."
+}

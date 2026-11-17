@@ -1,0 +1,20 @@
+{
+  "scope": "src/fppoly",
+  "command": [
+    "tools/measure",
+    "--cpu",
+    "4",
+    "tools/moon",
+    "test",
+    "src/fppoly",
+    "--target",
+    "native",
+    "--release",
+    "--deny-warn",
+    "-j",
+    "1"
+  ],
+  "exit_code": 0,
+  "stdout": "Total tests: 32, passed: 32, failed: 0.\n",
+  "note": "Completed before the first source comparison. Final consumer/scoped backend checks are a separate later phase."
+}

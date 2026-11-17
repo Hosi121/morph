@@ -1,0 +1,38 @@
+[
+  {
+    "case": "dense-f2-power16",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"dense-f2-power16\",\"iterations\":300,\"result\":[1],\"elapsed_us\":45744.622,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "sparse-f2-power32",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"sparse-f2-power32\",\"iterations\":80,\"result\":[1,1,0,0,1,0,1,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],\"elapsed_us\":21334.010000000002,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "irreducibility-setup8",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"irreducibility-setup8\",\"iterations\":300,\"result\":[[[[0,0,1],[0,0,0,0,1],[1,1,0,1,1],[0,1,1,1,1,0,1],[0,0,1,0,0,1,1,1],[1,0,1,1,0,0,1],[0,1,0,1,1,1,1,1],[0,1]],[[[1],[1],[1,1,0,1,1,1,1]],[[1],[1,1,0,1],[0,1,0,1,0,1,0,1]],[[1],[0,1],[1,1,1,1,1,1]],[[1],[1,1,0,0,1],[1,0,0,0,1,0,1]]]],[1,1,0,1,1,0,0,0,1],256,8],\"elapsed_us\":20383.998,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "odd17-control",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"odd17-control\",\"iterations\":100,\"result\":[12],\"elapsed_us\":230887.62600000002,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "lowdegree-f2",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"lowdegree-f2\",\"iterations\":10000,\"result\":[[1],[1],[]],\"elapsed_us\":19743.96,\"checked\":true}\n",
+    "stderr": ""
+  },
+  {
+    "case": "setup-one-shot-f2",
+    "exit_code": 0,
+    "stdout": "{\"case\":\"setup-one-shot-f2\",\"iterations\":5000,\"result\":[0,1],\"elapsed_us\":19369.479,\"checked\":true}\n",
+    "stderr": ""
+  }
+]

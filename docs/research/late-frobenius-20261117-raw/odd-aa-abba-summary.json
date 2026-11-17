@@ -1,0 +1,123 @@
+{
+  "utc": "2026-11-17T14:28:49.332858+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe",
+    "artifact_sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe",
+    "artifact_sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "odd17-control": {
+      "process_ns": {
+        "medians": {
+          "before": 116249418.0,
+          "after": 115593922.0
+        },
+        "ranges": {
+          "before": [
+            107950914,
+            125488708
+          ],
+          "after": [
+            108337587,
+            120180119
+          ]
+        },
+        "before_over_after": 1.0056706787749619,
+        "block_ratios": [
+          0.9628777201406566,
+          1.0224452952549878,
+          0.9737404073174705,
+          1.067225525531756,
+          1.0175399734724708
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 111297.4575,
+          "after": 110289.2045
+        },
+        "ranges": {
+          "before": [
+            102673.115,
+            121165.051
+          ],
+          "after": [
+            104021.354,
+            115279.119
+          ]
+        },
+        "before_over_after": 1.0091419011005742,
+        "block_ratios": [
+          0.9649024036036199,
+          1.028619156518864,
+          0.9735968359882525,
+          1.077478946219269,
+          1.0204105071143497
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 20,
+  "checked_outputs": {
+    "odd17-control": {
+      "case": "odd17-control",
+      "iterations": 50,
+      "result": [
+        12
+      ],
+      "checked": true
+    }
+  },
+  "archive": {
+    "filename": "odd-aa-abba.json.gz",
+    "uncompressed_sha256": "c36e7f417c0a5d9725be207128a3b4157f58775a48fdb08213a0cbbd52aa1113",
+    "compressed_sha256": "70ae0ef8c9d60eb274db0ac232b9a0e2172509f867af8d63e0aab2f64e6ecc17",
+    "uncompressed_bytes": 14229,
+    "compressed_bytes": 1834
+  }
+}

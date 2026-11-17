@@ -1,0 +1,77 @@
+{
+  "note": "Independent Python host carryless arithmetic; degree bounds checked; public CLI independently implements host arithmetic too.",
+  "cases": [
+    {
+      "case": "dense-f2-power16",
+      "base": 65535,
+      "exponent": 65535,
+      "modulus": 69643,
+      "expected_bits": 1,
+      "expected_coefficients": [
+        1
+      ]
+    },
+    {
+      "case": "sparse-f2-power32",
+      "base": 2147483657,
+      "exponent": 65536,
+      "modulus": 4294967437,
+      "expected_bits": 2147509587,
+      "expected_coefficients": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "case": "setup-one-shot-f2",
+      "base": 11,
+      "exponent": 13,
+      "modulus": 19,
+      "expected_bits": 2,
+      "expected_coefficients": [
+        0,
+        1
+      ]
+    }
+  ],
+  "aes_frobenius_orbit": [
+    4,
+    16,
+    27,
+    94,
+    228,
+    77,
+    250,
+    2
+  ]
+}

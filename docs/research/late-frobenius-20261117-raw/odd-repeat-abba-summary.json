@@ -1,0 +1,121 @@
+{
+  "utc": "2026-11-17T14:28:46.836823+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/before.exe",
+    "artifact_sha256": "d2862a5bf81680c254f35cfa7e72b16dd77f8da2efa1a37e65831ffe600cc713",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-late-fp",
+    "commit": "5c92b506e887b908ee13e8e5b5cb737dbe659b77",
+    "working_tree": [
+      "?? docs/research/late-frobenius-20261117-raw/"
+    ],
+    "source_manifest_sha256": "bc00fd965e9658124dd65ee1c274af3b58105f862762ca09e2c6d8b2b41eae82",
+    "source_file_count": 928,
+    "artifact": "/home/hosi/morph-late-fp/.tools/late-frobenius-20261117/after-initial.exe",
+    "artifact_sha256": "066f56bf4810a28d8bd7a57dd26a64990d7cf3b6319f8eb462bfc19e8ff54895",
+    "harness": {
+      "main.mbt": "e817ede6ca847491d8eed4b91aa7a05e582af9c17ad049cd6690f4235dafd8f7",
+      "moon.pkg": "b3d203430f2b8903f79730c1ec3b23d0c015a95e3d1b247385eafec6a59761c8"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "odd17-control": {
+      "process_ns": {
+        "medians": {
+          "before": 117840604.0,
+          "after": 115139066.5
+        },
+        "ranges": {
+          "before": [
+            102260137,
+            136656408
+          ],
+          "after": [
+            108844337,
+            126253864
+          ]
+        },
+        "before_over_after": 1.0234632569302617,
+        "block_ratios": [
+          1.0193288272569019,
+          1.0135863852530875,
+          1.0211922339292887,
+          1.0493703658205344,
+          0.9896964466172644
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 113959.8515,
+          "after": 110722.23799999997
+        },
+        "ranges": {
+          "before": [
+            98100.05900000001,
+            132220.092
+          ],
+          "after": [
+            102583.909,
+            121739.386
+          ]
+        },
+        "before_over_after": 1.0292408603590548,
+        "block_ratios": [
+          1.0315934424462343,
+          1.0135781258367442,
+          1.030357253133491,
+          1.0594334800935077,
+          0.9842582820424474
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 20,
+  "checked_outputs": {
+    "odd17-control": {
+      "case": "odd17-control",
+      "iterations": 50,
+      "result": [
+        12
+      ],
+      "checked": true
+    }
+  },
+  "archive": {
+    "filename": "odd-repeat-abba.json.gz",
+    "uncompressed_sha256": "dc085a5b9e90242657e3550b55c7c6291e056640b053cf7d6ca6a2e445653d4a",
+    "compressed_sha256": "e4954734cceed8b3fe9c174dadf6674ad624c3ddd745ddc9c5ef36a618e1e636",
+    "uncompressed_bytes": 14244,
+    "compressed_bytes": 1988
+  }
+}

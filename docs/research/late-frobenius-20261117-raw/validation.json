@@ -1,0 +1,81 @@
+[
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "native",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 12.649688874000276,
+    "stdout": "Total tests: 51, passed: 51, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 2.0789301069999055,
+    "stdout": "Total tests: 51, passed: 51, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "js",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 2.2138442089999444,
+    "stdout": "Total tests: 51, passed: 51, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "info",
+      "src/fppoly",
+      "src/galois",
+      "src/cmd/latefrobeniusbench",
+      "--target",
+      "all"
+    ],
+    "exit_code": 0,
+    "seconds": 1.6367482490004477,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 64 tasks, now up to date\n"
+  },
+  {
+    "command": [
+      "python3",
+      "/home/hosi/morph-late-fp/docs/research/late-frobenius-20261117-raw/audit_protected.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.03585057300006156,
+    "stdout": "Protected algorithms and error/exponent order unchanged; only known-square call replaced\n",
+    "stderr": ""
+  }
+]
