@@ -340,16 +340,28 @@ fn multiply_coefficients(
   a : @core.Chain[@binary.Binary],
   b : @core.Chain[@binary.Binary],
 ) -> @core.Chain[@binary.Binary] {
-  match a {
-    Nil => Nil
-    Cons(head, tail) =>
-      add_coefficients(
-        modulus,
-        @core.map(b, fn(coefficient) {
-          multiply_reduced(modulus, head, coefficient)
-        }),
-        Cons(@binary.zero(), multiply_coefficients(modulus, tail, b)),
-      )
+  match (a, b) {
+    (Nil, _) | (_, Nil) => Nil
+    (Cons(head, tail), _) =>
+      // Coefficients are already reduced. Dispatch once for the whole row;
+      // zero contributes only the shift, and unit reuses b without mapping it.
+      match @binary.bits(head) {
+        Nil => Cons(@binary.zero(), multiply_coefficients(modulus, tail, b))
+        Cons(true, Nil) =>
+          add_coefficients(
+            modulus,
+            b,
+            Cons(@binary.zero(), multiply_coefficients(modulus, tail, b)),
+          )
+        _ =>
+          add_coefficients(
+            modulus,
+            @core.map(b, fn(coefficient) {
+              multiply_reduced(modulus, head, coefficient)
+            }),
+            Cons(@binary.zero(), multiply_coefficients(modulus, tail, b)),
+          )
+      }
   }
 }
 
