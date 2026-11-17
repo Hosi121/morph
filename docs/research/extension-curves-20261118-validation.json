@@ -1,0 +1,40 @@
+{
+  "base_commit": "7389c7f37f45ca6c1db4380fac226ce8ea4ece95",
+  "first_milestone": "7a7dac6",
+  "tests": {
+    "native": 7,
+    "wasm-gc": 7,
+    "js": 7
+  },
+  "extension_pairs": 4538,
+  "extension_triples": 41635,
+  "small_scalar_cases": 9186,
+  "large_scalar": "2^200+17",
+  "large_scalar_cases": 3,
+  "prime_comparison_curves": 62,
+  "prime_comparison_pairs": 3792,
+  "singularity_pairs": 625,
+  "raw_oracle_sha256": "ae9cdc0280d39de34164ddc4b4930db31e2fa72a20507b21fbd8df5b4956adbe",
+  "gzip_oracle_sha256": "d2b3c3ce50b1d101c40ab53385a347ed5376bf23000fd57b984c317937086563",
+  "source_sha256": {
+    "src/extensioncurve/curve.mbt": "5d9caf045b8c1536648407d5d4b58b9e0d43c063c09e0e2d846930ef5260dddf",
+    "src/extensioncurve/curve_wbtest.mbt": "b5ed4cda330e677009327cb2fe902644c788e8fc825dac92c9fba081029b3ef0",
+    "src/extensioncurve/data.mbt": "22071d7479f10ab9d62f6a97fd5edd70fb920bacae08cd3883c6294ebadbc51a",
+    "src/extensioncurve/host_fixtures_wbtest.mbt": "086edc3618542f289ce1dbb44019aec29245b3ca95144a1e15ef91a309c920ba",
+    "src/extensioncurve/host_oracle_helpers_wbtest.mbt": "93801673f2ef97c9c9959c33a1d0cbc0347a81adee006eb94d01a407cfa0e5a8",
+    "src/extensioncurve/jacobian.mbt": "760a3fee0af2cc3699e51bce673584f47232ea903564c9c8d7d35416cf7ca17f",
+    "src/extensioncurve/moon.pkg": "d092d138358b662b314ca536c7e7fd43b26c051ddde24897bb4c129dbb4eaa4e",
+    "src/extensioncurve/pkg.generated.mbti": "abb968dd83724b45e1b3efe19ea5851fc73af975bc2e891f984a61be248d5b67",
+    "tools/extension-curves-20261118-oracle.py": "e830b9130db2c28d2f0a579c700bd9608454334e9b74e705dfeb1b0b49acdd4f"
+  },
+  "independence_limit": "Shared existing galois arithmetic underlies the native checker and group operations; Python affine integer-polynomial arithmetic is the separate oracle. Existing affine prime-field elliptic also supplies a degree-one reference.",
+  "logs": {
+    "native": "Total tests: 7, passed: 7, failed: 0.\n",
+    "wasm": "Total tests: 7, passed: 7, failed: 0.\n",
+    "js": "Total tests: 7, passed: 7, failed: 0.\n",
+    "purity": "Purity gate passed: 337 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "drift": "Formal drift gate passed: 32 reviewed source regions; not a translation proof.\n",
+    "fmt": "",
+    "info": ""
+  }
+}
