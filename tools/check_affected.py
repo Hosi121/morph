@@ -59,6 +59,86 @@ def affected(old, new, changed):
         selected = expanded
 
 
+# Conservative source proof AND cached compiler corroboration. No metadata-only skips.
+TEST_INFO_KEYS = {'tests', 'no_args_tests', 'with_args_tests',
+                  'with_bench_args_tests', 'async_tests', 'async_tests_with_args'}
+MODULE_KEYS = {'name', 'version', 'source', 'preferred_target', 'description'}
+
+
+def zero_test_command(root, package):
+    """Return auditable proof or None. Unknown configurations always keep tests."""
+    parts = PurePosixPath(package).parts
+    if len(parts) < 2 or parts[0] != 'cmd' or any(p in {'.', '..'} for p in parts):
+        return None
+    directory = root / 'src' / package
+    try:
+        if not directory.is_dir() or directory.is_symlink():
+            return None
+        # Recognize only this repository's plain, generation-free module syntax.
+        if (root / 'moon.mod.json').exists() or (root / 'moon.work').exists():
+            return None
+        module = (root / 'moon.mod').read_text()
+        for line in module.splitlines():
+            if not line.strip():
+                continue
+            match = re.fullmatch(r'\s*([a-z_]+)\s*=\s*("(?:[^"\\]|\\.)*")\s*', line)
+            if not match or match[1] not in MODULE_KEYS:
+                return None
+            value = json.loads(match[2])
+            if match[1] == 'source' and value != 'src':
+                return None
+        config = directory / 'moon.pkg'
+        if (directory / 'moon.pkg.json').exists() or config.is_symlink():
+            return None
+        text = config.read_text()
+        # Whitelist imports and executable declaration; any build hook, conditional
+        # source setting, comments, or future option leaves residue and keeps tests.
+        residue = re.sub(r'import\s*\{[^{}]*\}', '', text)
+        residue, declarations = re.subn(r'pkgtype\s*\(\s*kind\s*:\s*"executable"\s*\)', '', residue)
+        if declarations != 1 or residue.strip():
+            return None
+        sources = sorted(directory.rglob('*.mbt'))
+        if not sources or any(p.is_symlink() or p.parent != directory for p in sources):
+            return None
+        if any(p.name.endswith(('_test.mbt', '_wbtest.mbt')) for p in sources):
+            return None
+        contents = {p: p.read_text() for p in sources}
+        if any(re.search(r'\b(?:test|bench)\b|```|~~~', text) for text in contents.values()):
+            return None
+        # Metadata is an extra veto, never the source of the no-test conclusion.
+        # Missing, stale-shape, unknown-schema, or nonempty records keep the package.
+        metadata = []
+        for kind in ('internal', 'blackbox'):
+            path = root / '_build/native/release/test' / package / ('__' + kind + '_test_info.json')
+            info = json.loads(path.read_text())
+            if set(info) != TEST_INFO_KEYS:
+                return None
+            for tests in info.values():
+                if not isinstance(tests, dict) or set(tests) != {p.name for p in sources}:
+                    return None
+                if any(not isinstance(entries, list) or entries for entries in tests.values()):
+                    return None
+            metadata.append({'path': str(path.relative_to(root)), 'sha256': sha(path)})
+        return {'package': package, 'source_count': len(sources), 'test_file_count': 0,
+                'test_keyword_count': 0, 'documentation_fence_count': 0,
+                'source_sha256': {str(p.relative_to(root)): sha(p) for p in sources},
+                'configuration_sha256': {str(p.relative_to(root)): sha(p) for p in (root / 'moon.mod', config)},
+                'native_empty_metadata': metadata}
+    except (OSError, UnicodeError, ValueError, TypeError, KeyError):
+        return None
+
+
+def runtime_selection(root, packages):
+    runtime, skipped = [], []
+    for package in packages:
+        proof = zero_test_command(root, package)
+        if proof is None:
+            runtime.append(package)
+        else:
+            skipped.append(proof)
+    return runtime, skipped
+
+
 def verify_record(root, record, git):
     if record.get('runner_sha256') and sha(__file__) != record['runner_sha256']:
         raise ValueError('Verification runner changed; initialize a new record')
@@ -67,6 +147,9 @@ def verify_record(root, record, git):
     for path, expected in record['source_files'].items():
         if not (root / path).is_file() or sha(root / path) != expected:
             raise ValueError('Source drift: ' + path)
+    for proof in record.get('skipped_zero_test_commands', []):
+        if zero_test_command(root, proof['package']) != proof:
+            raise ValueError('Runtime selection drift: ' + proof['package'])
     for command in record['commands']:
         if command['returncode'] != 0 or sha(root / command['log']) != command['sha256']:
             raise ValueError('Completed command/log drift: ' + command['name'])
@@ -108,10 +191,12 @@ def initialize(root, path, base, allowed, git):
     paths = git('ls-files', 'src', 'tools', 'moon.mod', 'formal',
                 ':(glob)docs/research/**/*.py', ':(glob)docs/research/**/*.json').splitlines()
     files = {p: sha(root / p) for p in paths if (root / p).is_file()}
+    runtime_packages, skipped = runtime_selection(root, packages)
     record = dict(started_utc=utc(), source_commit=git('rev-parse', 'HEAD'), baseline=base,
                   runner_path=str(Path(__file__).resolve()), runner_sha256=sha(__file__),
                   scope='Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.',
                   changed_files=changed, roots=roots, packages=packages,
+                  runtime_packages=runtime_packages, skipped_zero_test_commands=skipped,
                   old_import_graph={p: sorted(v) for p, v in old.items()},
                   new_import_graph={p: sorted(v) for p, v in new.items()},
                   source_files=files,
@@ -174,7 +259,8 @@ def run_stage(root, path, record, stage, git):
                                            partial_log=str(partial.relative_to(root)), sha256=sha(partial),
                                            note='No completion status was recorded; repeat only this incomplete stage.'))
     log = path.parent / (stage + '.log')
-    argv = argv_for(stage, root, record['packages'])
+    packages = record.get('runtime_packages', record['packages']) if stage.startswith('tests-') else record['packages']
+    argv = argv_for(stage, root, packages)
     start = time.perf_counter()
     with log.open('w') as output:
         child = subprocess.Popen(argv, cwd=root, stdout=output, stderr=subprocess.STDOUT)

@@ -31,6 +31,13 @@ python3 tools/check_affected.py --record .tools/affected/run.json --status
 HEADやソースが変わった場合は、別のrecordで検査します。
 既存APIの差分には`--allow-interface`による明示したreview対象が必要で、全体のmodule/compiler変更はこの範囲検証で代用しません。
 
+影響graphと実行するtest packageは別に保存します。`cmd/`内で、普通の実行module設定・testファイルなし・
+source内にtest/bench/fenceなし・キャッシュしたnativeの両test metadataも空、を全て満たす場合だけ、
+空のtest driverの生成を省きます。全targetの型検査は維持します。
+`runtime_packages`と`skipped_zero_test_commands`に集合と根拠のsource/config/metadata hashを保存し、各段の前後で照合します。
+metadataがない、新しい設定・生成処理・条件付きtestの可能性がある場合は省きません。
+
+
 ## 変換監査後の2件の統合検証
 
 コード`1a51057`を固定し、基準`a63dcbc`からの変更と旧・現のimport graphの逆依存を検査しました。
