@@ -1,0 +1,66 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/simplicialmap"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/homology",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn apply(HomologyMap, @core.Chain[@exact.Integer]) -> @core.Chain[@exact.Integer]?
+
+pub fn chain_identity(SimplicialMap, @core.Nat) -> Bool
+
+pub fn chain_map(SimplicialMap, @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn check(@homology.Complex, @homology.Complex, @core.Chain[(@core.Nat, @core.Nat)]) -> SimplicialMap?
+
+pub fn check_chain_map(SimplicialMap, @core.Nat, @matrix.Matrix[@exact.Integer]) -> Bool
+
+pub fn check_induced(SimplicialMap, @core.Nat, @matrix.Matrix[@exact.Integer], HomologyMap) -> Bool
+
+pub fn compose(SimplicialMap, SimplicialMap) -> SimplicialMap?
+
+pub fn identity(@homology.Complex) -> SimplicialMap
+
+pub fn induce(SimplicialMap, @core.Nat, @homology.Certificate, @homology.Certificate) -> HomologyMap?
+
+pub fn source(SimplicialMap) -> @homology.Complex
+
+pub fn target(SimplicialMap) -> @homology.Complex
+
+pub fn vertices(SimplicialMap) -> @core.Chain[(@core.Nat, @core.Nat)]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct HomologyMap {
+  map : SimplicialMap
+  degree : @core.Nat
+  source_homology : @homology.Certificate
+  target_homology : @homology.Certificate
+  cycle_map : @matrix.Matrix[@exact.Integer]
+  source_left_inverse : @matrix.Matrix[@exact.Integer]
+  classes : @matrix.Matrix[@exact.Integer]
+}
+pub fn HomologyMap::equal(Self, Self) -> Bool
+pub fn HomologyMap::not_equal(Self, Self) -> Bool
+pub fn HomologyMap::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct SimplicialMap {
+  source_complex : @homology.Complex
+  target_complex : @homology.Complex
+  assignments : @core.Chain[(@core.Nat, @core.Nat)]
+}
+pub fn SimplicialMap::equal(Self, Self) -> Bool
+pub fn SimplicialMap::not_equal(Self, Self) -> Bool
+pub fn SimplicialMap::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
