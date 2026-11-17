@@ -1,0 +1,74 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/pairing"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/extensioncurve",
+  "Hosi121/morph/galois",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn field_size(Parameters) -> @binary.Binary
+
+pub fn final_exponent(Parameters) -> @binary.Binary
+
+pub fn line_quotient(@extensioncurve.Point, @extensioncurve.Point, @extensioncurve.Point) -> Result[MillerValue, PairingError]
+
+pub fn miller(@extensioncurve.Point, @binary.Binary, @extensioncurve.Point) -> Result[MillerValue, PairingError]
+
+pub fn multiple(MillerValue) -> @extensioncurve.Point
+
+pub fn order(Parameters) -> @binary.Binary
+
+pub fn parameters(@extensioncurve.Curve, @binary.Binary) -> Result[Parameters, PairingError]
+
+pub fn parent(Parameters) -> @extensioncurve.Curve
+
+pub fn reduced_tate(Parameters, @extensioncurve.Point, @extensioncurve.Point, @extensioncurve.Point) -> Result[@galois.Element, PairingError]
+
+pub fn value(MillerValue) -> @galois.Element
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct MillerValue {
+  multiple : @extensioncurve.Point
+  value : @galois.Element
+}
+pub fn MillerValue::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum PairingError {
+  InvalidOrder
+  CharacteristicDivisor
+  OrderNotDivisor
+  DifferentCurve
+  NotTorsion
+  EvaluationAtInfinity
+  ZeroEvaluation
+  PoleEvaluation
+  IndeterminateEvaluation
+  CurveFailure(@extensioncurve.CurveError)
+  FieldFailure(@galois.FieldError)
+  InternalInvariant
+}
+pub fn PairingError::equal(Self, Self) -> Bool
+pub fn PairingError::not_equal(Self, Self) -> Bool
+pub fn PairingError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Parameters {
+  curve : @extensioncurve.Curve
+  order : @binary.Binary
+  size : @binary.Binary
+  exponent : @binary.Binary
+}
+pub fn Parameters::equal(Self, Self) -> Bool
+pub fn Parameters::not_equal(Self, Self) -> Bool
+pub fn Parameters::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
