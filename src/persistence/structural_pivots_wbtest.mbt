@@ -94,27 +94,7 @@ fn structural_same_progress(actual : State, legacy : State) -> Bool {
 }
 
 ///|
-fn structural_cache_valid(state : State) -> Bool {
-  match state.owners {
-    None => true
-    Some(owners) => {
-      let expected = @oracle.array(state.reduced_rev)
-        .filter(fn(column) { column is Cons(_, _) })
-        .length()
-      let cached = @oracle.array(@avl.entries(owners))
-      cached.length() == expected &&
-      cached.all(fn(entry) {
-        let (pivot, (r, v)) = entry
-        @core.last(r) == Some(pivot) &&
-        structural_legacy_collision(state.reduced_rev, state.change_rev, pivot) ==
-        Some((r, v))
-      })
-    }
-  }
-}
-
-///|
-test "structural pivot cache retains every legacy algebraic pause and certificate" {
+test "structural reduction retains every frozen legacy algebraic pause and certificate" {
   for fixture in persistence_fixtures() {
     let (simplices, grades, _, _, _) = fixture
     let source = input(simplices, grades)
@@ -122,7 +102,6 @@ test "structural pivot cache retains every legacy algebraic pause and certificat
     let mut legacy = start(source)
     for count in 0..<1000 {
       assert_true(structural_same_progress(actual, legacy))
-      assert_true(structural_cache_valid(actual))
       let operation_fuel = @oracle.nat(if count % 5 == 0 { 3 } else { 1 })
       let column_fuel = @oracle.nat(if count % 3 == 0 { 2 } else { 1 })
       match
@@ -138,7 +117,8 @@ test "structural pivot cache retains every legacy algebraic pause and certificat
           assert_eq(witness, old)
           break
         }
-        _ => abort("pivot cache changed the legacy algebraic step schedule")
+        _ =>
+          abort("reduction changed the frozen legacy algebraic step schedule")
       }
       if count == 999 {
         abort("finite pivot trace did not complete")
@@ -148,29 +128,16 @@ test "structural pivot cache retains every legacy algebraic pause and certificat
 }
 
 ///|
-test "structural corrupt opaque cache cannot manufacture an accepted certificate" {
-  let source = triangle()
-  let initial = start(source)
-  // Deliberately omit every owner after committing columns. This can create
-  // duplicate lows, which the untouched independent checker must reject.
-  let prefix = match run(initial, @oracle.nat(100), @oracle.nat(5)) {
-    Paused(state) => state
-    _ => abort("five triangle columns must pause")
+test "structural malformed suspended states still require the independent checker" {
+  let empty = start(validate(@core.Nil).unwrap())
+  let extra_column = {
+    ..empty,
+    reduced_rev: Cons(@core.Nil, @core.Nil),
+    change_rev: Cons(@core.Nil, @core.Nil),
   }
-  let broken = { ..prefix, owners: Some(@avl.empty()), }
-  assert_eq(run(broken, @oracle.nat(100), @oracle.nat(100)), InvalidWitness)
-}
-
-///|
-test "structural collision-free inputs do not build pivot tree metadata" {
-  let source = input([[0], [1], [2], [0, 1], [1, 2]], Array::make(5, (0, 1)))
-  let state = match run(start(source), @oracle.nat(100), @oracle.nat(4)) {
-    Paused(state) => state
-    _ => abort("one collision-free column remains")
-  }
-  assert_eq(state.owners, None)
-  assert_eq(
-    run(state, @oracle.nat(100), @oracle.nat(1)),
-    Done(completed(source)),
-  )
+  assert_eq(run(extra_column, @core.Zero, @core.Zero), InvalidWitness)
+  // Inconsistent already-committed columns cannot be accepted merely because
+  // the active and remaining work queues are empty.
+  let wrong_source = { ..start(triangle()), remaining: @core.Nil, }
+  assert_eq(run(wrong_source, @core.Zero, @core.Zero), InvalidWitness)
 }

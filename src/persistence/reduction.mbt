@@ -9,12 +9,6 @@ pub struct State {
   change_rev : @core.Chain[@core.Chain[@core.Nat]]
   index : @core.Nat
   active : (@core.Chain[@core.Nat], @core.Chain[@core.Nat])?
-  // Build only after an actual collision; collision-free inputs need no tree.
-  // Once present, only committed nonempty columns own pivots and share columns.
-  owners : @avl.OrderedMap[
-    @core.Nat,
-    (@core.Chain[@core.Nat], @core.Chain[@core.Nat]),
-  ]?
 }
 
 ///|
@@ -47,7 +41,6 @@ pub fn start(source : Filtration) -> State {
     change_rev: Nil,
     index: Zero,
     active: None,
-    owners: None,
   }
 }
 
@@ -64,26 +57,6 @@ fn collision(
         false => collision(rs, vs, pivot)
       }
     _ => None
-  }
-}
-
-///|
-fn index_owners(
-  reduced : @core.Chain[@core.Chain[@core.Nat]],
-  change : @core.Chain[@core.Chain[@core.Nat]],
-) -> @avl.OrderedMap[
-  @core.Nat,
-  (@core.Chain[@core.Nat], @core.Chain[@core.Nat]),
-] {
-  match (reduced, change) {
-    (Cons(r, rs), Cons(v, vs)) => {
-      let owners = index_owners(rs, vs)
-      match @core.last(r) {
-        None => owners
-        Some(pivot) => @avl.put(owners, pivot, (r, v), @core.compare)
-      }
-    }
-    _ => @avl.empty()
   }
 }
 
@@ -143,30 +116,15 @@ pub fn run(
                   )
               }
             Some((r, v)) => {
-              let pivot = @core.last(r)
-              let previous = match pivot {
+              let previous = match @core.last(r) {
                 None => None
                 Some(pivot) =>
-                  match state.owners {
-                    Some(owners) => @avl.lookup(owners, pivot, @core.compare)
-                    None =>
-                      collision(state.reduced_rev, state.change_rev, pivot)
-                  }
+                  collision(state.reduced_rev, state.change_rev, pivot)
               }
               match previous {
                 Some((old_r, old_v)) =>
                   run(
-                    {
-                      ..state,
-                      active: Some((xor(r, old_r), xor(v, old_v))),
-                      owners: match state.owners {
-                        Some(_) => state.owners
-                        None =>
-                          Some(
-                            index_owners(state.reduced_rev, state.change_rev),
-                          )
-                      },
-                    },
+                    { ..state, active: Some((xor(r, old_r), xor(v, old_v))), },
                     operations,
                     column_fuel,
                   )
@@ -178,11 +136,6 @@ pub fn run(
                       change_rev: Cons(v, state.change_rev),
                       index: Succ(state.index),
                       active: None,
-                      owners: match (state.owners, pivot) {
-                        (Some(owners), Some(pivot)) =>
-                          Some(@avl.put(owners, pivot, (r, v), @core.compare))
-                        _ => state.owners
-                      },
                     },
                     operations,
                     columns,
