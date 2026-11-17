@@ -77,13 +77,16 @@ pub fn validate(input : @core.Chain[Entry]) -> Filtration? {
             _ => @core.any(previous, fn(old) { old.simplex.equal(face) })
           }
         })
-        canonical(entry.simplex) && unique && ordered && closed &&
+        canonical(entry.simplex) &&
+        unique &&
+        ordered &&
+        closed &&
         walk(rest, Cons(entry, previous))
       }
     }
   }
   match walk(input, Nil) {
-    true => Some({ entries: input })
+    true => Some({ entries: input, })
     false => None
   }
 }
@@ -110,12 +113,16 @@ pub fn boundary_columns(
 ) -> @core.Chain[@core.Chain[@core.Nat]] {
   @core.map(source.entries, fn(entry) {
     let boundary = faces(entry.simplex)
-    fn walk(todo : @core.Chain[Entry], index : @core.Nat) -> @core.Chain[@core.Nat] {
+    fn walk(
+      todo : @core.Chain[Entry],
+      index : @core.Nat,
+    ) -> @core.Chain[@core.Nat] {
       match todo {
         Nil => Nil
         Cons(candidate, rest) => {
           let tail = walk(rest, Succ(index))
-          match @core.any(boundary, fn(face) { face.equal(candidate.simplex) }) {
+          match
+            @core.any(boundary, fn(face) { face.equal(candidate.simplex) }) {
             true => Cons(index, tail)
             false => tail
           }

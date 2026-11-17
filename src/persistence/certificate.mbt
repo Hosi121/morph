@@ -60,7 +60,7 @@ fn pairings_of(
       let tail = pairings_of(rest, Succ(index))
       match @core.last(column) {
         None => tail
-        Some(birth) => Cons({ birth, death: index }, tail)
+        Some(birth) => Cons({ birth, death: index, }, tail)
       }
     }
   }
@@ -100,28 +100,39 @@ fn bars_of(
               Nil =>
                 match death_of(pairings, index) {
                   None =>
-                    Some(Cons({
-                      dimension: dimension(entry),
-                      birth: entry.grade,
-                      death: None,
-                      birth_simplex: index,
-                      death_simplex: None,
-                    }, bars))
+                    Some(
+                      Cons(
+                        {
+                          dimension: dimension(entry),
+                          birth: entry.grade,
+                          death: None,
+                          birth_simplex: index,
+                          death_simplex: None,
+                        },
+                        bars,
+                      ),
+                    )
                   Some(death_index) =>
                     match @core.nth(source.entries, death_index) {
                       None => None
                       Some(death) =>
-                        match @exact.rational_compare(entry.grade, death.grade) {
+                        match
+                          @exact.rational_compare(entry.grade, death.grade) {
                           Equal => Some(bars)
                           Greater => None
                           Less =>
-                            Some(Cons({
-                              dimension: dimension(entry),
-                              birth: entry.grade,
-                              death: Some(death.grade),
-                              birth_simplex: index,
-                              death_simplex: Some(death_index),
-                            }, bars))
+                            Some(
+                              Cons(
+                                {
+                                  dimension: dimension(entry),
+                                  birth: entry.grade,
+                                  death: Some(death.grade),
+                                  birth_simplex: index,
+                                  death_simplex: Some(death_index),
+                                },
+                                bars,
+                              ),
+                            )
                         }
                     }
                 }
@@ -205,7 +216,9 @@ pub fn check_result(
           _ => false
         }
       })
-      identity && valid_pairs && witness.pairings.equal(pairings) &&
+      identity &&
+      valid_pairs &&
+      witness.pairings.equal(pairings) &&
       bars_of(source, witness.reduced, pairings).equal(Some(actual))
     }
   }

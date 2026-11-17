@@ -118,12 +118,13 @@ pub fn run(
             Some((r, v)) => {
               let previous = match @core.last(r) {
                 None => None
-                Some(pivot) => collision(state.reduced_rev, state.change_rev, pivot)
+                Some(pivot) =>
+                  collision(state.reduced_rev, state.change_rev, pivot)
               }
               match previous {
                 Some((old_r, old_v)) =>
                   run(
-                    { ..state, active: Some((xor(r, old_r), xor(v, old_v))) },
+                    { ..state, active: Some((xor(r, old_r), xor(v, old_v))), },
                     operations,
                     column_fuel,
                   )
