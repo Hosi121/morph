@@ -12,7 +12,7 @@
 - [一般化された中国剰余定理](#crt)
 - [有限体の平方根](#square-roots)
 - [楕円曲線](#elliptic)
-- [曲線と拡大体の接続候補](#curves-and-extensions)
+- [拡大体上の曲線と次の接続](#curves-and-extensions)
 - [RSAの小さな構成例](#rsa)
 - [素数証明と因数分解](#certificates)
 - [検査済みの素数から拡大体へ](#extension-fields)
@@ -97,22 +97,27 @@ p=17,a=b=2の19点の群では全19³=6859組の結合則、
 
 <a id="curves-and-extensions"></a>
 
-## 曲線と拡大体を次に接続する
+## 拡大体上の曲線と次の接続
 
-現在の`elliptic`は標数>3の素体に固定され、`galois`は既約性を検査した`GF(p)[x]/(f)`の
-四則・逆元・冪・Frobenius・trace・normを持つ。拡大体上の曲線やペアリングはまだ接続していない。
-基礎部品の[変換監査と改善](../research/conversion-kernels-20261117.md)の後に組み立てる候補として、次の順が考えられる。
+`elliptic`の素体上のaffine演算を保ち、[extensioncurve](../../src/extensioncurve) で
+`galois`の検査済み拡大体上のshort Weierstrass曲線とJacobian座標を接続した。
+`Curve` は標数>3・係数の体・非特異性を検査し、`Point` は体の表示と曲線の係数を保持する。
+違うcontextの点は、無限遠点や零倍の場合でも混同しない。
+射影的な点の等号は構造的な座標比較と分けている。
 
 | 段階 | 再利用するもの | 新しく必要なもの |
 | --- | --- | --- |
-| 標数>3の拡大体上の曲線 | 体の演算、既存の群法則、点の検査 | 演算辞書を受ける`Curve[A]`・`Point[A]`と、同じ体・曲線への束縛 |
-| Jacobian座標 | 体の積・平方・逆元、既存affine参照 | 内部の射影座標、例外点の扱い、正規化をまとめる経路 |
+| 標数>3の拡大体上の曲線（実装済み） | 既存`galois.Field`の演算、点の検査 | `Curve`・`Point`に体と曲線を保持する専用の検査境界 |
+| Jacobian座標（実装済み） | 体の積・平方、既存affine参照 | 射影的な等号、例外点の分岐、座標を取り出す時の正規化 |
 | Miller法とTateペアリング | 二進スカラー再帰、曲線演算、拡大体の冪 | 直線関数の評価、零・極の扱い、対象のねじれ点と最終冪への束縛 |
 | 点数計算・因数分解など | Frobenius、多項式、CRT、GCD、曲線演算 | Frobenius・CRTによる点数計算や、曲線を用いる素因子探索 |
 
 Jacobian座標は`x=X/Z², y=Y/Z³`と表し、加算・倍算の式とaffineへ戻す正規化を分けられる。
 [Explicit-Formulas Database](https://hyperelliptic.org/EFD/g1p/auto-shortw-jacobian.html)には、前提条件別の式と演算数がある。
-これは採用前の設計資料であり、この実装や速度比較が既に完成したことを意味しない。
+加算と倍算は射影座標で進め、affine座標を取り出す境界で逆元を計算する。
+小さい拡大体の全点対、GF(25)の全三つ組、巨大な二進スカラー、旧素体実装との照合は
+[独立参照と検証記録](../research/extension-curves-20261118.md)に保存した。
+この機能追加だけから実速度の改善は結論しない。
 Miller法は二進列に沿う平方・乗算と曲線の倍算・加算を組み合わせるため、既存の再帰構造を使える。
 [Tateペアリングの計算法](https://crypto.stanford.edu/pbc/notes/elliptic/tate.html)を基に、まず小さい体で全値と双線形性を検査する候補になる。
 

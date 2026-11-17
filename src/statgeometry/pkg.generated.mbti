@@ -2,23 +2,68 @@
 package "Hosi121/morph/statgeometry"
 
 import {
+  "Hosi121/morph/exact",
   "Hosi121/morph/infogeom",
+  "Hosi121/morph/matrix",
   "Hosi121/morph/riemann",
+  "Hosi121/morph/tensor",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn alpha_coefficients(AlphaGeometry) -> @tensor.Tensor[@exact.Rational]
+
+pub fn alpha_derivatives(AlphaGeometry) -> @tensor.Tensor[@exact.Rational]
+
+pub fn alpha_geometry(@infogeom.ModelPoint, @exact.Rational) -> Result[AlphaGeometry, GeometryError]
+
+pub fn alpha_lowered_riemann(AlphaGeometry) -> @tensor.Tensor[@exact.Rational]
+
+pub fn alpha_model(AlphaGeometry) -> @infogeom.Model
+
+pub fn alpha_parameter(AlphaGeometry) -> @exact.Rational
+
+pub fn alpha_raised(@infogeom.Model, @exact.Rational) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
+
+pub fn alpha_ricci(AlphaGeometry) -> @matrix.Matrix[@exact.Rational]
+
+pub fn alpha_riemann(AlphaGeometry) -> @tensor.Tensor[@exact.Rational]
+
+pub fn alpha_scalar(AlphaGeometry) -> @exact.Rational
+
+pub fn cubic_tensor(@infogeom.Model) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
+
 pub fn curvature(@infogeom.ModelPoint) -> Result[@riemann.Curvature, GeometryError]
 
 pub fn fisher_jet(@infogeom.ModelPoint) -> Result[@riemann.MetricJet, GeometryError]
+
+pub fn pullback_cubic(@infogeom.Model, @matrix.Matrix[@exact.Rational]) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
+
+pub fn scalar_by_contraction(@riemann.Curvature) -> Result[@exact.Rational, GeometryError]
 
 // Errors
 
 // Types and methods
 #derive(Eq, @debug.Debug)
+pub struct AlphaGeometry {
+  model : @infogeom.Model
+  alpha : @exact.Rational
+  coefficients : @tensor.Tensor[@exact.Rational]
+  derivatives : @tensor.Tensor[@exact.Rational]
+  upper : @tensor.Tensor[@exact.Rational]
+  lower : @tensor.Tensor[@exact.Rational]
+  ricci : @matrix.Matrix[@exact.Rational]
+  scalar : @exact.Rational
+}
+pub fn AlphaGeometry::equal(Self, Self) -> Bool
+pub fn AlphaGeometry::not_equal(Self, Self) -> Bool
+pub fn AlphaGeometry::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub(all) enum GeometryError {
   MissingDerivative
   Metric(@riemann.JetError)
+  Tensor(@tensor.TensorError)
 }
 pub fn GeometryError::equal(Self, Self) -> Bool
 pub fn GeometryError::not_equal(Self, Self) -> Bool

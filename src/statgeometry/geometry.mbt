@@ -3,6 +3,7 @@
 pub(all) enum GeometryError {
   MissingDerivative
   Metric(@riemann.JetError)
+  Tensor(@tensor.TensorError)
 }
 
 ///|

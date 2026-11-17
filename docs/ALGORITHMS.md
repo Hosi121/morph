@@ -44,6 +44,7 @@
 | 有限拡大体 | [検査済み素数からGF(p)](../src/primefield/primefield.mbt)・[Berlekamp多項式分解・既約性証拠](../src/fppoly/factorization.mbt)・[GF(p^m)・trace/norm](../src/galois/galois.mbt) |
 | 離散対数 | [baby-step giant-step・最小位数と部分群境界](../src/discretelog/discretelog.mbt) |
 | 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](../src/elliptic/elliptic.mbt) |
+| 拡大体上の曲線 | [体と曲線に束縛した点](../src/extensioncurve/curve.mbt)・[Jacobian座標の群演算・射影的な等号](../src/extensioncurve/jacobian.mbt) |
 
 <a id="probability-geometry"></a>
 
@@ -56,6 +57,8 @@
 | 有限確率 | [有理分布・期待値・条件付け・Bayes更新・独立積と周辺化](../src/probability/distribution.mbt) |
 | 確率核・Bayes逆核 | [長方形の確率核・合成・事後分布](../src/probability/channel.mbt)・[モデルの粗視化と微分](../src/infogeom/channel.mbt) |
 | 情報幾何 | [確率2-jet・Fisher行列・cubic tensor・α接続・自然勾配](../src/infogeom/model.mbt) |
+| α接続の曲率 | [確率3-jetから接続を微分](../src/infogeom/alpha.mbt)・[一般αの曲率・Ricci・scalar](../src/statgeometry/alpha.mbt) |
+| 高階テンソル | [shape付き不変テンソル・置換](../src/tensor/tensor.mbt)・[縮約と一軸の線形変換](../src/tensor/contraction.mbt) |
 | モデルから曲率へ | [多項式の3階微分](../src/infogeom/polynomial.mbt)・[Fisher計量jetからRiemann/Ricci曲率へ接続](../src/statgeometry/geometry.mbt) |
 | 指数型分布族 | [十分統計量・中心モーメントによる厳密な自然座標の局所3-jet](../src/infogeom/exponential.mbt) |
 | 微分幾何 | [検査済み計量jet](../src/riemann/jet.mbt)・[Levi-Civita接続](../src/riemann/connection.mbt)・[曲率](../src/riemann/curvature.mbt) |

@@ -67,6 +67,7 @@ fn check_constant_curvature(
   let n = @oracle.int_of_nat(@riemann.dimension(jet))
   assert_true(@riemann.is_positive_definite(jet))
   assert_eq(@riemann.scalar_curvature(value), scalar)
+  assert_eq(scalar_by_contraction(value), Ok(scalar))
   fn get(i : Int32, j : Int32) -> @exact.Rational {
     match @riemann.component2(g, @oracle.nat(i), @oracle.nat(j)) {
       Some(x) => x

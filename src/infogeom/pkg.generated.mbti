@@ -13,6 +13,8 @@ import {
 // Values
 pub fn alpha_lower(Model, @exact.Rational) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
 
+pub fn alpha_lower_first(ModelPoint, @exact.Rational) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]?
+
 pub fn at(Family, @core.Chain[@exact.Rational]) -> Result[ModelPoint, FamilyError]
 
 pub fn cubic(Model) -> @core.Chain[@matrix.Matrix[@exact.Rational]]?
