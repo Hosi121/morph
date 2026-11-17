@@ -1,0 +1,10 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity_during_measurement": [
+    4
+  ],
+  "cpu_model": "Intel(R) Core(TM) Ultra 7 255H",
+  "node": "v24.13.0",
+  "installed_cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "note": "Supplementary host description captured during regression tests; installed C compiler field does not itself assert a frozen historical build command."
+}

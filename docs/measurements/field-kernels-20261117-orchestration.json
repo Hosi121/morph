@@ -1,0 +1,158 @@
+{
+  "contract": {
+    "baseline": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+    "objective": "Speed exact field arithmetic and linear algebra through specialization and reuse, preserving pure ADTs, public result semantics and certificate checks",
+    "done": "One finite pass: max2 mechanisms per worker + complex-product candidate; measured winners integrated, regressions/no-gain candidates recorded; all affected tests, docs, commits/push and cleanup",
+    "workers": {
+      "gf2_kernel": [
+        "src/gf2",
+        "src/cmd/gf2kernelbench",
+        "own benchmark and research"
+      ],
+      "rational_elimination": [
+        "src/rowreduce",
+        "src/linear",
+        "src/cmd/rationalbench",
+        "own benchmark and research"
+      ],
+      "prime_arithmetic": [
+        "src/modular",
+        "src/primefield",
+        "src/cmd/primebench",
+        "own benchmark and research"
+      ]
+    },
+    "root": [
+      "src/csscode and src/cohomology GF2 integration",
+      "src/complexfield complex product candidate",
+      "public consumer benchmark integration",
+      "baseline worktree",
+      "shared docs and validation"
+    ],
+    "contracts": [
+      "rowreduce existing APIs/types frozen; new predicate-aware APIs permitted",
+      "GF2 factor/reduction/transform/inverse_transform/nullspace_factor plus source-bound Certificate",
+      "all kernel code pure immutable ADTs; standard numerics only in CLI/tests/oracles",
+      "same-data public API native release ABBA CPU4, compile excluded, certificate costs recorded",
+      "all heavy tools under common Git lock, no parallel competing benchmarks"
+    ],
+    "budget": {
+      "parallel_workers": 3,
+      "candidate_mechanisms_per_worker": 2,
+      "root_complex_candidate": 1,
+      "stop": "bounded candidate decisions and evidence complete"
+    }
+  },
+  "dag": {
+    "nodes": [
+      "GF2",
+      "QQ",
+      "Fp",
+      "complex-candidate",
+      "GF2-consumer-integration",
+      "final-public-benchmarks",
+      "validation",
+      "publish-cleanup"
+    ],
+    "edges": [
+      [
+        "GF2",
+        "GF2-consumer-integration"
+      ],
+      [
+        "GF2-consumer-integration",
+        "final-public-benchmarks"
+      ],
+      [
+        "QQ",
+        "final-public-benchmarks"
+      ],
+      [
+        "Fp",
+        "final-public-benchmarks"
+      ],
+      [
+        "complex-candidate",
+        "final-public-benchmarks"
+      ],
+      [
+        "final-public-benchmarks",
+        "validation"
+      ],
+      [
+        "validation",
+        "publish-cleanup"
+      ]
+    ]
+  },
+  "events": [
+    {
+      "time": "2026-11-17T09:53:03.168170+00:00",
+      "event": "fanout",
+      "baseline": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+      "note": "Disjoint workers with frozen old public interfaces. Root-owned baseline worktree and GF2 consumer integration."
+    },
+    {
+      "time": "2026-11-17T10:19:33.791002+00:00",
+      "event": "decisions-and-integration",
+      "source": "af279b4",
+      "accepted": [
+        "pure GF2 specialization and decomposition reuse, RHS-only one-shot solve",
+        "canonical QQ zero-coefficient row reuse",
+        "checked p=2 parity operation dictionary"
+      ],
+      "rejected": [
+        "extra general modular comparison",
+        "three-product complex multiplication"
+      ],
+      "review": "Independent GF2 integration review found no soundness blocker; unused candidate rank certificate removed before final source comparison.",
+      "measurement": "source-to-source public native ABBA cohorts and controls archived; selected reverse-import regression running",
+      "scope_packages": 84
+    },
+    {
+      "time": "2026-11-17T11:13:31.468852+00:00",
+      "event": "resume-validation",
+      "source": "af279b4",
+      "completed_tests": {
+        "wasm-gc": 3545,
+        "js": 3545
+      },
+      "pending": [
+        "native",
+        "formal"
+      ],
+      "source_and_completed_log_hashes_verified": true
+    },
+    {
+      "time": "2026-11-17T11:25:43.202279+00:00",
+      "event": "validation-complete",
+      "source": "af279b4f71ac9317a185a9d250d4402c08a1cc65",
+      "test_totals": {
+        "tests-wasm-gc": [
+          [
+            "3545",
+            "3545",
+            "0"
+          ]
+        ],
+        "tests-js": [
+          [
+            "3545",
+            "3545",
+            "0"
+          ]
+        ],
+        "tests-native": [
+          [
+            "3545",
+            "3545",
+            "0"
+          ]
+        ]
+      },
+      "all_gates_passed": true
+    }
+  ],
+  "cleanup_record": "field-kernels-20261117-cleanup.json",
+  "integration_source": "af279b4f71ac9317a185a9d250d4402c08a1cc65"
+}

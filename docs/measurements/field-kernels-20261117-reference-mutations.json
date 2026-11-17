@@ -1,0 +1,65 @@
+[
+  {
+    "case": "production implementation independence",
+    "passed": true
+  },
+  {
+    "case": "comments ignored by token comparison",
+    "passed": true
+  },
+  {
+    "case": "helper inverse input",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: nonzero"
+  },
+  {
+    "case": "helper elimination arithmetic",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: eliminate"
+  },
+  {
+    "case": "helper recursive column",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: rref"
+  },
+  {
+    "case": "private Nonzero record",
+    "passed": true,
+    "rejected": "frozen Bareiss Nonzero record drift"
+  },
+  {
+    "case": "production RREF bypass",
+    "passed": true,
+    "rejected": "frozen Bareiss reference drift; review before updating its lock"
+  },
+  {
+    "case": "reference field dictionary",
+    "passed": true,
+    "rejected": "frozen Bareiss reference drift; review before updating its lock"
+  },
+  {
+    "case": "original snapshot bytes",
+    "passed": true,
+    "rejected": "frozen Bareiss reference drift; review before updating its lock"
+  },
+  {
+    "case": "reference determinant wrapper",
+    "passed": true,
+    "rejected": "frozen Bareiss reference drift; review before updating its lock"
+  },
+  {
+    "case": "copied helper visibility",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: nonzero"
+  },
+  {
+    "case": "copied helper codegen attribute",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: pivot"
+  },
+  {
+    "case": "copied helper return type",
+    "passed": true,
+    "rejected": "frozen Bareiss RREF helper drift: rref"
+  }
+]

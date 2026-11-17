@@ -1,0 +1,101 @@
+{
+  "utc": "2026-11-17T10:19:12.068494+00:00",
+  "main": "af279b4f71ac9317a185a9d250d4402c08a1cc65",
+  "worker_tips": {
+    "perf/gf2-20261117": "c6b8f7bfa16eccc093abff6872aee287c758b86a",
+    "perf/rational-20261117": "e36fe64ddad9a254a0cc719af5a7afc95ada9e3f",
+    "perf/prime-20261117": "56eb8bfbafaffb9fec13e978c169e2512cd78fcc"
+  },
+  "patch_checks": {
+    "perf/gf2-20261117": [
+      "- b67e9abd8c67869433c5b5a4cd982900fa7a989b",
+      "- 2f6b4dfc29e7fbe9d1a1b0edfd6f0dc8767bf999",
+      "- c6b8f7bfa16eccc093abff6872aee287c758b86a"
+    ],
+    "perf/rational-20261117": [
+      "- 5edf9ad226cc89a2d8d5ba1b16449c016a07c765",
+      "- 2e02abe2cf2b9cc3978f0e839685a8038e69a278",
+      "- 566ada56b10ca85ff59f026ddd429516c864571e",
+      "- e36fe64ddad9a254a0cc719af5a7afc95ada9e3f"
+    ],
+    "perf/prime-20261117": [
+      "- cf385490a84524b94506a9594288b9e73ecea043",
+      "- 5c8577a951fce5a040d017eaf8534e1e77262a7b",
+      "- 56eb8bfbafaffb9fec13e978c169e2512cd78fcc"
+    ]
+  },
+  "artifact_sha256": {
+    "prime-two.exe": "074c6ed464ebba7c54edf7d96d80221699c2c25c15b60546e4b555652f5cd364",
+    "prime-canonical.exe": "b730bf7fadec4b4c58b1d3553438d912c790239edf24b3faf4742df15de28a9e",
+    "gf2-consumer-first-integration.exe": "3333611112744d8df1c46db7853eba08094aa265f235412f14855bd398a48994",
+    "prime-before.exe": "c255117912c49e5cd1aa1d78eae9d0946ef6798302392f10fbd0dc77c9106cbb",
+    "gf2-consumer-after.exe": "af051a9682b3108535a257fd95102055f99c372468ed2edf9afd736161479b9a",
+    "rational-after.exe": "7eb2846ca5270637196cead1f66ef99e2a9ad209b49743d06a83dac2dc58dc34",
+    "rational-before.exe": "89fe49d06a7983f92088527aa54e3d8729da0d204216a79b983f7b6dd335fab1",
+    "gf2-consumer-before.exe": "1f92b24b0cad6a6ecf5f8ff809e7ea838a0b3068cac661c63fd7404aa9692c0f",
+    "complex-trial.exe": "189c17f8e51fa32fcc9c149d03191819f8d808afc26355ec82c64eabf10b23f8",
+    "gf2-prototype.exe": "5a0dce853d814ef27906acb1bf7ad93870c8cbfd57982ea28c61337b0559f339"
+  },
+  "worktrees": [
+    {
+      "path": "/home/hosi/morph-perf-gf2",
+      "branch": "perf/gf2-20261117",
+      "tip": "c6b8f7bfa16eccc093abff6872aee287c758b86a",
+      "clean": true,
+      "all_patches_integrated": true,
+      "removed": true,
+      "branch_removed": true
+    },
+    {
+      "path": "/home/hosi/morph-perf-rational",
+      "branch": "perf/rational-20261117",
+      "tip": "e36fe64ddad9a254a0cc719af5a7afc95ada9e3f",
+      "clean": true,
+      "all_patches_integrated": true,
+      "removed": true,
+      "branch_removed": true
+    },
+    {
+      "path": "/home/hosi/morph-perf-prime",
+      "branch": "perf/prime-20261117",
+      "tip": "56eb8bfbafaffb9fec13e978c169e2512cd78fcc",
+      "clean": true,
+      "all_patches_integrated": true,
+      "removed": true,
+      "branch_removed": true
+    },
+    {
+      "path": "/home/hosi/morph-perf-baseline",
+      "baseline": "4d9e6c4e0795f3e950fbeaac2b191f195eea45b5",
+      "clean_after_saving_our_copied_harnesses": true,
+      "saved_harness_sha256": {
+        "src/cmd/gf2consumerbench/main.mbt": "0a1e49471cd134b0362369e0218158c4eaaf90fc331877078969968ab8b2063c",
+        "src/cmd/gf2consumerbench/moon.pkg": "4dc612034edf30bf3cbb5ddc2af390a4eabe8c81ee424b0f70382902987dd9e2",
+        "src/cmd/primebench/main.mbt": "69a3d45e7b804f16362a20f08985b5d242a49cbb24a41f6f80e0d22d5c876be9",
+        "src/cmd/primebench/moon.pkg": "e30bd9a86f76bcdd3e30787c6d516d55fb50d359a03281fad14fadd041a80d25",
+        "src/cmd/rationalbench/main.mbt": "6f6b490d4d82e83c693b3eadbad4146f526d38aac1fbcf63cec0cf7f358208d7",
+        "src/cmd/rationalbench/moon.pkg": "3a230f1ad85ebe697d969472bc5fce1965460a22434007e18e25a8e804a44594"
+      },
+      "removed": true
+    }
+  ],
+  "bundle": {
+    "path": ".tools/field-optimization-20261117/archive/field-optimization.bundle",
+    "sha256": "2ee8d56191202c95b953b5894b19f34f6d9223ede03feaaa57141bf6c6f6520c",
+    "verified": true,
+    "output": "The bundle contains these 4 refs:\naf279b4f71ac9317a185a9d250d4402c08a1cc65 refs/heads/main\nc6b8f7bfa16eccc093abff6872aee287c758b86a refs/heads/perf/gf2-20261117\ne36fe64ddad9a254a0cc719af5a7afc95ada9e3f refs/heads/perf/rational-20261117\n56eb8bfbafaffb9fec13e978c169e2512cd78fcc refs/heads/perf/prime-20261117\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n/home/hosi/morph/.tools/field-optimization-20261117/archive/field-optimization.bundle is okay\n"
+  },
+  "remaining": "/home/hosi/morph  af279b4 [main]",
+  "removed_tmp_artifacts": [
+    {
+      "path": "/tmp/morph-prime-canonical-20261117.exe",
+      "retained": ".tools/field-optimization-20261117/artifacts/prime-canonical.exe",
+      "sha256": "b730bf7fadec4b4c58b1d3553438d912c790239edf24b3faf4742df15de28a9e"
+    },
+    {
+      "path": "/tmp/morph-prime-two-20261117.exe",
+      "retained": ".tools/field-optimization-20261117/artifacts/prime-two.exe",
+      "sha256": "074c6ed464ebba7c54edf7d96d80221699c2c25c15b60546e4b555652f5cd364"
+    }
+  ]
+}

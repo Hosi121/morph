@@ -5,6 +5,33 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
+## 体のカーネルの影響範囲検証
+
+コード `af279b4` を固定し、基準 `4d9e6c4` からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は84 packageで、テスト専用importも選択に含みます。全repositoryの無変更なテストを再実行した記録とは区別します。
+
+| 検査 | 結果 |
+| --- | --- |
+| WasmGC / JS / native release | 対象の各3,545テスト成功 |
+| 全体の保守・型・API | Python 27テスト、143公開API、警告なし型検査、生成fixtureが通過 |
+| 純記号制約 | 325核ソース。機械数値型・配列・可変状態・FFIなし |
+| 既存のAPI | linear・primefield・modular・CSS・cohomology・homologyの公開スナップショットは変更なし。rowreduceには零判定付き入口を追加 |
+| 既存Leanモデル | 全モデルと32対応領域の差分検査が通過。新規GF(2)核全体の形式証明ではない |
+| 独立参照 | 全689の小GF(2)行列と5,054右辺、Fractionの1,539系、未還元素体入力、既存証拠の改変検査 |
+| 旧比較の保守 | 元の四hashを維持したBareiss参照ゲート、11種類の意図的変更を拒否 |
+
+[ソース・選択graph・全コマンド](measurements/field-kernels-20261117-validation.json)、
+[全出力](measurements/field-kernels-20261117-validation.txt)、[実行harness](measurements/field-kernels-20261117-harness.py)、[再開harness](measurements/field-kernels-20261117-resume-harness.py)、
+[参照ゲートの改変検査](measurements/field-kernels-20261117-reference-mutations.json)を保存しました。
+途中の実行セッション中断は[保存時点の記録](measurements/field-kernels-20261117-interrupted.json)に残しています。
+nativeの完了記録がなかったため、ソースと完了ログのhashを照合してnative・Leanだけを再開しました。
+[環境の補足](measurements/field-kernels-20261117-environment.json)は再開時点のホスト情報です。
+検証の範囲に関する正本はJSONのpackage一覧・実行成功数で、宣言数を成功数に数えたものではありません。
+[採否・計測条件](research/field-kernels-20261117.md)と
+[共通算法・専用化の設計](handbook/field-kernels.md)も参照してください。
+今回の4 worktreeと3作業branchは、全パッチ反映・Git bundle・必要な実行ファイルの保存を確認して削除しました
+（[片付け](measurements/field-kernels-20261117-cleanup.json)、[担当範囲と経緯](measurements/field-kernels-20261117-orchestration.json)）。
+
 ## 積・相対群・崩壊の影響範囲検証
 
 コード `72f166a` で、変更した7 packageと旧・現のimport graph上の逆依存を検査しました。

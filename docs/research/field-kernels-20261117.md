@@ -14,7 +14,7 @@
 | 有理数の零係数で行を共有 | 採用、`linear`へ接続 | [Fraction 1,539例とABBA](rational-elimination-20261117.md)。単位行列・疎逆行列・整数ホモロジーの逆で改善。密な行列等は未確定 |
 | p=2の素体辞書 | 採用 | [未還元入力を含む比較](prime-arithmetic-20261117.md)。直接の混合演算・逆元に改善。Fp多項式全体の改善は示せず、奇標数の小差も未解決 |
 | 一般剰余で先に入力と法を比較 | 不採用 | 小さい正規化済み入力には有利だが、GF(2)混合演算が全5ブロックで悪化 |
-| 複素積を四つから三つの体の積へ | 不採用 | 下記の5対照のうち4つが悪化。加減算・中間値・正規化の費用を無視できない |
+| 複素積を四つから三つの体の積へ | 不採用 | 下記の5対照のうち4つが悪化。追加の加減算・中間値処理が候補原因だが、内訳は未計測 |
 
 有理数の行共有は型と操作辞書を保つ共通化、GF(2)は体の法則を直接使う専用化です。
 構造化の考え方は[体の共通算法と専用カーネル](../handbook/field-kernels.md)にまとめています。
@@ -23,8 +23,10 @@
 ## CSS・コホモロジーの公開API比較
 
 `src/cmd/gf2consumerbench` の同一ソースを基準版と採用版でnative releaseビルドしました。
-CPU 4、共有ロック、5組のABBA順、各例20プロセス、合計120の全結果が一致しました。
+CPU 4、共有ロック、5組のABBA順、各例20プロセス、合計120の検査済み出力（rank・checksum）が一致しました。
 コンパイルを除き、入力構築・既知rankまたは独立配列oracle・通常API・証拠検査を含みます。
+両版で各証拠を検査し、既知rankまたは独立oracleと照合します。
+旧・新版の証拠の成分やcochain代表ベクトルのバイト同一性は、このベンチマークのJSONでは比較していません。
 プロセス時間には起動と一回のwarm-upも含みます。内側の `elapsed_us` とは区別します。
 
 最終の値は[全サンプル・ソースと実行ファイルhash](../measurements/gf2-consumers-20261117.json)に保存しています。
@@ -96,3 +98,26 @@ driverは同一harness・全非時間出力・実行ファイルのhashを確認
 各担当の有限テストは各記録にあります。統合時は旧・現のimport graphの逆依存と、
 全体の型・API・純記号制約・既存Lean対応を検査します。
 新しい核全体の形式証明、配列・機械語への置換、メモリ削減の測定は行っていません。
+
+
+統合コード `af279b4` の84 packageは各3,545テスト×3対象で通過しました。
+全体の保守・型・公開API・純記号制約・既存Leanも通過しています。
+[実行範囲と保証の区別](../VALIDATION.md#体のカーネルの影響範囲検証)に正本をまとめました。
+[担当範囲・判断の記録](../measurements/field-kernels-20261117-orchestration.json)と
+[片付け記録](../measurements/field-kernels-20261117-cleanup.json)を保存しています。
+
+既存の型・行列積・整数算術は共有するため、独立oracleはそれらを含む有限の結果照合です。
+証明全体の独立性や任意長入力に対する新しい形式証明を主張しません。
+
+影響範囲の検証を再実行する場合は、クリーンなcheckoutと既存のMoonBit/Lean環境で次を実行します。
+
+```sh
+mkdir -p .tools/field-optimization-20261117
+tools/measure --cpu 4 python3 docs/measurements/field-kernels-20261117-harness.py
+```
+
+性能比較の古いworktreeは片付け済みです。再計測時は基準 `4d9e6c4` と採用コードのcheckoutを別に作り、
+同一の `src/cmd/gf2consumerbench` を両方に置いて、それぞれnative release・`-j 1`でビルドしてください。
+`tools/compare_field_kernels.py --help` の二つのsource root・artifact・harnessを指定し、
+6つのcaseを `--case` で列挙します。各raw JSONにcase・hash・反復数・順序を残しています。
+SDKの共有には `.tools/moon` だけをリンクし、`_build` は共有しません。

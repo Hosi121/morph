@@ -97,6 +97,7 @@
 | --- | --- |
 | 半環・行列 | [半環の演算辞書](../src/algebra/algebra.mbt)・[行列積・累乗・Warshall](../src/matrix/matrix.mbt) |
 | 線形代数 | [有理数の行列式・逆行列・解空間](../src/linear/linear.mbt)・[体で共通化したGauss–Jordan](../src/rowreduce/rowreduce.mbt) |
+| GF(2)線形代数 | [専用消去・保持した分解](../src/gf2/kernel.mbt)・[再利用solve・零空間](../src/gf2/solve.mbt)・[入力と結果を束縛する証拠](../src/gf2/kernel.mbt) |
 | 環上の行列 | [除算不要のBerkowitz特性多項式・行列式](../src/berkowitz/berkowitz.mbt)・[随伴行列・行列への多項式代入](../src/berkowitz/matrix_polynomial.mbt) |
 | 整数線形代数 | [証拠付きSmith標準形](../src/smith/smith.mbt)・[整数解/不可能証拠](../src/smith/equations.mbt)・[有限生成アーベル群](../src/smith/cokernel.mbt) |
 | 分数なしの行列式 | [Bareiss・厳密除算・行ごとの分母払い](../src/bareiss/bareiss.mbt)・[通常の有理数行列式](../src/linear/linear.mbt) |
