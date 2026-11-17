@@ -1,0 +1,219 @@
+{
+  "utc": "2026-11-17T14:53:12.051831+00:00",
+  "before": {
+    "root": "/home/hosi/morph-late-before",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? src/cmd/lateboolproductbench/",
+      "?? src/cmd/latefrobeniusbench/",
+      "?? src/cmd/latepolybench/"
+    ],
+    "source_manifest_sha256": "3ee06d73a57163f6f8077a1cb42dd65f32ebc7c7fc9ddb370df181cf426b1afb",
+    "source_file_count": 931,
+    "artifact": "/home/hosi/morph-late-before/_build/native/release/build/cmd/lateboolproductbench/lateboolproductbench.exe",
+    "artifact_sha256": "884a4b1394b1e8c440be31ede5bd6d28d4d956ca50fd6d6844a69254f3d859ea",
+    "harness": {
+      "main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+      "moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "085b736aab182aa7b04411203b829be9fa1f16a5",
+    "working_tree": [
+      "?? docs/measurements/late-round1-latefrobeniusbench-20261117.json",
+      "?? docs/measurements/late-round1-latefrobeniusbench-20261117.json.gz",
+      "?? docs/measurements/late-round1-latepolybench-20261117.json",
+      "?? docs/measurements/late-round1-latepolybench-20261117.json.gz"
+    ],
+    "source_manifest_sha256": "452ac19c57e8f5d01d0b219939f9a492b0284f94e8fc353b6d631478217168fb",
+    "source_file_count": 938,
+    "artifact": "/home/hosi/morph/_build/native/release/build/cmd/lateboolproductbench/lateboolproductbench.exe",
+    "artifact_sha256": "ffe454248e0a6da7363e67139e0959c3c92388ca658ea4f034dc23eaa6e3bc15",
+    "harness": {
+      "main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+      "moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "tiny-and-shapes": {
+      "process_ns": {
+        "medians": {
+          "before": 113788208.0,
+          "after": 106554496.5
+        },
+        "ranges": {
+          "before": [
+            106667446,
+            147879404
+          ],
+          "after": [
+            96243748,
+            117935165
+          ]
+        },
+        "before_over_after": 1.0678874354213668,
+        "block_ratios": [
+          1.1660960305311598,
+          1.0567807866875505,
+          1.0907366869713977,
+          1.1864497884021634,
+          1.0548085054408267
+        ]
+      }
+    },
+    "sparse": {
+      "process_ns": {
+        "medians": {
+          "before": 195682993.0,
+          "after": 171790487.0
+        },
+        "ranges": {
+          "before": [
+            191043046,
+            225093825
+          ],
+          "after": [
+            167797654,
+            183007006
+          ]
+        },
+        "before_over_after": 1.1390793309759928,
+        "block_ratios": [
+          1.2216698184908084,
+          1.1236604479796868,
+          1.1373821204947658,
+          1.1676378768284184,
+          1.1974136402271875
+        ]
+      }
+    },
+    "dense": {
+      "process_ns": {
+        "medians": {
+          "before": 324388601.0,
+          "after": 256192147.0
+        },
+        "ranges": {
+          "before": [
+            305927244,
+            344369764
+          ],
+          "after": [
+            250927105,
+            274383915
+          ]
+        },
+        "before_over_after": 1.266192601133867,
+        "block_ratios": [
+          1.2515059433020996,
+          1.2215515079781114,
+          1.2918876667217507,
+          1.233913973579983,
+          1.2585707640416146
+        ]
+      }
+    },
+    "zero": {
+      "process_ns": {
+        "medians": {
+          "before": 288649796.0,
+          "after": 245179709.0
+        },
+        "ranges": {
+          "before": [
+            283087344,
+            293051175
+          ],
+          "after": [
+            237403050,
+            252600595
+          ]
+        },
+        "before_over_after": 1.1772988767190355,
+        "block_ratios": [
+          1.1741968095325017,
+          1.178800921290568,
+          1.1739329168121317,
+          1.1577058037802497,
+          1.2007466438889522
+        ]
+      }
+    },
+    "cohomology-circle": {
+      "process_ns": {
+        "medians": {
+          "before": 110754399.0,
+          "after": 108637215.0
+        },
+        "ranges": {
+          "before": [
+            107531069,
+            134498751
+          ],
+          "after": [
+            106872334,
+            116195337
+          ]
+        },
+        "before_over_after": 1.0194885702841332,
+        "block_ratios": [
+          1.1057002182783686,
+          1.0789712880232338,
+          1.0082488745858553,
+          1.0156673353172725,
+          1.0013711295703125
+        ]
+      }
+    },
+    "cohomology-torus": {
+      "process_ns": {
+        "medians": {
+          "before": 232767854.5,
+          "after": 232233003.5
+        },
+        "ranges": {
+          "before": [
+            217733843,
+            290222528
+          ],
+          "after": [
+            223073800,
+            246601866
+          ]
+        },
+        "before_over_after": 1.0023030792003687,
+        "block_ratios": [
+          1.0074063514710287,
+          1.0026744282278552,
+          0.9471810330032574,
+          1.0281519886060109,
+          1.1083178898031598
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 120,
+  "lossless_full_record": {
+    "path": "docs/measurements/late-round1-lateboolproductbench-20261117.json.gz",
+    "sha256": "7043e03f22ab3c1d49cdf58dfb7039deff3e274df12da5797bb8c11ee5a33a37",
+    "uncompressed_sha256": "cd6a70c5538a20aa0bd7f75fb4589dcb1a952c2135be0230a2834cd1becd3558",
+    "format": "gzip-compressed UTF-8 JSON; retains every complete stdout/result, timing and provenance"
+  }
+}

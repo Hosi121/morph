@@ -25,6 +25,38 @@ CSS・コホモロジーの直接のgeneric行列積の検査は残していま�
 担当別の3バックエンド検査は、Fppoly・Galoisが51テストずつ、GF(2)・コホモロジーが192テストずつです。
 これらは統合後の逆依存検証に置き換えません。未採用の減算は、二案とも全出力照合・各142テストを通過しましたが、性能を理由に見送っています。
 
+## 一巡目の統合後比較
+
+統合コード`085b736`を同じ公開CLIで基準`a39f323`と比較し、18入力・360試行の全結果と検査が一致しました。
+減算は元の実装のまま対照として測っています。
+
+| 統合後の入力 | 基準÷採用 |
+| --- | ---: |
+| 未変更のQQ減算・完全相殺 | 1.028 |
+| 未変更のQQ減算・交差support | 0.979 |
+| 未変更のQQ減算・block分離 | 0.989 |
+| 未変更のQQ減算・有理係数 | 1.005 |
+| 未変更のQQ減算・小入力とエラー | 0.982 |
+| 未変更のGröbner処理の対照 | 0.943 |
+| F2平方・密なmodular power | 1.184 |
+| F2平方・疎なmodular power | 1.383 |
+| 既約性とGalois構築 | 1.089 |
+| 奇標数の対照 | 1.012 |
+| F2低次数 | 0.990 |
+| F2一回利用 | 1.010 |
+| Bool積・小入力とshape | 1.068 |
+| Bool積・疎 | 1.139 |
+| Bool積・密 | 1.266 |
+| Bool積・零 | 1.177 |
+| 円のコホモロジー全体 | 1.019 |
+| トーラスのコホモロジー全体 | 1.002 |
+
+[latepolybenchの要約](../measurements/late-round1-latepolybench-20261117.json)・[完全な生値](../measurements/late-round1-latepolybench-20261117.json.gz)、
+[latefrobeniusbenchの要約](../measurements/late-round1-latefrobeniusbench-20261117.json)・[完全な生値](../measurements/late-round1-latefrobeniusbench-20261117.json.gz)、
+[lateboolproductbenchの要約](../measurements/late-round1-lateboolproductbench-20261117.json)・[完全な生値](../measurements/late-round1-lateboolproductbench-20261117.json.gz)を保存しました。全生値は損失のないgzipで、要約に圧縮前後のSHA256があります。
+未変更の減算・Gröbner対照にも変動があり、この系列の小差を特定の算法の改善・回帰と断定しません。
+とくにGröbner対照の比0.943も省かずに記録しています。Bool積とF2平方の有限な直接入力を、上位全体の性能保証へ一般化しません。
+
 ## 検証の再開も通常の手順にする
 
 前の長いnative検証が途中終了したため、[check_affected.py](../../tools/check_affected.py)を追加しました。
