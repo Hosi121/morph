@@ -1,0 +1,41 @@
+{
+  "baseline": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+  "candidate": "7544b65",
+  "harness": "7b097be",
+  "decision": "reject; no follow-up; layout preparation loses on every measured lookup-heavy path",
+  "variants": {
+    "baseline": {
+      "artifact_sha256": "4801ed8b45b114b7ce983d33a12d010b4f53cf4a1e060315be4c6e410d92cf8c",
+      "sources": {
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/cmd/latebasisbench/main.mbt": "91409feb58cd80d4db8651807ac674a26d1107139b1e2c6db7443bc486903e93",
+        "src/cmd/latebasisbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      },
+      "generated_c_sha256": "d9849112b712e8b2261b1e82e9b292707ba377a165897954f37d5b030322693c"
+    },
+    "candidate": {
+      "artifact_sha256": "04484b6fabaab8e77eab5286758dd5111801fb6fb65d2e3d42fbbfd2500f42da",
+      "sources": {
+        "src/gf2/solve.mbt": "e501d7824bb716a4b38cd94fecce40e7e259be5de1d68c5213796b698d00e537",
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/cmd/latebasisbench/main.mbt": "91409feb58cd80d4db8651807ac674a26d1107139b1e2c6db7443bc486903e93",
+        "src/cmd/latebasisbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d",
+        "src/gf2/basis.mbt": "54794b1bdfb1cb79a1237ad715715e3d77a7aab71fa99eca2020c82b031040cb",
+        "src/gf2/late_basis_wbtest.mbt": "9a071b95219c94678abddf51a3e2055b8c9290076c981357dc8f5e30471e959f"
+      },
+      "generated_c_sha256": "e00d560ffc0e8bb2be56b7a9be3175ff19d3467786c96e77a508d534219e28d8"
+    }
+  },
+  "baseline_relative_patch_sha256": "60bf49421c32ba3e0ad13fc37f99e54246bbb7c30be3811e9b1b024028a7f7d8",
+  "raw_sha256": "ed74bc60f4c45e368f0f765b623acc1e168f9832b1cc7b69f24d549e69533549",
+  "gzip_sha256": "1668a4d39394f88c85057d9cf875462d5311d951959f95638f4e25d261f1b68f",
+  "raw_bytes": 3970526,
+  "gzip_bytes": 106091
+}

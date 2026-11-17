@@ -1,0 +1,107 @@
+{
+  "candidate_native_before_measurement": {
+    "passed": 194,
+    "failed": 0,
+    "note": "Native first tool output; candidate before rejection."
+  },
+  "restored_source_commit": "c64fa0473efb391c3a12170adcc4a6ed2e3cdf1b",
+  "records": [
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/gf2",
+        "src/cohomology",
+        "--target",
+        "native",
+        "--release",
+        "-j",
+        "1",
+        "--deny-warn"
+      ],
+      "seconds": 36.86333106100028,
+      "exit_code": 0,
+      "stdout": "Total tests: 194, passed: 194, failed: 0.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/gf2",
+        "src/cohomology",
+        "--target",
+        "js",
+        "--release",
+        "-j",
+        "1",
+        "--deny-warn"
+      ],
+      "seconds": 3.1437319930009835,
+      "exit_code": 0,
+      "stdout": "Total tests: 194, passed: 194, failed: 0.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/gf2",
+        "src/cohomology",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "-j",
+        "1",
+        "--deny-warn"
+      ],
+      "seconds": 2.4079890259999956,
+      "exit_code": 0,
+      "stdout": "Total tests: 194, passed: 194, failed: 0.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/moon",
+        "info",
+        "src/gf2",
+        "src/cohomology"
+      ],
+      "seconds": 0.5038755550012866,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 14 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "fmt",
+        "--check",
+        "src/gf2",
+        "src/cohomology",
+        "src/cmd/latebasisbench"
+      ],
+      "seconds": 0.11164161899978353,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 11 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "check",
+        "src/gf2",
+        "src/cohomology",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "seconds": 0.5546886819993233,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 16 tasks, now up to date\n"
+    }
+  ],
+  "production_api_checker_arithmetic_byte_identical_to_baseline": true,
+  "scoped_purity_pass": true
+}
