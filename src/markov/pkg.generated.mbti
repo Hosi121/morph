@@ -1,0 +1,61 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/markov"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn check_composition(Kernel, Kernel, Kernel) -> Bool
+
+pub fn check_evolution(Kernel, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Bool
+
+pub fn compose(Kernel, Kernel) -> Result[Kernel, MarkovError]
+
+pub fn evolve(Kernel, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], MarkovError]
+
+pub fn evolve_steps(Kernel, @core.Chain[@exact.Rational], @binary.Binary) -> Result[@core.Chain[@exact.Rational], MarkovError]
+
+pub fn identity(@core.Nat) -> Result[Kernel, MarkovError]
+
+pub fn kernel(@core.Chain[@core.Chain[@exact.Rational]]) -> Result[Kernel, MarkovError]
+
+pub fn power(Kernel, @binary.Binary) -> Result[Kernel, MarkovError]
+
+pub fn states(Kernel) -> @core.Nat
+
+pub fn transitions(Kernel) -> @matrix.Matrix[@exact.Rational]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Kernel {
+  transition : @matrix.Matrix[@exact.Rational]
+}
+pub fn Kernel::equal(Self, Self) -> Bool
+pub fn Kernel::not_equal(Self, Self) -> Bool
+pub fn Kernel::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum MarkovError {
+  EmptyStateSpace
+  NonSquare
+  NegativeProbability
+  NotNormalized
+  DimensionMismatch
+  InvalidState
+  NonUniqueStationary
+  InternalInvariant
+}
+pub fn MarkovError::equal(Self, Self) -> Bool
+pub fn MarkovError::not_equal(Self, Self) -> Bool
+pub fn MarkovError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
