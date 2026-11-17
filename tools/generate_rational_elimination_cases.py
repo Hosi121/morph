@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Independent Fraction Gauss-Jordan oracle for the public QQ API."""
+import argparse
+import shutil
+import subprocess
 from fractions import Fraction as Q
 from itertools import product
 from pathlib import Path
@@ -93,5 +96,18 @@ test "Fraction oracle exhaustive {height} by {width} rational matrices" {{
   }}
 }}
 ''')
-(ROOT / 'src/linear/fraction_oracle_wbtest.mbt').write_text('\n'.join(source))
-print(f'Wrote {case_count} exhaustive Fraction matrix/rank/solve cases and generic inverse/factor comparisons.')
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--check", action="store_true")
+args = parser.parse_args()
+formatter = ROOT / ".tools/moon/bin/moonfmt"
+executable = str(formatter) if formatter.exists() else shutil.which("moonfmt")
+if executable is None:
+    raise SystemExit("moonfmt is required to canonicalize generated fixtures")
+content = subprocess.run([executable, "-"], input="\n".join(source), text=True,
+                         check=True, capture_output=True).stdout
+output = ROOT / "src/linear/fraction_oracle_wbtest.mbt"
+if args.check:
+    assert output.read_text() == content, f"stale fixture: {output}"
+else:
+    output.write_text(content)
+print(f'{case_count} exhaustive Fraction matrix/rank/solve cases and generic inverse/factor comparisons.')

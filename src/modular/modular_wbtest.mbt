@@ -89,7 +89,7 @@ test "canonical reduction boundaries and signed residues match machine arithmeti
     for a in -128..<129 {
       assert_eq(
         @oracle.int_of_binary(signed_reduce(ring, @oracle.integer(a))),
-        ((a % m) + m) % m,
+        (a % m + m) % m,
       )
     }
   }

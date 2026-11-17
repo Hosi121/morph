@@ -125,14 +125,6 @@ fn factor_witness(factor : @gf2.Factorization) -> @csscode.RankWitness? {
 }
 
 ///|
-fn rank_witness(input : @matrix.Matrix[Bool]) -> @csscode.RankWitness? {
-  match @gf2.factor(input) {
-    None => None
-    Some(factor) => factor_witness(factor)
-  }
-}
-
-///|
 fn dot(left : @core.Chain[Bool], right : @core.Chain[Bool]) -> Bool {
   match (left, right) {
     (Cons(a, rest), Cons(b, tail)) => @csscode.xor(a && b, dot(rest, tail))
@@ -278,7 +270,7 @@ pub fn compute(source : @homology.Complex, degree : @core.Nat) -> Cohomology? {
     Some(value) => @matrix.transpose(value)
     None => return None
   }
-  let cycle_rank = match rank_witness(candidates) {
+  let cycle_rank = match @gf2.rref(candidates) {
     Some(value) => value
     None => return None
   }

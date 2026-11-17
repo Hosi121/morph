@@ -13,6 +13,7 @@ python3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null
 python3 tools/generate_binary_tiny_products.py --check
 python3 tools/generate_binary_tiny_differences.py --check --winner lookup
 python3 tools/generate_bernstein_fixtures.py --check
+python3 tools/generate_rational_elimination_cases.py --check
 python3 tools/generate_homology_fixtures.py --check
 python3 tools/generate_persistence_fixtures.py --check
 python3 tools/generate_simplicialmap_fixtures.py --check
