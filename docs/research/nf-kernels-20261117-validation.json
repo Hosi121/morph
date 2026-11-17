@@ -1,0 +1,218 @@
+{
+  "utc": "2026-11-17T12:29:14.079052+00:00",
+  "production_baseline": "2e33ef5612940efa555c0a3380a0bb34190cd159",
+  "stage1": "48847aa5febd972329f4a4f6512e8c88633f8ac1",
+  "stage2": "a1c3f3c14b49b030be07bf8a248d2059106f7430",
+  "validation": [
+    {
+      "stage": "stage1",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "wasm",
+        "-j",
+        "1"
+      ],
+      "tests": 168,
+      "passed": 168,
+      "failed": 0
+    },
+    {
+      "stage": "stage1",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "js",
+        "-j",
+        "1"
+      ],
+      "tests": 168,
+      "passed": 168,
+      "failed": 0
+    },
+    {
+      "stage": "stage1",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "native",
+        "-j",
+        "1"
+      ],
+      "tests": 168,
+      "passed": 168,
+      "failed": 0
+    },
+    {
+      "stage": "stage1",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "check",
+        "--target",
+        "all",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "passed": true,
+      "tasks": 1797
+    },
+    {
+      "stage": "stage1",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "passed": true,
+      "kernel_files": 326
+    },
+    {
+      "stage": "stage2",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "wasm",
+        "-j",
+        "1"
+      ],
+      "tests": 170,
+      "passed": 170,
+      "failed": 0
+    },
+    {
+      "stage": "stage2",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "js",
+        "-j",
+        "1"
+      ],
+      "tests": 170,
+      "passed": 170,
+      "failed": 0
+    },
+    {
+      "stage": "stage2",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "native",
+        "-j",
+        "1"
+      ],
+      "tests": 170,
+      "passed": 170,
+      "failed": 0
+    },
+    {
+      "stage": "stage2",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "check",
+        "--target",
+        "all",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "passed": true,
+      "tasks": 234
+    },
+    {
+      "stage": "stage2",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "passed": true,
+      "kernel_files": 326
+    }
+  ],
+  "timing_reports": {
+    "addsub": {
+      "runs": 160,
+      "all_checked": true,
+      "sha256": "42248dca33882f9ef0eed2fef7ea40d539da39b380b0c9de61184a49f25e8b05"
+    },
+    "coordinate": {
+      "runs": 160,
+      "all_checked": true,
+      "sha256": "fdb7844a006058a77adf7517605905a9369935662ffa94c55333dcc73deb1015"
+    },
+    "combined": {
+      "runs": 160,
+      "all_checked": true,
+      "sha256": "2cf48d3c02569bf209f15a11810f96b9b2f51db4bc872299c74d4868c69faf6c"
+    }
+  },
+  "snapshot": {
+    "path": "/home/hosi/morph-algo-numberfield/.tools/nf-stage1-source",
+    "commit": "48847aa5febd972329f4a4f6512e8c88633f8ac1",
+    "source_manifest_matches": true,
+    "elf_hash_matches": true,
+    "clean_before_remove": true,
+    "removed": true
+  },
+  "mechanism_decisions": {
+    "canonical_addsub": "adopt targeted clear gain; upper effect uncertain",
+    "coordinate_scan": "adopt direct and matrix clear gain; joint small effect uncertain"
+  },
+  "followup_experiments": 0,
+  "baseline_manifest_note": "Only untracked structuralbench was added between first and final runs; NF executable and NF harness hashes remain identical. Original baseline commit and tracked production files unchanged.",
+  "limitations": [
+    "8 fixed public cases, ambient degrees1 and4 in benchmark",
+    "No application-wide or other-machine speed claim",
+    "Unchanged multiplication control final median about1.1% slower, mixed blocks; small regressions not ruled out",
+    "No memory measurements",
+    "Primary worktree and saved native artifacts retained for root archival"
+  ]
+}

@@ -1,0 +1,5533 @@
+{
+  "utc": "2026-11-17T12:26:51.415649+00:00",
+  "before": {
+    "root": "/home/hosi/morph-algo-numberfield/.tools/nf-stage1-source",
+    "commit": "48847aa5febd972329f4a4f6512e8c88633f8ac1",
+    "working_tree": [],
+    "source_manifest_sha256": "cc851ceffe5e52aac23093afde76b67f450c776f678dfc45a8adbb912781cab1",
+    "source_file_count": 881,
+    "artifact": "/home/hosi/morph-algo-numberfield/.tools/nf-kernels-20261117/addsub.exe",
+    "artifact_sha256": "9622010031028d49d809ba5368eb7eef1cc076395e2a6a4312b15351da8cd7b1",
+    "harness": {
+      "main.mbt": "cc00a40e4a7d2470ed124221722e7105914eb3d8d4ef6cf314c9990039d78ea8",
+      "moon.pkg": "367bbc9702496bd3d36b48dd866404559ea9b6abb3d19a6cea640bef3840980f"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-algo-numberfield",
+    "commit": "a1c3f3c14b49b030be07bf8a248d2059106f7430",
+    "working_tree": [
+      "?? docs/research/nf-kernels-20261117-addsub.json",
+      "?? docs/research/nf-kernels-20261117.md",
+      "?? src/cmd/nfkernelbench/pkg.generated.mbti"
+    ],
+    "source_manifest_sha256": "91ca72757bf71c3d19e1bfb3465671bbe30d10a5640d6fa5173b0bdba9cff3b7",
+    "source_file_count": 883,
+    "artifact": "/home/hosi/morph-algo-numberfield/.tools/nf-kernels-20261117/combined.exe",
+    "artifact_sha256": "d286c1b4e7c425e24398236e745993db7af7c11aef6060094fa9e9d6831d8c54",
+    "harness": {
+      "main.mbt": "cc00a40e4a7d2470ed124221722e7105914eb3d8d4ef6cf314c9990039d78ea8",
+      "moon.pkg": "367bbc9702496bd3d36b48dd866404559ea9b6abb3d19a6cea640bef3840980f"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "addsub-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 79332754,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 76817.64099999995,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":76817.64099999995,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 76825336,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 73749.188,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":73749.188,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 77812234,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 74752.833,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":74752.833,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 75708553,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 72773.076,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":72773.076,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 72701047,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 70046.081,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":70046.081,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 75646454,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 72544.84300000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":72544.84300000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 78268483,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 75715.654,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":75715.654,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 81706277,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 78792.179,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":78792.179,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 75879182,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 73279.514,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":73279.514,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 79660242,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 75785.16500000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":75785.16500000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 78240892,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 75396.44900000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":75396.44900000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 74227345,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 71677.779,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":71677.779,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 80796700,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 77972.493,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":77972.493,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 84039307,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 81348.05799999996,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":81348.05799999996,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 91699062,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 89022.243,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":89022.243,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 94376861,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 91516.509,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":91516.509,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 75958270,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 73081.41,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":73081.41,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 79788526,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 76862.283,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":76862.283,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 76400987,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 72648.12,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":72648.12,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 85437760,
+      "payload": {
+        "case": "addsub-d4",
+        "iterations": 50000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            -4,
+            -1,
+            2
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 82819.553,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d4\",\"iterations\":50000,\"degree\":4,\"expected_full_outputs\":[[0,0,3,0],[2,-4,-1,2],[0]],\"elapsed_us\":82819.553,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 434990382,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 432692.605,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":432692.605,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 478124951,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 475851.515,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":475851.515,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 462252173,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 459999.485,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":459999.485,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 431065430,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 428903.669,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":428903.669,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 418099122,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 415724.55700000003,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":415724.55700000003,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 471272608,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 469061.848,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":469061.848,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 459603666,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 456820.897,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":456820.897,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 431313678,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 429632.22699999996,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":429632.22699999996,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 433903455,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 431904.126,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":431904.126,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 430057019,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 427809.235,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":427809.235,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 426063551,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 423856.083,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":423856.083,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 420027921,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 417815.211,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":417815.211,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 429207020,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 426968.26599999995,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":426968.26599999995,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 434048474,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 431909.264,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":431909.264,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 437261870,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 434462.38300000003,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":434462.38300000003,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 429493253,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 427358.137,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":427358.137,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 455073009,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 452832.77,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":452832.77,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 425528404,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 423410.011,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":423410.011,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 420992841,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 418683.455,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":418683.455,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "addsub-d1",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 423439636,
+      "payload": {
+        "case": "addsub-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            6
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 421298.421,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"addsub-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[6],[0]],\"elapsed_us\":421298.421,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 193084387,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 190546.405,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":190546.405,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 68252999,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 65442.766,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":65442.766,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 67566014,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 64535.1,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":64535.1,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 214394071,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 210631.573,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":210631.573,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 219023625,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 216221.07499999995,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":216221.07499999995,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 73927453,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 71265.832,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":71265.832,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 75898763,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 72908.30500000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":72908.30500000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 205871009,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 202915.794,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":202915.794,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 202429934,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 199670.29200000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":199670.29200000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 69535930,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 66883.74,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":66883.74,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 67329631,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 64359.787000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":64359.787000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 205754611,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 203077.07199999993,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":203077.07199999993,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 196640668,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 193983.301,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":193983.301,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 66150247,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 63657.457,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":63657.457,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 69354556,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 66731.673,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":66731.673,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 208475538,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 205717.976,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":205717.976,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 200962801,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 198275.237,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":198275.237,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 70717758,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 66697.399,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":66697.399,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 72404836,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 69561.636,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":69561.636,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-sparse-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 191294656,
+      "payload": {
+        "case": "coords-sparse-d4",
+        "iterations": 500000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "elapsed_us": 188650.309,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-sparse-d4\",\"iterations\":500000,\"degree\":4,\"expected_full_outputs\":[[0,0,0,1],[1,0,0,0]],\"elapsed_us\":188650.309,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 210997867,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 207556.515,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":207556.515,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 49838782,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 47200.344000000005,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":47200.344000000005,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 53459487,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 50742.168,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":50742.168,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 220695933,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 217913.31100000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":217913.31100000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 217029481,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 214420.13700000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":214420.13700000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 49328265,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 46607.39,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":46607.39,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 49744150,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 47164.89,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":47164.89,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 218842258,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 216233.81299999997,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":216233.81299999997,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 217403504,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 214511.54200000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":214511.54200000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 49136898,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 46458.243,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":46458.243,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 47495577,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 44742.002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":44742.002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 221872333,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 219216.902,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":219216.902,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 211871980,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 209223.862,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":209223.862,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 49685038,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 46318.226,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":46318.226,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 52639998,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 49132.97399999993,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":49132.97399999993,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 221451921,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 218879.662,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":218879.662,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 233240730,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 230638.69,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":230638.69,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 52154231,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 48708.782,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":48708.782,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 48717274,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 46110.669,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":46110.669,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-dense-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 206889899,
+      "payload": {
+        "case": "coords-dense-d4",
+        "iterations": 300000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -2,
+            1,
+            1
+          ],
+          [
+            -1,
+            2,
+            2,
+            -1
+          ]
+        ],
+        "elapsed_us": 204322.418,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-dense-d4\",\"iterations\":300000,\"degree\":4,\"expected_full_outputs\":[[1,-2,1,1],[-1,2,2,-1]],\"elapsed_us\":204322.418,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 70477222,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 67642.09300000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":67642.09300000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 26930729,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 24723.098,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":24723.098,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 26607355,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 24559.307,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":24559.307,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 66461345,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 64347.593,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":64347.593,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 65364927,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 63116.78200000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":63116.78200000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 27007573,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 24643.312,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":24643.312,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 26775952,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 24692.666,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":24692.666,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 68257822,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 65759.269,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":65759.269,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 67297801,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 65170.175,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":65170.175,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 28909885,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 26498.334,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":26498.334,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 28610832,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 26113.356,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":26113.356,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 69092032,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 66916.616,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":66916.616,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 67046075,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 64922.516,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":64922.516,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 28857763,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 26644.760000000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":26644.760000000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 28913189,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 26714.822,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":26714.822,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 66430146,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 64362.44,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":64362.44,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 66257948,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 64130.755000000005,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":64130.755000000005,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 37658804,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 35387.993,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":35387.993,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 27404226,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 25214.133,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":25214.133,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "coords-zero-d1",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 69053562,
+      "payload": {
+        "case": "coords-zero-d1",
+        "iterations": 750000,
+        "degree": 1,
+        "expected_full_outputs": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "elapsed_us": 66663.314,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"coords-zero-d1\",\"iterations\":750000,\"degree\":1,\"expected_full_outputs\":[[0],[0]],\"elapsed_us\":66663.314,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 39323174,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 36707.997,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":36707.997,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 32798683,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 30185.428,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":30185.428,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 35241245,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 32597.888,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":32597.888,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 38644407,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 36040.676,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":36040.676,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 42019737,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 39354.817,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":39354.817,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 31855768,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 29236.130999999936,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":29236.130999999936,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 31437339,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 28827.614,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":28827.614,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 40296567,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 37624.013,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":37624.013,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 41610948,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 38957.827,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":38957.827,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 35736543,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 33068.683,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":33068.683,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 34271490,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 31568.478,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":31568.478,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 45374218,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 42716.235,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":42716.235,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 41091706,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 38504.01,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":38504.01,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 33023112,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 30460.234,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":30460.234,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 32991287,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 30272.936,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":30272.936,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 42256702,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 39518.340000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":39518.340000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 40902569,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 38353.431000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":38353.431000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 35122090,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 32089.716,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":32089.716,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 34787657,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 32115.435,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":32115.435,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "matrix-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 41129726,
+      "payload": {
+        "case": "matrix-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            1,
+            -1,
+            -1,
+            -8
+          ],
+          [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            8,
+            11,
+            79
+          ],
+          [
+            1,
+            1,
+            8,
+            11
+          ]
+        ],
+        "elapsed_us": 38357.747,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"matrix-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[1,-1,-1,-8],[-2,1,-1,-1],[1,8,11,79],[1,1,8,11]],\"elapsed_us\":38357.747,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 52232789,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 49531.026,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":49531.026,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 50703043,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48203.468,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48203.468,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 51642544,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48959.009,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48959.009,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 71791372,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 68764.302,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":68764.302,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 53657446,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 50697.973,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":50697.973,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 50654755,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48068.907,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48068.907,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 51664847,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 49036.627,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":49036.627,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 52120239,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 49366.76199999999,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":49366.76199999999,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 51252742,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48799.192,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48799.192,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 54006352,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 51463.276,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":51463.276,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 50826977,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 47624.992,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":47624.992,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 54013576,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 51077.357,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":51077.357,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 49143439,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 46596.37,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":46596.37,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 51990480,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 49229.204,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":49229.204,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 49430598,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 46500.306000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":46500.306000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 51214408,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48637.278,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48637.278,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 55064335,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 52240.423,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":52240.423,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 52256447,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48970.482,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48970.482,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 51317953,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 48424.968,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":48424.968,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multiply-control-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 48965621,
+      "payload": {
+        "case": "multiply-control-d4",
+        "iterations": 15000,
+        "degree": 4,
+        "expected_full_outputs": [
+          3,
+          3,
+          -42,
+          6
+        ],
+        "elapsed_us": 46528.905,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multiply-control-d4\",\"iterations\":15000,\"degree\":4,\"expected_full_outputs\":[3,3,-42,6],\"elapsed_us\":46528.905,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 83665439,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80174.942,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80174.942,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 83171273,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80581.768,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80581.768,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 76868578,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 74197.922,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":74197.922,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 83209492,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80388.711,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80388.711,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 83383939,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80712.678,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80712.678,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 84711951,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 81540.313,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":81540.313,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 78660057,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 75961.519,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":75961.519,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 91526225,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 88805.903,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":88805.903,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 83863368,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80846.571,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80846.571,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 79021299,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 75824.123,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":75824.123,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 82586043,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80005.134,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80005.134,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 82977167,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80119.378,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80119.378,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 85180607,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 81109.564,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":81109.564,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 80115778,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 77105.505,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":77105.505,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 85414621,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 82716.583,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":82716.583,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 83090776,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 80372.90799999994,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":80372.90799999994,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 87725606,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 85216.66,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":85216.66,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 84657108,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 81980.032,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":81980.032,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 85880724,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 82761.959,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":82761.959,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "complex-square-d4",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 89652467,
+      "payload": {
+        "case": "complex-square-d4",
+        "iterations": 5000,
+        "degree": 4,
+        "expected_full_outputs": [
+          [
+            3,
+            -6,
+            -24,
+            48
+          ],
+          [
+            6,
+            6,
+            -84,
+            12
+          ]
+        ],
+        "elapsed_us": 86811.24,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"complex-square-d4\",\"iterations\":5000,\"degree\":4,\"expected_full_outputs\":[[3,-6,-24,48],[6,6,-84,12]],\"elapsed_us\":86811.24,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "addsub-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 77645512.0,
+          "after": 78254687.5
+        },
+        "ranges": {
+          "before": [
+            72701047,
+            94376861
+          ],
+          "after": [
+            75646454,
+            91699062
+          ]
+        },
+        "before_over_after": 0.9922154759099894,
+        "block_ratios": [
+          1.0026108597024643,
+          1.0031990852193897,
+          0.9506361556592747,
+          0.9967860860254143,
+          1.0333346131887868
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 75048.57749999997,
+          "after": 75556.0515
+        },
+        "ranges": {
+          "before": [
+            70046.081,
+            91516.509
+          ],
+          "after": [
+            72544.84300000001,
+            89022.243
+          ]
+        },
+        "before_over_after": 0.9932834764400039,
+        "block_ratios": [
+          1.007331186422035,
+          1.0038969449832615,
+          0.9588288493864076,
+          0.9948271559372313,
+          1.0427432464348316
+        ]
+      }
+    },
+    "addsub-d1": {
+      "process_ns": {
+        "medians": {
+          "before": 430279341.5,
+          "after": 435655172.0
+        },
+        "ranges": {
+          "before": [
+            418099122,
+            455073009
+          ],
+          "after": [
+            420992841,
+            478124951
+          ]
+        },
+        "before_over_after": 0.9876603542307998,
+        "block_ratios": [
+          0.9209664823790418,
+          0.9124873237450244,
+          0.9974428905498673,
+          0.9855274632203839,
+          1.0377916091166737
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 428130.903,
+          "after": 433185.82350000006
+        },
+        "ranges": {
+          "before": [
+            415724.55700000003,
+            452832.77
+          ],
+          "after": [
+            418683.455,
+            475851.515
+          ]
+        },
+        "before_over_after": 0.9883308265742449,
+        "block_ratios": [
+          0.9206553970664133,
+          0.9130279061416141,
+          0.9977150871840481,
+          0.9860969088246258,
+          1.0380453314193034
+        ]
+      }
+    },
+    "coords-sparse-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 204092272.5,
+          "after": 69445243.0
+        },
+        "ranges": {
+          "before": [
+            191294656,
+            219023625
+          ],
+          "after": [
+            66150247,
+            75898763
+          ]
+        },
+        "before_over_after": 2.938894929059432,
+        "block_ratios": [
+          3.0001577025154793,
+          2.83591647272197,
+          2.9823758585989357,
+          2.9896815244253743,
+          2.740709527665492
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 201293.043,
+          "after": 66714.536
+        },
+        "ranges": {
+          "before": [
+            188650.309,
+            216221.07499999995
+          ],
+          "after": [
+            63657.457,
+            72908.30500000001
+          ]
+        },
+        "before_over_after": 3.0172291537784215,
+        "block_ratios": [
+          3.0865099600881276,
+          2.9071571206977294,
+          3.0687026873332957,
+          3.0654493744992393,
+          2.839632219617583
+        ]
+      }
+    },
+    "coords-dense-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 218122881.0,
+          "after": 49714594.0
+        },
+        "ranges": {
+          "before": [
+            206889899,
+            233240730
+          ],
+          "after": [
+            47495577,
+            53459487
+          ]
+        },
+        "before_over_after": 4.387502007961686,
+        "block_ratios": [
+          4.1791000389367605,
+          4.39952674011227,
+          4.545840691755023,
+          4.234778876598685,
+          4.363280085887486
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 215372.6775,
+          "after": 46886.14
+        },
+        "ranges": {
+          "before": [
+            204322.418,
+            230638.69
+          ],
+          "after": [
+            44742.002,
+            50742.168
+          ]
+        },
+        "before_over_after": 4.593525453364256,
+        "block_ratios": [
+          4.344077125569334,
+          4.592550698351367,
+          4.755781566156977,
+          4.48505125132005,
+          4.58725613165594
+        ]
+      }
+    },
+    "coords-zero-d1": {
+      "process_ns": {
+        "medians": {
+          "before": 67171938.0,
+          "after": 28007529.0
+        },
+        "ranges": {
+          "before": [
+            65364927,
+            70477222
+          ],
+          "after": [
+            26607355,
+            37658804
+          ]
+        },
+        "before_over_after": 2.3983528857543983,
+        "block_ratios": [
+          2.5577786272665266,
+          2.484455025958228,
+          2.3711427832166976,
+          2.310438315089563,
+          2.0796988704645325
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 65046.3455,
+          "after": 25663.7445
+        },
+        "ranges": {
+          "before": [
+            63116.78200000001,
+            67642.09300000001
+          ],
+          "after": [
+            24559.307,
+            35387.993
+          ]
+        },
+        "before_over_after": 2.5345617628012156,
+        "block_ratios": [
+          2.67823142965527,
+          2.6122123493731086,
+          2.510597758787068,
+          2.4229004642502634,
+          2.1582422537453554
+        ]
+      }
+    },
+    "matrix-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 41110716.0,
+          "after": 33647301.0
+        },
+        "ranges": {
+          "before": [
+            38644407,
+            45374218
+          ],
+          "after": [
+            31437339,
+            35736543
+          ]
+        },
+        "before_over_after": 1.2218131849564993,
+        "block_ratios": [
+          1.145909222596473,
+          1.3005571680973096,
+          1.2425026425181807,
+          1.2625792139681526,
+          1.1734028303664152
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 38430.878500000006,
+          "after": 31014.356
+        },
+        "ranges": {
+          "before": [
+            36040.676,
+            42716.235
+          ],
+          "after": [
+            28827.614,
+            33068.683
+          ]
+        },
+        "before_over_after": 1.2391319200695319,
+        "block_ratios": [
+          1.1587261972591574,
+          1.3257641235507645,
+          1.263577495304907,
+          1.2846744209136458,
+          1.1947823002550062
+        ]
+      }
+    },
+    "multiply-control-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 52176514.0,
+          "after": 51480248.5
+        },
+        "ranges": {
+          "before": [
+            48965621,
+            71791372
+          ],
+          "after": [
+            49430598,
+            54006352
+          ]
+        },
+        "before_over_after": 1.0135249055761648,
+        "block_ratios": [
+          1.211817379092271,
+          1.03379687696596,
+          1.0041302609020457,
+          0.9895166663481925,
+          1.004398345537121
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 49448.89399999999,
+          "after": 48691.9885
+        },
+        "ranges": {
+          "before": [
+            46528.905,
+            68764.302
+          ],
+          "after": [
+            46500.306000000004,
+            51463.276
+          ]
+        },
+        "before_over_after": 1.0155447646176947,
+        "block_ratios": [
+          1.2175001261032075,
+          1.0304740716425078,
+          1.007955341393191,
+          0.9948201761400428,
+          1.0141061825783442
+        ]
+      }
+    },
+    "complex-square-d4": {
+      "process_ns": {
+        "medians": {
+          "before": 83764403.5,
+          "after": 82878658.0
+        },
+        "ranges": {
+          "before": [
+            82977167,
+            91526225
+          ],
+          "after": [
+            76868578,
+            85880724
+          ]
+        },
+        "before_over_after": 1.010687256784491,
+        "block_ratios": [
+          1.0427086126192406,
+          1.070625048570132,
+          1.0323821488258869,
+          1.0165587953424797,
+          1.040109815633167
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 80779.6245,
+          "after": 80293.451
+        },
+        "ranges": {
+          "before": [
+            80119.378,
+            88805.903
+          ],
+          "after": [
+            74197.922,
+            82761.959
+          ]
+        },
+        "before_over_after": 1.0060549583302878,
+        "block_ratios": [
+          1.0373690049385678,
+          1.0762959315927196,
+          1.0329635916829147,
+          1.0103889519951708,
+          1.0442261803185322
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}
