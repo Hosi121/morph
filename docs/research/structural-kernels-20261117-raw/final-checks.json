@@ -1,0 +1,61 @@
+[
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/smith",
+      "src/persistence",
+      "--target",
+      "js",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "exit_code": 0,
+    "seconds": 0.9347575970004982,
+    "stdout": "Total tests: 24, passed: 24, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/smith",
+      "src/persistence",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "exit_code": 0,
+    "seconds": 0.9766181519999009,
+    "stdout": "Total tests: 24, passed: 24, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python3",
+      "tools/audit_purity.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.35754942699986714,
+    "stdout": "Purity gate passed: 326 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "check",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 0.6732554969994453,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 24 tasks, now up to date\n"
+  }
+]

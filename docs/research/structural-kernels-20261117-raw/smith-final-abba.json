@@ -1,0 +1,4815 @@
+{
+  "utc": "2026-11-17T12:30:48.048002+00:00",
+  "before": {
+    "root": "/home/hosi/morph-algo-before",
+    "commit": "2e33ef5612940efa555c0a3380a0bb34190cd159",
+    "working_tree": [
+      "?? src/cmd/nfkernelbench/",
+      "?? src/cmd/spanbench/",
+      "?? src/cmd/structuralbench/"
+    ],
+    "source_manifest_sha256": "6e0ba7635dce0c061cea0fb519d48f8e575a8aa818c79b694746aebd18695401",
+    "source_file_count": 883,
+    "artifact": "/home/hosi/morph-algo-before/_build/native/release/build/cmd/structuralbench/structuralbench.exe",
+    "artifact_sha256": "8795e2118e1a40f1d21013cc3713fd142b21e92daf1d8abb52746a5566292be2",
+    "harness": {
+      "main.mbt": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+      "moon.pkg": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-algo-matrix-topology",
+    "commit": "3674953af7ee639fc9e91cf24f34692072ba8cfb",
+    "working_tree": [
+      "?? docs/research/structural-kernels-20261117-raw/",
+      "?? docs/research/structural-kernels-20261117.md",
+      "?? src/cmd/structuralbench/pkg.generated.mbti"
+    ],
+    "source_manifest_sha256": "d713d9a68ddcb3d4eaa5f830a64b0f025e1bb9177eda38d7b7b3af417aaab682",
+    "source_file_count": 882,
+    "artifact": "/home/hosi/morph-algo-matrix-topology/_build/native/release/build/cmd/structuralbench/structuralbench.exe",
+    "artifact_sha256": "38afa8f0c0013858a3827bbd14314512705f7d58ff1862fe7ccc7f42d7e41bd8",
+    "harness": {
+      "main.mbt": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+      "moon.pkg": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "smith-small",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 187439206,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 171553584,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 171125302,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 187931143,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 179272218,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 199478712,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 186395312,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 174230586,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 177556489,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 175903847,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 164963689,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 179370487,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 173882901,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 179321125,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 166406703,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 176661041,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 170300070,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 164604495,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 161313461,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-small",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 192585605,
+      "payload": {
+        "case": "smith-small",
+        "iterations": 30000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-small\",\"iterations\":30000,\"u\":[[1,0],[3,-1]],\"d\":[[2,0],[0,4]],\"v\":[[1,-2],[0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 351115008,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 253111854,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 247151005,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 332420324,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 328180614,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 217971402,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 242731454,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 385513198,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 336301161,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 210158331,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 205085207,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 303765085,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 295291336,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 200614866,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 205020122,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 369678138,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 309810774,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 199310704,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 199917333,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-rectangular",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 317741835,
+      "payload": {
+        "case": "smith-rectangular",
+        "iterations": 6000,
+        "u": [
+          [
+            1,
+            0
+          ],
+          [
+            4,
+            -1
+          ]
+        ],
+        "d": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "v": [
+          [
+            1,
+            -2,
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            -2,
+            -3,
+            -4,
+            -5
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-rectangular\",\"iterations\":6000,\"u\":[[1,0],[4,-1]],\"d\":[[2,0,0,0,0,0],[0,6,0,0,0,0]],\"v\":[[1,-2,1,2,3,4],[0,1,-2,-3,-4,-5],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 588602113,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 532806333,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 504429056,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 524038535,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 524837005,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 435731900,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 453389498,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 482123610,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 491028642,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 478272010,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 461755912,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 490884021,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 499797470,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 436242092,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 452133000,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 484268711,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 528941040,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 470182158,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 524845065,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "smith-dense",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 500067529,
+      "payload": {
+        "case": "smith-dense",
+        "iterations": 4000,
+        "u": [
+          [
+            0,
+            1,
+            -1,
+            0
+          ],
+          [
+            -1,
+            4,
+            -2,
+            1
+          ],
+          [
+            87,
+            -500,
+            168,
+            30
+          ],
+          [
+            -189,
+            1086,
+            -365,
+            -65
+          ]
+        ],
+        "d": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2670
+          ]
+        ],
+        "v": [
+          [
+            1,
+            8,
+            -136,
+            -83633
+          ],
+          [
+            0,
+            0,
+            -2,
+            -1229
+          ],
+          [
+            0,
+            1,
+            -15,
+            -9225
+          ],
+          [
+            0,
+            0,
+            1,
+            615
+          ]
+        ],
+        "checked": true
+      },
+      "stdout": "{\"case\":\"smith-dense\",\"iterations\":4000,\"u\":[[0,1,-1,0],[-1,4,-2,1],[87,-500,168,30],[-189,1086,-365,-65]],\"d\":[[1,0,0,0],[0,2,0,0],[0,0,2,0],[0,0,0,2670]],\"v\":[[1,8,-136,-83633],[0,0,-2,-1229],[0,1,-15,-9225],[0,0,1,615]],\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "smith-small": {
+      "process_ns": {
+        "medians": {
+          "before": 178414353.5,
+          "after": 171339443.0
+        },
+        "ranges": {
+          "before": [
+            170300070,
+            192585605
+          ],
+          "after": [
+            161313461,
+            199478712
+          ]
+        },
+        "before_over_after": 1.0412917794999486,
+        "block_ratios": [
+          1.0953997002313123,
+          0.9161093569750111,
+          1.047113433530379,
+          1.013930362585681,
+          1.1134264569332288
+        ]
+      }
+    },
+    "smith-rectangular": {
+      "process_ns": {
+        "medians": {
+          "before": 330300469.0,
+          "after": 207621769.0
+        },
+        "ranges": {
+          "before": [
+            295291336,
+            385513198
+          ],
+          "after": [
+            199310704,
+            253111854
+          ]
+        },
+        "before_over_after": 1.5908759018424508,
+        "block_ratios": [
+          1.3663523479763267,
+          1.5491412799055884,
+          1.5414237367373553,
+          1.639329677350219,
+          1.5719151733824746
+        ]
+      }
+    },
+    "smith-dense": {
+      "process_ns": {
+        "medians": {
+          "before": 499932499.5,
+          "after": 465969035.0
+        },
+        "ranges": {
+          "before": [
+            482123610,
+            588602113
+          ],
+          "after": [
+            435731900,
+            532806333
+          ]
+        },
+        "before_over_after": 1.072887814315816,
+        "block_ratios": [
+          1.0726983091781108,
+          1.1325344517239928,
+          1.0445569115765052,
+          1.1077147365585978,
+          1.0341511721634575
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}

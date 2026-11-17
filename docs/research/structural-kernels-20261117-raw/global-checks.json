@@ -1,0 +1,25 @@
+[
+  {
+    "command": [
+      "python3",
+      "tools/audit_purity.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.3736513530002412,
+    "stdout": "Purity gate passed: 326 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "check",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 10.056376856000497,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 556 tasks, now up to date\n"
+  }
+]

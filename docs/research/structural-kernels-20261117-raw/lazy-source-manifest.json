@@ -1,0 +1,8 @@
+{
+  "src/smith/operations.mbt": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+  "src/persistence/reduction.mbt": "1f9b2449bc6789949180ea6acd029d74c84562d216801be093bb27ff7ef3da26",
+  "src/persistence/moon.pkg": "90a4fd4e750589b497d3a75114c531671f98f054f9e526f09606843a17072888",
+  "src/persistence/pkg.generated.mbti": "8c8049053bd1d0ba5bb2bbe44ad95065b14caec5d7dc8b377f11d3a248508f9c",
+  "src/persistence/structural_pivots_wbtest.mbt": "16d067d4455d42381f9a8ae9b8df32a7fd6c5600da9e21496a6fbe6f3371a070",
+  "artifact_sha256": "75350f7b6329544e51a5c86ec43ccb68b6f47dbe4cda88dafed40948c44aa4d0"
+}

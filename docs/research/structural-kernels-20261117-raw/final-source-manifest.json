@@ -1,0 +1,11 @@
+{
+  "src/smith/operations.mbt": "7f3d804e338101f912cf2ebf870ca1a2235cdba34cd9bc6ba301a9960382244b",
+  "src/smith/structural_columns_wbtest.mbt": "da70abe8eb0bc07c3436b5f8690c06b80a867c1e8917cff9f2fd4d52d999943d",
+  "src/persistence/reduction.mbt": "64f7a633abee314de299350e34fca60a911d5e147b0d2fb3833b6efcb10a3e7c",
+  "src/persistence/moon.pkg": "551e03b23de05015164bf73703aa94cada6f0d7c1f4a0d3bc50d76d19465faa9",
+  "src/persistence/pkg.generated.mbti": "cb90a261b0ac72e943a6852d9d2bad7650990d5c7371b9b94f3210cba596f5f7",
+  "src/persistence/structural_pivots_wbtest.mbt": "019b678048a5b03faed08d37206b0d7e6b7a2955db8ed460a129555a97655e0b",
+  "src/cmd/structuralbench/main.mbt": "98425137ecc287f27bc3d12034e145cd19db26a5bc169622d06e01bd5c3940dc",
+  "src/cmd/structuralbench/moon.pkg": "c8ffdb8e0a138d6dd542bb689067d82b27956b28941d217f43ee4f3717853d52",
+  "artifact_sha256": "38afa8f0c0013858a3827bbd14314512705f7d58ff1862fe7ccc7f42d7e41bd8"
+}
