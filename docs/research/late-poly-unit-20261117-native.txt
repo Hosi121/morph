@@ -1,0 +1,6 @@
+RUN tools/moon test src/polynomial src/numberfield --target native --deny-warn -j 1
+Total tests: 279, passed: 279, failed: 0.
+RUN tools/moon build src/cmd/lateunitbench --target native --release --deny-warn -j 1
+Finished. moon: ran 20 tasks, now up to date
+Artifacts:
+  Hosi121/morph/cmd/lateunitbench  native  /home/hosi/morph-late-poly/_build/native/release/build/cmd/lateunitbench/lateunitbench.exe

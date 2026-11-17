@@ -1,0 +1,79 @@
+{
+  "utc": "2026-11-17T15:00:42.815591+00:00",
+  "decision": "adopt constant +/-1 polynomial identity sharing",
+  "harness_commit": "3af66a6",
+  "source_commit": "458dcfdbc708b345c29f713d5fe055dbeae77065",
+  "baseline": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+  "baseline_audit": {
+    "baseline": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+    "tracked_bytes_unchanged": true,
+    "tracked_files": 1111,
+    "tracked_source_sha256": "8815623eff2e4ebb012aacc967d2c819290cccacf7dad86058a3a559678bef09",
+    "baseline_build_tasks": 13,
+    "harness_commit": "3af66a6",
+    "protected_regions": {
+      "add": "6582f5e217126a2a61bee54b566e016b2d3ef3f7830420bad8a57f60c3a7edbf",
+      "negate": "d5b456b6487b43895032e764a0aedaedc11debaa083e4f99654ceb860c3160ca",
+      "subtract": "0a4d5e5adb6d225d0756ad94638c4eb23d8f618021770756f4ac0d549d19c399",
+      "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+      "normal_form": "b0272c110051c89ff6195bec2e3826ba2765e43d1c580173bfee2075f251e1d8",
+      "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+      "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+      "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+      "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474",
+      "merge_terms": "dea0c40849c65a990a92534801a2e177e158572ef73663cd4ec52db363a40f2b",
+      "term_times": "bb8e8380e41d20f4b80a6a159a6b289b6f77d549cd03524dbd8243f117ab4fe3",
+      "monomial_product": "1f6aa7b0e9a936f70f86263bc461550d9ac6b12355478508b9b4333a04835f30",
+      "remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c",
+      "balanced_product.mbt": "b54266d4c79fafe9e91d54cfa676c11af8779ec81006e66eadcc7179244c4a76"
+    }
+  },
+  "tracked_baseline_diff_unchanged_after_timing": true,
+  "public_signatures_changed": false,
+  "protected_functions_files_byte_identical": true,
+  "performance_runs": 120,
+  "all_checked": true,
+  "followups_used": 0,
+  "validation": {
+    "native": {
+      "packages": [
+        "polynomial",
+        "numberfield"
+      ],
+      "tests": 279,
+      "passed": 279
+    },
+    "wasm": {
+      "tests": 279,
+      "passed": 279
+    },
+    "js": {
+      "tests": 279,
+      "passed": 279
+    },
+    "global_static_deny_warn_tasks": 839,
+    "api_info_tasks": 90,
+    "purity_files": 332,
+    "formal_drift_regions": 32,
+    "independent_fraction_fixtures": 37
+  },
+  "checker_shared_dependency_limit": "Checker bodies unchanged; arithmetic may use new multiply, so successful checks alone are not an independent arithmetic oracle. Old balanced/sequential and host Fraction comparisons supplement it.",
+  "ordinary_multi_term_limit": "No coefficient/exponent scan is performed, but shape-dispatch/layout overhead and small regressions are not ruled out by noisy controls.",
+  "memory_peak_measured": false,
+  "push_performed": false,
+  "worktree_removed": false,
+  "artifacts": {
+    "baseline-905d23d.exe": "109e19766141d0accdfba4a2a11ae121217e3a543300a84b80a4e4d4789b5c11",
+    "candidate-initial.exe": "90020d91d99b3867a6090823e7b1b538b0aa423c9cf6a1a155c5bde9cc1dbbb6"
+  },
+  "raw_sha256": "5b8a07b857434141e10315563c214999402c707ba4bc30c4a65c0f2d1aa786d8",
+  "gzip_sha256": "7f136bba7f958d64426fdf23caffc30015cbf47720e168b9061ea5a51d1bb93c",
+  "evidence_sha256": {
+    "late-poly-unit-20261117-final-validation.txt": "7e3d7becb0e8d254175fb4db252d1b2cddc1d9955026ddd9b0bd82e4a42410fe",
+    "late-poly-unit-20261117-initial.json.gz": "7f136bba7f958d64426fdf23caffc30015cbf47720e168b9061ea5a51d1bb93c",
+    "late-poly-unit-20261117-native.txt": "17ba9c39c0215350f9797e02ef500f89111732fb779cde9c7d6707882d3d9814",
+    "late-poly-unit-20261117-oracle-cases.json": "13e355f0a13e0147d995117e1dcd78998024056cd506ab3a8a8d7dc2609aa71e",
+    "late-poly-unit-20261117-oracle.py": "dda6d513a10989d238239a5b7e9e9c15e4e05c8b40a3fc60399a2b416c3746fb",
+    "late-poly-unit-20261117-summary.json": "82aafe39a66cd90c4615d7ff1c5afe4e9ab27c978cb609696496af37c5c5584f"
+  }
+}

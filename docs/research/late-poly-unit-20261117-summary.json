@@ -1,0 +1,364 @@
+{
+  "runs": 120,
+  "all_checked": true,
+  "command": [
+    "python3",
+    "tools/compare_field_kernels.py",
+    "--before",
+    ".tools/late-poly-unit-20261117/baseline-905d23d.exe",
+    "--after",
+    ".tools/late-poly-unit-20261117/candidate-initial.exe",
+    "--before-root",
+    "/home/hosi/morph-late-r2-before",
+    "--after-root",
+    "/home/hosi/morph-late-poly",
+    "--harness",
+    "src/cmd/lateunitbench",
+    "--case",
+    "unit-plus",
+    "--case",
+    "unit-minus",
+    "--case",
+    "nonunit-controls",
+    "--case",
+    "dense-control",
+    "--case",
+    "tiny-zero-errors",
+    "--case",
+    "nf-upper",
+    "--groups",
+    "5",
+    "--output",
+    ".tools/late-poly-unit-20261117/initial.json"
+  ],
+  "summary": {
+    "unit-plus": {
+      "process_ns": {
+        "medians": {
+          "before": 301901496.0,
+          "after": 186489343.0
+        },
+        "ranges": {
+          "before": [
+            264800114,
+            319858188
+          ],
+          "after": [
+            169677712,
+            214469971
+          ]
+        },
+        "before_over_after": 1.618867282941739,
+        "block_ratios": [
+          1.607695041692357,
+          1.5796941255528867,
+          1.6366394402653393,
+          1.5901252128530043,
+          1.5305543947296691
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 299430.4475,
+          "after": 184257.1925
+        },
+        "ranges": {
+          "before": [
+            262264.192,
+            316772.801
+          ],
+          "after": [
+            167373.526,
+            212035.157
+          ]
+        },
+        "before_over_after": 1.625067892532879,
+        "block_ratios": [
+          1.6148258831700475,
+          1.5890856814176562,
+          1.6447969829822804,
+          1.5962587833465163,
+          1.5373621516777967
+        ]
+      }
+    },
+    "unit-minus": {
+      "process_ns": {
+        "medians": {
+          "before": 305634892.5,
+          "after": 198041414.5
+        },
+        "ranges": {
+          "before": [
+            285661264,
+            372055534
+          ],
+          "after": [
+            185143199,
+            216438559
+          ]
+        },
+        "before_over_after": 1.5432877677209278,
+        "block_ratios": [
+          1.7745367084916892,
+          1.5036305364039444,
+          1.545309179002144,
+          1.441197480975804,
+          1.5709278588418811
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 302950.43499999994,
+          "after": 195704.4145
+        },
+        "ranges": {
+          "before": [
+            282888.954,
+            369285.341
+          ],
+          "after": [
+            182524.19400000002,
+            213434.564
+          ]
+        },
+        "before_over_after": 1.5480000069185966,
+        "block_ratios": [
+          1.8164012262539115,
+          1.5115993335952487,
+          1.5505382536998695,
+          1.4442456831984225,
+          1.5781358253747946
+        ]
+      }
+    },
+    "nonunit-controls": {
+      "process_ns": {
+        "medians": {
+          "before": 103709480.0,
+          "after": 104051156.5
+        },
+        "ranges": {
+          "before": [
+            98659625,
+            106026923
+          ],
+          "after": [
+            98829917,
+            109669885
+          ]
+        },
+        "before_over_after": 0.9967162642733337,
+        "block_ratios": [
+          1.000987232864308,
+          0.9458438001824107,
+          1.0300784903463245,
+          0.9798342461606948,
+          1.0115143986665092
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 101150.673,
+          "after": 101711.4605
+        },
+        "ranges": {
+          "before": [
+            96015.009,
+            103421.266
+          ],
+          "after": [
+            96180.85600000003,
+            107272.66900000001
+          ]
+        },
+        "before_over_after": 0.9944864866039358,
+        "block_ratios": [
+          1.0006373500678039,
+          0.9422893382610689,
+          1.0321580084189554,
+          0.9785014636889913,
+          1.0149964221535026
+        ]
+      }
+    },
+    "dense-control": {
+      "process_ns": {
+        "medians": {
+          "before": 91056403.5,
+          "after": 89815611.5
+        },
+        "ranges": {
+          "before": [
+            79536216,
+            121541105
+          ],
+          "after": [
+            82979010,
+            102641910
+          ]
+        },
+        "before_over_after": 1.0138148811690717,
+        "block_ratios": [
+          0.840386523332529,
+          1.125231611590224,
+          0.9967340367212985,
+          1.20106857221912,
+          0.9408332070667699
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 88180.32250000001,
+          "after": 86970.812
+        },
+        "ranges": {
+          "before": [
+            76974.667,
+            118354.766
+          ],
+          "after": [
+            80166.351,
+            100010.933
+          ]
+        },
+        "before_over_after": 1.0139070852874181,
+        "block_ratios": [
+          0.8348004260647062,
+          1.1272470072896226,
+          0.99751583518533,
+          1.2079776742319908,
+          0.9384354318300179
+        ]
+      }
+    },
+    "tiny-zero-errors": {
+      "process_ns": {
+        "medians": {
+          "before": 32322894.5,
+          "after": 30814586.0
+        },
+        "ranges": {
+          "before": [
+            31733391,
+            40603120
+          ],
+          "after": [
+            30527269,
+            34942551
+          ]
+        },
+        "before_over_after": 1.048947874879773,
+        "block_ratios": [
+          1.055402477244563,
+          1.1074358682087082,
+          1.196460477683759,
+          1.0727321352576484,
+          1.02543406485289
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 29812.7875,
+          "after": 28694.368000000002
+        },
+        "ranges": {
+          "before": [
+            29387.758,
+            37817.168
+          ],
+          "after": [
+            27795.512,
+            32360.807
+          ]
+        },
+        "before_over_after": 1.0389769692784312,
+        "block_ratios": [
+          1.0649938623342774,
+          1.1150340941684456,
+          1.2074717937680313,
+          1.0607064055483362,
+          1.0231446102750077
+        ]
+      }
+    },
+    "nf-upper": {
+      "process_ns": {
+        "medians": {
+          "before": 57532290.5,
+          "after": 47784712.5
+        },
+        "ranges": {
+          "before": [
+            49529710,
+            65894836
+          ],
+          "after": [
+            43238891,
+            55707174
+          ]
+        },
+        "before_over_after": 1.20398946629636,
+        "block_ratios": [
+          1.2906064280334606,
+          1.1812424855575292,
+          1.215337543364489,
+          1.1808201278091217,
+          1.1864325632595352
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 54469.433000000005,
+          "after": 44875.564
+        },
+        "ranges": {
+          "before": [
+            46398.075000000004,
+            62768.671
+          ],
+          "after": [
+            40540.78,
+            53637.269
+          ]
+        },
+        "before_over_after": 1.2137882657029113,
+        "block_ratios": [
+          1.3032785837300986,
+          1.1790719159825287,
+          1.2291413121186179,
+          1.1893252835689654,
+          1.182093398418686
+        ]
+      }
+    }
+  },
+  "uncompressed_sha256": "5b8a07b857434141e10315563c214999402c707ba4bc30c4a65c0f2d1aa786d8",
+  "compressed_sha256": "7f136bba7f958d64426fdf23caffc30015cbf47720e168b9061ea5a51d1bb93c",
+  "uncompressed_bytes": 1097683,
+  "compressed_bytes": 17749,
+  "baseline_audit": {
+    "baseline": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+    "tracked_bytes_unchanged": true,
+    "tracked_files": 1111,
+    "tracked_source_sha256": "8815623eff2e4ebb012aacc967d2c819290cccacf7dad86058a3a559678bef09",
+    "baseline_build_tasks": 13,
+    "harness_commit": "3af66a6",
+    "protected_regions": {
+      "add": "6582f5e217126a2a61bee54b566e016b2d3ef3f7830420bad8a57f60c3a7edbf",
+      "negate": "d5b456b6487b43895032e764a0aedaedc11debaa083e4f99654ceb860c3160ca",
+      "subtract": "0a4d5e5adb6d225d0756ad94638c4eb23d8f618021770756f4ac0d549d19c399",
+      "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+      "normal_form": "b0272c110051c89ff6195bec2e3826ba2765e43d1c580173bfee2075f251e1d8",
+      "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+      "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+      "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+      "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474",
+      "merge_terms": "dea0c40849c65a990a92534801a2e177e158572ef73663cd4ec52db363a40f2b",
+      "term_times": "bb8e8380e41d20f4b80a6a159a6b289b6f77d549cd03524dbd8243f117ab4fe3",
+      "monomial_product": "1f6aa7b0e9a936f70f86263bc461550d9ac6b12355478508b9b4333a04835f30",
+      "remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c",
+      "balanced_product.mbt": "b54266d4c79fafe9e91d54cfa676c11af8779ec81006e66eadcc7179244c4a76"
+    }
+  }
+}

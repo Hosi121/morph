@@ -1,0 +1,14 @@
+RUN tools/moon test src/polynomial src/numberfield --target wasm --deny-warn -j 1
+Total tests: 279, passed: 279, failed: 0.
+RUN tools/moon test src/polynomial src/numberfield --target js --deny-warn -j 1
+Total tests: 279, passed: 279, failed: 0.
+RUN tools/moon check --target all --deny-warn -j 1
+Finished. moon: ran 839 tasks, now up to date
+RUN tools/moon info src/polynomial src/cmd/lateunitbench --target all
+Finished. moon: ran 90 tasks, now up to date
+RUN python3 tools/audit_purity.py
+Purity gate passed: 332 kernel files; no machine numerics, mutation, arrays or FFI.
+RUN python3 tools/check_model_drift.py
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+RUN python3 docs/research/late-poly-unit-20261117-oracle.py --check
+37 independent unit/full-product fixtures checked
