@@ -1,0 +1,49 @@
+{
+  "utc": "2026-11-17T11:46:28.556814+00:00",
+  "main": "7749ddcba635cd5f844fc07f8370478d6e04c10d",
+  "workers": [
+    {
+      "path": "/home/hosi/morph-canonical-oracle",
+      "branch": "perf/canonical-fp-oracle-20261117",
+      "tip": "c2861d5176b3aeded4f0743f1cad45b04d5bd061",
+      "clean": true,
+      "patches_integrated": [
+        "- c2861d5176b3aeded4f0743f1cad45b04d5bd061"
+      ],
+      "removed": true,
+      "branch_removed": true
+    },
+    {
+      "path": "/home/hosi/morph-canonical-bench",
+      "branch": "perf/canonical-fp-bench-20261117",
+      "tip": "4ee3669e3cb33e991525dfe1e0e6b631be376420",
+      "clean": true,
+      "patches_integrated": [
+        "- 4ee3669e3cb33e991525dfe1e0e6b631be376420"
+      ],
+      "removed": true,
+      "branch_removed": true
+    }
+  ],
+  "artifacts": {
+    "after.exe": "c1ff0cb8a1193e4929e1ebb364fedb8d3e0b1dd2c2a2d68a968637774ad7166c",
+    "before.exe": "18bcbea56bcde195f60be767bde4111e4b0db4c4427e420b4c72c92fcf13712d"
+  },
+  "bundle": {
+    "path": ".tools/canonical-fp-20261117/archive/canonical-fp.bundle",
+    "sha256": "a38361bac5936f41fb4ed7257c4ada05a0aecb4695e1aacb75df27ff8020a439",
+    "verified": true,
+    "output": "The bundle contains these 3 refs:\n7749ddcba635cd5f844fc07f8370478d6e04c10d refs/heads/main\nc2861d5176b3aeded4f0743f1cad45b04d5bd061 refs/heads/perf/canonical-fp-oracle-20261117\n4ee3669e3cb33e991525dfe1e0e6b631be376420 refs/heads/perf/canonical-fp-bench-20261117\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n/home/hosi/morph/.tools/canonical-fp-20261117/archive/canonical-fp.bundle is okay\n"
+  },
+  "baseline": {
+    "path": "/home/hosi/morph-canonical-before",
+    "commit": "03d6584c4ceba92d4567b5af42d7e62e14aca93b",
+    "saved_harness": {
+      "src/cmd/canonicalfpbench/main.mbt": "c14296c63aff882d1177b5c30e3f9fe1c49008d5fad5402756846aabfa1d054f",
+      "src/cmd/canonicalfpbench/moon.pkg": "0a8388a4ce5b9957c7028f13230badbc56a85424ff13a6206dd8041f9e87ccd3"
+    },
+    "clean_after_preserving_copied_harness": true,
+    "removed": true
+  },
+  "remaining": "/home/hosi/morph  7749ddc [main]"
+}

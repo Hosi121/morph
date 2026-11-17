@@ -5,6 +5,29 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
+## Fp多項式の正規形を使う演算
+
+コード `7749ddc` を固定し、基準 `03d6584` からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は36 packageで、テスト専用importも含みます。全repositoryの無変更テストを再実行した記録とは区別します。
+
+| バックエンド | 結果 |
+| --- | --- |
+| wasm-gc | 1,392テスト成功 |
+| js | 1,392テスト成功 |
+| native | 1,392テスト成功 |
+
+全体のPython 27テスト・144公開API・型・整形・生成物・325核ソースの純記号制約が通過しました。
+既存Lean全モデルと32対応領域の差分検査も通過しました。新しいhelper全体の形式証明ではありません。
+fppoly・modular・primefieldを含む既存公開APIは変更していません。
+独立した425係数対・54積/除算ケースを追加し、未還元constructor・相殺・幅違い・零・field mismatchも検査しました。
+
+[環境・ソース・選択graph・全コマンド](measurements/canonical-fp-20261117-validation.json)、
+[全出力](measurements/canonical-fp-20261117-validation.txt)、[実行harness](measurements/canonical-fp-20261117-harness.py)を保存しました。
+前回の84 packageの検証記録と、それ以前の全体検証は下に残しています。
+設計と比較の範囲は[正規形の再利用](research/canonical-fp-20261117.md)を参照してください。
+今回の3 worktree・2作業branchは、全パッチ反映・Git bundle・harnessと実行ファイルの保存を確認して削除しました
+（[片付け](measurements/canonical-fp-20261117-cleanup.json)、[担当範囲と経緯](measurements/canonical-fp-20261117-orchestration.json)）。
+
 ## 体のカーネルの影響範囲検証
 
 コード `af279b4` を固定し、基準 `4d9e6c4` からの変更と旧・現のimport graphの逆依存を検査しました。

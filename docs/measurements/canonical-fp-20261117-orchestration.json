@@ -1,0 +1,128 @@
+{
+  "contract": {
+    "baseline": "03d6584c4ceba92d4567b5af42d7e62e14aca93b",
+    "objective": "Reuse opaque Polynomial canonical-coefficient invariant to avoid general reductions in odd-characteristic internal addition/negation",
+    "preserve": [
+      "pure immutable ADTs, exact full coefficients, public APIs and arbitrary constructor inputs",
+      "field mismatch and zero polynomial behavior; characteristic-two paths unchanged",
+      "generic modular/primefield APIs still accept unreduced Binary"
+    ],
+    "budget": {
+      "candidate_mechanisms": 1,
+      "benchmark_cases_max": 8,
+      "paired_blocks": 5,
+      "stop": "adoption or rejection based on checked public source-to-source timings, affected validation, documentation, commits/push and cleanup"
+    },
+    "root_scope": [
+      "src/fppoly/polynomial.mbt",
+      "integration",
+      "shared docs",
+      "source comparison",
+      "validation and cleanup"
+    ],
+    "workers": {
+      "oracle": [
+        "src/fppoly/canonical_wbtest.mbt"
+      ],
+      "bench": [
+        "src/cmd/canonicalfpbench"
+      ]
+    }
+  },
+  "dag": {
+    "nodes": [
+      "kernel",
+      "oracle",
+      "bench",
+      "integration",
+      "measure",
+      "validate",
+      "publish-cleanup"
+    ],
+    "edges": [
+      [
+        "kernel",
+        "integration"
+      ],
+      [
+        "oracle",
+        "integration"
+      ],
+      [
+        "bench",
+        "integration"
+      ],
+      [
+        "integration",
+        "measure"
+      ],
+      [
+        "measure",
+        "validate"
+      ],
+      [
+        "validate",
+        "publish-cleanup"
+      ]
+    ]
+  },
+  "events": [
+    {
+      "utc": "2026-11-17T11:36:53.758417+00:00",
+      "event": "candidate-kernel",
+      "source": "329d45c8e877c7e5829e78215ce3b27b78f32c88",
+      "initial_fppoly_wasm_tests": 20,
+      "independent_invariant_audit": "all private inputs canonical; no field or trimming issues identified",
+      "claimed_speedup": false
+    },
+    {
+      "utc": "2026-11-17T11:43:10.755822+00:00",
+      "event": "measurement-followup",
+      "first_source_runs": 160,
+      "same_elf_controls": 80,
+      "decision": "One final prespecified replication of the two ambiguous addition cases and unchanged char2 control (5 ABBA blocks); no further repetitions to seek a favorable result."
+    },
+    {
+      "utc": "2026-11-17T11:47:01.457082+00:00",
+      "event": "adopt-and-validate",
+      "source": "7749ddc",
+      "source_timing_samples": 160,
+      "same_elf_controls": 80,
+      "prespecified_replication": 60,
+      "production_mechanism": "opaque Polynomial canonical bounds reused for private add/negate",
+      "public_api_changes": false,
+      "validation_scope_packages": 36,
+      "workers_complete": true,
+      "cleanup": "all3 worktrees removed after bundle/patch/artifact checks"
+    },
+    {
+      "utc": "2026-11-17T12:02:35.300970+00:00",
+      "event": "validation-complete",
+      "source": "7749ddcba635cd5f844fc07f8370478d6e04c10d",
+      "tests": {
+        "wasm-gc": [
+          [
+            "1392",
+            "1392",
+            "0"
+          ]
+        ],
+        "js": [
+          [
+            "1392",
+            "1392",
+            "0"
+          ]
+        ],
+        "native": [
+          [
+            "1392",
+            "1392",
+            "0"
+          ]
+        ]
+      },
+      "status": "passed"
+    }
+  ]
+}

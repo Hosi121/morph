@@ -94,5 +94,26 @@ GF(2)や任意の奇素数・形状に一様な改善を主張しません。メ
 
 kernelは `329d45c`、独立テストは `25c13dc`（担当の元ID `c2861d5`）、
 harnessは `100c34a`（元ID `4ee3669`）です。
-既存のAPI・純記号制約・型検査と、影響範囲の3 backend検証を統合後に記録します。
+既存のAPI・純記号制約・型検査と、影響範囲の3 backend検証が通過しました。
 既存Leanモデルの検査と、新しいhelper全体の形式証明は区別します。
+
+
+統合コード `7749ddc` の36 packageは、
+wasm-gc各1,392テスト・js各1,392テスト・native各1,392テストで成功しました。
+全体の保守・型・API・純記号制約・既存Leanも通過しています。
+[検証範囲と記録](../VALIDATION.md#fp多項式の正規形を使う演算)に実行harnessと全コマンドをまとめました。
+[担当範囲と経緯](../measurements/canonical-fp-20261117-orchestration.json)、
+[片付け記録](../measurements/canonical-fp-20261117-cleanup.json)も保存しています。
+
+同じ影響範囲の検証を再実行する場合は、クリーンなcheckoutと既存のMoonBit/Lean環境で次を実行します。
+
+```sh
+mkdir -p .tools/canonical-fp-20261117
+tools/measure --cpu 4 python3 docs/measurements/canonical-fp-20261117-harness.py
+```
+
+性能を再計測する場合は、基準 `03d6584` と採用版を別のcheckoutに置き、同じ
+`src/cmd/canonicalfpbench` を両方でnative release・`-j 1`でビルドします。
+`MORPH_CANONICAL_ITERATIONS` を未設定にして `tools/compare_field_kernels.py` の
+二つのroot/artifact、harnessとcaseを指定してください。SDKのみ共有し、`_build`は共有しません。
+一回限りの再測定を含む全300プロセスで全係数検査と出力比較が通過しました。
