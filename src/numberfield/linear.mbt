@@ -34,15 +34,7 @@ pub fn multiplication_matrix(
               Ok(product) =>
                 match element(value.field, product) {
                   Err(_) => None
-                  Ok(reduced) =>
-                    Some(
-                      Cons(
-                        @core.map(@core.indices(d), fn(i) {
-                          coefficient(reduced.residue, i)
-                        }),
-                        tail,
-                      ),
-                    )
+                  Ok(reduced) => Some(Cons(coordinates(reduced), tail))
                 }
             }
           _ => None

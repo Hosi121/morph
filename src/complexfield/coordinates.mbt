@@ -18,12 +18,7 @@ fn coefficient(
 ///|
 /// Exact QQ coordinates in [1,alpha,...,i,i*alpha,...].
 pub fn coordinates(value : Element) -> @core.Chain[@exact.Rational] {
-  fn part(value : @nf.Element) -> @core.Chain[@exact.Rational] {
-    @core.map(@core.indices(@nf.degree(@nf.parent(value))), fn(i) {
-      coefficient(@nf.representative(value), i)
-    })
-  }
-  @core.append(part(value.real), part(value.imaginary))
+  @core.append(@nf.coordinates(value.real), @nf.coordinates(value.imaginary))
 }
 
 ///|
