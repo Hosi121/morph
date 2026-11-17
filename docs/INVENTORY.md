@@ -7,7 +7,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：135パッケージ、377ソース。
-核のテスト宣言：5555、bench group：212。
+核のテスト宣言：5559、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -72,7 +72,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
-| [gaussian](../src/gaussian) | 4 | 9 | 0 | `avl`, `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `riemann`, `tensor` |
+| [gaussian](../src/gaussian) | 4 | 11 | 0 | `avl`, `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `riemann`, `tensor` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
 | [gf2](../src/gf2) | 3 | 13 | 0 | `algebra`, `core`, `matrix`, `rowreduce` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
@@ -138,7 +138,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |
 | [spanning](../src/spanning) | 1 | 2 | 0 | `binary`, `core`, `graph`, `heap`, `sorting` |
 | [splittinggalois](../src/splittinggalois) | 3 | 11 | 0 | `complexfield`, `complexsplitting`, `complexsubfield`, `core`, `exact`, `polynomial` |
-| [statgeometry](../src/statgeometry) | 4 | 17 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `riemann`, `tensor` |
+| [statgeometry](../src/statgeometry) | 4 | 19 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `riemann`, `tensor` |
 | [sturm](../src/sturm) | 1 | 3 | 0 | `core`, `exact`, `polynomial` |
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [tarski](../src/tarski) | 3 | 402 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm` |

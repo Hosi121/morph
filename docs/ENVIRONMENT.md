@@ -79,6 +79,26 @@ SymPyの版は[requirements-oracles.txt](../tools/requirements-oracles.txt)に�
 生成後に`tools/moon fmt`を実行し、期待値の差分が出た理由を確認します。
 そのほかの生成器は[tools](../tools)と各探索記録を参照してください。
 
+## 情報幾何の独立参照を再生成する
+
+通常の `tools/check` は、Python標準ライブラリとSDKのformatterだけで保存済み参照値からfixtureを再構築し、byte一致を検査します。
+これは数式の再導出ではありません。
+
+```sh
+python3 -S tools/generate_information_review_fixtures.py --check-stored
+```
+
+Gaussianのlog-partitionと有限モデルのα接続を数式から再計算する場合は、固定したSymPy環境を使います。
+
+```sh
+uv venv .tools/information-oracle-venv
+uv pip install --python .tools/information-oracle-venv/bin/python -r tools/requirements-oracles.txt
+.tools/information-oracle-venv/bin/python tools/generate_information_review_fixtures.py --check
+```
+
+参照値の定義・添字順・検査範囲は[独立検証の記録](research/amari-chentsov-independent-20261118.md)を参照してください。
+本体のMoonBit計算からSymPyを呼び出す経路はありません。
+
 ## 2026-11-15の検証環境
 
 以下は記録された比較条件です。異なる環境で同じ速度になることを保証する値ではありません。

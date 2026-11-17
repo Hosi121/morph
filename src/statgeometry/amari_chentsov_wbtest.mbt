@@ -170,9 +170,22 @@ test "Gaussian natural Amari Chentsov norm is fourteen across location and scale
     }
   }
   let source = @gaussian.gaussian(vec([(0, 1)]), matrix([[(1, 1)]], 1)).unwrap()
+  let value = gaussian_amari_chentsov(source).unwrap()
+  assert_eq(value.trace(), vec([(0, 1), (6, 1)]))
+  let u = vec([(1, 1), (0, 1)])
+  let v = vec([(0, 1), (1, 1)])
+  assert_eq(value.product(u, u), Ok(v))
+  assert_eq(value.product(u, v), Ok(vec([(2, 1), (0, 1)])))
+  assert_eq(value.product(u, v), value.product(v, u))
+  assert_eq(value.product(v, v), Ok(vec([(0, 1), (4, 1)])))
+  // This commutative bilinear product need not be associative.
   assert_eq(
-    gaussian_amari_chentsov(source).unwrap().trace(),
-    vec([(0, 1), (6, 1)]),
+    value.product(value.product(u, u).unwrap(), v),
+    Ok(vec([(0, 1), (4, 1)])),
+  )
+  assert_eq(
+    value.product(u, value.product(u, v).unwrap()),
+    Ok(vec([(0, 1), (2, 1)])),
   )
 }
 

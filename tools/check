@@ -29,6 +29,7 @@ python3 tools/generate_riemann_fixtures.py --check
 python3 tools/generate_forms_fixtures.py --check
 python3 tools/generate_simplexforms_fixtures.py --check
 python3 tools/generate_gaussian_fixtures.py --check
+python3 -S tools/generate_information_review_fixtures.py --check-stored
 python3 tools/extension-curves-20261118-oracle.py --check
 python3 tools/extension-pairings-20261118-oracle.py --check
 python3 tools/check_information_tour.py

@@ -14,6 +14,7 @@
 | 記録 | 保存している内容 |
 | --- | --- |
 | [確率・情報幾何と拡大体の接続](probability-geometry-20261118.md) | 全体の計算経路、共通テンソル、実際のモデルを含む全100出力の比較 |
+| [Amari–Chentsovと一般α接続の独立検証](amari-chentsov-independent-20261118.md) | Gaussianのlog-partition微分、有限モデル4点・20接続/曲率、3targetでの厳密な成分比較 |
 | [拡大体上の楕円曲線](extension-curves-20261118.md) | Jacobian座標、体と曲線の文脈、独立affine参照の全点対・三つ組 |
 | [拡大体上のTate評価](extension-pairings-20261118.md) | shifted divisor、Millerの中間零/極、全商群・双線形性・独立有限体参照 |
 | [点での微分幾何](riemann-20261118.md) | 計量jetの検査、接続と曲率、独立Fraction参照 |
