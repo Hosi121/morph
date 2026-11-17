@@ -1,0 +1,45 @@
+{
+  "native_tests": {
+    "scope": "src/fppoly",
+    "command": [
+      "tools/measure",
+      "--cpu",
+      "4",
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "--target",
+      "native",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "stdout": "Total tests: 29, passed: 29, failed: 0.\n",
+    "exit_code": 0
+  },
+  "release_build": {
+    "command": [
+      "tools/measure",
+      "--cpu",
+      "4",
+      "tools/moon",
+      "build",
+      "src/cmd/nightconvolutionbench",
+      "--target",
+      "native",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0
+  },
+  "not_run": [
+    "five-block ABBA",
+    "wasm-gc and JS final tests",
+    "final all-target deny-warn",
+    "final purity gate",
+    "final generated API comparison"
+  ],
+  "decision": "Not adoption-ready; firm worker stop exceeded before required evidence."
+}

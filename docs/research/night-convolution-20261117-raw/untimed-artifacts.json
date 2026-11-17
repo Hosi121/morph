@@ -1,0 +1,14 @@
+[
+  {
+    "label": "before",
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/before.exe",
+    "sha256": "0c096e1640588aecdbae5dbe6555a4591c0fbdf2972d338036c2e1f38c933da5",
+    "bytes": 609968
+  },
+  {
+    "label": "candidate-untimed",
+    "artifact": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/candidate-untimed.exe",
+    "sha256": "b1f698fa3fa9a76f93fe793f7a02e93a0d36489109b3dff831be42c6aaf1883d",
+    "bytes": 609960
+  }
+]

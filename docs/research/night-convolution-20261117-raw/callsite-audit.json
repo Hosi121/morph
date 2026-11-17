@@ -1,0 +1,26 @@
+{
+  "base": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+  "production_scope": "Only multiply_coefficients body changes; all prefix/suffix source (public entrypoints, scale, evaluate, derivative, trimming and arithmetic helpers) is byte-identical.",
+  "original_rows": "fn multiply_coefficients(\n  modulus : @modular.Modulus,\n  a : @core.Chain[@binary.Binary],\n  b : @core.Chain[@binary.Binary],\n) -> @core.Chain[@binary.Binary] {\n  match a {\n    Nil => Nil\n    Cons(head, tail) =>\n      add_coefficients(\n        modulus,\n        @core.map(b, fn(coefficient) {\n          multiply_reduced(modulus, head, coefficient)\n        }),\n        Cons(@binary.zero(), multiply_coefficients(modulus, tail, b)),\n      )\n  }\n}\n",
+  "dense_route": "Nonunit heads retain the original map, multiply_reduced calls, add_coefficients and argument evaluation order. New work is a constant-size row-head dispatch and empty operand match.",
+  "canonical_proof": "Private rows receive already-reduced coefficients: 0*b is a zero row, 1*b is b itself; all other rows use unchanged reduced products and bounded additions. Public trim_reduced still canonicalizes shape; public multiply still rejects mismatch before calling this function.",
+  "checker_limit": "Polynomial certificate algorithms are unchanged but reconstruct with common production arithmetic. Independent host Int64 convolution and retained original row construction are required for arithmetic evidence.",
+  "false_premise": "No operand re-reduction exists in modular.multiply; the saved work here is mapping/allocation and addition of zero rows, not operand normalization.",
+  "unchanged_sources": [
+    {
+      "path": "src/fppoly/characteristic_two.mbt",
+      "sha256": "1a1a1c470339077ec6c927cef92c4432e05ff789f39ef9f22869e2c432c508d9",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/irreducibility.mbt",
+      "sha256": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2",
+      "unchanged": true
+    },
+    {
+      "path": "src/fppoly/factorization.mbt",
+      "sha256": "9d1ee7da0b5d4c99a35611248e308c91e6e3e99800f61d4e761ee4b0fd76ff3d",
+      "unchanged": true
+    }
+  ]
+}
