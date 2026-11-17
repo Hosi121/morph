@@ -37,6 +37,16 @@ source内にtest/bench/fenceなし・キャッシュしたnativeの両test metad
 `runtime_packages`と`skipped_zero_test_commands`に集合と根拠のsource/config/metadata hashを保存し、各段の前後で照合します。
 metadataがない、新しい設定・生成処理・条件付きtestの可能性がある場合は省きません。
 
+実装`9aaf4b9`では、直前に全検査した108 packageから17個の空CLIだけを省き、nativeを91 packageで再実行しました。
+元と同じ3,816テストが全て通過しています。数学のsrc・module・formalは`1a51057`と同一です。
+67件のPython検査には、inline/WB/条件付きtest、doc fence、未知設定、metadata欠損・不一致を残す例と、
+省略根拠が変われば停止する例を含みます。残る21個の空CLIも、保守的な判定では残しています。
+コンパイル時間の短縮率は測っていません。
+[集合・根拠・実行コマンド](measurements/runtime-selection-20261117-validation.json)、
+[全出力](measurements/runtime-selection-20261117-validation.txt)、
+[実行harness](measurements/runtime-selection-20261117-harness.py)を保存しました。
+
+
 
 ## 変換監査後の2件の統合検証
 

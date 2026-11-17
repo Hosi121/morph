@@ -1,0 +1,13 @@
+from pathlib import Path
+import subprocess,sys,json,hashlib,re,datetime,time,os
+root=Path.cwd();sys.path.insert(0,str(root/'tools'))
+from check_affected import runtime_selection,zero_test_command,argv_for
+out=root/'.tools/verification-cli-draft-20261117';git=lambda *a:subprocess.check_output(['git',*a],text=True).strip();sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+old=json.loads((root/'.tools/conversion-followup-20261117/final-validation/validation.json').read_text());assert old['status']=='passed';assert not git('diff',old['source_commit'],'--','src','moon.mod','formal');assert not git('status','--porcelain','--','src','tools','moon.mod','formal')
+source=git('rev-parse','HEAD');runner=sha(root/'tools/check_affected.py');runtime,skipped=runtime_selection(root,old['packages']);assert len(runtime)==91 and len(skipped)==17
+math_files={p:h for p,h in old['source_files'].items() if p.startswith(('src/','formal/')) or p=='moon.mod'};assert all(sha(root/p)==h for p,h in math_files.items())
+argv=argv_for('tests-native',root,runtime);log=out/'native-shortened.log';started=datetime.datetime.now(datetime.timezone.utc).isoformat();t=time.perf_counter()
+with log.open('w') as f:result=subprocess.run(argv,cwd=root,stdout=f,stderr=subprocess.STDOUT)
+assert result.returncode==0;totals=re.findall(r'Total tests: (\d+), passed: (\d+), failed: (\d+)',log.read_text());assert totals[-1]==('3816','3816','0');assert source==git('rev-parse','HEAD') and runner==sha(root/'tools/check_affected.py');assert all(sha(root/p)==h for p,h in math_files.items());assert all(zero_test_command(root,p['package'])==p for p in skipped)
+record={'status':'passed','started_utc':started,'finished_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_commit':source,'math_source_commit':old['source_commit'],'math_source_unchanged':True,'scope':'Native-only verification of the new command selector. Prior full three-backend math verification remains the fixed-source1a51057 record; no shortened Wasm/JS rerun or wall-time speedup comparison is claimed.','platform_affinity':sorted(os.sched_getaffinity(0)),'original_packages':old['packages'],'runtime_packages':runtime,'skipped_zero_test_commands':skipped,'commands':[{'name':'tests-native-shortened','argv':argv,'returncode':result.returncode,'wall_seconds':time.perf_counter()-t,'log':str(log.relative_to(root)),'sha256':sha(log),'test_totals':totals}],'runner_sha256':sha(Path(__file__)),'verification_tool_sha256':runner,'math_source_manifest':math_files,'unit_test_count':67}
+(out/'native-validation.json').write_text(json.dumps(record,indent=2)+'\n');print('PASSED: shortened native suite3816/3816, graph108/runtime91/skipped17; math source unchanged.',flush=True)
