@@ -1,0 +1,29 @@
+[
+  {
+    "utc": "2026-11-17T22:21:35.511416+00:00",
+    "returncode": 0,
+    "wall_seconds_after_cpu_lock": 10.402782902998297,
+    "affinity": [
+      4
+    ],
+    "command": [
+      "/usr/bin/python3",
+      "tools/generate_information_review_fixtures.py",
+      "--check"
+    ]
+  },
+  {
+    "utc": "2026-11-17T22:21:35.705041+00:00",
+    "returncode": 0,
+    "wall_seconds_after_cpu_lock": 0.19324412700007088,
+    "affinity": [
+      4
+    ],
+    "command": [
+      "/usr/bin/python3",
+      "-S",
+      "tools/generate_information_review_fixtures.py",
+      "--check-stored"
+    ]
+  }
+]

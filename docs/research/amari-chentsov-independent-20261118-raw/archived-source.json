@@ -1,0 +1,17 @@
+{
+  "commit": "4607b3dfb74799d4e7bee91b92ed1f35fe4230f6",
+  "tree": "/home/hosi/morph-information-review",
+  "source_sha256": {
+    "src/infogeom/model.mbt": "e322426a6fd76ecd1104bd145a5038ecf5f61ceba6ace7a554fb161e84713ea8",
+    "src/infogeom/jet.mbt": "b9bf06c84038c56b39a4e131def80387d45d099baf19eedc1cbc488ce76a95a3",
+    "src/infogeom/polynomial.mbt": "a87dbbe46ab68a36ff6d36f80d2eae4c83d7fef03bfa8e68d83c19d1cedc89ef",
+    "src/infogeom/exponential.mbt": "39ac8a43b53108bd30c70d472a94d0a80310891633dae6fc3f068fe4fc13a059",
+    "src/infogeom/alpha.mbt": "68d25b4e5f88057f9fad7a1cd8b9d244e9a9d2fb8bbeec067e48ccb0a0fba62a",
+    "src/infogeom/channel.mbt": "97f1fb7d709c811ea7384c491caf00cf8f66245887123cb556fff7b5cd49ebdb",
+    "src/statgeometry/alpha.mbt": "a60a6dff3afe86d317493599c9b95dd176a62e2e9e1ad38499d3749ea5b716f9",
+    "src/statgeometry/tensors.mbt": "ef6c39163e47c152eb93574ee0e039a32b9da4b26b2dbf218e1e323f0e518103",
+    "src/gaussian/fisher.mbt": "f19f346af6f5725965f634be579d2fe3c76b54585e0f11bebe54320f00b663a6"
+  },
+  "sympy": "1.14.0",
+  "started_utc": "2026-11-17T17:39:45Z"
+}

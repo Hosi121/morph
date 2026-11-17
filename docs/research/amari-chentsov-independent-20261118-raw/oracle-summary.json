@@ -1,0 +1,12 @@
+{
+  "additional_public_api_crosscheck_positions": 260,
+  "alpha_geometries": 20,
+  "archived_component_positions": 5306,
+  "auxiliary_scores_and_pullback_positions": 40,
+  "finite_component_positions": 2122,
+  "finite_points": 4,
+  "gaussian_cases": 7,
+  "gaussian_component_positions": 3184,
+  "oracle_uncompressed_sha256": "48325cf19153654eef30137523f20265325c893831fe0ad033bd5678317d9efa",
+  "sympy": "1.14.0"
+}

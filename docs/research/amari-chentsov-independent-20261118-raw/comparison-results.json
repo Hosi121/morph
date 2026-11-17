@@ -1,0 +1,33 @@
+{
+  "archived_math_payload_unchanged": true,
+  "archived_gaussian_fixture_sha256": "9c9cf3d4c74158df44b0f5d82ed3578f3ac8d3c449b7fec0f98d6b630cb552e6",
+  "archived_finite_fixture_sha256": "610108ff845725de0c42af463ba393089d291839448091f7ea22da1c75592381",
+  "tested_production_files_unchanged_during_run": true,
+  "test_results": {
+    "native": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "qq_positions_from_original_corpus": 5306,
+      "independent_auxiliary_positions": 40,
+      "additional_api_crosscheck_positions": 260
+    },
+    "js": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "qq_positions_from_original_corpus": 5306,
+      "independent_auxiliary_positions": 40,
+      "additional_api_crosscheck_positions": 260
+    },
+    "wasm-gc": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "qq_positions_from_original_corpus": 5306,
+      "independent_auxiliary_positions": 40,
+      "additional_api_crosscheck_positions": 260
+    }
+  },
+  "production_changed_since_archived_review": []
+}

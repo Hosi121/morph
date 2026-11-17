@@ -1,0 +1,70 @@
+{
+  "docs/research/amari-chentsov-independent-20261118-raw/README.md": {
+    "bytes": 1608,
+    "sha256": "deaf14fee4cecfbb163e586d7cab9d1441d3b369bb976b50b4a5fe12d969cb2d"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/archived-oracles.json.gz": {
+    "bytes": 70501,
+    "sha256": "1e15c7da4224e8322dac2e9d2ff141be35cc1056ee29deb34375ba6bb93d8c7a"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/archived-source.json": {
+    "bytes": 1099,
+    "sha256": "17a11a4cb81f1e18f283fbe28bae57557f29a40e94390e765df5685f49fe64c0"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/comparison-results.json": {
+    "bytes": 1055,
+    "sha256": "ac6abca7161470b816506363bd58107ff1fb5f5305ee8b17374069bc673f1836"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/fmt.txt": {
+    "bytes": 45,
+    "sha256": "3e5fcf6518a860c17dfdf048962fe86dc2ede70c515255efb11f5912c4736c4c"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/generator-validation.json": {
+    "bytes": 593,
+    "sha256": "309a1e867edaf3dd148529df17e64cc06f9b9165cf3a1f12cab20958006f94e9"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/generator-validation.txt": {
+    "bytes": 947,
+    "sha256": "9fd2d236c8e5f32ff9871de6a857cf15101572fda830388fa286fe3f01216b42"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/native-initial.txt": {
+    "bytes": 40,
+    "sha256": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/oracle-summary.json": {
+    "bytes": 415,
+    "sha256": "34bc22f02acade759c7731ffdd1e40b80a2ba33a88294c2e6853f6e1776cec91"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/oracles.json.gz": {
+    "bytes": 70466,
+    "sha256": "ee504a8679da954a9bbc9a8e9def820c328065d097c88afb4086b18bcdbbd5ff"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/test-js.txt": {
+    "bytes": 40,
+    "sha256": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/test-wasm-gc.txt": {
+    "bytes": 40,
+    "sha256": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb"
+  },
+  "docs/research/amari-chentsov-independent-20261118-raw/tested-source.json": {
+    "bytes": 1789,
+    "sha256": "4b8a57f79fbf414644357824a770b8371879bb9c1c7c1ed049a303766fb9cbb2"
+  },
+  "tools/generate_information_review_fixtures.py": {
+    "bytes": 21216,
+    "sha256": "cb1fd813e46e97037618ea2090626bb892c17203d45df7c13bb7a1918c6ad2dc"
+  },
+  "src/gaussian/gaussian_sympy_review_wbtest.mbt": {
+    "bytes": 93951,
+    "sha256": "9c9cf3d4c74158df44b0f5d82ed3578f3ac8d3c449b7fec0f98d6b630cb552e6"
+  },
+  "src/statgeometry/finite_sympy_review_wbtest.mbt": {
+    "bytes": 352470,
+    "sha256": "610108ff845725de0c42af463ba393089d291839448091f7ea22da1c75592381"
+  },
+  "docs/research/amari-chentsov-independent-20261118.md": {
+    "bytes": 8495,
+    "sha256": "273f17de4488e6a4c631007c1a3895a1c94de21bc98e4b9a000dd36b4fb6b56f"
+  }
+}

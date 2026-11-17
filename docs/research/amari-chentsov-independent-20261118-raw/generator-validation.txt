@@ -1,0 +1,13 @@
+Gaussian derived gaussian_0 1
+Gaussian derived gaussian_1 1
+Gaussian derived gaussian_2 1
+Gaussian derived gaussian_3 2
+Gaussian derived gaussian_4 2
+Gaussian derived gaussian_5 2
+Gaussian derived gaussian_6 2
+Finite derived four_outcome_0
+Finite derived four_outcome_1
+Finite derived five_outcome_0
+Finite derived five_outcome_1
+Sympy mathematical rederivation: {"additional_public_api_crosscheck_positions": 260, "alpha_geometries": 20, "archived_component_positions": 5306, "auxiliary_scores_and_pullback_positions": 40, "finite_component_positions": 2122, "finite_points": 4, "gaussian_cases": 7, "gaussian_component_positions": 3184}
+stored oracle consistency only: {"additional_public_api_crosscheck_positions": 260, "alpha_geometries": 20, "archived_component_positions": 5306, "auxiliary_scores_and_pullback_positions": 40, "finite_component_positions": 2122, "finite_points": 4, "gaussian_cases": 7, "gaussian_component_positions": 3184}
