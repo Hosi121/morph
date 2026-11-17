@@ -178,8 +178,7 @@ over 294 production kernel files in this worktree.
 Reproduction, using the existing SDK and shared measurement lock:
 
 ```bash
-tools/measure --cpu 4 python3 tools/generate_bernstein_fixtures.py
-tools/measure --cpu 4 tools/moon fmt src/bernstein
+tools/measure --cpu 4 python3 tools/generate_bernstein_fixtures.py --check
 tools/measure --cpu 4 tools/moon check -j 1 src/bernstein --deny-warn
 tools/measure --cpu 4 tools/moon test -j 1 src/bernstein --target wasm-gc
 tools/measure --cpu 4 tools/moon test -j 1 src/bernstein --target js
@@ -187,7 +186,9 @@ tools/measure --cpu 4 python3 tools/audit_purity.py
 tools/measure --cpu 4 tools/moon info src/bernstein
 ```
 
-The generated fixture source is formatted in the following `moon fmt` step.
+The generator canonicalizes source with the pinned `moonfmt`; `--check` verifies
+the committed fixtures without rewriting them. Omitting it regenerates the file.
+The repository `tools/check` also verifies this independent oracle for drift.
 This milestone makes no speedup or runtime bound claim. Exact rational tensor
 size is `product_j(n_j+1)`; independent expansion can create many more temporary
 terms. Bisection trees can grow exponentially, coefficient numerators and

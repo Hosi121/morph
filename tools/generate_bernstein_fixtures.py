@@ -4,10 +4,13 @@
 No power-to-Bernstein formula is used. Every fixture also checks a bounded
 five-point-per-axis rational grid against the exact coefficient enclosure.
 """
+from argparse import ArgumentParser
 from fractions import Fraction as Q
 from itertools import product
 from math import comb
 from pathlib import Path
+import shutil
+import subprocess
 
 
 def basis_axis(a, b, n, i):
@@ -99,7 +102,25 @@ def generate():
     return "\n".join(lines) + "\n"
 
 
+def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    target = root / "src/bernstein/fixtures_wbtest.mbt"
+    local = root / ".tools/moon/bin/moonfmt"
+    formatter = str(local) if local.is_file() else shutil.which("moonfmt")
+    if formatter is None:
+        raise SystemExit("moonfmt is required to canonicalize generated MoonBit fixtures")
+    content = subprocess.run([formatter, "-"], input=generate(), text=True,
+                             check=True, capture_output=True).stdout
+    if args.check:
+        if target.read_text() != content:
+            raise SystemExit(f"stale Bernstein fixture: {target}")
+    else:
+        target.write_text(content)
+    print(f"{len(CASES)} independently solved and grid-checked Bernstein fixtures")
+
+
 if __name__ == "__main__":
-    target = Path(__file__).resolve().parents[1] / "src/bernstein/fixtures_wbtest.mbt"
-    target.write_text(generate())
-    print(f"wrote {len(CASES)} independently solved and grid-checked fixtures: {target}")
+    main()

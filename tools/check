@@ -12,6 +12,8 @@ python3 tools/benchmark_bareiss.py --check-reference-only
 python3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null
 python3 tools/generate_binary_tiny_products.py --check
 python3 tools/generate_binary_tiny_differences.py --check --winner lookup
+python3 tools/generate_bernstein_fixtures.py --check
+python3 tools/generate_homology_fixtures.py --check
 tools/moon fmt --check
 python3 tools/generate_comparison_candidates.py --check
 tools/moon check --deny-warn

@@ -148,3 +148,18 @@ uv pip install --python .tools/complex-oracle-venv/bin/python -r tools/requireme
 
 生成対象と照合方法は[独立参照](research/complex-oracle-20261117.md)、
 経路ごとの費用と再現手順は[複素代数の記録](research/complex-algebra-20261117.md)を参照してください。
+
+## 箱上の不等式と整数ホモロジーの独立fixture
+
+Python標準ライブラリのFraction・整数行列だけで参照値を再生成します。
+MoonBitの算法やSymPyを参照値の計算に使いません。
+生成ソースの正規化には既存SDKのmoonfmtを使います。
+
+```sh
+tools/measure --cpu 4 python3 tools/generate_bernstein_fixtures.py --check
+tools/measure --cpu 4 python3 tools/generate_homology_fixtures.py --check
+```
+
+通常の `tools/check` でもこの二つの生成差分を検査します。
+対応する[多項式恒等式の参照](research/bernstein-20261117.md)と
+[整数境界・ねじれの参照](research/homology-20261117.md)に、有限の照合範囲を記録しています。
