@@ -1,0 +1,310 @@
+Source: 93a29137653cf4e4cea8eede645677ad5a2fad53
+Source manifest: 05f10d57262198b753e861577ef2afe53eeb3eac315e8e0f30701bcbb60204f7
+
+COMMAND ["tools/check"]
+----------------------------------------------------------------------
+Ran 24 tests in 0.021s
+
+OK
+Documentation gate passed: 154 Markdown files, 1727 local links; navigation is connected.
+Source inventory is current.
+Purity gate passed: 312 kernel files; no machine numerics, mutation, arrays or FFI.
+Conversion gate passed; static library references recorded separately from tests.
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.
+4-bit product table checked: 256 cases, 90 shared results; suffix sharing=True.
+Difference controls checked; production=lookup
+7 independently solved and grid-checked Bernstein fixtures
+167 complexes; rational/GF2 boundaries; RP2 3003 maximal minors gcd=2
+// 230 filtrations; 43718 degree/prefix-pair rank comparisons.
+19 complexes; 3439 total functions: 2449 valid, 990 rejected; 256 tetrahedron endomaps
+{'valid_pairs': 82, 'rejected_pairs': 204, 'vectors': 583, 'projective_plane': {'n': 15, 'rank_x': 5, 'rank_z': 9, 'k': 1, 'dx': 5, 'dz': 3}, 'torus': {'n': 21, 'rank_x': 6, 'rank_z': 13, 'k': 2, 'dx': 6, 'dz': 3}}
+Finished. moon: ran 26 tasks, now up to date
+Finished. moon: ran 141 tasks, now up to date
+Total tests: 4142, passed: 4142, failed: 0.
+Total tests: 4142, passed: 4142, failed: 0.
+Finished. moon: ran 132 tasks, now up to date
+Interface drift gate passed: 132 compiler-generated snapshots.
+
+COMMAND ["tools/moon", "test", "--target", "native", "--release", "--deny-warn", "-j", "1"]
+Total tests: 4142, passed: 4142, failed: 0.
+
+COMMAND ["tools/check_formal"]
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+'Morph.Core.replicateOnto_eq_append' depends on axioms: [propext]
+'Morph.Core.replicateOnto_nil' depends on axioms: [propext]
+'Morph.Core.halveNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Core.halfNat_floor' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatByHalves_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGroupedLoop_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_lt' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.lowBit_sound' does not depend on any axioms
+'Morph.Binary.lowBit_canonical' depends on axioms: [propext]
+'Morph.Binary.fromNatGroupedBits_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatGroupedBits_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.zero_sound' does not depend on any axioms
+'Morph.Binary.one_sound' does not depend on any axioms
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldLeft_reverseOnto' does not depend on any axioms
+'Morph.Fold.foldLeft_reverse' does not depend on any axioms
+'Morph.Fold.foldFour_eq_foldLeft' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldFour_reverse' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.boundedRightFour_eq_foldRight' depends on axioms: [propext]
+'Morph.PrefixLogic.partialEvaluate_sound' depends on axioms: [propext]
+'Morph.PrefixLogic.known_is_uniform' depends on axioms: [propext]
+'Morph.SparseHorner.power_add' depends on axioms: [propext]
+'Morph.SparseHorner.bitsPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.optimizedPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.scan_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_genericSum' depends on axioms: [propext]
+'Morph.SparseHorner.dispatch_generic' does not depend on any axioms
+'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
+'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
+'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "all"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "rips"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "maps"]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "codes"]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "invalid"]
+/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:79
+  throw new $PanicError(message);
+  ^
+
+$PanicError: expected all, rips, maps or codes
+    at $panic (/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:79:9)
+    at /home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:20689:7
+    at Object.<anonymous> (/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:20693:3)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+
+Node.js v24.13.0
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "js", "--release", "--deny-warn", "-j", "1", "--", "maps", "extra"]
+/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:79
+  throw new $PanicError(message);
+  ^
+
+$PanicError: expected at most one mode argument
+    at $panic (/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:79:9)
+    at /home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:20666:14
+    at Object.<anonymous> (/home/hosi/morph/_build/js/release/build/cmd/topology/topology.js:20693:3)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+
+Node.js v24.13.0
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "all"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "rips"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "maps"]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "codes"]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "invalid"]
+RuntimeError: unreachable
+    at Hosi121/morph/cmd/topology@0.1.0 (wasm://wasm/Hosi121/morph/cmd/topology@0.1.0-0008d0ca:wasm-function[671]:0x2277e)
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "wasm-gc", "--release", "--deny-warn", "-j", "1", "--", "maps", "extra"]
+RuntimeError: unreachable
+    at Hosi121/morph/cmd/topology@0.1.0 (wasm://wasm/Hosi121/morph/cmd/topology@0.1.0-0008d0ca:wasm-function[671]:0x2271d)
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "all"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "rips"]
+square: exact squared distances; H1 barcode [1,2) over GF(2) [checked]
+square: H1 over Z is Z at grade 1, zero at grade 2 [checked]
+square: stopping at triangles leaves H2; adding the tetrahedron kills it [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "maps"]
+circle reflection: induced H1 map over Z sends 3 to -3 [checked]
+circle -> filled triangle: induced H1 map is zero [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "codes"]
+square cycle CSS: n=4, k=1, dX=1, dZ=4 [checked]
+filled square CSS: k=0; no logical distance [checked]
+Steane CSS: n=7, k=1, dX=3, dZ=3 [checked]
+RP2: integer H1=Z/2; GF(2) Betti numbers (1,1,1) [checked]
+RP2 edge CSS: n=15, k=1, dX=5, dZ=3 [checked]
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "invalid"]
+expected all, rips, maps or codes
+
+passed=True
+
+TOUR ["tools/moon", "run", "src/cmd/topology", "--target", "native", "--release", "--deny-warn", "-j", "1", "--", "maps", "extra"]
+expected at most one mode argument
+
+passed=True

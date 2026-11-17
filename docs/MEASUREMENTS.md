@@ -79,6 +79,26 @@ tools/measure --cpu 4 python3 tools/measure_connections.py \
   --repetitions 3 --timeout-seconds 30 --output .tools/connections.json
 ```
 
+## 位相・持続性・符号の実行例
+
+コード `93a2913` のnative release artifactをCPU 4に固定し、各モードを別プロセスで3回実行しました。
+Intel(R) Core(TM) Ultra 7 255H、Linux/WSL2、MoonBit v0.10.20。
+プロセス起動・入力構築・計算・証拠検査・出力を含み、コンパイルは含みません。
+ファイルキャッシュは初期化していません。算法間の速度比較や高速化率ではありません。
+
+| 入力・処理範囲 | 中央値 ms | 最小–最大 ms |
+| --- | ---: | ---: |
+| 正方形のRips・持続性・整数ホモロジー・次元打ち切り | 1.429 | 1.405–1.590 |
+| 円周の反転・円盤への包含の整数誘導写像 | 1.249 | 1.217–1.260 |
+| 正方形・Steane・RP2のCSS、最小性再検査、係数比較 | 12.162 | 11.718–12.963 |
+| 上記を一プロセスで実行 | 14.105 | 13.982–14.732 |
+
+入力・確認結果は[掲載出力](TOPOLOGY_TOUR.txt)、全12試行・artifact hash・ソースmanifestは
+[検証・計測データ](measurements/topology-20261117-validation.json)にあります。
+同データの検証コマンドの所要時間は、上記の実行時間とは別にコンパイル・全回帰試験を含みます。
+再実行方法は[検証harness](measurements/topology-20261117-harness.py)を参照してください。
+CSS距離の列挙は最悪指数時間、Ripsは次元上限まで全単体を明示構成するため、この小例から大規模性能は推定しません。
+
 ## 再現する
 
 Linuxで、既存被覆による理論節削減を一つの入力について比較する例です。

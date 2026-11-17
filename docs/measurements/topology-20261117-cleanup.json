@@ -1,0 +1,45 @@
+{
+  "time_utc": "2026-11-17T08:01:47.885303+00:00",
+  "integrated_main": "93a29137653cf4e4cea8eede645677ad5a2fad53",
+  "workers": [
+    {
+      "branch": "topology/persistence-20261117",
+      "path": "/home/hosi/morph-persistence",
+      "head": "986c5ac8030e4034bfe96d6b8717d2201ef1713f",
+      "status_before": "",
+      "git_cherry_main": [
+        "- f32f897220226a73684fce4bb7a3aae50eec50c0",
+        "- 986c5ac8030e4034bfe96d6b8717d2201ef1713f"
+      ],
+      "path_absent_after": true
+    },
+    {
+      "branch": "topology/simplicialmap-20261117",
+      "path": "/home/hosi/morph-simplicialmap",
+      "head": "3bdec8657537b236a7b7d2b5f445c7c83583b770",
+      "status_before": "",
+      "git_cherry_main": [
+        "- 0145ea16046a957fe8d092bf5947d821f7e209aa",
+        "- 50330c78ac7fc1c79f8bf71a6bca55f93437bc2e",
+        "- 3bdec8657537b236a7b7d2b5f445c7c83583b770"
+      ],
+      "path_absent_after": true
+    },
+    {
+      "branch": "topology/csscode-20261117",
+      "path": "/home/hosi/morph-csscode",
+      "head": "3f189d38e2a32e6750b3a9170af2431087a7fcd6",
+      "status_before": "",
+      "git_cherry_main": [
+        "- 3f189d38e2a32e6750b3a9170af2431087a7fcd6"
+      ],
+      "path_absent_after": true
+    }
+  ],
+  "bundle": {
+    "path": ".tools/topology-20261117/workers.bundle",
+    "sha256": "d3dcca81af39b20adb01df246db3c3db048dfa57023c2dff3d857853ac35d75f",
+    "verify": ".tools/topology-20261117/workers.bundle is okay\nThe bundle contains these 3 refs:\n986c5ac8030e4034bfe96d6b8717d2201ef1713f refs/heads/topology/persistence-20261117\n3bdec8657537b236a7b7d2b5f445c7c83583b770 refs/heads/topology/simplicialmap-20261117\n3f189d38e2a32e6750b3a9170af2431087a7fcd6 refs/heads/topology/csscode-20261117\nThe bundle requires this ref:\nee97cafe824892795f4610b8fee5de924f340452 \nThe bundle uses this hash algorithm: sha1"
+  },
+  "remaining_worktrees": "/home/hosi/morph  93a2913 [main]"
+}

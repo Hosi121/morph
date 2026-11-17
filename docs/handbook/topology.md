@@ -22,7 +22,7 @@ flowchart LR
 | 頂点写像がホモロジーへ与える作用 | [simplicialmap](../../src/simplicialmap/pkg.generated.mbti) | 向きを含むchain map、Smith座標での誘導準同型 |
 | 有限filtrationでの穴の寿命 | [persistence](../../src/persistence/pkg.generated.mbti) | GF(2)の有限・無限区間、単体のpairing、疎な行列変換 |
 | 有理点群からfiltrationを作る | [rips](../../src/rips/pkg.generated.mbti) | 次元上限を指定した、二乗距離によるVietoris–Rips filtration |
-| 境界から符号を作る | [csscode](../../src/csscode/pkg.generated.mbti) | 検査行列のrank、論理ビット数、syndrome、論理演算子の最小重み |
+| 境界から符号を作る | [csscode](../../src/csscode/pkg.generated.mbti) | 検査行列のrank、論理量子ビット数、syndrome、論理演算子の最小重み |
 
 ```sh
 tools/moon run src/cmd/topology
@@ -37,7 +37,7 @@ filtrationは、単体をgradeが小さい順に追加する複体の列であ�
 `persistence.validate` は各単体の頂点が狭義昇順、重複なし、gradeが非減少、
 すべての面が先に存在することを検査する。gradeは厳密な有理数で、同じ値も使える。
 
-GF(2)では向きの符号が消え、境界列の加算は疎な頂点番号列の対称差になる。
+GF(2)では向きの符号が消え、境界列の加算は疎な単体番号列の対称差になる。
 境界行列Dを左から列還元し、
 
 \[
@@ -91,7 +91,7 @@ Rの非零列の最後の非零行が重ならなくなると、その行の単�
 
 ## 境界からCSS符号へ
 
-次数kの単体を物理ビットの座標とし、
+次数kの単体を物理量子ビットに対応する二進座標とし、
 
 \[
 H_X=d_k\bmod 2,\qquad H_Z=(d_{k+1}\bmod2)^T
@@ -111,7 +111,7 @@ syndromeは、X誤りにはH_Z、Z誤りにはH_Xを掛けて得る。
 
 最小距離は重みの小さい候補から列挙して求める。
 候補数の燃料で中断・再開できるが、最悪の場合は指数時間になる。
-論理ビット数が0なら非自明な論理演算子がなく、距離は `NoLogical` となる。
+論理量子ビット数が0なら非自明な論理演算子がなく、距離は `NoLogical` となる。
 返却ベクトルの非自明性は短く検査できるが、最小性の検査は小さい重みの候補を再列挙する。
 この再検査も燃料で再開でき、安価な最小距離証明とは主張しない。
 
