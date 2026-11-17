@@ -1,21 +1,4 @@
 ///|
-fn[A] sum_terms(
-  indices : @core.Chain[@core.Nat],
-  accumulated : A,
-  add : (A, A) -> A,
-  term : (@core.Nat) -> Result[A, TensorError],
-) -> Result[A, TensorError] {
-  match indices {
-    Nil => Ok(accumulated)
-    Cons(head, tail) =>
-      match term(head) {
-        Err(error) => Err(error)
-        Ok(value) => sum_terms(tail, add(accumulated, value), add, term)
-      }
-  }
-}
-
-///|
 fn remove_axes(
   dimensions : @core.Chain[@core.Nat],
   a : @core.Nat,
@@ -30,44 +13,6 @@ fn remove_axes(
         tail
       } else {
         Cons(size, tail)
-      }
-    }
-  }
-}
-
-///|
-fn diagonal_coordinates(
-  dimensions : @core.Chain[@core.Nat],
-  output : @core.Chain[@core.Nat],
-  a : @core.Nat,
-  b : @core.Nat,
-  diagonal : @core.Nat,
-  axis : @core.Nat,
-) -> Result[@core.Chain[@core.Nat], TensorError] {
-  match dimensions {
-    Nil =>
-      match output {
-        Nil => Ok(Nil)
-        _ => Err(InternalShape)
-      }
-    Cons(_, rest) => {
-      let selected = axis.equal(a) || axis.equal(b)
-      let next = @core.Nat::Succ(axis)
-      let pair = if selected {
-        Some((diagonal, output))
-      } else {
-        match output {
-          Nil => None
-          Cons(head, tail) => Some((head, tail))
-        }
-      }
-      match pair {
-        None => Err(InternalShape)
-        Some((head, tail)) =>
-          match diagonal_coordinates(rest, tail, a, b, diagonal, next) {
-            Err(error) => Err(error)
-            Ok(indices) => Ok(Cons(head, indices))
-          }
       }
     }
   }
@@ -95,24 +40,7 @@ pub fn[A] contract(
         return Err(AxisSizeMismatch)
       }
       let dimensions = remove_axes(value.dimensions, a, b, @core.Nat::Zero)
-      tabulate_result(dimensions, fn(output) {
-        sum_terms(@core.indices(size_a), arithmetic.zero, arithmetic.plus, fn(
-          diagonal,
-        ) {
-          match
-            diagonal_coordinates(
-              value.dimensions,
-              output,
-              a,
-              b,
-              diagonal,
-              @core.Nat::Zero,
-            ) {
-            Err(error) => Err(error)
-            Ok(indices) => at(value, indices)
-          }
-        })
-      })
+      contract_cursor(value, a, b, size_a, dimensions, arithmetic)
     }
     _ => Err(InternalShape)
   }
@@ -156,33 +84,7 @@ pub fn[A] mode_product(
       match replace(value.dimensions, axis, @matrix.height(linear_map)) {
         None => Err(InternalShape)
         Some(dimensions) =>
-          tabulate_result(dimensions, fn(output) {
-            match @core.nth(output, axis) {
-              None => Err(InternalShape)
-              Some(row_index) =>
-                match @core.nth(@matrix.rows(linear_map), row_index) {
-                  None => Err(InternalShape)
-                  Some(row) =>
-                    sum_terms(
-                      @core.indices(size),
-                      arithmetic.zero,
-                      arithmetic.plus,
-                      fn(index) {
-                        match
-                          (@core.nth(row, index), replace(output, axis, index)) {
-                          (Some(coefficient), Some(indices)) =>
-                            match at(value, indices) {
-                              Err(error) => Err(error)
-                              Ok(entry) =>
-                                Ok((arithmetic.times)(coefficient, entry))
-                            }
-                          _ => Err(InternalShape)
-                        }
-                      },
-                    )
-                }
-            }
-          })
+          mode_cursor(value, axis, size, linear_map, dimensions, arithmetic)
       }
     }
   }
