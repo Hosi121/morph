@@ -1,0 +1,122 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/permgroup"
+
+import {
+  "Hosi121/morph/core",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn analyze(FiniteGroup) -> Certificate
+
+pub fn apply(Permutation, @core.Nat) -> @core.Nat?
+
+pub fn check_result(FiniteGroup, Certificate) -> Bool
+
+pub fn checked_permutation(@core.Nat, @core.Chain[@core.Nat]) -> Permutation?
+
+pub fn commutator(Permutation, Permutation) -> Permutation?
+
+pub fn compare(Permutation, Permutation) -> @core.Ordering
+
+pub fn compose(Permutation, Permutation) -> Permutation?
+
+pub fn contains(FiniteGroup, Permutation) -> Bool
+
+pub fn degree(Permutation) -> @core.Nat
+
+pub fn derived_subgroup(FiniteGroup) -> FiniteGroup
+
+pub fn generate(@core.Nat, @core.Chain[Permutation], @core.Nat) -> Generation
+
+pub fn group_degree(FiniteGroup) -> @core.Nat
+
+pub fn group_elements(FiniteGroup) -> @core.Chain[Permutation]
+
+pub fn group_generators(FiniteGroup) -> @core.Chain[Permutation]
+
+pub fn identity(@core.Nat) -> Permutation
+
+pub fn images(Permutation) -> @core.Chain[@core.Nat]
+
+pub fn inverse(Permutation) -> Permutation
+
+pub fn is_abelian(FiniteGroup) -> Bool
+
+pub fn is_normal(FiniteGroup, FiniteGroup) -> Bool
+
+pub fn is_solvable(Certificate) -> Bool
+
+pub fn is_subgroup(FiniteGroup, FiniteGroup) -> Bool
+
+pub fn order(FiniteGroup) -> @core.Nat
+
+pub fn resume_generation(GenerationState, @core.Nat) -> Generation
+
+pub fn same_group(FiniteGroup, FiniteGroup) -> Bool
+
+pub fn series_orders(Certificate) -> @core.Chain[@core.Nat]
+
+pub fn verify_certificate(@core.Nat, @core.Chain[Permutation], Certificate) -> Bool
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  degree : @core.Nat
+  generators : @core.Chain[Permutation]
+  elements : @core.Chain[Permutation]
+  derived_series : @core.Chain[@core.Chain[Permutation]]
+  conclusion : Solvability
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct FiniteGroup {
+  // private fields
+}
+pub fn FiniteGroup::equal(Self, Self) -> Bool
+pub fn FiniteGroup::not_equal(Self, Self) -> Bool
+pub fn FiniteGroup::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Generation {
+  InvalidGenerators
+  Pending(GenerationState)
+  Complete(FiniteGroup)
+}
+pub fn Generation::equal(Self, Self) -> Bool
+pub fn Generation::not_equal(Self, Self) -> Bool
+pub fn Generation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct GenerationState {
+  // private fields
+}
+pub fn GenerationState::equal(Self, Self) -> Bool
+pub fn GenerationState::not_equal(Self, Self) -> Bool
+pub fn GenerationState::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Permutation {
+  // private fields
+}
+pub fn Permutation::equal(Self, Self) -> Bool
+pub fn Permutation::not_equal(Self, Self) -> Bool
+pub fn Permutation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Solvability {
+  Solvable
+  NonSolvable
+}
+pub fn Solvability::equal(Self, Self) -> Bool
+pub fn Solvability::not_equal(Self, Self) -> Bool
+pub fn Solvability::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
