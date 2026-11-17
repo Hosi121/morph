@@ -1,0 +1,10 @@
+{
+  "complexes_on_four_vertices": 167,
+  "focused_examples": 4,
+  "cochain_membership_cases": 5351,
+  "kernel_vectors": 20652,
+  "ordered_basis_products": 670,
+  "exhaustive_cocycle_pairs": 49923,
+  "exhaustive_cochain_cup_pairs": 269883,
+  "leibniz_basis_pairs": 13226
+}

@@ -12,19 +12,39 @@ import {
 // Values
 pub fn certificate(Cohomology) -> Certificate
 
+pub fn check_product(Cohomology, @core.Chain[Bool], Cohomology, @core.Chain[Bool], Cohomology, Product, ProductCertificate) -> Bool
+
+pub fn check_representative_independence(Cohomology, @core.Chain[Bool], @core.Chain[Bool], Cohomology, @core.Chain[Bool], @core.Chain[Bool], Cohomology) -> Bool
+
 pub fn check_result(@homology.Complex, @core.Nat, Group, Certificate) -> Bool
+
+pub fn check_ring(@homology.Complex, RingResult, RingCertificate) -> Bool
 
 pub fn coboundary(@homology.Complex, @core.Nat) -> @matrix.Matrix[Bool]?
 
 pub fn compute(@homology.Complex, @core.Nat) -> Cohomology?
 
+pub fn compute_ring(@homology.Complex) -> Ring?
+
 pub fn coordinates(Cohomology, @core.Chain[Bool]) -> @core.Chain[Bool]?
 
+pub fn cup(@homology.Complex, @core.Nat, @core.Chain[Bool], @core.Nat, @core.Chain[Bool]) -> @core.Chain[Bool]?
+
+pub fn cup_product(Cohomology, @core.Chain[Bool], Cohomology, @core.Chain[Bool], Cohomology) -> ProductCertificate?
+
+pub fn degree_space(Ring, @core.Nat) -> Cohomology?
+
 pub fn equivalent(Cohomology, @core.Chain[Bool], @core.Chain[Bool]) -> Bool?
+
+pub fn multiply(Ring, @core.Nat, @core.Chain[Bool], @core.Nat, @core.Chain[Bool]) -> @core.Chain[Bool]?
 
 pub fn representative(Cohomology, @core.Chain[Bool]) -> @core.Chain[Bool]?
 
 pub fn result(Cohomology) -> Group
+
+pub fn ring_certificate(Ring) -> RingCertificate
+
+pub fn ring_result(Ring) -> RingResult
 
 pub fn validate_certificate(@homology.Complex, @core.Nat, Group, Certificate) -> Cohomology?
 
@@ -63,6 +83,72 @@ pub(all) struct Group {
 pub fn Group::equal(Self, Self) -> Bool
 pub fn Group::not_equal(Self, Self) -> Bool
 pub fn Group::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Product {
+  left_class : @core.Chain[Bool]
+  right_class : @core.Chain[Bool]
+  cochain : @core.Chain[Bool]
+  value : @core.Chain[Bool]
+}
+pub fn Product::equal(Self, Self) -> Bool
+pub fn Product::not_equal(Self, Self) -> Bool
+pub fn Product::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ProductCertificate {
+  source : @homology.Complex
+  left_degree : @core.Nat
+  right_degree : @core.Nat
+  left_cochain : @core.Chain[Bool]
+  right_cochain : @core.Chain[Bool]
+  result : Product
+}
+pub fn ProductCertificate::equal(Self, Self) -> Bool
+pub fn ProductCertificate::not_equal(Self, Self) -> Bool
+pub fn ProductCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Ring {
+  source : @homology.Complex
+  spaces : @core.Chain[Cohomology]
+  result : RingResult
+}
+pub fn Ring::equal(Self, Self) -> Bool
+pub fn Ring::not_equal(Self, Self) -> Bool
+pub fn Ring::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RingCertificate {
+  source : @homology.Complex
+  result : RingResult
+  degrees : @core.Chain[Certificate]
+}
+pub fn RingCertificate::equal(Self, Self) -> Bool
+pub fn RingCertificate::not_equal(Self, Self) -> Bool
+pub fn RingCertificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct RingResult {
+  groups : @core.Chain[Group]
+  table : @core.Chain[TableEntry]
+  unit : @core.Chain[Bool]
+}
+pub fn RingResult::equal(Self, Self) -> Bool
+pub fn RingResult::not_equal(Self, Self) -> Bool
+pub fn RingResult::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct TableEntry {
+  left_degree : @core.Nat
+  left_index : @core.Nat
+  right_degree : @core.Nat
+  right_index : @core.Nat
+  value : @core.Chain[Bool]
+}
+pub fn TableEntry::equal(Self, Self) -> Bool
+pub fn TableEntry::not_equal(Self, Self) -> Bool
+pub fn TableEntry::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
