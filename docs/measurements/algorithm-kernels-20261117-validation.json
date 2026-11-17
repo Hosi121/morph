@@ -4083,7 +4083,7 @@
   "finished_utc": "2026-11-17T12:58:49.318861+00:00",
   "benchmark_implementation_commit": "6d6ea945cad5ac2d12e5cb12148a29d39979e4f4",
   "benchmark_and_validation_implementation_equal": true,
-  "published_log_sha256": "b3c5695623dbafcf30ff5fdde3a3c245299638a1123065b75650a8320b5d0eac",
+  "published_log_sha256": "e3ad4404a818bcc364cda3b47b6708b80b55483dc52b6673bad7e489a565e09a",
   "harness_sha256": "9df133be9b5589868b6246a0f3357157787485f3677eb0a3c1a7065db8755e2c",
   "source_boundary_note": "Only documentation/evidence publication follows this fixed source verification. Prior scoped and older full-repository reports are retained separately; unchanged unrelated tests were not rerun."
 }

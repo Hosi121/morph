@@ -114,4 +114,3 @@ Formal drift gate passed: 32 reviewed source regions; not a translation proof.
 'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
 'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
 'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]
-
