@@ -1,0 +1,84 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/homology"
+
+import {
+  "Hosi121/morph/binary",
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/smith",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn all_simplices(Complex) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn boundary(Complex, @core.Nat) -> @matrix.Matrix[@exact.Integer]?
+
+pub fn boundary_squared_zero(Complex, @core.Nat) -> Bool
+
+pub fn check_result(Complex, @core.Nat, ResultGroup, Certificate) -> Bool
+
+pub fn closure(@core.Chain[@core.Chain[@core.Nat]]) -> Complex?
+
+pub fn compute(Complex, @core.Nat, @core.Nat) -> Computation
+
+pub fn cycle_basis(Certificate) -> @core.Chain[@core.Chain[@exact.Integer]]
+
+pub fn euler_characteristic(Complex) -> @exact.Integer
+
+pub fn faces(@core.Chain[@core.Nat]) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn result(Certificate) -> ResultGroup
+
+pub fn simplices(Complex, @core.Nat) -> @core.Chain[@core.Chain[@core.Nat]]
+
+pub fn validate(@core.Chain[@core.Chain[@core.Nat]]) -> Complex?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : Complex
+  degree : @core.Nat
+  result : ResultGroup
+  boundary_form : @smith.Decomposition
+  right_inverse : @matrix.Matrix[@exact.Integer]
+  coordinates : @matrix.Matrix[@exact.Integer]
+  image_form : @smith.Decomposition
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Complex {
+  faces : @core.Chain[@core.Chain[@core.Nat]]
+}
+pub fn Complex::equal(Self, Self) -> Bool
+pub fn Complex::not_equal(Self, Self) -> Bool
+pub fn Complex::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Computation {
+  Computed(Certificate)
+  BudgetExhausted
+  InvalidWitness
+}
+pub fn Computation::equal(Self, Self) -> Bool
+pub fn Computation::not_equal(Self, Self) -> Bool
+pub fn Computation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct ResultGroup {
+  free_rank : @core.Nat
+  torsion : @core.Chain[@binary.Binary]
+}
+pub fn ResultGroup::equal(Self, Self) -> Bool
+pub fn ResultGroup::not_equal(Self, Self) -> Bool
+pub fn ResultGroup::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
