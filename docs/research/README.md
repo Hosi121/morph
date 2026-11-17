@@ -25,6 +25,7 @@
 | 記録 | 保存している内容 |
 | --- | --- |
 | [変換監査からの基礎改善](conversion-kernels-20261117.md) | monicとSmith情報の共有、定数・剰余の見送り、証拠の通常lint |
+| [数値とwordの表示の分離](numeric-serialization-20261118.md) | 二進数の可変bit幅とbig-endian wordの誤用、往復テストとlint、旧stdoutの限界 |
 | [表現変換と準備の重複の監査](conversion-audit-20261117.md) | 関数をまたぐNat往復、重複正規化・索引再構築、必要な境界との区別 |
 | [26時枠の共通部品改善](late-kernels-20261117.md) | 前の検証済み版からの採否、検証再開の通常化 |
 | [減算融合の見送り](late-subtraction-20261117.md) | 限定的な相殺の改善、二案の一般入力・上位処理と再現パッチ |

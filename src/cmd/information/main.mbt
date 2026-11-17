@@ -25,9 +25,22 @@ fn matrix_text(value : @matrix.Matrix[@exact.Rational]) -> String {
 }
 
 ///|
+fn binary_hex(value : @binary.Binary) -> String {
+  let bits = @oracle.array(@core.reverse(@binary.bits(value)))
+  if bits.is_empty() {
+    return "0"
+  }
+  let padded = Array::make((4 - bits.length() % 4) % 4, false)
+  for bit in bits {
+    padded.push(bit)
+  }
+  @oracle.hex_bits(@oracle.chain(padded))
+}
+
+///|
 fn rational_json(value : @exact.Rational) -> String {
   let n = @exact.numerator(value)
-  "[\{@exact.negative(n)},\"\{@oracle.hex_bits(@binary.bits(@exact.magnitude(n)))}\",\"\{@oracle.hex_bits(@binary.bits(@exact.denominator(value)))}\"]"
+  "[\{@exact.negative(n)},\"\{binary_hex(@exact.magnitude(n))}\",\"\{binary_hex(@exact.denominator(value))}\"]"
 }
 
 ///|
@@ -128,7 +141,7 @@ fn benchmark_case(name : String) -> (Int32, () -> String) {
   match name {
     "lc-simplex2" =>
       (
-        20,
+        200,
         fn() {
           geometry_json(
             @statgeometry.curvature(simplex([q(1, 4), q(1, 4)])).unwrap(),
@@ -137,7 +150,7 @@ fn benchmark_case(name : String) -> (Int32, () -> String) {
       )
     "alpha-simplex2" =>
       (
-        10,
+        200,
         fn() {
           let point = simplex([q(1, 4), q(1, 4)])
           let value = @statgeometry.alpha_geometry(point, q(2, 1)).unwrap()
@@ -158,7 +171,7 @@ fn benchmark_case(name : String) -> (Int32, () -> String) {
       )
     "cubic-pullback3" =>
       (
-        15,
+        150,
         fn() {
           let model = @infogeom.local_model(
             simplex([q(1, 5), q(1, 5), q(1, 5)]),
@@ -180,7 +193,7 @@ fn benchmark_case(name : String) -> (Int32, () -> String) {
       )
     "gaussian2" =>
       (
-        3,
+        10,
         fn() {
           let jet = @gaussian.fisher_jet(standard_gaussian(2)).unwrap()
           let first = @oracle.array(@riemann.first_derivatives(jet))
@@ -202,7 +215,7 @@ fn benchmark_case(name : String) -> (Int32, () -> String) {
       )
     "scalar0" =>
       (
-        100,
+        1000,
         fn() { geometry_json(@statgeometry.curvature(simplex([])).unwrap()) },
       )
     _ => abort("unknown information benchmark case")

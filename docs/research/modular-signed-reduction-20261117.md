@@ -1,5 +1,10 @@
 # signed_reduce: rejected known-residue negation trial
 
+Later audit: the frozen CLI checked every Binary value before serialization,
+but its numeric hex stdout used a word formatter and was not a lossless encoding
+of the numbers. See the [serialization correction](numeric-serialization-20261118.md).
+Historical raw files and timing claims retain their original harness and scope.
+
 The trial was rejected and production bytes restored to `a63dcbc`. The frozen
 negative-reduced case improved by 1.041× initially and 1.077× on repetition, with
 all ten paired block ratios above one. The positive-control repetition was

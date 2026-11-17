@@ -64,6 +64,25 @@ def imports(folder):
             for package, alias in re.findall(r'"Hosi121/morph/([^"\n]+)"(?:\s+@([\w]+))?', source)}
 
 
+def word_hex_misuse(source, word_aliases=('oracle',), binary_aliases=('binary',)):
+    """Reject the direct wrong-endianness/unpadded Binary -> hex-word route."""
+    source = code_only(source)
+    result = []
+    for match in re.finditer(r'@([\w]+)\.hex_bits\s*\(', source):
+        if match[1] not in word_aliases:
+            continue
+        depth, end = 1, match.end()
+        while end < len(source) and depth:
+            depth += (source[end] == '(') - (source[end] == ')')
+            end += 1
+        outer = call(source[match.start():end])
+        inner = call(outer[2]) if outer else None
+        if inner and inner[0] in binary_aliases and inner[1] == 'bits':
+            result.append((source.count('\n',0,match.start())+1,
+                           'Binary bits are little endian and unpadded: use a complete numeric hex formatter'))
+    return result
+
+
 def inventory():
     references = {symbol: {"body": [], "test": [], "demo": []} for symbol in SYMBOLS}
     failures = []
@@ -78,6 +97,9 @@ def inventory():
             if relative.parts[1] in {"cmd", "testsupport"}:
                 category = "demo"
             text = path.read_text()
+            failures.extend(f"{relative}:{line}: {message}" for line, message in word_hex_misuse(
+                text, [a for a,p in aliases.items() if p=='testsupport'],
+                [a for a,p in aliases.items() if p=='binary']))
             if category == "body":
                 binary_aliases = [a for a, p in aliases.items() if p == "binary"]
                 failures.extend(f"{relative}:{line}: {message}" for line, message in roundtrips(text, binary_aliases))
@@ -128,6 +150,7 @@ def render(references, importers):
     lines += ["", "## 変換ゲートの範囲", "",
               "直接のto_nat(from_nat(...))、逆方向の恒等変換、to_nat(half(from_nat(...)))を拒否する。",
               "変数を介する経路や一般の意味の同値性はこの字句ゲートだけでは証明しない。",
+              "testsupport.hex_bits(binary.bits(...))も拒否する。前者はbig-endianの4bit単位word用で、数のlittle-endian列は直接渡せない。",
               "既約性検査の二箇所と円分体の半分化はcore.half_natを使う。",
               "Binary converterは半分化の共有を経て、現在は三bitずつ出す専用の8進helperへ進めた。",
               "IDの二進cache、係数/指数への入力変換、明示的な展開境界は別の意味を持つので一括置換しない。",
