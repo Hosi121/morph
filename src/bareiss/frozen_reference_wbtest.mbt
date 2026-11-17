@@ -25,7 +25,7 @@ fn bareiss_reference_field_determinant(
 ) -> @exact.Rational? {
   match @core.compare(@matrix.height(input), @matrix.width(input)) {
     Equal =>
-      match @rowreduce.rref(field, input) {
+      match bareiss_reference_rref(field, input) {
         None => None
         Some(reduced) =>
           match

@@ -2,7 +2,8 @@
 """Paired frozen-reference/Bareiss cohort runs; invoke under shared CPU10 lock."""
 import argparse,datetime,hashlib,json,re,statistics,subprocess,time
 from pathlib import Path
-from check_model_drift import function_tokens
+from audit_purity import code_only
+from check_model_drift import braced_tokens,function_tokens
 
 ROOT=Path(__file__).resolve().parent.parent
 ART=ROOT/'.tools/bareiss-20261116'
@@ -12,18 +13,44 @@ UNITS={'ns':1e-9,'µs':1e-6,'μs':1e-6,'us':1e-6,'ms':1e-3,'s':1}
 
 def check_reference():
  lock=json.loads((ROOT/'docs/measurements/bareiss-20261116-reference.json').read_text())
- assert lock['schema_version']==1,'unknown frozen-reference lock schema'
+ assert lock['schema_version']==2,'unknown frozen-reference lock schema'
  reference=ROOT/lock['sources']['wb_reference']
  rref=ROOT/lock['sources']['rref_dependency']
+ helpers=ROOT/lock['sources']['wb_rref_helpers']
  def body(name):return function_tokens(reference,name).split(b'{',1)[1]
  actual={
   'arithmetic_body':hashlib.sha256(body('bareiss_reference_arithmetic')).hexdigest(),
-  'normalized_determinant_body':hashlib.sha256(body('bareiss_reference_field_determinant').replace(b'@rowreduce.rref(',b'rref(')).hexdigest(),
+  'normalized_determinant_body':hashlib.sha256(body('bareiss_reference_field_determinant').replace(b'bareiss_reference_rref(',b'rref(')).hexdigest(),
   'rref_wholefile':hashlib.sha256(rref.read_bytes()).hexdigest(),
   'wrapper_body':hashlib.sha256(body('bareiss_frozen_reference')).hexdigest(),
  }
  assert actual==lock['sha256'],'frozen Bareiss reference drift; review before updating its lock'
- return dict(provenance=lock['provenance'],sha256=actual,reference_source_sha256=hashlib.sha256(reference.read_bytes()).hexdigest())
+ # Compare the executable WB copy against byte-frozen original declarations.
+ # Only reviewed names, cross-package type qualification, optional trailing
+ # parameter/tuple commas and rref visibility
+ # may differ. Checking entire declarations retains code-generation attributes.
+ def normalized(tokens):
+  for name in ['nonzero','pivot','eliminate','rref']:
+   tokens=tokens.replace(('bareiss_reference_'+name+'(').encode(),(name+'(').encode())
+  for copied,original in [(b'BareissReferenceNonzero',b'Nonzero'),(b'@rowreduce.Field',b'Field'),(b'@rowreduce.Reduction',b'Reduction')]:
+   tokens=tokens.replace(copied,original)
+  return re.sub(br',(?=\))',b'',tokens)
+ regions={}
+ for name in ['nonzero','pivot','eliminate','rref']:
+  original=normalized(function_tokens(rref,name))
+  if name=='rref':original=re.sub(br'^pub(?=fn)',b'',original)
+  copied=normalized(function_tokens(helpers,'bareiss_reference_'+name))
+  assert copied==original,'frozen Bareiss RREF helper drift: '+name
+  regions[name]=hashlib.sha256(original).hexdigest()
+ def nonzero_record(path,name):
+  source=code_only(path.read_text())
+  declaration=re.search(r'\bpriv\s+struct\s+'+re.escape(name)+r'(?:\[[^\]]+\])?\s*(?=\{)',source)
+  assert declaration is not None,'missing frozen Nonzero record'
+  return normalized(braced_tokens(source,declaration,name))
+ original=nonzero_record(rref,'Nonzero')
+ assert nonzero_record(helpers,'BareissReferenceNonzero')==original,'frozen Bareiss Nonzero record drift'
+ regions['Nonzero']=hashlib.sha256(original).hexdigest()
+ return dict(provenance=lock['provenance'],sha256=actual,rref_region_sha256=regions,reference_source_sha256=hashlib.sha256(reference.read_bytes()).hexdigest(),rref_helper_source_sha256=hashlib.sha256(helpers.read_bytes()).hexdigest())
 
 
 def parse(output):

@@ -1,19 +1,59 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "provenance": {
     "original_worker_commit": "a8e7207e29673653cb606040403df10f8a6f9127",
     "main_equivalent_commit": "c1da59d3192409099a96a29e2dec72e070d9a2c1",
-    "review": "Original and main-equivalent rowreduce/old-linear bytes match; frozen WB bodies match their originals. Hashes detect drift, not source-translation correctness."
+    "review": "Original and main-equivalent rowreduce/old-linear bytes match; frozen WB bodies match their originals. Hashes detect drift, not source-translation correctness.",
+    "rref_snapshot_commit": "4d9e6c4",
+    "reference_isolation_review": "2026-11-17: preserve the original whole-file bytes and copied generic nonzero/pivot/eliminate/rref implementation in WB-only helpers; production rowreduce is no longer an algorithm dependency.",
+    "translation_limit": "Token correspondence detects reviewed-source drift; it is not a formal proof of translation or of the field laws. Shared public Field/Reduction records and core/matrix operations remain dependencies.",
+    "artifact_limit": "WB-only symbol names and package placement can affect optimization. New reference builds require new measurements; this isolation change does not regenerate or modify the historical benchmark results or claim historical ELF identity."
   },
-  "normalization": "check_model_drift.function_tokens, then body after first opening brace; determinant body replaces @rowreduce.rref( with rref(. Other bodies are unchanged.",
+  "normalization": "check_model_drift.function_tokens for functions and the same comment/whitespace lexer for the private Nonzero record. Copied RREF regions normalize only bareiss_reference_ function-name prefixes, BareissReferenceNonzero, @rowreduce.Field/Reduction type qualification, optional trailing commas before closing parentheses (introduced by moon fmt wrapping longer copied names), and removal of pub visibility on the original rref declaration. Copied helpers must remain package-private. The determinant body normalizes only bareiss_reference_rref( to rref(. Original arithmetic, determinant, wrapper and whole-file SHA256 values are unchanged.",
   "sources": {
     "wb_reference": "src/bareiss/frozen_reference_wbtest.mbt",
-    "rref_dependency": "src/rowreduce/rowreduce.mbt"
+    "rref_dependency": "docs/measurements/bareiss-20261116-rowreduce-original.mbt.txt",
+    "wb_rref_helpers": "src/bareiss/frozen_rowreduce_wbtest.mbt"
   },
   "sha256": {
     "arithmetic_body": "5ccd30f9259c3ee7f87ead1dca5695311e693a9b3c87e4ae9ad9be7430171d97",
     "normalized_determinant_body": "b8aeb8453de4363b02383cc2ef2f924410f209a9a9e7dc20d9bfeb029b826d60",
     "rref_wholefile": "2d40bac3f673fd0cc8186bd06b756bafdaaa8fea6e2c8e724a530c4470b26855",
     "wrapper_body": "fca66aea0bebede49682ebbcfcaf9222109cc548006ffd23472a7e38fa853ea8"
+  },
+  "isolation_validation": {
+    "rejected_mutations": [
+      "helper inverse input",
+      "helper elimination arithmetic",
+      "helper recursive column",
+      "private Nonzero record",
+      "production RREF bypass",
+      "reference field dictionary",
+      "original snapshot bytes",
+      "reference determinant wrapper",
+      "copied helper visibility",
+      "copied helper codegen attribute",
+      "copied helper return type"
+    ],
+    "accepted_controls": [
+      "production implementation independence",
+      "comments ignored by token comparison"
+    ],
+    "all_original_sha256_values_unchanged": true,
+    "scoped_tests": {
+      "native": {
+        "passed": 140,
+        "failed": 0
+      },
+      "js": {
+        "passed": 140,
+        "failed": 0
+      },
+      "wasm-gc": {
+        "passed": 140,
+        "failed": 0
+      }
+    },
+    "global_deny_warn_check": "passed"
   }
 }
