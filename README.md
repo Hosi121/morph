@@ -35,6 +35,7 @@ tools/moon run src/cmd/main
 | 明示した分解体の自己同型、部分群と固定体 | `tools/moon run src/cmd/galois` | [対称性と中間体](docs/GALOIS_TOUR.txt) |
 | 多項式から最小分解体とGalois群を構成する | `tools/moon run src/cmd/splitting` | [分解体と根置換](docs/SPLITTING_TOUR.txt) |
 | 置換群、不等式の細分証明、整数ホモロジーをつなぐ | `tools/moon run src/cmd/connections` | [分野をまたぐ計算](docs/CONNECTIONS_TOUR.txt) |
+| 点群の穴の寿命、整数誘導写像、位相からCSS符号へ | `tools/moon run src/cmd/topology` | [位相と符号](docs/TOPOLOGY_TOUR.txt) |
 
 準備・テストのコマンドと検証済みのツールチェーンは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
 表示と入力変換の例は [cmd/main](src/cmd/main/showcase.mbt) を参照してください。
@@ -45,13 +46,13 @@ tools/moon run src/cmd/main
 | --- | --- |
 | [基礎算術・データ構造](docs/ALGORITHMS.md#foundations) | Peano自然数、二進算術、ペア、有理数、ソート、永続木 |
 | [数論・有限体](docs/ALGORITHMS.md#number-theory) | CRT、素数証明、因数分解、拡大体、離散対数、楕円曲線 |
-| [群・位相](docs/ALGORITHMS.md#groups-topology) | 有限置換群、導来列、根号可解性、群表示の可換化、整数ホモロジー |
+| [群・位相](docs/ALGORITHMS.md#groups-topology) | 有限置換群、根号可解性、整数ホモロジー、誘導写像、Rips持続ホモロジー |
 | [変換・記号計算](docs/ALGORITHMS.md#symbolic-computation) | FFT・NTT、円分体、Gröbner基底、実根隔離、自動微分、厳密幾何 |
 | [線形代数・最適化](docs/ALGORITHMS.md#linear-optimization) | Gauss–Jordan、Smith標準形、LLL、単体法、0/1分枝限定法 |
 | [グラフ](docs/ALGORITHMS.md#graphs) | 最短路、SCC、最小全域森、最大流、一般マッチング |
 | [論理・制約解決](docs/ALGORITHMS.md#logic-constraints) | SAT・非線形実数SMT、BDD、回路、実閉体の量化消去、パリティゲーム |
 | [言語・列アルゴリズム](docs/ALGORITHMS.md#languages-sequences) | 単一化、型推論、CEK、正規表現、CYK、文字列検索、動的計画法 |
-| [符号・圧縮・暗号](docs/ALGORITHMS.md#coding-cryptography) | 自己区切り符号、Huffman、LZ78、SHA-256、AES、Reed–Solomon |
+| [符号・圧縮・暗号](docs/ALGORITHMS.md#coding-cryptography) | Huffman、LZ78、SHA-256、AES、Reed–Solomon、BCH、CSS符号 |
 
 各カテゴリから、個別のアルゴリズムとソースへ進めます。
 

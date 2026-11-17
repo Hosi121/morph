@@ -57,6 +57,9 @@
 | 根号可解性 | [完全なGalois作用から導来列へ接続](../src/galoissolvability/analysis.mbt) |
 | 群表示の可換化 | [符号付き語・自由簡約・指数和行列](../src/presentation/words.mbt)・[Smith余核・自由部分とねじれ・証拠検査](../src/presentation/abelianization.mbt) |
 | 整数ホモロジー | [単体複体と向き付き境界](../src/homology/complex.mbt)・[Smith基底による核・像の整数商とねじれ](../src/homology/homology.mbt) |
+| 単体写像・誘導準同型 | [退化と向きを含むchain map](../src/simplicialmap/map.mbt)・[整数Smith座標への誘導写像](../src/simplicialmap/induced.mbt) |
+| 持続ホモロジー | [GF(2)疎列還元と中断・再開](../src/persistence/reduction.mbt)・[変換恒等式とバーコードの検査](../src/persistence/certificate.mbt) |
+| 有理点群の位相 | [二乗距離によるVietoris–Rips filtrationと全単体被覆の検査](../src/rips/rips.mbt) |
 
 <a id="symbolic-computation"></a>
 
@@ -157,5 +160,6 @@
 | AES | [GF(256)からのSbox生成](../src/aes/sbox.mbt)・[128/192/256bit鍵のblock暗号・復号](../src/aes/cipher.mbt) |
 | 誤り訂正 | [Reed–Solomon評価符号・Berlekamp–Welch・消失訂正](../src/reedsolomon/reedsolomon.mbt) |
 | 二進BCH | [共役根からの生成多項式・系統符号化・BM/Chien訂正](../src/bch/bch.mbt) |
+| CSS符号 | [可換検査行列・rank証拠・位相adapter](../src/csscode/csscode.mbt)・[論理演算子の最小重みと再開可能な全探索](../src/csscode/distance.mbt) |
 | リスト復号 | [Guruswami–Sudan多重度補間・Roth–Ruckenstein探索](../src/listdecode/interpolate.mbt) |
 | 漸化式と巡回符号 | [Berlekamp–Massey](../src/recurrence/recurrence.mbt)・[Chien/ForneyによるGF(p^m)のRS訂正](../src/cyclicrs/cyclicrs.mbt) |
