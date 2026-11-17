@@ -13,24 +13,46 @@ ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央
 
 ## 確率・情報幾何の検証の到達段階
 
-実装と個別検証は[2026-11-18の記録](research/probability-geometry-20261118.md)、
-現行の入口は[確率と情報幾何](handbook/probability-geometry.md)を参照してください。
-確率、Markov、微分幾何、テンソル、Gaussian、微分形式、単体積分、拡大体曲線とペアリングを追加しました。
-個別の3target検証、独立oracle、純記号制約の結果を保持しています。
-これらを合計して、最終統合版全体の3target成功とは扱いません。
+Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。
+定義・符号・座標系と入力の条件は[確率と情報幾何](handbook/probability-geometry.md)、
+独立した期待値の導出は[独立検証](research/amari-chentsov-independent-20261118.md)を参照してください。
 
-固定ソース `569c6c3` の全体検証はgraph 180 package、runtime 161 package、空CLIの省略19 packageまで確定しました。
-初期化の終了を待たず次段を起動したため `FileNotFoundError` となり、完了stageは0です。
-予算の期限を超えたため再実行せず、ジョブを止めて保存しました。
-[停止時の状態](measurements/information-geometry-20261118-status.json)と
-[未実行の初期化record](measurements/information-geometry-20261118-checkpoint-initialization.json.gz)を残しています。
-record内の `running` は初期化時の値で、実行中のジョブはありません。
-次回は新しいsource commitでrecordを初期化し、終了を確認してから `--stage next` を一段ずつ実行します。
+ソース `cd58f60` を固定し、全graph 180 packageを型検査、runtime 161 packageを実行しました。
+19個の省略はソースとコンパイラmetadataの両方でtestがないと確認できたCLIだけです。
 
-新しい[情報幾何の完全出力の証拠検査](../tools/check_information_evidence.py)と
-73件のPython検査は実行済みです。情報幾何のCLI出力はwasm-gc・JS・nativeで一致を確認しました。
-実際のモデルを含む100プロセスの比較は、全成分の独立有理参照・source archive・slotと要約を検査しています。
-追加した独立Sympy照合の期待値、曲線式の証明書、Whitney形式は未完成としてmainから除外しました。
+| バックエンド | 全体 `cd58f60` | 追加統合 `bc6818d` の3package |
+| --- | ---: | ---: |
+| wasm-gc | 5558成功 | 31成功 |
+| js | 5558成功 | 31成功 |
+| native release | 5558成功 | 31成功 |
+
+全体検証の後に、独立fixtureと新公開APIの直接照合を統合しました。
+その後の本体差分は `gaussian/information.mbt` のdoc commentだけで、関数本体と180公開interfaceのbyte一致を確認しています。
+変更したGaussian・statgeometryと逆依存のCLIを、別の固定ソースで3target再検証しました。
+二つのソースのテスト数を合計して、最終版の一括実行数とは扱いません。
+
+独立参照はGaussianのlog-partition微分7点と、有限モデル4点・20個のα接続/曲率です。
+元の5,306成分とscore・pullbackの補助40成分を、wasm-gc・JS・nativeで完全一致まで確認しました。
+ゼロと対称な位置を含む成分位置数で、異なる有理数の個数ではありません。
+新公開APIは同じ参照値の636 Gaussian成分・80有限モデル成分を直接使って照合し、独立corpusの追加件数とは区別しています。
+Gaussianの積が結合的でない具体例も、追加統合の検査に含みます。
+
+Python検査、純記号制約、生成物・保存済oracle、全targetの型、公開interface、既存Leanモデルと対応領域の差分検査が通過しました。
+新しい情報幾何全体やChentsovの一意性定理を形式証明したものではありません。
+通常の `tools/check` はSymPyを必要とせず、独立数式の再導出は[環境ガイド](ENVIRONMENT.md#情報幾何の独立参照を再生成する)の別手順です。
+
+[全体のソース・graph・全コマンド](measurements/amari-chentsov-20261118-full-validation.json)、
+[全体ログ](measurements/amari-chentsov-20261118-full-validation.txt)、[実行runner](measurements/amari-chentsov-20261118-full-harness.py)、
+[追加統合のソース・範囲・全コマンド](measurements/amari-chentsov-20261118-integrated-validation.json)、
+[追加統合ログ](measurements/amari-chentsov-20261118-integrated-validation.txt)、[追加統合runner](measurements/amari-chentsov-20261118-integrated-harness.py)を保存しました。
+作業用worktreeとbranchは、18採用ファイルの一致とGit bundleの検査後に片付けています。
+[片付けの証跡](measurements/amari-chentsov-20261118-cleanup.json)を参照してください。
+
+前回の `569c6c3` の全体検証は、初期化を待たず次段を起動した `FileNotFoundError` と期限で完了stageが0でした。
+[当時の状態](measurements/information-geometry-20261118-status.json)と
+[初期化record](measurements/information-geometry-20261118-checkpoint-initialization.json.gz)は履歴として保持します。
+今回の `cd58f60` では初期化を確認してから7段階を逐次実行し、全体検証を完了しました。
+Whitney形式と曲線式の証明書の未完成draftは引き続きmainから除外しています。
 
 ## 変更範囲を段階ごとに検査する
 

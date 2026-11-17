@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-17T23:23:38.243488+00:00",
+  "worktree": "/home/hosi/morph-amari-review",
+  "branch": "verify/amari-review",
+  "worker_commit": "8f5990cb7ee774586235fde9e9045670f267c909",
+  "integrated_commit": "705a10fc25dce317846ba10fe51f2c8dcda1a74d",
+  "clean_before_removal": true,
+  "adopted_file_sha256": {
+    "docs/research/amari-chentsov-independent-20261118-raw/README.md": "deaf14fee4cecfbb163e586d7cab9d1441d3b369bb976b50b4a5fe12d969cb2d",
+    "docs/research/amari-chentsov-independent-20261118-raw/archived-oracles.json.gz": "1e15c7da4224e8322dac2e9d2ff141be35cc1056ee29deb34375ba6bb93d8c7a",
+    "docs/research/amari-chentsov-independent-20261118-raw/archived-source.json": "17a11a4cb81f1e18f283fbe28bae57557f29a40e94390e765df5685f49fe64c0",
+    "docs/research/amari-chentsov-independent-20261118-raw/comparison-results.json": "ac6abca7161470b816506363bd58107ff1fb5f5305ee8b17374069bc673f1836",
+    "docs/research/amari-chentsov-independent-20261118-raw/fmt.txt": "3e5fcf6518a860c17dfdf048962fe86dc2ede70c515255efb11f5912c4736c4c",
+    "docs/research/amari-chentsov-independent-20261118-raw/generator-validation.json": "309a1e867edaf3dd148529df17e64cc06f9b9165cf3a1f12cab20958006f94e9",
+    "docs/research/amari-chentsov-independent-20261118-raw/generator-validation.txt": "9fd2d236c8e5f32ff9871de6a857cf15101572fda830388fa286fe3f01216b42",
+    "docs/research/amari-chentsov-independent-20261118-raw/native-initial.txt": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb",
+    "docs/research/amari-chentsov-independent-20261118-raw/oracle-summary.json": "34bc22f02acade759c7731ffdd1e40b80a2ba33a88294c2e6853f6e1776cec91",
+    "docs/research/amari-chentsov-independent-20261118-raw/oracles.json.gz": "ee504a8679da954a9bbc9a8e9def820c328065d097c88afb4086b18bcdbbd5ff",
+    "docs/research/amari-chentsov-independent-20261118-raw/sha256.json": "1bf3abf13d73482e470109bf69564a4da4d1823576e95d726880111ba548d3e4",
+    "docs/research/amari-chentsov-independent-20261118-raw/test-js.txt": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb",
+    "docs/research/amari-chentsov-independent-20261118-raw/test-wasm-gc.txt": "d1a37b738e822c0721c7d89ab13954d581721ee65228d7693d1e8d1294bc4beb",
+    "docs/research/amari-chentsov-independent-20261118-raw/tested-source.json": "4b8a57f79fbf414644357824a770b8371879bb9c1c7c1ed049a303766fb9cbb2",
+    "docs/research/amari-chentsov-independent-20261118.md": "273f17de4488e6a4c631007c1a3895a1c94de21bc98e4b9a000dd36b4fb6b56f",
+    "src/gaussian/gaussian_sympy_review_wbtest.mbt": "9c9cf3d4c74158df44b0f5d82ed3578f3ac8d3c449b7fec0f98d6b630cb552e6",
+    "src/statgeometry/finite_sympy_review_wbtest.mbt": "610108ff845725de0c42af463ba393089d291839448091f7ea22da1c75592381",
+    "tools/generate_information_review_fixtures.py": "cb1fd813e46e97037618ea2090626bb892c17203d45df7c13bb7a1918c6ad2dc"
+  },
+  "bundle": ".tools/amari-chentsov/review.bundle",
+  "bundle_sha256": "fc149eeecb2589a6aad3a4cb65c50593128ba8d788717b0d1bc9047fb2a09794",
+  "bundle_verification": "The bundle contains this ref:\n8f5990cb7ee774586235fde9e9045670f267c909 refs/heads/verify/amari-review\nThe bundle requires this ref:\n2b3183e0dee82b59c5e31815410b67362816ec55 \nThe bundle uses this hash algorithm: sha1\n/home/hosi/morph/.tools/amari-chentsov/review.bundle is okay\n",
+  "ignored_removed": [
+    ".tools/moon (symlink only; target retained)",
+    "_build (reproducible test builds)",
+    "tools/__pycache__ (Python bytecode)"
+  ],
+  "removed_worktree": true,
+  "removed_branch": true,
+  "remaining_worktrees": "/home/hosi/morph  bc6818d [main]"
+}
