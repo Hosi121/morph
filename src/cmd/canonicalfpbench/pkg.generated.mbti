@@ -1,0 +1,15 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cmd/canonicalfpbench"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Operation
+
+type Prepared
+
+// Type aliases
+
+// Traits
