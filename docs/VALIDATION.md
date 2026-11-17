@@ -5,6 +5,26 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
+## 変更範囲を段階ごとに検査する
+
+[check_affected.py](../tools/check_affected.py)は、基準からの変更と旧・現のimport graphから逆依存を選び、
+固定したソースに対する検査を段階ごとに保存します。長い一個のプロセスにまとめず、一段ずつ別の呼び出しで進めます。
+
+```bash
+tools/measure --cpu 4 python3 tools/check_affected.py --record .tools/affected/run.json --init --base HEAD~1
+tools/measure --cpu 4 python3 tools/check_affected.py --record .tools/affected/run.json --stage next
+python3 tools/check_affected.py --record .tools/affected/run.json --status
+```
+
+`HEAD~1`は比較する実装の基準へ置き換え、初期化前に変更をcommitします。
+`--stage next`は、maintenance、全targetの型、wasm-gc、js、native release、既存formalの順で一段だけ実行します。
+状態が`passed`になるまで進めます。完了済みの段を再指定すると、ログのhashを照合して再実行を省きます。
+
+中断時はソース・runner・完了済みログのhashを再確認し、未完了の段のpartial logを保存します。
+前の子プロセスが生きていれば重複実行を拒否し、同じrecordへの同時更新もロックします。
+HEADやソースが変わった場合は、別のrecordで検査します。
+既存APIの差分には`--allow-interface`による明示したreview対象が必要で、全体のmodule/compiler変更はこの範囲検証で代用しません。
+
 ## 夜間に採用した共通部品の統合検証
 
 コード `a39f323` を固定し、基準 `ab22a4a` からの変更と旧・現のimport graphの逆依存を検査しました。

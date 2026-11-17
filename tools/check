@@ -17,6 +17,7 @@ python3 tools/generate_rational_elimination_cases.py --check
 python3 tools/generate_linearspan_fixtures.py --check
 python3 docs/research/night-normal-form-20261117-oracle.py --check
 python3 docs/research/night-product-20261117-oracle.py --check
+python3 docs/research/late-subtraction-20261117-oracle.py --check
 python3 tools/generate_homology_fixtures.py --check
 python3 tools/generate_persistence_fixtures.py --check
 python3 tools/generate_simplicialmap_fixtures.py --check
