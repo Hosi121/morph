@@ -666,10 +666,7 @@ fn product_remainder(
   b : Polynomial,
   modulus : Polynomial,
 ) -> Result[Polynomial, PolyError] {
-  match divide(multiply_raw(a, b), modulus) {
-    Err(error) => Err(error)
-    Ok(division) => Ok(division.remainder)
-  }
+  remainder_only(multiply_raw(a, b), modulus)
 }
 
 ///|
@@ -686,10 +683,7 @@ fn square_remainder(
     field: base.field,
     coefficients: char_two_square(base.coefficients, @binary.zero()),
   }
-  match divide(square, modulus) {
-    Err(error) => Err(error)
-    Ok(division) => Ok(division.remainder)
-  }
+  remainder_only(square, modulus)
 }
 
 ///|
@@ -725,9 +719,12 @@ pub fn power_mod(
   match compatible(base, modulus) {
     false => Err(FieldMismatch)
     true =>
-      match (divide(base, modulus), divide(one(base.field), modulus)) {
-        (Ok(base), Ok(unit)) =>
-          power_loop(base.remainder, exponent, modulus, unit.remainder)
+      match
+        (
+          remainder_only(base, modulus),
+          remainder_only(one(base.field), modulus),
+        ) {
+        (Ok(base), Ok(unit)) => power_loop(base, exponent, modulus, unit)
         (Err(error), _) | (_, Err(error)) => Err(error)
       }
   }
