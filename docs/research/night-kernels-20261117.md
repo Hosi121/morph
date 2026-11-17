@@ -72,6 +72,38 @@ native release・CPU4・共通ロック・5組のABBAで比較しました。
 QQ多項式は415、Fp・listdecodeは66、GF(2)・コホモロジー・CSSは197テストずつ、各3バックエンドで通過しました。
 各生成器と既存checkerは共通の演算も使うため、旧経路・独立Fraction/Bool参照との有限照合で補っています。
 
+## 二巡目の統合後比較
+
+ソース`4795f87`を一巡目の基準と比較し、18入力・360プロセスすべてで結果と検査が一致しました。
+プロセス全体の中央値の比から、代表的な入力と対照を並べます。
+
+| 統合後の入力 | 基準÷採用 |
+| --- | ---: |
+| QQ正規形・単変数 | 1.130 |
+| QQ正規形・有理非monic | 1.048 |
+| QQ正規形・多変数 | 1.198 |
+| QQ正規形・無簡約の対照 | 1.059 |
+| QQ正規形・空とエラーの対照 | 1.198 |
+| Buchberger生成・検証 | 1.092 |
+| Fp評価・正規化済み点 | 0.991 |
+| Fp評価・512bit点を含む入力 | 12.980 |
+| Fp評価・標数2 | 1.088 |
+| Fp評価・空と定数 | 1.747 |
+| Fp評価・一回利用 | 1.207 |
+| listdecode.encode全体 | 1.023 |
+| GF(2) RREF・小入力 | 1.022 |
+| GF(2) RREF・疎 | 1.761 |
+| GF(2) RREF・密 | 1.057 |
+| GF(2) RREF・幅広 | 0.992 |
+| GF(2) factor・密 | 0.984 |
+| CSS.validate全体 | 1.024 |
+
+[nightnormalbenchの要約](../measurements/night-round2-nightnormalbench-20261117.json)・[完全な生値](../measurements/night-round2-nightnormalbench-20261117.json.gz)、
+[nightevalbenchの要約](../measurements/night-round2-nightevalbench-20261117.json)・[完全な生値](../measurements/night-round2-nightevalbench-20261117.json.gz)、
+[nighteliminatebenchの要約](../measurements/night-round2-nighteliminatebench-20261117.json)・[完全な生値](../measurements/night-round2-nighteliminatebench-20261117.json.gz)を保存しました。
+担当別の値と統合後の値では、リンクされるソースや生成コードの配置も異なります。
+同じ入力でも差の大きさや符号が変わる小差があり、特に幅広RREF、factor、上位CSS・encodeの一律な改善は主張しません。
+
 ## 調査で撤回した前提
 
 `modular.multiply`はすでに積だけを還元しており、両オペランドを再還元する処理はありませんでした。
