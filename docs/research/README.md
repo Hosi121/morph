@@ -13,10 +13,13 @@
 
 | 記録 | 保存している内容 |
 | --- | --- |
+| [確率・情報幾何と拡大体の接続](probability-geometry-20261118.md) | 全体の計算経路、共通テンソル、実際のモデルを含む全100出力の比較 |
 | [拡大体上の楕円曲線](extension-curves-20261118.md) | Jacobian座標、体と曲線の文脈、独立affine参照の全点対・三つ組 |
+| [拡大体上のTate評価](extension-pairings-20261118.md) | shifted divisor、Millerの中間零/極、全商群・双線形性・独立有限体参照 |
 | [点での微分幾何](riemann-20261118.md) | 計量jetの検査、接続と曲率、独立Fraction参照 |
 | [高階テンソルの共通部品](tensor-20261118.md) | shape・置換・縮約・mode product、零次元と演算辞書 |
 | [多項式の微分形式](forms-20261118.md) | 外積と外微分、次数と符号、縮約とCartanのLie微分 |
+| [微分形式と単体の積分](simplexforms-20261118.md) | 向き付き単体、厳密積分、全境界を束縛するStokes証拠 |
 | [Gaussianの厳密モーメント](gaussian-20261118.md) | Stein再帰・不変memoization、独立Wick pairingとの照合 |
 | [有限Markov連鎖](markov-20261118.md) | 確率核・時間発展の規約、検査と独立参照 |
 

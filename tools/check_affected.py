@@ -161,13 +161,13 @@ def write_record(path, record):
     temporary.replace(path)
 
 
-def initialize(root, path, base, allowed, git):
+def initialize(root, path, base, allowed, git, full=False):
     if path.exists():
         raise ValueError('Record already exists; never overwrite evidence')
     if git('status', '--porcelain'):
         raise ValueError('Initialization requires a clean committed working tree')
     base = git('rev-parse', base)
-    if git('diff', '--name-only', base, '--', 'moon.mod', 'tools/moon'):
+    if not full and git('diff', '--name-only', base, '--', 'moon.mod', 'tools/moon'):
         raise ValueError('Module/compiler wrapper changed; use full repository regression')
     old_paths = [p for p in git('ls-tree', '-r', '--name-only', base, '--', 'src').splitlines()
                  if p.endswith('/moon.pkg')]
@@ -177,6 +177,8 @@ def initialize(root, path, base, allowed, git):
            for p in (root / 'src').rglob('moon.pkg')}
     changed = git('diff', '--name-only', '--no-renames', base, '--', 'src').splitlines()
     roots, packages = affected(old, new, changed)
+    if full:
+        packages = sorted(new)
     api_paths = [p for p in git('ls-tree', '-r', '--name-only', base, '--', 'src').splitlines()
                  if p.endswith('/pkg.generated.mbti')]
     api_changes = []
@@ -194,7 +196,9 @@ def initialize(root, path, base, allowed, git):
     runtime_packages, skipped = runtime_selection(root, packages)
     record = dict(started_utc=utc(), source_commit=git('rev-parse', 'HEAD'), baseline=base,
                   runner_path=str(Path(__file__).resolve()), runner_sha256=sha(__file__),
-                  scope='Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.',
+                  scope=('Full repository package graph, with only proven empty CLI drivers omitted from runtime tests.' if full else
+                         'Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.'),
+                  full_repository=full,
                   changed_files=changed, roots=roots, packages=packages,
                   runtime_packages=runtime_packages, skipped_zero_test_commands=skipped,
                   old_import_graph={p: sorted(v) for p, v in old.items()},
@@ -306,12 +310,13 @@ def main():
     parser.add_argument('--record', type=Path, required=True)
     parser.add_argument('--init', action='store_true')
     parser.add_argument('--base')
+    parser.add_argument('--full', action='store_true', help='initialize all current packages instead of only the affected closure')
     parser.add_argument('--allow-interface', action='append', default=[])
     parser.add_argument('--status', action='store_true')
     parser.add_argument('--stage', choices=['next', *STAGES])
     args = parser.parse_args()
-    if not args.init and (args.base or args.allow_interface):
-        raise ValueError('--base/--allow-interface are initialization options')
+    if not args.init and (args.base or args.allow_interface or args.full):
+        raise ValueError('--base/--allow-interface/--full are initialization options')
     root = Path(subprocess.check_output(['git', 'rev-parse', '--show-toplevel'], text=True).strip())
     path = args.record.resolve()
     if not path.is_relative_to(root):
@@ -332,7 +337,7 @@ def main():
         if args.init:
             if not args.base or args.stage or args.status:
                 raise ValueError('--init requires --base and executes no heavy stage')
-            record = initialize(root, path, args.base, args.allow_interface, git)
+            record = initialize(root, path, args.base, args.allow_interface, git, full=args.full)
         else:
             record = json.loads(path.read_text())
             verify_record(root, record, git)

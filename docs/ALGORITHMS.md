@@ -45,6 +45,7 @@
 | 離散対数 | [baby-step giant-step・最小位数と部分群境界](../src/discretelog/discretelog.mbt) |
 | 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](../src/elliptic/elliptic.mbt) |
 | 拡大体上の曲線 | [体と曲線に束縛した点](../src/extensioncurve/curve.mbt)・[Jacobian座標の群演算・射影的な等号](../src/extensioncurve/jacobian.mbt) |
+| ペアリング | [文脈とねじれの検査](../src/pairing/parameters.mbt)・[Miller法](../src/pairing/miller.mbt)・[shifted divisorのreduced Tate評価](../src/pairing/tate.mbt) |
 
 <a id="probability-geometry"></a>
 
@@ -64,6 +65,7 @@
 | Gaussian | [有理の平均・正定値共分散](../src/gaussian/distribution.mbt)・[永続memoとStein再帰によるモーメント](../src/gaussian/moments.mbt)・[2〜4次cumulantからFisher計量jetへ](../src/gaussian/fisher.mbt) |
 | 微分幾何 | [検査済み計量jet](../src/riemann/jet.mbt)・[Levi-Civita接続](../src/riemann/connection.mbt)・[曲率](../src/riemann/curvature.mbt) |
 | 微分形式 | [有理多項式係数の正規形](../src/forms/form.mbt)・[外積・外微分](../src/forms/exterior.mbt)・[縮約・CartanのLie微分](../src/forms/cartan.mbt) |
+| 単体と微分形式 | [向き付き単体への厳密積分](../src/simplexforms/integrate.mbt)・[Stokesの全境界証拠](../src/simplexforms/stokes.mbt) |
 | 有限Markov連鎖 | [検査済み確率核・時間発展](../src/markov/kernel.mbt)・[定常分布の全アフィン解](../src/markov/stationary.mbt)・[到達確率と有限/無限の平均時間](../src/markov/hitting.mbt) |
 
 <a id="groups-topology"></a>

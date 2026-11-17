@@ -1,0 +1,83 @@
+{
+  "raw": "docs/measurements/information-tensor-consumers-20261118.json.gz",
+  "compressed_sha256": "7a9456a34be67c50bd97d52f914991f1bd3846ff3ea3e602371462385285892b",
+  "uncompressed_sha256": "7e07b76fe7b04fa4be609eac8a63165700064fdcfe26d478dbc122cceb625dde",
+  "blocks": 5,
+  "processes": 100,
+  "summary": {
+    "lc-simplex2": {
+      "baseline_median_seconds": 0.017559159499796806,
+      "candidate_median_seconds": 0.017192886998600443,
+      "median_ratio": 1.0213037229422945,
+      "block_ratios": [
+        0.9839961730600656,
+        1.000460715040391,
+        1.129304887011181,
+        1.1345173691685138,
+        0.9925205530789634
+      ],
+      "positive_blocks": 3,
+      "samples_each": 10
+    },
+    "alpha-simplex2": {
+      "baseline_median_seconds": 0.04458784000053129,
+      "candidate_median_seconds": 0.042137516002185293,
+      "median_ratio": 1.0581506512680747,
+      "block_ratios": [
+        1.1077920992588448,
+        1.0389477559128713,
+        1.1345718931056306,
+        1.0635343917634512,
+        0.8915360660523957
+      ],
+      "positive_blocks": 4,
+      "samples_each": 10
+    },
+    "cubic-pullback3": {
+      "baseline_median_seconds": 0.04701252949962509,
+      "candidate_median_seconds": 0.03554349050136807,
+      "median_ratio": 1.3226762154329097,
+      "block_ratios": [
+        1.4989093887002451,
+        1.380710337767562,
+        1.3293520687704872,
+        1.305268224010096,
+        1.3028083423818664
+      ],
+      "positive_blocks": 5,
+      "samples_each": 10
+    },
+    "gaussian2": {
+      "baseline_median_seconds": 0.04966759050148539,
+      "candidate_median_seconds": 0.04990643050223298,
+      "median_ratio": 0.9952142439692837,
+      "block_ratios": [
+        0.9729888963524568,
+        1.0196149880150922,
+        1.057035312587732,
+        1.0132369500442717,
+        0.9955350647832188
+      ],
+      "positive_blocks": 3,
+      "samples_each": 10
+    },
+    "scalar0": {
+      "baseline_median_seconds": 0.0028997055014770012,
+      "candidate_median_seconds": 0.002685757001017919,
+      "median_ratio": 1.0796604087331783,
+      "block_ratios": [
+        1.0920643736911941,
+        1.117126103229107,
+        0.8303659281963025,
+        1.206359309921788,
+        1.060833989099897
+      ],
+      "positive_blocks": 4,
+      "samples_each": 10
+    }
+  },
+  "source_commits": {
+    "baseline": "d04504474f81aa1910df0f59df70aa5ce670063f",
+    "candidate": "efac0bca9ca0cf848f2b9213c6dacb1dbf88c645"
+  }
+}

@@ -8,6 +8,14 @@
 
 各数値はリンク先の同条件比較です。異なる行・測定系列の絶対時間や倍率は合成しません。
 
+## 高階テンソルの走査
+
+`tensor.mode_product` と `contract` は、各成分のoffset再構築から不変blockのcursorへ進めました。
+添字上げ相当の固定操作でdim3/5が1.872/4.055倍、積と二回の縮約が1.920/3.111倍でした。
+通常の `statgeometry` でも利用し、モデル生成を含むcubic引き戻しは1.323倍（5/5 block改善）。
+曲率全体やGaussianの小差は未確定です。
+[機構・直接比較](research/tensor-20261118.md)、[実際の利用経路と全100出力](research/probability-geometry-20261118.md#テンソルの基礎改善)を参照してください。
+
 ## 変換監査から採用した共有
 
 固定ソース`1a51057`を基準`a63dcbc`と比較しました。詳細は[四候補の採否](research/conversion-kernels-20261117.md)、

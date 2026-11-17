@@ -1,7 +1,12 @@
 import unittest
+import copy
+import gzip
+import json
+from pathlib import Path
 from fractions import Fraction as Q
 
 from benchmark_information import decode, expected_outputs
+from check_information_evidence import validate
 
 
 class InformationOracleTests(unittest.TestCase):
@@ -25,6 +30,26 @@ class InformationOracleTests(unittest.TestCase):
         self.assertEqual(normal['second'][2][2][2][2],48)
         self.assertEqual(normal['second'][0][0][0][0],0)
         self.assertEqual(normal['second'][0][0][2][2],8)
+
+    def test_retained_evidence_rejects_missing_duplicate_or_unequal_full_outputs(self):
+        path=Path(__file__).resolve().parent.parent/'docs/measurements/information-tensor-consumers-20261118.json.gz'
+        record=json.loads(gzip.decompress(path.read_bytes()))
+        expected=expected_outputs()
+        validate(record,expected)
+        for change in ['missing','slot','value','timing']:
+            altered=copy.deepcopy(record)
+            if change=='missing':
+                altered['rows'].pop()
+            elif change=='slot':
+                altered['rows'][1]['slot']=0
+            elif change=='value':
+                result=json.loads(altered['rows'][0]['stdout'])
+                result['result']['scalar']=[False,'1','1']
+                altered['rows'][0]['stdout']=json.dumps(result)+'\n'
+            else:
+                altered['rows'][0]['wall_seconds']*=2
+            with self.subTest(change=change), self.assertRaises(AssertionError):
+                validate(altered,expected)
 
 
 if __name__=='__main__':

@@ -5,6 +5,7 @@ cd "$root"
 python3 -m unittest discover -s tools -p 'test_*.py' -q
 python3 tools/check_docs.py
 python3 tools/check_evidence.py
+python3 tools/check_information_evidence.py
 python3 tools/inventory.py --check
 python3 tools/audit_purity.py
 python3 tools/audit_paths.py --check
@@ -26,8 +27,10 @@ python3 tools/generate_monic_identity_n05.py --check
 python3 tools/generate_markov_fixtures.py --check
 python3 tools/generate_riemann_fixtures.py --check
 python3 tools/generate_forms_fixtures.py --check
+python3 tools/generate_simplexforms_fixtures.py --check
 python3 tools/generate_gaussian_fixtures.py --check
 python3 tools/extension-curves-20261118-oracle.py --check
+python3 tools/extension-pairings-20261118-oracle.py --check
 python3 tools/check_information_tour.py
 python3 tools/generate_homology_fixtures.py --check
 python3 tools/generate_persistence_fixtures.py --check

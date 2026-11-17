@@ -23,6 +23,8 @@ python3 tools/check_affected.py --record .tools/affected/run.json --status
 ```
 
 `HEAD~1`は比較する実装の基準へ置き換え、初期化前に変更をcommitします。
+全packageを対象に固定して検査するときは、初期化時に `--full` を追加します。
+その場合も空CLIの省略は同じ厳しい条件に限定し、全graphと省略根拠をrecordへ保存します。
 `--stage next`は、maintenance、全targetの型、wasm-gc、js、native release、既存formalの順で一段だけ実行します。
 状態が`passed`になるまで進めます。完了済みの段を再指定すると、ログのhashを照合して再実行を省きます。
 

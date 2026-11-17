@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：133パッケージ、367ソース。
-核のテスト宣言：5263、bench group：212。
+算法の核：135パッケージ、375ソース。
+核のテスト宣言：5547、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -95,6 +95,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [ntt](../src/ntt) | 1 | 3 | 0 | `binary`, `core`, `fft`, `modular` |
 | [numberfield](../src/numberfield) | 7 | 145 | 1 | `core`, `exact`, `linear`, `linearspan`, `matrix`, `polynomial`, `realalgebraic`, `realminimal`, `sturm`, `zassenhaus` |
 | [orderedsturm](../src/orderedsturm) | 5 | 48 | 0 | `binary`, `core`, `exact`, `numberfield`, `polynomial`, `realalgebraic`, `sturm`, `tarski` |
+| [pairing](../src/pairing) | 4 | 8 | 0 | `binary`, `core`, `extensioncurve`, `galois` |
 | [parity](../src/parity) | 4 | 7 | 0 | `core` |
 | [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
 | [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
@@ -130,6 +131,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sha256](../src/sha256) | 3 | 3 | 0 | `binary`, `core` |
 | [signcad](../src/signcad) | 3 | 9 | 0 | `core`, `polynomial`, `realcad`, `realformula` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |
+| [simplexforms](../src/simplexforms) | 3 | 275 | 0 | `binary`, `core`, `exact`, `forms`, `polynomial` |
 | [simplicialmap](../src/simplicialmap) | 3 | 30 | 0 | `algebra`, `binary`, `core`, `exact`, `homology`, `linear`, `matrix`, `smith` |
 | [smith](../src/smith) | 5 | 15 | 3 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix` |
 | [smt](../src/smt) | 1 | 5 | 0 | `cdcl`, `core`, `difference`, `sat` |
@@ -140,7 +142,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sturm](../src/sturm) | 1 | 3 | 0 | `core`, `exact`, `polynomial` |
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [tarski](../src/tarski) | 3 | 402 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm` |
-| [tensor](../src/tensor) | 2 | 9 | 0 | `algebra`, `core`, `matrix` |
+| [tensor](../src/tensor) | 3 | 10 | 0 | `algebra`, `core`, `matrix` |
 | [trie](../src/trie) | 1 | 2 | 0 | `core` |
 | [unify](../src/unify) | 1 | 2 | 0 | `core` |
 | [zassenhaus](../src/zassenhaus) | 3 | 462 | 0 | `binary`, `core`, `exact`, `fppoly`, `modular`, `polynomial`, `primefield` |
