@@ -1,0 +1,110 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/riemann"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn christoffel_first(Connection) -> @core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]
+
+pub fn christoffel_second(Connection) -> @core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]
+
+pub fn component2(@core.Chain[@core.Chain[@exact.Rational]], @core.Nat, @core.Nat) -> @exact.Rational?
+
+pub fn component3(@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]], @core.Nat, @core.Nat, @core.Nat) -> @exact.Rational?
+
+pub fn component4(@core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]], @core.Nat, @core.Nat, @core.Nat, @core.Nat) -> @exact.Rational?
+
+pub fn connection(MetricJet) -> Connection
+
+pub fn connection_jet(Connection) -> MetricJet
+
+pub fn curvature(Connection) -> Curvature
+
+pub fn curvature_connection(Curvature) -> Connection
+
+pub fn dimension(MetricJet) -> @core.Nat
+
+pub fn first_derivatives(MetricJet) -> @core.Chain[@matrix.Matrix[@exact.Rational]]
+
+pub fn inverse_metric(MetricJet) -> @matrix.Matrix[@exact.Rational]
+
+pub fn is_positive_definite(MetricJet) -> Bool
+
+pub fn lowered_riemann(Curvature) -> @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
+
+pub fn metric(MetricJet) -> @matrix.Matrix[@exact.Rational]
+
+pub fn metric_jet(@matrix.Matrix[@exact.Rational], @core.Chain[@matrix.Matrix[@exact.Rational]], @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]) -> Result[MetricJet, JetError]
+
+pub fn ricci(Curvature) -> @core.Chain[@core.Chain[@exact.Rational]]
+
+pub fn riemann(Curvature) -> @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
+
+pub fn scalar_curvature(Curvature) -> @exact.Rational
+
+pub fn second_derivatives(MetricJet) -> @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Connection {
+  source : MetricJet
+  lower : @core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]
+  upper : @core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]
+}
+pub fn Connection::equal(Self, Self) -> Bool
+pub fn Connection::not_equal(Self, Self) -> Bool
+pub fn Connection::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Curvature {
+  source : Connection
+  lower : @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
+  upper : @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
+  contraction : @core.Chain[@core.Chain[@exact.Rational]]
+  scalar : @exact.Rational
+}
+pub fn Curvature::equal(Self, Self) -> Bool
+pub fn Curvature::not_equal(Self, Self) -> Bool
+pub fn Curvature::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum JetError {
+  MetricShape
+  FirstDerivativeShape
+  SecondDerivativeShape
+  MetricSymmetry
+  FirstDerivativeSymmetry
+  SecondDerivativeSymmetry
+  MixedDerivativeSymmetry
+  SingularMetric
+}
+pub fn JetError::equal(Self, Self) -> Bool
+pub fn JetError::not_equal(Self, Self) -> Bool
+pub fn JetError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct MetricJet {
+  value : @matrix.Matrix[@exact.Rational]
+  inverse_value : @matrix.Matrix[@exact.Rational]
+  first : @core.Chain[@matrix.Matrix[@exact.Rational]]
+  second : @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]
+}
+pub fn MetricJet::equal(Self, Self) -> Bool
+pub fn MetricJet::not_equal(Self, Self) -> Bool
+pub fn MetricJet::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+pub type Tensor2 = @core.Chain[@core.Chain[@exact.Rational]]
+
+pub type Tensor3 = @core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]
+
+pub type Tensor4 = @core.Chain[@core.Chain[@core.Chain[@core.Chain[@exact.Rational]]]]
+
+// Traits
