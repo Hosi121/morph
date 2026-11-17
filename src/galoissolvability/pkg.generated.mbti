@@ -1,0 +1,71 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/galoissolvability"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/permgroup",
+  "Hosi121/morph/splittinggalois",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn advance(Search, @core.Nat) -> Result[Progress, SolvabilityError]
+
+pub fn certificate(Analysis) -> Certificate
+
+pub fn check(@splittinggalois.Group, Certificate) -> Bool
+
+pub fn check_result(@splittinggalois.Group, Analysis, Certificate) -> Bool
+
+pub fn derived_orders(Analysis) -> @core.Chain[@core.Nat]
+
+pub fn is_solvable_by_radicals(Analysis) -> Bool
+
+pub fn permutation_group(Analysis) -> @permgroup.FiniteGroup
+
+pub fn source(Analysis) -> @splittinggalois.Group
+
+pub fn start(@splittinggalois.Group) -> Result[Search, SolvabilityError]
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+pub struct Analysis {
+  // private fields
+}
+pub fn Analysis::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) struct Certificate {
+  galois : @splittinggalois.Certificate
+  group : @permgroup.Certificate
+}
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub(all) enum Progress {
+  Ready(Analysis, Certificate)
+  Paused(Search)
+}
+pub fn Progress::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Search {
+  // private fields
+}
+pub fn Search::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum SolvabilityError {
+  InvalidSource
+  InvalidCertificate
+  InternalInvariant
+}
+pub fn SolvabilityError::equal(Self, Self) -> Bool
+pub fn SolvabilityError::not_equal(Self, Self) -> Bool
+pub fn SolvabilityError::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
