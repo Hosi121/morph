@@ -1,0 +1,17 @@
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/polynomial" @poly,
+  "Hosi121/morph/permgroup" @pg,
+  "Hosi121/morph/bernstein" @bern,
+  "Hosi121/morph/homology" @hom,
+  "Hosi121/morph/presentation" @pre,
+  "Hosi121/morph/realcad" @rcad,
+  "Hosi121/morph/complexsplitting" @split,
+  "Hosi121/morph/splittinggalois" @gal,
+  "Hosi121/morph/galoissolvability" @rad,
+  "Hosi121/morph/testsupport" @oracle,
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
