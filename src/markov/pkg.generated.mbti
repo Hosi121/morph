@@ -14,6 +14,10 @@ pub fn check_composition(Kernel, Kernel, Kernel) -> Bool
 
 pub fn check_evolution(Kernel, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> Bool
 
+pub fn check_stationary(Kernel, @core.Chain[@exact.Rational]) -> Bool
+
+pub fn check_stationary_family(Kernel, StationaryFamily) -> Bool
+
 pub fn compose(Kernel, Kernel) -> Result[Kernel, MarkovError]
 
 pub fn evolve(Kernel, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], MarkovError]
@@ -28,7 +32,19 @@ pub fn power(Kernel, @binary.Binary) -> Result[Kernel, MarkovError]
 
 pub fn states(Kernel) -> @core.Nat
 
+pub fn stationary_affine(Kernel) -> Result[StationaryFamily, MarkovError]
+
+pub fn stationary_directions(StationaryFamily) -> @core.Chain[@core.Chain[@exact.Rational]]
+
+pub fn stationary_kernel(StationaryFamily) -> Kernel
+
+pub fn stationary_member(StationaryFamily, @core.Chain[@exact.Rational]) -> Result[@core.Chain[@exact.Rational], MarkovError]
+
+pub fn stationary_origin(StationaryFamily) -> @core.Chain[@exact.Rational]
+
 pub fn transitions(Kernel) -> @matrix.Matrix[@exact.Rational]
+
+pub fn unique_stationary(Kernel) -> Result[@core.Chain[@exact.Rational], MarkovError]
 
 // Errors
 
@@ -55,6 +71,16 @@ pub(all) enum MarkovError {
 pub fn MarkovError::equal(Self, Self) -> Bool
 pub fn MarkovError::not_equal(Self, Self) -> Bool
 pub fn MarkovError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct StationaryFamily {
+  context : Kernel
+  origin : @core.Chain[@exact.Rational]
+  directions : @core.Chain[@core.Chain[@exact.Rational]]
+}
+pub fn StationaryFamily::equal(Self, Self) -> Bool
+pub fn StationaryFamily::not_equal(Self, Self) -> Bool
+pub fn StationaryFamily::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

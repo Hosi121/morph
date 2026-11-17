@@ -1794,3 +1794,499 @@ test "Fraction Markov ordered composition 7" {
     ],
   )
 }
+
+///|
+test "Fraction complete stationary affine family 0" {
+  fraction_stationary_fixture(
+    [[(0, 1), (1, 1)], [(0, 1), (1, 1)]],
+    [(0, 1), (1, 1)],
+    [],
+    [[]],
+    [Some([(0, 1), (1, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 1" {
+  fraction_stationary_fixture(
+    [[(0, 1), (1, 1)], [(1, 4), (3, 4)]],
+    [(1, 5), (4, 5)],
+    [],
+    [[]],
+    [Some([(1, 5), (4, 5)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 2" {
+  fraction_stationary_fixture(
+    [[(0, 1), (1, 1)], [(1, 2), (1, 2)]],
+    [(1, 3), (2, 3)],
+    [],
+    [[]],
+    [Some([(1, 3), (2, 3)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 3" {
+  fraction_stationary_fixture(
+    [[(0, 1), (1, 1)], [(3, 4), (1, 4)]],
+    [(3, 7), (4, 7)],
+    [],
+    [[]],
+    [Some([(3, 7), (4, 7)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 4" {
+  fraction_stationary_fixture(
+    [[(0, 1), (1, 1)], [(1, 1), (0, 1)]],
+    [(1, 2), (1, 2)],
+    [],
+    [[]],
+    [Some([(1, 2), (1, 2)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 5" {
+  fraction_stationary_fixture(
+    [[(1, 4), (3, 4)], [(0, 1), (1, 1)]],
+    [(0, 1), (1, 1)],
+    [],
+    [[]],
+    [Some([(0, 1), (1, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 6" {
+  fraction_stationary_fixture(
+    [[(1, 4), (3, 4)], [(1, 4), (3, 4)]],
+    [(1, 4), (3, 4)],
+    [],
+    [[]],
+    [Some([(1, 4), (3, 4)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 7" {
+  fraction_stationary_fixture(
+    [[(1, 4), (3, 4)], [(1, 2), (1, 2)]],
+    [(2, 5), (3, 5)],
+    [],
+    [[]],
+    [Some([(2, 5), (3, 5)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 8" {
+  fraction_stationary_fixture(
+    [[(1, 4), (3, 4)], [(3, 4), (1, 4)]],
+    [(1, 2), (1, 2)],
+    [],
+    [[]],
+    [Some([(1, 2), (1, 2)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 9" {
+  fraction_stationary_fixture(
+    [[(1, 4), (3, 4)], [(1, 1), (0, 1)]],
+    [(4, 7), (3, 7)],
+    [],
+    [[]],
+    [Some([(4, 7), (3, 7)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 10" {
+  fraction_stationary_fixture(
+    [[(1, 2), (1, 2)], [(0, 1), (1, 1)]],
+    [(0, 1), (1, 1)],
+    [],
+    [[]],
+    [Some([(0, 1), (1, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 11" {
+  fraction_stationary_fixture(
+    [[(1, 2), (1, 2)], [(1, 4), (3, 4)]],
+    [(1, 3), (2, 3)],
+    [],
+    [[]],
+    [Some([(1, 3), (2, 3)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 12" {
+  fraction_stationary_fixture(
+    [[(1, 2), (1, 2)], [(1, 2), (1, 2)]],
+    [(1, 2), (1, 2)],
+    [],
+    [[]],
+    [Some([(1, 2), (1, 2)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 13" {
+  fraction_stationary_fixture(
+    [[(1, 2), (1, 2)], [(3, 4), (1, 4)]],
+    [(3, 5), (2, 5)],
+    [],
+    [[]],
+    [Some([(3, 5), (2, 5)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 14" {
+  fraction_stationary_fixture(
+    [[(1, 2), (1, 2)], [(1, 1), (0, 1)]],
+    [(2, 3), (1, 3)],
+    [],
+    [[]],
+    [Some([(2, 3), (1, 3)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 15" {
+  fraction_stationary_fixture(
+    [[(3, 4), (1, 4)], [(0, 1), (1, 1)]],
+    [(0, 1), (1, 1)],
+    [],
+    [[]],
+    [Some([(0, 1), (1, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 16" {
+  fraction_stationary_fixture(
+    [[(3, 4), (1, 4)], [(1, 4), (3, 4)]],
+    [(1, 2), (1, 2)],
+    [],
+    [[]],
+    [Some([(1, 2), (1, 2)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 17" {
+  fraction_stationary_fixture(
+    [[(3, 4), (1, 4)], [(1, 2), (1, 2)]],
+    [(2, 3), (1, 3)],
+    [],
+    [[]],
+    [Some([(2, 3), (1, 3)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 18" {
+  fraction_stationary_fixture(
+    [[(3, 4), (1, 4)], [(3, 4), (1, 4)]],
+    [(3, 4), (1, 4)],
+    [],
+    [[]],
+    [Some([(3, 4), (1, 4)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 19" {
+  fraction_stationary_fixture(
+    [[(3, 4), (1, 4)], [(1, 1), (0, 1)]],
+    [(4, 5), (1, 5)],
+    [],
+    [[]],
+    [Some([(4, 5), (1, 5)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 20" {
+  fraction_stationary_fixture(
+    [[(1, 1), (0, 1)], [(0, 1), (1, 1)]],
+    [(1, 1), (0, 1)],
+    [[(-1, 1), (1, 1)]],
+    [[(0, 1)], [(1, 3)], [(1, 1)], [(-1, 1)]],
+    [
+      Some([(1, 1), (0, 1)]),
+      Some([(2, 3), (1, 3)]),
+      Some([(0, 1), (1, 1)]),
+      None,
+    ],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 21" {
+  fraction_stationary_fixture(
+    [[(1, 1), (0, 1)], [(1, 4), (3, 4)]],
+    [(1, 1), (0, 1)],
+    [],
+    [[]],
+    [Some([(1, 1), (0, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 22" {
+  fraction_stationary_fixture(
+    [[(1, 1), (0, 1)], [(1, 2), (1, 2)]],
+    [(1, 1), (0, 1)],
+    [],
+    [[]],
+    [Some([(1, 1), (0, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 23" {
+  fraction_stationary_fixture(
+    [[(1, 1), (0, 1)], [(3, 4), (1, 4)]],
+    [(1, 1), (0, 1)],
+    [],
+    [[]],
+    [Some([(1, 1), (0, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 24" {
+  fraction_stationary_fixture(
+    [[(1, 1), (0, 1)], [(1, 1), (0, 1)]],
+    [(1, 1), (0, 1)],
+    [],
+    [[]],
+    [Some([(1, 1), (0, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 25" {
+  fraction_stationary_fixture([[(1, 1)]], [(1, 1)], [], [[]], [Some([(1, 1)])])
+}
+
+///|
+test "Fraction complete stationary affine family 26" {
+  fraction_stationary_fixture(
+    [
+      [(1, 1), (0, 1), (0, 1)],
+      [(0, 1), (1, 1), (0, 1)],
+      [(1, 3), (2, 3), (0, 1)],
+    ],
+    [(1, 1), (0, 1), (0, 1)],
+    [[(-1, 1), (1, 1), (0, 1)]],
+    [[(0, 1)], [(1, 3)], [(1, 1)], [(-1, 1)]],
+    [
+      Some([(1, 1), (0, 1), (0, 1)]),
+      Some([(2, 3), (1, 3), (0, 1)]),
+      Some([(0, 1), (1, 1), (0, 1)]),
+      None,
+    ],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 27" {
+  fraction_stationary_fixture(
+    [
+      [(0, 1), (1, 1), (0, 1)],
+      [(0, 1), (0, 1), (1, 1)],
+      [(1, 1), (0, 1), (0, 1)],
+    ],
+    [(1, 3), (1, 3), (1, 3)],
+    [],
+    [[]],
+    [Some([(1, 3), (1, 3), (1, 3)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 28" {
+  fraction_stationary_fixture(
+    [
+      [(1, 2), (1, 2), (0, 1), (0, 1)],
+      [(0, 1), (1, 3), (2, 3), (0, 1)],
+      [(0, 1), (0, 1), (1, 4), (3, 4)],
+      [(0, 1), (0, 1), (0, 1), (1, 1)],
+    ],
+    [(0, 1), (0, 1), (0, 1), (1, 1)],
+    [],
+    [[]],
+    [Some([(0, 1), (0, 1), (0, 1), (1, 1)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 29" {
+  fraction_stationary_fixture(
+    [
+      [(1, 1), (0, 1), (0, 1)],
+      [(0, 1), (1, 1), (0, 1)],
+      [(0, 1), (0, 1), (1, 1)],
+    ],
+    [(1, 1), (0, 1), (0, 1)],
+    [[(-1, 1), (1, 1), (0, 1)], [(-1, 1), (0, 1), (1, 1)]],
+    [[(0, 1), (0, 1)], [(1, 3), (1, 3)], [(1, 1), (1, 1)], [(-1, 1), (-1, 1)]],
+    [Some([(1, 1), (0, 1), (0, 1)]), Some([(1, 3), (1, 3), (1, 3)]), None, None],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 30" {
+  fraction_stationary_fixture(
+    [
+      [(1, 1), (0, 1), (0, 1), (0, 1)],
+      [(0, 1), (1, 1), (0, 1), (0, 1)],
+      [(0, 1), (0, 1), (1, 1), (0, 1)],
+      [(0, 1), (0, 1), (0, 1), (1, 1)],
+    ],
+    [(1, 1), (0, 1), (0, 1), (0, 1)],
+    [
+      [(-1, 1), (1, 1), (0, 1), (0, 1)],
+      [(-1, 1), (0, 1), (1, 1), (0, 1)],
+      [(-1, 1), (0, 1), (0, 1), (1, 1)],
+    ],
+    [
+      [(0, 1), (0, 1), (0, 1)],
+      [(1, 3), (1, 3), (1, 3)],
+      [(1, 1), (1, 1), (1, 1)],
+      [(-1, 1), (-1, 1), (-1, 1)],
+    ],
+    [
+      Some([(1, 1), (0, 1), (0, 1), (0, 1)]),
+      Some([(0, 1), (1, 3), (1, 3), (1, 3)]),
+      None,
+      None,
+    ],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 31" {
+  fraction_stationary_fixture(
+    [
+      [(1, 1), (0, 1), (0, 1), (0, 1), (0, 1)],
+      [(0, 1), (1, 1), (0, 1), (0, 1), (0, 1)],
+      [(0, 1), (0, 1), (1, 1), (0, 1), (0, 1)],
+      [(0, 1), (0, 1), (0, 1), (1, 1), (0, 1)],
+      [(0, 1), (0, 1), (0, 1), (0, 1), (1, 1)],
+    ],
+    [(1, 1), (0, 1), (0, 1), (0, 1), (0, 1)],
+    [
+      [(-1, 1), (1, 1), (0, 1), (0, 1), (0, 1)],
+      [(-1, 1), (0, 1), (1, 1), (0, 1), (0, 1)],
+      [(-1, 1), (0, 1), (0, 1), (1, 1), (0, 1)],
+      [(-1, 1), (0, 1), (0, 1), (0, 1), (1, 1)],
+    ],
+    [
+      [(0, 1), (0, 1), (0, 1), (0, 1)],
+      [(1, 3), (1, 3), (1, 3), (1, 3)],
+      [(1, 1), (1, 1), (1, 1), (1, 1)],
+      [(-1, 1), (-1, 1), (-1, 1), (-1, 1)],
+    ],
+    [Some([(1, 1), (0, 1), (0, 1), (0, 1), (0, 1)]), None, None, None],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 32" {
+  fraction_stationary_fixture(
+    [
+      [(0, 1), (1, 1), (0, 1), (0, 1)],
+      [(1, 1), (0, 1), (0, 1), (0, 1)],
+      [(0, 1), (0, 1), (0, 1), (1, 1)],
+      [(0, 1), (0, 1), (1, 1), (0, 1)],
+    ],
+    [(1, 2), (1, 2), (0, 1), (0, 1)],
+    [[(-1, 1), (-1, 1), (1, 1), (1, 1)]],
+    [[(0, 1)], [(1, 3)], [(1, 1)], [(-1, 1)]],
+    [
+      Some([(1, 2), (1, 2), (0, 1), (0, 1)]),
+      Some([(1, 6), (1, 6), (1, 3), (1, 3)]),
+      None,
+      None,
+    ],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 33" {
+  fraction_stationary_fixture(
+    [[(1, 3), (2, 3)], [(1, 2), (1, 2)]],
+    [(3, 7), (4, 7)],
+    [],
+    [[]],
+    [Some([(3, 7), (4, 7)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 34" {
+  fraction_stationary_fixture(
+    [
+      [(2, 7), (1, 7), (4, 7)],
+      [(2, 5), (2, 5), (1, 5)],
+      [(4, 11), (4, 11), (3, 11)],
+    ],
+    [(140, 403), (120, 403), (11, 31)],
+    [],
+    [[]],
+    [Some([(140, 403), (120, 403), (11, 31)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 35" {
+  fraction_stationary_fixture(
+    [
+      [(2, 9), (2, 9), (1, 3), (2, 9)],
+      [(4, 11), (3, 11), (3, 11), (1, 11)],
+      [(1, 4), (1, 4), (1, 6), (1, 3)],
+      [(1, 8), (1, 2), (1, 4), (1, 8)],
+    ],
+    [(1017, 4024), (1199, 4024), (129, 503), (97, 503)],
+    [],
+    [[]],
+    [Some([(1017, 4024), (1199, 4024), (129, 503), (97, 503)])],
+  )
+}
+
+///|
+test "Fraction complete stationary affine family 36" {
+  fraction_stationary_fixture(
+    [
+      [(1, 4), (1, 3), (1, 12), (1, 6), (1, 6)],
+      [(1, 15), (4, 15), (4, 15), (4, 15), (2, 15)],
+      [(1, 6), (1, 6), (1, 6), (1, 3), (1, 6)],
+      [(1, 8), (3, 8), (1, 8), (1, 8), (1, 4)],
+      [(1, 3), (1, 12), (1, 12), (1, 6), (1, 3)],
+    ],
+    [(1092, 5945), (1473, 5945), (4456, 29725), (6176, 29725), (6268, 29725)],
+    [],
+    [[]],
+    [
+      Some([
+        (1092, 5945),
+        (1473, 5945),
+        (4456, 29725),
+        (6176, 29725),
+        (6268, 29725),
+      ]),
+    ],
+  )
+}
