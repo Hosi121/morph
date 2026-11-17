@@ -9,6 +9,11 @@ pub struct State {
   change_rev : @core.Chain[@core.Chain[@core.Nat]]
   index : @core.Nat
   active : (@core.Chain[@core.Nat], @core.Chain[@core.Nat])?
+  // Only committed nonempty columns own pivots; sparse columns are shared.
+  owners : @avl.OrderedMap[
+    @core.Nat,
+    (@core.Chain[@core.Nat], @core.Chain[@core.Nat]),
+  ]
 }
 
 ///|
@@ -41,22 +46,7 @@ pub fn start(source : Filtration) -> State {
     change_rev: Nil,
     index: Zero,
     active: None,
-  }
-}
-
-///|
-fn collision(
-  reduced : @core.Chain[@core.Chain[@core.Nat]],
-  change : @core.Chain[@core.Chain[@core.Nat]],
-  pivot : @core.Nat,
-) -> (@core.Chain[@core.Nat], @core.Chain[@core.Nat])? {
-  match (reduced, change) {
-    (Cons(r, rs), Cons(v, vs)) =>
-      match @core.last(r).equal(Some(pivot)) {
-        true => Some((r, v))
-        false => collision(rs, vs, pivot)
-      }
-    _ => None
+    owners: @avl.empty(),
   }
 }
 
@@ -116,10 +106,10 @@ pub fn run(
                   )
               }
             Some((r, v)) => {
-              let previous = match @core.last(r) {
+              let pivot = @core.last(r)
+              let previous = match pivot {
                 None => None
-                Some(pivot) =>
-                  collision(state.reduced_rev, state.change_rev, pivot)
+                Some(pivot) => @avl.lookup(state.owners, pivot, @core.compare)
               }
               match previous {
                 Some((old_r, old_v)) =>
@@ -136,6 +126,11 @@ pub fn run(
                       change_rev: Cons(v, state.change_rev),
                       index: Succ(state.index),
                       active: None,
+                      owners: match pivot {
+                        None => state.owners
+                        Some(pivot) =>
+                          @avl.put(state.owners, pivot, (r, v), @core.compare)
+                      },
                     },
                     operations,
                     columns,
