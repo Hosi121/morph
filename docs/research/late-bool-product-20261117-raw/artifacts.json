@@ -1,0 +1,49 @@
+{
+  "baseline": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+  "producer_commit": "494b61d",
+  "final_harness_commit": "dad0115",
+  "initial_harness_commit": "49a064a",
+  "decision": "adopt direct product gains; cohomology benefit unresolved; no follow-up",
+  "variants": {
+    "baseline": {
+      "artifact_sha256": "884a4b1394b1e8c440be31ede5bd6d28d4d956ca50fd6d6844a69254f3d859ea",
+      "sources": {
+        "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cohomology/cohomology.mbt": "53dbe7ba32d4982a7de0459eba0d1b99953ba3fa4255e46a07771c8a546b8ced",
+        "src/cohomology/pkg.generated.mbti": "d387eddc2d8787a10652ac37742ea5969039ffa1b357ae175869eff5e8fcd31e",
+        "src/csscode/csscode.mbt": "18bcd517fe90d9a162bd98c4b7fd5b69f0cbb8c364c43b2027b79a3825c69c33",
+        "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+        "src/cmd/lateboolproductbench/main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+        "src/cmd/lateboolproductbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d"
+      },
+      "generated_c_sha256": "1775b0f49a7b852b141f4a25fcae82e467398c99870a4b0715668cc1db7ec025"
+    },
+    "candidate": {
+      "artifact_sha256": "90d513c340dc596fc32c208077628c1bfaffa4d5dfcc71ca41d9fb69ba2ead5d",
+      "sources": {
+        "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+        "src/cohomology/pkg.generated.mbti": "d387eddc2d8787a10652ac37742ea5969039ffa1b357ae175869eff5e8fcd31e",
+        "src/csscode/csscode.mbt": "18bcd517fe90d9a162bd98c4b7fd5b69f0cbb8c364c43b2027b79a3825c69c33",
+        "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+        "src/cmd/lateboolproductbench/main.mbt": "794c4cb600408e833219ef0abf90dfc4adc1bd3fe3cecfe02cffbbc7eb795f33",
+        "src/cmd/lateboolproductbench/moon.pkg": "d0d3a9b6f4ed3bcdf9540e32de7ee82dcc589b1e85f18634f4071d5d8ce34d0d",
+        "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+        "src/gf2/late_product_wbtest.mbt": "a24cc50b41863f4fcadc6ee6c9a883cdef79c7d1f754fab7a36717222e4390e2",
+        "src/cohomology/late_product_wbtest.mbt": "66f8f6a2ea1b6cb0fdd03d1d6dc7d9ae496c01dfa6d7d931059f4325a6189a0d"
+      },
+      "generated_c_sha256": "2e3d516fc075104eada7aecb956b68d60a89568c728a16a6098b7f75796ba7df"
+    }
+  },
+  "raw_sha256": "817bdcb2b9374880626d6879a6ac0ed8ff07aaf6e2f30bdd3b185effd8fc4d2a",
+  "gzip_sha256": "fd08bf911bca7feb5b122beaa9d2f960ba72bf0b90c99a30233337901a441f13",
+  "raw_bytes": 4807061,
+  "gzip_bytes": 122457,
+  "build_command": "tools/measure --cpu 4 tools/moon build src/cmd/lateboolproductbench --target native --release -j 1 --deny-warn",
+  "measurement_command": "tools/measure --cpu 4 python3 tools/compare_field_kernels.py --before <baseline-exe> --after <candidate-exe> --before-root /home/hosi/morph-late-before --after-root /home/hosi/morph-late-gf2 --harness src/cmd/lateboolproductbench --case tiny-and-shapes --case sparse --case dense --case zero --case cohomology-circle --case cohomology-torus --groups 5 --output <raw-json>",
+  "cpu": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        42 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               16\nOn-line CPU(s) list:                  0-15\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Core(TM) Ultra 7 255H\nCPU family:                           6\nModel:                                197\nThread(s) per core:                   1\nCore(s) per socket:                   16\nSocket(s):                            1\nStepping:                             2\nBogoMIPS:                             7372.79\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities\nVirtualization:                       VT-x\nHypervisor vendor:                    Microsoft\nVirtualization type:                  full\nL1d cache:                            768 KiB (16 instances)\nL1i cache:                            1 MiB (16 instances)\nL2 cache:                             48 MiB (16 instances)\nL3 cache:                             24 MiB (1 instance)\nNUMA node(s):                         1\nNUMA node0 CPU(s):                    0-15\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Not affected\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected\n"
+}

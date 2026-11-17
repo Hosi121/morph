@@ -1,0 +1,117 @@
+{
+  "native_first": {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/gf2",
+      "src/cohomology",
+      "--target",
+      "native",
+      "--release",
+      "-j",
+      "1",
+      "--deny-warn"
+    ],
+    "passed": 192,
+    "failed": 0,
+    "note": "Transcribed from successful first native tool output before any comparison; production source unchanged since494b61d."
+  },
+  "source_hashes": {
+    "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+    "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+    "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+    "src/gf2/late_product_wbtest.mbt": "a24cc50b41863f4fcadc6ee6c9a883cdef79c7d1f754fab7a36717222e4390e2",
+    "src/cohomology/late_product_wbtest.mbt": "66f8f6a2ea1b6cb0fdd03d1d6dc7d9ae496c01dfa6d7d931059f4325a6189a0d"
+  },
+  "records": [
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/gf2",
+        "src/cohomology",
+        "--target",
+        "js",
+        "--release",
+        "-j",
+        "1",
+        "--deny-warn"
+      ],
+      "seconds": 3.303512333999606,
+      "exit_code": 0,
+      "stdout": "Total tests: 192, passed: 192, failed: 0.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/moon",
+        "test",
+        "src/gf2",
+        "src/cohomology",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "-j",
+        "1",
+        "--deny-warn"
+      ],
+      "seconds": 2.793636719999995,
+      "exit_code": 0,
+      "stdout": "Total tests: 192, passed: 192, failed: 0.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "tools/moon",
+        "info",
+        "src/gf2",
+        "src/cohomology"
+      ],
+      "seconds": 0.03768041399962385,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: no work to do\n"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "fmt",
+        "--check",
+        "src/gf2",
+        "src/cohomology",
+        "src/cmd/lateboolproductbench"
+      ],
+      "seconds": 0.5324576450002496,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 16 tasks, now up to date\n"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "check",
+        "src/gf2",
+        "src/cohomology",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "seconds": 0.8045363320015895,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 19 tasks, now up to date\n"
+    }
+  ],
+  "src/gf2/kernel.mbt_checker_sha256": "be8a6e8459de5d61b65fb64d9d7e568e2f3444c13b06f2e17cf03adeb8d673af",
+  "src/cohomology/cohomology.mbt_checker_sha256": "686165c67187363fe5353b0a84cae5b075cb3c750e605ab06c6e8a23b53724ed",
+  "scoped_purity": {
+    "files": [
+      "src/gf2/kernel.mbt",
+      "src/gf2/product.mbt",
+      "src/cohomology/cohomology.mbt"
+    ],
+    "passed": true
+  },
+  "checker_api_solve_byte_identity": true,
+  "source_unchanged_during_checks": true
+}

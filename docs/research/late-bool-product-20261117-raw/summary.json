@@ -1,0 +1,180 @@
+{
+  "utc": "2026-11-17T14:28:51.807469+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "all_checked": true,
+  "summary": {
+    "tiny-and-shapes": {
+      "process_ns": {
+        "medians": {
+          "before": 105465935.5,
+          "after": 98932689.0
+        },
+        "ranges": {
+          "before": [
+            101780199,
+            126142271
+          ],
+          "after": [
+            94269658,
+            106174134
+          ]
+        },
+        "before_over_after": 1.0660372882415032,
+        "block_ratios": [
+          1.0699891131266956,
+          1.0646273714832566,
+          1.1310238523899006,
+          1.1048335113890364,
+          1.038722419614706
+        ]
+      }
+    },
+    "sparse": {
+      "process_ns": {
+        "medians": {
+          "before": 183403015.0,
+          "after": 157852485.0
+        },
+        "ranges": {
+          "before": [
+            171032865,
+            191342619
+          ],
+          "after": [
+            146759800,
+            165560563
+          ]
+        },
+        "before_over_after": 1.161863337153039,
+        "block_ratios": [
+          1.1903578062956481,
+          1.1846045681120787,
+          1.156012584824338,
+          1.1530462180224301,
+          1.1770611912619646
+        ]
+      }
+    },
+    "dense": {
+      "process_ns": {
+        "medians": {
+          "before": 305714754.5,
+          "after": 245840060.0
+        },
+        "ranges": {
+          "before": [
+            295984264,
+            331448565
+          ],
+          "after": [
+            236251718,
+            255385322
+          ]
+        },
+        "before_over_after": 1.2435514150948386,
+        "block_ratios": [
+          1.2589453881557293,
+          1.2876200901314794,
+          1.2140394861141892,
+          1.3009966226025993,
+          1.203562453798457
+        ]
+      }
+    },
+    "zero": {
+      "process_ns": {
+        "medians": {
+          "before": 286311418.5,
+          "after": 236963131.0
+        },
+        "ranges": {
+          "before": [
+            266124560,
+            328636523
+          ],
+          "after": [
+            231709507,
+            258237600
+          ]
+        },
+        "before_over_after": 1.2082530193272978,
+        "block_ratios": [
+          1.1819819206352948,
+          1.157526611892101,
+          1.183403089360158,
+          1.2315589149507984,
+          1.2259515499656097
+        ]
+      }
+    },
+    "cohomology-circle": {
+      "process_ns": {
+        "medians": {
+          "before": 119657276.0,
+          "after": 120800852.5
+        },
+        "ranges": {
+          "before": [
+            102807854,
+            133839967
+          ],
+          "after": [
+            103708073,
+            147241895
+          ]
+        },
+        "before_over_after": 0.990533373926314,
+        "block_ratios": [
+          1.12131310771584,
+          0.9284823824690089,
+          0.9204492000514093,
+          1.0097964885364907,
+          0.9236605851398523
+        ]
+      }
+    },
+    "cohomology-torus": {
+      "process_ns": {
+        "medians": {
+          "before": 232800910.5,
+          "after": 224066771.0
+        },
+        "ranges": {
+          "before": [
+            217580205,
+            267172642
+          ],
+          "after": [
+            213736598,
+            253262191
+          ]
+        },
+        "before_over_after": 1.0389800748277842,
+        "block_ratios": [
+          0.9915457105017955,
+          0.9845308645235681,
+          1.1324492796813226,
+          1.0401111840346486,
+          1.014059563938906
+        ]
+      }
+    }
+  },
+  "runs": 120,
+  "before_commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+  "after_commit": "dad0115f9291a206437d52f82f626693c8531c1b",
+  "constructor_validation_included": true,
+  "checker_dependency_note": "GF2 check_certificate shares public multiply; cohomology direct products and csscode.check_rank remain generic matrix.multiply."
+}
