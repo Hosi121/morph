@@ -1,0 +1,17 @@
+{
+  "artifacts": [
+    {
+      "label": "before",
+      "bytes": 650928,
+      "sha256": "79c217e9a205c34dd4be8a02cc736634baae59df7221daf0e05231788cfcaf31",
+      "artifact": "/home/hosi/morph-late-fp/.tools/late-fp-remainder-20261117/before.exe"
+    },
+    {
+      "label": "after-initial",
+      "bytes": 651520,
+      "sha256": "e9455ce0b747888efe7ad1395fdad0d3784d9e7b0f41663614025dc015aa39a1",
+      "artifact": "/home/hosi/morph-late-fp/.tools/late-fp-remainder-20261117/after-initial.exe"
+    }
+  ],
+  "baseline_tracked_libraries_unchanged": true
+}

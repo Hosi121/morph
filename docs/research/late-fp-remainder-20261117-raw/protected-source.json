@@ -1,0 +1,233 @@
+{
+  "base": "905d23dc1a098359c28b4d9d7914c38d9a797c34",
+  "protected_functions": [
+    {
+      "function": "trim",
+      "sha256": "11439bc7decaa4988bd42085b8d25dcae21004d99a05af0871e14ca12b4991fb",
+      "unchanged": true
+    },
+    {
+      "function": "trim_reduced",
+      "sha256": "9b13ecc485c602a030a8ba816ae8b9085a49c7f14b14a9f2abb8f4a62c6218e9",
+      "unchanged": true
+    },
+    {
+      "function": "polynomial",
+      "sha256": "8fc07c59c35c24471c6c3ade0b46d5b35bbdf6118820952e5190c29ffce8f491",
+      "unchanged": true
+    },
+    {
+      "function": "field_of",
+      "sha256": "12f5302ac7349f76c6c7d85b18fff0cb2d2b3ce92ca1cb600d2df6695078a13d",
+      "unchanged": true
+    },
+    {
+      "function": "characteristic",
+      "sha256": "7e80f7ce21c1074261d8b5f255ec03da058359720401bb769b6b41e97ed97d1d",
+      "unchanged": true
+    },
+    {
+      "function": "coefficients",
+      "sha256": "b6542381d55e1dacaa61e0cd4fe8f6fe15cd8dc8d2ddf77974d817a799398034",
+      "unchanged": true
+    },
+    {
+      "function": "is_zero",
+      "sha256": "cea1674276d01919b188d9c95052b121e38c5583d90cd01b0fe6112f9ec83c32",
+      "unchanged": true
+    },
+    {
+      "function": "degree",
+      "sha256": "e8a55c16aa848c6f00f2bf247f6768f35d59b03b5daf3d8d624474c892b47540",
+      "unchanged": true
+    },
+    {
+      "function": "leading",
+      "sha256": "6f9046dbffb52c8106e2ae154825b6afe624cbc035f5638f5d6805a0891b6c4f",
+      "unchanged": true
+    },
+    {
+      "function": "zero",
+      "sha256": "7fd80e0108716835cb83d1867a815e9317b8e7e52e8097d3e20ec6f0d82bcd2d",
+      "unchanged": true
+    },
+    {
+      "function": "constant",
+      "sha256": "f5ea92085306c8fcbc8c02cd05cf9cec048521116b4209e2b73cf326c1089329",
+      "unchanged": true
+    },
+    {
+      "function": "one",
+      "sha256": "4afb5298f49c6a4101f5caff0e55f3164fa1d57ae5535ac8ad164528b2fb33f9",
+      "unchanged": true
+    },
+    {
+      "function": "indeterminate",
+      "sha256": "fd65d61c700a1f9fff598566e14cdbe102164c9d29457376e7564d47bc163196",
+      "unchanged": true
+    },
+    {
+      "function": "compatible",
+      "sha256": "5e47545f06fe2fd6c5d03aeb219320656e920d59692a68d675a30841fb7ec1dd",
+      "unchanged": true
+    },
+    {
+      "function": "add_reduced",
+      "sha256": "6d13e4b90387cca78dc695a9ce155a690599218898c90c14bdfef4961403a818",
+      "unchanged": true
+    },
+    {
+      "function": "negate_reduced",
+      "sha256": "2279b39b1ae740177c166de371c14eecafe58ad65fd7fc108b653a5f23b69c1b",
+      "unchanged": true
+    },
+    {
+      "function": "add_coefficients",
+      "sha256": "9294cefd2b5ce37f675090adccc5cf3b973fbd4fb0f140eb94f855bed25ba392",
+      "unchanged": true
+    },
+    {
+      "function": "add_raw",
+      "sha256": "15be41d84f9980055a49b3d3819cf8a149e8e82b2cd2d0ea78d8af137dc9b3de",
+      "unchanged": true
+    },
+    {
+      "function": "add",
+      "sha256": "86463361b2d754267ee0a263c7835681039112aa500b0a4d1a4cdbd48bd4defd",
+      "unchanged": true
+    },
+    {
+      "function": "negate",
+      "sha256": "913c7230f24a4dac571a67442eaa6576e2220bc898137dfe61ca8928fdb07a4b",
+      "unchanged": true
+    },
+    {
+      "function": "subtract_raw",
+      "sha256": "6003964b0e96b87f14ae365b3acf6d98c593ae7688db252c761c7483de7d2a9d",
+      "unchanged": true
+    },
+    {
+      "function": "subtract",
+      "sha256": "f39333233a1c6b3d3361cfccc333fc0321ced36a1db69c9ce0dddbfc6ee82b63",
+      "unchanged": true
+    },
+    {
+      "function": "scale",
+      "sha256": "39d198bd5693787df6a3227cd7470a8d1b8c9fc6cde54068a7c34413e538069a",
+      "unchanged": true
+    },
+    {
+      "function": "multiply_reduced",
+      "sha256": "e3f95ccd51ea5275b70361b4e1a1647a7284b149e88144cf3c9b923a6972b7fc",
+      "unchanged": true
+    },
+    {
+      "function": "multiply_coefficients",
+      "sha256": "cab815a61a5be569c004e2530843d6ff7c2919669cf476e445bd9df23ab64b97",
+      "unchanged": true
+    },
+    {
+      "function": "multiply_raw",
+      "sha256": "ae69252fbc5e720d28dfe1155aa25bf7d887c9d0305dc2f703602f15c7b80954",
+      "unchanged": true
+    },
+    {
+      "function": "multiply",
+      "sha256": "82205be4d5851c901900590abb90bbd500605a7609762d6a5d1359103ef6bfab",
+      "unchanged": true
+    },
+    {
+      "function": "shifted",
+      "sha256": "1b8dbf3ac853658a52a08445652010db3f6f20d6cb49463e8b67d723b56e44f3",
+      "unchanged": true
+    },
+    {
+      "function": "divide_loop",
+      "sha256": "25db695c9a84c9d31e6647e1548eed8936bef6e63f6db3a80e96544ec3b43ae0",
+      "unchanged": true
+    },
+    {
+      "function": "divide_by_constant",
+      "sha256": "38bec420bf7ff61c44aa8a6edd0aacde602382da0ee6d2d0f587fd031fdaac7e",
+      "unchanged": true
+    },
+    {
+      "function": "divide",
+      "sha256": "266dc866a50f2d09c209620e7f83dce8b63af0c4be7f24827afcd11124a016fa",
+      "unchanged": true
+    },
+    {
+      "function": "monic",
+      "sha256": "cbe36ec540e46c3695a6b4bfeae656f0028a69c422670bb83e4b0c02136b297b",
+      "unchanged": true
+    },
+    {
+      "function": "gcd",
+      "sha256": "7ff592c2ae96812907c1fabf16a381074a0e5aea73c9b54d28110d7c37e71183",
+      "unchanged": true
+    },
+    {
+      "function": "euclid",
+      "sha256": "6c69cdcde45195ab2bb36790f9502b1e5576e529358721212a412461dc303c03",
+      "unchanged": true
+    },
+    {
+      "function": "extended_gcd",
+      "sha256": "9dcdf14205bff2454992a5867193fe3b81daa027cce92b6ca34c23be16d45943",
+      "unchanged": true
+    },
+    {
+      "function": "derivative_coefficients",
+      "sha256": "b9769070a8ade8d00ef5b187876eb806cb022243c8d0725133c7cc34a54577a8",
+      "unchanged": true
+    },
+    {
+      "function": "derivative",
+      "sha256": "b47ef098efdad7c49fbd52c4a95e1033c37e7211c58a10e6eafa341db0b96d1a",
+      "unchanged": true
+    },
+    {
+      "function": "evaluate",
+      "sha256": "e6ba5dc3636163b515548b178898474114bd99c9691c45a2643ad0c51d20d451",
+      "unchanged": true
+    },
+    {
+      "function": "power_loop",
+      "sha256": "2b114f1f75d2d64f0ff9112d86f1119c6da785b9f58f3617fa88cc224ce00534",
+      "unchanged": true
+    }
+  ],
+  "protected_files": [
+    {
+      "path": "src/fppoly/characteristic_two.mbt",
+      "sha256": "ea4e7efa1706ee5cc01bb69afc53e2bf724c28fd81d602fd3868d35fc21ba424",
+      "byte_identical": true
+    },
+    {
+      "path": "src/fppoly/irreducibility.mbt",
+      "sha256": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2",
+      "byte_identical": true
+    },
+    {
+      "path": "src/fppoly/factorization.mbt",
+      "sha256": "9d1ee7da0b5d4c99a35611248e308c91e6e3e99800f61d4e761ee4b0fd76ff3d",
+      "byte_identical": true
+    },
+    {
+      "path": "src/galois/galois.mbt",
+      "sha256": "241c192e94a21839ee4a0684ad83bac8010e7354ea2a7d25ad9bc8d634144c22",
+      "byte_identical": true
+    },
+    {
+      "path": "src/galois/carryless.mbt",
+      "sha256": "938c86d8cc5d1b5a1fe2ad8f0da1e77968f04cde3522f8ece918901d214efdc7",
+      "byte_identical": true
+    }
+  ],
+  "changed_callers": [
+    "power_mod",
+    "product_remainder",
+    "square_remainder"
+  ],
+  "note": "Public divide, its loop/constant helper, all exponent schedule and existing known F2 square are unchanged. Certificate algorithms share modular-power arithmetic; host and public-divide oracles are required."
+}

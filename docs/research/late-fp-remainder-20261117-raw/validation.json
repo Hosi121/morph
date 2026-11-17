@@ -1,0 +1,81 @@
+[
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "native",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 11.31810194100035,
+    "stdout": "Total tests: 53, passed: 53, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "wasm-gc",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 1.5428109019994736,
+    "stdout": "Total tests: 53, passed: 53, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "test",
+      "src/fppoly",
+      "src/galois",
+      "--target",
+      "js",
+      "--release",
+      "--deny-warn",
+      "-j",
+      "1"
+    ],
+    "exit_code": 0,
+    "seconds": 1.7667189399999188,
+    "stdout": "Total tests: 53, passed: 53, failed: 0.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "tools/moon",
+      "info",
+      "src/fppoly",
+      "src/galois",
+      "src/cmd/lateremainderbench",
+      "--target",
+      "all"
+    ],
+    "exit_code": 0,
+    "seconds": 0.35751135899954534,
+    "stdout": "",
+    "stderr": "Finished. moon: ran 20 tasks, now up to date\n"
+  },
+  {
+    "command": [
+      "python3",
+      "/home/hosi/morph-late-fp/docs/research/late-fp-remainder-20261117-raw/audit_protected.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.039623822000066866,
+    "stdout": "Public division/oracle, exponent schedule, known F2 square and checkers unchanged\n",
+    "stderr": ""
+  }
+]

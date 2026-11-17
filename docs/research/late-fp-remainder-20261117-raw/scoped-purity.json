@@ -1,0 +1,8 @@
+{
+  "scope": [
+    "src/fppoly/remainder_only.mbt",
+    "src/fppoly/polynomial.mbt"
+  ],
+  "passed": true,
+  "note": "Only changed production files checked; root owns full global regression."
+}

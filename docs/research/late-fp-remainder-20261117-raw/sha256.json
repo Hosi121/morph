@@ -1,0 +1,17 @@
+{
+  "after-initial-snapshot.json": "00d43b07fbdefd6b85af68023cc10110e650c59daeed3f044d57bbcf23fa5da9",
+  "api-diff.json": "e3bdd3273e1eba194cfe2b341b0bb5550d24686bd98cdf560a953f9696513753",
+  "audit_protected.py": "e0d47517b84f05c90ec1fc8dae5220c49e0aa6b3ef1ed0c4ea4d28551aeeb91b",
+  "before-snapshot.json": "45087580c70d6bd16506e8fcabeb5b10691aedf09cf43fb6f7858eae9358fe57",
+  "compress_runs.py": "e74abf63224f2489e0ac61a0231fe1664f4be8e56b20266c1eec090333052089",
+  "final_validation.py": "2b6a6d1a854be613cd5490bb9664df0df52d592894c00c37d615515904fd7927",
+  "freeze_snapshot.py": "fc1c084bd447336ee7f8abbfd5631994084a6132365a2e117c8f4b50a3c8efcd",
+  "initial-abba-summary.json": "f4b89eb4b890d9e6866417eb387b7ff60bcac3b7f2825a30757e3f73a203a6ac",
+  "initial-abba.json.gz": "e60c4adecf2b1e6d2c23ea153b0b18c599fac78eade9557e7e29a1db6c836863",
+  "initial-native.json": "a658ea7f2470b5c2c91e7d9c23e6ed3f06313395108056272da96f810c4f2a0a",
+  "post-comparison-artifacts.json": "28a877939f50aa2a9513186514e5353e1744603dbac2821eadfc9cff7a8c9c45",
+  "protected-source.json": "732365df5171a30bc37537426aee730e1747a6f12ebba2a5b0fadcef0269d105",
+  "scoped-purity.json": "94e080dc02b91fb7f9ab35ce1ab0666ccd22541d021088b6f35120a54f2c3211",
+  "validation.json": "6c9e2a02917e38d8eb88bbfa21bdd04dfbbd807799296133c625fbc7a3d26e4b",
+  "../late-fp-remainder-20261117.md": "90c615e7fe6655dfa800a8bd9d0eadb6bd24410a175e8e8cbfd0d9588d54a442"
+}
