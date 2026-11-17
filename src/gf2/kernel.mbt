@@ -359,12 +359,12 @@ pub fn inverse_transform(value : Factorization) -> @matrix.Matrix[Bool]? {
 }
 
 ///|
-/// Initially retain the independent generic matrix checker as the trust boundary.
+/// Exact Boolean product without scalar callback dispatch; dimensions are checked.
 pub fn multiply(
   a : @matrix.Matrix[Bool],
   b : @matrix.Matrix[Bool],
 ) -> @matrix.Matrix[Bool]? {
-  @matrix.multiply(a, b, scalars())
+  boolean_product(a, b)
 }
 
 ///|

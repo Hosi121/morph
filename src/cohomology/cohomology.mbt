@@ -294,8 +294,7 @@ pub fn compute(source : @homology.Complex, degree : @core.Nat) -> Cohomology? {
     Some(value) => value
     None => return None
   }
-  let incoming_coordinates = match
-    @matrix.multiply(inverse_basis, previous, @csscode.scalars()) {
+  let incoming_coordinates = match @gf2.multiply(inverse_basis, previous) {
     Some(value) => value
     None => return None
   }
