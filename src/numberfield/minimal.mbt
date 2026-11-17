@@ -1,11 +1,4 @@
 ///|
-fn coordinates(value : Element) -> @core.Chain[@exact.Rational] {
-  @core.map(@core.indices(degree(value.field)), fn(i) {
-    coefficient(value.residue, i)
-  })
-}
-
-///|
 fn vector_matrix(
   d : @core.Nat,
   columns : @core.Chain[@core.Chain[@exact.Rational]],

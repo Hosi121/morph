@@ -24,6 +24,8 @@ pub fn check_realization(Element, RealCertificate) -> Bool
 
 pub fn check_realization_result(Element, @realalgebraic.Number, RealCertificate) -> Bool
 
+pub fn coordinates(Element) -> @core.Chain[@exact.Rational]
+
 pub fn degree(Field) -> @core.Nat
 
 pub fn divide(Element, Element) -> Result[Element?, FieldError]
