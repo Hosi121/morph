@@ -78,3 +78,19 @@ test "extended Euclid returns valid certificates and exact primality" {
     assert_eq(is_prime(@oracle.binary(n)), expected)
   }
 }
+
+///|
+test "canonical reduction boundaries and signed residues match machine arithmetic" {
+  for m in 2..<40 {
+    let ring = mod(m)
+    for a in 0..<(m * 3 + 2) {
+      assert_eq(@oracle.int_of_binary(reduce(ring, @oracle.binary(a))), a % m)
+    }
+    for a in -128..<129 {
+      assert_eq(
+        @oracle.int_of_binary(signed_reduce(ring, @oracle.integer(a))),
+        ((a % m) + m) % m,
+      )
+    }
+  }
+}

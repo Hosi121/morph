@@ -26,9 +26,14 @@ pub fn value(m : Modulus) -> @binary.Binary {
 
 ///|
 pub fn reduce(m : Modulus, a : @binary.Binary) -> @binary.Binary {
-  match @binary.remainder(a, m.value) {
-    Some(remainder) => remainder
-    None => @binary.zero()
+  match @binary.compare(a, m.value) {
+    Less => a
+    Equal => @binary.zero()
+    Greater =>
+      match @binary.remainder(a, m.value) {
+        Some(remainder) => remainder
+        None => @binary.zero()
+      }
   }
 }
 
