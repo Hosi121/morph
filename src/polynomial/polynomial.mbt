@@ -468,18 +468,25 @@ pub fn monic(p : Polynomial) -> Polynomial {
   match p.terms {
     Nil => p
     Cons(leading, _) =>
-      match @exact.nonzero(leading.coefficient) {
-        None => p
-        Some(coefficient) => {
-          let factor = @exact.reciprocal(coefficient)
-          {
-            variables: p.variables,
-            terms: @core.map(p.terms, fn(term) {
-              {
-                coefficient: @exact.rational_multiply(factor, term.coefficient),
-                exponents: term.exponents,
-              }
-            }),
+      if monic_positive_one(leading.coefficient) {
+        p
+      } else {
+        match @exact.nonzero(leading.coefficient) {
+          None => p
+          Some(coefficient) => {
+            let factor = @exact.reciprocal(coefficient)
+            {
+              variables: p.variables,
+              terms: @core.map(p.terms, fn(term) {
+                {
+                  coefficient: @exact.rational_multiply(
+                    factor,
+                    term.coefficient,
+                  ),
+                  exponents: term.exponents,
+                }
+              }),
+            }
           }
         }
       }
