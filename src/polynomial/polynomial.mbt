@@ -254,10 +254,14 @@ pub fn multiply(
 ) -> Result[Polynomial, PolyError] {
   match @core.compare(a.variables, b.variables) {
     Equal =>
-      Ok({
-        variables: a.variables,
-        terms: balanced_product_terms(a.terms, b.terms),
-      })
+      match unit_identity_product(a, b) {
+        Some(value) => Ok(value)
+        None =>
+          Ok({
+            variables: a.variables,
+            terms: balanced_product_terms(a.terms, b.terms),
+          })
+      }
     _ => Err(DimensionMismatch)
   }
 }
