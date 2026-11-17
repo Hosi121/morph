@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/rips"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/persistence",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn build(Cloud, @core.Nat) -> @persistence.Filtration?
+
+pub fn check_filtration(Cloud, @core.Nat, @persistence.Filtration) -> Bool
+
+pub fn cloud(@core.Nat, @core.Chain[@core.Chain[@exact.Rational]]) -> Cloud?
+
+pub fn dimension(Cloud) -> @core.Nat
+
+pub fn grade(Cloud, @core.Chain[@core.Nat]) -> @exact.Rational?
+
+pub fn points(Cloud) -> @core.Chain[@core.Chain[@exact.Rational]]
+
+pub fn squared_distance(@core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> @exact.Rational?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub struct Cloud {
+  dimension : @core.Nat
+  points : @core.Chain[@core.Chain[@exact.Rational]]
+  distances : @core.Chain[@core.Chain[@exact.Rational]]
+}
+pub fn Cloud::equal(Self, Self) -> Bool
+pub fn Cloud::not_equal(Self, Self) -> Bool
+pub fn Cloud::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
