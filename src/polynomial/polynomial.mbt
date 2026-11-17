@@ -256,9 +256,7 @@ pub fn multiply(
     Equal =>
       Ok({
         variables: a.variables,
-        terms: @core.fold_left(a.terms, @core.Nil, fn(found, term) {
-          merge_terms(found, term_times(term, b.terms))
-        }),
+        terms: balanced_product_terms(a.terms, b.terms),
       })
     _ => Err(DimensionMismatch)
   }
