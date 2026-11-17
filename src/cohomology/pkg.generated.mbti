@@ -1,0 +1,69 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/cohomology"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/csscode",
+  "Hosi121/morph/homology",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Cohomology) -> Certificate
+
+pub fn check_result(@homology.Complex, @core.Nat, Group, Certificate) -> Bool
+
+pub fn coboundary(@homology.Complex, @core.Nat) -> @matrix.Matrix[Bool]?
+
+pub fn compute(@homology.Complex, @core.Nat) -> Cohomology?
+
+pub fn coordinates(Cohomology, @core.Chain[Bool]) -> @core.Chain[Bool]?
+
+pub fn equivalent(Cohomology, @core.Chain[Bool], @core.Chain[Bool]) -> Bool?
+
+pub fn representative(Cohomology, @core.Chain[Bool]) -> @core.Chain[Bool]?
+
+pub fn result(Cohomology) -> Group
+
+pub fn validate_certificate(@homology.Complex, @core.Nat, Group, Certificate) -> Cohomology?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : @homology.Complex
+  degree : @core.Nat
+  result : Group
+  outgoing_rank : @csscode.RankWitness
+  incoming_rank : @csscode.RankWitness
+  basis : @matrix.Matrix[Bool]
+  inverse_basis : @matrix.Matrix[Bool]
+  incoming_coordinates : @matrix.Matrix[Bool]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Cohomology {
+  witness : Certificate
+}
+pub fn Cohomology::equal(Self, Self) -> Bool
+pub fn Cohomology::not_equal(Self, Self) -> Bool
+pub fn Cohomology::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Group {
+  rank : @core.Nat
+  coboundaries : @core.Chain[@core.Chain[Bool]]
+  representatives : @core.Chain[@core.Chain[Bool]]
+}
+pub fn Group::equal(Self, Self) -> Bool
+pub fn Group::not_equal(Self, Self) -> Bool
+pub fn Group::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
