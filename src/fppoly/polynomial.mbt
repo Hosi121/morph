@@ -294,14 +294,43 @@ pub fn scale(value : Polynomial, scalar : @binary.Binary) -> Polynomial {
       }
     false => ()
   }
+  if is_zero(value) {
+    return value
+  }
   let modulus = @primefield.modulus(value.field)
+  let scalar = @modular.reduce(modulus, scalar)
+  match @binary.bits(scalar) {
+    Nil => return zero(value.field)
+    Cons(true, Nil) => return value
+    _ => ()
+  }
   {
     field: value.field,
     coefficients: trim_reduced(
       @core.map(value.coefficients, fn(coefficient) {
-        @modular.multiply(modulus, coefficient, scalar)
+        multiply_reduced(modulus, coefficient, scalar)
       }),
     ),
+  }
+}
+
+///|
+/// Both operands are canonical coefficients below p at this private boundary.
+/// Zero and unit products can share an operand without another remainder.
+/// General modular.multiply already reduces only its product, so there are no
+/// operand reductions to remove. Arbitrary scalars must be normalized first;
+/// derivative exponents and public evaluation points are not canonical inputs.
+fn multiply_reduced(
+  modulus : @modular.Modulus,
+  a : @binary.Binary,
+  b : @binary.Binary,
+) -> @binary.Binary {
+  match (@binary.bits(a), @binary.bits(b)) {
+    (Nil, _) => a
+    (_, Nil) => b
+    (Cons(true, Nil), _) => b
+    (_, Cons(true, Nil)) => a
+    _ => @modular.multiply(modulus, a, b)
   }
 }
 
@@ -317,7 +346,7 @@ fn multiply_coefficients(
       add_coefficients(
         modulus,
         @core.map(b, fn(coefficient) {
-          @modular.multiply(modulus, head, coefficient)
+          multiply_reduced(modulus, head, coefficient)
         }),
         Cons(@binary.zero(), multiply_coefficients(modulus, tail, b)),
       )
@@ -396,7 +425,7 @@ fn divide_loop(
           let scalar = match characteristic_two(remainder.field) {
             true => coefficient
             false =>
-              @modular.multiply(
+              multiply_reduced(
                 @primefield.modulus(remainder.field),
                 coefficient,
                 inverse_leading,
