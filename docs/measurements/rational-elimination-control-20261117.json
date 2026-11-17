@@ -1,0 +1,2107 @@
+{
+  "utc": "2026-11-17T10:04:16.092798+00:00",
+  "before": {
+    "root": "/home/hosi/morph-perf-rational",
+    "commit": "2e02abe2cf2b9cc3978f0e839685a8038e69a278",
+    "working_tree": [
+      "?? docs/measurements/rational-elimination-20261117.json",
+      "?? docs/research/rational-elimination-20261117.md",
+      "?? src/cmd/rationalbench/pkg.generated.mbti"
+    ],
+    "source_manifest_sha256": "11eb2bdc28d700e90f1338afd0b0939196c0650ea0b5e26d0fff24cfe2913863",
+    "source_file_count": 863,
+    "artifact": "/home/hosi/morph-perf-rational/_build/native/release/build/cmd/rationalbench/rationalbench.exe",
+    "artifact_sha256": "7eb2846ca5270637196cead1f66ef99e2a9ad209b49743d06a83dac2dc58dc34",
+    "harness": {
+      "main.mbt": "6f6b490d4d82e83c693b3eadbad4146f526d38aac1fbcf63cec0cf7f358208d7",
+      "moon.pkg": "3a230f1ad85ebe697d969472bc5fce1965460a22434007e18e25a8e804a44594"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-perf-rational",
+    "commit": "2e02abe2cf2b9cc3978f0e839685a8038e69a278",
+    "working_tree": [
+      "?? docs/measurements/rational-elimination-20261117.json",
+      "?? docs/research/rational-elimination-20261117.md",
+      "?? src/cmd/rationalbench/pkg.generated.mbti"
+    ],
+    "source_manifest_sha256": "11eb2bdc28d700e90f1338afd0b0939196c0650ea0b5e26d0fff24cfe2913863",
+    "source_file_count": 863,
+    "artifact": "/home/hosi/morph-perf-rational/_build/native/release/build/cmd/rationalbench/rationalbench.exe",
+    "artifact_sha256": "7eb2846ca5270637196cead1f66ef99e2a9ad209b49743d06a83dac2dc58dc34",
+    "harness": {
+      "main.mbt": "6f6b490d4d82e83c693b3eadbad4146f526d38aac1fbcf63cec0cf7f358208d7",
+      "moon.pkg": "3a230f1ad85ebe697d969472bc5fce1965460a22434007e18e25a8e804a44594"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "dense-rref",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 146726973,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 141707.82200000001,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":141707.82200000001,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 145841013,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 142131.306,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":142131.306,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 130289239,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 126626.63699999999,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":126626.63699999999,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 147916552,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 144212.003,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":144212.003,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 142652349,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 138874.467,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":138874.467,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 150211261,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 145790.03,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":145790.03,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 149486818,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 145660.337,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":145660.337,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 147075090,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 143112.764,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":143112.764,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 147655644,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 143642.557,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":143642.557,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 148326606,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 144427.12800000003,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":144427.12800000003,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 141492791,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 137240.528,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":137240.528,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 161753256,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 157345.405,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":157345.405,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 137101320,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 133036.897,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":133036.897,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 157594070,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 153901.145,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":153901.145,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 155913709,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 152316.014,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":152316.014,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 149796432,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 146100.91999999993,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":146100.91999999993,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 148361968,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 144695.389,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":144695.389,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 152213334,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 148847.723,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":148847.723,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 158933524,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 155394.057,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":155394.057,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-rref",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 148103748,
+      "payload": {
+        "fixture": "dense-rref",
+        "iterations": 400,
+        "elapsed_us": 143791.233,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-rref\",\"iterations\":400,\"elapsed_us\":143791.233,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1415639512,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1408777.405,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1408777.405,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1442937988,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1436028.479,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1436028.479,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1441371043,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1433680.472,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1433680.472,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1500101271,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1490777.492,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1490777.492,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1421842598,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1414808.9679999999,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1414808.9679999999,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1476850777,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1468305.969,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1468305.969,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1398082599,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1391269.184,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1391269.184,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1445432244,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1437082.418,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1437082.418,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1544597665,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1537241.8360000001,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1537241.8360000001,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1552587238,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1543721.629,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1543721.629,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1534216033,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1525814.813,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1525814.813,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1509095927,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1499944.4780000001,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1499944.4780000001,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1536436443,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1527718.849,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1527718.849,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1540228170,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1531558.023,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1531558.023,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1454211490,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1446743.905,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1446743.905,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1549904251,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1541652.763,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1541652.763,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 1618363163,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1608507.6030000001,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1608507.6030000001,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 1519537730,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1512579.8390000002,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1512579.8390000002,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 1525646564,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1518938.277,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1518938.277,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "dense-inverse",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 1469672686,
+      "payload": {
+        "fixture": "dense-inverse",
+        "iterations": 400,
+        "elapsed_us": 1461057.422,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"dense-inverse\",\"iterations\":400,\"elapsed_us\":1461057.422,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 265274138,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 261333.459,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":261333.459,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 265425138,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 260474.09699999995,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":260474.09699999995,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 275000677,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 270711.413,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":270711.413,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 271405388,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 266862.897,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":266862.897,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 286914384,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 282543.177,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":282543.177,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 260269555,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 253941.892,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":253941.892,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 239946654,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 235716.552,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":235716.552,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 285224122,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 281243.513,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":281243.513,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 267341276,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 262324.304,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":262324.304,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 261513239,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 257253.07700000002,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":257253.07700000002,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 243095878,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 239496.33800000002,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":239496.33800000002,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 255481026,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 251223.34100000001,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":251223.34100000001,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 251497939,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 247058.59699999995,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":247058.59699999995,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 279764781,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 275256.968,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":275256.968,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 267350462,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 262908.064,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":262908.064,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 282118131,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 277276.714,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":277276.714,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 268546675,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 264841.971,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":264841.971,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 268040924,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 264300.33,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":264300.33,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 280678848,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 277036.701,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":277036.701,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "fractional-solve",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 272049658,
+      "payload": {
+        "fixture": "fractional-solve",
+        "iterations": 400,
+        "elapsed_us": 268082.75800000003,
+        "checksum": 2000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"fractional-solve\",\"iterations\":400,\"elapsed_us\":268082.75800000003,\"checksum\":2000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 96343214,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 92699.80299999996,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":92699.80299999996,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 108684333,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 104219.397,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":104219.397,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 106058145,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 102334.638,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":102334.638,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 108336029,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 104748.355,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":104748.355,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 117894705,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 114667.36600000001,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":114667.36600000001,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 102299521,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 99196.66,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":99196.66,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 85620295,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 82578.052,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":82578.052,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 85407126,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 82540.26,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":82540.26,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 92603919,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 89138.90000000001,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":89138.90000000001,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 107148563,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 103765.18599999999,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":103765.18599999999,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 87443571,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 84216.173,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":84216.173,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 96549263,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 92493.891,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":92493.891,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 98210510,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 95043.7,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":95043.7,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 147180866,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 144013.09100000001,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":144013.09100000001,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 93526207,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 89966.301,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":89966.301,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 86509451,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 83208.02100000001,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":83208.02100000001,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 100848351,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 97723.788,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":97723.788,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 100805245,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 97426.941,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":97426.941,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 95297357,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 91561.404,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":91561.404,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "singular-rectangular",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 98928994,
+      "payload": {
+        "fixture": "singular-rectangular",
+        "iterations": 10000,
+        "elapsed_us": 96059.21600000001,
+        "checksum": 10000,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"singular-rectangular\",\"iterations\":10000,\"elapsed_us\":96059.21600000001,\"checksum\":10000,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143044664,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 138195.63,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":138195.63,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 129056562,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 124539.679,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":124539.679,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 100881874,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 97245.93400000001,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":97245.93400000001,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 135359955,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 130900.537,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":130900.537,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 131243343,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 126782.33200000001,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":126782.33200000001,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 123686703,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 120289.265,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":120289.265,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 128795620,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 125014.814,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":125014.814,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 129061585,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 125573.42700000003,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":125573.42700000003,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 134481221,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 130994.551,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":130994.551,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 148058054,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 144535.12,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":144535.12,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 139435829,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 134899.155,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":134899.155,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 126948367,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 123335.642,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":123335.642,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 135475586,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 131919.229,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":131919.229,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 103524879,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 99909.208,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":99909.208,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 126574151,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 123443.924,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":123443.924,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 120128436,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 116128.37700000001,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":116128.37700000001,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 132320949,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 128056.829,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":128056.829,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 135583742,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 131995.094,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":131995.094,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 152893203,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 147348.4,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":147348.4,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "numberfield-minpoly",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 147388294,
+      "payload": {
+        "fixture": "numberfield-minpoly",
+        "iterations": 600,
+        "elapsed_us": 143370.38700000002,
+        "checksum": 1200,
+        "checked": true
+      },
+      "stdout": "{\"fixture\":\"numberfield-minpoly\",\"iterations\":600,\"elapsed_us\":143370.38700000002,\"checksum\":1200,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "dense-rref": {
+      "process_ns": {
+        "medians": {
+          "before": 147786098.0,
+          "after": 149849039.5
+        },
+        "ranges": {
+          "before": [
+            137101320,
+            161753256
+          ],
+          "after": [
+            130289239,
+            158933524
+          ]
+        },
+        "before_over_after": 0.9862332017149833,
+        "block_ratios": [
+          1.0670454354997656,
+          0.966731051352518,
+          1.0675921046098926,
+          0.9151216372210018,
+          0.9528160364711123
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 143716.89500000002,
+          "after": 145725.18349999998
+        },
+        "ranges": {
+          "before": [
+            133036.897,
+            157345.405
+          ],
+          "after": [
+            126626.63699999999,
+            155394.057
+          ]
+        },
+        "before_over_after": 0.9862186586301332,
+        "block_ratios": [
+          1.0638562782868153,
+          0.9675308832258224,
+          1.0685925614405651,
+          0.911568175707619,
+          0.948215008471223
+        ]
+      }
+    },
+    "dense-inverse": {
+      "process_ns": {
+        "medians": {
+          "before": 1504598599.0,
+          "after": 1498194253.5
+        },
+        "ranges": {
+          "before": [
+            1415639512,
+            1618363163
+          ],
+          "after": [
+            1398082599,
+            1552587238
+          ]
+        },
+        "before_over_after": 1.004274709694713,
+        "block_ratios": [
+          1.010897498035813,
+          0.9973361003549044,
+          0.9892737968399024,
+          1.030690561318574,
+          1.0140719085818324
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 1495360.985,
+          "after": 1490442.904
+        },
+        "ranges": {
+          "before": [
+            1408777.405,
+            1608507.6030000001
+          ],
+          "after": [
+            1391269.184,
+            1543721.629
+          ]
+        },
+        "before_over_after": 1.0032997446509364,
+        "block_ratios": [
+          1.0104003390272729,
+          0.9973129690290046,
+          0.9894609076610534,
+          1.0305777205271982,
+          1.012550447513143
+        ]
+      }
+    },
+    "fractional-solve": {
+      "process_ns": {
+        "medians": {
+          "before": 269976031.5,
+          "after": 266387800.0
+        },
+        "ranges": {
+          "before": [
+            251497939,
+            286914384
+          ],
+          "after": [
+            239946654,
+            280678848
+          ]
+        },
+        "before_over_after": 1.0134699543297403,
+        "block_ratios": [
+          0.993067894064239,
+          1.1437824198935544,
+          1.0360936502857518,
+          0.9753266369878859,
+          0.985195651014376
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 265852.434,
+          "after": 261691.08049999998
+        },
+        "ranges": {
+          "before": [
+            247058.59699999995,
+            282543.177
+          ],
+          "after": [
+            235716.552,
+            277036.701
+          ]
+        },
+        "before_over_after": 1.0159017781272832,
+        "block_ratios": [
+          0.9943726740588237,
+          1.1513876599256603,
+          1.03381630555116,
+          0.9743020817450658,
+          0.9844601393988139
+        ]
+      }
+    },
+    "singular-rectangular": {
+      "process_ns": {
+        "medians": {
+          "before": 97379886.5,
+          "after": 101552383.0
+        },
+        "ranges": {
+          "before": [
+            85407126,
+            117894705
+          ],
+          "after": [
+            85620295,
+            147180866
+          ]
+        },
+        "before_over_after": 0.9589128647035294,
+        "block_ratios": [
+          0.9531381257507888,
+          1.0818541403850672,
+          0.9720494765733954,
+          0.7674056216869041,
+          1.0187388793545942
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 93871.75149999998,
+          "after": 98311.80050000001
+        },
+        "ranges": {
+          "before": [
+            82540.26,
+            114667.36600000001
+          ],
+          "after": [
+            82578.052,
+            144013.09100000001
+          ]
+        },
+        "before_over_after": 0.9548370696353992,
+        "block_ratios": [
+          0.9559152790212979,
+          1.0849013255485174,
+          0.9662276726066228,
+          0.761826584283115,
+          1.025370130628955
+        ]
+      }
+    },
+    "numberfield-minpoly": {
+      "process_ns": {
+        "medians": {
+          "before": 133401085.0,
+          "after": 128926091.0
+        },
+        "ranges": {
+          "before": [
+            120128436,
+            147388294
+          ],
+          "after": [
+            100881874,
+            152893203
+          ]
+        },
+        "before_over_after": 1.0347097625103672,
+        "block_ratios": [
+          1.2107789538935543,
+          1.0309827829015974,
+          0.9093396536718661,
+          1.1108435441905167,
+          0.9696069230073134
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 129478.68299999999,
+          "after": 124777.24650000001
+        },
+        "ranges": {
+          "before": [
+            116128.37700000001,
+            143370.38700000002
+          ],
+          "after": [
+            97245.93400000001,
+            147348.4
+          ]
+        },
+        "before_over_after": 1.0376786363850399,
+        "block_ratios": [
+          1.213316604986456,
+          1.0287466887169048,
+          0.910161049499028,
+          1.1105624701962988,
+          0.971661133443115
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}
