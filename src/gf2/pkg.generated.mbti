@@ -1,0 +1,84 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/gf2"
+
+import {
+  "Hosi121/morph/algebra",
+  "Hosi121/morph/core",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/rowreduce",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn certificate(Factorization) -> Certificate?
+
+pub fn check_certificate(@matrix.Matrix[Bool], @rowreduce.Reduction[Bool], Certificate) -> Bool
+
+pub fn determinant(@matrix.Matrix[Bool]) -> Bool?
+
+pub fn factor(@matrix.Matrix[Bool]) -> Factorization?
+
+pub fn field() -> @rowreduce.Field[Bool]
+
+pub fn inverse(@matrix.Matrix[Bool]) -> @matrix.Matrix[Bool]?
+
+pub fn inverse_transform(Factorization) -> @matrix.Matrix[Bool]?
+
+pub fn multiply(@matrix.Matrix[Bool], @matrix.Matrix[Bool]) -> @matrix.Matrix[Bool]?
+
+pub fn nullspace_factor(Factorization) -> @core.Chain[@core.Chain[Bool]]
+
+pub fn reduction(Factorization) -> @rowreduce.Reduction[Bool]
+
+pub fn rref(@matrix.Matrix[Bool]) -> @rowreduce.Reduction[Bool]?
+
+pub fn scalars() -> @algebra.Semiring[Bool]
+
+pub fn solve(@matrix.Matrix[Bool], @core.Chain[Bool]) -> @rowreduce.Solution[Bool]?
+
+pub fn solve_factor(Factorization, @core.Chain[Bool]) -> @rowreduce.Solution[Bool]?
+
+pub fn source(Factorization) -> @matrix.Matrix[Bool]
+
+pub fn transform(Factorization) -> @matrix.Matrix[Bool]
+
+pub fn xor(Bool, Bool) -> Bool
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) struct Certificate {
+  source : @matrix.Matrix[Bool]
+  reduced : @matrix.Matrix[Bool]
+  transform : @matrix.Matrix[Bool]
+  inverse_transform : @matrix.Matrix[Bool]
+  pivots : @core.Chain[@core.Nat]
+}
+pub fn Certificate::equal(Self, Self) -> Bool
+pub fn Certificate::not_equal(Self, Self) -> Bool
+pub fn Certificate::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct Factorization {
+  source : @matrix.Matrix[Bool]
+  reduction : @rowreduce.Reduction[Bool]
+  transform : @matrix.Matrix[Bool]
+  reverse_operations : @core.Chain[Operation]
+}
+pub fn Factorization::equal(Self, Self) -> Bool
+pub fn Factorization::not_equal(Self, Self) -> Bool
+pub fn Factorization::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub enum Operation {
+  Swap(@core.Nat, @core.Nat)
+  Add(@core.Nat, @core.Nat)
+}
+pub fn Operation::equal(Self, Self) -> Bool
+pub fn Operation::not_equal(Self, Self) -> Bool
+pub fn Operation::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
