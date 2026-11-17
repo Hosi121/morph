@@ -45,6 +45,16 @@
 | 離散対数 | [baby-step giant-step・最小位数と部分群境界](../src/discretelog/discretelog.mbt) |
 | 楕円曲線 | [群演算・二進スカラー倍・点の圧縮と復元](../src/elliptic/elliptic.mbt) |
 
+<a id="probability-geometry"></a>
+
+## 確率・情報幾何
+
+表現と境界条件は[確率と情報幾何](handbook/probability-geometry.md)を参照。
+
+| 分野 | 実装と入口 |
+| --- | --- |
+| 有限確率 | [有理分布・期待値・条件付け・Bayes更新・独立積と周辺化](../src/probability/distribution.mbt) |
+
 <a id="groups-topology"></a>
 
 ## 群・位相

@@ -14,6 +14,7 @@
 | 群・不等式・位相の部品をつなぐ | [分野をまたぐ計算](handbook/connections.md) |
 | 点群・図形の写像・符号をつなぐ | [位相と符号](handbook/topology.md)・[実行例](TOPOLOGY_TOUR.txt) |
 | 同じ穴の数の空間を区別し、相対群・簡約を計算する | [積・相対群・崩壊](handbook/cohomology-relative-collapse.md)・[実行例](TOPOLOGY_RINGS_TOUR.txt) |
+| 有限分布から幾何への入口を読む | [確率と情報幾何](handbook/probability-geometry.md) |
 
 ## 設計と限界を読む
 

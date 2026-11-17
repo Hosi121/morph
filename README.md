@@ -47,6 +47,7 @@ tools/moon run src/cmd/main
 | --- | --- |
 | [基礎算術・データ構造](docs/ALGORITHMS.md#foundations) | Peano自然数、二進算術、ペア、有理数、ソート、永続木 |
 | [数論・有限体](docs/ALGORITHMS.md#number-theory) | CRT、素数証明、因数分解、拡大体、離散対数、楕円曲線 |
+| [確率・情報幾何](docs/ALGORITHMS.md#probability-geometry) | 有限有理分布、期待値、条件付け、Bayes更新、独立積と周辺化 |
 | [群・位相](docs/ALGORITHMS.md#groups-topology) | 有限置換群、根号可解性、整数・相対ホモロジー、cup積、持続性、単体崩壊 |
 | [変換・記号計算](docs/ALGORITHMS.md#symbolic-computation) | FFT・NTT、円分体、Gröbner基底、実根隔離、自動微分、厳密幾何 |
 | [線形代数・最適化](docs/ALGORITHMS.md#linear-optimization) | Gauss–Jordan、Smith標準形、LLL、単体法、0/1分枝限定法 |

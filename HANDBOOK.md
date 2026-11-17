@@ -22,6 +22,7 @@
 | 別の分野へ部品をつなぐ | [置換群・不等式・整数ホモロジー](docs/handbook/connections.md) |
 | 図形の変化と符号をつなぐ | [持続ホモロジー・誘導写像・CSS符号](docs/handbook/topology.md) |
 | 穴の積・部分空間・簡約を調べる | [コホモロジー環・相対群・単体崩壊](docs/handbook/cohomology-relative-collapse.md) |
+| 確率から幾何へ進む | [有限の有理分布と情報幾何](docs/handbook/probability-geometry.md) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
 環境の準備とコマンドは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
@@ -69,6 +70,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | --- | --- |
 | [基礎算術とデータ構造](docs/handbook/foundations.md) | 自然数、二進数、ペア、整数・有理数、ソート、永続木 |
 | [数論と有限体](docs/handbook/number-theory.md) | 剰余算術、CRT、素数証明、因数分解、拡大体、楕円曲線 |
+| [確率と情報幾何](docs/handbook/probability-geometry.md) | 有限有理分布、期待値、条件付け、Bayes更新、独立積と粗視化 |
 | [変換と記号計算](docs/handbook/symbolic-computation.md) | FFT・NTT、多項式、Gröbner基底、実根隔離、微分、幾何 |
 | [厳密代数の計算経路](docs/handbook/algebraic-solving.md) | F4、FGLM、全実点、最小多項式、数体・共通体をつなぐ |
 | [複素代数的数と全複素根](docs/handbook/complex-algebra.md) | 厳密な四則演算・等号、実部と虚部への帰着、全根・重複度の検査 |
