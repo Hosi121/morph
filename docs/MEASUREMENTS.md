@@ -15,6 +15,30 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 夜間の最終実装を比較する
+
+ソース`a39f323`の9公開CLI・54入力を、巡ごとの基準とnative release・CPU4・共有ロック・5 ABBA組で比較しました。
+全1,080プロセスが完全な出力と検査に成功しました。表の基準は行ごとに異なります。
+起動・入力構築・通常API・結果と証拠の検査を含み、コンパイルを除きます。
+
+| 系列 | 基準 | 要約と完全な生値 |
+| --- | --- | --- |
+| 固定法の数体積 | `ab22a4a` | [要約](measurements/night-final-nightnfbench-20261117.json)・[全生値](measurements/night-final-nightnfbench-20261117.json.gz) |
+| Fpスカラーと積 | `ab22a4a` | [要約](measurements/night-final-nightfpbench-20261117.json)・[全生値](measurements/night-final-nightfpbench-20261117.json.gz) |
+| GF(2)零空間・solve・コホモロジー | `ab22a4a` | [要約](measurements/night-final-nightgf2bench-20261117.json)・[全生値](measurements/night-final-nightgf2bench-20261117.json.gz) |
+| QQ正規形とBuchberger | `a9604b1` | [要約](measurements/night-final-nightnormalbench-20261117.json)・[全生値](measurements/night-final-nightnormalbench-20261117.json.gz) |
+| Fp評価とlistdecode | `a9604b1` | [要約](measurements/night-final-nightevalbench-20261117.json)・[全生値](measurements/night-final-nightevalbench-20261117.json.gz) |
+| GF(2) RREFとfactor | `a9604b1` | [要約](measurements/night-final-nighteliminatebench-20261117.json)・[全生値](measurements/night-final-nighteliminatebench-20261117.json.gz) |
+| QQ積の平衡merge | `4795f87` | [要約](measurements/night-final-nightproductbench-20261117.json)・[全生値](measurements/night-final-nightproductbench-20261117.json.gz) |
+| 奇標数Fpの行共有 | `4795f87` | [要約](measurements/night-final-nightconvolutionbench-20261117.json)・[全生値](measurements/night-final-nightconvolutionbench-20261117.json.gz) |
+| 未変更生成器の対照 | `4795f87` | [要約](measurements/night-final-nightcursorbench-20261117.json)・[全生値](measurements/night-final-nightcursorbench-20261117.json.gz) |
+
+全生値は出力・証拠・stdout/stderr・全時間・harness/ソース/実行ファイルのhashを含むJSONを、損失なくgzip圧縮しています。
+要約に圧縮前後のSHA256があります。`gzip -dc FILE.json.gz`で読み出せます。
+最終cursor CLIは不採用のcursor実装を使わず、元の生成器を使う対照です。
+[採否・段階別比較・負の結果](research/night-kernels-20261117.md)から、個別担当の比較も辿れます。
+未変更の経路の揺れ、初期化費用、密な対照や上位consumerの未確定な差を成功例と一緒に保存しています。
+
 ## 数体・線形従属・Smithの統合比較
 
 [五候補の採否](research/algorithm-kernels-20261117.md)を、元の基準と四機構を採用した統合コードで比較しました。

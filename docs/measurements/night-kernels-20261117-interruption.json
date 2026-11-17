@@ -1,0 +1,17 @@
+{
+  "note": "Original parent ended143duringnativecompilation; root reverified fixed source and every completed log, resumedonlynative+formal. Firstfinalbenchmark guard safely refused to run before verification completed.",
+  "logs": {
+    "tests-native.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "final-comparison-driver.log": {
+      "sha256": "cd39e02a8f1f098bfd7fa87d9e0c74e1cd614ea04c920cd15c87068c97a89223",
+      "text": "Traceback (most recent call last):\n  File \"/home/hosi/morph/.tools/night-kernels-20261117/compare_final.py\", line 3, in <module>\n    root=Path.cwd();out=root/'.tools/night-kernels-20261117';validation=json.loads((out/'validation.json').read_text());assert validation['status']=='passed','Regression not complete/passed'\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Regression not complete/passed\n"
+    },
+    "validation-driver.log": {
+      "sha256": "7547de4fa553674d486544735730ce206d3291fbde064a8aa02d710517b0d1e6",
+      "text": "SCOPE aes,autodiff,bch,benchmarks,bernstein,cad,cad2,cadprojection,cmd/advanced,cmd/canonicalfpbench,cmd/complex,cmd/complexbench,cmd/complexfieldbench,cmd/connections,cmd/galois,cmd/gf2consumerbench,cmd/gf2kernelbench,cmd/incrementalbench,cmd/main,cmd/nfkernelbench,cmd/nightconvolutionbench,cmd/nightcursorbench,cmd/nighteliminatebench,cmd/nightevalbench,cmd/nightfpbench,cmd/nightgf2bench,cmd/nightnfbench,cmd/nightnormalbench,cmd/nightproductbench,cmd/primebench,cmd/rationalbench,cmd/realclosed,cmd/spanbench,cmd/splitting,cmd/splittingbench,cmd/topology,cmd/topologyrings,cohomology,complexalgebraic,complexautomorphism,complexcompositum,complexfactor,complexfield,complexprimitive,complexroots,complexsplitting,complexsubfield,compositum,csscode,cubicradical,cyclicrs,cyclotomic,elimination,exactfft,f4,fglm,fixedfield,fppoly,galois,galoissolvability,gf2,groebner,linearspan,listdecode,numberfield,orderedsturm,polynomial,prefixlogic,projection,realalgebraic,realcad,realclosed,realformula,realminimal,realnlsmt,realtower,realvariety,relativecad,semialgebraic,signcad,splittinggalois,sturm,tarski,zassenhaus\nSTART maintenance\nEND maintenance 0 22.353 []\nSTART check-js\nEND check-js 0 5.769 []\nSTART check-native\nEND check-native 0 5.508 []\nSTART tests-wasm-gc\nEND tests-wasm-gc 0 267.904 [('3603', '3603', '0')]\nSTART tests-js\nEND tests-js 0 361.929 [('3603', '3603', '0')]\nSTART tests-native\n"
+    }
+  }
+}

@@ -59,3 +59,5 @@ and all block ratios. Baseline/candidate ELFs, exact source snapshots and
 full generated native C are handed to the root archive; their hashes match
 the measured artifacts. Root owns production disposition, integration,
 remaining verification, push and worktree/archive cleanup.
+
+再現用に、基準`4795f87`から凍結CLI・試作・テストをまとめた[差分](night-cursors-20261117-raw/candidate-from-4795f87.patch.gz)も公開しています。gzipを展開して適用できます。通常のライブラリには適用していません。

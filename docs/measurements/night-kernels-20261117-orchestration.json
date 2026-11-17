@@ -1,0 +1,337 @@
+{
+  "contract": {
+    "baseline": "ab22a4a22625f4beb2bd2a49b836f769c941ef90",
+    "objective": "Until 24:00 JST, further optimize pure immutable kernels on ordinary consumer paths; evaluate three independent candidates without weakening checks.",
+    "deadline_utc": "2026-11-17T15:00:00+00:00",
+    "decision_checkpoint_utc": "2026-11-17T13:45:00+00:00",
+    "worker_stop_utc": "2026-11-17T14:00:00+00:00",
+    "integration_freeze_utc": "2026-11-17T14:10:00+00:00",
+    "workers": {
+      "nf": [
+        "src/numberfield/** multiplication only",
+        "new own tests and CLI/docs/raw"
+      ],
+      "fp": [
+        "src/fppoly/** canonical coefficient multiply only",
+        "new own tests and CLI/docs/raw"
+      ],
+      "gf2": [
+        "src/gf2/**",
+        "specific producer-only integration in cohomology/csscode if needed, must announce exact file before edit",
+        "new own tests and CLI/docs/raw"
+      ]
+    },
+    "constraints": [
+      "Pure immutable ADTs in kernels; exact results/context/errors/fuel/certs preserved",
+      "Keep generic certificate checkers independent; no edits to checker algorithms",
+      "Frozen baseline-compatible public CLI, at most six cases each, five ABBA blocks full results/checks",
+      "Shared CPU4 flock; -j1 compiler commands; no shared _build; baseline tracked library bytes invariant",
+      "One mechanism per worker; at most one bounded follow-up after initial comparison; stop by worker_stop",
+      "Decide on total public API/setup/check costs, preserve negatives; milestone commits, evidence and clean worker trees; only root integrates/pushes/cleans"
+    ]
+  },
+  "round2_contract": {
+    "baseline": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+    "baseline_worktree": "/home/hosi/morph-night-r2-before",
+    "mechanisms": {
+      "nf": "polynomial.normal_form remainder-only loop; preserve divide as independent oracle and exact divisor/error order",
+      "fp": "Fp Horner: normalize arbitrary point once and exploit canonical addition/product boundaries",
+      "gf2": "GF2 producer elimination: fuse repeated pivot lookup with suffix XOR, preserve operation log"
+    },
+    "constraints": "Inherit contract.json; pure ADTs, unchanged API/results/errors/fuel/cert algorithms, new frozen <=6case CLI per mechanism, shared CPU4 lock, five ABBA full checked runs, max1followup each",
+    "decision_checkpoint_utc": "2026-11-17T13:40:00+00:00",
+    "worker_stop_utc": "2026-11-17T13:50:00+00:00",
+    "final_integration_freeze_utc": "2026-11-17T14:10:00+00:00",
+    "deadline_utc": "2026-11-17T15:00:00+00:00"
+  },
+  "round3_contract": {
+    "baseline": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+    "baseline_worktree": "/home/hosi/morph-night-r3-before",
+    "mechanisms": {
+      "nf": "balanced merging of sorted product rows in polynomial.multiply, retain small/empty controls",
+      "fp": "per-coefficient-row zero/unit dispatch and sharing in odd-prime polynomial convolution",
+      "gf2": "GF2 active-row cursor ADT to avoid repeatedly traversing/allocating known zero prefixes"
+    },
+    "constraints": "Inherit contract.json; one candidate mechanism + at most1followup each; pure immutable ADTs; exact outputs/errors/context/order/logs/checkers; <=6 frozen public cases,5ABBA,CPU4sharedlock,-j1,3target scoped checks. Full runs may be losslessly gzip-compressed before commit with checksum+readable summary.",
+    "decision_checkpoint_utc": "2026-11-17T13:40:00+00:00",
+    "worker_stop_utc": "2026-11-17T13:45:00+00:00",
+    "final_source_freeze_latest_utc": "2026-11-17T14:00:00+00:00",
+    "deadline_utc": "2026-11-17T15:00:00+00:00"
+  },
+  "dag": {
+    "nodes": [
+      "baseline",
+      "nf",
+      "fp",
+      "gf2",
+      "integration-comparison",
+      "validation",
+      "publish-cleanup"
+    ],
+    "edges": [
+      [
+        "baseline",
+        "nf"
+      ],
+      [
+        "baseline",
+        "fp"
+      ],
+      [
+        "baseline",
+        "gf2"
+      ],
+      [
+        "nf",
+        "integration-comparison"
+      ],
+      [
+        "fp",
+        "integration-comparison"
+      ],
+      [
+        "gf2",
+        "integration-comparison"
+      ],
+      [
+        "integration-comparison",
+        "validation"
+      ],
+      [
+        "validation",
+        "publish-cleanup"
+      ]
+    ]
+  },
+  "trace": [
+    {
+      "utc": "2026-11-17T13:00:11.264151+00:00",
+      "event": "night-budget-start",
+      "base": "ab22a4a22625f4beb2bd2a49b836f769c941ef90",
+      "deadline_jst": "2026-11-18 00:00"
+    },
+    {
+      "utc": "2026-11-17T13:10:54.300185+00:00",
+      "event": "round2-start",
+      "base": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+      "note": "Round1 all adopted with scoped3target checks and isolated raw evidence. Root owns combined comparisons and final affected validation."
+    },
+    {
+      "utc": "2026-11-17T13:23:55.305060+00:00",
+      "event": "round3-start",
+      "base": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+      "note": "Final source exploration round; preserve at least1h for combined verification/docs/push/cleanup."
+    },
+    {
+      "utc": "2026-11-17T14:24:49.099974+00:00",
+      "event": "verification-final-comparison-cleanup-complete",
+      "source": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+      "packages": 84,
+      "final_processes": 1080,
+      "adopted_mechanisms": 8,
+      "rejected_cursor": "40328a1",
+      "bounded_parent_extension": "13:48\u201313:50 UTC, frozen initialA/B240+sameELFcontrol40 after worker13:45stop; no code changes/further exploration",
+      "remaining_worktrees": [
+        "/home/hosi/morph              a39f323 [main]",
+        "/home/hosi/morph-late-before  a39f323 (detached HEAD)",
+        "/home/hosi/morph-late-fp      7a14823 [perf/late-fp-20261117]",
+        "/home/hosi/morph-late-gf2     494b61d [perf/late-gf2-20261117]",
+        "/home/hosi/morph-late-poly    36db45b [perf/late-poly-20261117]"
+      ]
+    }
+  ],
+  "format_repair": {
+    "path": "src/cmd/nightgf2bench/main.mbt",
+    "before_sha256": "4440bc16d74ebd5c3bfd79931f1c2d27806aa76aa39c466d3f840cc97518ba5d",
+    "after_sha256": "bcb238f3331bcd6d879525fd32bd1ee460d4fcbbb28cfd227f74d9359c10eaa0",
+    "whitespace_and_optional_trailing_commas_only": true,
+    "first_attempt_failed_before_any_runtime_tests": true
+  },
+  "round1_artifact_handoff": [
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-20261117-raw/night-gf2-before.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/night-gf2-before.exe",
+      "sha256": "6a4f8768ad5a58968f6c7f1392885bfc96ef602c0da78fa839fe2aee8b906dfd"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-20261117-raw/before-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/before-source",
+      "files": {
+        "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+        "src/gf2/solve.mbt": "c3526ccec3b90ed45d615732ea380f1b293966840685733b6a472947cba219d5",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightgf2bench/main.mbt": "4440bc16d74ebd5c3bfd79931f1c2d27806aa76aa39c466d3f840cc97518ba5d",
+        "src/cmd/nightgf2bench/moon.pkg": "28a011a325904f4d8984d6626e1eab27f62cee837446af30a7d5bc0121382ebc"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-20261117-raw/night-gf2-after.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/night-gf2-after.exe",
+      "sha256": "8eeec0eed3083a074c6d48d091a6d5143c7e4c19d801e344769927e2416b0b0f"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-20261117-raw/after-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/after-source",
+      "files": {
+        "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightgf2bench/main.mbt": "4440bc16d74ebd5c3bfd79931f1c2d27806aa76aa39c466d3f840cc97518ba5d",
+        "src/cmd/nightgf2bench/moon.pkg": "28a011a325904f4d8984d6626e1eab27f62cee837446af30a7d5bc0121382ebc"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-nf-20261117/baseline-ab22a4a.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/nf-baseline-ab22a4a.exe",
+      "sha256": "ac9d572b0f8571f2ca0ed0a1498bcd7bbed756083e67763373f488fda4760137"
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-nf-20261117/candidate-initial.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/nf-candidate-initial.exe",
+      "sha256": "e417b1abf01cc2f8b4970123943cdc51b9618b3956f4c7df32b12d3ba3f98d7c"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-fp-20261117/before.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/fp-before.exe",
+      "sha256": "d569e2b33b658348978671de7197ae4e671239257a15650b57b1438fe080ab8b"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-fp-20261117/after-initial.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round1/fp-after-initial.exe",
+      "sha256": "0b8218c8271590fbc764b92ea087665aeed86cba572ccc8527f36f08f914dd27"
+    }
+  ],
+  "round2_artifact_handoff": [
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/eliminate-baseline-a9604b1.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/eliminate-baseline-a9604b1.exe",
+      "sha256": "40d750744a5d31a45bc7f0205b45932b3f9e9825476b8d482f60f6c4263eccbf"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/baseline-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/baseline-source",
+      "files": {
+        "src/gf2/kernel.mbt": "f5d50c5710a0136fdac8df8e547a3c27ad1b22a994e91b1c5a9b534c376d36d8",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nighteliminatebench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nighteliminatebench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/eliminate-initial-750fbf2.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/eliminate-initial-750fbf2.exe",
+      "sha256": "2b244f356ef9c1c99e7eb693e27691c3e824839c0b1948668316e66d938ea6d1"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/initial-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/initial-source",
+      "files": {
+        "src/gf2/kernel.mbt": "7cca7ac730d201e9c4d0d159d72eb9abcab317a8aaff9db9a24a96e2e00e99a9",
+        "src/gf2/night_elimination_wbtest.mbt": "877529ffdc14dd45e3c75466ba049da418dfd6accddb598ca69460a87abba4cf",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nighteliminatebench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nighteliminatebench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/eliminate-borrowed-73a67ee.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/eliminate-borrowed-73a67ee.exe",
+      "sha256": "cc3c9451bd81c4a5b39c89a9d8f68541463a234b2e2275adbce4fb00fb050f7d"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-gf2-elimination-20261117-raw/borrowed-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/borrowed-source",
+      "files": {
+        "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+        "src/gf2/night_elimination_wbtest.mbt": "877529ffdc14dd45e3c75466ba049da418dfd6accddb598ca69460a87abba4cf",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nighteliminatebench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nighteliminatebench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-normal-form-20261117/baseline-a9604b1.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/nf-baseline-a9604b1.exe",
+      "sha256": "dfeacfc84f6614dc0afe1f734352016faa97ce16972594972d2cf37591fbb1d5"
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-normal-form-20261117/candidate-initial.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/nf-candidate-initial.exe",
+      "sha256": "93496e81de4dc68be93e887870fab128efb82066e75647c8877e012aed182809"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-evaluation-20261117/before.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/fp-before.exe",
+      "sha256": "94c5e4904b89f81172af1aa71b59a28c097359ae844ab5c3d66f86205632bda3"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-evaluation-20261117/after-initial.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round2/fp-after-initial.exe",
+      "sha256": "3a5ff877152a33f00c5413813e0d7b6947b5780095c7d6b484d46d06d9b22e37"
+    }
+  ],
+  "round3_artifact_handoff": [
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-cursors-20261117-raw/cursor-baseline.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/cursor-baseline.exe",
+      "sha256": "e97a07142c5ab75bdf0406a02c295cd9d3c7f2891f9da99e9f199b8f7ad174b0"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-cursors-20261117-raw/baseline-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/baseline-source",
+      "files": {
+        "generated/nightcursorbench.c": "7e5cc1eb295e533c53f7571d809b34504b9e28801ee0e03586a4309c19b55566",
+        "src/gf2/kernel.mbt": "023f29f06864ca98e3cf2f35a7fce3f8543378683137f3215af30ee07f35f7ca",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightcursorbench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nightcursorbench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-cursors-20261117-raw/cursor-candidate.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/cursor-candidate.exe",
+      "sha256": "bb46745248ecc187b4bf9223662a1bf10108afb091c28f65cbe1a8e2800ef991"
+    },
+    {
+      "source": "/home/hosi/morph-night-gf2/docs/research/night-cursors-20261117-raw/candidate-source",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/candidate-source",
+      "files": {
+        "generated/nightcursorbench.c": "3cade181fad50645d923a2c8f2ca26cacdfe1dd2df6ffac01aa563924336ede7",
+        "src/gf2/kernel.mbt": "8a3b81366473ebb6de7347fb7d3c5b35493a4587f6fd705e857698bf159da2b5",
+        "src/gf2/cursor.mbt": "c0522ffd35d1aa294440f81d9107c215282edb457d99dc5d8285839f800949be",
+        "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+        "src/gf2/night_cursor_wbtest.mbt": "6253f82d87f6748b692c633bf98e102db1d06bfc446c09dddd0d31809d779c77",
+        "src/gf2/pkg.generated.mbti": "0c8f6d51ad17a937618c321809b2fade260827c91aff42c79506d1e3e71f64a7",
+        "src/cmd/nightcursorbench/main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+        "src/cmd/nightcursorbench/moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+      }
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-product-20261117/baseline-4795f87.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/nf-baseline-4795f87.exe",
+      "sha256": "599657fc9c20efa8dee6677658316a7a7004c117ab9677ec289adcdc8efc7b34"
+    },
+    {
+      "source": "/home/hosi/morph-night-nf/.tools/night-product-20261117/candidate-initial.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/nf-candidate-initial.exe",
+      "sha256": "72c4a0f4363d96b3b814cfee26e1dd975334793628c65a5a7d231dc363e83fee"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/before.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/fp-before.exe",
+      "sha256": "0c096e1640588aecdbae5dbe6555a4591c0fbdf2972d338036c2e1f38c933da5"
+    },
+    {
+      "source": "/home/hosi/morph-night-fp/.tools/night-convolution-20261117/candidate-untimed.exe",
+      "archive": "/home/hosi/morph/.tools/night-kernels-20261117/artifacts/round3/fp-candidate-untimed.exe",
+      "sha256": "b1f698fa3fa9a76f93fe793f7a02e93a0d36489109b3dff831be42c6aaf1883d"
+    }
+  ],
+  "final_driver_sha256": "1dbfd0c17d2f41ee8f1b49ac41157f2762b04fb8f47ce5aeb509a9755bf4a66f",
+  "bounded_initial_driver_sha256": "1a42198d1190923066197d1663d4cb8339fa23680325d9069cf018161d59b2c7",
+  "bounded_control_driver_sha256": "9aaebda3924e0ea866b621ba2542cac38c219d02233f49239c29a73bacb41be5"
+}

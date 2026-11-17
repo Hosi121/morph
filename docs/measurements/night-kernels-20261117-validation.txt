@@ -1,0 +1,119 @@
+=== maintenance ===
+----------------------------------------------------------------------
+Ran 31 tests in 0.027s
+
+OK
+Documentation gate passed: 179 Markdown files, 1985 local links; navigation is connected.
+Source inventory is current.
+Purity gate passed: 330 kernel files; no machine numerics, mutation, arrays or FFI.
+Conversion gate passed; static library references recorded separately from tests.
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+Bareiss frozen reference matches its reviewed lock; no Git history or benchmark run needed.
+4-bit product table checked: 256 cases, 90 shared results; suffix sharing=True.
+Difference controls checked; production=lookup
+7 independently solved and grid-checked Bernstein fixtures
+1539 exhaustive Fraction matrix/rank/solve cases and generic inverse/factor comparisons.
+15 frozen Fraction sequences; 120 full-system dependence decisions.
+30 Fraction fixtures checked
+28 independent full-product fixtures checked
+167 complexes; rational/GF2 boundaries; RP2 3003 maximal minors gcd=2
+// 230 filtrations; 43718 degree/prefix-pair rank comparisons.
+19 complexes; 3439 total functions: 2449 valid, 990 rejected; 256 tetrahedron endomaps
+{'valid_pairs': 82, 'rejected_pairs': 204, 'vectors': 583, 'projective_plane': {'n': 15, 'rank_x': 5, 'rank_z': 9, 'k': 1, 'dx': 5, 'dz': 3}, 'torus': {'n': 21, 'rank_x': 6, 'rank_z': 13, 'k': 2, 'dx': 6, 'dz': 3}}
+{
+  "complexes_on_four_vertices": 167,
+  "focused_examples": 4,
+  "cochain_membership_cases": 5351,
+  "kernel_vectors": 20652,
+  "ordered_basis_products": 670,
+  "exhaustive_cocycle_pairs": 49923,
+  "exhaustive_cochain_cup_pairs": 269883,
+  "leibniz_basis_pairs": 13226
+}
+Independent relative fixtures match bitmask/Fraction/minors oracle.
+167 complexes; 9781 ordered candidates; 340 elementary pairs; all integer contraction identities checked
+Finished. moon: ran 1 task, now up to date
+Finished. moon: ran 282 tasks, now up to date
+Finished. moon: ran 157 tasks, now up to date
+Interface drift gate passed: 157 compiler-generated snapshots.
+
+=== check-js ===
+Finished. moon: ran 196 tasks, now up to date
+
+=== check-native ===
+Finished. moon: ran 196 tasks, now up to date
+
+=== tests-wasm-gc ===
+Total tests: 3603, passed: 3603, failed: 0.
+
+=== tests-js ===
+Total tests: 3603, passed: 3603, failed: 0.
+
+=== tests-native ===
+Total tests: 3603, passed: 3603, failed: 0.
+
+=== formal ===
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.
+'Morph.Core.replicateOnto_eq_append' depends on axioms: [propext]
+'Morph.Core.replicateOnto_nil' depends on axioms: [propext]
+'Morph.Core.halveNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Core.halfNat_floor' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fullAdder_sound' does not depend on any axioms
+'Morph.Binary.increment_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.addition_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.carry_stabilizes' does not depend on any axioms
+'Morph.Binary.borrow_stabilizes' does not depend on any axioms
+'Morph.Binary.split_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatByHalves_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGroupedLoop_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.splitGrouped_lt' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.lowBit_sound' does not depend on any axioms
+'Morph.Binary.lowBit_canonical' depends on axioms: [propext]
+'Morph.Binary.fromNatGroupedBits_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNatGroupedBits_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.zero_sound' does not depend on any axioms
+'Morph.Binary.one_sound' does not depend on any axioms
+'Morph.Binary.fromNat_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.fromNat_canonical' depends on axioms: [propext, Quot.sound]
+'Morph.AdderCandidates.candidate_0_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_1_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_2_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_3_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_4_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_5_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_6_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_7_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_8_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_9_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_10_equal' does not depend on any axioms
+'Morph.AdderCandidates.candidate_11_equal' does not depend on any axioms
+'Morph.Binary.Comparison.loop_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.tail_eq_reference' does not depend on any axioms
+'Morph.Binary.Comparison.canonical_positive' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.reference_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.tail_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.loop4_eq_loop' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.groupedTail_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.peel_eq_reference' depends on axioms: [propext]
+'Morph.Binary.Comparison.protectedCompare_eq_reference' depends on axioms: [propext, Quot.sound]
+'Morph.Binary.Comparison.protectedCompare_sound' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldLeft_reverseOnto' does not depend on any axioms
+'Morph.Fold.foldLeft_reverse' does not depend on any axioms
+'Morph.Fold.foldFour_eq_foldLeft' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.foldFour_reverse' depends on axioms: [propext, Quot.sound]
+'Morph.Fold.boundedRightFour_eq_foldRight' depends on axioms: [propext]
+'Morph.PrefixLogic.partialEvaluate_sound' depends on axioms: [propext]
+'Morph.PrefixLogic.known_is_uniform' depends on axioms: [propext]
+'Morph.SparseHorner.power_add' depends on axioms: [propext]
+'Morph.SparseHorner.bitsPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.optimizedPower_sound' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.genericSum_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.scan_invariant' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_sum' depends on axioms: [propext]
+'Morph.SparseHorner.horner_eq_genericSum' depends on axioms: [propext]
+'Morph.SparseHorner.dispatch_generic' does not depend on any axioms
+'Morph.SparseHorner.dispatch_univariate' depends on axioms: [propext]
+'Morph.SparseHorner.ascending_countermodel' depends on axioms: [propext]
+'Morph.SparseHorner.gap_zero_and_zero_coefficient' depends on axioms: [propext]

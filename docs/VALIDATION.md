@@ -5,6 +5,39 @@
 実行テスト、証拠検査、Leanモデルは、それぞれ異なる性質を確かめます。
 このページでは検証済みのコード、変更時のコマンド、各検査の保証範囲を案内します。
 
+## 夜間に採用した共通部品の統合検証
+
+コード `a39f323` を固定し、基準 `ab22a4a` からの変更と旧・現のimport graphの逆依存を検査しました。
+対象は84 packageで、テスト専用importも含みます。全repositoryの無変更テストを再実行した記録とは区別します。
+
+| バックエンド | 結果 |
+| --- | --- |
+| wasm-gc | 3,603テスト成功 |
+| js | 3,603テスト成功 |
+| native release | 3,603テスト成功 |
+
+Python 31テスト、157公開APIスナップショット、全targetの型検査、整形・生成物・330核ソースの純記号制約が通過しました。
+既存Lean全モデルと32対応領域の差分検査も通過しました。新しい実装全体の形式証明ではありません。
+8件の採用変更を組み合わせた9公開CLI・54入力・1,080プロセスも、全結果と証拠の検査に成功しています。
+不採用のcursor実装は統合していません。同じ名前の最終CLIは元の生成器の対照です。
+
+既存公開APIは数体のopaqueなFieldにprivate cacheの表示が増える以外、コンパイラ生成snapshotのバイト列が一致します。
+checkerの算法を維持しても、生成側と共有する多項式演算などは変わるため、旧divide・独立Fraction/Bool参照との照合も併用しました。
+独立生成fixtureの再生成も通常の`tools/check`へ組み込んでいます。
+
+[環境・ソース・選択graph・全コマンド](measurements/night-kernels-20261117-validation.json)、
+[全出力](measurements/night-kernels-20261117-validation.txt)、[実行harness](measurements/night-kernels-20261117-harness.py)、
+[最終比較driver](measurements/night-kernels-20261117-comparison-driver.py)を保存しました。
+最初の整形ゲート失敗はruntimeテスト開始前で、[修正前の記録](measurements/night-kernels-20261117-first-attempt.json)も残しています。
+修正はbenchmarkの空白と末尾commaだけで、最終比較の両側を同じharnessからbuildしています。
+途中のnativeジョブは終了code143で中断しました。完了済みのソース・ログのhashを再照合し、未完了のnativeとformalだけを
+[再開harness](measurements/night-kernels-20261117-resume-harness.py)で完了しました。[中断ログ](measurements/night-kernels-20261117-interruption.json)も保存しています。
+
+[採否と全計測](research/night-kernels-20261117.md)、[担当範囲と経緯](measurements/night-kernels-20261117-orchestration.json)、
+[片付けの証跡](measurements/night-kernels-20261117-cleanup.json)を参照してください。
+六つの作業用worktree・九branchは、全採用パッチ・却下ソース・生成C・実行ファイル・ログとGit bundleを検査して保存し、削除しました。
+前回の範囲検証と、それ以前の全体検証は下に残しています。
+
 ## 数体・増分線形従属・Smithの算法改善
 
 コード `ffc66b7` を固定し、基準 `2e33ef5` からの変更と旧・現のimport graphの逆依存を検査しました。

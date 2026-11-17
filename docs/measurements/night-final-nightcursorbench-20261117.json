@@ -1,0 +1,232 @@
+{
+  "utc": "2026-11-17T14:23:57.086989+00:00",
+  "before": {
+    "root": "/home/hosi/morph-night-r3-before",
+    "commit": "4795f875270eb026cda25b7e509a0e60e8e6abb2",
+    "working_tree": [
+      "?? src/cmd/nightconvolutionbench/",
+      "?? src/cmd/nightcursorbench/",
+      "?? src/cmd/nightproductbench/"
+    ],
+    "source_manifest_sha256": "a212c41f6f50ebfab3b9cd342dfb8ad822fdb48bd214cd731ee7303528753fc0",
+    "source_file_count": 922,
+    "artifact": "/home/hosi/morph-night-r3-before/_build/native/release/build/cmd/nightcursorbench/nightcursorbench.exe",
+    "artifact_sha256": "e97a07142c5ab75bdf0406a02c295cd9d3c7f2891f9da99e9f199b8f7ad174b0",
+    "harness": {
+      "main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+      "moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "a39f3234da50eb86e19d58583d5db5c2c99b62c1",
+    "working_tree": [
+      "?? docs/measurements/night-final-nightconvolutionbench-20261117.json",
+      "?? docs/measurements/night-final-nightconvolutionbench-20261117.json.gz",
+      "?? docs/measurements/night-final-nighteliminatebench-20261117.json",
+      "?? docs/measurements/night-final-nighteliminatebench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightevalbench-20261117.json",
+      "?? docs/measurements/night-final-nightevalbench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightfpbench-20261117.json",
+      "?? docs/measurements/night-final-nightfpbench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightgf2bench-20261117.json",
+      "?? docs/measurements/night-final-nightgf2bench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightnfbench-20261117.json",
+      "?? docs/measurements/night-final-nightnfbench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightnormalbench-20261117.json",
+      "?? docs/measurements/night-final-nightnormalbench-20261117.json.gz",
+      "?? docs/measurements/night-final-nightproductbench-20261117.json",
+      "?? docs/measurements/night-final-nightproductbench-20261117.json.gz"
+    ],
+    "source_manifest_sha256": "dcdc6f5de50d7de5a4a35e9ac0dd05780ba3d32ec11abe4a67765e8712f06031",
+    "source_file_count": 925,
+    "artifact": "/home/hosi/morph/_build/native/release/build/cmd/nightcursorbench/nightcursorbench.exe",
+    "artifact_sha256": "b45b1a432455b930ad758a0ad5a033d086fc994a70f5be478d2f10eccdea80fc",
+    "harness": {
+      "main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+      "moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "rref-tiny": {
+      "process_ns": {
+        "medians": {
+          "before": 131117496.5,
+          "after": 130455121.0
+        },
+        "ranges": {
+          "before": [
+            122558128,
+            147573006
+          ],
+          "after": [
+            125208947,
+            146093723
+          ]
+        },
+        "before_over_after": 1.0050774204563422,
+        "block_ratios": [
+          1.0906940269398242,
+          1.0179589700827285,
+          0.9763534467817706,
+          0.9663964681079447,
+          0.9848867089287053
+        ]
+      }
+    },
+    "rref-sparse": {
+      "process_ns": {
+        "medians": {
+          "before": 116948496.0,
+          "after": 117183751.5
+        },
+        "ranges": {
+          "before": [
+            109093972,
+            120867761
+          ],
+          "after": [
+            109150656,
+            123283976
+          ]
+        },
+        "before_over_after": 0.9979924221832068,
+        "block_ratios": [
+          0.9922186400685901,
+          0.9672947193886366,
+          1.0130029277469605,
+          0.9774787995744574,
+          1.0250993215500372
+        ]
+      }
+    },
+    "rref-dense": {
+      "process_ns": {
+        "medians": {
+          "before": 218297078.5,
+          "after": 214347809.5
+        },
+        "ranges": {
+          "before": [
+            206399361,
+            243326398
+          ],
+          "after": [
+            204821105,
+            233703914
+          ]
+        },
+        "before_over_after": 1.0184245829673384,
+        "block_ratios": [
+          1.0824521710212383,
+          0.9924993161241681,
+          0.9962618426517197,
+          1.0420190643950766,
+          1.0368930307258022
+        ]
+      }
+    },
+    "rref-wide": {
+      "process_ns": {
+        "medians": {
+          "before": 110074469.5,
+          "after": 113013020.0
+        },
+        "ranges": {
+          "before": [
+            105325657,
+            121903977
+          ],
+          "after": [
+            106280848,
+            135355579
+          ]
+        },
+        "before_over_after": 0.9739981242869185,
+        "block_ratios": [
+          0.8918020634564797,
+          0.9959130634150748,
+          1.0076077287285157,
+          1.0061457234681892,
+          0.953407933288733
+        ]
+      }
+    },
+    "factor-dense": {
+      "process_ns": {
+        "medians": {
+          "before": 250373795.5,
+          "after": 251655592.5
+        },
+        "ranges": {
+          "before": [
+            238052707,
+            283954728
+          ],
+          "after": [
+            241832165,
+            266097377
+          ]
+        },
+        "before_over_after": 0.9949065427584328,
+        "block_ratios": [
+          1.0555976297506682,
+          0.9713100627199986,
+          1.0044726756101898,
+          0.9945735108475051,
+          0.9949282306260531
+        ]
+      }
+    },
+    "css-validate": {
+      "process_ns": {
+        "medians": {
+          "before": 120067662.0,
+          "after": 117111756.0
+        },
+        "ranges": {
+          "before": [
+            115179507,
+            125179378
+          ],
+          "after": [
+            112011854,
+            124769141
+          ]
+        },
+        "before_over_after": 1.0252400450728447,
+        "block_ratios": [
+          1.0128838389204924,
+          1.0130389285363428,
+          1.0371194876972785,
+          1.0016294709417484,
+          1.0472289212586798
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 120,
+  "round_baseline": 3,
+  "lossless_full_record": {
+    "path": "docs/measurements/night-final-nightcursorbench-20261117.json.gz",
+    "sha256": "cbab10bc1c36255d0eab28a5972d7798d0738eb7dc17e03192480190abfa720a",
+    "uncompressed_sha256": "4586d7937016419a19da7e0854fdfd923e2641916fa1cf3496201391928a0c91"
+  },
+  "note": "Rejected cursor implementation is absent; this final-source harness is an unchanged-producer control, not evidence of cursor adoption."
+}

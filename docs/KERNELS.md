@@ -8,6 +8,26 @@
 
 各数値はリンク先の同条件比較です。異なる行・測定系列の絶対時間や倍率は合成しません。
 
+## 夜間に追加した通常経路の改善
+
+最終実装`a39f323`を、各巡の凍結した公開APIの基準と比較しました。
+表の行で基準が異なり、倍率は合成しません。全体は[夜間の記録](research/night-kernels-20261117.md)にあります。
+
+| 基礎部品 | 実際の利用 | 最終公開API比較と制約 |
+| --- | --- | --- |
+| 固定した法の準備 | numberfield.multiply→complexfield | 密な反復積1.228倍、複素平方1.195倍。初期化・一回利用の小差は未確定 |
+| 正規スカラーの共有 | fppoly.scale・係数積 | 未還元scalarを含むscale 4.327倍。一般の密な積・除算の一律な改善は主張しない |
+| pivot列の単調な走査 | gf2.nullspace_factor→cohomology | 密な零空間3.457倍、分解再利用solve 2.580倍。コホモロジー全体の倍率とは区別 |
+| 余りだけのQQ簡約 | polynomial.normal_form→Gröbner・FGLM等 | 多変数1.116倍、Buchberger生成・検証1.060倍。旧divideは独立照合用にも維持 |
+| 一度だけ還元した評価点 | fppoly.evaluate→listdecode.encode等 | 512bit点を含む入力12.941倍。通常の点やencode全体の小差は未確定 |
+| GF(2)の走査融合 | rref/factor→cohomology・CSS | 疎RREF 1.269倍。幅広・factor・上位CSSの小差や回帰も記録 |
+| sorted product rowの平衡merge | polynomial.multiplyの通常経路 | 疎多変数積1.448倍。不均衡な積1.505倍。中間値・実メモリは未測定 |
+| 零・単位係数の行共有 | 奇標数fppoly.multiply/power_mod | 疎積1.099倍。標数2の未変更対照に回帰もあり、全入力の速度保証ではない |
+
+これらは各入力の起動・構築・結果と証拠の検査を含むnative releaseの測定です。
+現在の8件を組み合わせた54入力・1,080試行と、3バックエンドの逆依存検証を完了しました。
+[active row cursor](research/night-cursors-20261117.md)は、小・疎行列が遅くなるため製品経路へ採用していません。
+
 ## リストと自然数
 
 | 基礎部品 | 通常経路の利用 | 採用と検証・計測の範囲 |
