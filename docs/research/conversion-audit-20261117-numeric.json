@@ -1,0 +1,1112 @@
+{
+  "schema_version": 1,
+  "audit": "numeric conversion and reconstruction audit",
+  "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+  "repository": "/home/hosi/morph",
+  "created_utc": "2026-11-17T15:24:00.690762+00:00",
+  "completion": "complete",
+  "scope": [
+    "core/Nat",
+    "binary",
+    "exact",
+    "modular",
+    "numberfield",
+    "orderedsturm",
+    "realtower",
+    "realminimal",
+    "realalgebraic",
+    "complexfield",
+    "complexalgebraic"
+  ],
+  "method": "Read-only fixed-commit git show/git grep, static non-test call chains; no builds, tests, benchmarks, source edits, commits or generated-code inspection.",
+  "findings_count": 17,
+  "classification_counts": {
+    "avoidable_production": 7,
+    "loop_conversion_candidate": 1,
+    "representation_candidate": 3,
+    "conditional_reduction_candidate": 1,
+    "semantically_required": 2,
+    "already_fixed": 1,
+    "already_cached": 1,
+    "test_only": 1
+  },
+  "important_limits": [
+    "Source duplication is not a measured speedup.",
+    "Production reachability is static, not measured runtime frequency.",
+    "Keep public certificate/context/root-interval validation.",
+    "Separate unary Nat traversal and binary bit arithmetic.",
+    "raw_rational source recurrence does not establish compiler allocation/CSE or whole-operation speed.",
+    "Only numeric.json and numeric.md were written; production/index/old worktrees/ELFs were not changed."
+  ],
+  "findings": [
+    {
+      "id": "N01",
+      "title": "orderedsturm の根数で Nat→Binary→Integer→Nat",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/orderedsturm/count.mbt",
+        "line": 109,
+        "end_line": 112,
+        "excerpt": "  @exact.subtract(\n    @exact.positive(@binary.from_nat(variations(lower))),\n    @exact.positive(@binary.from_nat(variations(upper))),\n  )"
+      },
+      "related_evidence": [
+        {
+          "path": "src/orderedsturm/count.mbt",
+          "line": 83,
+          "end_line": 89,
+          "excerpt": "///|\nfn variations(values : @core.Chain[EndpointJet]) -> @core.Nat {\n  fn scan(\n    values : @core.Chain[EndpointJet],\n    previous : @core.Ordering,\n    count : @core.Nat,\n  ) -> @core.Nat {"
+        },
+        {
+          "path": "src/orderedsturm/count.mbt",
+          "line": 176,
+          "end_line": 185,
+          "excerpt": "        let value = difference(lower, upper)\n        if @exact.negative(value) {\n          Err(InternalInvariant)\n        } else {\n          Ok({\n            system: system.certificate,\n            interval,\n            lower,\n            upper,\n            count: @binary.to_nat(@exact.magnitude(value)),"
+        },
+        {
+          "path": "src/orderedsturm/count.mbt",
+          "line": 208,
+          "end_line": 210,
+          "excerpt": "  difference(proof.lower, proof.upper).equal(\n    @exact.positive(@binary.from_nat(count)),\n  )"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/orderedsturm/isolation.mbt",
+          "line": 346,
+          "end_line": 348,
+          "excerpt": "      count_between(system, { lower: interval.lower, upper: middle, }),\n      count_between(system, { lower: middle, upper: interval.upper, }),\n    ) {"
+        },
+        {
+          "path": "src/relativecad/signs.mbt",
+          "line": 30,
+          "end_line": 36,
+          "excerpt": "        RationalPoint(value) => scalar_at(atom.polynomial, value)\n        AlgebraicPoint(interval) =>\n          match @ordered.count_between(system, interval) {\n            Err(error) => Err(OrderedFailure(error))\n            Ok(proof) =>\n              match proof.count {\n                Zero => scalar_at(atom.polynomial, midpoint(interval))"
+        }
+      ],
+      "usage_evidence": "区間二分の根分離と relativecad の原子符号判定から呼ばれる非テスト経路。実行頻度は未計測。",
+      "semantics": "variations は既に Nat。差を符号付き Integer にして負値を拒否し、直後に Nat に戻す。根数だけの経路でこの往復は必須でない。ただし負差の InternalInvariant は意味上必要。",
+      "recommendation": "Nat を compare し、lower>=upper の場合だけ core.subtract する専用根数関数を検討。core.subtract 単独は負差を clamp して検査を失うので不可。check_count の system/interval/endpoints 検証と差の検査も保持。",
+      "static_complexity": "a,b は単項 Nat。現状は from_nat(a),from_nat(b) の単項走査と最終差の単項再構築を追加する。Nat compare/subtract も O(a+b) のため漸近改善とは断言せず、Binary/Integer 中間値と追加走査を省く候補。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N02",
+      "title": "realtower の根数にも Nat→Binary→Integer→Nat",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realtower/raw.mbt",
+        "line": 585,
+        "end_line": 594,
+        "excerpt": "  both(\n    rp_variations(field, sequence, interval.lower),\n    rp_variations(field, sequence, interval.upper),\n    fn(a, b) {\n      Ok(\n        @exact.subtract(\n          @exact.positive(@binary.from_nat(a)),\n          @exact.positive(@binary.from_nat(b)),\n        ),\n      )"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realtower/system.mbt",
+          "line": 72,
+          "end_line": 82,
+          "excerpt": "    next(rp_difference(value.polynomial.field, value.sequence, interval), fn(\n      n,\n    ) {\n      if @exact.negative(n) {\n        Err(InternalInvariant)\n      } else {\n        Ok({\n          system: value.certificate,\n          interval,\n          count: @binary.to_nat(@exact.magnitude(n)),\n        })"
+        },
+        {
+          "path": "src/realtower/raw.mbt",
+          "line": 600,
+          "end_line": 613,
+          "excerpt": "/// Sturm-Tarski: sum sign(query(r)) over distinct roots in (lower, upper].\nfn rp_query(\n  field : Field,\n  polynomial : @core.Chain[Representation],\n  query : @core.Chain[Representation],\n  interval : @sturm.Interval,\n) -> Result[@exact.Integer, TowerError] {\n  next(rp_monic(field, polynomial), fn(monic) {\n    next(rp_derivative(field, monic), fn(d) {\n      next(rp_multiply(field, d, query), fn(product) {\n        next(rp_remainder(field, product, monic), fn(seed) {\n          next(rp_sequence(field, monic, seed), fn(sequence) {\n            rp_difference(field, sequence, interval)\n          })"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realtower/isolation.mbt",
+          "line": 134,
+          "end_line": 142,
+          "excerpt": "fn split(\n  value : System,\n  interval : @sturm.Interval,\n) -> Result[(CountCertificate, CountCertificate), TowerError] {\n  let middle = midpoint(interval)\n  both(\n    count_between(value, { lower: interval.lower, upper: middle, }),\n    count_between(value, { lower: middle, upper: interval.upper, }),\n    fn(a, b) { Ok((a, b)) },"
+        },
+        {
+          "path": "src/realtower/system.mbt",
+          "line": 106,
+          "end_line": 113,
+          "excerpt": "pub fn root_in_interval(\n  value : System,\n  interval : @sturm.Interval,\n) -> Result[Root, TowerError] {\n  next(count_between(value, interval), fn(count) {\n    if count.count.equal(Succ(Zero)) {\n      Ok({ system: value, certificate: { system: value.certificate, count, }, })\n    } else {"
+        }
+      ],
+      "usage_evidence": "realtower の根分離・区間内一根判定が count_between を使う。rp_difference は signed Sturm–Tarski query にも共有される。",
+      "semantics": "count_between は負差を拒否して Nat に戻す。一方 rp_query の結果は負もあり得る符号付き和なので、共有 rp_difference 全体の Nat 化は誤り。",
+      "recommendation": "根数用の Nat compare/subtract を分離する案。負差・endpoint 評価エラー・区間条件を保持。rp_query の Integer 経路は残す。",
+      "static_complexity": "変動数の二進変換と Nat 差の再構築を省ける候補。変動数算出・符号判定は依然必要。速度・頻度は未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N03",
+      "title": "realtower が有理数埋込みと単位元判定で再帰的な 1 を重複構築",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realtower/api.mbt",
+        "line": 12,
+        "end_line": 21,
+        "excerpt": "fn raw_rational(field : Field, q : @exact.Rational) -> Representation {\n  match field.context {\n    Rationals => Base(q)\n    Extension(parent, _, _) =>\n      Fraction(\n        Cons(raw_rational(parent, q), Nil),\n        Cons(raw_rational(parent, @exact.rational_one()), Nil),\n      )\n  }\n}"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realtower/raw.mbt",
+          "line": 25,
+          "end_line": 31,
+          "excerpt": "fn raw_one(field : Field) -> Representation {\n  raw_rational(field, @exact.rational_one())\n}\n\n///|\nfn raw_zero(field : Field) -> Representation {\n  raw_rational(field, @exact.rational_zero())"
+        },
+        {
+          "path": "src/realtower/raw.mbt",
+          "line": 411,
+          "end_line": 423,
+          "excerpt": "fn raw_multiply(\n  field : Field,\n  a : Representation,\n  b : Representation,\n) -> Result[Representation, TowerError] {\n  if a.equal(raw_one(field)) {\n    Ok(b)\n  } else if b.equal(raw_one(field)) {\n    Ok(a)\n  } else {\n    match (field.context, a, b) {\n      (Rationals, Base(a), Base(b)) => Ok(Base(@exact.rational_multiply(a, b)))\n      (Extension(parent, _, _), Fraction(an, ad), Fraction(bn, bd)) =>"
+        },
+        {
+          "path": "src/realtower/raw.mbt",
+          "line": 436,
+          "end_line": 442,
+          "excerpt": "fn raw_inverse(\n  field : Field,\n  value : Representation,\n) -> Result[Representation, TowerError] {\n  if value.equal(raw_one(field)) {\n    Ok(value)\n  } else {"
+        },
+        {
+          "path": "src/realtower/data.mbt",
+          "line": 22,
+          "end_line": 25,
+          "excerpt": "pub enum Representation {\n  Base(@exact.Rational)\n  Fraction(@core.Chain[Representation], @core.Chain[Representation])\n}"
+        },
+        {
+          "path": "src/realtower/data.mbt",
+          "line": 34,
+          "end_line": 44,
+          "excerpt": "#derive(Eq, Debug)\nenum Context {\n  Rationals\n  Extension(Field, @core.Chain[Representation], @sturm.Interval)\n}\n\n///|\n#derive(Eq, Debug)\npub struct Field {\n  context : Context\n}"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realtower/scalar.mbt",
+          "line": 43,
+          "end_line": 52,
+          "excerpt": "pub fn scalar_multiply(\n  left : Scalar,\n  right : Scalar,\n) -> Result[Scalar, TowerError] {\n  if !same_field(left.field, right.field) {\n    Err(DifferentField)\n  } else {\n    next(raw_multiply(left.field, left.value, right.value), fn(value) {\n      Ok({ field: left.field, value, })\n    })"
+        },
+        {
+          "path": "src/realtower/raw.mbt",
+          "line": 125,
+          "end_line": 130,
+          "excerpt": "    match values {\n      Nil => Ok(Nil)\n      Cons(c, cs) =>\n        both(raw_multiply(field, c, scalar), walk(cs), fn(v, vs) {\n          Ok(Cons(v, vs))\n        })"
+        },
+        {
+          "path": "src/realtower/polynomial.mbt",
+          "line": 114,
+          "end_line": 119,
+          "excerpt": "pub fn evaluate_rational(\n  value : Polynomial,\n  point : @exact.Rational,\n) -> Result[Scalar, TowerError] {\n  evaluate(value, rational(value.field, point))\n}"
+        }
+      ],
+      "usage_evidence": "公開 scalar_multiply、多項式スカラー倍、有理点評価から到達する。raw_one は raw_rational(field,1) を毎回呼ぶ。",
+      "semantics": "Extension ごとに q と 1 を親へそれぞれ再帰埋込みする。q=1 では同一部分木を左右別々に構築し、一般 q も各段で 1 の木を再構築する。a が1でない raw_multiply は raw_one(field) を二度呼ぶ。塔表現への埋込みは必要だが同じ immutable な 1 の再構築は不要。",
+      "recommendation": "将来候補は raw_rational_pair により (q_rep,one_rep) を各段一回作り共有、または文脈に束縛した定数の保持。まず raw_multiply 内で同一 one を共有する等を独立比較する。Fraction の深さ・field/context/選択根を保ち Base に短絡しない。今回は実装しない。",
+      "static_complexity": "塔高さ h に対する source 呼出数は T(h)=2T(h-1)+O(1)。source 呼出木の評価であり、生成コードの CSE・割当て・速度は未確認。構築を共有しても Representation.equal が両枝を再帰走査するコストは残り得る。全体の O(h) 化や実測高速化とは主張しない。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N04",
+      "title": "modular.signed_reduce が既約剰余を subtract 経由で再 reduce",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/modular/modular.mbt",
+        "line": 120,
+        "end_line": 126,
+        "excerpt": "pub fn signed_reduce(m : Modulus, a : @exact.Integer) -> @binary.Binary {\n  let remainder = reduce(m, @exact.magnitude(a))\n  match @exact.negative(a) {\n    false => remainder\n    true => subtract(m, @binary.zero(), remainder)\n  }\n}"
+      },
+      "related_evidence": [
+        {
+          "path": "src/modular/modular.mbt",
+          "line": 45,
+          "end_line": 59,
+          "excerpt": "pub fn subtract(\n  m : Modulus,\n  a : @binary.Binary,\n  b : @binary.Binary,\n) -> @binary.Binary {\n  let x = reduce(m, a)\n  let y = reduce(m, b)\n  match @binary.subtract(x, y) {\n    Some(difference) => difference\n    None =>\n      match @binary.subtract(@binary.add(x, m.value), y) {\n        Some(difference) => difference\n        None => @binary.zero()\n      }\n  }"
+        },
+        {
+          "path": "src/modular/modular.mbt",
+          "line": 28,
+          "end_line": 33,
+          "excerpt": "pub fn reduce(m : Modulus, a : @binary.Binary) -> @binary.Binary {\n  match @binary.remainder(a, m.value) {\n    Some(remainder) => remainder\n    None => @binary.zero()\n  }\n}"
+        },
+        {
+          "path": "src/binary/division.mbt",
+          "line": 118,
+          "end_line": 136,
+          "excerpt": "pub fn remainder(a : Binary, b : Binary) -> Binary? {\n  match (a.bits, b.bits) {\n    (_, Nil) => None\n    (Nil, _) | (_, Cons(true, Nil)) => Some(zero())\n    (_, Cons(false, Cons(true, Nil))) =>\n      Some(\n        match odd(a) {\n          true => one()\n          false => zero()\n        },\n      )\n    _ =>\n      match equal_prefix(a.bits, b.bits) {\n        false => Some(remainder_adaptively(a, b))\n        true =>\n          match compare(a, b) {\n            Less => Some(a)\n            Equal => Some(zero())\n            Greater => Some(remainder_adaptively(a, b))"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/modular/modular.mbt",
+          "line": 111,
+          "end_line": 117,
+          "excerpt": "pub fn inverse(m : Modulus, a : @binary.Binary) -> @binary.Binary? {\n  let (g, x, _) = extended_gcd(a, m.value)\n  match @binary.compare(g, @binary.one()) {\n    Equal => Some(signed_reduce(m, x))\n    _ => None\n  }\n}"
+        },
+        {
+          "path": "src/modular/crt.mbt",
+          "line": 50,
+          "end_line": 56,
+          "excerpt": "            false => magnitude\n          }\n          let coefficient = @exact.multiply(delta, x)\n          let k = match modulus(reduced_period) {\n            Some(modulus) => signed_reduce(modulus, coefficient)\n            None => @binary.zero()\n          }"
+        },
+        {
+          "path": "src/zassenhaus/polynomial.mbt",
+          "line": 377,
+          "end_line": 382,
+          "excerpt": "  let modulus = @primefield.modulus(field)\n  @fppoly.polynomial(\n    field,\n    @core.map(value.coefficients, fn(c) { @modular.signed_reduce(modulus, c) }),\n  )\n}"
+        }
+      ],
+      "usage_evidence": "逆元・CRT・Zassenhaus の整数係数から有限体への変換に使われる。負の係数で該当経路へ入る。",
+      "semantics": "remainder は既に 0<=r<m。負号処理の subtract(m,0,r) の内部で 0 と r を再 reduce する。負の剰余を正規代表へ移す処理は必要だが、剰余をもう一度求める必要はない。",
+      "recommendation": "r==0 なら0、それ以外は modulus-r を返す private な正規剰余専用処理を検討。法>1、負の零、r==0 を保つ。公開 subtract の任意入力正規化は削らない。",
+      "static_complexity": "余分な remainder 呼出し二回を減らす候補。ただし Binary.remainder は零/単位元/大小比較で早期終了するため、毎回長除算二回分の節約という説明は不正確。未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N05",
+      "title": "numberfield.field が検証済み monic を再 monic 化",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/numberfield/field.mbt",
+        "line": 72,
+        "end_line": 84,
+        "excerpt": "  match @minimal.check(proof, verification_fuel) {\n    @zass.Refuted => Err(InvalidCertificate)\n    @zass.Undecided => Err(VerificationBudget)\n    @zass.Proven =>\n      match @poly.terms(proof.result.polynomial) {\n        Cons({ exponents: Cons(d, Nil), .. }, _) =>\n          match d {\n            Zero => Err(InvalidCertificate)\n            Succ(_) =>\n              Ok({\n                proof,\n                degree: d,\n                reduction: @poly.negate(@poly.monic(proof.result.polynomial)),"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realminimal/certificate.mbt",
+          "line": 90,
+          "end_line": 97,
+          "excerpt": "        ) {\n        @zass.Proven =>\n          if selection_valid(proof) {\n            @zass.Proven\n          } else {\n            @zass.Refuted\n          }\n        other => other"
+        },
+        {
+          "path": "src/realminimal/certificate.mbt",
+          "line": 57,
+          "end_line": 66,
+          "excerpt": "  match @core.nth(proof.factorization.factors, proof.selected) {\n    None => false\n    Some(factor) =>\n      match integer_polynomial(factor.polynomial) {\n        None => false\n        Some(polynomial) =>\n          proof.result.polynomial.equal(polynomial) &&\n          proof.result.interval.equal(proof.input.interval) &&\n          @real.check_root(proof.result) &&\n          check_factors(proof.factorization.factors, Zero)"
+        },
+        {
+          "path": "src/realminimal/polynomial.mbt",
+          "line": 55,
+          "end_line": 57,
+          "excerpt": "  match @poly.polynomial(Succ(Zero), terms(@zass.coefficients(value), Zero)) {\n    Ok(p) => Some(@poly.monic(p))\n    Err(_) => None"
+        },
+        {
+          "path": "src/polynomial/polynomial.mbt",
+          "line": 467,
+          "end_line": 483,
+          "excerpt": "pub fn monic(p : Polynomial) -> Polynomial {\n  match p.terms {\n    Nil => p\n    Cons(leading, _) =>\n      match @exact.nonzero(leading.coefficient) {\n        None => p\n        Some(coefficient) => {\n          let factor = @exact.reciprocal(coefficient)\n          {\n            variables: p.variables,\n            terms: @core.map(p.terms, fn(term) {\n              {\n                coefficient: @exact.rational_multiply(factor, term.coefficient),\n                exponents: term.exponents,\n              }\n            }),\n          }"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/compositum/producer.mbt",
+          "line": 129,
+          "end_line": 134,
+          "excerpt": "  let field = match @nf.field_result(parameter, minimal, budget.verification) {\n    Ok(field) => field\n    Err(@nf.VerificationBudget) =>\n      return Ok(Unresolved(MinimalBudget(@minimal.VerificationBudget)))\n    Err(error) => return Err(FieldFailure(error))\n  }"
+        },
+        {
+          "path": "src/cad2/lift.mbt",
+          "line": 196,
+          "end_line": 200,
+          "excerpt": "        Ok(Unresolved(reason)) => Ok(Insufficient(reason))\n        Ok(Normalized(value, proof)) =>\n          match @nf.field_result(value, proof, budget.verification) {\n            Ok(field) => Ok(Ready(field, proof))\n            Err(error) => Err(FieldFailure(error))"
+        },
+        {
+          "path": "src/complexcompositum/producer.mbt",
+          "line": 47,
+          "end_line": 52,
+          "excerpt": "        Ok(@minimal.Normalized(_, proof)) => proof\n      }\n      let field = match @nf.field(proof, budget.verification) {\n        Ok(field) => field\n        Err(@nf.VerificationBudget) =>\n          return Ok(Paused(build, VerificationBudget))"
+        }
+      ],
+      "usage_evidence": "数体構築は合成体生成と CAD 持上げから使用される。公開 field(proof,fuel) も checker を通す。",
+      "semantics": "minimal.check が Proven の場合、integer_polynomial が作った monic 多項式と proof.result.polynomial の完全一致を確認済み。その後の poly.monic は同じ値の再正規化。poly.monic は係数1でも terms を map する。",
+      "recommendation": "Proven 分岐で proof.result.polynomial をそのまま negate へ渡す案を検証。checker、Refuted/Undecided と fuel、正次数、embedding/root interval の束縛は保持する。",
+      "static_complexity": "t 項に対する monic の map と係数処理一巡を Field setup から省く候補。反復 multiply ごとのコストではない。setup/one-shot を含め測る必要がある。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N06",
+      "title": "resultant_start が両入力をそれぞれ二度 monic 化",
+      "classification": "avoidable_production",
+      "priority": "high",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realalgebraic/resultant.mbt",
+        "line": 211,
+        "end_line": 217,
+        "excerpt": "  match (positive_dense(left), positive_dense(right)) {\n    (Some((m, left_dense)), Some((n, right_dense))) =>\n      Ok({\n        left: @poly.monic(left),\n        right: @poly.monic(right),\n        left_dense,\n        right_dense,"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 142,
+          "end_line": 151,
+          "excerpt": "fn positive_dense(\n  value : @poly.Polynomial,\n) -> (@core.Nat, @core.Chain[@exact.Rational])? {\n  match dense(@poly.monic(value)) {\n    Some(values) =>\n      match dense_degree(values) {\n        Some(Succ(_) as n) => Some((n, values))\n        _ => None\n      }\n    None => None"
+        },
+        {
+          "path": "src/polynomial/polynomial.mbt",
+          "line": 467,
+          "end_line": 483,
+          "excerpt": "pub fn monic(p : Polynomial) -> Polynomial {\n  match p.terms {\n    Nil => p\n    Cons(leading, _) =>\n      match @exact.nonzero(leading.coefficient) {\n        None => p\n        Some(coefficient) => {\n          let factor = @exact.reciprocal(coefficient)\n          {\n            variables: p.variables,\n            terms: @core.map(p.terms, fn(term) {\n              {\n                coefficient: @exact.rational_multiply(factor, term.coefficient),\n                exponents: term.exponents,\n              }\n            }),\n          }"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realalgebraic/arithmetic.mbt",
+          "line": 142,
+          "end_line": 149,
+          "excerpt": "  left : Number,\n  right : Number,\n  operation : BinaryOperation,\n) -> Result[Arithmetic, AlgebraError] {\n  match resultant_start(definition(left), definition(right), operation) {\n    Err(error) => Err(error)\n    Ok(state) =>\n      Ok({"
+        }
+      ],
+      "usage_evidence": "実代数的数 arithmetic_start が定義多項式を resultant_start に渡す。resultant_start 自体も公開 API。",
+      "semantics": "positive_dense 内部で dense(poly.monic(value)) を計算し、その直後に Resultant.left/right 用に同じ入力の poly.monic を再計算する。公開任意入力の正規化は一度必要だが二重計算は不要。",
+      "recommendation": "各入力を一度 monic 化し、その同一値から dense と状態を作る案。零/定数/次元の失敗条件を保持。公開 check_resultant の未信頼入力の再計算は独立に保つ。",
+      "static_complexity": "入力 t_l+t_r 項に対する重複正規化を各一巡削る候補。dense 化、Sylvester 行列、行列式コストは残る。未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N07",
+      "title": "resultant 補間点を Nat から毎回作り直す",
+      "classification": "loop_conversion_candidate",
+      "priority": "medium",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realalgebraic/resultant.mbt",
+        "line": 252,
+        "end_line": 256,
+        "excerpt": "    Succ(remaining) =>\n      match fuel {\n        Zero => Ok(ResultantPaused(state))\n        Succ(rest) => {\n          let point = rnat(state.point)"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 156,
+          "end_line": 158,
+          "excerpt": "fn rnat(value : @core.Nat) -> @exact.Rational {\n  @exact.whole(@exact.positive(@binary.from_nat(value)))\n}"
+        },
+        {
+          "path": "src/realalgebraic/resultant.mbt",
+          "line": 287,
+          "end_line": 295,
+          "excerpt": "                    ),\n                  )\n                  resultant_advance(\n                    {\n                      ..state,\n                      remaining,\n                      point: Succ(state.point),\n                      coefficients,\n                      basis,"
+        },
+        {
+          "path": "src/realalgebraic/resultant.mbt",
+          "line": 138,
+          "end_line": 151,
+          "excerpt": "      fn samples(\n        values : @core.Chain[@exact.Rational],\n        remaining : @core.Nat,\n        point : @core.Nat,\n      ) -> Bool {\n        match (values, remaining) {\n          (Nil, Zero) => true\n          (Cons(head, tail), Succ(rest)) => {\n            let x = rnat(point)\n            match sylvester(left, right, m, n, x, proof.operation) {\n              Some(expected) =>\n                expected.equal(head) &&\n                dense_evaluate(claimed, x).equal(head) &&\n                samples(tail, rest, Succ(point))"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realalgebraic/arithmetic.mbt",
+          "line": 165,
+          "end_line": 171,
+          "excerpt": "  fuel : @core.Nat,\n) -> Result[ArithmeticProgress, AlgebraError] {\n  match state.phase {\n    Computing(job) =>\n      match resultant_advance(job, Zero) {\n        Err(error) => Err(error)\n        Ok(ResultantReady(proof)) =>"
+        }
+      ],
+      "usage_evidence": "resultant の各サンプルと公開 check_resultant の点列再計算で rnat(point) が呼ばれる。",
+      "semantics": "Nat point は回数管理、Rational point は行列評価に必要。一回の型変換は意味があるが、0,1,... の各値を毎回 unary 先頭から二進変換する必要性は別。単純な恒等往復ではない。",
+      "recommendation": "producer 状態に Rational point を carry して increment する案を追加状態コスト込みで比較する候補。checker の独立な点列生成を維持し、証明内の点を無検証で信じない。",
+      "static_complexity": "N=m*n+1 点で from_nat の単項走査は合計 0+1+...+(N-1)=Theta(N^2)。逐次 Rational 加算にも二進算術/割当てがあり必ず勝つとは限らない。行列式の支配コスト・実頻度は未測定。",
+      "confidence": "medium",
+      "runtime_measured": false
+    },
+    {
+      "id": "N08",
+      "title": "realalgebraic sparse→dense が各単項式を零埋めして加算",
+      "classification": "representation_candidate",
+      "priority": "medium",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realalgebraic/polynomial.mbt",
+        "line": 91,
+        "end_line": 102,
+        "excerpt": "      Cons(term, rest) =>\n        match (term.exponents, walk(rest)) {\n          (Cons(n, Nil), Some(tail)) =>\n            Some(\n              dense_add(\n                @core.replicate_onto(\n                  n,\n                  @exact.rational_zero(),\n                  Cons(term.coefficient, Nil),\n                ),\n                tail,\n              ),"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 22,
+          "end_line": 33,
+          "excerpt": "fn trim(values : @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational] {\n  match values {\n    Nil => Nil\n    Cons(head, rest) => {\n      let tail = trim(rest)\n      match tail {\n        Nil => if qzero(head) { Nil } else { Cons(head, Nil) }\n        _ => Cons(head, tail)\n      }\n    }\n  }\n}"
+        },
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 36,
+          "end_line": 44,
+          "excerpt": "fn dense_add(\n  a : @core.Chain[@exact.Rational],\n  b : @core.Chain[@exact.Rational],\n) -> @core.Chain[@exact.Rational] {\n  match (a, b) {\n    (Nil, _) => b\n    (_, Nil) => a\n    (Cons(x, xs), Cons(y, ys)) =>\n      trim(Cons(@exact.rational_add(x, y), dense_add(xs, ys)))"
+        },
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 142,
+          "end_line": 149,
+          "excerpt": "fn positive_dense(\n  value : @poly.Polynomial,\n) -> (@core.Nat, @core.Chain[@exact.Rational])? {\n  match dense(@poly.monic(value)) {\n    Some(values) =>\n      match dense_degree(values) {\n        Some(Succ(_) as n) => Some((n, values))\n        _ => None"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realalgebraic/resultant.mbt",
+          "line": 211,
+          "end_line": 217,
+          "excerpt": "  match (positive_dense(left), positive_dense(right)) {\n    (Some((m, left_dense)), Some((n, right_dense))) =>\n      Ok({\n        left: @poly.monic(left),\n        right: @poly.monic(right),\n        left_dense,\n        right_dense,"
+        },
+        {
+          "path": "src/realalgebraic/resultant.mbt",
+          "line": 130,
+          "end_line": 135,
+          "excerpt": "  match\n    (\n      positive_dense(proof.left),\n      positive_dense(proof.right),\n      dense(proof.polynomial),\n    ) {"
+        }
+      ],
+      "usage_evidence": "resultant の実行と検証が dense 係数列を使用。",
+      "semantics": "dense 境界自体は必要。現状は指数 n ごとに n 個の零を置いた一時列を作って dense_add し、再帰の各段で trim する。sorted unique terms を使えば一度の走査で dense 列を組める可能性がある。",
+      "recommendation": "単変数・次数・零・順序を保った一巡 dense view を検討。変数数検査、末尾零除去と係数一致を保持。checker も共有依存を使うため独立 Fraction oracle が必要。",
+      "static_complexity": "出力 D+1 要素は必要。一時零埋めは sum(e_i+1) セル。dense_add は再帰の各段で trim が残列を走査し、最悪 O(t*D^2) の列走査があり得る（算術・単項比較別）。時間・割当て・ピーク RAM は未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N09",
+      "title": "realminimal dense 係数抽出が次数ごとに sparse terms を再走査",
+      "classification": "representation_candidate",
+      "priority": "medium",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realminimal/polynomial.mbt",
+        "line": 29,
+        "end_line": 33,
+        "excerpt": "        Cons(degree, Nil) =>\n          Some(\n            @core.map(@core.indices(Succ(degree)), fn(index) {\n              coefficient(@poly.terms(value), index)\n            }),"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realminimal/polynomial.mbt",
+          "line": 7,
+          "end_line": 23,
+          "excerpt": "  fn coefficient(\n    terms : @core.Chain[@poly.Term],\n    index : @core.Nat,\n  ) -> @exact.Rational {\n    match terms {\n      Nil => @exact.rational_zero()\n      Cons(term, rest) =>\n        match term.exponents {\n          Cons(exponent, Nil) =>\n            if @core.compare(exponent, index).equal(Equal) {\n              term.coefficient\n            } else {\n              coefficient(rest, index)\n            }\n          _ => @exact.rational_zero()\n        }\n    }"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realminimal/realminimal.mbt",
+          "line": 95,
+          "end_line": 102,
+          "excerpt": "  if !@real.check_root(input) {\n    return Err(InvalidInput)\n  }\n  match coefficients(input.polynomial) {\n    None => Err(InvalidInput)\n    Some(values) =>\n      match @zass.factor_rational(values, primes, lift_fuel, subset_fuel) {\n        Err(error) => Err(FactorizationFailure(error))"
+        },
+        {
+          "path": "src/realminimal/certificate.mbt",
+          "line": 80,
+          "end_line": 86,
+          "excerpt": "    return @zass.Refuted\n  }\n  match coefficients(proof.input.polynomial) {\n    None => @zass.Refuted\n    Some(values) =>\n      match\n        @zass.check_rational_factorization("
+        }
+      ],
+      "usage_evidence": "normalize_root の有理因数分解入力と、公開 minimal 証明 checker の入力再構築から使用。",
+      "semantics": "因数分解 API の dense 列は必要だが各 index で terms の先頭から探すことは不要。指数を primitive Int に落とす必要もない。",
+      "recommendation": "sorted unique univariate terms を一度進める cursor と零埋めを検討。非単変数 None、零、欠けた次数、public polynomial constructor の正規化を確認する。",
+      "static_complexity": "D+1 係数に最大 t 項を調べ O((D+1)*t) 項訪問。Nat 比較にも指数長のコストがある。新案の O(D+t) は項/出力訪問の目標で、Nat 比較まで定数時間とはしない。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N10",
+      "title": "NF/CF Horner 評価に legacy な係数全走査が残る",
+      "classification": "representation_candidate",
+      "priority": "medium",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/numberfield/minimal.mbt",
+        "line": 33,
+        "end_line": 48,
+        "excerpt": "  fn go(todo : @core.Chain[@core.Nat], accumulated : Element) -> Element? {\n    match todo {\n      Nil => Some(accumulated)\n      Cons(i, rest) =>\n        match multiply(accumulated, value) {\n          Err(_) => None\n          Ok(product) =>\n            match\n              add(product, rational(value.field, coefficient(polynomial, i))) {\n              Ok(next) => go(rest, next)\n              Err(_) => None\n            }\n        }\n    }\n  }\n  go(@core.reverse(@core.indices(count)), zero(value.field))"
+      },
+      "related_evidence": [
+        {
+          "path": "src/numberfield/linear.mbt",
+          "line": 2,
+          "end_line": 16,
+          "excerpt": "fn coefficient(\n  polynomial : @poly.Polynomial,\n  exponent : @core.Nat,\n) -> @exact.Rational {\n  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(\n    sum,\n    term,\n  ) {\n    if term.exponents.equal(Cons(exponent, Nil)) {\n      @exact.rational_add(sum, term.coefficient)\n    } else {\n      sum\n    }\n  })\n}"
+        },
+        {
+          "path": "src/complexfield/coordinates.mbt",
+          "line": 2,
+          "end_line": 16,
+          "excerpt": "fn coefficient(\n  polynomial : @poly.Polynomial,\n  exponent : @core.Nat,\n) -> @exact.Rational {\n  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(\n    sum,\n    term,\n  ) {\n    if term.exponents.equal(Cons(exponent, Nil)) {\n      @exact.rational_add(sum, term.coefficient)\n    } else {\n      sum\n    }\n  })\n}"
+        },
+        {
+          "path": "src/complexfield/coordinates.mbt",
+          "line": 86,
+          "end_line": 101,
+          "excerpt": "  fn go(todo : @core.Chain[@core.Nat], accumulated : Element) -> Element? {\n    match todo {\n      Nil => Some(accumulated)\n      Cons(i, rest) =>\n        match multiply(accumulated, value) {\n          Err(_) => None\n          Ok(product) =>\n            match\n              add(product, rational(value.field, coefficient(polynomial, i))) {\n              Ok(next) => go(rest, next)\n              Err(_) => None\n            }\n        }\n    }\n  }\n  go(@core.reverse(@core.indices(count)), zero(value.field))"
+        },
+        {
+          "path": "src/complexfield/coordinates.mbt",
+          "line": 19,
+          "end_line": 21,
+          "excerpt": "/// Exact QQ coordinates in [1,alpha,...,i,i*alpha,...].\npub fn coordinates(value : Element) -> @core.Chain[@exact.Rational] {\n  @core.append(@nf.coordinates(value.real), @nf.coordinates(value.imaginary))"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/numberfield/minimal.mbt",
+          "line": 62,
+          "end_line": 70,
+          "excerpt": "  let k = match polynomial_degree(polynomial) {\n    Some(Succ(_) as d) => d\n    _ => return false\n  }\n  if @core.compare(k, degree(value.field)).equal(Greater) {\n    return false\n  }\n  match evaluate_polynomial(value, polynomial) {\n    Some(result) => if !is_zero(result) { return false }"
+        },
+        {
+          "path": "src/complexfield/minimal.mbt",
+          "line": 28,
+          "end_line": 34,
+          "excerpt": "  if @core.compare(k, degree(value.field)).equal(Greater) {\n    return false\n  }\n  match evaluate_polynomial(value, polynomial) {\n    Some(result) => if !is_zero(result) { return false }\n    None => return false\n  }"
+        }
+      ],
+      "usage_evidence": "公開 evaluate_polynomial と minimal-polynomial checker の実使用。NF multiplication_matrix と CF coordinates は既に一巡抽出を使うので未修正と扱わない。",
+      "semantics": "Horner の各次数 i に対して coefficient(polynomial,i) が全 terms を fold する。入力 polynomial は field degree 未満とは限らず、nf.coordinates(Element) の無条件流用は不可。有理係数の field 埋込み自体は必要。",
+      "recommendation": "任意単変数 polynomial 用の一巡係数 cursor/view を検討。field/context と次元検査・エラーを保持。checker と producer の共有依存を独立係数 oracle で検査する必要がある。",
+      "static_complexity": "現在は D+1 回の t 項 fold と exponent-vector equality（Nat 比較コスト別）。Horner の数体乗算は必要なままで係数抽出のみ軽減候補。未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N11",
+      "title": "modular.power が未正規化 base を立ちビットごとに再使用",
+      "classification": "conditional_reduction_candidate",
+      "priority": "low",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/modular/modular.mbt",
+        "line": 78,
+        "end_line": 91,
+        "excerpt": "  fn go(bits : @core.Chain[Bool]) -> @binary.Binary {\n    match bits {\n      Nil => @binary.one()\n      Cons(bit, rest) => {\n        let half = go(rest)\n        let square = multiply(m, half, half)\n        match bit {\n          false => square\n          true => multiply(m, base, square)\n        }\n      }\n    }\n  }\n  go(@binary.bits(exponent))"
+      },
+      "related_evidence": [
+        {
+          "path": "src/modular/modular.mbt",
+          "line": 63,
+          "end_line": 69,
+          "excerpt": "pub fn multiply(\n  m : Modulus,\n  a : @binary.Binary,\n  b : @binary.Binary,\n) -> @binary.Binary {\n  reduce(m, @binary.multiply(a, b))\n}"
+        },
+        {
+          "path": "src/ntt/ntt.mbt",
+          "line": 30,
+          "end_line": 35,
+          "excerpt": "    ) {\n    (true, true) => {\n      let n = @binary.from_nat(size)\n      let root = @modular.reduce(modulus, root)\n      let complete = @modular.power(modulus, root, n)\n      let primitive = match @binary.compare(n, @binary.one()) {"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/finitefield/sqrt.mbt",
+          "line": 42,
+          "end_line": 48,
+          "excerpt": "            match @binary.compare(candidate, p) {\n              Less =>\n                match\n                  @binary.compare(\n                    @modular.power(modulus, candidate, exponent),\n                    previous,\n                  ) {"
+        },
+        {
+          "path": "src/finitefield/sqrt.mbt",
+          "line": 167,
+          "end_line": 174,
+          "excerpt": "      let c = @modular.power(modulus, field.nonresidue, field.odd_part)\n      let t = @modular.power(modulus, value, field.odd_part)\n      let x = @modular.power(\n        modulus,\n        value,\n        @binary.half(@binary.successor(field.odd_part)),\n      )\n      match correct(c, x, t, field.two_power) {"
+        }
+      ],
+      "usage_evidence": "NTT plan と有限体平方根などが公開 power を使用。呼出元の base<m 保証割合は未計測。",
+      "semantics": "true bit ごとに raw base と square を乗算して reduce。巨大な base なら同じ巨大整数を繰り返し乗算する。これは同一 remainder の直接再実行ではなく、正規 base 再利用候補。",
+      "recommendation": "非零指数で base を一度 reduce する案を、指数0/1・tiny・既約 base の回帰を含め比較。積ごとの reduce は削らない。既約 base が主なら準備コストで不採用もあり得る。",
+      "static_complexity": "popcount 回の乗算で raw base bit 長が効く。事前剰余一回の追加で operand を法程度へ制限できる可能性。e=0/1 や既約 base では不利になり得る。未測定。",
+      "confidence": "medium",
+      "runtime_measured": false
+    },
+    {
+      "id": "N12",
+      "title": "complexalgebraic rational fast path が保証済み linear=1 で除算",
+      "classification": "avoidable_production",
+      "priority": "low",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/complexalgebraic/step.mbt",
+        "line": 57,
+        "end_line": 65,
+        "excerpt": "  match\n    coefficients(\n      @poly.terms(@realalgebraic.definition(value)),\n      @exact.rational_zero(),\n      @exact.rational_zero(),\n    ) {\n    Some((constant, linear)) =>\n      @exact.rational_divide(@exact.rational_negate(constant), linear)\n    None => None"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realalgebraic/number.mbt",
+          "line": 27,
+          "end_line": 34,
+          "excerpt": "pub fn number(data : RootCertificate) -> Result[Number, AlgebraError] {\n  match @sturm.system(data.polynomial) {\n    Err(_) => Err(InvalidDefinition)\n    Ok(system) =>\n      match\n        @sturm.count_between(system, data.interval.lower, data.interval.upper) {\n        Some(Succ(Zero)) => Ok({ system, interval: data.interval, })\n        _ => Err(InvalidInterval)"
+        },
+        {
+          "path": "src/realalgebraic/number.mbt",
+          "line": 55,
+          "end_line": 57,
+          "excerpt": "pub fn definition(value : Number) -> @poly.Polynomial {\n  @sturm.squarefree(value.system)\n}"
+        },
+        {
+          "path": "src/sturm/sturm.mbt",
+          "line": 63,
+          "end_line": 68,
+          "excerpt": "                  match @polynomial.is_zero(remainder) {\n                    false => Err(PolynomialFailure)\n                    true => {\n                      let squarefree = @polynomial.monic(quotient)\n                      match @polynomial.derivative(squarefree, Zero) {\n                        None => Err(PolynomialFailure)"
+        },
+        {
+          "path": "src/exact/exact.mbt",
+          "line": 462,
+          "end_line": 466,
+          "excerpt": "pub fn rational_divide(a : Rational, b : Rational) -> Rational? {\n  match nonzero(b) {\n    None => None\n    Some(value) => Some(rational_multiply(a, reciprocal(value)))\n  }"
+        },
+        {
+          "path": "src/exact/exact.mbt",
+          "line": 510,
+          "end_line": 519,
+          "excerpt": "pub fn reciprocal(nonzero : Nonzero) -> Rational {\n  let r = nonzero.value\n  let n = positive(r.denominator)\n  {\n    numerator: match r.numerator.negative {\n      true => negate(n)\n      false => n\n    },\n    denominator: r.numerator.magnitude,\n  }"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/complexalgebraic/step.mbt",
+          "line": 70,
+          "end_line": 81,
+          "excerpt": "fn rational_evaluate(\n  instruction : Instruction,\n  a : @realalgebraic.Number,\n  b : @realalgebraic.Number,\n) -> Result[@exact.Rational?, @realalgebraic.AlgebraError] {\n  match (as_rational(a), as_rational(b)) {\n    (Some(a), Some(b)) =>\n      match instruction {\n        Sum(_, _) => Ok(Some(@exact.rational_add(a, b)))\n        Product(_, _) => Ok(Some(@exact.rational_multiply(a, b)))\n        Negative(_) => Ok(Some(@exact.rational_negate(a)))\n        Quotient(_, _) =>"
+        },
+        {
+          "path": "src/complexalgebraic/arithmetic.mbt",
+          "line": 193,
+          "end_line": 202,
+          "excerpt": "              match\n                instruction_inputs(\n                  instruction,\n                  state.left,\n                  state.right,\n                  state.values,\n                ) {\n                Some((a, b)) =>\n                  match start_step(instruction, a, b) {\n                    Ok(job) =>"
+        }
+      ],
+      "usage_evidence": "complexalgebraic arithmetic 各 step の有理数判定で使用し、RationalStep checker も再抽出する。",
+      "semantics": "as_rational が読むのは任意外部 polynomial でなく checked Number.definition。System.squarefree は monic なので次数1なら linear=1。rational_divide(-constant,linear) の nonzero/reciprocal 経由はこの不変条件の下で不要。高次は None、有効 Number は定数定義にならない。",
+      "recommendation": "private helper の次数1抽出で -constant を直接返す案。monic を保証する Number/System constructor と opaque 境界を確認し、一般 public rational_divide は変更しない。",
+      "static_complexity": "単位元除算の wrapper/reciprocal 構築という小さな定数因子候補。rational_multiply に unit fast path があるため大きな算術節約とは言えない。未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N13",
+      "title": "Nat→Binary→Integer→Rational の一方向埋込みは必要",
+      "classification": "semantically_required",
+      "priority": "exclude",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realalgebraic/polynomial.mbt",
+        "line": 156,
+        "end_line": 158,
+        "excerpt": "fn rnat(value : @core.Nat) -> @exact.Rational {\n  @exact.whole(@exact.positive(@binary.from_nat(value)))\n}"
+      },
+      "related_evidence": [
+        {
+          "path": "src/realtower/data.mbt",
+          "line": 22,
+          "end_line": 25,
+          "excerpt": "pub enum Representation {\n  Base(@exact.Rational)\n  Fraction(@core.Chain[Representation], @core.Chain[Representation])\n}"
+        },
+        {
+          "path": "src/realtower/api.mbt",
+          "line": 12,
+          "end_line": 21,
+          "excerpt": "fn raw_rational(field : Field, q : @exact.Rational) -> Representation {\n  match field.context {\n    Rationals => Base(q)\n    Extension(parent, _, _) =>\n      Fraction(\n        Cons(raw_rational(parent, q), Nil),\n        Cons(raw_rational(parent, @exact.rational_one()), Nil),\n      )\n  }\n}"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/realalgebraic/resultant.mbt",
+          "line": 252,
+          "end_line": 256,
+          "excerpt": "    Succ(remaining) =>\n      match fuel {\n        Zero => Ok(ResultantPaused(state))\n        Succ(rest) => {\n          let point = rnat(state.point)"
+        },
+        {
+          "path": "src/realtower/polynomial.mbt",
+          "line": 114,
+          "end_line": 119,
+          "excerpt": "pub fn evaluate_rational(\n  value : Polynomial,\n  point : @exact.Rational,\n) -> Result[Scalar, TowerError] {\n  evaluate(value, rational(value.field, point))\n}"
+        }
+      ],
+      "usage_evidence": "Rational 点を受け取る補間と、塔の Scalar を受け取る多項式評価で使用。",
+      "semantics": "Nat は単項の指数/回数、Binary は Integer magnitude、Integer は Rational numerator。元の Nat に戻していない。Extension は係数体に対応する Fraction 深さが必要。形が連なるだけの変換を恒等往復と分類しない。N03/N07 の重複計算とは別。",
+      "recommendation": "必要な型埋込みや正規化を一括除去せず、個別の重複計算を対象にする。",
+      "static_complexity": "出力型が異なり表現構築が必要。ループでの再利用可能性は N07 に分離。速度測定なし。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N14",
+      "title": "証明→checked Number/System の再構築は検証境界として必要",
+      "classification": "semantically_required",
+      "priority": "exclude",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/realalgebraic/arithmetic.mbt",
+        "line": 71,
+        "end_line": 82,
+        "excerpt": "pub fn check_arithmetic(proof : ArithmeticCertificate) -> Bool {\n  if !check_resultant(proof.resultant) {\n    false\n  } else {\n    match\n      (\n        number(proof.left),\n        number(proof.right),\n        @sturm.system(proof.resultant.polynomial),\n      ) {\n      (Ok(a), Ok(b), Ok(system)) =>\n        match"
+      },
+      "related_evidence": [
+        {
+          "path": "src/complexalgebraic/number.mbt",
+          "line": 53,
+          "end_line": 68,
+          "excerpt": "fn read_certificate(\n  proof : NumberCertificate,\n) -> Result[Number, @realalgebraic.AlgebraError] {\n  match\n    (@realalgebraic.number(proof.real), @realalgebraic.number(proof.imaginary)) {\n    (Ok(real), Ok(imaginary)) => {\n      let value = number(real, imaginary)\n      if certificate(value).equal(proof) {\n        Ok(value)\n      } else {\n        Err(@realalgebraic.InvalidDefinition)\n      }\n    }\n    (Err(error), _) | (_, Err(error)) => Err(error)\n  }\n}"
+        },
+        {
+          "path": "src/numberfield/realization.mbt",
+          "line": 110,
+          "end_line": 120,
+          "excerpt": "pub fn realize_start(value : Element) -> Result[Realization, FieldError] {\n  let polynomial = match minimal_polynomial(value) {\n    Ok(polynomial) => polynomial\n    Err(error) => return Err(error)\n  }\n  match @real.number(embedding(value.field)) {\n    Err(_) => Err(InternalInvariant)\n    Ok(root) =>\n      Ok({ input: value, polynomial, root, padding: @exact.rational_one(), })\n  }\n}"
+        },
+        {
+          "path": "src/realalgebraic/number.mbt",
+          "line": 27,
+          "end_line": 35,
+          "excerpt": "pub fn number(data : RootCertificate) -> Result[Number, AlgebraError] {\n  match @sturm.system(data.polynomial) {\n    Err(_) => Err(InvalidDefinition)\n    Ok(system) =>\n      match\n        @sturm.count_between(system, data.interval.lower, data.interval.upper) {\n        Some(Succ(Zero)) => Ok({ system, interval: data.interval, })\n        _ => Err(InvalidInterval)\n      }"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/complexalgebraic/number.mbt",
+          "line": 71,
+          "end_line": 73,
+          "excerpt": "pub fn check_number(proof : NumberCertificate) -> Bool {\n  read_certificate(proof) is Ok(_)\n}"
+        },
+        {
+          "path": "src/compositum/producer.mbt",
+          "line": 141,
+          "end_line": 150,
+          "excerpt": "    _ => return Err(InternalInvariant)\n  }\n  let (xvalue, xembedding) = match @nf.realize(x, budget.realization) {\n    Err(error) => return Err(FieldFailure(error))\n    Ok(@nf.RealPaused(_)) => return Ok(Unresolved(RealizationBudget))\n    Ok(@nf.RealReady(value, proof)) => (value, proof)\n  }\n  let (yvalue, yembedding) = match @nf.realize(y, budget.realization) {\n    Err(error) => return Err(FieldFailure(error))\n    Ok(@nf.RealPaused(_)) => return Ok(Unresolved(RealizationBudget))"
+        }
+      ],
+      "usage_evidence": "公開 root/arithmetic/complex 証明の検証と NF の実埋込み realization から到達。",
+      "semantics": "外部 RootCertificate は未検証。number が squarefree/Sturm 情報と区間一根性を作り検証する。Field は root certificate を持つが checked Number の Sturm.System を持たず、realize_start は現行型で必要な派生情報を供給する。",
+      "recommendation": "checker の再構築を同じ payload だからと削らない。producer-only checked 値再利用は別設計。field(proof) と field_result(Number,proof) の両経路、context/根区間同一性を分けて検証する必要がある。",
+      "static_complexity": "Sturm/根数検証を伴い単なる wrapper ではない。現行検証要件の一部で余分変換から除外。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N15",
+      "title": "昔の Nat→Binary→half→Nat と NF/CF 座標再走査は既修正",
+      "classification": "already_fixed",
+      "priority": "exclude",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/core/natural.mbt",
+        "line": 3,
+        "end_line": 20,
+        "excerpt": "pub fn halve_nat(n : Nat) -> (Nat, Bool) {\n  fn walk(fast : Nat, slow : Nat) -> (Nat, Bool) {\n    match (fast, slow) {\n      (Zero, _) => (slow, false)\n      (Succ(Zero), Succ(tail)) => (tail, true)\n      (Succ(Succ(rest)), Succ(tail)) => walk(rest, tail)\n      // Initially fast=slow, and consuming two/one preserves fast <= slow.\n      // Thus a positive fast with zero slow is unreachable.\n      _ => (Zero, false)\n    }\n  }\n  walk(n, n)\n}\n\n///|\npub fn half_nat(n : Nat) -> Nat {\n  let (quotient, _) = halve_nat(n)\n  quotient"
+      },
+      "related_evidence": [
+        {
+          "path": "src/fppoly/irreducibility.mbt",
+          "line": 94,
+          "end_line": 98,
+          "excerpt": "                        false => Ok(None)\n                        true => {\n                          let half = @core.half_nat(n)\n                          match\n                            coprime_witnesses("
+        },
+        {
+          "path": "src/fppoly/irreducibility.mbt",
+          "line": 163,
+          "end_line": 167,
+          "excerpt": "            Err(_) => false\n            Ok({ remainder: x, .. }) => {\n              let half = @core.half_nat(n)\n              check_powers(x, certificate.frobenius, n, x) &&\n              check_witnesses("
+        },
+        {
+          "path": "src/cyclotomic/cyclotomic.mbt",
+          "line": 56,
+          "end_line": 60,
+          "excerpt": "        Succ(Zero) =>\n          (Succ(Zero), @exact.rational_negate(@exact.rational_one()))\n        _ => (@core.half_nat(order), @exact.rational_one())\n      }\n      match"
+        },
+        {
+          "path": "src/complexfield/coordinates.mbt",
+          "line": 19,
+          "end_line": 21,
+          "excerpt": "/// Exact QQ coordinates in [1,alpha,...,i,i*alpha,...].\npub fn coordinates(value : Element) -> @core.Chain[@exact.Rational] {\n  @core.append(@nf.coordinates(value.real), @nf.coordinates(value.imaginary))"
+        },
+        {
+          "path": "src/numberfield/linear.mbt",
+          "line": 37,
+          "end_line": 39,
+          "excerpt": "                  Ok(reduced) => Some(Cons(coordinates(reduced), tail))\n                }\n            }"
+        },
+        {
+          "path": "docs/bootstrap/nat-conversions.md",
+          "line": 1,
+          "end_line": 15,
+          "excerpt": "# Natを直接処理する共有基礎\n\n[ドキュメント](../README.md) / [探索・改善記録](README.md)\n\nユーザー監査の`fppoly/irreducibility.mbt`二箇所と`cyclotomic/cyclotomic.mbt`では、\nfloor(n/2)のためにNat→Binary→Natを作っていた。\nこの経路を`core.half_nat`へ置き換えた。\n\n最初は`halve_nat(n)`でSuccを二つずつ消費して商へ一つずつ積む方式を共有化した。\nその後、[末尾共有](nat-tail-sharing.md)へ進め、商のSuccの新規構築も省いた。\n同じNat上をfastは二つずつ、slowは一つずつ進み、slowの既存tailを返す。\nBinary.from_natはこの二進分割を経て、現在は[8進単位の末尾共有](nat-radix-grouping.md)で\n一度に三bitを作る。半分化だけが必要な経路は引き続きCore helperを使う。\nいずれもBigIntも組み込み整数も必要ない。\n商の値だけなら`half_nat`を呼び、Boolが必要なら`halve_nat`を呼ぶ。"
+        }
+      ],
+      "callers": [
+        {
+          "path": "src/fppoly/irreducibility.mbt",
+          "line": 75,
+          "end_line": 81,
+          "excerpt": "/// Return a certificate precisely for monic irreducible positive-degree inputs.\n/// The half-degree test uses every i, avoiding any factorization oracle for n.\npub fn irreducibility(\n  value : Polynomial,\n) -> Result[IrreducibilityCertificate?, PolyError] {\n  match (degree(value), leading(value)) {\n    (Some(Succ(_) as n), Some(coefficient)) =>"
+        },
+        {
+          "path": "src/cyclotomic/cyclotomic.mbt",
+          "line": 51,
+          "end_line": 53,
+          "excerpt": "pub fn field(order : @core.Nat) -> Field? {\n  match @core.is_power_of_two_nat(order) {\n    false => None"
+        }
+      ],
+      "usage_evidence": "有限体既約性と円分多項式は Nat 専用 half_nat へ移行済み。",
+      "semantics": "half_nat は fast/slow pointer で既存 unary tail を返す。文書の3箇所を今の未修正往復として再提案しない。NF multiplication_matrix/CF coordinates も一巡抽出へ変更済み。N10 の Horner は別経路。",
+      "recommendation": "既修正として保持。lexical gate の外にある N01/N02 等へ集中する。",
+      "static_complexity": "half_nat は O(n) の単項走査だが Nat 出力の新規再構築や二進中間表現を省く既存変更。今回の性能成果ではない。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N16",
+      "title": "exact.rational_zero/one は既に共有定数",
+      "classification": "already_cached",
+      "priority": "exclude",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/exact/exact.mbt",
+        "line": 192,
+        "end_line": 205,
+        "excerpt": "let canonical_rational_zero : Rational = whole(positive(@binary.zero()))\n\n///|\nlet canonical_rational_one : Rational = whole(positive(@binary.one()))\n\n///|\npub fn rational_zero() -> Rational {\n  canonical_rational_zero\n}\n\n///|\npub fn rational_one() -> Rational {\n  canonical_rational_one\n}"
+      },
+      "related_evidence": [],
+      "callers": [
+        {
+          "path": "src/realtower/api.mbt",
+          "line": 15,
+          "end_line": 19,
+          "excerpt": "    Extension(parent, _, _) =>\n      Fraction(\n        Cons(raw_rational(parent, q), Nil),\n        Cons(raw_rational(parent, @exact.rational_one()), Nil),\n      )"
+        },
+        {
+          "path": "src/realalgebraic/polynomial.mbt",
+          "line": 95,
+          "end_line": 100,
+          "excerpt": "              dense_add(\n                @core.replicate_onto(\n                  n,\n                  @exact.rational_zero(),\n                  Cons(term.coefficient, Nil),\n                ),"
+        }
+      ],
+      "usage_evidence": "production 算術・零埋め・塔埋込みなど多数から使用。",
+      "semantics": "factory 風の名前だが module-level immutable 値を返し、呼出しごとに gcd/正規化しない。realtower.raw_one の再帰構築とは違う。",
+      "recommendation": "exact factory 一律の cache 追加は不要。Tower Representation の構築を N03 として分ける。",
+      "static_complexity": "source 上は Rational を毎回構築/正規化しない。inlining/RC コストは未測定。",
+      "confidence": "high",
+      "runtime_measured": false
+    },
+    {
+      "id": "N17",
+      "title": "テスト・比較 bench の Nat/Binary 往復は意図的",
+      "classification": "test_only",
+      "priority": "exclude",
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "source": {
+        "path": "src/binary/prefix_bench_wbtest.mbt",
+        "line": 75,
+        "end_line": 83,
+        "excerpt": "test \"direct Nat half versus a Binary roundtrip\" (b : @bench.T) {\n  for value in [64, 4096] {\n    let n = @oracle.nat(value)\n    b.bench(name=\"Binary roundtrip half \\{value}\", fn() {\n      b.keep(to_nat(half(from_nat(n))))\n    })\n    b.bench(name=\"structural Nat half \\{value}\", fn() {\n      b.keep(@core.half_nat(n))\n    })"
+      },
+      "related_evidence": [
+        {
+          "path": "src/binary/natural_conversion_wbtest.mbt",
+          "line": 7,
+          "end_line": 13,
+          "excerpt": "    unary = @core.Succ(unary)\n  }\n  for value in [8191, 8192, 20000, 65535, 100000] {\n    assert_eq(from_nat(@oracle.nat(value)), @oracle.binary(value))\n    assert_eq(@oracle.int_of_nat(to_nat(from_nat(@oracle.nat(value)))), value)\n  }\n}"
+        },
+        {
+          "path": "src/binary/binary_wbtest.mbt",
+          "line": 43,
+          "end_line": 49,
+          "excerpt": "    @oracle.int_of_binary(gcd(@oracle.binary(1071), @oracle.binary(462))),\n    21,\n  )\n  for n in 0..<128 {\n    assert_eq(from_nat(to_nat(@oracle.binary(n))), @oracle.binary(n))\n    assert_eq(@oracle.int_of_binary(double(@oracle.binary(n))), n * 2)\n    assert_eq(@oracle.int_of_binary(half(@oracle.binary(n))), n / 2)"
+        }
+      ],
+      "callers": [],
+      "usage_evidence": "全て *_wbtest.mbt。旧 roundtrip と Nat-native の比較、または変換の往復 law。production caller はない。",
+      "semantics": "変換互換性や改善の比較対象を検査している。往復が存在するだけで production の無駄にはならない。",
+      "recommendation": "test oracle/比較 bench として保持。production 変換件数に混入させない。",
+      "static_complexity": "意図的なテストの往復で、配布ライブラリの production 性能指摘から除外。",
+      "confidence": "high",
+      "runtime_measured": false
+    }
+  ],
+  "source_files": [
+    {
+      "path": "docs/bootstrap/nat-conversions.md",
+      "sha256": "75a222ecf101fceb7b798eeb341ca4b10cd30c923b792904cb5af0255a42db66"
+    },
+    {
+      "path": "src/binary/binary_wbtest.mbt",
+      "sha256": "9edc8510b763ac38e4c2374aa3e74d956d4685f424c9f7184a84f3a9def0dc2d"
+    },
+    {
+      "path": "src/binary/division.mbt",
+      "sha256": "d82d1e7dea9a772d4d3b52e0f9d65e8af7bebc5de4098beaa6f818f9fb6f0448"
+    },
+    {
+      "path": "src/binary/natural_conversion_wbtest.mbt",
+      "sha256": "218679a048a4078b15c184d0ae940f39536e0740457a0e033759577be817ae3e"
+    },
+    {
+      "path": "src/binary/prefix_bench_wbtest.mbt",
+      "sha256": "590d1a30ae9c3cd03d50cdbdb7f3a379f4cb07b3832b45ff941bc5b368009f0d"
+    },
+    {
+      "path": "src/cad2/lift.mbt",
+      "sha256": "69f9e4a472a91cbaabf9da54699a36bc0888f0406d0976292f2d5400d7cd659f"
+    },
+    {
+      "path": "src/complexalgebraic/arithmetic.mbt",
+      "sha256": "d95f63fd71afb711453d9742bb571dfb4468ced5a9490b583547f80ff3ae5723"
+    },
+    {
+      "path": "src/complexalgebraic/number.mbt",
+      "sha256": "9946046306e6a33c9f6f8750fd983e74420fa954f47053d028ce54a37cb0aab4"
+    },
+    {
+      "path": "src/complexalgebraic/step.mbt",
+      "sha256": "fce2df3e85d580edbdf305f6a9335ecc75b3a704fde04d3296ae44be940469f5"
+    },
+    {
+      "path": "src/complexcompositum/producer.mbt",
+      "sha256": "839271237a3d094ebd7b76b25a1546303cfddd86adccdbf6c4e14a8625a3d89e"
+    },
+    {
+      "path": "src/complexfield/coordinates.mbt",
+      "sha256": "d23468234d84221bf3c3ee219b45280fb6e0b948b8f8c7bb1254638487b8913c"
+    },
+    {
+      "path": "src/complexfield/minimal.mbt",
+      "sha256": "e5f5756787e27974ef74da1a10c36015791e0aed8380063a5675f52b18e480bb"
+    },
+    {
+      "path": "src/compositum/producer.mbt",
+      "sha256": "29a998956b8da588439d4a08a1ec13549724710953b5c8738a9fc03a6903cb9b"
+    },
+    {
+      "path": "src/core/natural.mbt",
+      "sha256": "8748cbd3adbefddeabe76e7868ab7b83e5da8f3656cd7fe768c58dacf86d3148"
+    },
+    {
+      "path": "src/cyclotomic/cyclotomic.mbt",
+      "sha256": "e6b9393004b577f72ad6b6058382d76e0409adc48d014fb60a476df9f5c85e65"
+    },
+    {
+      "path": "src/exact/exact.mbt",
+      "sha256": "d2e0676b7519c3935d3f65a38e1ea822a7b0dff3044629f8f9b2cafbcd695d88"
+    },
+    {
+      "path": "src/finitefield/sqrt.mbt",
+      "sha256": "457bf4591cb6dfb62f1fdc2c77a042baa46dd9f4a998ea609337f24ee6affc44"
+    },
+    {
+      "path": "src/fppoly/irreducibility.mbt",
+      "sha256": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2"
+    },
+    {
+      "path": "src/modular/crt.mbt",
+      "sha256": "6ed357b5ae1af01908a9e9fc37d6c08295690e56a13dcc47e49e3506f3ec155d"
+    },
+    {
+      "path": "src/modular/modular.mbt",
+      "sha256": "c02f8650ff641dc0e1ea5a615f139320b4bcaec45a47c3a5743b6cfde02d05db"
+    },
+    {
+      "path": "src/ntt/ntt.mbt",
+      "sha256": "faec6ebd9c176b4fbd24e8f70e14290315e8fce720c56a286b8a109a1d9e62b6"
+    },
+    {
+      "path": "src/numberfield/field.mbt",
+      "sha256": "04bb818ce378ef3156aa2dd0b8f4f735355c6b9901c368bbeb3c842c1e610a11"
+    },
+    {
+      "path": "src/numberfield/linear.mbt",
+      "sha256": "3ad1aacebf3add2a4795164070e26ad53ffcee13195287a5841f4f88cd6ed7e5"
+    },
+    {
+      "path": "src/numberfield/minimal.mbt",
+      "sha256": "51bee5b29bc8721bf3613107262d81aaeadcfc852302a3255cd8da295cf8dc1e"
+    },
+    {
+      "path": "src/numberfield/realization.mbt",
+      "sha256": "57655f73b0f087707c3c2430d4dd365d6003ea48bab5eed93699f0df19fbdb09"
+    },
+    {
+      "path": "src/orderedsturm/count.mbt",
+      "sha256": "fc2c59c866beb252e82fa3ba641edac567eddab63b9397901da71eb5ff97adee"
+    },
+    {
+      "path": "src/orderedsturm/isolation.mbt",
+      "sha256": "5f2494d5ee4f3d7bf8be69efc8ca5806ca660c30385c20b3d405105b74ffbc65"
+    },
+    {
+      "path": "src/polynomial/polynomial.mbt",
+      "sha256": "0466ea53034dd8cf2510a30e79680da230956c3e1f1c5cb8160abae6dc743e87"
+    },
+    {
+      "path": "src/realalgebraic/arithmetic.mbt",
+      "sha256": "26ddb44a3a7caa9f70792dd8bd88161f67e2bd958ae08d0c6efafce10ec70e06"
+    },
+    {
+      "path": "src/realalgebraic/number.mbt",
+      "sha256": "4e6f4e6d51b30a2438c5dd96c68c8216770cb40e17a3307fefd4987f2651ae62"
+    },
+    {
+      "path": "src/realalgebraic/polynomial.mbt",
+      "sha256": "f1d2559d3dd403e4cf7bdc2cf08e06ebbbbda88ba836d55ff400ede135f27ab4"
+    },
+    {
+      "path": "src/realalgebraic/resultant.mbt",
+      "sha256": "661d5ca47f5b1ebf35a4362e62aeaaa231ce189ffe69f10f94d5cfab1d520eb1"
+    },
+    {
+      "path": "src/realminimal/certificate.mbt",
+      "sha256": "83aa4ee6e8a24b70088705b2c644c57d39bfc03d7807d7f7da4a7ba62009d0f6"
+    },
+    {
+      "path": "src/realminimal/polynomial.mbt",
+      "sha256": "4e1d37b7100bdda1e2b3e64fffb011e2a0bc278d544a7d9045293be66e318cad"
+    },
+    {
+      "path": "src/realminimal/realminimal.mbt",
+      "sha256": "4d3b4d7a026d3f16335ad349ead9527ede26390f8bee9da6811e922e27a677e6"
+    },
+    {
+      "path": "src/realtower/api.mbt",
+      "sha256": "10afe5d99e19401f236c2eb3abc308eaa99e529fca013dc976ad90d2c9334e90"
+    },
+    {
+      "path": "src/realtower/data.mbt",
+      "sha256": "c83ab9c0e46292cfb66a19bc4412b2be9fc65a1195d69e4a4ce56fdadfd9053b"
+    },
+    {
+      "path": "src/realtower/isolation.mbt",
+      "sha256": "9e53ab78b5b5de80af204804659f36b9a767dc8ff033ba16cf4f2be9cea12059"
+    },
+    {
+      "path": "src/realtower/polynomial.mbt",
+      "sha256": "e09c13c27b8b44f84596aa05657e9f0f97e87be9baea16a72a1cd3e12a029c0e"
+    },
+    {
+      "path": "src/realtower/raw.mbt",
+      "sha256": "0a421ed9931f403643dad5b98900738dd28a48c022b11b512372f5da8d91c210"
+    },
+    {
+      "path": "src/realtower/scalar.mbt",
+      "sha256": "35312ddeffd009b5d80d58344653ace9501a25b10144689838d2494e4a731c43"
+    },
+    {
+      "path": "src/realtower/system.mbt",
+      "sha256": "cd1b0f5f12614b134a86f0251f82a020267ee29f637138e987e18c36f56d63f4"
+    },
+    {
+      "path": "src/relativecad/signs.mbt",
+      "sha256": "7e1117b72d41baf6ad3c629010f9e71edebb0918a55d707309551e679b6fbeaa"
+    },
+    {
+      "path": "src/sturm/sturm.mbt",
+      "sha256": "208e66ddbcfa7dd612e2f3e2c2860daced5dc21b5d342714a2e0085730a6a0af"
+    },
+    {
+      "path": "src/zassenhaus/polynomial.mbt",
+      "sha256": "5e6da03e9b37c1f484ac9b4c27ecbc8ce58960231db1e39efa072b60882bb412"
+    }
+  ]
+}

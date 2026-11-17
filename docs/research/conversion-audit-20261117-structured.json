@@ -1,0 +1,1163 @@
+{
+  "schema": "conversion-audit-structured-v1",
+  "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+  "mode": "read-only static audit",
+  "status": "complete",
+  "deadline_note": "重要候補は15:20UTC前に速報済み。実装・計測・テスト・commitなし。",
+  "summary": "担当範囲で明白なNat→Binary→Nat恒等往復の本体残存は確認しなかった。確度の高い候補は同一contextの再構築・再検証・private vector/matrix wrapper等。未測定。",
+  "scopes": [
+    "polynomial",
+    "fppoly",
+    "galois",
+    "cyclotomic",
+    "matrix",
+    "gf2",
+    "linearspan",
+    "graph",
+    "homology",
+    "chainhomology",
+    "relativehomology",
+    "simplicialmap",
+    "cohomology",
+    "collapse",
+    "filteredcollapse",
+    "persistence",
+    "rips",
+    "sat",
+    "cdcl",
+    "smt",
+    "realnlsmt",
+    "circuit",
+    "bdd",
+    "ruplog",
+    "difference"
+  ],
+  "mechanically_scanned_production_files": 64,
+  "binary_import_aliases": {
+    "polynomial": "binary",
+    "fppoly": "binary",
+    "galois": "binary",
+    "cyclotomic": "binary",
+    "matrix": "binary",
+    "gf2": "binary",
+    "linearspan": "binary",
+    "graph": "binary",
+    "homology": "binary",
+    "chainhomology": "binary",
+    "relativehomology": "binary",
+    "simplicialmap": "binary",
+    "cohomology": "binary",
+    "collapse": "binary",
+    "filteredcollapse": "binary",
+    "persistence": "binary",
+    "rips": "binary",
+    "sat": "binary",
+    "cdcl": "binary",
+    "smt": "binary",
+    "realnlsmt": "binary",
+    "circuit": "binary",
+    "bdd": "binary",
+    "ruplog": "binary",
+    "difference": "binary"
+  },
+  "production_numeric_conversion_sites": [
+    {
+      "path": "src/polynomial/evaluation.mbt",
+      "line": 23,
+      "text": "_ => power(@binary.bits(@binary.from_nat(exponent)))"
+    },
+    {
+      "path": "src/polynomial/polynomial.mbt",
+      "line": 536,
+      "text": "@exact.whole(@exact.positive(@binary.from_nat(power))),"
+    },
+    {
+      "path": "src/polynomial/polynomial.mbt",
+      "line": 580,
+      "text": "power(value, @binary.bits(@binary.from_nat(exponent))),"
+    },
+    {
+      "path": "src/fppoly/factorization.mbt",
+      "line": 208,
+      "text": "let count = @binary.to_nat(characteristic(value))"
+    },
+    {
+      "path": "src/galois/galois.mbt",
+      "line": 82,
+      "text": "@binary.power(characteristic(field), @binary.from_nat(field.degree))"
+    },
+    {
+      "path": "src/cyclotomic/cyclotomic.mbt",
+      "line": 301,
+      "text": "match power(value, @binary.from_nat(exponent)) {"
+    },
+    {
+      "path": "src/cyclotomic/cyclotomic.mbt",
+      "line": 323,
+      "text": "@binary.from_nat(@core.subtract(value.field.order, Succ(Zero))),"
+    },
+    {
+      "path": "src/cdcl/keys.mbt",
+      "line": 5,
+      "text": "@binary.from_nat(value)"
+    },
+    {
+      "path": "src/bdd/apply.mbt",
+      "line": 107,
+      "text": "match lookup(manager.variables, @binary.bits(@binary.from_nat(source))) {"
+    },
+    {
+      "path": "src/bdd/query.mbt",
+      "line": 6,
+      "text": "let key = @binary.bits(@binary.from_nat(literal.variable))"
+    },
+    {
+      "path": "src/bdd/query.mbt",
+      "line": 107,
+      "text": "let key = @binary.bits(@binary.from_nat(literal.variable))"
+    },
+    {
+      "path": "src/bdd/query.mbt",
+      "line": 233,
+      "text": "@binary.compare(variable.key, @binary.from_nat(variable.source))"
+    },
+    {
+      "path": "src/bdd/tables.mbt",
+      "line": 180,
+      "text": "let key = @binary.from_nat(source)"
+    },
+    {
+      "path": "src/ruplog/data.mbt",
+      "line": 96,
+      "text": "{ key: @binary.from_nat(value.variable), source: value, }"
+    },
+    {
+      "path": "src/difference/difference.mbt",
+      "line": 94,
+      "text": "key: @binary.from_nat(constraint.right),"
+    },
+    {
+      "path": "src/difference/difference.mbt",
+      "line": 98,
+      "text": "key: @binary.from_nat(constraint.left),"
+    }
+  ],
+  "findings": [
+    {
+      "id": "S01",
+      "title": "列ごとに同一Smith cokernelを再構築",
+      "priority": "high",
+      "classification": "production_repeated_context",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/simplicialmap/induced.mbt",
+        "line": 64,
+        "end_line": 67,
+        "excerpt": "            @smith.class_coordinates(\n              @smith.cokernel(target_homology.image_form),\n              column,\n            ),"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/simplicialmap/induced.mbt",
+          "line": 188,
+          "end_line": 191,
+          "excerpt": "              match\n                canonical_columns(\n                  target_homology, cycle_map, source_left_inverse,\n                ) {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/relativehomology/connecting.mbt",
+          "line": 283,
+          "end_line": 285,
+          "excerpt": "                      match\n                        @chainhomology.canonical_columns(\n                          target_homology.image_form,"
+        }
+      ],
+      "actual_usage_evidence": "inducedの列normalizationとchainhomology.canonical_columnsの各列から実際に呼ぶ。公開apply専用の未使用案ではない。",
+      "semantic_reducibility": "可。同じimmutable formのcokernelを列ループ外に一度作り、class_coordinates自体は同じ順で呼べる。cokernelのfree/torsion構築はclass_coordinatesでは使われず、group.formだけを参照する。 空列では準備を増やさず、非空列に入る時だけ共有contextを作る。現在のclass_coordinates/再帰の評価順とNone伝播順も維持する。",
+      "recommendation": "最小の将来候補: private normalizeへ一度準備したCokernelを渡す。公開checkerとclass_coordinatesの次元/剰余検査は残す。",
+      "static_complexity": "c>0列、C(form)=cokernel構築の構造的仕事とするとc*C(form)からC(form)へ。Cにはrank用とtorsion用のinvariant_factors再走査が含まれる。各列の基底変換・剰余は残る。 c=0では現状どおりcokernel準備は0回とする。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/chainhomology/chainhomology.mbt",
+          "line": 303,
+          "end_line": 307,
+          "excerpt": "      Cons(column, rest) =>\n        match\n          (\n            @smith.class_coordinates(@smith.cokernel(form), column),\n            normalize(form, rest),"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/smith/cokernel.mbt",
+          "line": 17,
+          "end_line": 24,
+          "excerpt": "pub fn cokernel(form : Decomposition) -> Cokernel {\n  {\n    form,\n    free: @core.subtract(@matrix.height(original(form)), rank(form)),\n    torsion: @core.filter(invariant_factors(form), fn(value) {\n      @binary.compare(value, @binary.one()) is Greater\n    }),\n  }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/smith/cokernel.mbt",
+          "line": 94,
+          "end_line": 96,
+          "excerpt": "  match apply(left(group.form), value) {\n    Some(values) => normalize(values, Zero)\n    None => None"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/smith/check.mbt",
+          "line": 37,
+          "end_line": 57,
+          "excerpt": "pub fn invariant_factors(form : Decomposition) -> @core.Chain[@binary.Binary] {\n  fn walk(\n    rows : @core.Chain[@core.Chain[@exact.Integer]],\n    index : @core.Nat,\n  ) -> @core.Chain[@binary.Binary] {\n    match rows {\n      Nil => Nil\n      Cons(row, rest) =>\n        match @core.nth(row, index) {\n          Some(value) => Cons(@exact.magnitude(value), walk(rest, Succ(index)))\n          None => Nil\n        }\n    }\n  }\n  walk(@matrix.rows(form.diagonal), Zero)\n}\n\n///|\npub fn rank(form : Decomposition) -> @core.Nat {\n  @core.fold_left(invariant_factors(form), Zero, fn(rank, value) {\n    match @binary.is_zero(value) {"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S02",
+      "title": "同一refutation内でProblem→atoms→circuit/CNF bindingをlemma数だけ再構築",
+      "priority": "high",
+      "classification": "production_repeated_validation",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/realnlsmt/check.mbt",
+        "line": 185,
+        "end_line": 196,
+        "excerpt": "pub fn check_refutation(problem : Problem, proof : Refutation) -> Bool {\n  if !valid_problem(problem) || !proof.context.equal(problem.context) {\n    false\n  } else {\n    fn augment(rest : @core.Chain[Lemma], formula : @sat.Cnf) -> @sat.Cnf? {\n      match rest {\n        Nil => Some(formula)\n        Cons(lemma, tail) =>\n          match lemma_clause(problem, lemma) {\n            None => None\n            Some(clause) =>\n              augment(tail, @core.append(formula, Cons(clause, Nil)))"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 272,
+          "end_line": 280,
+          "excerpt": "        Unsatisfiable(propositional) => {\n          let proof = Refutation::{\n            context: context(search.problem),\n            lemmas: @core.reverse(search.lemmas_rev),\n            propositional,\n          }\n          if check_refutation(search.problem, proof) {\n            Ok(Unsatisfiable(proof))\n          } else {"
+        }
+      ],
+      "actual_usage_evidence": "check_refutationは入口でvalid_problemを通した後、augmentの各lemmaから公開lemma_clauseを呼び、そこで再びvalid_problem→prepareを実行する。",
+      "semantic_reducibility": "可(同一呼出内に限定)。入口で同じimmutable Problemを検証済みなら、private validated-lemma helperで重複のvalid_problemだけを省ける。各lemma.contextとCAD coverの検証は必須。",
+      "recommendation": "公開lemma_clauseは現在の検証を維持。check_refutation内部だけでvalidated contextを共有する独立変更として検討。",
+      "static_complexity": "L個のlemma、P=同一Problem再prepare/比較の費用なら現状(L+1)P。重複分だけならPへできる。各cover/proof検証コストは変わらない。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/check.mbt",
+          "line": 161,
+          "end_line": 168,
+          "excerpt": "pub fn lemma_clause(problem : Problem, lemma : Lemma) -> @sat.Clause? {\n  if !valid_problem(problem) || !lemma.context.equal(problem.context) {\n    None\n  } else {\n    match signed_formula(problem, lemma.assignment) {\n      None => None\n      Some(signed) =>\n        match @cad.check_cover(arity(problem), signed, lemma.decomposition) {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/prepare.mbt",
+          "line": 129,
+          "end_line": 136,
+          "excerpt": "/// Rebuild the finite source-to-CNF binding at public checker boundaries.\n/// Opaque construction prevents callers from manufacturing mixed payloads,\n/// but the checker also enforces the invariant instead of relying on opacity.\nfn valid_problem(problem : Problem) -> Bool {\n  match prepare(arity(problem), formula(problem)) {\n    Ok(expected) => expected.equal(problem)\n    Err(_) => false\n  }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/prepare.mbt",
+          "line": 86,
+          "end_line": 97,
+          "excerpt": "  match collect(arity, source, Nil) {\n    Err(error) => Err(error)\n    Ok(reversed) => {\n      let atoms = @core.reverse(reversed)\n      match translate(source, atoms) {\n        None => Err(InternalInvariant)\n        Some(expression) =>\n          Ok({\n            context: { arity, source, },\n            atoms,\n            encoding: @circuit.compile(Cons(expression, Nil)),\n          })"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S03",
+      "title": "CDCL add_clauseが既存variablesからseen trieを毎回作り直す",
+      "priority": "high",
+      "classification": "production_rebuilt_index",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/cdcl/incremental.mbt",
+        "line": 76,
+        "end_line": 85,
+        "excerpt": "pub fn add_clause(search : Search, clause : @sat.Clause) -> Search {\n  let seen = @core.fold_left(search.variables, Empty, fn(seen, literal) {\n    index_put(seen, @binary.bits(literal.key), true)\n  })\n  let (normalized, variables, _) = prepared_clause(\n    clause,\n    Some(Nil),\n    search.variables,\n    seen,\n  )"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 137,
+          "end_line": 141,
+          "excerpt": "            phase: Boolean(\n              match search.boolean_mode {\n                Restarting => @cdcl.start(formula)\n                Retained => @cdcl.add_clause(cursor, clause)\n              },"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 29,
+          "end_line": 37,
+          "excerpt": "pub fn start(problem : Problem) -> Search {\n  start_core(problem)\n}\n\n///|\n/// Retains CDCL state and reduces conflicts only when the existing CAD cover\n/// proves the smaller signed conjunction false everywhere. No new CAD solve.\npub fn start_core(problem : Problem) -> Search {\n  start_with_mode(problem, PrunedCad, Retained, Reduce)"
+        }
+      ],
+      "actual_usage_evidence": "realnlsmt既定start_coreはRetainedで、理論conflictごとにadd_clauseへ戻る。variables/Atom.keyは既にSearchに保存されている。",
+      "semantic_reducibility": "条件付きで可。Searchの既存variable集合Indexを永続cacheとして維持すれば再構築を避けられる。新規変数、tautologyでもmodel-domainを保つ現在の規則は維持する必要がある。",
+      "recommendation": "opaque Searchに一貫性を持つseen cacheを保持する案を別途検証。単純に全variables走査を削除して重複検出を弱めない。",
+      "static_complexity": "V既存変数・key幅bとして追加ごとにV回のindex_put(構造上概ねO(Vb))とtrie再構築。K追加で反復。新規clause処理は依然必要。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/preparation.mbt",
+          "line": 9,
+          "end_line": 15,
+          "excerpt": "/// Convert each source literal once. Continue collecting variables after a\n/// tautology so the returned model domain matches the original CNF.\nfn prepared_clause(\n  source : @sat.Clause,\n  normalized : Lits?,\n  known : Lits,\n  seen : Index[Bool],"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/preparation.mbt",
+          "line": 39,
+          "end_line": 46,
+          "excerpt": "      match index_get(seen, @binary.bits(literal.key)) {\n        Some(_) => prepared_clause(rest, normalized, known, seen)\n        None =>\n          prepared_clause(\n            rest,\n            normalized,\n            Cons(literal, known),\n            index_put(seen, @binary.bits(literal.key), true),"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S04",
+      "title": "SAT model完了ごとにgrowing CNFの変数domainを再抽出・線形重複排除",
+      "priority": "medium",
+      "classification": "production_rebuilt_domain",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/realnlsmt/check.mbt",
+        "line": 25,
+        "end_line": 35,
+        "excerpt": "fn boolean_variables(formula : @sat.Cnf) -> @core.Chain[@core.Nat] {\n  @core.reverse(\n    @core.fold_left(formula, Nil, fn(seen, clause) {\n      @core.fold_left(clause, seen, fn(seen, literal) {\n        if @core.any(seen, fn(variable) { variable.equal(literal.variable) }) {\n          seen\n        } else {\n          Cons(literal.variable, seen)\n        }\n      })\n    }),"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/check.mbt",
+          "line": 43,
+          "end_line": 48,
+          "excerpt": "fn complete_boolean(formula : @sat.Cnf, model : @sat.Model) -> @sat.Model? {\n  let variables = boolean_variables(formula)\n  if !unique_assignments(model) ||\n    !@sat.check_model(formula, model) ||\n    !@core.all(model, fn(literal) {\n      @core.any(variables, fn(variable) { variable.equal(literal.variable) })"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 284,
+          "end_line": 294,
+          "excerpt": "        Satisfiable(partial, cursor) =>\n          match complete_boolean(search.formula, partial) {\n            None => Err(InternalInvariant)\n            Some(full) =>\n              match source_assignment(search.problem, full) {\n                None => Err(InternalInvariant)\n                Some(assignment) =>\n                  match signed_formula(search.problem, assignment) {\n                    None => Err(InternalInvariant)\n                    Some(signed) =>\n                      match @cad.prepare(arity(search.problem), signed) {"
+        }
+      ],
+      "actual_usage_evidence": "Satisfiable Boolean候補ごとにcomplete_booleanがboolean_variables(formula)を呼ぶ。理論lemma追加後も全CNFから取り直す。",
+      "semantic_reducibility": "条件付きで可。変数domainをキャッシュし追加clause分で単調更新できる。ただしmasked source変数等が後で現れる可能性とfirst-use順を考慮し、初期domainが永久固定だと決めつけない。",
+      "recommendation": "producerのSearchにdomain/順序を保存する案。公開check_modelの完全性・矛盾・CNF検査は残す。",
+      "static_complexity": "L literals、V distinct variablesで重複検出だけでもO(LV)回のNat比較(各Nat比較コスト除外)。候補ごとに反復。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/check.mbt",
+          "line": 52,
+          "end_line": 61,
+          "excerpt": "    let full = @core.map(variables, fn(variable) {\n      @sat.Literal::{\n        variable,\n        positive: match assigned(model, variable) {\n          Some(value) => value\n          None => false\n        },\n      }\n    })\n    if @sat.check_model(formula, full) {"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S05",
+      "title": "同じ算術atom集合のCAD projectionをBoolean候補ごとに準備",
+      "priority": "medium",
+      "classification": "production_repeated_preparation",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/realnlsmt/search.mbt",
+        "line": 288,
+        "end_line": 295,
+        "excerpt": "              match source_assignment(search.problem, full) {\n                None => Err(InternalInvariant)\n                Some(assignment) =>\n                  match signed_formula(search.problem, assignment) {\n                    None => Err(InternalInvariant)\n                    Some(signed) =>\n                      match @cad.prepare(arity(search.problem), signed) {\n                        Err(error) => Err(CadFailure(error))"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 265,
+          "end_line": 269,
+          "excerpt": "pub fn step(search : Search) -> Result[Outcome, SmtError] {\n  let search = { ..search, transitions: Succ(search.transitions), }\n  match search.phase {\n    Boolean(solver) =>\n      match @cdcl.run_incremental(solver, Succ(Zero)) {"
+        }
+      ],
+      "actual_usage_evidence": "source_assignmentは全source atom IDを列挙し、signed_formulaは同じpolynomialにrelation/complementを付ける。CAD prepareは各回projection.prepareを呼ぶ。",
+      "semantic_reducibility": "条件付き。完全assignmentではpolynomial集合は同じでrelationのみ変わるためprojection部分の共有候補。formula依存prefix/真偽ラベルやcontext bindingは再構築/検証が必要。",
+      "recommendation": "同じpolynomial familyに結び付いたimmutable projection planのproducer共有を検討。単に別formulaのProblemを流用しない。",
+      "static_complexity": "K候補でprojection準備をK回。P=projection構築ならK*P。共有可能性はあるがprefix/cover/search自体の仕事は残る。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/check.mbt",
+          "line": 74,
+          "end_line": 85,
+          "excerpt": "      fn walk(indices : @core.Chain[@core.Nat]) -> @sat.Model? {\n        match indices {\n          Nil => Some(Nil)\n          Cons(variable, rest) =>\n            match (assigned(source, variable), walk(rest)) {\n              (Some(positive), Some(tail)) =>\n                Some(Cons(@sat.Literal::{ variable, positive, }, tail))\n              _ => None\n            }\n        }\n      }\n      walk(@core.indices(@core.length(problem.atoms)))"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/check.mbt",
+          "line": 99,
+          "end_line": 109,
+          "excerpt": "          match (@core.nth(problem.atoms, literal.variable), walk(tail)) {\n            (Some(atom), Some(rest)) =>\n              Some(\n                Conjunction(\n                  Atom(\n                    atom.polynomial,\n                    if literal.positive {\n                      atom.relation\n                    } else {\n                      @logic.complement(atom.relation)\n                    },"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cad/prepare.mbt",
+          "line": 6,
+          "end_line": 21,
+          "excerpt": "  let atoms = @logic.qf_atoms(formula)\n  if !@core.all(atoms, fn(p) { @poly.variables(p).equal(arity) }) {\n    Err(WrongArity)\n  } else {\n    match @projection.prepare(arity, atoms) {\n      Err(error) => Err(ProjectionFailure(error))\n      Ok(plan) => {\n        let projection = @projection.certificate(plan)\n        match\n          @prefix.prepare(\n            arity,\n            formula,\n            @core.map(projection.levels, @projection.family),\n          ) {\n          Err(error) => Err(PrefixFailure(error))\n          Ok(prefix) => Ok({ arity, formula, atoms, projection, prefix, })"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S06",
+      "title": "cohomology ringの基底対ごとに同じsimplex集合/face対応を作り直す",
+      "priority": "medium",
+      "classification": "production_repeated_basis_layout",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/cohomology/cup.mbt",
+        "line": 28,
+        "end_line": 32,
+        "excerpt": "  let left_simplices = @homology.simplices(source, left_degree)\n  let right_simplices = @homology.simplices(source, right_degree)\n  match\n    @core.length(left).equal(@core.length(left_simplices)) &&\n    @core.length(right).equal(@core.length(right_simplices)) {"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/ring.mbt",
+          "line": 255,
+          "end_line": 264,
+          "excerpt": "    match right {\n      Nil => Some(Nil)\n      Cons(value, rest) =>\n        match\n          (\n            cup(source, p, left, q, value),\n            rights(p, i, left, q, Succ(j), rest, source, spaces),\n          ) {\n          (Some(cochain), Some(tail)) =>\n            match quotient(spaces, @core.add(p, q), cochain) {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/ring.mbt",
+          "line": 493,
+          "end_line": 511,
+          "excerpt": "pub fn compute_ring(source : @homology.Complex) -> Ring? {\n  fn degrees(\n    source : @homology.Complex,\n    degree : @core.Nat,\n    count : @core.Nat,\n  ) -> @core.Chain[Cohomology]? {\n    match count {\n      Zero => Some(Nil)\n      Succ(rest) =>\n        match (compute(source, degree), degrees(source, Succ(degree), rest)) {\n          (Some(space), Some(tail)) => Some(Cons(space, tail))\n          _ => None\n        }\n    }\n  }\n  match degrees(source, Zero, Succ(dimension(source))) {\n    None => None\n    Some(spaces) =>\n      match table_for(source, spaces) {"
+        }
+      ],
+      "actual_usage_evidence": "table_forの(p,i,q,j)ループはcupを基底対ごとに呼ぶ。cupはleft/right/target degreeのsimplicesを毎回取得し、各target faceから線形検索で座標を引く。simplicesはstored-list viewでなく全faces.filter。",
+      "semantic_reducibility": "条件付きで可。source/degree対に結び付くsimplicesリストやAlexander-Whitney face indexを準備してproducerで共有できる。cochainの値とdegree別basisは混同しない。",
+      "recommendation": "最初はproducer table_forだけにdegree-pair planを持たせる案。公開cup/check_ringの独立検証は残す。",
+      "static_complexity": "T基底対で同じ3回のfaces.filterをT回。face検索もtargetごとにleft/right simplex列を走査する。plan化してもChain上の値アクセス費用は別に評価が必要。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/homology/complex.mbt",
+          "line": 147,
+          "end_line": 153,
+          "excerpt": "pub fn simplices(\n  complex : Complex,\n  degree : @core.Nat,\n) -> @core.Chain[@core.Chain[@core.Nat]] {\n  @core.filter(complex.faces, fn(simplex) {\n    @core.compare(@core.length(simplex), Succ(degree)) is Equal\n  })"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cup.mbt",
+          "line": 36,
+          "end_line": 44,
+          "excerpt": "        @core.map(\n          @homology.simplices(source, @core.add(left_degree, right_degree)),\n          fn(simplex) {\n            evaluate(\n              left_simplices,\n              left,\n              @core.take(Succ(left_degree), simplex),\n            ) &&\n            evaluate(right_simplices, right, @core.drop(left_degree, simplex))"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cup.mbt",
+          "line": 2,
+          "end_line": 13,
+          "excerpt": "fn evaluate(\n  simplices : @core.Chain[@core.Chain[@core.Nat]],\n  cochain : @core.Chain[Bool],\n  face : @core.Chain[@core.Nat],\n) -> Bool {\n  match (simplices, cochain) {\n    (Cons(simplex, rest), Cons(value, tail)) =>\n      match simplex.equal(face) {\n        true => value\n        false => evaluate(rest, tail, face)\n      }\n    _ => false"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S07",
+      "title": "内部canonicalなGF(2) field積をpublic Fp polynomial constructorで再正規化",
+      "priority": "medium",
+      "classification": "production_redundant_normalization_boundary",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/galois/carryless.mbt",
+        "line": 115,
+        "end_line": 126,
+        "excerpt": "  let field = a.field\n  {\n    field,\n    representative: @fppoly.polynomial(\n      prime_field(field),\n      binary_product_loop(\n        left,\n        right,\n        @fppoly.coefficients(field.modulus),\n        @binary.zero(),\n        Nil,\n      ),"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/galois.mbt",
+          "line": 155,
+          "end_line": 165,
+          "excerpt": "pub fn multiply(a : Element, b : Element) -> Result[Element, FieldError] {\n  match a.field.equal(b.field) {\n    false => Err(FieldMismatch)\n    true => {\n      match is_binary_field(a.field) {\n        true => return Ok(binary_field_product(a, b))\n        false => ()\n      }\n      match @fppoly.multiply(a.representative, b.representative) {\n        Err(error) => Err(PolynomialError(error))\n        Ok(product) => element(a.field, product)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/galois.mbt",
+          "line": 209,
+          "end_line": 217,
+          "excerpt": "      match power(value, @binary.half(exponent)) {\n        Err(error) => Err(error)\n        Ok(half) =>\n          match multiply(half, half) {\n            Err(error) => Err(error)\n            Ok(square) =>\n              match @binary.odd(exponent) {\n                false => Ok(square)\n                true => multiply(square, value)"
+        }
+      ],
+      "actual_usage_evidence": "非zero/nonunitのbinary_field_productは既約次数内のcanonical coefficient chainを作った後、fppoly.polynomialを呼ぶ。power/trace/norm等のmultiply経路に載る。",
+      "semantic_reducibility": "条件付きで可。内部のcanonical・degree-bound invariantがあればparity/high-zero再走査は数学上不要。ただし別packageの公開constructor境界なので、その検証を単純削除する権限/仕組みは現状ない。",
+      "recommendation": "sealed/checked canonical-result API等の小さい境界設計を検討。一般のraw Binary constructorは現在の正規化を維持。",
+      "static_complexity": "degree d以下の積ごとに追加O(d)係数走査/リストspine構築。積・剰余の仕事は残り、未測定。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/carryless.mbt",
+          "line": 51,
+          "end_line": 65,
+          "excerpt": "/// Multiplication by x. A short value needs only a shared low-zero prefix;\n/// the full-width case cancels its carry against the monic modulus directly.\nfn binary_field_shift(\n  coefficients : @core.Chain[@binary.Binary],\n  modulus : @core.Chain[@binary.Binary],\n  zero : @binary.Binary,\n) -> @core.Chain[@binary.Binary] {\n  match (coefficients, modulus) {\n    (Nil, _) => Nil\n    (_, Cons(_, span)) => {\n      let shifted : @core.Chain[@binary.Binary] = Cons(zero, coefficients)\n      match full_coefficient_width(coefficients, span) {\n        true => xor_field_coefficients(shifted, modulus, zero)\n        false => shifted\n      }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/carryless.mbt",
+          "line": 79,
+          "end_line": 95,
+          "excerpt": "  match right {\n    Nil => accumulator\n    Cons(head, rest) => {\n      let next = match @binary.odd(head) {\n        true => xor_field_coefficients(accumulator, left, zero)\n        false => accumulator\n      }\n      match rest {\n        Nil => next\n        _ =>\n          binary_product_loop(\n            binary_field_shift(left, modulus, zero),\n            rest,\n            modulus,\n            zero,\n            next,\n          )"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S08",
+      "title": "Galois.elementは剰余しか使わないのにpublic Fp divideでquotientも作る",
+      "priority": "medium",
+      "classification": "production_unused_intermediate_result",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/galois/galois.mbt",
+        "line": 96,
+        "end_line": 103,
+        "excerpt": "pub fn element(\n  field : Field,\n  polynomial : @fppoly.Polynomial,\n) -> Result[Element, FieldError] {\n  match @fppoly.divide(polynomial, field.modulus) {\n    Err(error) => Err(PolynomialError(error))\n    Ok({ remainder, .. }) => Ok({ field, representative: remainder, })\n  }"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/galois.mbt",
+          "line": 163,
+          "end_line": 165,
+          "excerpt": "      match @fppoly.multiply(a.representative, b.representative) {\n        Err(error) => Err(PolynomialError(error))\n        Ok(product) => element(a.field, product)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/galois/galois.mbt",
+          "line": 177,
+          "end_line": 182,
+          "excerpt": "      match @fppoly.extended_gcd(value.representative, value.field.modulus) {\n        Err(error) => Err(PolynomialError(error))\n        Ok(witness) =>\n          match witness.gcd.equal(@fppoly.one(prime_field(value.field))) {\n            false => Err(InternalInvariant)\n            true => element(value.field, witness.left)"
+        }
+      ],
+      "actual_usage_evidence": "odd-prime multiplicationのelement reductionとinverseのelement正規化から到達する。F2 multiplyは専用pathなので区別する。",
+      "semantic_reducibility": "剰余計算自体は必須。discarded quotient構築のみ条件付きで削減可。既存fppoly remainder_onlyはpackage-privateでこのpackageからは呼べない。",
+      "recommendation": "公開checked remainder API等の境界を検討し、FieldMismatch/ZeroDivisor/leading inverseとpublic divide oracleを維持。basis reductionそのものを消さない。",
+      "static_complexity": "q cancellation stepsに対するquotient term/shift/addの構造的仕事が余分。remainder subtractionと必要なmodulus reductionは同じ。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fppoly/remainder_only.mbt",
+          "line": 58,
+          "end_line": 85,
+          "excerpt": "fn remainder_only(\n  a : Polynomial,\n  b : Polynomial,\n) -> Result[Polynomial, PolyError] {\n  match compatible(a, b) {\n    false => Err(FieldMismatch)\n    true =>\n      match leading(b) {\n        None => Err(ZeroDivisor)\n        Some(coefficient) => {\n          match is_zero(a) {\n            true => return Ok(a)\n            false => ()\n          }\n          match b.coefficients {\n            Cons(_, Nil) => return remainder_by_constant(a, coefficient)\n            _ => ()\n          }\n          let divisor_width = @core.length(b.coefficients)\n          match characteristic_two(b.field) {\n            true =>\n              return Ok(remainder_loop(a, b, divisor_width, @binary.one()))\n            false => ()\n          }\n          match @modular.inverse(@primefield.modulus(b.field), coefficient) {\n            None => Err(InternalInvariant)\n            Some(inverse_leading) =>\n              Ok(remainder_loop(a, b, divisor_width, inverse_leading))"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fppoly/polynomial.mbt",
+          "line": 719,
+          "end_line": 728,
+          "excerpt": "  match compatible(base, modulus) {\n    false => Err(FieldMismatch)\n    true =>\n      match\n        (\n          remainder_only(base, modulus),\n          remainder_only(one(base.field), modulus),\n        ) {\n        (Ok(base), Ok(unit)) => power_loop(base, exponent, modulus, unit)\n        (Err(error), _) | (_, Err(error)) => Err(error)"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S09",
+      "title": "multiplicity展開のためだけにUnit列を作って即fold",
+      "priority": "medium",
+      "classification": "production_ephemeral_control_list",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/fppoly/factorization.mbt",
+        "line": 206,
+        "end_line": 215,
+        "excerpt": "                      // A nonconstant p-th power has degree at least p, so\n                      // this Nat conversion is bounded by the input degree.\n                      let count = @binary.to_nat(characteristic(value))\n                      Ok(\n                        @core.fold_left(@core.replicate(count, ()), Nil, fn(\n                          result,\n                          _,\n                        ) {\n                          @core.append(factors, result)\n                        }),"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fppoly/factorization.mbt",
+          "line": 199,
+          "end_line": 205,
+          "excerpt": "            true =>\n              match pth_root(value) {\n                Err(error) => Err(error)\n                Ok(root) =>\n                  match factor_monic(root) {\n                    Err(error) => Err(error)\n                    Ok(factors) => {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fppoly/factorization.mbt",
+          "line": 300,
+          "end_line": 305,
+          "excerpt": "          match factor_monic(normalized) {\n            Err(error) => Err(error)\n            Ok(factors) =>\n              Ok({\n                unit,\n                factors: @core.fold_left(factors, Nil, fn(result, value) {"
+        }
+      ],
+      "actual_usage_evidence": "非constant p-th powerのfactor_monicで、factor列をp回複製する際のcounterとしてreplicate(count,())を作る。",
+      "semantic_reducibility": "Unit列は不要。Nat countを直接構造再帰で消費すれば同じappend順・multiplicityを保てる。Binary→Natはここでは反復数を得る境界であり恒等往復ではない。pはinput degree以下という既存guard根拠もある。",
+      "recommendation": "最小候補はUnit列だけを除く。Binary counterへ無条件変更するとbit decrementの仕事が増え得るため別評価。",
+      "static_complexity": "余分なp個のUnit-list spine構築とfold走査O(p)。p回のfactor出力(長さfならO(pf))は意味上必要。",
+      "related": [],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S10",
+      "title": "integer vectorをn×1 matrixに包み、積からcolumnを再抽出",
+      "priority": "high",
+      "classification": "production_vector_matrix_roundtrip",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/simplicialmap/integer.mbt",
+        "line": 81,
+        "end_line": 91,
+        "excerpt": "fn apply_matrix(\n  matrix : @matrix.Matrix[@exact.Integer],\n  vector : @core.Chain[@exact.Integer],\n) -> @core.Chain[@exact.Integer]? {\n  match @matrix.matrix(Succ(Zero), @core.map(vector, fn(x) { Cons(x, Nil) })) {\n    None => None\n    Some(column) =>\n      match @matrix.multiply(matrix, column, integers()) {\n        None => None\n        Some(product) => @matrix.column(product, Zero)\n      }"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/simplicialmap/induced.mbt",
+          "line": 219,
+          "end_line": 233,
+          "excerpt": "pub fn apply(\n  witness : HomologyMap,\n  smith_coordinates : @core.Chain[@exact.Integer],\n) -> @core.Chain[@exact.Integer]? {\n  match check_induced(witness.map, witness.degree, witness.classes, witness) {\n    false => None\n    true =>\n      match apply_matrix(witness.source_left_inverse, smith_coordinates) {\n        None => None\n        Some(cycle_coordinates) =>\n          match apply_matrix(witness.cycle_map, cycle_coordinates) {\n            None => None\n            Some(image) =>\n              @smith.class_coordinates(\n                @smith.cokernel(witness.target_homology.image_form),"
+        }
+      ],
+      "actual_usage_evidence": "public simplicialmap.applyは同一呼出でこのprivate apply_matrixを2回使う。chainhomology.apply_matrixにも同型の公開実装があるが、そちらの内部本体callerは今回確認できなかった。",
+      "semantic_reducibility": "可。直接matrix-vector dot走査で同じ列ベクトルを返せる。次元不一致、m×0/0×nの形状とzero出力は従来通り扱う必要がある。",
+      "recommendation": "private simplicialmap helperから、元のgeneric matrix multiplyとの差分検証付きで検討。公開checkerの再検証は残す。",
+      "static_complexity": "長さnのsingleton-row wrapper、generic multiplyのcolumn準備、m個のsingleton result rows、column再抽出が追加。算術dotのO(mn)自体は残る。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/chainhomology/chainhomology.mbt",
+          "line": 275,
+          "end_line": 285,
+          "excerpt": "pub fn apply_matrix(\n  matrix : @matrix.Matrix[@exact.Integer],\n  vector : @core.Chain[@exact.Integer],\n) -> @core.Chain[@exact.Integer]? {\n  match @matrix.matrix(Succ(Zero), @core.map(vector, fn(x) { Cons(x, Nil) })) {\n    None => None\n    Some(column) =>\n      match @matrix.multiply(matrix, column, integers()) {\n        None => None\n        Some(product) => @matrix.column(product, Zero)\n      }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/matrix/matrix.mbt",
+          "line": 118,
+          "end_line": 128,
+          "excerpt": "fn[A] multiply_known(\n  a : Matrix[A],\n  b : Matrix[A],\n  ops : @algebra.Semiring[A],\n) -> Matrix[A] {\n  let cols = columns(b.width, b.rows)\n  {\n    width: b.width,\n    rows: @core.map(a.rows, fn(row) {\n      @core.map(cols, fn(col) { dot(row, col, ops) })\n    }),"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S11",
+      "title": "integer inverseのInteger→Rational→Integer往復",
+      "priority": "medium",
+      "classification": "production_required_generic_boundary_with_specialization_option",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/chainhomology/chainhomology.mbt",
+        "line": 159,
+        "end_line": 174,
+        "excerpt": "  let rationals = @matrix.matrix(\n    @matrix.width(input),\n    @core.map(@matrix.rows(input), fn(row) { @core.map(row, @exact.whole) }),\n  )\n  match rationals {\n    None => None\n    Some(rationals) =>\n      match @linear.inverse(rationals) {\n        None => None\n        Some(inverse) =>\n          match integral_rows(@matrix.rows(inverse)) {\n            None => None\n            Some(rows) =>\n              match @matrix.matrix(@matrix.width(inverse), rows) {\n                Some(candidate) =>\n                  match inverse_pair(input, candidate) {"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/chainhomology/chainhomology.mbt",
+          "line": 233,
+          "end_line": 240,
+          "excerpt": "      match @smith.run(@smith.start(a), fuel) {\n        Paused(_) => BudgetExhausted\n        Fault(_) => InvalidWitness\n        Done(form) =>\n          match integer_inverse(@smith.right(form)) {\n            None => InvalidWitness\n            Some(inverse) =>\n              match @matrix.multiply(inverse, b, integers()) {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/simplicialmap/induced.mbt",
+          "line": 178,
+          "end_line": 182,
+          "excerpt": "      match\n        (\n          cycle_coordinates(map, degree, source_homology, target_homology),\n          integer_inverse(@smith.left(source_homology.image_form)),\n        ) {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/relativehomology/connecting.mbt",
+          "line": 265,
+          "end_line": 268,
+          "excerpt": "              cycle_lift(source, degree, source_homology),\n              @chainhomology.integer_inverse(\n                @smith.left(source_homology.chain.image_form),\n              ),"
+        }
+      ],
+      "actual_usage_evidence": "chainhomology.computeはSmith right matrix、induced/connectingはSmith left matrixをinteger_inverseへ渡す。同型コードはsimplicialmap/integer.mbtにもある。",
+      "semantic_reducibility": "一般公開integer_inverseではQQ inverseを計算して整数性を拒否/確認する意味があり、無意味な恒等変換ではない。既知unimodular Smith変換に限ればinverseをproducerで保持/再利用する別案は可能。",
+      "recommendation": "generic APIとinverse_pairの独立検査を維持。内部unimodular witness/logからinverseを得る案を別の費用比較対象にする。",
+      "static_complexity": "n×nで入出力の少なくとも2つのO(n²)表現走査とQQ inversion。整数algorithm/operation-log案が速いとは未測定で言えない。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/simplicialmap/integer.mbt",
+          "line": 54,
+          "end_line": 70,
+          "excerpt": "  let rational = @matrix.matrix(\n    @matrix.width(input),\n    @core.map(@matrix.rows(input), fn(row) { @core.map(row, @exact.whole) }),\n  )\n  match rational {\n    None => None\n    Some(rational) =>\n      match @linear.inverse(rational) {\n        None => None\n        Some(inverse) =>\n          match integral_rows(@matrix.rows(inverse)) {\n            None => None\n            Some(rows) =>\n              match @matrix.matrix(@matrix.width(inverse), rows) {\n                Some(candidate) =>\n                  match inverse_pair(input, candidate) {\n                    true => Some(candidate)"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S12",
+      "title": "整数SMTはtheory conflictごとに全CNFをCDCLへ再準備",
+      "priority": "medium",
+      "classification": "production_restarted_pipeline",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/smt/smt.mbt",
+        "line": 375,
+        "end_line": 384,
+        "excerpt": "                          let formula = @core.append(\n                            search.formula,\n                            Cons(clause, Nil),\n                          )\n                          Paused({\n                            ..search,\n                            formula,\n                            lemmas_rev: Cons(lemma, search.lemmas_rev),\n                            phase: Boolean(@cdcl.start(formula)),\n                          })"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/smt/smt.mbt",
+          "line": 325,
+          "end_line": 329,
+          "excerpt": "pub fn step(search : Search) -> Outcome {\n  let search = { ..search, transitions: Succ(search.transitions), }\n  match search.phase {\n    Boolean(solver) =>\n      match @cdcl.run(solver, @core.Succ(Zero)) {"
+        }
+      ],
+      "actual_usage_evidence": "単なるreference関数ではなくinteger smt.stepの本体。新lemmaをappendしてcdcl.start(formula)へ戻り、literal変換/normalize/watch準備を繰り返す。",
+      "semantic_reducibility": "条件付き。monotone add_clause/run_incrementalへ進める余地はrealnlsmtの既存実装が示す。ただしmodel/proof順序・fuel/statisticsが変わり得るため単純な恒等変換削除とは扱えない。",
+      "recommendation": "別の明示的algorithm契約の下で検討。realnlsmt既定は既にRetainedなので同じ未修正問題と混同しない。",
+      "static_complexity": "K conflictsで増大CNFの全literal準備を繰り返す。加えてappendが現在のclause spineを複製する。具体的速度は未測定。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/preparation.mbt",
+          "line": 54,
+          "end_line": 69,
+          "excerpt": "fn indexed_prepare(cnf : @sat.Cnf) -> (Database, Lits) {\n  let initial = Preparing::{ database_rev: Nil, variables: Nil, seen: Empty, }\n  let prepared = @core.fold_left(cnf, initial, fn(prepared, clause) {\n    let (normalized, variables, seen) = prepared_clause(\n      clause,\n      Some(Nil),\n      prepared.variables,\n      prepared.seen,\n    )\n    let database_rev = match normalized {\n      None => prepared.database_rev\n      Some(clause) => Cons(clause, prepared.database_rev)\n    }\n    Preparing::{ database_rev, variables, seen, }\n  })\n  (@core.reverse(prepared.database_rev), prepared.variables)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/realnlsmt/search.mbt",
+          "line": 29,
+          "end_line": 37,
+          "excerpt": "pub fn start(problem : Problem) -> Search {\n  start_core(problem)\n}\n\n///|\n/// Retains CDCL state and reduces conflicts only when the existing CAD cover\n/// proves the smaller signed conjunction false everywhere. No new CAD solve.\npub fn start_core(problem : Problem) -> Search {\n  start_with_mode(problem, PrunedCad, Retained, Reduce)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/incremental.mbt",
+          "line": 72,
+          "end_line": 85,
+          "excerpt": "/// Add an input axiom to a monotone formula. The caller must retain this clause\n/// when checking any final proof: it is not claimed to follow from the old CNF.\n/// No removal or temporary assumptions are provided. Insertion itself does not\n/// consume an outer transition; propagation/conflict analysis resumes in run.\npub fn add_clause(search : Search, clause : @sat.Clause) -> Search {\n  let seen = @core.fold_left(search.variables, Empty, fn(seen, literal) {\n    index_put(seen, @binary.bits(literal.key), true)\n  })\n  let (normalized, variables, _) = prepared_clause(\n    clause,\n    Some(Nil),\n    search.variables,\n    seen,\n  )"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S13",
+      "title": "term評価でNat exponentをBinary exponentへ毎回materialize",
+      "priority": "low",
+      "classification": "production_representation_boundary_not_identity_roundtrip",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/polynomial/polynomial.mbt",
+        "line": 576,
+        "end_line": 582,
+        "excerpt": "        @core.fold_left(pairs, term.coefficient, fn(product, pair) {\n          let (exponent, value) = pair\n          @exact.rational_multiply(\n            product,\n            power(value, @binary.bits(@binary.from_nat(exponent))),\n          )\n        })"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/polynomial/evaluation.mbt",
+          "line": 86,
+          "end_line": 101,
+          "excerpt": "      match univariate_horner(p.terms, value) {\n        Some(result) => Some(result)\n        None => evaluate_generic(p, values)\n      }\n    _ => evaluate_generic(p, values)\n  }\n}"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/bernstein/subdivision.mbt",
+          "line": 268,
+          "end_line": 269,
+          "excerpt": "        match @poly.evaluate(p, point) {\n          Some(value) =>"
+        }
+      ],
+      "actual_usage_evidence": "多変数のgeneric evaluatorではterm/variableごとにfrom_natを呼ぶ。univariate用Sparse Hornerは既に別pathでgapを使う。cyclotomic.conjugateもtermごとに同型変換を行う。",
+      "semantic_reducibility": "現在のbinary exponentiation helperへの入力境界として意味がある。Nat→Binary→Natではない。反復する同一exponentのbit列共有やNat半分化を直接使う別helperならmaterializationを省ける可能性。",
+      "recommendation": "変換を削除するだけでなく、重複exponent分布とentrypointを確認してから小さいcache/Nat-powered helperを比較。univariate既修正pathを新規問題として数えない。",
+      "static_complexity": "変換回数はgenericでterm数×変数数。各unary exponentの構造走査とbit表現準備があり、有理数べき乗の仕事は別。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/polynomial/evaluation.mbt",
+          "line": 20,
+          "end_line": 24,
+          "excerpt": "  match exponent {\n    Zero => @exact.rational_one()\n    Succ(Zero) => base\n    _ => power(@binary.bits(@binary.from_nat(exponent)))\n  }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cyclotomic/cyclotomic.mbt",
+          "line": 298,
+          "end_line": 309,
+          "excerpt": "  match terms {\n    Nil => Ok(zero(field))\n    Cons({ coefficient, exponents: Cons(exponent, Nil), }, rest) =>\n      match power(value, @binary.from_nat(exponent)) {\n        Err(error) => Err(error)\n        Ok(monomial) =>\n          match multiply(rational(field, coefficient), monomial) {\n            Err(error) => Err(error)\n            Ok(term) =>\n              match evaluate_terms(field, rest, value) {\n                Err(error) => Err(error)\n                Ok(tail) => add(term, tail)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/exactfft/exactfft.mbt",
+          "line": 51,
+          "end_line": 55,
+          "excerpt": "            ) {\n            (Ok(root), Some(scale)) =>\n              match @cyclotomic.conjugate(root) {\n                Err(_) => None\n                Ok(inverse_root) =>"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S14",
+      "title": "H-coordinateをzero-paddingしてfull basisで戻す",
+      "priority": "low",
+      "classification": "public_api_only_candidate",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/cohomology/cohomology.mbt",
+        "line": 351,
+        "end_line": 362,
+        "excerpt": "      let b = @core.length(witness.result.coboundaries)\n      let tail = @core.subtract(\n        @matrix.width(witness.basis),\n        @core.add(b, witness.result.rank),\n      )\n      apply_matrix(\n        witness.basis,\n        @core.append(\n          @core.replicate(b, false),\n          @core.append(value, @core.replicate(tail, false)),\n        ),\n      )"
+      },
+      "callers": [],
+      "actual_usage_evidence": "representative公開APIの実装。本体内/他packageの非test producer callerは固定src検索では見つからず、testsでの利用を確認。現行実使用hot pathとは断定しない。",
+      "semantic_reducibility": "条件付きで可。stored H representativesの選択XORならB/complementのzero paddingと全basis dotを避けられる。入力長検査とstored代表元の選択規則は維持。",
+      "recommendation": "公開API利用頻度を先に確認。現在のproducer hot path扱いで優先しない。",
+      "static_complexity": "n-dimensional full coordinate chain構築とdense n×n apply。h representativesだけの組合せならO(nh)型の仕事が候補だが、実装/計測していない。",
+      "related": [],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S15",
+      "title": "solve_factorはRHSごとにoperation log反転とnullspaceを準備",
+      "priority": "low",
+      "classification": "public_api_benchmark_only_reuse_candidate",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/gf2/solve.mbt",
+        "line": 114,
+        "end_line": 119,
+        "excerpt": "  match @core.compare(@core.length(rhs), @matrix.height(value.source)) {\n    Equal => {\n      let transformed = @core.fold_left(\n        @core.reverse(value.reverse_operations),\n        rhs,\n        apply_rhs,"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cmd/gf2kernelbench/main.mbt",
+          "line": 158,
+          "end_line": 162,
+          "excerpt": "          }\n          for _ in 0..<4 {\n            if @gf2.solve_factor(value, rhs) != expected_solution {\n              abort(\"reuse solution mismatch\")\n            }"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cmd/nightgf2bench/main.mbt",
+          "line": 214,
+          "end_line": 218,
+          "excerpt": "        prepared\n      }\n      if @gf2.solve_factor(factor, rhs) != Some(wanted) {\n        abort(\"complete affine solution differs from host oracle\")\n      }"
+        }
+      ],
+      "actual_usage_evidence": "公開solve_factorの再利用経路は存在するが、今回固定srcで確認した呼出元はcmd benchmark/test。cohomology本体はnullspace_factorを一度使うだけ。",
+      "semantic_reducibility": "複数RHSならforward logやnullspaceをFactorizationにcacheできる可能性。単発利用ではcache準備/保持費用が増えるので不要と断定しない。",
+      "recommendation": "実consumerの複数RHS需要を確認してから。factor再利用が既に導入済みな点を無視して全解法再実行と誤診しない。",
+      "static_complexity": "RHSごとにlog長tのreverse spine O(t)とnullspace再構築。既存reduction自体は再計算していない。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/gf2/solve.mbt",
+          "line": 143,
+          "end_line": 150,
+          "excerpt": "            let particular = @core.map(\n              @core.indices(@matrix.width(value.source)),\n              fn(column) { lookup(column, pairs) },\n            )\n            let basis = nullspace_factor(value)\n            match basis {\n              Nil => Some(Unique(particular))\n              _ => Some(Affine(particular, basis))"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cohomology.mbt",
+          "line": 262,
+          "end_line": 264,
+          "excerpt": "  // Reuse the actual reduction for the nullspace, without another elimination.\n  let kernel = @gf2.nullspace_factor(outgoing_factor)\n  let boundaries = match select_columns(previous, incoming_rank.pivots) {"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S16",
+      "title": "cohomology producerの整数boundary→parity→transpose",
+      "priority": "medium",
+      "classification": "production_domain_conversion_with_boolean_specialization_option",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/cohomology/cohomology.mbt",
+        "line": 87,
+        "end_line": 93,
+        "excerpt": "  match @homology.boundary(source, Succ(degree)) {\n    None => None\n    Some(boundary) =>\n      match parity(boundary) {\n        None => None\n        Some(binary) => Some(@matrix.transpose(binary))\n      }"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cohomology.mbt",
+          "line": 246,
+          "end_line": 250,
+          "excerpt": "pub fn compute(source : @homology.Complex, degree : @core.Nat) -> Cohomology? {\n  let (delta, previous) = match\n    (coboundary(source, degree), incoming(source, degree)) {\n    (Some(a), Some(b)) => (a, b)\n    _ => return None"
+        }
+      ],
+      "actual_usage_evidence": "computeのincoming/outgoing coboundary生成でinteger incidence matrixを構成後、全cellをBoolへ写し、転置する。checkerも同じpublic coboundary/incomingを再構成する。",
+      "semantic_reducibility": "cochain方向への転置とmod2という数学的変換は必要。producer専用Bool incidence builderならInteger中間表現を避けられる可能性があるが、公開integer-based checkerを削除/信頼cache化してはいけない。",
+      "recommendation": "必要ならproducerのみBool builderを別案にし、元の整数boundary/parityと全形状比較する。検査重複を単純削除しない。",
+      "static_complexity": "mn incidence cellsのInteger中間、Bool写像、row/column転置の構造走査。最終mn Bool出力とface incidence判定は不可避。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cohomology.mbt",
+          "line": 72,
+          "end_line": 78,
+          "excerpt": "fn parity(input : @matrix.Matrix[@exact.Integer]) -> @matrix.Matrix[Bool]? {\n  @matrix.matrix(\n    @matrix.width(input),\n    @core.map(@matrix.rows(input), fn(row) {\n      @core.map(row, fn(value) { @binary.odd(@exact.magnitude(value)) })\n    }),\n  )"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cohomology/cohomology.mbt",
+          "line": 169,
+          "end_line": 176,
+          "excerpt": "pub fn check_result(\n  source : @homology.Complex,\n  degree : @core.Nat,\n  actual : Group,\n  witness : Certificate,\n) -> Bool {\n  match (coboundary(source, degree), incoming(source, degree)) {\n    (Some(delta), Some(previous)) => {"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/homology/complex.mbt",
+          "line": 211,
+          "end_line": 220,
+          "excerpt": "  let columns = simplices(complex, degree)\n  let rows : @core.Chain[@core.Chain[@core.Nat]] = match degree {\n    Zero => Nil\n    Succ(previous) => simplices(complex, previous)\n  }\n  @matrix.matrix(\n    @core.length(columns),\n    @core.map(rows, fn(face) {\n      @core.map(columns, fn(simplex) { incidence(face, simplex) })\n    }),"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S17",
+      "title": "CDCL/BDD等のNat ID→Binary keyはcache/索引境界で、bitsはO(1)view",
+      "priority": "info",
+      "classification": "necessary_boundary_and_test_only_reference",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/cdcl/cdcl.mbt",
+        "line": 119,
+        "end_line": 129,
+        "excerpt": "fn atom(literal : @sat.Literal) -> Atom {\n  {\n    key: binary_key(literal.variable),\n    source: literal.variable,\n    positive: literal.positive,\n  }\n}\n\n///|\nfn external(literal : Atom) -> @sat.Literal {\n  { variable: literal.source, positive: literal.positive, }"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/preparation.mbt",
+          "line": 25,
+          "end_line": 26,
+          "excerpt": "    Cons(source, rest) => {\n      let literal = atom(source)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/cdcl.mbt",
+          "line": 568,
+          "end_line": 572,
+          "excerpt": "      let lookup = match (indexed, search.watch) {\n        (true, Some(watched)) =>\n          fn(literal : Atom) {\n            index_get(watched.values, @binary.bits(literal.key))\n          }"
+        }
+      ],
+      "actual_usage_evidence": "Atomはsource Natとcached Binary keyを両方保持し、solver出力externalではsourceを使う。lookup中にto_natしていない。旧prototype Nat-bit変換はkeys_wbtestだけ。BDDもstored key/source bindingをcheckerで検証する。",
+      "semantic_reducibility": "現行trie/AVL索引設計では意味がある。binary.bitsはn.bitsを返すだけで再変換/再構築ではない。watch_keyはpositive bitを1個prefixするが全key再作成ではない。",
+      "recommendation": "from_nat/bitsという名前だけで一括削除しない。cache domain再構築(S03)と本件を区別。",
+      "static_complexity": "bits accessorはO(1)参照。Nat→key変換はprepare時のliteralごとで、以後のlookupはcached key。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/binary/binary.mbt",
+          "line": 34,
+          "end_line": 35,
+          "excerpt": "pub fn bits(n : Binary) -> @core.Chain[Bool] {\n  n.bits"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/watched.mbt",
+          "line": 103,
+          "end_line": 105,
+          "excerpt": "fn watch_key(literal : Atom) -> @core.Chain[Bool] {\n  Cons(literal.positive, @binary.bits(literal.key))\n}"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cdcl/keys_wbtest.mbt",
+          "line": 16,
+          "end_line": 28,
+          "excerpt": "fn prototype_nat_bits(value : @core.Nat) -> @core.Chain[Bool] {\n  match value {\n    Zero => Nil\n    Succ(_) => {\n      let (half, low) = prototype_halve_nat(value)\n      Cons(low, prototype_nat_bits(half))\n    }\n  }\n}\n\n///|\nfn prototype_binary_key(value : @core.Nat) -> @binary.Binary {\n  @binary.from_bits(prototype_nat_bits(value))"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/bdd/query.mbt",
+          "line": 230,
+          "end_line": 234,
+          "excerpt": "        let key = @binary.bits(variable.key)\n        let coherent = @core.compare(variable.rank, rank) is Equal &&\n          @binary.compare(variable.rank_key, rank_key) is Equal &&\n          @binary.compare(variable.key, @binary.from_nat(variable.source))\n          is Equal"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    },
+    {
+      "id": "S18",
+      "title": "旧Nat半分化往復/Fp discarded quotient/旧span再solveは既に修正済み",
+      "priority": "info",
+      "classification": "already_fixed",
+      "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "location": {
+        "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+        "path": "src/fppoly/irreducibility.mbt",
+        "line": 94,
+        "end_line": 97,
+        "excerpt": "                        false => Ok(None)\n                        true => {\n                          let half = @core.half_nat(n)\n                          match"
+      },
+      "callers": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/cyclotomic/cyclotomic.mbt",
+          "line": 56,
+          "end_line": 59,
+          "excerpt": "        Succ(Zero) =>\n          (Succ(Zero), @exact.rational_negate(@exact.rational_one()))\n        _ => (@core.half_nat(order), @exact.rational_one())\n      }"
+        }
+      ],
+      "actual_usage_evidence": "固定HEADでfloor(n/2)はcore.half_natを直接利用。Fp modular-powerはremainder_onlyを使い、linearspanはcached columnsを新vectorへ適用する。古い実装は一部WB oracleに残る。",
+      "semantic_reducibility": "今回の未修正findingに数えない。公開divideや旧generic referenceは独立oracle/別APIなので残す意味がある。",
+      "recommendation": "既修正docsと本体を併記し、test/referenceの旧変換をproductionと誤認しない。",
+      "static_complexity": "既修正の状態確認のみ。過去の計測値を現在の性能主張として転用しない。",
+      "related": [
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "docs/bootstrap/nat-conversions.md",
+          "line": 5,
+          "end_line": 9,
+          "excerpt": "ユーザー監査の`fppoly/irreducibility.mbt`二箇所と`cyclotomic/cyclotomic.mbt`では、\nfloor(n/2)のためにNat→Binary→Natを作っていた。\nこの経路を`core.half_nat`へ置き換えた。\n\n最初は`halve_nat(n)`でSuccを二つずつ消費して商へ一つずつ積む方式を共有化した。"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fppoly/polynomial.mbt",
+          "line": 722,
+          "end_line": 728,
+          "excerpt": "      match\n        (\n          remainder_only(base, modulus),\n          remainder_only(one(base.field), modulus),\n        ) {\n        (Ok(base), Ok(unit)) => power_loop(base, exponent, modulus, unit)\n        (Err(error), _) | (_, Err(error)) => Err(error)"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/linearspan/span.mbt",
+          "line": 151,
+          "end_line": 168,
+          "excerpt": "///|\n/// Reduce only the incoming vector against cached exact columns. This is a\n/// persistent operation: both the input state and every returned state can be\n/// reused or branched independently. Zero vectors (also in dimension zero)\n/// are dependent. Rank cannot exceed dimension because every insertion creates\n/// a distinct pivot; at full rank all further vectors are dependent.\npub fn insert(\n  state : State,\n  vector : @core.Chain[@exact.Rational],\n) -> Result[Insertion, SpanError] {\n  if !@core.length(vector).equal(state.dimension) {\n    return Err(DimensionMismatch)\n  }\n  let (residual, coefficients) = reduce(\n    state.columns,\n    vector,\n    @core.replicate(state.rank, @exact.rational_zero()),\n  )"
+        },
+        {
+          "commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+          "path": "src/fglm/fglm.mbt",
+          "line": 185,
+          "end_line": 188,
+          "excerpt": ") -> Result[(Span, @linearspan.State), FglmError] {\n  match @linearspan.insert(state.span_state, vector) {\n    Err(_) => Err(InternalInvariant)\n    Ok(@linearspan.Independent(next)) => Ok((Independent, next))"
+        }
+      ],
+      "performance_status": "静的所見のみ。計測・速度向上・回帰なしの主張はしていない。"
+    }
+  ],
+  "limitations": [
+    "全ソースの形式的/dataflow証明ではない。変数経由・マクロ・外部callerの完全性は主張しない。",
+    "関数の存在だけでhot pathと断定しない。実使用根拠を本体/公開APIのみ/cmd+testに分けた。",
+    "重いテスト、計測、コンパイル、実装、Git変更、追加agentは行っていない。",
+    "Big-Oはlist構造走査/表現準備の静的評価。BigInt/ADT arithmetic、Nat比較、メモリ管理や実測速度を代用しない。"
+  ],
+  "source_manifest": {
+    "docs/bootstrap/nat-conversions.md": "75a222ecf101fceb7b798eeb341ca4b10cd30c923b792904cb5af0255a42db66",
+    "src/bdd/apply.mbt": "1c6e393771a6086b0debc5f2db90f6420054d14ae22830243a4ce7cb6dba671f",
+    "src/bdd/count.mbt": "161e2029442e97034bed30006951a154df43349471796cb3c1d9ebea68d07190",
+    "src/bdd/moon.pkg": "79a7de80c4810b0ca571f496368bbb53db4bdefcd723a5a5cbc8963676371017",
+    "src/bdd/query.mbt": "8cb7f677507890b6da71b2177fb57edb15af42e624e6b9dc5bbdb66112f476ca",
+    "src/bdd/tables.mbt": "08806ff4f23e10dc6635759fdb6a9d3f7e101c646d0f0636e8bf53cdd51af320",
+    "src/bernstein/subdivision.mbt": "b6ad8eda1c6d4e3e50ffc2434b5a5b24b10c52032d023624a9b9210a1529ad92",
+    "src/binary/binary.mbt": "e64d0e008d62d829fad9bfc76fe5bf469cd803e8c6991cf3f55a449eff9f98c5",
+    "src/cad/prepare.mbt": "a8c0586270adb643acce6ce9c17891cad770ad70a47bb43372dc981f375d6da2",
+    "src/cdcl/cdcl.mbt": "025c1577cfd4f64c4a0643c9ff15465f79c81f7ee3d9ebe4456d56642a8b6b40",
+    "src/cdcl/checker.mbt": "11665ab44bbd3fe634317cbed3d5757f3a3b671b49f792d18bb1080f25d11949",
+    "src/cdcl/incremental.mbt": "1f693827f327761fcb50a3db618fe4809ffa40bd8a4fd0d52be0b5603bb74735",
+    "src/cdcl/keys.mbt": "7917b874f5d8e51fffaa295e8075ce787df698f86c64c07e2f1964263a54663b",
+    "src/cdcl/keys_wbtest.mbt": "7e58652cf1046c9ea24164f98f839042ac7c80d47e33a5a80b1ca646ae27a450",
+    "src/cdcl/moon.pkg": "548685ed4c04673ff7fccb79536971d45a78c8b8ea2ec0ae7fa35ad28247f13b",
+    "src/cdcl/preparation.mbt": "c66c6e19e8097becaf2071119a0331941316d5a9ea5cdc70562639b1f2d250eb",
+    "src/cdcl/watched.mbt": "929aa276d78762b8bea2790d15fd44e237c1008777499f502c4098dc0ff66a65",
+    "src/chainhomology/chainhomology.mbt": "dfbc70c5ea4d5335bc30e9cf018a28e411300b867588668ada1ea1c3b8b99fa6",
+    "src/chainhomology/moon.pkg": "2e5e788c43e769fbd91352f2d0043b8d9b8d0882534fec2b47c45e501ee467f1",
+    "src/circuit/arithmetic.mbt": "93c24ec5c61eafe160dee5df702472f9945689a6e8566ea944f0e48837cb3cb8",
+    "src/circuit/circuit.mbt": "8c83ff2e79becbedf4c7332c853c59490e8fdad4745f3091cb5af1f3ab4244aa",
+    "src/circuit/moon.pkg": "470d0a08755e7daa6ee69781f868614f252a68519358276597c2cca104256029",
+    "src/cmd/gf2kernelbench/main.mbt": "f9482c5729651a1ee7639e86ef6c2f8ad601d8e3cdae090cb2ce4e1b92b5bc9a",
+    "src/cmd/nightgf2bench/main.mbt": "bcb238f3331bcd6d879525fd32bd1ee460d4fcbbb28cfd227f74d9359c10eaa0",
+    "src/cohomology/cohomology.mbt": "6a08f2a488f7a18bc2d0505c4b904a4287cbcaa41339d34c6d4f29add20aaa22",
+    "src/cohomology/cup.mbt": "10577742b058fdc58a245e318effda997422c3a91a1ee2a5431734b0a877d1e2",
+    "src/cohomology/moon.pkg": "468441825a733507b7df53753ede29110a85d8bd9ecbec02800efa8d3db163cd",
+    "src/cohomology/ring.mbt": "964e840d0db89865ff01585258c441b9965e970b1d0dfc947f04eb7136576617",
+    "src/collapse/certificate.mbt": "d178f0ab69b0679bef4885bee93f5f53e3535922b47777273d21c06ddd2ae068",
+    "src/collapse/data.mbt": "ecb2a95e7516b80a373302d8c7ed4a98cd43d7897486556c05ac1500ea190259",
+    "src/collapse/moon.pkg": "f9d0f8b14c6a5c20358230a7652c9566e0438d9f7ef574dc0f007a9439b69873",
+    "src/collapse/search.mbt": "7125d905806751e830d57214c85ddff370edc7aab11f0353a02b80b43db27e01",
+    "src/cyclotomic/cyclotomic.mbt": "e6b9393004b577f72ad6b6058382d76e0409adc48d014fb60a476df9f5c85e65",
+    "src/cyclotomic/moon.pkg": "12fe53b497e0d3b4a5580eaa3dccf77949282712a2a5bffae14ea38a14e357cb",
+    "src/difference/difference.mbt": "4a61d9317c3a4bfeb0749a479a730680ce3fae2cbbfbc08a7bb7503f6be7024f",
+    "src/difference/moon.pkg": "35d1fb8c03c9d803806769edea6fddb99fc04e906c34538a75bf1cad2af3da87",
+    "src/exactfft/exactfft.mbt": "18f88b5783a9469cbf7778a9ed4b4fc14bcd596fe180eef1a60666dad262cf76",
+    "src/fglm/fglm.mbt": "57484778b77db88561523c9642f8c5523c7e1d0698deda118090210cd2e4d543",
+    "src/filteredcollapse/filtered.mbt": "fa28be6fe1fd0c0618a556552b709a1e5daa88a6511845b1213aaf4b37e6d9d1",
+    "src/filteredcollapse/moon.pkg": "dd445e9bc52690fa526fb61076733a85963c9c4cfcd8ad8e26870974938777c2",
+    "src/fppoly/characteristic_two.mbt": "ea4e7efa1706ee5cc01bb69afc53e2bf724c28fd81d602fd3868d35fc21ba424",
+    "src/fppoly/factorization.mbt": "9d1ee7da0b5d4c99a35611248e308c91e6e3e99800f61d4e761ee4b0fd76ff3d",
+    "src/fppoly/irreducibility.mbt": "dd04b9ba6054a4fef4da3dca44298b722f765c29fd26bab0cc51819295c40aa2",
+    "src/fppoly/moon.pkg": "5036b4257962755a8af4ab572c1866924175cebaa30878421cb6f70954dab4a4",
+    "src/fppoly/polynomial.mbt": "90a54c557f36570e63ac445480020b093ba857662c4413797ca73f5534bd7051",
+    "src/fppoly/remainder_only.mbt": "8e6b510a5aee32f10b5572de4dcb8e7da6ed0c6d0dad074ebe428e9b65cee4c0",
+    "src/galois/carryless.mbt": "938c86d8cc5d1b5a1fe2ad8f0da1e77968f04cde3522f8ece918901d214efdc7",
+    "src/galois/galois.mbt": "241c192e94a21839ee4a0684ad83bac8010e7354ea2a7d25ad9bc8d634144c22",
+    "src/galois/moon.pkg": "b0013084e66ba9c8847d4a05a576f9fa8e30fe69946753a01bdbe403e2217de6",
+    "src/gf2/kernel.mbt": "da82e63e0f8a610ac46a62aeb37c5615dae26e209159f5046c64f5ab160bf606",
+    "src/gf2/moon.pkg": "b64767dc2a7200406d5439a94a1cfef5e1a5ecaf672f25236376bf11dfb6fa64",
+    "src/gf2/product.mbt": "b7e2cc11e24f294a41a44b236bd2725c363097acfa288ef36f0854f9fde04ead",
+    "src/gf2/solve.mbt": "8a77dd32733cd15cf8158fcb9bb10d9482ffe25a5e8ad16fc97dc084735e89d7",
+    "src/graph/graph.mbt": "ba722c09aa5a3f9eb921d5dddf587bd8317bdbd4ed14321ed8e07ae4ce8ce90c",
+    "src/graph/moon.pkg": "1a5258eae9ae5a3c2e2a553f49b4c37773e2b6770bddd96ba6b57f8aeff171ae",
+    "src/graph/structure.mbt": "306c73bae8781b42cb9d2895e2a38d315e1ee1e23bd2f24e94e056ec1aee1208",
+    "src/homology/complex.mbt": "efde9b2c36b4f75b72c51dc9a7521aeab0f6dc9c2fb4fdf8961ac34f5bce0f8c",
+    "src/homology/homology.mbt": "fbe3bef5b27b6d2cd423d74e7d53d9c23b66a8c394ea85b3e6e89e5a7985276a",
+    "src/homology/moon.pkg": "af0ca1ebcc4219ccd776f6029e7e78efa0b60c68e13cfe3fdecd0e9fdaa0e5b1",
+    "src/linearspan/moon.pkg": "5ab7b4a2afb2fda5f368763c4ef6b8526d897eca14db27d9c400babe166415c4",
+    "src/linearspan/span.mbt": "aa04acef82b0cf3153523bd1cd330de8c1ecba28b9cc5c84d4d23659c196256e",
+    "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+    "src/matrix/moon.pkg": "4ab5d4316dba55d8a7f61cee051af7db34728e5625fc1039dfc3a14e65d7f85d",
+    "src/persistence/certificate.mbt": "e50549bec444c4531b62b94763d3dcbad2275b461a012b0699326f328a9cc0a4",
+    "src/persistence/filtration.mbt": "acd71944902b3e90941d3ba6dab9748d1b1b956e2add7ae8ea61b9a0db55b880",
+    "src/persistence/moon.pkg": "551e03b23de05015164bf73703aa94cada6f0d7c1f4a0d3bc50d76d19465faa9",
+    "src/persistence/reduction.mbt": "64f7a633abee314de299350e34fca60a911d5e147b0d2fb3833b6efcb10a3e7c",
+    "src/persistence/sparse.mbt": "71e33abc9320b5ca1120e24a302d0572a91d7dd0932c443d32087069cd17a87e",
+    "src/polynomial/balanced_product.mbt": "b54266d4c79fafe9e91d54cfa676c11af8779ec81006e66eadcc7179244c4a76",
+    "src/polynomial/evaluation.mbt": "00a0c551f0b8af0521e0f977630de72c4dc4ae15ed40c5aad35c689f20ea8c1f",
+    "src/polynomial/moon.pkg": "f56bfceb5b078d9141f5cc5845a2392afb5d0f720566d85123274a76738d152c",
+    "src/polynomial/polynomial.mbt": "0466ea53034dd8cf2510a30e79680da230956c3e1f1c5cb8160abae6dc743e87",
+    "src/polynomial/remainder.mbt": "7ca41bb6923065fb90811315be95a43ec36c2277c133c68573acc4e488324d7c",
+    "src/polynomial/unit_product.mbt": "f60ef0f2987bf7e5827bc74bdcafcceeba04609cbaca2e44ba253704d46af304",
+    "src/realnlsmt/check.mbt": "f7ba25455b76235666593943994e2c0bc95f557bd384bd96cd245329cd81cb7b",
+    "src/realnlsmt/data.mbt": "b00e7d8c494ff876429367d947cb36dbc72fb8675b0fd54b2852d72097184fbe",
+    "src/realnlsmt/moon.pkg": "1986bdc0f84d7edde3ec8df2bd3870f10dfa8f3a64e26c1f338ec2c0f56a4f6f",
+    "src/realnlsmt/prepare.mbt": "096e1f4fa34a314143d3c8a8a099683c0c265991277d538533dd09a063549d1d",
+    "src/realnlsmt/search.mbt": "a4342455855a5b213cbb6e09a482b4ee7ef0a4c72c6293afa69a2c47cd752243",
+    "src/relativehomology/connecting.mbt": "8d1ffc10b21ed1ff8faf6446f190d72a7e09aaa7cbee2b01049dd7cbc545c8a5",
+    "src/relativehomology/homology.mbt": "769c1ed964b01d19f1cfe2e19f6518412fd2cd39dffa6c3a126ee24fe2eb1eac",
+    "src/relativehomology/moon.pkg": "83d907a6d011182b4c10ba95ee061f42dd6554f07bd147f8eb1d1872e7e49e19",
+    "src/relativehomology/pair.mbt": "4432137d5662fc3286b662f475df986a392527bea66ce7f7bd8e9af64d8c48d2",
+    "src/rips/moon.pkg": "0d7673d1700d9cbc9874515606e51807d71c69451451cf68fa53f0f564c8e90a",
+    "src/rips/rips.mbt": "8932be2ac36bebbfef4d4dd03b3810c07568827cebfc9c69b739b006055cf5b7",
+    "src/ruplog/build.mbt": "687ce9449c084610c8232d993c0272485af69e178c2d38b085132375bf7b7ed3",
+    "src/ruplog/check.mbt": "466df7aedc8e3957e63269b8a3e8cbdeae9667fc0e215e5ca88e4a5f8d009f13",
+    "src/ruplog/data.mbt": "fe5dbc260abaa88b4016bd3ee22ab9f004e9710f1eff7bf23ebbf75419a14692",
+    "src/ruplog/moon.pkg": "5ed64fd7cf77e88d3aa24d65811eb2b5e9b7bf5577d148ba08a0fbc3a0d86f2d",
+    "src/ruplog/occurrences.mbt": "daf905e3c99571916b44b1ea3224842509058c9523a36513b36a9dc0b8d0e224",
+    "src/sat/moon.pkg": "5b45446f13a4cc99d7c90424427565620ca6bf92ca513ecb14a6106dbe55a4a6",
+    "src/sat/sat.mbt": "5253452cf4e29d5784e0f108cd1a54cfc07a1166d04f8ed198bfa5cc08c2295c",
+    "src/simplicialmap/induced.mbt": "46038ec5ed3d6411306745cdd9d4eee2faa4a0850dd7ce8fcd5e13769e7377e0",
+    "src/simplicialmap/integer.mbt": "95429e9c966500ef946de89809d69e213bd057f78a1065c8c39c9633c436a749",
+    "src/simplicialmap/map.mbt": "e47f820cbb61b032697bd365cdb8acd17544eaa0fcd6a4bed446caaa284e057b",
+    "src/simplicialmap/moon.pkg": "d8a58e4fd2d0856365bb37e6cfa9764e352d842f296de79c38dfebd63ed58763",
+    "src/smith/check.mbt": "222a33a40270949061bff1ae2ccc0de4ad58b083439ec9b96e1914fd08a9f9bc",
+    "src/smith/cokernel.mbt": "1d6c4c17d8917a3ce493cb36f1e684aa12dab3f93b0f599cca12342c9f9f235d",
+    "src/smt/moon.pkg": "1dc05abdfcc7ecf1d4e62c9d9121a4f308aa9e1ad66f62d96b0bec1a50318cef",
+    "src/smt/smt.mbt": "2da4f2b900d47f23d10ca1b8ad3d1d89ece02c84b80314b0de2023755a068e72"
+  }
+}

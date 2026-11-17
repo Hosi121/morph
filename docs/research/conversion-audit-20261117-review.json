@@ -1,0 +1,146 @@
+{
+  "numeric": {
+    "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+    "report_sha256": {
+      "numeric.json": "f8f98b066a0d81ac331e8befb61656986ae56b2083ad70e6e60c98ae48a897b5",
+      "numeric.md": "4470b3bd8fa45680976cb5dad777db147980778578aacc00bdd5db87cf45e9e9"
+    },
+    "manifest_hashes_verified": 45,
+    "exact_excerpts_verified": 100,
+    "source_paths_unchanged_in_current_integration": 44,
+    "findings_including_exclusions": 17
+  },
+  "structured": {
+    "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+    "report_sha256": {
+      "structured.json": "7d4a12540f5a0fbaf3e79b9e5c40c2688cd41555c003645ec8f1316babcc9c8f",
+      "structured.md": "9bfecaaa63297fc56416136e4de2a0e476f29b95c90628ca09b39f83dd142767"
+    },
+    "manifest_hashes_verified": 100,
+    "exact_excerpts_verified": 89,
+    "source_paths_unchanged_in_current_integration": 99,
+    "findings_including_exclusions": 18
+  },
+  "root_review": {
+    "utc": "2026-11-17T15:25:13.449923+00:00",
+    "integration_source_commit": "a63dcbca9a07a5c875400c4305bf2b15585b3aa3",
+    "unchanged_source_paths_union": 140,
+    "manually_traced": [
+      "N01",
+      "N02",
+      "N03",
+      "N04",
+      "N05",
+      "N06",
+      "S01",
+      "S02",
+      "S03",
+      "S07",
+      "S12"
+    ],
+    "limits": "Mechanical checks establish provenance/exact excerpts/current source invariance. Manual path review does not prove correctness or benefit of proposed changes. No audit implementation or performance measurement."
+  },
+  "published_identical_reports": {
+    "docs/research/conversion-audit-20261117-numeric.json": "f8f98b066a0d81ac331e8befb61656986ae56b2083ad70e6e60c98ae48a897b5",
+    "docs/research/conversion-audit-20261117-numeric.md": "4470b3bd8fa45680976cb5dad777db147980778578aacc00bdd5db87cf45e9e9",
+    "docs/research/conversion-audit-20261117-structured.json": "7d4a12540f5a0fbaf3e79b9e5c40c2688cd41555c003645ec8f1316babcc9c8f",
+    "docs/research/conversion-audit-20261117-structured.md": "9bfecaaa63297fc56416136e4de2a0e476f29b95c90628ca09b39f83dd142767"
+  },
+  "orchestration": {
+    "contract": {
+      "source_commit": "09f615b8374817d04817eb5b45e776dbee2bfa8a",
+      "request": "Investigate redundant conversions, especially Nat/Binary roundtrips, using research agents; no new production changes in this audit.",
+      "objective": "Identify actual production call paths that rebuild an equivalent representation and distinguish required boundaries, tests, and already-fixed cases.",
+      "workers": {
+        "numeric": {
+          "agent": "algo_numberfield",
+          "read_scope": [
+            "core",
+            "binary",
+            "exact",
+            "numberfield",
+            "real/complex algebra"
+          ],
+          "write_scope": [
+            ".tools/conversion-audit-20261117/numeric.json",
+            ".tools/conversion-audit-20261117/numeric.md"
+          ]
+        },
+        "structured": {
+          "agent": "algo_incremental",
+          "read_scope": [
+            "polynomial",
+            "fppoly",
+            "galois",
+            "matrix/gf2",
+            "topology",
+            "SAT/SMT"
+          ],
+          "write_scope": [
+            ".tools/conversion-audit-20261117/structured.json",
+            ".tools/conversion-audit-20261117/structured.md"
+          ]
+        }
+      },
+      "constraints": [
+        "Read-only fixed Git source; no implementation or heavy experiments",
+        "Root verifies locations and integrates report",
+        "Every finding includes source/path/line/caller/classification/meaning/recommendation",
+        "Static complexity hypotheses are not measured speed improvements"
+      ],
+      "stop_utc": "2026-11-17T15:35:00+00:00",
+      "overall_deadline_utc": "2026-11-17T17:00:00+00:00"
+    },
+    "dag": {
+      "nodes": [
+        "fixed-source-contract",
+        "numeric",
+        "structured",
+        "root-review",
+        "publish-handbook"
+      ],
+      "edges": [
+        [
+          "fixed-source-contract",
+          "numeric"
+        ],
+        [
+          "fixed-source-contract",
+          "structured"
+        ],
+        [
+          "numeric",
+          "root-review"
+        ],
+        [
+          "structured",
+          "root-review"
+        ],
+        [
+          "root-review",
+          "publish-handbook"
+        ]
+      ]
+    },
+    "trace": [
+      {
+        "utc": "2026-11-17T15:07:00+00:00",
+        "event": "user-requested-read-only-conversion-audit",
+        "source": "09f615b",
+        "workers": [
+          "numeric",
+          "structured"
+        ],
+        "parallel_with": "fixed-source final kernel regression; no code dependency"
+      },
+      {
+        "utc": "2026-11-17T15:25:44.656150+00:00",
+        "event": "both-read-only-audits-completed-and-reviewed",
+        "findings_including_required_fixed_and_tests": 35,
+        "exact_excerpts_verified": 189,
+        "no_production_changes": true
+      }
+    ]
+  },
+  "mechanical_verifier_sha256": "3ec4745cd0f4111b70806131389f034ae4b83236075afd502b3e9d76133a1f95"
+}
