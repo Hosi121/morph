@@ -1,0 +1,173 @@
+{
+  "utc": "2026-11-17T13:21:25.380460+00:00",
+  "decision": "adopt remainder-only normal_form; no-reduction gain uncertain; no universal claim",
+  "harness_commit": "5777395",
+  "source_commit": "fe37b700496bf9f0a734a8c2f76e0a3900cb00ee",
+  "baseline": {
+    "baseline": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+    "tracked_files": 1071,
+    "tracked_bytes_unchanged": true,
+    "tracked_source_sha256": "4922bacdc949dccc0435e6d7a7fd94e3026bcdeb53b76231e17679c8e05d91a2",
+    "baseline_executable_sha256": "dfeacfc84f6614dc0afe1f734352016faa97ce16972594972d2cf37591fbb1d5",
+    "build_tasks": 7,
+    "harness_commit": "5777395",
+    "protected_regions_sha256": {
+      "divide": "0b4a87ae7c5fe9c90186f1782a38bbe3eb6c00389cf4152c93293f70ffece4b6",
+      "compare_monomial": "2c1772d63404522bfab79e5ee3ce3d84af3cb51dc07c55aac789ff9f0ebc8388",
+      "insert": "0166c02cbabac5027ae87c8537c284526c5a47dc75c43bc20ad375b91b916283",
+      "polynomial": "50008b8fdb2cf2ee2f6c31bbb66e0dcb75d73538979783b926f4066f39527215",
+      "evaluate_generic": "0562187f7df0d4ef39047d4cd3948b76f93256973e2120531e16b78f54dfe474"
+    },
+    "final_tracked_diff_clean": true
+  },
+  "public_polynomial_api_byte_identical": true,
+  "checker_bodies_changed": false,
+  "shared_dependency_independence_limit": "Checkers can call modified normal_form; unchanged divide still shares canonical insertion/monomial/exact rational/term merge helpers. Independent Fraction/dict fixtures avoid these helpers.",
+  "experimental_followups_used": 0,
+  "launch_restart": {
+    "runs_before_failure": 0,
+    "reason": "shutil.copyfile omitted executable mode; restored original mode without byte/hash changes",
+    "report": "night-normal-form-20261117-launch-error.json"
+  },
+  "timing_runs": 120,
+  "all_checked": true,
+  "validation": [
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/polynomial",
+        "src/groebner",
+        "src/f4",
+        "src/fglm",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "wasm",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 415,
+      "passed": 415,
+      "failed": 0,
+      "log": "separate tool response"
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/polynomial",
+        "src/groebner",
+        "src/f4",
+        "src/fglm",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 415,
+      "passed": 415,
+      "failed": 0,
+      "log": "night-normal-form-20261117-validation.txt"
+    },
+    {
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/polynomial",
+        "src/groebner",
+        "src/f4",
+        "src/fglm",
+        "src/numberfield",
+        "src/complexfield",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "tests": 415,
+      "passed": 415,
+      "failed": 0,
+      "log": "night-normal-form-20261117-validation.txt"
+    },
+    {
+      "command": [
+        "tools/moon",
+        "check",
+        "--target",
+        "all",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "cpu4_lock": true,
+      "passed": true,
+      "tasks": 786
+    },
+    {
+      "command": [
+        "tools/moon",
+        "info",
+        "src/polynomial",
+        "src/cmd/nightnormalbench",
+        "--target",
+        "all"
+      ],
+      "cpu4_lock": true,
+      "passed": true,
+      "tasks": 38
+    },
+    {
+      "command": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "cpu4_lock": true,
+      "passed": true,
+      "kernel_files": 329
+    },
+    {
+      "command": [
+        "python3",
+        "tools/check_model_drift.py"
+      ],
+      "cpu4_lock": true,
+      "passed": true,
+      "regions": 32
+    },
+    {
+      "command": [
+        "python3",
+        "docs/research/night-normal-form-20261117-oracle.py",
+        "--check"
+      ],
+      "cpu4_lock": true,
+      "passed": true,
+      "fraction_fixtures": 30,
+      "direct_benchmark_expectations": 4
+    }
+  ],
+  "push_performed": false,
+  "worktree_removed": false,
+  "raw_sha256": {
+    "night-normal-form-20261117-initial.json": "a9fd0551af083abba0734684fff17a750135b17924c62e245e027fcb7af65d03",
+    "night-normal-form-20261117-launch-error.json": "a52195ef5d1ba41406a7093af24ad647b41f5996aadaebb1e376849863c5c4f6",
+    "night-normal-form-20261117-validation.txt": "cde577e8081492a0cd9e4888c644b2db78975433a9f608484a5cc2b1f8bfae9c",
+    "night-normal-form-20261117-oracle.py": "8eb99e6b2e95488d00068b3e67f04fbe5353858d0f08dfedb926cce9081b6b7c",
+    "night-normal-form-20261117-oracle-cases.json": "9d7dfe602cee5480264ffc8c2b1654cc210c8d7df92e0e3745c0e91399f01877"
+  }
+}

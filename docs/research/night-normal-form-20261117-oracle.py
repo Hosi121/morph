@@ -69,6 +69,8 @@ if args.check:
 else:p.write_text(out)
 print(f'{len(cases)} Fraction fixtures '+('checked' if args.check else 'generated'))
 # CLI fixtures disclosed for copying into the frozen harness.
-if not args.check:
-    specs=[(1,[(i%5-2,1,[i]) for i in range(13)],[[(1,1,[4]),(-10,1,[2]),(1,1,[0])]]),(1,[(1,2,[9]),(-2,3,[5]),(1,3,[1]),(2,5,[0])],[[(2,3,[2]),(-3,2,[0])]]),(2,[(1,1,[4,0]),(2,1,[2,3]),(-1,1,[0,5]),(3,1,[0,0])],[[(2,1,[1,0]),(-1,1,[0,1])],[(3,1,[0,2]),(-2,1,[0,0])]]),(3,[(1,1,[1,0,0]),(1,1,[0,1,0]),(1,1,[0,0,1]),(1,1,[0,0,0])],[[(1,1,[2,0,0]),(1,1,[0,2,0]),(1,1,[0,0,2])]])]
-    (ROOT/'.tools/night-normal-form-20261117/cli-specs.json').write_text(json.dumps([{'n':n,'p':p,'g':g,'expected':remainder(n,p,g)} for n,p,g in specs]))
+specs=[(1,[(i%5-2,1,[i]) for i in range(13)],[[(1,1,[4]),(-10,1,[2]),(1,1,[0])]]),(1,[(1,2,[9]),(-2,3,[5]),(1,3,[1]),(2,5,[0])],[[(2,3,[2]),(-3,2,[0])]]),(2,[(1,1,[4,0]),(2,1,[2,3]),(-1,1,[0,5]),(3,1,[0,0])],[[(2,1,[1,0]),(-1,1,[0,1])],[(3,1,[0,2]),(-2,1,[0,0])]]),(3,[(1,1,[1,0,0]),(1,1,[0,1,0]),(1,1,[0,0,1]),(1,1,[0,0,0])],[[(1,1,[2,0,0]),(1,1,[0,2,0]),(1,1,[0,0,2])]])]
+payload = [{'n':n,'p':p,'g':g,'expected':remainder(n,p,g)} for n,p,g in specs]
+case_path=ROOT/'docs/research/night-normal-form-20261117-oracle-cases.json'
+if args.check: assert json.loads(case_path.read_text())==json.loads(json.dumps(payload)), 'CLI Fraction oracle drift'
+else: case_path.write_text(json.dumps(payload,indent=2)+'\n')

@@ -1,0 +1,5958 @@
+{
+  "utc": "2026-11-17T13:19:25.534970+00:00",
+  "before": {
+    "root": "/home/hosi/morph-night-r2-before",
+    "commit": "a9604b1270270b6edf9c10a6e0ef2a6d81c852ec",
+    "working_tree": [
+      "?? src/cmd/nighteliminatebench/",
+      "?? src/cmd/nightevalbench/",
+      "?? src/cmd/nightnormalbench/"
+    ],
+    "source_manifest_sha256": "3ab00b0da9a82a6fdd06055a5f805063053a1643abbb4bfe309d5cfec92c33f1",
+    "source_file_count": 911,
+    "artifact": "/home/hosi/morph-night-nf/.tools/night-normal-form-20261117/baseline-a9604b1.exe",
+    "artifact_sha256": "dfeacfc84f6614dc0afe1f734352016faa97ce16972594972d2cf37591fbb1d5",
+    "harness": {
+      "main.mbt": "4b07ccf6646b2525b9a8edfbae348cace539b59a9479b284721c2186698b340e",
+      "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-night-nf",
+    "commit": "fe37b700496bf9f0a734a8c2f76e0a3900cb00ee",
+    "working_tree": [
+      "M docs/research/night-normal-form-20261117-oracle.py",
+      "?? docs/research/night-normal-form-20261117-launch-error.json",
+      "?? docs/research/night-normal-form-20261117-oracle-cases.json",
+      "?? docs/research/night-normal-form-20261117.md"
+    ],
+    "source_manifest_sha256": "6c0f04c27b5e6fd76f241a134e461e25b69f7bcb9c172d04a2ff5bf428782698",
+    "source_file_count": 910,
+    "artifact": "/home/hosi/morph-night-nf/.tools/night-normal-form-20261117/candidate-initial.exe",
+    "artifact_sha256": "93496e81de4dc68be93e887870fab128efb82066e75647c8877e012aed182809",
+    "harness": {
+      "main.mbt": "4b07ccf6646b2525b9a8edfbae348cace539b59a9479b284721c2186698b340e",
+      "moon.pkg": "c9656e0d9c7ce722d00a65f2eff51c409c11a8b99d9dbf3ca6d06a8dcdb02121"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "runs": [
+    {
+      "case": "univariate-dense",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 128422093,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 125415.359,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":125415.359,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 119811079,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 116910.058,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":116910.058,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 116492636,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 113307.259,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":113307.259,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 132771677,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 129450.91900000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":129450.91900000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 139417984,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 137011.60499999998,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":137011.60499999998,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 109144271,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 106644.41,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":106644.41,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 116606432,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 113236.143,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":113236.143,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 136741391,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 133576.084,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":133576.084,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 127325856,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 124849.325,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":124849.325,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 111284070,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 108677.553,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":108677.553,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 109975642,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 107798.743,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":107798.743,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 125101812,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 122565.719,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":122565.719,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 119923969,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 117708.451,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":117708.451,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 111521186,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 109301.50699999998,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":109301.50699999998,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 115918701,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 113257.14600000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":113257.14600000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 120160228,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 117693.48,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":117693.48,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 128741275,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 125413.955,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":125413.955,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 110741781,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 108151.918,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":108151.918,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 109911481,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 107297.113,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":107297.113,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "univariate-dense",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 117534227,
+      "payload": {
+        "case": "univariate-dense",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              -7760,
+              1
+            ],
+            [
+              3
+            ]
+          ],
+          [
+            [
+              -18501,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          [
+            [
+              783,
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              1867,
+              1
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 115227.693,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"univariate-dense\",\"iterations\":12000,\"result\":[[[-7760,1],[3]],[[-18501,1],[2]],[[783,1],[1]],[[1867,1],[0]]],\"elapsed_us\":115227.693,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 123556453,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 121190.349,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":121190.349,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 113717047,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 110973.64199999999,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":110973.64199999999,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 133991225,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 131610.587,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":131610.587,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 138467409,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 136160.057,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":136160.057,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 131260209,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 128490.61,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":128490.61,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 127958178,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 125278.005,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":125278.005,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 130386642,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 128157.193,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":128157.193,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 134600804,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 132121.104,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":132121.104,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 146675865,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 144377.47,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":144377.47,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 136428677,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 133943.468,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":133943.468,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 130009582,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 127468.691,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":127468.691,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 139397964,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 137027.035,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":137027.035,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 145978499,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 143461.085,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":143461.085,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 129964638,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 127615.056,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":127615.056,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 126764877,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 123988.429,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":123988.429,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 124449810,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 121120.281,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":121120.281,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 118682215,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 116041.20499999996,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":116041.20499999996,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 123694003,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 121471.675,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":121471.675,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 113831207,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 111493.329,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":111493.329,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "rational-nonmonic",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 124393154,
+      "payload": {
+        "case": "rational-nonmonic",
+        "iterations": 12000,
+        "result": [
+          [
+            [
+              15011,
+              1536
+            ],
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              5
+            ],
+            [
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 122269.304,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"rational-nonmonic\",\"iterations\":12000,\"result\":[[[15011,1536],[1]],[[2,5],[0]]],\"elapsed_us\":122269.304,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 150603730,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 148440.294,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":148440.294,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 125441615,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 122792.84300000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":122792.84300000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 124743865,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 121858.096,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":121858.096,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 141194909,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 139076.752,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":139076.752,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143794031,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 141481.64899999998,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":141481.64899999998,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 124110738,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 121881.3,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":121881.3,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 120079196,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 117874.353,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":117874.353,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 149446438,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 147378.983,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":147378.983,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 142946314,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 140657.71600000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":140657.71600000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 118584073,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 116303.729,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":116303.729,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 114987304,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 112367.97,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":112367.97,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 138125866,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 135880.73100000003,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":135880.73100000003,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 138585055,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 136463.334,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":136463.334,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 121355481,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 119342.929,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":119342.929,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 120788298,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 118484.678,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":118484.678,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 135863433,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 133568.229,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":133568.229,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 145497033,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 142770.823,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":142770.823,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 127696078,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 125639.905,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":125639.905,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 132774652,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 129931.838,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":129931.838,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "multivariate-order",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 152239982,
+      "payload": {
+        "case": "multivariate-order",
+        "iterations": 20000,
+        "result": [
+          [
+            [
+              -2,
+              9
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              109,
+              36
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 149586.92599999998,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"multivariate-order\",\"iterations\":20000,\"result\":[[[-2,9],[0,1]],[[109,36],[0,0]]],\"elapsed_us\":149586.92599999998,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143170935,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 140096.027,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":140096.027,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 142921530,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 140345.231,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":140345.231,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 138395066,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 136111.32,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":136111.32,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 137875538,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 135670.568,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":135670.568,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 144475263,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 141951.44,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":141951.44,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 150143669,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 147861.54599999997,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":147861.54599999997,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 135138500,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 132506.767,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":132506.767,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 155546534,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 152506.676,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":152506.676,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 158420843,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 155318.571,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":155318.571,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 138171953,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 135713.815,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":135713.815,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 135376626,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 132805.422,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":132805.422,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 142060616,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 140008.032,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":140008.032,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 143811851,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 141810.973,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":141810.973,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 135129708,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 132993.944,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":132993.944,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 141639438,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 139072.94,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":139072.94,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 159252563,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 156451.062,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":156451.062,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 148524143,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 146247.032,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":146247.032,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 147116006,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 144217.782,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":144217.782,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 134077938,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 130932.15400000001,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":130932.15400000001,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "no-reduction",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 140438779,
+      "payload": {
+        "case": "no-reduction",
+        "iterations": 150000,
+        "result": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "elapsed_us": 137693.00099999993,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"no-reduction\",\"iterations\":150000,\"result\":[[[1,1],[1,0,0]],[[1,1],[0,1,0]],[[1,1],[0,0,1]],[[1,1],[0,0,0]]],\"elapsed_us\":137693.00099999993,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 21421810,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 18931.301,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":18931.301,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 21713011,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 19464.945,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":19464.945,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 16075442,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 14023.486,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":14023.486,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 19795564,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 17459.735,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":17459.735,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 23316867,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 21069.274,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":21069.274,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 16638038,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 14434.803,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":14434.803,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 19410575,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 17409.599000000002,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":17409.599000000002,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 19208276,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 17048.667,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":17048.667,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 25599847,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 22644.357,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":22644.357,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 22147355,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 19062.631,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":19062.631,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 17962023,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 15835.187,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":15835.187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 21982305,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 19728.855,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":19728.855,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 20219357,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 17853.455,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":17853.455,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 18830696,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 15660.704,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":15660.704,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 16528267,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 14452.74,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":14452.74,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 21400003,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 19277.567,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":19277.567,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 22131991,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 19952.187,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":19952.187,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 17169624,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 14760.463,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":14760.463,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 17315568,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 14676.091,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":14676.091,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "edge-errors",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 20646968,
+      "payload": {
+        "case": "edge-errors",
+        "iterations": 100000,
+        "result": [
+          "constant 5/7",
+          "zero",
+          "ZeroDivisor",
+          "DimensionMismatch"
+        ],
+        "elapsed_us": 18359.244,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"edge-errors\",\"iterations\":100000,\"result\":[\"constant 5/7\",\"zero\",\"ZeroDivisor\",\"DimensionMismatch\"],\"elapsed_us\":18359.244,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 57447307,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 54048.436,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":54048.436,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 49551274,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 46846.463,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":46846.463,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 50050242,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 46393.147000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":46393.147000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 52973560,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 50494.524,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":50494.524,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 50402521,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 48067.686,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":48067.686,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 50022742,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 47519.594000000005,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":47519.594000000005,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 52670975,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 50092.489,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":50092.489,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 55608902,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 52402.948000000004,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":52402.948000000004,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 50491919,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 47870.621999999974,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":47870.621999999974,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 50657490,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 48250.535,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":48250.535,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 53571040,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 51635.201,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":51635.201,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 54580332,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 52409.36,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":52409.36,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 57943830,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 55360.582,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":55360.582,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 51523276,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 49391.545,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":49391.545,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 50167009,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 48142.148,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":48142.148,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 56603686,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 52226.827,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":52226.827,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "process_ns": 54440680,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 52046.212,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":52046.212,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "process_ns": 56918544,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 54412.685,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":54412.685,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "process_ns": 49621007,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 47212.527,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":47212.527,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    },
+    {
+      "case": "buchberger",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "process_ns": 59784420,
+      "payload": {
+        "case": "buchberger",
+        "iterations": 4000,
+        "result": [
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              [
+                -1,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        ],
+        "elapsed_us": 57341.341,
+        "checked": true
+      },
+      "stdout": "{\"case\":\"buchberger\",\"iterations\":4000,\"result\":[[[[1,1],[1,0]],[[-1,1],[0,2]]],[[[1,1],[0,3]],[[-1,1],[0,0]]]],\"elapsed_us\":57341.341,\"checked\":true}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "checked": true
+    }
+  ],
+  "summary": {
+    "univariate-dense": {
+      "process_ns": {
+        "medians": {
+          "before": 127873974.5,
+          "after": 111402628.0
+        },
+        "ranges": {
+          "before": [
+            117534227,
+            139417984
+          ],
+          "after": [
+            109144271,
+            119811079
+          ]
+        },
+        "before_over_after": 1.1478542005310683,
+        "block_ratios": [
+          1.1053307816172082,
+          1.2232935327780574,
+          1.1408659340567162,
+          1.0555940744026135,
+          1.1161199239374944
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 125131.64,
+          "after": 108989.53
+        },
+        "ranges": {
+          "before": [
+            115227.693,
+            137011.60499999998
+          ],
+          "after": [
+            106644.41,
+            116910.058
+          ]
+        },
+        "before_over_after": 1.1481069787162124,
+        "block_ratios": [
+          1.1070682315353366,
+          1.2306121906105993,
+          1.1429197957082562,
+          1.0577073855672554,
+          1.1169307510136817
+        ]
+      }
+    },
+    "rational-nonmonic": {
+      "process_ns": {
+        "medians": {
+          "before": 132930506.5,
+          "after": 128961408.0
+        },
+        "ranges": {
+          "before": [
+            118682215,
+            146675865
+          ],
+          "after": [
+            113717047,
+            136428677
+          ]
+        },
+        "before_over_after": 1.030777412883085,
+        "block_ratios": [
+          1.0577921354196844,
+          1.0290936470102245,
+          1.0736965106801724,
+          1.05335885903107,
+          1.0233666102221317
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 130305.85699999999,
+          "after": 126373.348
+        },
+        "ranges": {
+          "before": [
+            116041.20499999996,
+            144377.47
+          ],
+          "after": [
+            110973.64199999999,
+            133943.468
+          ]
+        },
+        "before_over_after": 1.031118183242245,
+        "block_ratios": [
+          1.0608703090916929,
+          1.028316966453886,
+          1.0764782559329997,
+          1.0515806885584276,
+          1.022945527904268
+        ]
+      }
+    },
+    "multivariate-order": {
+      "process_ns": {
+        "medians": {
+          "before": 143370172.5,
+          "after": 122733109.5
+        },
+        "ranges": {
+          "before": [
+            135863433,
+            152239982
+          ],
+          "after": [
+            114987304,
+            132774652
+          ]
+        },
+        "before_over_after": 1.168145849836877,
+        "block_ratios": [
+          1.1663292330154411,
+          1.2008704216284363,
+          1.2033673971961043,
+          1.1334112696737917,
+          1.1430728320222392
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 141069.6825,
+          "after": 120600.51250000001
+        },
+        "ranges": {
+          "before": [
+            133568.229,
+            149586.92599999998
+          ],
+          "after": [
+            112367.97,
+            129931.838
+          ]
+        },
+        "before_over_after": 1.1697270565081552,
+        "block_ratios": [
+          1.175213335273567,
+          1.2048126014363465,
+          1.2093251950692858,
+          1.1354088215671276,
+          1.143936123642589
+        ]
+      }
+    },
+    "no-reduction": {
+      "process_ns": {
+        "medians": {
+          "before": 144143557.0,
+          "after": 138283509.5
+        },
+        "ranges": {
+          "before": [
+            137875538,
+            159252563
+          ],
+          "after": [
+            134077938,
+            150143669
+          ]
+        },
+        "before_over_after": 1.0423770521965239,
+        "block_ratios": [
+          0.9990397900307311,
+          1.0516668393670268,
+          1.0984573931930386,
+          1.0950079457194986,
+          1.0276285395392442
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 141881.2065,
+          "after": 135912.5675
+        },
+        "ranges": {
+          "before": [
+            135670.568,
+            156451.062
+          ],
+          "after": [
+            130932.15400000001,
+            147861.54599999997
+          ]
+        },
+        "before_over_after": 1.0439152839931451,
+        "block_ratios": [
+          0.9975042877533403,
+          1.0502546198935117,
+          1.0998340614233164,
+          1.09628202673869,
+          1.0319465711233164
+        ]
+      }
+    },
+    "edge-errors": {
+      "process_ns": {
+        "medians": {
+          "before": 21410906.5,
+          "after": 17638795.5
+        },
+        "ranges": {
+          "before": [
+            19208276,
+            25599847
+          ],
+          "after": [
+            16075442,
+            22147355
+          ]
+        },
+        "before_over_after": 1.213853094447407,
+        "block_ratios": [
+          1.0907399146506473,
+          1.1796610038782906,
+          1.1863098949078692,
+          1.1770526188791226,
+          1.2405022712357234
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 19104.434,
+          "after": 15210.5835
+        },
+        "ranges": {
+          "before": [
+            17048.667,
+            22644.357
+          ],
+          "after": [
+            14023.486,
+            19464.945
+          ]
+        },
+        "before_over_after": 1.2559961292740676,
+        "block_ratios": [
+          1.086674857953184,
+          1.1970060232250554,
+          1.2142080630943746,
+          1.2330380410822488,
+          1.3014917099331667
+        ]
+      }
+    },
+    "buchberger": {
+      "process_ns": {
+        "medians": {
+          "before": 55094617.0,
+          "after": 50412249.5
+        },
+        "ranges": {
+          "before": [
+            50402521,
+            59784420
+          ],
+          "after": [
+            49551274,
+            56918544
+          ]
+        },
+        "before_over_after": 1.092881542609996,
+        "block_ratios": [
+          1.1086263686990467,
+          1.0323068060726637,
+          1.0080949141276385,
+          1.1264351948664515,
+          1.0721379893932537
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 52314.8875,
+          "after": 48196.3415
+        },
+        "ranges": {
+          "before": [
+            47870.621999999974,
+            57341.341
+          ],
+          "after": [
+            46393.147000000004,
+            54412.685
+          ]
+        },
+        "before_over_after": 1.0854534985814224,
+        "block_ratios": [
+          1.121229057049895,
+          1.0292848068819511,
+          1.0039469699657613,
+          1.1030794148233471,
+          1.0763820399213533
+        ]
+      }
+    }
+  },
+  "all_checked": true
+}
