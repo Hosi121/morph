@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/quotient"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/rowreduce",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[A, K : Eq] add(Residue[A, K], Residue[A, K]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[A, K] base_key(Context[A, K]) -> K
+
+pub fn[A, K] coefficients(Residue[A, K]) -> @core.Chain[A]
+
+pub fn[A, K] context(@rowreduce.Field[A], K, (A) -> Bool, (A) -> Bool, @core.Chain[A]) -> Result[Context[A, K], QuotientError]
+
+pub fn[A, K] degree(Context[A, K]) -> @core.Nat
+
+pub fn[A, K : Eq] equivalent(Residue[A, K], Residue[A, K]) -> Bool
+
+pub fn[A, K] generator(Context[A, K]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[K] gf2_context(K, @core.Chain[Bool], Policy) -> Result[Context[Bool, K], QuotientError]
+
+pub fn[A, K] is_zero(Residue[A, K]) -> Bool
+
+pub fn[A, K] modulus(Context[A, K]) -> @core.Chain[A]
+
+pub fn[A, K : Eq] multiply(Residue[A, K], Residue[A, K]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[A, K] negate(Residue[A, K]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[A, K] normalize(Context[A, K], @core.Chain[A]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[A, K] one(Context[A, K]) -> Residue[A, K]
+
+pub fn[A, K] parent(Residue[A, K]) -> Context[A, K]
+
+pub fn[A, K] policy(Context[A, K]) -> Policy
+
+pub fn[A, K : Eq] same_context(Context[A, K], Context[A, K]) -> Bool
+
+pub fn[A, K : Eq] subtract(Residue[A, K], Residue[A, K]) -> Result[Residue[A, K], QuotientError]
+
+pub fn[A, K : Eq] unit_inverse(Residue[A, K]) -> Result[Residue[A, K]?, QuotientError]
+
+pub fn[A, K] zero(Context[A, K]) -> Residue[A, K]
+
+// Errors
+
+// Types and methods
+pub struct Context[A, K] {
+  // private fields
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Policy {
+  Generic
+  Carryless
+}
+pub fn Policy::equal(Self, Self) -> Bool
+pub fn Policy::not_equal(Self, Self) -> Bool
+pub fn Policy::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum QuotientError {
+  InvalidCoefficient
+  InvalidArithmetic
+  ZeroModulus
+  ConstantModulus
+  NonMonicModulus
+  DifferentContext
+  InternalInvariant
+}
+pub fn QuotientError::equal(Self, Self) -> Bool
+pub fn QuotientError::not_equal(Self, Self) -> Bool
+pub fn QuotientError::to_repr(Self) -> @debug.Repr
+
+pub struct Residue[A, K] {
+  // private fields
+}
+
+// Type aliases
+
+// Traits

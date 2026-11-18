@@ -25,6 +25,7 @@
 | 共通体と生成部分体 | [複素代数的数の選択座標を共通K(i)へ移す](../src/complexcompositum)・[単項式基底による最小生成体と剰余表示](../src/complexsubfield) |
 | 分解体とGalois群 | [全根から最小分解体を構成](../src/complexsplitting)・[二項三次式の厳密根構成](../src/cubicradical)・[遅延置換探索と完全な体作用](../src/splittinggalois) |
 | 自己同型と固定体 | [明示分解した体の全自己同型と合成表](../src/complexautomorphism)・[部分群の不変部分空間・完全基底・座標変換](../src/fixedfield) |
+| monic商環（試作） | [一般係数の商環・単元の逆・GF₂専用積](../src/quotient)・[検証済みの体と実根情報の保持](../src/quotientfield) |
 | 最小多項式・数体 | [既約因子と選択根による正規化](../src/realminimal/realminimal.mbt)・[Q(α)の剰余演算・Bézout逆元・trace/norm](../src/numberfield/field.mbt) |
 | 多段の実代数拡大 | [選択根を順に加える四則演算・順序・相対実根](../src/realtower/api.mbt)・[二次式の厳密な符号判定](../src/realtower/quadratic.mbt) |
 | 共通数体 | [実代数的数のprimitive-element合成と両生成元の埋込み](../src/compositum/producer.mbt) |

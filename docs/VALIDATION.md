@@ -19,14 +19,14 @@ ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央
 | --- | --- | --- |
 | Hodge・matrix/tensor/runbinary統合 `234ede3` | 影響121packageのうちruntime98package、wasm-gc/JS/native releaseで各4,724成功。残る23CLIはソースとmetadataでtest不在を確認 | [checkpoint・コマンド・ログ](measurements/hodge-kernels-integrated-20261118-validation.json) |
 | せん断の最終merge（`8e4c234`に取込み） | 2変更ソースのSHAを記録。forms/hodge/simplexformsを3targetで各933成功。120項→106項と逆操作、既存888基底対照を含む | [局所検証](measurements/hodge-shear-final-20261118/summary.json) |
-| 撤去前の商構成試作 `60f8d9e` | 新規3packageの影響範囲、3targetで各9テスト成功。global型検査・84 Pythonテスト・純粋性395ファイル・既存形式検証も成功 | [固定checkpointと全ログ](measurements/quotient-prototype-20261118-validation.json) |
+| 商構成試作 `60f8d9e` | 新規3packageの影響範囲、3targetで各9テスト成功。global型検査・84 Pythonテスト・純粋性395ファイル・既存形式検証も成功 | [固定checkpointと全ログ](measurements/quotient-prototype-20261118-validation.json) |
 | 簡単化 `660d039` | 未採用3packageの撤去とsimplicialmapの共通処理への委譲。3target各30成功、global型検査・84 Pythonテスト・純粋性387ファイル・既存形式検証も成功 | [固定checkpoint・ログ・削減量](measurements/simplification-20261118-validation.json) |
 
 商環の9テストは、F₂の全30法・4,680積と340単元判定、QQ・checked adapter、GF(4)係数の全256積を内部で検査します。
 [評価](research/quotient-prototype-20261118.md)には有限検査の範囲と未確認事項を記載しています。
 新しい商環・Hodgeの法則をLeanで証明したものではありません。既存モデルの通過と区別します。
 
-撤去前の商の140プロセス比較は、当時のharnessが全3,276,800出力を独立整数多項式oracleと照合します。
+商の140プロセス比較は、当時のharnessが全3,276,800出力を独立整数多項式oracleと照合します。
 `tools/check`では[証拠検査器](../tools/construction-bench.py)で保存済みの出力・集計・source/ELFのhashを再検査し、過去のベンチマークを再実行しません。
 
 ## 確率・情報幾何の検証の到達段階

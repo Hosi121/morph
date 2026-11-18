@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：137パッケージ、387ソース。
-核のテスト宣言：5702、bench group：213。
+算法の核：139パッケージ、394ソース。
+核のテスト宣言：5711、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -110,6 +110,8 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [probability](../src/probability) | 2 | 6 | 0 | `binary`, `core`, `exact` |
 | [projection](../src/projection) | 3 | 32 | 0 | `core`, `elimination`, `exact`, `polynomial` |
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
+| [quotient](../src/quotient) | 5 | 4 | 0 | `core`, `gf2`, `matrix`, `rowreduce` |
+| [quotientfield](../src/quotientfield) | 2 | 5 | 0 | `algebra`, `binary`, `core`, `exact`, `fppoly`, `galois`, `numberfield`, `polynomial`, `primefield`, `quotient`, `realalgebraic`, `rowreduce` |
 | [realalgebraic](../src/realalgebraic) | 6 | 158 | 2 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
 | [realcad](../src/realcad) | 5 | 42 | 3 | `core`, `exact`, `polynomial`, `sturm` |
 | [realclosed](../src/realclosed) | 1 | 11 | 0 | `cad`, `core`, `realcad`, `realformula` |
