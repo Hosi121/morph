@@ -7,6 +7,13 @@
 採用状況は[基礎部品の最適化](../KERNELS.md)、確認済みの範囲は[検証ガイド](../VALIDATION.md)を参照してください。
 性能の数値と比較条件は[計測記録](../MEASUREMENTS.md)から辿れます。
 
+## 数学的構成と表現
+
+| 記録 | 保存している内容 |
+| --- | --- |
+| [数学的構成の共有監査](mathematical-constructions-20261118.md) | 6領域の共通原理・固有条件・実重複、既存の構造利用との区別 |
+| [商構成の試作と採否](quotient-prototype-20261118.md) | generic商環・checked field・GF₂経路、厳密結果・純増LOC・140プロセスの時間とRSS |
+
 ## 確率・微分幾何
 
 現在の部品の接続は[確率と情報幾何](../handbook/probability-geometry.md)を参照。

@@ -191,6 +191,8 @@ test "input validation rejects bad moduli coefficients and mixed context keys" {
     )
     is Err(InvalidCoefficient),
   )
+  // Deliberately non-closed carrier: test boundary rejection, not a valid
+  // coefficient field for total quotient arithmetic.
   let restricted = context(
     field,
     false,

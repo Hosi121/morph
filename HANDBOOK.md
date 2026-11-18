@@ -10,6 +10,7 @@
 | 関心 | 読む順序 |
 | --- | --- |
 | 数をデータ構造から作る | [リスト・自然数](docs/handbook/foundations.md#list-nat) → [二進算術](docs/handbook/foundations.md#binary) → [整数・有理数](docs/handbook/foundations.md#exact) |
+| 数学的構成から演算を作る | [商環・体への昇格・表現別カーネル](docs/handbook/mathematical-constructions.md) |
 | 既知の性質から算法を選ぶ | [構造を保持する型・正定値形式](docs/handbook/structure-modeling.md) |
 | 記号計算の仕組みを読む | [矢印FFT](docs/handbook/symbolic-computation.md#fft) → [多項式](docs/handbook/symbolic-computation.md#polynomials) → [円分体・厳密FFT](docs/handbook/symbolic-computation.md#exact-fft) |
 | 構文木を扱う | [単一化](docs/handbook/languages-sequences.md#unification) → [型推論](docs/handbook/languages-sequences.md#inference) → [CEK評価機械](docs/handbook/languages-sequences.md#cek) |

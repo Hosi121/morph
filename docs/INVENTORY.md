@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：137パッケージ、388ソース。
-核のテスト宣言：5701、bench group：213。
+算法の核：139パッケージ、395ソース。
+核のテスト宣言：5711、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -68,7 +68,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
-| [forms](../src/forms) | 7 | 541 | 0 | `binary`, `core`, `exact`, `polynomial` |
+| [forms](../src/forms) | 7 | 542 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
@@ -110,6 +110,8 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [probability](../src/probability) | 2 | 6 | 0 | `binary`, `core`, `exact` |
 | [projection](../src/projection) | 3 | 32 | 0 | `core`, `elimination`, `exact`, `polynomial` |
 | [puzzles](../src/puzzles) | 2 | 4 | 0 | `core`, `exactcover`, `sorting` |
+| [quotient](../src/quotient) | 5 | 4 | 0 | `core`, `gf2`, `matrix`, `rowreduce` |
+| [quotientfield](../src/quotientfield) | 2 | 5 | 0 | `algebra`, `binary`, `core`, `exact`, `fppoly`, `galois`, `numberfield`, `polynomial`, `primefield`, `quotient`, `realalgebraic`, `rowreduce` |
 | [realalgebraic](../src/realalgebraic) | 6 | 158 | 2 | `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `sturm` |
 | [realcad](../src/realcad) | 5 | 42 | 3 | `core`, `exact`, `polynomial`, `sturm` |
 | [realclosed](../src/realclosed) | 1 | 11 | 0 | `cad`, `core`, `realcad`, `realformula` |

@@ -15,6 +15,15 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 商構成の共通化を比較する
+
+`cf08aaa`の商環試作を、既存のprepared NF乗算・galois carrylessを含む通常APIと比較しました。
+native release・CPU4・5ABBA、5入力と7比較・140プロセスの全3,276,800結果を独立oracleで照合しています。
+内部乗算の時間と、構築・保持・表示を含む全processのpeak RSSを分けて記録しました。
+コード量は純増し、速度改善は確認できなかったため、既存経路の置換は見送っています。
+
+[設計・LOC・時間/RSSと採否](research/quotient-prototype-20261118.md)・[全生値と圧縮保存した全出力/source](measurements/mathematical-constructions-20261118.json)・[再検査harness](../tools/construction-bench.py)。
+
 ## 変換監査後の統合版を比較する
 
 ソース`1a51057`を基準`a63dcbc`と比較した4公開CLI・24入力・480プロセスです。
