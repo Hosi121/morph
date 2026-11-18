@@ -139,7 +139,7 @@ test "orientation reversal collapse and composition preserve chain identities" {
       @matrix.multiply(
         chain_map(finish, degree).unwrap(),
         chain_map(collapse, degree).unwrap(),
-        integers(),
+        @chainhomology.integers(),
       ),
       chain_map(collapsed, degree),
     )
@@ -147,7 +147,7 @@ test "orientation reversal collapse and composition preserve chain identities" {
       @matrix.multiply(
         chain_map(reflection, degree).unwrap(),
         chain_map(reflection, degree).unwrap(),
-        integers(),
+        @chainhomology.integers(),
       ),
       chain_map(double, degree),
     )

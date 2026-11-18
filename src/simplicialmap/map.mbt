@@ -238,11 +238,11 @@ pub fn chain_map(
           @core.map(images, fn(image) {
             let (sorted, negative, degenerate) = image
             match !degenerate && simplex.equal(sorted) {
-              false => integers().zero
+              false => @chainhomology.integers().zero
               true =>
                 match negative {
-                  true => @exact.negate(integers().one)
-                  false => integers().one
+                  true => @exact.negate(@chainhomology.integers().one)
+                  false => @chainhomology.integers().one
                 }
             }
           })
@@ -265,11 +265,12 @@ pub fn chain_identity(map : SimplicialMap, degree : @core.Nat) -> Bool {
         Zero => Some(ds)
         Succ(previous) =>
           match chain_map(map, previous) {
-            Some(previous) => @matrix.multiply(previous, ds, integers())
+            Some(previous) =>
+              @matrix.multiply(previous, ds, @chainhomology.integers())
             None => None
           }
       }
-      match (@matrix.multiply(dt, f, integers()), right) {
+      match (@matrix.multiply(dt, f, @chainhomology.integers()), right) {
         (Some(left), Some(right)) => left.equal(right)
         _ => false
       }

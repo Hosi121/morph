@@ -24,7 +24,8 @@ fn s01_legacy_canonical_columns(
         }
     }
   }
-  match @matrix.multiply(cycle_map, source_left_inverse, integers()) {
+  match
+    @matrix.multiply(cycle_map, source_left_inverse, @chainhomology.integers()) {
     None => None
     Some(lift) =>
       match normalize(@matrix.rows(@matrix.transpose(lift))) {
@@ -45,40 +46,49 @@ test "S01 induced private context preserves old whole results and failures" {
   let cycle = imat([[3, -5], [-5, 8], [8, -9], [-7, 4]], 2)
   let inverse = imat([[1, 0], [-1, 1]], 2)
   assert_eq(
-    canonical_columns(target, cycle, inverse),
+    @chainhomology.canonical_columns(target.image_form, cycle, inverse),
     s01_legacy_canonical_columns(target, cycle, inverse),
   )
   let empty = imat([[], [], []], 0)
   let z = imat([], 0)
   let one = imat([[1]], 1)
   let bad = imat([[1], [2], [3]], 1)
-  assert_eq(canonical_columns(target, empty, z), Some(empty))
   assert_eq(
-    canonical_columns(target, empty, z),
+    @chainhomology.canonical_columns(target.image_form, empty, z),
+    Some(empty),
+  )
+  assert_eq(
+    @chainhomology.canonical_columns(target.image_form, empty, z),
     s01_legacy_canonical_columns(target, empty, z),
   )
-  assert_eq(canonical_columns(target, z, one), None)
-  assert_eq(canonical_columns(target, bad, one), None)
+  assert_eq(@chainhomology.canonical_columns(target.image_form, z, one), None)
+  assert_eq(@chainhomology.canonical_columns(target.image_form, bad, one), None)
   assert_eq(
-    canonical_columns(target, bad, one),
+    @chainhomology.canonical_columns(target.image_form, bad, one),
     s01_legacy_canonical_columns(target, bad, one),
   )
   let rp = completed(projective_plane(), 1)
   let torsion_cycle = imat(Array::makei(10, fn(i) { [i - 7, 3 - i] }), 2)
   assert_eq(
-    canonical_columns(rp, torsion_cycle, inverse),
+    @chainhomology.canonical_columns(rp.image_form, torsion_cycle, inverse),
     s01_legacy_canonical_columns(rp, torsion_cycle, inverse),
   )
   let wide_zero = imat([], 2)
   let zero_target = completed(generated([]), 0)
-  assert_eq(canonical_columns(zero_target, wide_zero, inverse), Some(wide_zero))
   assert_eq(
-    canonical_columns(zero_target, wide_zero, inverse),
+    @chainhomology.canonical_columns(zero_target.image_form, wide_zero, inverse),
+    Some(wide_zero),
+  )
+  assert_eq(
+    @chainhomology.canonical_columns(zero_target.image_form, wide_zero, inverse),
     s01_legacy_canonical_columns(zero_target, wide_zero, inverse),
   )
-  assert_eq(canonical_columns(target, wide_zero, inverse), None)
   assert_eq(
-    canonical_columns(target, wide_zero, inverse),
+    @chainhomology.canonical_columns(target.image_form, wide_zero, inverse),
+    None,
+  )
+  assert_eq(
+    @chainhomology.canonical_columns(target.image_form, wide_zero, inverse),
     s01_legacy_canonical_columns(target, wide_zero, inverse),
   )
 }

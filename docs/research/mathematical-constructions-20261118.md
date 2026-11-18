@@ -4,7 +4,12 @@
 
 これは Phase 1 の静的監査資料である。以下の Phase 2–4 は試作・評価の計画であり、その実装、性能、メモリ削減を確認した報告ではない。純粋な immutable ADT を維持し、機械数値・配列・mutation・FFI による kernel への置換、巨大な推論器・証明器・型クラス階層の追加は前提にしない。
 
-実装した最小試作と採否は[Phase 2–4の評価](quotient-prototype-20261118.md)を参照。
+実装した最小試作と採否は[Phase 2–4の評価](quotient-prototype-20261118.md)を参照。試作は既存の置換・削減に至らず、後に通常ソースから撤去した。
+
+更新：実際の簡単化には、新しい商構成の層を増やす代わりに、下記6の既存 `chainhomology` を使った。
+`simplicialmap` の整数半環・逆行列検査・整数逆行列・行列適用・下側行抽出・先頭零検査・商座標の列正規化という7処理の重複を削除した。
+公開型・APIと検査境界を維持し、本体は644→515物理行（空白・コメントを除くcode行は552→437）。新しい共通核・adapter・型は追加していない。
+呼出し先を1か所へ集めた変更であり、速度改善は主張しない。以下の未実装候補・見積りは監査時点の記録である。
 
 ## 1. galois と numberfield：多項式環の商による体拡大
 
@@ -62,7 +67,7 @@ forms と simplicialmap の符号付き basis 正規化には似た挿入処理�
 
 [Smith の Cokernel](../../src/smith/cokernel.mbt#L17) は既に商群を構成し、[class_coordinates](../../src/smith/cokernel.mbt#L68) が free/torsion 座標を正規化する。[chainhomology](../../src/chainhomology/chainhomology.mbt#L226)、[homology](../../src/homology/homology.mbt#L120)、[presentation](../../src/presentation/abelianization.mbt#L176) も既存 engine を共有している。QQ の incremental span は別の構成であり、2Z⊂Z の商の2-torsionを QQ span で置換すると失う。
 
-実在する重複は [simplicialmap の整数 helper](../../src/simplicialmap/integer.mbt) と、[列ごとの canonical_columns](../../src/simplicialmap/induced.mbt#L51) の wrapper にある。既存 chainhomology への委譲候補であり、新しい Smith 算法を作る理由ではない。両 canonical_columns は既に Cokernel を一度準備して全列へ渡しているので、「列ごとの準備を初めて除いた」とは数えない。
+実在する重複は [simplicialmap の整数 helper](https://github.com/Hosi121/morph/blob/234ede3502d62d7d3b97603209ea3ae530db4458/src/simplicialmap/integer.mbt) と、[列ごとの canonical_columns](../../src/simplicialmap/induced.mbt#L51) の wrapper にある。既存 chainhomology への委譲候補であり、新しい Smith 算法を作る理由ではない。両 canonical_columns は既に Cokernel を一度準備して全列へ渡しているので、「列ごとの準備を初めて除いた」とは数えない。
 
 新しい checked map を置くなら source/target presentation、lift の逆関係、descent witness、元の complex と degree の binding が必要になる。[誘導写像 checker](../../src/simplicialmap/induced.mbt#L121) や AB=0・Smith witness の検査は削除しない。public witness の再検査と、opaque な内部 context の再利用は区別する。target の divisor chain の準備再利用は条件付き候補だが、現段階に性能結果はない。
 

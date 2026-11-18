@@ -6,7 +6,7 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：137パッケージ、388ソース。
+算法の核：137パッケージ、387ソース。
 核のテスト宣言：5702、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
@@ -134,7 +134,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [signcad](../src/signcad) | 3 | 9 | 0 | `core`, `polynomial`, `realcad`, `realformula` |
 | [simplex](../src/simplex) | 1 | 6 | 0 | `core`, `exact`, `matrix` |
 | [simplexforms](../src/simplexforms) | 3 | 275 | 0 | `binary`, `core`, `exact`, `forms`, `polynomial` |
-| [simplicialmap](../src/simplicialmap) | 3 | 30 | 0 | `algebra`, `binary`, `core`, `exact`, `homology`, `linear`, `matrix`, `smith` |
+| [simplicialmap](../src/simplicialmap) | 2 | 30 | 0 | `chainhomology`, `core`, `exact`, `homology`, `matrix`, `smith` |
 | [smith](../src/smith) | 5 | 15 | 3 | `algebra`, `binary`, `core`, `exact`, `linear`, `matrix` |
 | [smt](../src/smt) | 1 | 5 | 0 | `cdcl`, `core`, `difference`, `sat` |
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |

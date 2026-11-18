@@ -21,7 +21,7 @@
 | [Smith座標の列ごとの正規化](../../src/simplicialmap/induced.mbt#L64)・[共有版](../../src/chainhomology/chainhomology.mbt#L306) | 同じSmith formからcokernelのrank/torsion情報を列ごとに作る | 列を処理するときに一度だけ準備して共有。空列の経路・Noneの伝播・列の順序を維持する |
 | [増分CDCLの節追加](../../src/cdcl/incremental.mbt#L76) | 保存済みvariablesからseen trieを毎回作る | Searchに永続索引を保持して新規分だけ更新。tautologyでも変数domainを保つ規則を維持する |
 | [非線形SMTの反証検査](../../src/realnlsmt/check.mbt#L185) | 冒頭で検証した同じProblemを、lemma_clause経由で補題ごとに再prepareする | 同一呼出内で検証済みcontextを共有。各補題のcontext・CAD被覆・反証の検査は維持する |
-| [整数の行列×ベクトル](../../src/simplicialmap/integer.mbt#L81) | vectorを単列matrixへ包み、積を計算してcolumnを取り出す | 行列とベクトルを直接走査する候補。次元違いと零次元の挙動を保つ |
+| [整数の行列×ベクトル](https://github.com/Hosi121/morph/blob/86cee8e3a202fc1fa64e93c0a36e1678bc718946/src/simplicialmap/integer.mbt#L81) | vectorを単列matrixへ包み、積を計算してcolumnを取り出す | 行列とベクトルを直接走査する候補。次元違いと零次元の挙動を保つ |
 
 多段実数体への埋込みは、ソース上では深さhについて`T(h)=2T(h−1)+O(1)`の再帰呼出木です。
 これは構築手順の静的な指摘です。生成コードの最適化、構造等値、算術と証拠検査を含む全体時間の評価ではありません。

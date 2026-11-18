@@ -34,59 +34,21 @@ fn cycle_coordinates(
         @matrix.matrix(@matrix.width(f), @homology.cycle_basis(source_homology)) {
         None => None
         Some(basis_rows) =>
-          match @matrix.multiply(f, @matrix.transpose(basis_rows), integers()) {
+          match
+            @matrix.multiply(
+              f,
+              @matrix.transpose(basis_rows),
+              @chainhomology.integers(),
+            ) {
             None => None
             Some(images) =>
               @matrix.multiply(
                 target_homology.right_inverse,
                 images,
-                integers(),
+                @chainhomology.integers(),
               )
           }
       }
-  }
-}
-
-///|
-fn canonical_columns(
-  target_homology : @homology.Certificate,
-  cycle_map : @matrix.Matrix[@exact.Integer],
-  source_left_inverse : @matrix.Matrix[@exact.Integer],
-) -> @matrix.Matrix[@exact.Integer]? {
-  fn normalize(
-    group : @smith.Cokernel,
-    columns : @core.Chain[@core.Chain[@exact.Integer]],
-  ) -> @core.Chain[@core.Chain[@exact.Integer]]? {
-    match columns {
-      Nil => Some(Nil)
-      Cons(column, rest) =>
-        match
-          (@smith.class_coordinates(group, column), normalize(group, rest)) {
-          (Some(column), Some(rest)) => Some(Cons(column, rest))
-          _ => None
-        }
-    }
-  }
-  match @matrix.multiply(cycle_map, source_left_inverse, integers()) {
-    None => None
-    Some(lift) => {
-      let columns = @matrix.rows(@matrix.transpose(lift))
-      // Empty products retain the old path without preparing a cokernel.
-      let normalized : @core.Chain[@core.Chain[@exact.Integer]]? = match
-        columns {
-        Nil => Some(Nil)
-        Cons(_, _) =>
-          normalize(@smith.cokernel(target_homology.image_form), columns)
-      }
-      match normalized {
-        None => None
-        Some(columns) =>
-          match @matrix.matrix(@matrix.height(lift), columns) {
-            None => None
-            Some(rows) => Some(@matrix.transpose(rows))
-          }
-      }
-    }
   }
 }
 
@@ -96,15 +58,15 @@ fn boundary_descent(witness : HomologyMap) -> Bool {
   let t = witness.target_homology
   match
     (
-      bottom(s.coordinates, @smith.rank(s.boundary_form)),
-      bottom(t.coordinates, @smith.rank(t.boundary_form)),
+      @chainhomology.bottom(s.coordinates, @smith.rank(s.boundary_form)),
+      @chainhomology.bottom(t.coordinates, @smith.rank(t.boundary_form)),
       chain_map(witness.map, Succ(witness.degree)),
     ) {
     (Some(cs), Some(ct), Some(next)) =>
       match
         (
-          @matrix.multiply(witness.cycle_map, cs, integers()),
-          @matrix.multiply(ct, next, integers()),
+          @matrix.multiply(witness.cycle_map, cs, @chainhomology.integers()),
+          @matrix.multiply(ct, next, @chainhomology.integers()),
         ) {
         (Some(left), Some(right)) => left.equal(right)
         _ => false
@@ -138,15 +100,22 @@ pub fn check_induced(
         None => false
         Some(coordinates) => {
           let rank = @smith.rank(t.boundary_form)
-          inverse_pair(@smith.left(s.image_form), witness.source_left_inverse) &&
+          @chainhomology.inverse_pair(
+            @smith.left(s.image_form),
+            witness.source_left_inverse,
+          ) &&
           chain_identity(map, degree) &&
           chain_identity(map, Succ(degree)) &&
-          leading_zero(coordinates, rank) &&
-          bottom(coordinates, rank).equal(Some(witness.cycle_map)) &&
+          @chainhomology.leading_zero(coordinates, rank) &&
+          @chainhomology.bottom(coordinates, rank).equal(
+            Some(witness.cycle_map),
+          ) &&
           boundary_descent(witness) &&
-          canonical_columns(t, witness.cycle_map, witness.source_left_inverse).equal(
-            Some(actual),
-          )
+          @chainhomology.canonical_columns(
+            t.image_form,
+            witness.cycle_map,
+            witness.source_left_inverse,
+          ).equal(Some(actual))
         }
       }
   }
@@ -182,16 +151,23 @@ pub fn induce(
       match
         (
           cycle_coordinates(map, degree, source_homology, target_homology),
-          integer_inverse(@smith.left(source_homology.image_form)),
+          @chainhomology.integer_inverse(
+            @smith.left(source_homology.image_form),
+          ),
         ) {
         (Some(coordinates), Some(source_left_inverse)) =>
           match
-            bottom(coordinates, @smith.rank(target_homology.boundary_form)) {
+            @chainhomology.bottom(
+              coordinates,
+              @smith.rank(target_homology.boundary_form),
+            ) {
             None => None
             Some(cycle_map) =>
               match
-                canonical_columns(
-                  target_homology, cycle_map, source_left_inverse,
+                @chainhomology.canonical_columns(
+                  target_homology.image_form,
+                  cycle_map,
+                  source_left_inverse,
                 ) {
                 None => None
                 Some(classes) => {
@@ -227,10 +203,15 @@ pub fn apply(
   match check_induced(witness.map, witness.degree, witness.classes, witness) {
     false => None
     true =>
-      match apply_matrix(witness.source_left_inverse, smith_coordinates) {
+      match
+        @chainhomology.apply_matrix(
+          witness.source_left_inverse,
+          smith_coordinates,
+        ) {
         None => None
         Some(cycle_coordinates) =>
-          match apply_matrix(witness.cycle_map, cycle_coordinates) {
+          match
+            @chainhomology.apply_matrix(witness.cycle_map, cycle_coordinates) {
             None => None
             Some(image) =>
               @smith.class_coordinates(

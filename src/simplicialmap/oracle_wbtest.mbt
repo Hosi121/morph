@@ -64,7 +64,7 @@ test "all 729 triangle endomap compositions including degeneracies are functoria
           @matrix.multiply(
             chain_map(after, degree).unwrap(),
             chain_map(before, degree).unwrap(),
-            integers(),
+            @chainhomology.integers(),
           ),
           chain_map(composite, degree),
         )
@@ -91,7 +91,7 @@ test "all 729 circle endomap compositions induce multiplicative H1 degrees" {
       let product = @matrix.multiply(
         induced[j].classes,
         induced[i].classes,
-        integers(),
+        @chainhomology.integers(),
       ).unwrap()
       assert_eq(actual.classes, product)
     }
