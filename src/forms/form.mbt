@@ -40,6 +40,8 @@ pub(all) enum FormError {
   DegreeMismatch
   ZeroDegree
   NotClosed
+  InvalidShear
+  DegreeOutOfRange
   InternalInvariant
 }
 

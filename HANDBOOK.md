@@ -24,6 +24,7 @@
 | 図形の変化と符号をつなぐ | [持続ホモロジー・誘導写像・CSS符号](docs/handbook/topology.md) |
 | 穴の積・部分空間・簡約を調べる | [コホモロジー環・相対群・単体崩壊](docs/handbook/cohomology-relative-collapse.md) |
 | 確率から幾何へ進む | [有限の有理分布と情報幾何](docs/handbook/probability-geometry.md) |
+| 形式を構成のまま計算する | [せん断列・計算グラフ・Hodge演算](docs/handbook/hodge.md) |
 
 動作から確かめる場合は、リポジトリのルートで `tools/moon run src/cmd/main` を実行してください。
 環境の準備とコマンドは[開発・検証環境](docs/ENVIRONMENT.md)にあります。
@@ -71,6 +72,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | --- | --- |
 | [基礎算術とデータ構造](docs/handbook/foundations.md) | 自然数、二進数、ペア、整数・有理数、ソート、永続木 |
 | [構造を保持して算法を選ぶ](docs/handbook/structure-modeling.md) | 正性、LDL、逆・定数倍・直和のview、由来と値の等号 |
+| [構成を保つHodge演算](docs/handbook/hodge.md) | せん断の外積作用、体積の平方根、分解可能な形式と内部積、評価経路の選択 |
 | [数論と有限体](docs/handbook/number-theory.md) | 剰余算術、CRT、素数証明、因数分解、拡大体、楕円曲線 |
 | [確率と情報幾何](docs/handbook/probability-geometry.md) | 有限分布、Bayes逆核、Markov連鎖、確率jet、Fisher計量とα曲率、テンソル |
 | [変換と記号計算](docs/handbook/symbolic-computation.md) | FFT・NTT、多項式、Gröbner基底、実根隔離、微分、幾何 |

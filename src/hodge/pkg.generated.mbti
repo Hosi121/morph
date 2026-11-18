@@ -1,0 +1,136 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/hodge"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/forms",
+  "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
+  "Hosi121/morph/positiveform",
+  "Hosi121/morph/realalgebraic",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn space(@positiveform.PositiveDefinite, Orientation) -> Result[Space, HodgeError]
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Evaluation {
+  Factorized
+  InteriorProduct
+}
+pub fn Evaluation::equal(Self, Self) -> Bool
+pub fn Evaluation::not_equal(Self, Self) -> Bool
+pub fn Evaluation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type Expression
+pub fn Expression::equal(Self, Self) -> Bool
+pub fn Expression::not_equal(Self, Self) -> Bool
+pub fn Expression::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum HodgeError {
+  SpaceMismatch
+  DimensionMismatch
+  DegreeMismatch
+  DegreeOutOfRange
+  Form(@forms.FormError)
+  Polynomial(@polynomial.PolyError)
+  PositiveForm(@positiveform.FormError)
+  Algebraic(@realalgebraic.AlgebraError)
+  InternalShape
+}
+pub fn HodgeError::equal(Self, Self) -> Bool
+pub fn HodgeError::not_equal(Self, Self) -> Bool
+pub fn HodgeError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct HodgeForm {
+  space_value : Space
+  degree_value : @core.Nat
+  expression : Expression
+}
+pub fn HodgeForm::add(Self, Self) -> Result[Self, HodgeError]
+pub fn HodgeForm::contract_sharp(Self, Self) -> Result[Self, HodgeError]
+pub fn HodgeForm::degree(Self) -> @core.Nat
+pub fn HodgeForm::equal(Self, Self) -> Bool
+pub fn HodgeForm::equivalent(Self, Self) -> Result[Bool, HodgeError]
+pub fn HodgeForm::inner(Self, Self) -> Result[Self, HodgeError]
+pub fn HodgeForm::is_zero(Self) -> Result[Bool, HodgeError]
+pub fn HodgeForm::known_zero(Self) -> Bool?
+pub fn HodgeForm::negate(Self) -> Self
+pub fn HodgeForm::not_equal(Self, Self) -> Bool
+pub fn HodgeForm::parent(Self) -> Space
+pub fn HodgeForm::parts(Self) -> Result[Parts, HodgeError]
+pub fn HodgeForm::parts_with(Self, Evaluation) -> Result[Parts, HodgeError]
+pub fn HodgeForm::scale(Self, @exact.Rational) -> Result[Self, HodgeError]
+pub fn HodgeForm::shear(Self, @core.Nat, @core.Nat, @exact.Rational) -> Result[Self, HodgeError]
+pub fn HodgeForm::star(Self) -> Self
+pub fn HodgeForm::to_repr(Self) -> @debug.Repr
+pub fn HodgeForm::wedge(Self, Self) -> Result[Self, HodgeError]
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Orientation {
+  Positive
+  Negative
+}
+pub fn Orientation::equal(Self, Self) -> Bool
+pub fn Orientation::not_equal(Self, Self) -> Bool
+pub fn Orientation::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Parts {
+  rational : @forms.Form
+  radical : @forms.Form
+}
+pub fn Parts::equal(Self, Self) -> Bool
+pub fn Parts::not_equal(Self, Self) -> Bool
+pub fn Parts::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct PreparedHodge {
+  space_value : Space
+  degree_value : @core.Nat
+}
+pub fn PreparedHodge::apply(Self, HodgeForm) -> Result[HodgeForm, HodgeError]
+pub fn PreparedHodge::degree(Self) -> @core.Nat
+pub fn PreparedHodge::equal(Self, Self) -> Bool
+pub fn PreparedHodge::inner(Self, HodgeForm, HodgeForm) -> Result[HodgeForm, HodgeError]
+pub fn PreparedHodge::not_equal(Self, Self) -> Bool
+pub fn PreparedHodge::parent(Self) -> Space
+pub fn PreparedHodge::to_repr(Self) -> @debug.Repr
+
+#derive(@debug.Debug)
+pub struct Space {
+  metric_value : @positiveform.PositiveDefinite
+  matrix_value : @matrix.Matrix[@exact.Rational]
+  congruence_value : @positiveform.Congruence
+  orientation_value : Orientation
+  rational_root : @exact.Rational?
+}
+pub fn Space::dimension(Self) -> @core.Nat
+pub fn Space::equal(Self, Self) -> Bool
+pub fn Space::from_parts(Self, Parts) -> Result[HodgeForm, HodgeError]
+pub fn Space::lift(Self, @forms.Form) -> Result[HodgeForm, HodgeError]
+pub fn Space::metric(Self) -> @positiveform.PositiveDefinite
+pub fn Space::not_equal(Self, Self) -> Bool
+pub fn Space::orientation(Self) -> Orientation
+pub fn Space::prepare(Self, @core.Nat) -> Result[PreparedHodge, HodgeError]
+pub fn Space::rational_volume(Self) -> @exact.Rational?
+pub fn Space::reverse_orientation(Self) -> Self
+pub fn Space::scalar(Self, @exact.Rational, @exact.Rational) -> HodgeForm
+pub fn Space::to_repr(Self) -> @debug.Repr
+pub fn Space::volume(Self) -> HodgeForm
+pub fn Space::volume_root(Self) -> Result[@realalgebraic.Number, HodgeError]
+pub fn Space::volume_squared(Self) -> @positiveform.PositiveScalar
+pub fn Space::zero(Self, @core.Nat) -> Result[HodgeForm, HodgeError]
+pub impl Eq for Space
+
+// Type aliases
+
+// Traits

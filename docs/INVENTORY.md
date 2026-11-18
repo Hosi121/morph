@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：136パッケージ、381ソース。
-核のテスト宣言：5577、bench group：212。
+算法の核：137パッケージ、387ソース。
+核のテスト宣言：5695、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -68,7 +68,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [filteredcollapse](../src/filteredcollapse) | 1 | 6 | 0 | `collapse`, `core`, `exact`, `homology`, `matrix`, `persistence` |
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
-| [forms](../src/forms) | 6 | 539 | 0 | `binary`, `core`, `exact`, `polynomial` |
+| [forms](../src/forms) | 7 | 541 | 0 | `binary`, `core`, `exact`, `polynomial` |
 | [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
@@ -78,6 +78,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
 | [groebner](../src/groebner) | 1 | 46 | 0 | `core`, `exact`, `polynomial`, `sorting` |
 | [heap](../src/heap) | 1 | 2 | 0 | `core` |
+| [hodge](../src/hodge) | 4 | 116 | 0 | `binary`, `core`, `exact`, `forms`, `matrix`, `polynomial`, `positiveform`, `realalgebraic` |
 | [homology](../src/homology) | 2 | 10 | 0 | `algebra`, `binary`, `chainhomology`, `core`, `exact`, `matrix`, `smith` |
 | [huffman](../src/huffman) | 1 | 2 | 0 | `binary`, `core`, `heap` |
 | [infer](../src/infer) | 1 | 4 | 0 | `core`, `unify` |
@@ -100,7 +101,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
 | [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
 | [polynomial](../src/polynomial) | 6 | 136 | 8 | `binary`, `core`, `exact` |
-| [positiveform](../src/positiveform) | 1 | 5 | 0 | `core`, `exact`, `matrix` |
+| [positiveform](../src/positiveform) | 2 | 5 | 0 | `core`, `exact`, `matrix` |
 | [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |

@@ -3,6 +3,7 @@ package "Hosi121/morph/forms"
 
 import {
   "Hosi121/morph/core",
+  "Hosi121/morph/exact",
   "Hosi121/morph/polynomial",
   "moonbitlang/core/debug",
 }
@@ -17,6 +18,8 @@ pub fn closed_form(Form) -> Result[ClosedForm, FormError]
 pub fn contract(VectorField, Form) -> Result[Form?, FormError]
 
 pub fn degree(Form) -> @core.Nat
+
+pub fn euclidean_star(Form) -> Result[Form, FormError]
 
 pub fn exact_differential(Form) -> Result[ExactForm, FormError]
 
@@ -45,6 +48,10 @@ pub fn pullback(PolynomialMap, Form) -> Result[Form, FormError]
 pub fn radial_homotopy(Form) -> Result[Form?, FormError]
 
 pub fn scalar(@polynomial.Polynomial) -> Form
+
+pub fn scale_axes(Form, @core.Chain[@exact.Rational]) -> Result[Form, FormError]
+
+pub fn shear(Form, @core.Nat, @core.Nat, @exact.Rational) -> Result[Form, FormError]
 
 pub fn terms(Form) -> @core.Chain[Term]
 
@@ -118,6 +125,8 @@ pub(all) enum FormError {
   DegreeMismatch
   ZeroDegree
   NotClosed
+  InvalidShear
+  DegreeOutOfRange
   InternalInvariant
 }
 pub fn FormError::equal(Self, Self) -> Bool

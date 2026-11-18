@@ -19,6 +19,19 @@ pub fn positive_scalar(@exact.Rational) -> PositiveScalar?
 
 // Types and methods
 #derive(Eq, @debug.Debug)
+pub struct Congruence {
+  dimension : @core.Nat
+  diagonal : @core.Chain[PositiveScalar]
+  shears : @core.Chain[Shear]
+}
+pub fn Congruence::diagonal(Self) -> @core.Chain[PositiveScalar]
+pub fn Congruence::dimension(Self) -> @core.Nat
+pub fn Congruence::equal(Self, Self) -> Bool
+pub fn Congruence::not_equal(Self, Self) -> Bool
+pub fn Congruence::shears(Self) -> @core.Chain[Shear]
+pub fn Congruence::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 type Factors
 pub fn Factors::equal(Self, Self) -> Bool
 pub fn Factors::not_equal(Self, Self) -> Bool
@@ -42,6 +55,7 @@ pub struct PositiveDefinite {
   structure : Structure
 }
 pub fn PositiveDefinite::apply(Self, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
+pub fn PositiveDefinite::congruence(Self) -> Congruence
 pub fn PositiveDefinite::determinant(Self) -> PositiveScalar
 pub fn PositiveDefinite::dimension(Self) -> @core.Nat
 pub fn PositiveDefinite::direct_sum(Self, Self) -> Self
@@ -66,6 +80,21 @@ pub fn PositiveScalar::not_equal(Self, Self) -> Bool
 pub fn PositiveScalar::power(Self, @core.Nat) -> Self
 pub fn PositiveScalar::to_repr(Self) -> @debug.Repr
 pub fn PositiveScalar::value(Self) -> @exact.Rational
+
+#derive(Eq, @debug.Debug)
+pub struct Shear {
+  target : @core.Nat
+  source : @core.Nat
+  coefficient : @exact.Rational
+}
+pub fn Shear::coefficient(Self) -> @exact.Rational
+pub fn Shear::equal(Self, Self) -> Bool
+pub fn Shear::inverse(Self) -> Self
+pub fn Shear::not_equal(Self, Self) -> Bool
+pub fn Shear::source(Self) -> @core.Nat
+pub fn Shear::target(Self) -> @core.Nat
+pub fn Shear::to_repr(Self) -> @debug.Repr
+pub fn Shear::transpose(Self) -> Self
 
 #derive(Eq, @debug.Debug)
 type Structure

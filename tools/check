@@ -27,6 +27,7 @@ python3 tools/generate_monic_identity_n05.py --check
 python3 tools/generate_markov_fixtures.py --check
 python3 tools/generate_riemann_fixtures.py --check
 python3 tools/generate_forms_fixtures.py --check
+python3 tools/generate_hodge_fixtures.py --check
 python3 tools/generate_simplexforms_fixtures.py --check
 python3 tools/generate_gaussian_fixtures.py --check
 python3 -S tools/generate_information_review_fixtures.py --check-stored

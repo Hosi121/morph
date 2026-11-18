@@ -69,6 +69,7 @@
 | 微分幾何 | [検査済み計量jet](../src/riemann/jet.mbt)・[Levi-Civita接続](../src/riemann/connection.mbt)・[曲率](../src/riemann/curvature.mbt) |
 | 微分形式 | [有理多項式係数の正規形](../src/forms/form.mbt)・[外積・外微分](../src/forms/exterior.mbt)・[縮約・CartanのLie微分](../src/forms/cartan.mbt) |
 | 閉形式・完全形式 | [閉性と原始形式を保持する演算](../src/forms/closed.mbt)・[法則による計算の省略](handbook/structure-modeling.md#微分形式の閉性と原始形式を保持する) |
+| 外積作用とHodge星 | [局所的なせん断・対角作用・補集合](../src/forms/linear_action.mbt)・[元の計量の分解](../src/positiveform/congruence.mbt)・[複数の評価経路](../src/hodge/evaluation.mbt) |
 | 単体と微分形式 | [向き付き単体への厳密積分](../src/simplexforms/integrate.mbt)・[Stokesの全境界証拠](../src/simplexforms/stokes.mbt) |
 | 有限Markov連鎖 | [検査済み確率核・時間発展](../src/markov/kernel.mbt)・[定常分布の全アフィン解](../src/markov/stationary.mbt)・[到達確率と有限/無限の平均時間](../src/markov/hitting.mbt) |
 
