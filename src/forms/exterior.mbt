@@ -1,48 +1,87 @@
 ///|
+// Both bases come from checked Forms and are strictly increasing. Moving a
+// right index ahead of the remaining left basis contributes its length parity.
+// A repeated index kills the product before coefficient multiplication.
+fn merge_exterior_basis(
+  left : @core.Chain[@core.Nat],
+  right : @core.Chain[@core.Nat],
+  left_odd : Bool,
+) -> (@core.Chain[@core.Nat], Bool)? {
+  match (left, right) {
+    (Nil, _) => Some((right, false))
+    (_, Nil) => Some((left, false))
+    (Cons(a, rest_a), Cons(b, rest_b)) =>
+      match @core.compare(a, b) {
+        Equal => None
+        Less =>
+          match merge_exterior_basis(rest_a, right, !left_odd) {
+            None => None
+            Some((tail, negative)) => Some((Cons(a, tail), negative))
+          }
+        Greater =>
+          match merge_exterior_basis(left, rest_b, left_odd) {
+            None => None
+            Some((tail, negative)) =>
+              Some((Cons(b, tail), if left_odd { !negative } else { negative }))
+          }
+      }
+  }
+}
+
+///|
 pub fn wedge(a : Form, b : Form) -> Result[Form, FormError] {
+  if !a.variables.equal(b.variables) {
+    return Err(DimensionMismatch)
+  }
+  let degree = @core.add(a.degree, b.degree)
+  if is_zero(a) || is_zero(b) || @core.compare(degree, a.variables) is Greater {
+    return Ok(zero(a.variables, degree))
+  }
+  let (_, left_odd) = @core.halve_nat(a.degree)
   fn product_row(
     term : Term,
     other : @core.Chain[Term],
+    accumulator : @core.Chain[Term],
   ) -> Result[@core.Chain[Term], FormError] {
     match other {
-      Nil => Ok(Nil)
+      Nil => Ok(accumulator)
       Cons(head, rest) =>
-        match
-          (
-            @poly.multiply(term.coefficient, head.coefficient),
-            product_row(term, rest),
-          ) {
-          (Ok(coefficient), Ok(tail)) =>
-            Ok(
-              Cons(
-                {
-                  coefficient,
-                  indices: @core.append(term.indices, head.indices),
-                },
-                tail,
-              ),
-            )
-          _ => Err(InternalInvariant)
+        match merge_exterior_basis(term.indices, head.indices, left_odd) {
+          None => product_row(term, rest, accumulator)
+          Some((indices, negative)) =>
+            match @poly.multiply(term.coefficient, head.coefficient) {
+              Err(_) => Err(InternalInvariant)
+              Ok(product) => {
+                let coefficient = if negative {
+                  @poly.negate(product)
+                } else {
+                  product
+                }
+                match insert_term({ coefficient, indices, }, accumulator) {
+                  Err(error) => Err(error)
+                  Ok(updated) => product_row(term, rest, updated)
+                }
+              }
+            }
         }
     }
   }
-  fn product(left : @core.Chain[Term]) -> Result[@core.Chain[Term], FormError] {
+  fn product(
+    left : @core.Chain[Term],
+    accumulator : @core.Chain[Term],
+  ) -> Result[@core.Chain[Term], FormError] {
     match left {
-      Nil => Ok(Nil)
+      Nil => Ok(accumulator)
       Cons(head, rest) =>
-        match (product_row(head, b.terms), product(rest)) {
-          (Ok(row), Ok(tail)) => Ok(@core.append(row, tail))
-          _ => Err(InternalInvariant)
+        match product_row(head, b.terms, accumulator) {
+          Err(error) => Err(error)
+          Ok(updated) => product(rest, updated)
         }
     }
   }
-  if !a.variables.equal(b.variables) {
-    Err(DimensionMismatch)
-  } else {
-    match product(a.terms) {
-      Err(error) => Err(error)
-      Ok(terms) => form(a.variables, @core.add(a.degree, b.degree), terms)
-    }
+  match product(a.terms, Nil) {
+    Err(error) => Err(error)
+    Ok(terms) => Ok({ variables: a.variables, degree, terms, })
   }
 }
 

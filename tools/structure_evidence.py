@@ -1,11 +1,11 @@
-"""Verify the two structure-modeling reports against their frozen exact oracles."""
+"""Verify structure-modeling reports against their frozen exact oracles."""
 import hashlib
 import importlib.util
 import sys
 import tarfile
 
 
-KINDS = {'positive-form-gaussian-v1', 'hessian-derived-geometry-v1'}
+KINDS = {'positive-form-gaussian-v1', 'hessian-derived-geometry-v1', 'exterior-structure-v1'}
 
 
 def check_reference(root, record):

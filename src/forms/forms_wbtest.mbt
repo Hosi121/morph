@@ -59,6 +59,21 @@ fn fraction_form_fixture(
   assert_eq(variables(actual), @oracle.nat(count))
   assert_eq(degree(actual), @oracle.nat(grade + 1))
   assert_eq(terms(actual), fixture_terms(count, derivative))
+  let witnessed = exact_differential(value).unwrap()
+  assert_eq(witnessed.value(), actual)
+  assert_eq(witnessed.primitive(), value)
+  assert_true(witnessed.check())
+  assert_eq(
+    witnessed.exterior_derivative(),
+    zero(@oracle.nat(count), @oracle.nat(grade + 2)),
+  )
+  if is_zero(actual) {
+    let closed = closed_form(value).unwrap()
+    assert_eq(closed.value(), value)
+    assert_eq(closed.exterior_derivative(), actual)
+  } else {
+    assert_eq(closed_form(value), Err(NotClosed))
+  }
   assert_eq(
     exterior_derivative(actual),
     Ok(zero(@oracle.nat(count), @oracle.nat(grade + 2))),

@@ -35,6 +35,10 @@ fn fraction_homotopy_fixture(
     assert_eq(terms(candidate), fixture_terms(count, expected.unwrap()))
     assert_true(check_primitive(value, candidate))
     assert_eq(exterior_derivative(candidate), Ok(value))
+    let witnessed = closed_form(value).unwrap().primitive().unwrap()
+    assert_eq(witnessed.value(), value)
+    assert_eq(witnessed.primitive(), candidate)
+    assert_true(witnessed.check())
   } else {
     assert_eq(primitive(value), Err(NotClosed))
     assert_true(!check_primitive(value, actual.unwrap()))

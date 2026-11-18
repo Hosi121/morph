@@ -12,9 +12,13 @@ pub fn add(Form, Form) -> Result[Form, FormError]
 
 pub fn check_primitive(Form, Form) -> Bool
 
+pub fn closed_form(Form) -> Result[ClosedForm, FormError]
+
 pub fn contract(VectorField, Form) -> Result[Form?, FormError]
 
 pub fn degree(Form) -> @core.Nat
+
+pub fn exact_differential(Form) -> Result[ExactForm, FormError]
 
 pub fn exterior_derivative(Form) -> Result[Form, FormError]
 
@@ -59,6 +63,42 @@ pub fn zero(@core.Nat, @core.Nat) -> Form
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct ClosedForm {
+  value : Form
+}
+pub fn ClosedForm::add(Self, Self) -> Result[Self, FormError]
+pub fn ClosedForm::equal(Self, Self) -> Bool
+pub fn ClosedForm::exterior_derivative(Self) -> Form
+pub fn ClosedForm::negate(Self) -> Self
+pub fn ClosedForm::not_equal(Self, Self) -> Bool
+pub fn ClosedForm::primitive(Self) -> Result[ExactForm, FormError]
+pub fn ClosedForm::pullback(Self, PolynomialMap) -> Result[Self, FormError]
+pub fn ClosedForm::to_repr(Self) -> @debug.Repr
+pub fn ClosedForm::value(Self) -> Form
+pub fn ClosedForm::wedge(Self, Self) -> Result[Self, FormError]
+pub fn ClosedForm::wedge_exact(Self, ExactForm) -> Result[ExactForm, FormError]
+
+#derive(@debug.Debug)
+pub struct ExactForm {
+  closed_value : ClosedForm
+  primitive_value : Form
+}
+pub fn ExactForm::add(Self, Self) -> Result[Self, FormError]
+pub fn ExactForm::as_closed(Self) -> ClosedForm
+pub fn ExactForm::check(Self) -> Bool
+pub fn ExactForm::equal(Self, Self) -> Bool
+pub fn ExactForm::exterior_derivative(Self) -> Form
+pub fn ExactForm::negate(Self) -> Self
+pub fn ExactForm::not_equal(Self, Self) -> Bool
+pub fn ExactForm::primitive(Self) -> Form
+pub fn ExactForm::pullback(Self, PolynomialMap) -> Result[Self, FormError]
+pub fn ExactForm::to_repr(Self) -> @debug.Repr
+pub fn ExactForm::value(Self) -> Form
+pub fn ExactForm::wedge(Self, Self) -> Result[Self, FormError]
+pub fn ExactForm::wedge_closed(Self, ClosedForm) -> Result[Self, FormError]
+pub impl Eq for ExactForm
+
 #derive(Eq, @debug.Debug)
 pub struct Form {
   variables : @core.Nat
