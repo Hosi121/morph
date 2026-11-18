@@ -12,7 +12,7 @@
 | 記録 | 保存している内容 |
 | --- | --- |
 | [数学的構成の共有監査](mathematical-constructions-20261118.md) | 6領域の共通原理・固有条件・実重複、既存の構造利用との区別 |
-| [商構成の試作と採否](quotient-prototype-20261118.md) | generic商環・checked field・GF₂経路、厳密結果・純増LOC・140プロセスの時間とRSS |
+| [商構成の試作と採否](quotient-prototype-20261118.md) | 撤去した商環試作の設計、厳密結果・純増LOC・140プロセスの時間とRSS |
 
 ## 確率・微分幾何
 

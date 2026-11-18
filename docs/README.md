@@ -21,7 +21,6 @@
 | 知りたいこと | 読む資料 |
 | --- | --- |
 | データ型から算法を組み立てる考え方 | [ハンドブック](../HANDBOOK.md) |
-| 構成を共通化する設計と費用を読む | [商環の共通構成](handbook/mathematical-constructions.md)・[実装と比較評価](research/quotient-prototype-20261118.md) |
 | 多項式、基底、実解、数体をつなぐ | [厳密代数の計算経路](handbook/algebraic-solving.md) |
 | 複素数を厳密に演算し、全根を取り出す | [複素代数的数と全複素根](handbook/complex-algebra.md) |
 | 複素数体の基底を固定して計算する | [複素数体と一生成元の表現](handbook/complex-fields.md) |

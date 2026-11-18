@@ -1,5 +1,8 @@
 # 商構成の試作と採否
 
+**現状：この試作は通常ソースから撤去しました。** 既存コードの置換・削減につながらず、利用先のない別実装と7つの公開型を増やしたためです。
+以下は撤去前の設計・測定記録です。[ソースとテストは固定版](https://github.com/Hosi121/morph/tree/86cee8e3a202fc1fa64e93c0a36e1678bc718946/src/quotient)、全出力・検証ログは本リポジトリに保存し、保存済みの証拠だけを通常検査で再検査します。
+
 [Phase 1の監査](mathematical-constructions-20261118.md)を受け、Phase 2–4を実装・評価した記録。
 測定ソースは `cf08aaa8cb9fd1f943094fbd875c36e4eff5eb6b`。既存の galois / numberfield / complexfield の本体・APIは変更していない。
 
@@ -8,7 +11,7 @@
 
 ## 実装した最小構成
 
-[quotient](../../src/quotient/README.md) は既存 `rowreduce.Field[A]`、正確な零判定、係数の有効性判定、親キー、monic正次数法fから `Context[A,K]` を作る。
+[quotient](https://github.com/Hosi121/morph/blob/86cee8e3a202fc1fa64e93c0a36e1678bc718946/src/quotient/README.md) は既存 `rowreduce.Field[A]`、正確な零判定、係数の有効性判定、親キー、monic正次数法fから `Context[A,K]` を作る。
 型変数Kはキーの型であり、数式の係数体Kとは別である。係数体の法則、validな係数の演算閉性、同一キー間の辞書・零判定の一致はtrusted interface contractとする。
 実行時の型推測、キャスト、一般の体公理検査器は追加していない。
 
@@ -24,7 +27,7 @@
 逆元では要求時にd×dの行列を生成する。これは独立した既存solverへの接続であり、Euclidより速い逆元の発明ではない。
 商の構築時や乗算時に全乗算表を生成しない。代表元は常に具体的な係数列であり、任意の式グラフを遅延する仕組みは試していない。
 
-[quotientfield](../../src/quotientfield) は既存のopaqueな checked NF/galois Fieldを受け取る。未検査の既約性Boolからの昇格はない。
+[quotientfield](https://github.com/Hosi121/morph/tree/86cee8e3a202fc1fa64e93c0a36e1678bc718946/src/quotientfield) は既存のopaqueな checked NF/galois Fieldを受け取る。未検査の既約性Boolからの昇格はない。
 NFの選択根のRootCertificateをキーに含め、元のFieldも保持する。共役根・別根区間を混ぜず、既存の実現・逆元証明書・checkerへ戻れる。
 疎な既存多項式と密な係数列の変換は入口・出口だけであり、内部の演算ごとに往復しない。
 既存のpublic error/零逆元の契約を変更したのではなく、試作には別のResult/Option APIを設けている。
@@ -76,7 +79,7 @@ Phase 1の192行のコピー候補や整数商の委譲候補は削除してお�
 
 ## 時間とメモリの比較
 
-[完全な生データ・ソースsnapshot・hash](../measurements/mathematical-constructions-20261118.json)、[実行・再検査harness](../../tools/construction-bench.py)。
+[完全な生データ・ソースsnapshot・hash](../measurements/mathematical-constructions-20261118.json)、[保存済み証拠の検査器](../../tools/construction-bench.py)。
 Intel Core Ultra 7 255H / WSL2、Moon 0.1.20261104・moonc v0.10.20+65efd5b93、native release、CPU4・共有ロック。
 5 ABBA組×7比較=140プロセス、**全3,276,800結果**を独立整数多項式積＋monic長除算と照合した。上位solverや係数辞書をoracleとして再利用しない。
 
@@ -109,20 +112,21 @@ QQの小さい整数、固定周期、次数2/4という範囲を、大係数・
 
 ## 採否と次の判断
 
-採用するのは、数学的構成から演算を生成でき、表現別経路の一致を検査できる試作と、その再現可能な評価器である。
-既存経路の一括置換、コード削減・高速化の達成という主張は見送る。
+当初は試作を通常ソースへ残したが、簡単さを優先する方針で撤去した。数学的構成を共有できるという知見と測定証拠は保持する。
+旧コードを実際に置き換えず、別の型・表現・実装を追加するだけでは、目的とする簡単化を達成していない。
 構成から性質を得ることだけでは、既存の疎表現・準備済み還元・専用二次公式・小カーネルの費用は消えない。
 
 次に本採用を判断するには、一つの実callerを選び、入力境界と証拠を保ったまま旧コードを実際に委譲・削除し、adapterを含むnet LOCと構築込みの費用を測る必要がある。
 inverseは高次数ではEuclid等の別経路を残す候補であり、一般核の行列法を無条件に広げない。
 最小多項式の探索・座標処理、整数商の誘導写像はPhase 1の別候補として残し、この試作の成果に数えない。
 
-再検査:
+現在のソースで保存済み証拠を再検査する:
 
 ```sh
 python3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json
-tools/measure --cpu 4 tools/moon test src/quotient src/quotientfield --target native --release --deny-warn -j 1
 ```
+
+試作自体の再実行・テストは固定版 `86cee8e` のcheckoutで行う。測定producerのソースも記録内のsnapshotに含む。
 
 全出力を損失なく圧縮保存し、harnessと依存25package・102ファイルのsource、ELFの前後SHA256、各runのRSS/時間を記録した。
 `.tools/construction-bench/frozen/constructionbench.exe` はローカルの凍結実行ファイルとして保持する。
