@@ -128,6 +128,23 @@ class EvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Frozen reference/source hash mismatch'):
             check_reference(root, full)
 
+    def test_exterior_report_reconstructed_from_permutations_and_homotopy(self):
+        root = Path(__file__).resolve().parent.parent
+        record = json.loads((root / 'docs/measurements/forms-structure-20261118-summary.json').read_text())
+        comparison(root, record)
+
+    def test_zero_form_grading_cannot_drift_with_consistent_record_edits(self):
+        root = Path(__file__).resolve().parent.parent
+        record = json.loads((root / 'docs/measurements/forms-structure-20261118-summary.json').read_text())
+        full = json.loads(gzip.decompress((root / record['lossless_full_record']['path']).read_bytes()))
+        for run in full['runs']:
+            if run['case'] == 'closed-d':
+                run['payload']['results'][0]['degree'] = 3
+                run['stdout'] = json.dumps(run['payload'])
+        full['reference_payloads']['closed-d']['results'][0]['degree'] = 3
+        with self.assertRaisesRegex(ValueError, 'Independent reference payload differs'):
+            check_reference(root, full)
+
     def log_fixture(self):
         data = b'header\npassed\n'
         (self.root / 'log.txt').write_bytes(data)

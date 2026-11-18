@@ -29,6 +29,29 @@ fn merge_exterior_basis(
 }
 
 ///|
+fn exterior_term_product(
+  left : Term,
+  right : Term,
+  left_odd : Bool,
+) -> Result[Term?, FormError] {
+  match merge_exterior_basis(left.indices, right.indices, left_odd) {
+    None => Ok(None)
+    Some((indices, negative)) =>
+      match @poly.multiply(left.coefficient, right.coefficient) {
+        Err(_) => Err(InternalInvariant)
+        Ok(product) => {
+          let coefficient = if negative {
+            @poly.negate(product)
+          } else {
+            product
+          }
+          Ok(Some({ coefficient, indices, }))
+        }
+      }
+  }
+}
+
+///|
 pub fn wedge(a : Form, b : Form) -> Result[Form, FormError] {
   if !a.variables.equal(b.variables) {
     return Err(DimensionMismatch)
@@ -38,6 +61,18 @@ pub fn wedge(a : Form, b : Form) -> Result[Form, FormError] {
     return Ok(zero(a.variables, degree))
   }
   let (_, left_odd) = @core.halve_nat(a.degree)
+  match (a.terms, b.terms) {
+    (Cons(left, Nil), Cons(right, Nil)) =>
+      // QQ polynomials form an integral domain. Checked nonzero coefficients
+      // have a nonzero product; a singleton needs no collection or rechecking.
+      return match exterior_term_product(left, right, left_odd) {
+        Err(error) => Err(error)
+        Ok(None) => Ok(zero(a.variables, degree))
+        Ok(Some(term)) =>
+          Ok({ variables: a.variables, degree, terms: Cons(term, Nil), })
+      }
+    _ => ()
+  }
   fn product_row(
     term : Term,
     other : @core.Chain[Term],
@@ -46,22 +81,13 @@ pub fn wedge(a : Form, b : Form) -> Result[Form, FormError] {
     match other {
       Nil => Ok(accumulator)
       Cons(head, rest) =>
-        match merge_exterior_basis(term.indices, head.indices, left_odd) {
-          None => product_row(term, rest, accumulator)
-          Some((indices, negative)) =>
-            match @poly.multiply(term.coefficient, head.coefficient) {
-              Err(_) => Err(InternalInvariant)
-              Ok(product) => {
-                let coefficient = if negative {
-                  @poly.negate(product)
-                } else {
-                  product
-                }
-                match insert_term({ coefficient, indices, }, accumulator) {
-                  Err(error) => Err(error)
-                  Ok(updated) => product_row(term, rest, updated)
-                }
-              }
+        match exterior_term_product(term, head, left_odd) {
+          Err(error) => Err(error)
+          Ok(None) => product_row(term, rest, accumulator)
+          Ok(Some(product_term)) =>
+            match insert_term(product_term, accumulator) {
+              Err(error) => Err(error)
+              Ok(updated) => product_row(term, rest, updated)
             }
         }
     }
