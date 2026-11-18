@@ -114,6 +114,20 @@ class EvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Source member hash mismatch'):
             check_reference(root, full)
 
+    def test_hessian_report_reconstructed_from_independent_metric_jet(self):
+        root = Path(__file__).resolve().parent.parent
+        record = json.loads((root / 'docs/measurements/structure-hessian-20261118-summary.json').read_text())
+        comparison(root, record)
+
+    def test_hessian_reference_script_hash_checked(self):
+        root = Path(__file__).resolve().parent.parent
+        record = json.loads((root / 'docs/measurements/structure-hessian-20261118-summary.json').read_text())
+        full = json.loads(gzip.decompress((root / record['lossless_full_record']['path']).read_bytes()))
+        first = next(iter(full['reference_files']))
+        full['reference_files'][first] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'Frozen reference/source hash mismatch'):
+            check_reference(root, full)
+
     def log_fixture(self):
         data = b'header\npassed\n'
         (self.root / 'log.txt').write_bytes(data)

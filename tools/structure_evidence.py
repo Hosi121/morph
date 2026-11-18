@@ -39,7 +39,8 @@ def check_reference(root, record):
     try:
         spec.loader.exec_module(oracle)
         if record['schema_kind'] == 'hessian-derived-geometry-v1':
-            references = {str(harness.parent / ('structure-hessian-20261118-' + kind + '-reference.py'))
+            stem = harness.name.removesuffix('-harness.py')
+            references = {str(harness.parent / (stem + '-' + kind + '-reference.py'))
                           for kind in ('moments', 'curvature')}
             require(references == {str(local(root, p)) for p in record['reference_files']},
                     'Missing frozen geometry reference')

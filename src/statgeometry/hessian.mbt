@@ -327,6 +327,32 @@ pub fn HessianCurvature::ricci(
 }
 
 ///|
+fn[A] hessian_row(
+  rows : @core.Chain[@core.Chain[A]],
+  index : @core.Nat,
+) -> @core.Chain[A] {
+  match @core.nth(rows, index) {
+    Some(row) => row
+    None => Nil
+  }
+}
+
+///|
+fn hessian_dot(
+  left : @core.Chain[@exact.Rational],
+  right : @core.Chain[@exact.Rational],
+) -> @exact.Rational {
+  match (left, right) {
+    (Cons(a, rest_a), Cons(b, rest_b)) =>
+      @exact.rational_add(
+        @exact.rational_multiply(a, b),
+        hessian_dot(rest_a, rest_b),
+      )
+    _ => @exact.rational_zero()
+  }
+}
+
+///|
 /// Explicit coordinate expansion R[r,j,k,l]. Operator application avoids this.
 pub fn HessianCurvature::riemann(
   self : HessianCurvature,
@@ -337,24 +363,46 @@ pub fn HessianCurvature::riemann(
     FlatFormula => four_tensor(d, fn(_, _, _, _) { @exact.rational_zero() })
     ScaledFormula(weight) => {
       let coefficient = @exact.rational_negate(quarter(weight))
+      // Materialize the small K_k operators once. Flat tensor indexing scans a
+      // linked list; repeating that scan inside every contracted component is
+      // more expensive than computing all matrix products with sequential dots.
+      let operators = @core.map(indices, fn(k) {
+        let rows = @core.map(indices, fn(r) {
+          @core.map(indices, fn(j) { self.source.entry(k, j, r) })
+        })
+        let columns = @core.map(indices, fn(j) {
+          @core.map(indices, fn(r) { self.source.entry(k, j, r) })
+        })
+        (rows, columns)
+      })
+      let products = @core.map(operators, fn(left) {
+        let (rows, _) = left
+        @core.map(operators, fn(right) {
+          let (_, columns) = right
+          @core.map(rows, fn(row) {
+            @core.map(columns, fn(column) { hessian_dot(row, column) })
+          })
+        })
+      })
+      fn product(
+        k : @core.Nat,
+        l : @core.Nat,
+        r : @core.Nat,
+        j : @core.Nat,
+      ) -> @exact.Rational {
+        let row = hessian_row(hessian_row(hessian_row(products, k), l), r)
+        match @core.nth(row, j) {
+          Some(value) => value
+          None => @exact.rational_zero()
+        }
+      }
       four_tensor(d, fn(r, j, k, l) {
         if k.equal(l) {
           return @exact.rational_zero()
         }
         @exact.rational_multiply(
           coefficient,
-          sum_indices(indices, fn(m) {
-            @exact.rational_subtract(
-              @exact.rational_multiply(
-                self.source.entry(k, m, r),
-                self.source.entry(l, j, m),
-              ),
-              @exact.rational_multiply(
-                self.source.entry(l, m, r),
-                self.source.entry(k, j, m),
-              ),
-            )
-          }),
+          @exact.rational_subtract(product(k, l, r, j), product(l, k, r, j)),
         )
       })
     }
