@@ -1,0 +1,17 @@
+$ tools/measure --cpu 4 tools/moon test src/runbinary --target js --deny-warn -j 1
+Total tests: 13, passed: 13, failed: 0.
+
+$ tools/measure --cpu 4 tools/moon test src/runbinary --target wasm-gc --deny-warn -j 1
+Total tests: 13, passed: 13, failed: 0.
+
+$ tools/measure --cpu 4 tools/moon check src/runbinary --target wasm-gc --deny-warn --fmt -j 1
+Finished. moon: ran 8 tasks, now up to date
+
+$ tools/measure --cpu 4 tools/moon info src/core src/runbinary
+Finished. moon: ran 4 tasks, now up to date
+
+$ python3 tools/audit_purity.py
+Purity gate passed: 381 kernel files; no machine numerics, mutation, arrays or FFI.
+
+$ python3 tools/check_model_drift.py
+Formal drift gate passed: 32 reviewed source regions; not a translation proof.

@@ -124,10 +124,7 @@ pub fn expand(value : Number, maximum_bits : @binary.Binary) -> @binary.Binary? 
         value.runs,
         @core.Nil,
         fn(reversed, run) {
-          @core.reverse_onto(
-            @core.replicate(@binary.to_nat(run.length), run.bit),
-            reversed,
-          )
+          @core.replicate_onto(@binary.to_nat(run.length), run.bit, reversed)
         },
       )
       Some(@binary.from_bits(@core.reverse(reversed)))

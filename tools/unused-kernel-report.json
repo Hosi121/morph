@@ -1,0 +1,178 @@
+{
+  "baseline": "1931625",
+  "environment": {
+    "system": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "moon": "moon 0.1.20261104 (940aa18 2026-11-04)\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg",
+    "node": "v24.13.0",
+    "backend": "js release",
+    "cpu": 4,
+    "command": "tools/measure --cpu 4 tools/moon bench src/runbinary/expansion_bench_wbtest.mbt --target js --release -j 1",
+    "sampling": "same artifact; 5 ABBA blocks per case, 5 bench samples per group; group means in microseconds",
+    "timed_scope": "public expand, with width check, run-length conversion, bit-list normalization and retained result; excludes input construction and equality checks"
+  },
+  "call_paths": {
+    "symbols": {
+      "core.gcd": {
+        "body": [],
+        "test": [
+          [
+            "src/core/core_wbtest.mbt",
+            27
+          ]
+        ],
+        "demo": []
+      },
+      "core.interleave": {
+        "body": [],
+        "test": [
+          [
+            "src/core/core_wbtest.mbt",
+            37
+          ]
+        ],
+        "demo": []
+      }
+    },
+    "runbinary_body_importers": [],
+    "method": "existing lexical inventory; excludes self-recursion, comments and strings; not an external-usage/reachability proof"
+  },
+  "unchanged": {
+    "src/core/data.mbt": {
+      "sha256": "174c34ebd638a8ebeee9e23f1d50c3b36cbc5fc3612252f71c2b9e31941026de",
+      "matches_baseline": true
+    },
+    "src/core/pkg.generated.mbti": {
+      "sha256": "7bb29c2efb95a1d7119312b30a34a0c856e254a6b2db66708fa42bd18df0a9ad",
+      "matches_baseline": true
+    },
+    "src/runbinary/pkg.generated.mbti": {
+      "sha256": "d9ae0031f209bc1ac5bdb0b7dcd17f82af3d932e9ead07faf5203a30db2618a7",
+      "matches_baseline": true
+    },
+    "formal/source-map.json": {
+      "sha256": "4d2bd8e44f77aec85808cbcd2a910ca49f7a64475e46ea805c38ca6fd3aec437",
+      "matches_baseline": true
+    }
+  },
+  "reference_matches_baseline_body_tokens": true,
+  "baseline_expand_body_tokens_sha256": "f0a52583f6cac7e16d99b86f04d6570718fcf7b6b469ea0c8dce63c7cd907b2a",
+  "measurement_log_sha256": "686139228368fe91282c9c22da5f0d8decd0f6606ec994aa0ff86d2efb79a724",
+  "bench_source_sha256": "efd0683043279df801d5835183c47ab75405c14bd9514857442f29612060147f",
+  "candidate_source_sha256": "9fd84dc858552c00866cfc84ff574e1b62c147ed55a7ad951a903b5c14c99ad5",
+  "results": {
+    "homogeneous4096": {
+      "blocks": [
+        {
+          "block": "block0",
+          "reference_mean_us": 97.348949787014,
+          "candidate_mean_us": 73.68632360709364,
+          "reference_over_candidate": 1.3211264319019766
+        },
+        {
+          "block": "block1",
+          "reference_mean_us": 88.82648135981555,
+          "candidate_mean_us": 78.06154039904335,
+          "reference_over_candidate": 1.137903260757382
+        },
+        {
+          "block": "block2",
+          "reference_mean_us": 93.40823411418894,
+          "candidate_mean_us": 81.03357238652853,
+          "reference_over_candidate": 1.1527103071382996
+        },
+        {
+          "block": "block3",
+          "reference_mean_us": 87.71141582695358,
+          "candidate_mean_us": 77.04998303452052,
+          "reference_over_candidate": 1.1383703457488945
+        },
+        {
+          "block": "block4",
+          "reference_mean_us": 84.30550774773698,
+          "candidate_mean_us": 69.58048387828194,
+          "reference_over_candidate": 1.211625775630042
+        }
+      ],
+      "reference_median_block_mean_us": 88.82648135981555,
+      "candidate_median_block_mean_us": 77.04998303452052,
+      "median_reference_over_candidate": 1.1527103071382996,
+      "improved_blocks": 5
+    },
+    "mixed4096": {
+      "blocks": [
+        {
+          "block": "block0",
+          "reference_mean_us": 83.85629432306291,
+          "candidate_mean_us": 69.6570911099295,
+          "reference_over_candidate": 1.203844332097143
+        },
+        {
+          "block": "block1",
+          "reference_mean_us": 80.92847945182747,
+          "candidate_mean_us": 70.71787635812339,
+          "reference_over_candidate": 1.1443850355742644
+        },
+        {
+          "block": "block2",
+          "reference_mean_us": 85.33494550072965,
+          "candidate_mean_us": 71.45662538699591,
+          "reference_over_candidate": 1.19422020055623
+        },
+        {
+          "block": "block3",
+          "reference_mean_us": 92.56111087868028,
+          "candidate_mean_us": 77.88607312117162,
+          "reference_over_candidate": 1.188416711350666
+        },
+        {
+          "block": "block4",
+          "reference_mean_us": 91.00609423370508,
+          "candidate_mean_us": 77.19429803938576,
+          "reference_over_candidate": 1.1789224922710266
+        }
+      ],
+      "reference_median_block_mean_us": 85.33494550072965,
+      "candidate_median_block_mean_us": 71.45662538699591,
+      "median_reference_over_candidate": 1.188416711350666,
+      "improved_blocks": 5
+    },
+    "alternating2048": {
+      "blocks": [
+        {
+          "block": "block0",
+          "reference_mean_us": 103.63343491830204,
+          "candidate_mean_us": 93.84090975779267,
+          "reference_over_candidate": 1.104352410753309
+        },
+        {
+          "block": "block1",
+          "reference_mean_us": 106.83439821347221,
+          "candidate_mean_us": 94.40289723613989,
+          "reference_over_candidate": 1.1316855874267937
+        },
+        {
+          "block": "block2",
+          "reference_mean_us": 119.06849012498307,
+          "candidate_mean_us": 92.52376916231461,
+          "reference_over_candidate": 1.28689623437304
+        },
+        {
+          "block": "block3",
+          "reference_mean_us": 103.96368391981771,
+          "candidate_mean_us": 90.73099224056871,
+          "reference_over_candidate": 1.145845331925426
+        },
+        {
+          "block": "block4",
+          "reference_mean_us": 100.62728967956824,
+          "candidate_mean_us": 87.84679079713538,
+          "reference_over_candidate": 1.1454862353702466
+        }
+      ],
+      "reference_median_block_mean_us": 103.96368391981771,
+      "candidate_median_block_mean_us": 92.52376916231461,
+      "median_reference_over_candidate": 1.1454862353702466,
+      "improved_blocks": 5
+    }
+  }
+}
