@@ -7,6 +7,7 @@ import json
 import statistics
 
 from compare_field_kernels import normalized
+from structure_evidence import KINDS, check_reference
 
 
 def digest(data):
@@ -39,12 +40,15 @@ def comparison(root, record):
     require(type(groups) is int and groups > 0, 'Invalid ABBA group count')
     require(order == ['before', 'after', 'after', 'before'], 'Invalid ABBA order')
     require(record['run_count'] == len(runs) and bool(runs), 'Wrong run count')
+    externally_checked = full.get('schema_kind') in KINDS
+    if externally_checked:
+        check_reference(root, full)
     expected, slots = {}, set()
     for run in runs:
         require(run['checked'] is True and type(run['exit_code']) is int and run['exit_code'] == 0,
                 'Unchecked or failed run')
         require(json.loads(run['stdout']) == run['payload'], 'Stored stdout/payload differ')
-        value = normalized(run['payload'])
+        value = run['payload'] if externally_checked else normalized(run['payload'])
         require(value == expected.setdefault(run['case'], value), 'Unequal complete results')
         group, position = run['group'], run['position']
         require(type(group) is int and 0 <= group < groups, 'Invalid group')

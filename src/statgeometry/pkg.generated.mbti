@@ -7,6 +7,7 @@ import {
   "Hosi121/morph/gaussian",
   "Hosi121/morph/infogeom",
   "Hosi121/morph/matrix",
+  "Hosi121/morph/positiveform",
   "Hosi121/morph/riemann",
   "Hosi121/morph/tensor",
   "moonbitlang/core/debug",
@@ -41,9 +42,13 @@ pub fn cubic_tensor(@infogeom.Model) -> Result[@tensor.Tensor[@exact.Rational], 
 
 pub fn curvature(@infogeom.ModelPoint) -> Result[@riemann.Curvature, GeometryError]
 
+pub fn exponential_hessian(@infogeom.ExponentialFamily) -> Result[HessianPoint, GeometryError]
+
 pub fn fisher_jet(@infogeom.ModelPoint) -> Result[@riemann.MetricJet, GeometryError]
 
 pub fn gaussian_amari_chentsov(@gaussian.Gaussian) -> Result[AmariChentsov, GeometryError]
+
+pub fn gaussian_hessian(@gaussian.Information) -> Result[HessianPoint, GeometryError]
 
 pub fn pullback_amari_chentsov(@infogeom.Model, @matrix.Matrix[@exact.Rational]) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
 
@@ -91,15 +96,106 @@ pub fn AmariChentsov::to_repr(Self) -> @debug.Repr
 pub fn AmariChentsov::trace(Self) -> @core.Chain[@exact.Rational]
 
 #derive(Eq, @debug.Debug)
+type CurvatureFormula
+pub fn CurvatureFormula::equal(Self, Self) -> Bool
+pub fn CurvatureFormula::not_equal(Self, Self) -> Bool
+pub fn CurvatureFormula::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
 pub(all) enum GeometryError {
   MissingDerivative
   Metric(@riemann.JetError)
   Tensor(@tensor.TensorError)
   Gaussian(@gaussian.GaussianError)
+  Form(@positiveform.FormError)
+  PointMismatch
 }
 pub fn GeometryError::equal(Self, Self) -> Bool
 pub fn GeometryError::not_equal(Self, Self) -> Bool
 pub fn GeometryError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct HessianCotangent {
+  point : HessianPoint
+  values : @core.Chain[@exact.Rational]
+}
+pub fn HessianCotangent::add(Self, Self) -> Result[Self, GeometryError]
+pub fn HessianCotangent::components(Self) -> @core.Chain[@exact.Rational]
+pub fn HessianCotangent::equal(Self, Self) -> Bool
+pub fn HessianCotangent::not_equal(Self, Self) -> Bool
+pub fn HessianCotangent::parent(Self) -> HessianPoint
+pub fn HessianCotangent::scale(Self, @exact.Rational) -> Self
+pub fn HessianCotangent::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct HessianCurvature {
+  source : HessianPoint
+  alpha_value : @exact.Rational
+  formula : CurvatureFormula
+}
+pub fn HessianCurvature::alpha(Self) -> @exact.Rational
+pub fn HessianCurvature::apply(Self, HessianTangent, HessianTangent, HessianTangent) -> Result[HessianTangent, GeometryError]
+pub fn HessianCurvature::coefficients(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn HessianCurvature::equal(Self, Self) -> Bool
+pub fn HessianCurvature::lowered_riemann(Self) -> Result[@tensor.Tensor[@exact.Rational], GeometryError]
+pub fn HessianCurvature::not_equal(Self, Self) -> Bool
+pub fn HessianCurvature::parent(Self) -> HessianPoint
+pub fn HessianCurvature::ricci(Self) -> Result[@matrix.Matrix[@exact.Rational], GeometryError]
+pub fn HessianCurvature::riemann(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn HessianCurvature::scalar(Self) -> @exact.Rational
+pub fn HessianCurvature::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct HessianPoint {
+  source : NaturalSource
+  form : @positiveform.PositiveDefinite
+  inverse : @matrix.Matrix[@exact.Rational]
+  cubic_value : @tensor.Tensor[@exact.Rational]
+  difference_value : @tensor.Tensor[@exact.Rational]
+  trace_value : @core.Chain[@exact.Rational]
+  ricci_zero : @matrix.Matrix[@exact.Rational]
+  scalar_zero : @exact.Rational
+}
+pub fn HessianPoint::amari_chentsov(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn HessianPoint::cotangent(Self, @core.Chain[@exact.Rational]) -> Result[HessianCotangent, GeometryError]
+pub fn HessianPoint::curvature(Self, @exact.Rational) -> HessianCurvature
+pub fn HessianPoint::difference(Self) -> @tensor.Tensor[@exact.Rational]
+pub fn HessianPoint::dimension(Self) -> @core.Nat
+pub fn HessianPoint::equal(Self, Self) -> Bool
+pub fn HessianPoint::evaluate(Self, HessianCotangent, HessianTangent) -> Result[@exact.Rational, GeometryError]
+pub fn HessianPoint::exponential_source(Self) -> @infogeom.ExponentialFamily?
+pub fn HessianPoint::gaussian_source(Self) -> @gaussian.Information?
+pub fn HessianPoint::inverse_metric(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn HessianPoint::lower_index(Self, HessianTangent) -> Result[HessianCotangent, GeometryError]
+pub fn HessianPoint::metric(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn HessianPoint::metric_form(Self) -> @positiveform.PositiveDefinite
+pub fn HessianPoint::not_equal(Self, Self) -> Bool
+pub fn HessianPoint::pairing(Self, HessianTangent, HessianTangent) -> Result[@exact.Rational, GeometryError]
+pub fn HessianPoint::product(Self, HessianTangent, HessianTangent) -> Result[HessianTangent, GeometryError]
+pub fn HessianPoint::raise_index(Self, HessianCotangent) -> Result[HessianTangent, GeometryError]
+pub fn HessianPoint::same_coordinates(Self, Self) -> Bool
+pub fn HessianPoint::tangent(Self, @core.Chain[@exact.Rational]) -> Result[HessianTangent, GeometryError]
+pub fn HessianPoint::to_repr(Self) -> @debug.Repr
+pub fn HessianPoint::trace(Self) -> HessianCotangent
+
+#derive(Eq, @debug.Debug)
+pub struct HessianTangent {
+  point : HessianPoint
+  values : @core.Chain[@exact.Rational]
+}
+pub fn HessianTangent::add(Self, Self) -> Result[Self, GeometryError]
+pub fn HessianTangent::components(Self) -> @core.Chain[@exact.Rational]
+pub fn HessianTangent::equal(Self, Self) -> Bool
+pub fn HessianTangent::not_equal(Self, Self) -> Bool
+pub fn HessianTangent::parent(Self) -> HessianPoint
+pub fn HessianTangent::scale(Self, @exact.Rational) -> Self
+pub fn HessianTangent::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+type NaturalSource
+pub fn NaturalSource::equal(Self, Self) -> Bool
+pub fn NaturalSource::not_equal(Self, Self) -> Bool
+pub fn NaturalSource::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

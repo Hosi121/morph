@@ -25,6 +25,8 @@ pub fn dimension(Model) -> @core.Nat
 
 pub fn distribution(Model) -> @probability.Distribution
 
+pub fn exponential_family(@probability.Distribution, @matrix.Matrix[@exact.Rational]) -> Result[ExponentialFamily, ModelError]
+
 pub fn exponential_point(@probability.Distribution, @matrix.Matrix[@exact.Rational]) -> Result[ModelPoint, ModelError]
 
 pub fn family(@core.Nat, @core.Chain[@polynomial.Polynomial]) -> Result[Family, FamilyError]
@@ -60,6 +62,24 @@ pub fn through_family(Family, @probability.Channel) -> Result[Family, FamilyErro
 // Errors
 
 // Types and methods
+#derive(Eq, @debug.Debug)
+pub struct ExponentialFamily {
+  base : @probability.Distribution
+  statistics : @matrix.Matrix[@exact.Rational]
+  pairs : @core.Chain[(@exact.Rational, @core.Chain[@exact.Rational])]
+  covariance : @matrix.Matrix[@exact.Rational]
+  skewness : @core.Chain[@matrix.Matrix[@exact.Rational]]
+}
+pub fn ExponentialFamily::amari_chentsov(Self) -> @core.Chain[@matrix.Matrix[@exact.Rational]]
+pub fn ExponentialFamily::base(Self) -> @probability.Distribution
+pub fn ExponentialFamily::dimension(Self) -> @core.Nat
+pub fn ExponentialFamily::equal(Self, Self) -> Bool
+pub fn ExponentialFamily::fisher(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn ExponentialFamily::not_equal(Self, Self) -> Bool
+pub fn ExponentialFamily::point(Self) -> Result[ModelPoint, ModelError]
+pub fn ExponentialFamily::statistics(Self) -> @matrix.Matrix[@exact.Rational]
+pub fn ExponentialFamily::to_repr(Self) -> @debug.Repr
+
 pub struct Family {
   dimension : @core.Nat
   derivatives : @core.Chain[PolynomialDerivatives]

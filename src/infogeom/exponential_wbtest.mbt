@@ -15,6 +15,35 @@ fn exp_point(
 }
 
 ///|
+test "exponential family retains its generator and lower cumulants before jet expansion" {
+  let base = @probability.distribution(vector([(1, 6), (1, 3), (1, 2)])).unwrap()
+  let statistics = mat(
+    [[(2, 1), (1, 1)], [(-1, 1), (3, 1)], [(1, 1), (-2, 1)]],
+    2,
+  )
+  let family = exponential_family(base, statistics).unwrap()
+  assert_eq(family.base(), base)
+  assert_eq(family.statistics(), statistics)
+  let expanded = family.point().unwrap()
+  let compatibility_point = exponential_point(base, statistics).unwrap()
+  assert_eq(local_model(compatibility_point), local_model(expanded))
+  assert_eq(third_derivatives(compatibility_point), third_derivatives(expanded))
+  assert_eq(family.fisher(), fisher(local_model(expanded)))
+  assert_eq(
+    Some(family.amari_chentsov()),
+    amari_chentsov(local_model(expanded)),
+  )
+  let boundary = @probability.distribution(vector([(1, 1), (0, 1)])).unwrap()
+  assert_true(
+    exponential_family(boundary, mat([[(0, 1)], [(1, 1)]], 1))
+    is Err(NotInterior),
+  )
+  assert_true(
+    exponential_family(boundary, mat([[(0, 1)]], 1)) is Err(DimensionMismatch),
+  )
+}
+
+///|
 test "Bernoulli natural-coordinate jets equal exact cumulant derivatives" {
   for denominator in 2..<=8 {
     for a in 1..<denominator {

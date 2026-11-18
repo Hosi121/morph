@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：136パッケージ、378ソース。
-核のテスト宣言：5565、bench group：212。
+算法の核：136パッケージ、380ソース。
+核のテスト宣言：5571、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -81,7 +81,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [homology](../src/homology) | 2 | 10 | 0 | `algebra`, `binary`, `chainhomology`, `core`, `exact`, `matrix`, `smith` |
 | [huffman](../src/huffman) | 1 | 2 | 0 | `binary`, `core`, `heap` |
 | [infer](../src/infer) | 1 | 4 | 0 | `core`, `unify` |
-| [infogeom](../src/infogeom) | 6 | 14 | 0 | `core`, `exact`, `linear`, `matrix`, `polynomial`, `probability` |
+| [infogeom](../src/infogeom) | 6 | 15 | 0 | `core`, `exact`, `linear`, `matrix`, `polynomial`, `probability` |
 | [linear](../src/linear) | 1 | 6 | 0 | `bareiss`, `binary`, `core`, `exact`, `matrix`, `rowreduce` |
 | [linearspan](../src/linearspan) | 1 | 17 | 0 | `core`, `exact` |
 | [listdecode](../src/listdecode) | 6 | 39 | 0 | `binary`, `core`, `fppoly`, `matrix`, `modular`, `primefield`, `rowreduce` |
@@ -139,7 +139,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |
 | [spanning](../src/spanning) | 1 | 2 | 0 | `binary`, `core`, `graph`, `heap`, `sorting` |
 | [splittinggalois](../src/splittinggalois) | 3 | 11 | 0 | `complexfield`, `complexsplitting`, `complexsubfield`, `core`, `exact`, `polynomial` |
-| [statgeometry](../src/statgeometry) | 4 | 19 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `riemann`, `tensor` |
+| [statgeometry](../src/statgeometry) | 6 | 24 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `positiveform`, `riemann`, `tensor` |
 | [sturm](../src/sturm) | 1 | 3 | 0 | `core`, `exact`, `polynomial` |
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [tarski](../src/tarski) | 3 | 402 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm` |

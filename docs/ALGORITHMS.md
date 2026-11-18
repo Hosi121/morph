@@ -61,6 +61,7 @@
 | 情報幾何 | [確率2-jet・Fisher行列・cubic tensor・α接続・自然勾配](../src/infogeom/model.mbt) |
 | Amari–Chentsov | [明示的な3次scoreモーメントAPI](../src/infogeom/model.mbt)・[接ベクトルへの作用・添字上げ・trace・不変ノルム](../src/statgeometry/amari_chentsov.mbt)・[Gaussianの2/3次cumulant](../src/gaussian/information.mbt) |
 | α接続の曲率 | [確率3-jetから接続を微分](../src/infogeom/alpha.mbt)・[一般αの曲率・Ricci・scalar](../src/statgeometry/alpha.mbt) |
+| 由来を保持する幾何 | [指数型・GaussianからのHessian構造と曲率作用素](../src/statgeometry/hessian.mbt)・[点と座標に結び付いた接ベクトル・共変ベクトル](../src/statgeometry/hessian_fibers.mbt) |
 | 高階テンソル | [shape付き不変テンソル・置換](../src/tensor/tensor.mbt)・[縮約と一軸の線形変換](../src/tensor/contraction.mbt) |
 | モデルから曲率へ | [多項式の3階微分](../src/infogeom/polynomial.mbt)・[Fisher計量jetからRiemann/Ricci曲率へ接続](../src/statgeometry/geometry.mbt) |
 | 指数型分布族 | [十分統計量・中心モーメントによる厳密な自然座標の局所3-jet](../src/infogeom/exponential.mbt) |

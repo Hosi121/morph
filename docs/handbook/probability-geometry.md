@@ -123,7 +123,7 @@ Gaussianでは `gaussian.information(source)` から `fisher()` と `amari_chent
 非自明な有限多項式モデルの一般α接続・曲率を、compiled MoonBitの全成分と照合する。
 通常の検査は保存済み参照値とfixtureの一致を確かめ、SymPyによる数式の再導出とは区別する。
 
-### 次への接続：Hessian由来の曲率（専用経路は未実装）
+### Hessian由来の曲率を使う
 
 [Nielsen §3.8](https://arxiv.org/abs/1808.08271)のHessian自然座標では、
 `g = ∂²F, T = ∂³F` となり、接続行列は `Γ_i^(α) = (1−α) K_i/2`。
@@ -134,11 +134,13 @@ Levi–Civitaのスカラー曲率は `S = (||T||² − ||trace(T)||²)/4` に�
 traceは共変ベクトルなので、そのノルムは逆計量で縮約する。
 たとえば標準Gaussianでは `||T||²=14, ||trace(T)||²=18` から `S=−1` となる。
 
-これは4次cumulantを経由しない曲率計算への候補だが、現在の曲率APIは計量2-jetを使う。
-この専用経路は未実装・未計測で、速度改善を確認したものではない。
+[HessianPoint](../../src/statgeometry/hessian.mbt) はこの構造を保持し、4次cumulantや計量2-jetを経由しない経路を提供する。
+`exponential_hessian(family)` は `infogeom.ExponentialFamily`、`gaussian_hessian(info)` は `gaussian.Information` から構成する。
+`curvature(alpha)` は作用素を返し、scalar・Ricciとベクトルへの作用には4階テンソルを展開しない。
+座標成分が必要なら `riemann()`・`lowered_riemann()` を明示的に呼ぶ。
+接ベクトルと共変ベクトルには[点・座標も保持する型](structure-modeling.md#接空間と双対空間を混同しない)を用意する。
 一般の有限多項式モデルにはHessian・双対平坦という条件を仮定できない。
-実装時には、Gaussianの自然座標や指数型の構成過程を保持するADTを入口にし、
-任意の点の `(g,T)` だけから平坦性を推測する経路を避ける。
+汎用の点の `(g,T)` をこの型へ変換する入口を設けず、構築過程を根拠に計算経路を選ぶ。
 
 ### 研究用の参照計算と次の検証課題
 
@@ -177,6 +179,8 @@ traceは共変ベクトルなので、そのノルムは逆計量で縮約する
 任意のパラメータ値で密度を評価するAPIとは区別する。
 
 自然座標ではFisher計量は十分統計量の共分散、cubicは3次中心モーメントとなる。
+`exponential_family(base, statistics)` は、この生成元と2・3次cumulantを保持する。
+Hessian経路ではそのまま利用し、一般の確率jetが必要なときだけ `family.point()` で展開する。
 指数接続 `alpha=+1` の係数は0になる。
 `ModelPoint` は確率の3-jetを保持する共通型で、手入力では3階微分の形状・置換対称性・総和0を検査する。
 多項式経路もこの型を生成し、従来名 `PolynomialPoint` は型aliasとして残す。

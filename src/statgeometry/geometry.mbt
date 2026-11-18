@@ -5,6 +5,8 @@ pub(all) enum GeometryError {
   Metric(@riemann.JetError)
   Tensor(@tensor.TensorError)
   Gaussian(@gaussian.GaussianError)
+  Form(@positiveform.FormError)
+  PointMismatch
 }
 
 ///|

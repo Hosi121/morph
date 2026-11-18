@@ -7,6 +7,7 @@ import tempfile
 import unittest
 
 from check_evidence import comparison, validation, local
+from structure_evidence import check_reference
 
 
 class EvidenceTests(unittest.TestCase):
@@ -85,6 +86,33 @@ class EvidenceTests(unittest.TestCase):
     def test_repository_path_traversal_rejected(self):
         with self.assertRaisesRegex(ValueError, 'escapes repository'):
             local(self.root, '../outside')
+
+    def structure_fixture(self):
+        root = Path(__file__).resolve().parent.parent
+        path = root / 'docs/measurements/structure-gaussian-20261118-summary.json'
+        summary = json.loads(path.read_text())
+        full = json.loads(gzip.decompress((root / summary['lossless_full_record']['path']).read_bytes()))
+        return root, summary, full
+
+    def test_exact_external_reference_report(self):
+        root, summary, _ = self.structure_fixture()
+        comparison(root, summary)
+
+    def test_consistent_result_tamper_cannot_change_independent_reference(self):
+        root, _, full = self.structure_fixture()
+        for run in full['runs']:
+            run['payload']['iterations'] = 999
+            run['stdout'] = json.dumps(run['payload'])
+        for payload in full['reference_payloads'].values():
+            payload['iterations'] = 999
+        with self.assertRaisesRegex(ValueError, 'Independent reference payload differs'):
+            check_reference(root, full)
+
+    def test_source_manifest_member_hash_checked(self):
+        root, _, full = self.structure_fixture()
+        full['source_archives']['before']['files']['moon.mod'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'Source member hash mismatch'):
+            check_reference(root, full)
 
     def log_fixture(self):
         data = b'header\npassed\n'
