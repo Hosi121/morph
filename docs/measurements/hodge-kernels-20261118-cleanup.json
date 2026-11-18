@@ -1,0 +1,49 @@
+{
+  "finished_utc": "2026-11-18T07:14:04.625484+00:00",
+  "worktrees": [
+    {
+      "task": "tensor",
+      "worktree": "/home/hosi/morph-tensor-kernel",
+      "branch": "work/tensor-kernel",
+      "baseline": "1931625",
+      "agent_head": "e14a2a99f40c6520471c9080bbe0104b38348f51",
+      "working_tree_clean": true,
+      "patches_present_in_main": [
+        "- e14a2a99f40c6520471c9080bbe0104b38348f51"
+      ],
+      "preserved_local_artifacts": [
+        ".tools/hodge/preserved-tensor/tensorbench.c"
+      ],
+      "removed": true
+    },
+    {
+      "task": "matrix",
+      "worktree": "/home/hosi/morph-matrix-kernel",
+      "branch": "work/matrix-kernel",
+      "baseline": "1931625",
+      "agent_head": "87c4f89f17066556c33c56ea49da1684375b4b90",
+      "working_tree_clean": true,
+      "patches_present_in_main": [
+        "- 87c4f89f17066556c33c56ea49da1684375b4b90"
+      ],
+      "preserved_local_artifacts": [
+        ".tools/hodge/preserved-matrix"
+      ],
+      "removed": true
+    },
+    {
+      "task": "audit",
+      "worktree": "/home/hosi/morph-unused-kernel",
+      "branch": "work/unused-kernel",
+      "baseline": "1931625",
+      "agent_head": "cc8d4fe57fb719c49ae81d48b0cc5328630b1a32",
+      "working_tree_clean": true,
+      "patches_present_in_main": [
+        "- cc8d4fe57fb719c49ae81d48b0cc5328630b1a32"
+      ],
+      "preserved_local_artifacts": [],
+      "removed": true
+    }
+  ],
+  "remaining": "worktree /home/hosi/morph\nHEAD 0672bf7a4be943e9b179366023f12851d45c9c5a\nbranch refs/heads/main"
+}

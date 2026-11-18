@@ -5,6 +5,8 @@ cd "$root"
 python3 -m unittest discover -s tools -p 'test_*.py' -q
 python3 tools/check_docs.py
 python3 tools/check_evidence.py
+python3 tools/check_kernel_evidence.py
+python3 tools/matrix-kernel-check.py
 python3 tools/check_information_evidence.py
 python3 tools/inventory.py --check
 python3 tools/audit_purity.py

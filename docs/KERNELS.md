@@ -16,6 +16,20 @@
 曲率全体やGaussianの小差は未確定です。
 [機構・直接比較](research/tensor-20261118.md)、[実際の利用経路と全100出力](research/probability-geometry-20261118.md#テンソルの基礎改善)を参照してください。
 
+## 置換・行列更新・圧縮展開
+
+| 対象 | 変更と比較範囲 |
+| --- | --- |
+| [tensor.permute](research/tensor-kernel-20261118.md) | 1回の入力走査で不変の軸索引を作り、各成分で平坦リストの先頭から走査しない。nativeの長方形・rank5・恒等置換で3.255・8.875・3.183倍。各5/5 block改善。全座標生成とpublic atの線形検索は残る |
+| [matrix.warshall](research/matrix-kernel-20261118.md) | zipの中間pairを同時再帰へ融合。nativeのBool24/64で2.249・2.080倍、min-plus12で1.217倍、非可換係数12で1.429倍。乗算対照は1.011倍で、一般乗算の改善は主張しない |
+| [runbinary.expand](research/unused-kernel-20261118.md) | 同じbitのprefix生成と連結をreplicate_ontoへ融合。JSの3入力でpaired倍率中央値1.153・1.188・1.145倍、各5/5 block改善。展開上限と公開APIを維持 |
+
+nativeの2系列は起動・入力構築・検査・出力を含む全プロセスを、JS系列は入力構築を除くexpand直接呼出しを比べる。
+異なる系列の倍率は合成しない。実メモリ・Hodgeや他の上位経路への効果は未測定。
+matrix.multiplyは既に転置後の逐次dotであり、今回の調査では行列表現全体を変更する根拠は得られなかった。
+`core.gcd`・`core.interleave`は公開の参照実装、`runbinary`は圧縮専用の独立実装という位置付けを維持する。
+保存済みの全出力・ABBA順序・集計・ソースは静的checkerで再検査し、通常の検査で過去の計測を再実行しない。
+
 ## 変換監査から採用した共有
 
 固定ソース`1a51057`を基準`a63dcbc`と比較しました。詳細は[四候補の採否](research/conversion-kernels-20261117.md)、
