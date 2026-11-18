@@ -19,8 +19,50 @@ fn remove_shear_source(
 }
 
 ///|
+// Merge two strictly lexicographically increasing chains in the same exterior
+// degree. Equal bases combine their coefficients; cancellations remove a term.
+fn merge_action_terms(
+  left : @core.Chain[Term],
+  right : @core.Chain[Term],
+) -> Result[@core.Chain[Term], FormError] {
+  match (left, right) {
+    (Nil, _) => Ok(right)
+    (_, Nil) => Ok(left)
+    (Cons(a, a_tail), Cons(b, b_tail)) =>
+      match compare_indices(a.indices, b.indices) {
+        Less =>
+          match merge_action_terms(a_tail, right) {
+            Ok(rest) => Ok(Cons(a, rest))
+            Err(error) => Err(error)
+          }
+        Greater =>
+          match merge_action_terms(left, b_tail) {
+            Ok(rest) => Ok(Cons(b, rest))
+            Err(error) => Err(error)
+          }
+        Equal => {
+          let coefficient = match @poly.add(a.coefficient, b.coefficient) {
+            Ok(value) => value
+            Err(_) => return Err(InternalInvariant)
+          }
+          let rest = match merge_action_terms(a_tail, b_tail) {
+            Ok(value) => value
+            Err(error) => return Err(error)
+          }
+          if @poly.is_zero(coefficient) {
+            Ok(rest)
+          } else {
+            Ok(Cons({ coefficient, indices: a.indices, }, rest))
+          }
+        }
+      }
+  }
+}
+
+///|
 /// Exterior action of I+t E_target,source. Checked canonical bases make the
 /// action a local replacement; it does not construct an exterior-power matrix.
+/// Additions retain basis order and merge once with the original sparse terms.
 pub fn shear(
   value : Form,
   target : @core.Nat,
@@ -38,20 +80,23 @@ pub fn shear(
     return Ok(value)
   }
   let exponents = @core.replicate(value.variables, @core.Nat::Zero)
-  fn walk(
+  // All checked bases have the same size. Their lexicographic order is decided
+  // by the smallest symmetric-difference element. Eligible bases all contain
+  // source and exclude target, so replacing these common memberships leaves
+  // that difference unchanged: additions stay strictly ordered and unique.
+  fn additions(
     originals : @core.Chain[Term],
-    accumulator : @core.Chain[Term],
   ) -> Result[@core.Chain[Term], FormError] {
     match originals {
-      Nil => Ok(accumulator)
+      Nil => Ok(Nil)
       Cons(original, tail) => {
         let (remaining, first_sign) = match
           remove_shear_source(original.indices, source) {
-          None => return walk(tail, accumulator)
+          None => return additions(tail)
           Some(value) => value
         }
         let (indices, second_sign) = match insert_index(target, remaining) {
-          None => return walk(tail, accumulator)
+          None => return additions(tail)
           Some(value) => value
         }
         let signed = if first_sign.equal(second_sign) {
@@ -64,14 +109,18 @@ pub fn shear(
           Ok(value) => value
           Err(_) => return Err(InternalInvariant)
         }
-        match insert_term({ coefficient, indices, }, accumulator) {
+        match additions(tail) {
+          Ok(rest) => Ok(Cons({ coefficient, indices, }, rest))
           Err(error) => Err(error)
-          Ok(updated) => walk(tail, updated)
         }
       }
     }
   }
-  match walk(value.terms, value.terms) {
+  let added = match additions(value.terms) {
+    Ok(value) => value
+    Err(error) => return Err(error)
+  }
+  match merge_action_terms(value.terms, added) {
     Ok(terms) => Ok({ ..value, terms, })
     Err(error) => Err(error)
   }

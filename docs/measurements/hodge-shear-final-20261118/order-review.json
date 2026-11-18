@@ -1,0 +1,15 @@
+{
+  "lemma": "Fixed-size sorted bases compare by the smallest symmetric difference; common source deletion/target insertion preserves it. Equal cardinality and source-present/target-absent are required.",
+  "finite_static_review": {
+    "dimensions": "1..8",
+    "cases": 1260,
+    "eligible_images": 5630,
+    "ordered_and_unique": true
+  },
+  "coefficient_condition": "factor is nonzero after shortcut; checked canonical QQ polynomial coefficients are nonzero; scaling preserves nonzero",
+  "changed_source_sha256": {
+    "src/forms/linear_action.mbt": "0a9be53e10c3d12a081b1a6ac0b6a4785303d6bb1af3fac628ee69758dbb78f9",
+    "src/forms/linear_action_wbtest.mbt": "d5578c670fac05a7d3abe6a75ca8619b119e22eb082558c71e987d8da8de7929"
+  },
+  "performance_claim": "No runtime or memory measurement. Only O(m+a) term visits for merge; index comparison and coefficient arithmetic excluded."
+}

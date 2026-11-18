@@ -1,5 +1,6 @@
 ///|
 test "all elementary exterior shears through dimension five match linear pullback minors" {
+  let mut checked = 0
   for n in 1..<6 {
     for i in 0..<n {
       for j in 0..<n {
@@ -48,10 +49,12 @@ test "all elementary exterior shears through dimension five match linear pullbac
             ),
             Ok(value),
           )
+          checked += 1
         }
       }
     }
   }
+  assert_eq(checked, 888)
 }
 
 ///|
@@ -107,5 +110,32 @@ test "diagonal exterior maps and complements retain canonical terms and grading"
   assert_eq(
     euclidean_star(zero(@oracle.nat(2), @oracle.nat(3))),
     Err(DegreeOutOfRange),
+  )
+}
+
+///|
+test "dense degree-two shear merges fourteen cancellations and its inverse restores all bases" {
+  let input_terms = []
+  let expected_terms = []
+  for left in 0..<16 {
+    for right in (left + 1)..<16 {
+      let term = ([(1, 1, Array::make(16, 0))], [left, right])
+      input_terms.push(term)
+      // dx_0 wedge dx_r adds -dx_r wedge dx_15 for r=1,...,14.
+      // Each addition cancels the original coefficient one on that basis.
+      if right != 15 || left == 0 {
+        expected_terms.push(term)
+      }
+    }
+  }
+  let value = fixture_form(16, 2, input_terms)
+  let expected = fixture_form(16, 2, expected_terms)
+  let actual = shear(value, @oracle.nat(15), Zero, @exact.rational_one()).unwrap()
+  assert_eq(@core.length(terms(value)), @oracle.nat(120))
+  assert_eq(@core.length(terms(actual)), @oracle.nat(106))
+  assert_eq(actual, expected)
+  assert_eq(
+    shear(actual, @oracle.nat(15), Zero, @oracle.rational(-1, 1)),
+    Ok(value),
   )
 }

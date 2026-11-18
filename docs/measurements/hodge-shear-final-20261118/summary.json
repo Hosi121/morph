@@ -1,0 +1,97 @@
+{
+  "scope": "forms/hodge/simplexforms scoped tests; no global freeze/checkpoint",
+  "files": {
+    "src/forms/linear_action.mbt": "0a9be53e10c3d12a081b1a6ac0b6a4785303d6bb1af3fac628ee69758dbb78f9",
+    "src/forms/linear_action_wbtest.mbt": "d5578c670fac05a7d3abe6a75ca8619b119e22eb082558c71e987d8da8de7929"
+  },
+  "runs": [
+    {
+      "target": "native",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/forms",
+        "src/hodge",
+        "src/simplexforms",
+        "--target",
+        "native",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "wall_seconds_including_lock_wait": 41.32378365400018,
+      "log": ".tools/hodge/shear-final/native.txt",
+      "tests": {
+        "total": 933,
+        "passed": 933,
+        "failed": 0
+      },
+      "published_log": "docs/measurements/hodge-shear-final-20261118/native.txt",
+      "sha256": "dbdbebc5f728e7b8334479aafa8cf3f6d1ecb06c71746c642c426ddc1aba8fa0"
+    },
+    {
+      "target": "js",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/forms",
+        "src/hodge",
+        "src/simplexforms",
+        "--target",
+        "js",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "wall_seconds_including_lock_wait": 3.376032357999975,
+      "log": ".tools/hodge/shear-final/js.txt",
+      "tests": {
+        "total": 933,
+        "passed": 933,
+        "failed": 0
+      },
+      "published_log": "docs/measurements/hodge-shear-final-20261118/js.txt",
+      "sha256": "dbdbebc5f728e7b8334479aafa8cf3f6d1ecb06c71746c642c426ddc1aba8fa0"
+    },
+    {
+      "target": "wasm-gc",
+      "command": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "test",
+        "src/forms",
+        "src/hodge",
+        "src/simplexforms",
+        "--target",
+        "wasm-gc",
+        "--release",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "exit_code": 0,
+      "wall_seconds_including_lock_wait": 3.8251663259998168,
+      "log": ".tools/hodge/shear-final/wasm-gc.txt",
+      "tests": {
+        "total": 933,
+        "passed": 933,
+        "failed": 0
+      },
+      "published_log": "docs/measurements/hodge-shear-final-20261118/wasm-gc.txt",
+      "sha256": "dbdbebc5f728e7b8334479aafa8cf3f6d1ecb06c71746c642c426ddc1aba8fa0"
+    }
+  ],
+  "all_passed": true
+}
