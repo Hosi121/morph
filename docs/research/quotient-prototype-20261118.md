@@ -44,6 +44,11 @@ policyは親の同一性に含めず、混在時は左オペランドの経路�
 独立静的レビューで指摘されたvalid carrierの閉性はREADMEへ明記し、finite adapterの別親拒否の直接テストを追加した。
 この検査のために定理証明器や新しい型クラス階層は導入していない。
 
+固定ソース `60f8d9e` で、新規3packageの9テストはwasm-gc・JS・native releaseの全てで成功した。
+global型検査、84 Pythonテスト、395本体ファイルの純粋性検査、既存形式モデルの検査も通過。
+[固定checkpoint・全コマンドとログ](../measurements/quotient-prototype-20261118-validation.json)を保存した。
+既存checkerや形式モデルの通過を、新しい一般商構成の形式証明とは扱わない。
+
 ## コード量と、追加構造の費用
 
 単位は空行・`//`コメントを除く非空行。括弧・型宣言・署名を含むsource-line指標で、AST LOCや保守時間ではない。生成interfaceは除外する。
