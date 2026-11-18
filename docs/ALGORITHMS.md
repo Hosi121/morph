@@ -18,6 +18,7 @@
 | 二進算術 | [算術・連結・pair/unpair](../src/binary/binary.mbt)・[Karatsuba](../src/binary/karatsuba.mbt)・[Stein GCD・整数平方根・Fibonacci](../src/binary/number_theory.mbt) |
 | 圧縮二進算術 | [runを展開しない加減乗算・shift・pair](../src/runbinary/runbinary.mbt)・[燃料付き除算](../src/runbinary/division.mbt) |
 | 厳密数 | [符号付き整数・有理数・非ゼロの証拠](../src/exact/exact.mbt) |
+| 正性と正定値形式 | [正の有理数・LDLの保持・逆・定数倍・直和](../src/positiveform/positive.mbt) |
 | 実代数的数 | [検査済み一根区間・比較・resultant・厳密な四則演算](../src/realalgebraic/number.mbt) |
 | 複素代数的数 | [実代数的座標・四則演算・共役・等号・証拠](../src/complexalgebraic) |
 | 複素数体 | [K(i) の基底・逆元・trace/norm・最小多項式](../src/complexfield)・[α+i と絶対一生成元への双方向変換](../src/complexprimitive) |

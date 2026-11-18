@@ -8,6 +8,7 @@ import {
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
   "Hosi121/morph/polynomial",
+  "Hosi121/morph/positiveform",
   "Hosi121/morph/riemann",
   "Hosi121/morph/tensor",
   "moonbitlang/core/debug",
@@ -18,6 +19,8 @@ pub fn cached_moments(Moments) -> @binary.Binary
 
 pub fn covariance(Gaussian) -> @matrix.Matrix[@exact.Rational]
 
+pub fn covariance_form(Gaussian) -> @positiveform.PositiveDefinite
+
 pub fn dimension(Gaussian) -> @core.Nat
 
 pub fn expectation(Gaussian, @polynomial.Polynomial) -> Result[@exact.Rational, GaussianError]
@@ -27,6 +30,8 @@ pub fn expectation_with(Moments, @polynomial.Polynomial) -> Result[(@exact.Ratio
 pub fn fisher_jet(Gaussian) -> Result[@riemann.MetricJet, GaussianError]
 
 pub fn gaussian(@core.Chain[@exact.Rational], @matrix.Matrix[@exact.Rational]) -> Result[Gaussian, GaussianError]
+
+pub fn gaussian_from_form(@core.Chain[@exact.Rational], @positiveform.PositiveDefinite) -> Result[Gaussian, GaussianError]
 
 pub fn information(Gaussian) -> Result[Information, GaussianError]
 
@@ -42,20 +47,24 @@ pub fn moments_source(Moments) -> Gaussian
 
 pub fn precision(Gaussian) -> @matrix.Matrix[@exact.Rational]
 
+pub fn precision_form(Gaussian) -> @positiveform.PositiveDefinite
+
 pub fn sufficient_statistics(Gaussian) -> @core.Chain[@polynomial.Polynomial]?
 
 // Errors
 
 // Types and methods
-#derive(Eq, @debug.Debug)
+#derive(@debug.Debug)
 pub struct Gaussian {
   mean : @core.Chain[@exact.Rational]
   covariance : @matrix.Matrix[@exact.Rational]
   precision : @matrix.Matrix[@exact.Rational]
+  form : @positiveform.PositiveDefinite
 }
 pub fn Gaussian::equal(Self, Self) -> Bool
 pub fn Gaussian::not_equal(Self, Self) -> Bool
 pub fn Gaussian::to_repr(Self) -> @debug.Repr
+pub impl Eq for Gaussian
 
 #derive(Eq, @debug.Debug)
 pub(all) enum GaussianError {

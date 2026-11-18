@@ -16,12 +16,21 @@ pub extend GaussianError with Debug::{to_repr}
 
 ///|
 /// Exact parameters of a nondegenerate Gaussian measure; no density evaluation.
-/// Positive definiteness is checked over QQ, using leading principal minors.
-#derive(Eq, Debug)
+/// Positive definiteness is retained as a structured exact LDL form.
+#derive(Debug)
 pub struct Gaussian {
   mean : @core.Chain[@exact.Rational]
   covariance : @matrix.Matrix[@exact.Rational]
   precision : @matrix.Matrix[@exact.Rational]
+  form : @positiveform.PositiveDefinite
+}
+
+///|
+// A prepared representation is a cache, not part of the probability measure.
+pub impl Eq for Gaussian with fn equal(self, other) {
+  self.mean.equal(other.mean) &&
+  self.covariance.equal(other.covariance) &&
+  self.precision.equal(other.precision)
 }
 
 ///|
@@ -41,33 +50,40 @@ pub fn gaussian(
     false => return Err(DimensionMismatch)
     true => ()
   }
-  match covariance.equal(@matrix.transpose(covariance)) {
-    false => return Err(NotSymmetric)
-    true => ()
+  match @positiveform.positive_definite(covariance) {
+    Err(NotSymmetric) => Err(NotSymmetric)
+    Err(NotPositiveDefinite) => Err(NotPositiveDefinite)
+    Err(NotSquare) => Err(DimensionMismatch)
+    Err(InternalShape) => Err(InternalShape)
+    Ok(form) => gaussian_from_form(mean, form)
   }
-  match
-    @core.all(@core.indices(n), fn(index) {
-      let size = @core.Nat::Succ(index)
-      let rows = @core.map(@core.take(size, @matrix.rows(covariance)), fn(row) {
-        @core.take(size, row)
-      })
-      match @matrix.matrix(size, rows) {
-        None => false
-        Some(minor) =>
-          match @linear.determinant(minor) {
-            None => false
-            Some(value) =>
-              @exact.rational_compare(value, @exact.rational_zero()) is Greater
-          }
-      }
-    }) {
-    false => return Err(NotPositiveDefinite)
-    true => ()
+}
+
+///|
+/// Retains an existing SPD construction, including scales and independent blocks.
+/// Matrix caches are materialized once for the existing moment API.
+pub fn gaussian_from_form(
+  mean : @core.Chain[@exact.Rational],
+  form : @positiveform.PositiveDefinite,
+) -> Result[Gaussian, GaussianError] {
+  if !@core.length(mean).equal(form.dimension()) {
+    return Err(DimensionMismatch)
   }
-  match @linear.inverse(covariance) {
-    None => Err(NotPositiveDefinite)
-    Some(precision) => Ok({ mean, covariance, precision, })
+  match (form.matrix(), form.inverse().matrix()) {
+    (Ok(covariance), Ok(precision)) =>
+      Ok({ mean, covariance, precision, form, })
+    _ => Err(InternalShape)
   }
+}
+
+///|
+pub fn covariance_form(value : Gaussian) -> @positiveform.PositiveDefinite {
+  value.form
+}
+
+///|
+pub fn precision_form(value : Gaussian) -> @positiveform.PositiveDefinite {
+  value.form.inverse()
 }
 
 ///|

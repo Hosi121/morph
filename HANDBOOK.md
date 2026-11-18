@@ -10,6 +10,7 @@
 | 関心 | 読む順序 |
 | --- | --- |
 | 数をデータ構造から作る | [リスト・自然数](docs/handbook/foundations.md#list-nat) → [二進算術](docs/handbook/foundations.md#binary) → [整数・有理数](docs/handbook/foundations.md#exact) |
+| 既知の性質から算法を選ぶ | [構造を保持する型・正定値形式](docs/handbook/structure-modeling.md) |
 | 記号計算の仕組みを読む | [矢印FFT](docs/handbook/symbolic-computation.md#fft) → [多項式](docs/handbook/symbolic-computation.md#polynomials) → [円分体・厳密FFT](docs/handbook/symbolic-computation.md#exact-fft) |
 | 構文木を扱う | [単一化](docs/handbook/languages-sequences.md#unification) → [型推論](docs/handbook/languages-sequences.md#inference) → [CEK評価機械](docs/handbook/languages-sequences.md#cek) |
 | 解と根拠を組み立てる | [SAT反証](docs/handbook/logic-constraints.md#sat) → [最大流・カット](docs/handbook/graphs.md#flow) → [LPの証拠](docs/handbook/linear-optimization.md#simplex) |
@@ -69,6 +70,7 @@ SATの反証、流れのカット、マッチングの頂点被覆、LPの双対
 | 章 | 主な内容 |
 | --- | --- |
 | [基礎算術とデータ構造](docs/handbook/foundations.md) | 自然数、二進数、ペア、整数・有理数、ソート、永続木 |
+| [構造を保持して算法を選ぶ](docs/handbook/structure-modeling.md) | 正性、LDL、逆・定数倍・直和のview、由来と値の等号 |
 | [数論と有限体](docs/handbook/number-theory.md) | 剰余算術、CRT、素数証明、因数分解、拡大体、楕円曲線 |
 | [確率と情報幾何](docs/handbook/probability-geometry.md) | 有限分布、Bayes逆核、Markov連鎖、確率jet、Fisher計量とα曲率、テンソル |
 | [変換と記号計算](docs/handbook/symbolic-computation.md) | FFT・NTT、多項式、Gröbner基底、実根隔離、微分、幾何 |

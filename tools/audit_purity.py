@@ -16,6 +16,14 @@ FORBIDDEN = re.compile(
     r"|\b\d[\w.]*|<<|>>|==|!=|\+|(?<![>-])-(?!>)|\*|/|%|\^|(?<!&)&(?!&)"
 )
 
+# This repository's monomorphic custom Eq header uses a type-level `for`.
+# Mask only that token in a complete header. Executable `for` remains forbidden,
+# including in the body of the same implementation; the compiler checks syntax.
+EQ_IMPL_HEADER = re.compile(
+    r"(?m)^[ \t]*(?:pub[ \t]+)?impl[ \t]+Eq[ \t]+(?P<keyword>for)"
+    r"[ \t]+[A-Z][A-Za-z_0-9]*[ \t]+with[ \t]+fn[ \t]+equal[ \t]*\("
+)
+
 
 def code_only(source: str) -> str:
     # Keep line numbers; support nested block comments and escaped strings.
@@ -62,6 +70,11 @@ def code_only(source: str) -> str:
             i += 1
         else:
             i += 1
+    code = "".join(out)
+    out = list(code)
+    for header in EQ_IMPL_HEADER.finditer(code):
+        start, end = header.span('keyword')
+        out[start:end] = ' ' * (end - start)
     return "".join(out)
 
 

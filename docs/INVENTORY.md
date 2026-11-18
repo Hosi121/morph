@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：135パッケージ、377ソース。
-核のテスト宣言：5559、bench group：212。
+算法の核：136パッケージ、378ソース。
+核のテスト宣言：5565、bench group：212。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -72,7 +72,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
-| [gaussian](../src/gaussian) | 4 | 11 | 0 | `avl`, `binary`, `core`, `exact`, `linear`, `matrix`, `polynomial`, `riemann`, `tensor` |
+| [gaussian](../src/gaussian) | 4 | 12 | 0 | `avl`, `binary`, `core`, `exact`, `matrix`, `polynomial`, `positiveform`, `riemann`, `tensor` |
 | [geometry](../src/geometry) | 1 | 3 | 0 | `core`, `exact`, `sorting` |
 | [gf2](../src/gf2) | 3 | 13 | 0 | `algebra`, `core`, `matrix`, `rowreduce` |
 | [graph](../src/graph) | 2 | 3 | 0 | `binary`, `core`, `heap` |
@@ -100,6 +100,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [permgroup](../src/permgroup) | 3 | 12 | 0 | `avl`, `core` |
 | [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
 | [polynomial](../src/polynomial) | 6 | 136 | 8 | `binary`, `core`, `exact` |
+| [positiveform](../src/positiveform) | 1 | 5 | 0 | `core`, `exact`, `matrix` |
 | [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |
@@ -121,7 +122,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [regex](../src/regex) | 2 | 2 | 0 | `core` |
 | [relativecad](../src/relativecad) | 4 | 148 | 0 | `core`, `exact`, `numberfield`, `orderedsturm`, `sturm` |
 | [relativehomology](../src/relativehomology) | 3 | 11 | 0 | `binary`, `chainhomology`, `core`, `exact`, `homology`, `matrix`, `smith` |
-| [riemann](../src/riemann) | 4 | 9 | 0 | `core`, `exact`, `linear`, `matrix` |
+| [riemann](../src/riemann) | 4 | 9 | 0 | `core`, `exact`, `linear`, `matrix`, `positiveform` |
 | [rips](../src/rips) | 1 | 6 | 0 | `core`, `exact`, `persistence`, `sorting` |
 | [rowreduce](../src/rowreduce) | 1 | 2 | 0 | `core`, `matrix` |
 | [runbinary](../src/runbinary) | 2 | 13 | 3 | `binary`, `core` |

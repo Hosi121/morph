@@ -5,6 +5,7 @@ import {
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
+  "Hosi121/morph/positiveform",
   "moonbitlang/core/debug",
 }
 
@@ -50,6 +51,8 @@ pub fn metric(MetricJet) -> @matrix.Matrix[@exact.Rational]
 pub fn metric_jet(@matrix.Matrix[@exact.Rational], @core.Chain[@matrix.Matrix[@exact.Rational]], @core.Chain[@core.Chain[@matrix.Matrix[@exact.Rational]]]) -> Result[MetricJet, JetError]
 
 pub fn pairing(MetricJet, @core.Chain[@exact.Rational], @core.Chain[@exact.Rational]) -> @exact.Rational?
+
+pub fn positive_metric(MetricJet) -> Result[@positiveform.PositiveDefinite, @positiveform.FormError]
 
 pub fn raise_index(MetricJet, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
 

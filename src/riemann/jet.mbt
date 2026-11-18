@@ -274,26 +274,19 @@ fn second_value(
 }
 
 ///|
-/// Sylvester's criterion, checked exactly on leading principal minors.
-/// This is a separate classification; metric_jet itself accepts indefinite metrics.
-/// The zero-dimensional form is positive definite vacuously.
+/// Retain the positive-definiteness witness and reusable factorization.
+/// This concerns the metric value; it does not assert flatness of the metric field.
+pub fn positive_metric(
+  jet : MetricJet,
+) -> Result[@positiveform.PositiveDefinite, @positiveform.FormError] {
+  @positiveform.positive_definite(metric(jet))
+}
+
+///|
+/// Separate classification: metric_jet still accepts indefinite metrics.
 pub fn is_positive_definite(jet : MetricJet) -> Bool {
-  @core.all(@core.indices(dimension(jet)), fn(index) {
-    let size = @core.Nat::Succ(index)
-    let rows = @core.map(@core.take(size, @matrix.rows(metric(jet))), fn(row) {
-      @core.take(size, row)
-    })
-    match @matrix.matrix(size, rows) {
-      None => false
-      Some(minor) =>
-        match @linear.determinant(minor) {
-          None => false
-          Some(value) =>
-            match @exact.rational_compare(value, @exact.rational_zero()) {
-              Greater => true
-              _ => false
-            }
-        }
-    }
-  })
+  match positive_metric(jet) {
+    Ok(_) => true
+    Err(_) => false
+  }
 }

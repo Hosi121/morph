@@ -1,0 +1,78 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Hosi121/morph/positiveform"
+
+import {
+  "Hosi121/morph/core",
+  "Hosi121/morph/exact",
+  "Hosi121/morph/matrix",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn one() -> PositiveScalar
+
+pub fn positive_definite(@matrix.Matrix[@exact.Rational]) -> Result[PositiveDefinite, FormError]
+
+pub fn positive_scalar(@exact.Rational) -> PositiveScalar?
+
+// Errors
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+type Factors
+pub fn Factors::equal(Self, Self) -> Bool
+pub fn Factors::not_equal(Self, Self) -> Bool
+pub fn Factors::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub(all) enum FormError {
+  NotSquare
+  NotSymmetric
+  NotPositiveDefinite
+  InternalShape
+}
+pub fn FormError::equal(Self, Self) -> Bool
+pub fn FormError::not_equal(Self, Self) -> Bool
+pub fn FormError::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct PositiveDefinite {
+  dimension : @core.Nat
+  determinant_value : PositiveScalar
+  structure : Structure
+}
+pub fn PositiveDefinite::apply(Self, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
+pub fn PositiveDefinite::determinant(Self) -> PositiveScalar
+pub fn PositiveDefinite::dimension(Self) -> @core.Nat
+pub fn PositiveDefinite::direct_sum(Self, Self) -> Self
+pub fn PositiveDefinite::equal(Self, Self) -> Bool
+pub fn PositiveDefinite::equivalent(Self, Self) -> Bool
+pub fn PositiveDefinite::inverse(Self) -> Self
+pub fn PositiveDefinite::matrix(Self) -> Result[@matrix.Matrix[@exact.Rational], FormError]
+pub fn PositiveDefinite::not_equal(Self, Self) -> Bool
+pub fn PositiveDefinite::scale(Self, PositiveScalar) -> Self
+pub fn PositiveDefinite::solve(Self, @core.Chain[@exact.Rational]) -> @core.Chain[@exact.Rational]?
+pub fn PositiveDefinite::to_repr(Self) -> @debug.Repr
+
+#derive(Eq, @debug.Debug)
+pub struct PositiveScalar {
+  value : @exact.Rational
+  reciprocal_value : @exact.Rational
+}
+pub fn PositiveScalar::equal(Self, Self) -> Bool
+pub fn PositiveScalar::inverse(Self) -> Self
+pub fn PositiveScalar::multiply(Self, Self) -> Self
+pub fn PositiveScalar::not_equal(Self, Self) -> Bool
+pub fn PositiveScalar::power(Self, @core.Nat) -> Self
+pub fn PositiveScalar::to_repr(Self) -> @debug.Repr
+pub fn PositiveScalar::value(Self) -> @exact.Rational
+
+#derive(Eq, @debug.Debug)
+type Structure
+pub fn Structure::equal(Self, Self) -> Bool
+pub fn Structure::not_equal(Self, Self) -> Bool
+pub fn Structure::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

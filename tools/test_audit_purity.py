@@ -29,6 +29,22 @@ fn f(n : Nat) -> Nat {
         self.assertIn("__MORPH_LITERAL__", code)
         self.assertIn("let y = Succ(Zero)", code)
 
+    def test_complete_custom_eq_header_is_type_syntax(self):
+        source = 'pub impl Eq for Gaussian with fn equal(self, other) { self.mean.equal(other.mean) }'
+        self.assertIsNone(FORBIDDEN.search(code_only(source)))
+        self.assertEqual(len(source), len(code_only(source)))
+
+    def test_executable_for_remains_forbidden_even_inside_eq(self):
+        sources = [
+            'pub impl Eq for Gaussian with fn equal(self, other) { for item in values { use(item) }; true }',
+            'fn f() { for value in values { use(value) } }',
+            'impl Eq for Gaussian { for value in values { use(value) } }',
+            'let header = "pub impl Eq for Gaussian with fn equal("',
+        ]
+        for source in sources:
+            with self.subTest(source=source):
+                self.assertIsNotNone(FORBIDDEN.search(code_only(source)))
+
 
 if __name__ == "__main__":
     unittest.main()
