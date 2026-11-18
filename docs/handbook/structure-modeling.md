@@ -95,6 +95,12 @@ Hessian経路は一般の確率jet・計量2-jetからの曲率と全成分を�
 型検査だけでLDL算法やすべての数学的法則を形式証明したものではない。
 実際の速度・記憶使用量は別に比較し、構造を保存すること自体を未計測の高速化率へ読み替えない。
 
+統合したソース `f75f80a` の[検証記録](../measurements/structure-modeling-20261118-validation.json)には、変更前後の依存グラフから選んだ8パッケージと、再実行用runner・各段階のログを保存した。
+影響範囲の66件はWasm GC・JavaScript・native releaseでそれぞれ66/66。
+全体の3ターゲット型検査、80件のPython検査、文書・公開API・生成物・380 kernelファイルの純粋性検査、既存Lean検証も通過した。
+Lean検証の成功は既存の形式モデルに対する結果であり、今回の正定値・Hessian型の法則を新たに形式証明したという意味ではない。
+[比較用worktreeの片付け記録](../measurements/structure-modeling-20261118-cleanup.json)には、重ねたCLIソースと依存ソース一式の保存・hash照合を残した。
+
 Gaussianの通常構築は、[旧版との60プロセス比較](../measurements/structure-gaussian-20261118-summary.json)で全出力が独立Fraction参照と一致した。
 5 ABBA blockの旧/新中央値比は `diag2=1.074, dense3=0.993, dense6=0.957` で、改善方向のblockはそれぞれ4/5・3/5・3/5。
 この比較から通常構築の全般的な高速化は主張しない。正定値の構成・分解を保存する機能と、速度上の採否を区別する。

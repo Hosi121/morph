@@ -1,0 +1,22 @@
+{
+  "finished_utc": "2026-11-18T01:13:31.924465+00:00",
+  "removed_worktree": "/home/hosi/morph-structure-baseline",
+  "removed_branch": "bench/structure-baseline",
+  "tracked_diff_empty": true,
+  "untracked_overlay_verified": [
+    "src/cmd/structurebench/main.mbt",
+    "src/cmd/structurebench/moon.pkg"
+  ],
+  "production_source_archive": "docs/measurements/structure-gaussian-20261118-before-source.tar.gz",
+  "archive_sha256": "8b54ec9fbe15ea39689077d149f740b32f6cb6d1eb527eab58e45b08b8356a73",
+  "frozen_elf_verified": {
+    "before": {
+      "path": "/home/hosi/morph/.tools/structure-modeling/before-gaussian.exe",
+      "sha256": "53d4a7dca0519cadb9f6ee8fa245cf2fe3c33db9fa03b7d17c5566dfe2f4769a"
+    },
+    "after": {
+      "path": "/home/hosi/morph/.tools/structure-modeling/after-gaussian.exe",
+      "sha256": "4b94e7047e7e1e5f238e4f1a9ee3f6a3240636db1a3eef64f5823296b57a1e8f"
+    }
+  }
+}
