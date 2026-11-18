@@ -21,6 +21,7 @@ ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央
 | せん断の最終merge（`8e4c234`に取込み） | 2変更ソースのSHAを記録。forms/hodge/simplexformsを3targetで各933成功。120項→106項と逆操作、既存888基底対照を含む | [局所検証](measurements/hodge-shear-final-20261118/summary.json) |
 | 商構成試作 `60f8d9e` | 新規3packageの影響範囲、3targetで各9テスト成功。global型検査・84 Pythonテスト・純粋性395ファイル・既存形式検証も成功 | [固定checkpointと全ログ](measurements/quotient-prototype-20261118-validation.json) |
 | 簡単化 `660d039` | 未採用3packageの撤去とsimplicialmapの共通処理への委譲。3target各30成功、global型検査・84 Pythonテスト・純粋性387ファイル・既存形式検証も成功 | [固定checkpoint・ログ・削減量](measurements/simplification-20261118-validation.json) |
+| 商構成の復元 `1167c46` | 本体・テスト14ファイルを整理前の版とbyte一致で復元。比較CLIを除く188生成APIも一致。復元2packageを3targetで各9成功、global型検査・84 Pythonテスト・純粋性394ファイル・既存形式検証も成功 | [復元・API照合と全ログ](measurements/quotient-restoration-20261118-validation.json) |
 
 商環の9テストは、F₂の全30法・4,680積と340単元判定、QQ・checked adapter、GF(4)係数の全256積を内部で検査します。
 [評価](research/quotient-prototype-20261118.md)には有限検査の範囲と未確認事項を記載しています。

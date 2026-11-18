@@ -1,0 +1,220 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-18T08:38:21.486940+00:00",
+  "finished_utc": "2026-11-18T08:39:32.336587+00:00",
+  "baseline": "109c517244be2a5b12637c251de581ae9d3d7420",
+  "source_commit": "1167c46dd253c074d03708d5fd7801b5f0882440",
+  "scope": "Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.",
+  "full_repository": false,
+  "roots": [
+    "quotient",
+    "quotientfield"
+  ],
+  "packages": [
+    "quotient",
+    "quotientfield"
+  ],
+  "runtime_packages": [
+    "quotient",
+    "quotientfield"
+  ],
+  "reviewed_interface_changes": [],
+  "runner_sha256": "03b2776306e7980ee2cbe8178912da450f94a865f62b1529031f3ffeb385cc2d",
+  "source_manifest_sha256": "4c78d5be9758c1aef5918e327047459e74aa5444f62fefeaad4b3f69039a700f",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "runner_git_object": "1167c46dd253c074d03708d5fd7801b5f0882440:tools/check_affected.py",
+  "source_manifest_entries": 1661,
+  "restoration": {
+    "reference_commit": "86cee8e3a202fc1fa64e93c0a36e1678bc718946",
+    "restored_files": [
+      "src/quotient/README.md",
+      "src/quotient/context.mbt",
+      "src/quotient/gf2.mbt",
+      "src/quotient/inverse.mbt",
+      "src/quotient/moon.pkg",
+      "src/quotient/pkg.generated.mbti",
+      "src/quotient/polynomial.mbt",
+      "src/quotient/quotient_wbtest.mbt",
+      "src/quotient/residue.mbt",
+      "src/quotientfield/bridge_wbtest.mbt",
+      "src/quotientfield/finite.mbt",
+      "src/quotientfield/moon.pkg",
+      "src/quotientfield/pkg.generated.mbti",
+      "src/quotientfield/real.mbt"
+    ],
+    "all_restored_files_byte_identical": true,
+    "retained_public_interfaces_checked": 188,
+    "retained_public_interfaces_byte_identical": true,
+    "excluded_interface": "src/cmd/constructionbench/pkg.generated.mbti (comparison-only CLI remains retired)",
+    "preserved_simplification": "simplicialmap delegates seven existing operations to chainhomology; 129 library-body physical lines removed; stable mathematical behavior/API retained"
+  },
+  "commands": [
+    {
+      "name": "maintenance",
+      "argv": [
+        "bash",
+        "-c",
+        "set -euo pipefail\npython3 -m unittest discover -s tools -p 'test_*.py' -q\npython3 tools/check_docs.py\npython3 tools/check_evidence.py\npython3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json\npython3 tools/check_kernel_evidence.py\npython3 tools/matrix-kernel-check.py\npython3 tools/check_information_evidence.py\npython3 tools/inventory.py --check\npython3 tools/audit_purity.py\npython3 tools/audit_paths.py --check\npython3 tools/check_model_drift.py\npython3 tools/benchmark_bareiss.py --check-reference-only\npython3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null\npython3 tools/generate_binary_tiny_products.py --check\npython3 tools/generate_binary_tiny_differences.py --check --winner lookup\npython3 tools/generate_bernstein_fixtures.py --check\npython3 tools/generate_rational_elimination_cases.py --check\npython3 tools/generate_linearspan_fixtures.py --check\npython3 docs/research/night-normal-form-20261117-oracle.py --check\npython3 docs/research/night-product-20261117-oracle.py --check\npython3 docs/research/late-subtraction-20261117-oracle.py --check\npython3 docs/research/late-poly-unit-20261117-oracle.py --check\npython3 tools/generate_signed_residue_n04.py --check\npython3 tools/generate_tower_constant_fixtures.py --check\npython3 tools/generate_monic_identity_n05.py --check\npython3 tools/generate_markov_fixtures.py --check\npython3 tools/generate_riemann_fixtures.py --check\npython3 tools/generate_forms_fixtures.py --check\npython3 tools/generate_hodge_fixtures.py --check\npython3 tools/generate_simplexforms_fixtures.py --check\npython3 tools/generate_gaussian_fixtures.py --check\npython3 -S tools/generate_information_review_fixtures.py --check-stored\npython3 tools/extension-curves-20261118-oracle.py --check\npython3 tools/extension-pairings-20261118-oracle.py --check\npython3 tools/check_information_tour.py\npython3 tools/generate_homology_fixtures.py --check\npython3 tools/generate_persistence_fixtures.py --check\npython3 tools/generate_simplicialmap_fixtures.py --check\npython3 tools/generate_csscode_fixtures.py --check\npython3 tools/generate_cohomology_fixtures.py --check\npython3 tools/generate_relativehomology_fixtures.py --check\npython3 tools/generate_collapse_fixtures.py --check\ntools/moon fmt --check\npython3 tools/generate_comparison_candidates.py --check\ntools/moon check --deny-warn -j 1\npython3 tools/check_interfaces.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 24.29882968899983,
+      "sha256": "cb491fa2e6532e5bbcf66ed641be64c7bdb2e32c58e85cf19db3439bc4328197",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 2492,
+        "length_bytes": 4652
+      }
+    },
+    {
+      "name": "check-js",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.2498273720002544,
+      "sha256": "08dfb28aa47cadb52adbbe0e17f43b3527323993cdb1c310eea3ddaafceb5d46",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7224,
+        "length_bytes": 44
+      }
+    },
+    {
+      "name": "check-native",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.26167031499971927,
+      "sha256": "08dfb28aa47cadb52adbbe0e17f43b3527323993cdb1c310eea3ddaafceb5d46",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7356,
+        "length_bytes": 44
+      }
+    },
+    {
+      "name": "tests-wasm-gc",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/quotient",
+        "src/quotientfield",
+        "--target",
+        "wasm-gc",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.0951736189999792,
+      "sha256": "2bbf8d5bcbf8824a27ba86cfb25fbacbee7e78a130dab463b6c2354ad2f75540",
+      "test_totals": [
+        [
+          "9",
+          "9",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7526,
+        "length_bytes": 38
+      }
+    },
+    {
+      "name": "tests-js",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/quotient",
+        "src/quotientfield",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.0300393010002153,
+      "sha256": "2bbf8d5bcbf8824a27ba86cfb25fbacbee7e78a130dab463b6c2354ad2f75540",
+      "test_totals": [
+        [
+          "9",
+          "9",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7680,
+        "length_bytes": 38
+      }
+    },
+    {
+      "name": "tests-native",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/quotient",
+        "src/quotientfield",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1",
+        "--release"
+      ],
+      "returncode": 0,
+      "wall_seconds": 11.71471289999954,
+      "sha256": "2bbf8d5bcbf8824a27ba86cfb25fbacbee7e78a130dab463b6c2354ad2f75540",
+      "test_totals": [
+        [
+          "9",
+          "9",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7855,
+        "length_bytes": 38
+      }
+    },
+    {
+      "name": "formal",
+      "argv": [
+        "tools/check_formal"
+      ],
+      "returncode": 0,
+      "wall_seconds": 6.522675219999655,
+      "sha256": "c95694b68e70974a61349bdc5e70d29789e8730282066f62659644a829319ee5",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/quotient-restoration-20261118-validation.txt",
+        "offset_bytes": 7926,
+        "length_bytes": 4583
+      }
+    }
+  ],
+  "published_log_sha256": "c8ebdcaaa1d7743ffd659e86138fc417a1ca62625b5d7130dee4929838ecb97c"
+}
