@@ -60,9 +60,80 @@ fn encoded(value : @tensor.Tensor[@exact.Rational]) -> String {
 }
 
 ///|
+fn permutation_coordinates(dimensions : Array[Int32]) -> Array[Array[Int32]] {
+  let mut coordinates = [[]]
+  for size in dimensions {
+    let next = []
+    for prefix in coordinates {
+      for index in 0..<size {
+        next.push(prefix + [index])
+      }
+    }
+    coordinates = next
+  }
+  coordinates
+}
+
+///|
+fn run_permutation(mode : String) -> Unit {
+  let (dimensions, order, iterations) = match mode {
+    "permute-scalar" => ([], [], 10000)
+    "permute-zero" => ([3, 0, 5], [2, 0, 1], 10000)
+    "permute-tiny" => ([2, 3], [1, 0], 10000)
+    "permute-rect" => ([3, 4, 5], [2, 0, 1], 3000)
+    "permute-rank5" => ([3, 3, 3, 3, 3], [4, 2, 0, 3, 1], 500)
+    "permute-identity" => ([3, 4, 5], [0, 1, 2], 3000)
+    _ => abort("unknown permutation case")
+  }
+  let input_coordinates = permutation_coordinates(dimensions)
+  let values = Array::makei(input_coordinates.length(), fn(i) { i - 7 })
+  let input = @tensor.from_flat(
+    @oracle.chain(dimensions.map(@oracle.nat)),
+    @oracle.chain(values),
+  ).unwrap()
+  let axes = @oracle.chain(order.map(@oracle.nat))
+  let output_shape = order.map(fn(axis) { dimensions[axis] })
+  let expected = permutation_coordinates(output_shape).map(fn(coordinates) {
+    let original = Array::make(dimensions.length(), 0)
+    for axis in 0..<order.length() {
+      original[order[axis]] = coordinates[axis]
+    }
+    let mut offset = 0
+    for axis in 0..<dimensions.length() {
+      offset = offset * dimensions[axis] + original[axis]
+    }
+    values[offset]
+  })
+  let expected_tensor = @tensor.from_flat(
+    @oracle.chain(output_shape.map(@oracle.nat)),
+    @oracle.chain(expected),
+  ).unwrap()
+  let mut actual = expected_tensor
+  for _ in 0..<iterations {
+    actual = @tensor.permute(input, axes).unwrap()
+    if actual != expected_tensor {
+      abort("full permutation differs from independent coordinate loops")
+    }
+  }
+  let shape = @oracle.array(@tensor.shape(actual))
+    .map(fn(n) { @oracle.int_of_nat(n).to_string() })
+    .join(",")
+  let entries = @oracle.array(@tensor.entries(actual))
+    .map(fn(n) { n.to_string() })
+    .join(",")
+  println(
+    "{\"case\":\"\{mode}\",\"iterations\":\{iterations},\"shape\":[\{shape}],\"entries\":[\{entries}],\"checked\":true}",
+  )
+}
+
+///|
 fn main {
   let args = @env.args()
   let mode = args[args.length() - 1]
+  if mode.has_prefix("permute-") {
+    run_permutation(mode)
+    return
+  }
   let (n, base_iterations) = match mode {
     "tiny" => (1, 10000)
     "zero" => (0, 10000)

@@ -273,18 +273,26 @@ pub fn[A] permute(
         }) {
         Err(error) => Err(error)
         Ok(inverse_order) =>
-          tabulate_result(dimensions, fn(indices) {
-            match
-              traverse(inverse_order, fn(axis) {
-                match @core.nth(indices, axis) {
-                  None => Err(InternalShape)
-                  Some(index) => Ok(index)
-                }
-              }) {
+          if @core.any(dimensions, fn(size) { size is Zero }) {
+            Ok({ dimensions, values: Nil, })
+          } else {
+            match permutation_index(value.dimensions, value.values) {
               Err(error) => Err(error)
-              Ok(original) => at(value, original)
+              Ok((indexed, _)) =>
+                tabulate_result(dimensions, fn(indices) {
+                  match
+                    traverse(inverse_order, fn(axis) {
+                      match @core.nth(indices, axis) {
+                        None => Err(InternalShape)
+                        Some(index) => Ok(index)
+                      }
+                    }) {
+                    Err(error) => Err(error)
+                    Ok(original) => permutation_lookup(indexed, original)
+                  }
+                })
             }
-          })
+          }
       }
   }
 }
