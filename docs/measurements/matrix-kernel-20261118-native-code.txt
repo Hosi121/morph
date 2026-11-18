@@ -1,0 +1,120 @@
+before
+
+full_generated_c_sha256=41ee172d4982577ea716859125381caf37e83f044750859624e513226e63b545
+
+static void* _M0FP37Hosi1215morph6matrix8warshallGbEC3799l206(
+  struct _M0TWURP37Hosi1215morph4core5ChainGbEbEERP37Hosi1215morph4core5ChainGbE* _M0L6_2aenvS3800,
+  struct _M0TURP37Hosi1215morph4core5ChainGbEbE* _M0L4pairS1737
+) {
+  struct _M0R76_24Hosi121_2fmorph_2fmatrix_2ewarshall_7c_5bBool_5d_7c_2eanon__u3799__l206__* _M0L14_2acasted__envS3801;
+  void* _M0L8_2apivotS1730;
+  struct _M0TP37Hosi1215morph7algebra8SemiringGbE* _M0L3opsS1747;
+  void* _M0L6_2arowS1738;
+  int32_t _M0L6_2aaikS1739;
+  void* _M0L7_2abindS1740;
+  #line 206 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+  _M0L14_2acasted__envS3801
+  = (struct _M0R76_24Hosi121_2fmorph_2fmatrix_2ewarshall_7c_5bBool_5d_7c_2eanon__u3799__l206__*)_M0L6_2aenvS3800;
+  _M0L8_2apivotS1730 = _M0L14_2acasted__envS3801->$1;
+  _M0L3opsS1747 = _M0L14_2acasted__envS3801->$0;
+  _M0L6_2arowS1738 = _M0L4pairS1737->$0;
+  _M0L6_2aaikS1739 = _M0L4pairS1737->$1;
+  #line 206 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+  _M0L7_2abindS1740
+  = _M0FP37Hosi1215morph4core3zipGbbE(_M0L6_2arowS1738, _M0L8_2apivotS1730);
+  if (_M0L7_2abindS1740 == 0) {
+    if (_M0L7_2abindS1740) {
+      moonbit_decref_cycle_free(_M0L7_2abindS1740);
+    }
+    moonbit_incref_cycle_free(_M0L6_2arowS1738);
+    return _M0L6_2arowS1738;
+  } else {
+    void* _M0L7_2aSomeS1741 = _M0L7_2abindS1740;
+    void* _M0L8_2acellsS1742 = _M0L7_2aSomeS1741;
+    struct _M0R76_24Hosi121_2fmorph_2fmatrix_2ewarshall_7c_5bBool_5d_7c_2eanon__u3803__l210__* _closure_4926;
+    struct _M0TWUbbEEb* _M0L6_2atmpS3802;
+    void* _result_4927;
+    moonbit_incref_cycle_free(_M0L3opsS1747);
+    _closure_4926
+    = (struct _M0R76_24Hosi121_2fmorph_2fmatrix_2ewarshall_7c_5bBool_5d_7c_2eanon__u3803__l210__*)moonbit_malloc(sizeof(struct _M0R76_24Hosi121_2fmorph_2fmatrix_2ewarshall_7c_5bBool_5d_7c_2eanon__u3803__l210__));
+    Moonbit_object_header(_closure_4926)->meta
+    = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 80, 0);
+    _closure_4926->code = &_M0FP37Hosi1215morph6matrix8warshallGbEC3803l210;
+    _closure_4926->$0 = _M0L3opsS1747;
+    _closure_4926->$1 = _M0L6_2aaikS1739;
+    _M0L6_2atmpS3802 = (struct _M0TWUbbEEb*)_closure_4926;
+    #line 206 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+    _result_4927
+    = _M0FP37Hosi1215morph4core3mapGUbbEbE(_M0L8_2acellsS1742, _M0L6_2atmpS3802);
+    moonbit_decref_cycle_free(_M0L8_2acellsS1742);
+    moonbit_decref_cycle_free(_M0L6_2atmpS3802);
+    return _result_4927;
+  }
+}
+
+
+after
+
+full_generated_c_sha256=28af988e1080024809bafe5cc3f9b7b4d963c50bb648a899fddd54c7ee07f4a4
+
+static void* _M0FP37Hosi1215morph6matrix8warshallN11update__rowS1651GbE(
+  struct _M0TP37Hosi1215morph7algebra8SemiringGbE* _M0L3opsS1663,
+  void* _M0L3rowS1654,
+  void* _M0L5pivotS1658,
+  int32_t _M0L3aikS1665
+) {
+  #line 196 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+  switch (Moonbit_object_tag(_M0L3rowS1654)) {
+    case 1: {
+      struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons* _M0L7_2aConsS1655 =
+        (struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L3rowS1654;
+      int32_t _M0L6_2aaijS1656 = _M0L7_2aConsS1655->$0;
+      void* _M0L7_2arestS1657 = _M0L7_2aConsS1655->$1;
+      switch (Moonbit_object_tag(_M0L5pivotS1658)) {
+        case 1: {
+          struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons* _M0L7_2aConsS1659 =
+            (struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_M0L5pivotS1658;
+          int32_t _M0L6_2aakjS1660 = _M0L7_2aConsS1659->$0;
+          void* _M0L14_2apivot__restS1661 = _M0L7_2aConsS1659->$1;
+          struct _M0TWbbEb* _M0L7_2afuncS1662 = _M0L3opsS1663->$2;
+          struct _M0TWbbEb* _M0L7_2afuncS1664 = _M0L3opsS1663->$3;
+          int32_t _M0L6_2atmpS3691;
+          int32_t _M0L6_2atmpS3689;
+          void* _M0L6_2atmpS3690;
+          void* _block_4835;
+          #line 196 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+          _M0L6_2atmpS3691
+          = _M0L7_2afuncS1664->code(_M0L7_2afuncS1664, _M0L3aikS1665, _M0L6_2aakjS1660);
+          #line 196 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+          _M0L6_2atmpS3689
+          = _M0L7_2afuncS1662->code(_M0L7_2afuncS1662, _M0L6_2aaijS1656, _M0L6_2atmpS3691);
+          #line 196 "/home/hosi/morph-matrix-kernel/src/matrix/matrix.mbt"
+          _M0L6_2atmpS3690
+          = _M0FP37Hosi1215morph6matrix8warshallN11update__rowS1651GbE(_M0L3opsS1663, _M0L7_2arestS1657, _M0L14_2apivot__restS1661, _M0L3aikS1665);
+          _block_4835
+          = (void*)moonbit_malloc(sizeof(struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons));
+          Moonbit_object_header(_block_4835)->meta
+          = Moonbit_make_regular_object_header(MOONBIT_REGULAR_LAYOUT_CLASS_INDEXED, 50, 1);
+          ((struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_block_4835)->$0
+          = _M0L6_2atmpS3689;
+          ((struct _M0DTP37Hosi1215morph4core5ChainGbE4Cons*)_block_4835)->$1
+          = _M0L6_2atmpS3690;
+          return _block_4835;
+          break;
+        }
+        default: {
+          goto join_1653;
+          break;
+        }
+      }
+      break;
+    }
+    default: {
+      goto join_1653;
+      break;
+    }
+  }
+  join_1653:;
+  return (struct moonbit_object*)&moonbit_constant_constructor_0 + 1;
+}
+

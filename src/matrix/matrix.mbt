@@ -191,6 +191,39 @@ pub fn[A] power(
 /// min-plus distances; arbitrary semirings do NOT necessarily define a closure.
 /// The caller supplies diagonal identities when reflexive closure is desired.
 pub fn[A] warshall(m : Matrix[A], ops : @algebra.Semiring[A]) -> Matrix[A]? {
+  // All rows have the stored width: the constructor validates this invariant,
+  // and every stage preserves it. Fuse zip/map without a pair Chain per cell.
+  fn update_row(
+    row : @core.Chain[A],
+    pivot : @core.Chain[A],
+    aik : A,
+  ) -> @core.Chain[A] {
+    match (row, pivot) {
+      (Cons(aij, rest), Cons(akj, pivot_rest)) =>
+        Cons(
+          (ops.plus)(aij, (ops.times)(aik, akj)),
+          update_row(rest, pivot_rest, aik),
+        )
+      _ => Nil
+    }
+  }
+  fn update_rows(
+    rows : @core.Chain[@core.Chain[A]],
+    col : @core.Chain[A],
+    pivot : @core.Chain[A],
+  ) -> @core.Chain[@core.Chain[A]]? {
+    match (rows, col) {
+      (Nil, Nil) => Some(Nil)
+      (Cons(row, rest), Cons(aik, col_rest)) => {
+        let updated = update_row(row, pivot, aik)
+        match update_rows(rest, col_rest, pivot) {
+          Some(tail) => Some(Cons(updated, tail))
+          None => None
+        }
+      }
+      _ => None
+    }
+  }
   fn advance(
     todo : @core.Nat,
     k : @core.Nat,
@@ -201,21 +234,9 @@ pub fn[A] warshall(m : Matrix[A], ops : @algebra.Semiring[A]) -> Matrix[A]? {
       Succ(rest) =>
         match (@core.nth(current.rows, k), column(current, k)) {
           (Some(pivot), Some(col)) =>
-            match @core.zip(current.rows, col) {
-              Some(pairs) => {
-                let updated = @core.map(pairs, fn(pair) {
-                  let (row, aik) = pair
-                  match @core.zip(row, pivot) {
-                    Some(cells) =>
-                      @core.map(cells, fn(cell) {
-                        let (aij, akj) = cell
-                        (ops.plus)(aij, (ops.times)(aik, akj))
-                      })
-                    None => row
-                  }
-                })
+            match update_rows(current.rows, col, pivot) {
+              Some(updated) =>
                 advance(rest, Succ(k), { width: current.width, rows: updated, })
-              }
               None => None
             }
           _ => None

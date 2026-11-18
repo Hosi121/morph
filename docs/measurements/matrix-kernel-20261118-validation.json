@@ -1,0 +1,101 @@
+{
+  "baseline_commit": "193162547171f36b694e6b6e70c128ddc0b1ef14",
+  "tests": [
+    {
+      "phase": "before",
+      "command": "tools/measure --cpu 4 tools/moon test src/matrix --target native --deny-warn -j 1",
+      "exit_code": 0,
+      "stdout": "Total tests: 6, passed: 6, failed: 0."
+    },
+    {
+      "phase": "after",
+      "command": "tools/measure --cpu 4 tools/moon test src/matrix --target native --release --deny-warn -j 1",
+      "exit_code": 0,
+      "stdout": "Total tests: 7, passed: 7, failed: 0."
+    },
+    {
+      "phase": "after",
+      "command": "tools/measure --cpu 4 tools/moon test src/matrix --target js --release --deny-warn -j 1",
+      "exit_code": 0,
+      "stdout": "Total tests: 7, passed: 7, failed: 0."
+    },
+    {
+      "phase": "after",
+      "command": "tools/measure --cpu 4 tools/moon test src/matrix --target wasm-gc --release --deny-warn -j 1",
+      "exit_code": 0,
+      "stdout": "Total tests: 7, passed: 7, failed: 0."
+    }
+  ],
+  "additional_observed_checks": {
+    "moon_info": "passed; 187 tasks",
+    "matrix_generated_interface_git_diff": "empty",
+    "audit_purity": "passed; 381 kernel files",
+    "check_interfaces": "passed; 185 compiler-generated snapshots",
+    "matrix_kernel_check": "passed; 140 full outputs and 2 noncommutative mutation probes"
+  },
+  "note": "Test command outputs transcribed from completed tool responses; archived measurement records retain all process stdout/stderr. Shared inventory/call-path/algorithm documentation is maintained by the parent integration branch.",
+  "source_hashes": {
+    "src/matrix/matrix.mbt": "480567c9f6c51635735cf3bb1a862b8eba86f37b904ae6224dfee10aef242612",
+    "src/matrix/matrix_wbtest.mbt": "3182804a2751814074aa0b0fe04d73c1288e39d052bfe8d3c98b99dc6b3451d6",
+    "src/matrix/pkg.generated.mbti": "78f76052e8f1fe136bb8934288585ff9ff86d9b9ba2c9a41118ee5e6cb485db4",
+    "tools/matrix-kernel-compare.py": "b1228f5d3799f62cf01bad74692eb8fa376952e66c830bc1e9a8120e695e6e9e",
+    "tools/matrix-kernel-check.py": "cfb0e46a7a06e1155f7f1c452735586062a6aab36abc5f3841c5869ee0f265b5"
+  },
+  "final_checks": [
+    {
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "tools/moon",
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Finished. moon: ran 1078 tasks, now up to date\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/audit_purity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Purity gate passed: 381 kernel files; no machine numerics, mutation, arrays or FFI.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        "tools/check_interfaces.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Interface drift gate passed: 185 compiler-generated snapshots.\n",
+      "stderr": "Finished. moon: no work to do\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/matrix-kernel-check.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Matrix evidence passed: 140 complete outputs, 5 ABBA blocks/case, frozen source hashes, noncommutative mutation probes.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "src/matrix/pkg.generated.mbti"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

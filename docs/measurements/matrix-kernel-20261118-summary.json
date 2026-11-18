@@ -1,0 +1,275 @@
+{
+  "schema": "matrix-kernel-abba-v1",
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "all_checked": true,
+  "measurement": "Full release native process; identical frozen benchmark; complete matrix checked every iteration; includes oracle/setup, equality and one final JSON output.",
+  "affinity": [
+    4
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "source_and_elf": {
+    "before": {
+      "side": "before",
+      "commit": "193162547171f36b694e6b6e70c128ddc0b1ef14",
+      "archive": "docs/measurements/matrix-kernel-20261118-before-source.tar.gz",
+      "archive_sha256": "246ea6db02bbcd44feba1f9b5959f3ff983a2bb0ca25730d8ed35e39f7d0a3a1",
+      "source_sha256": {
+        "moon.mod": "8f54f730c4f7500ee68cf89d19536dd40bb9548a0d06c17dc3781923430cedef",
+        "src/cmd/matrixbench/moon.pkg": "1be7c0c82929b83c7fdb3b7c8400a89ce04fa2a915231f41d857c60c4738e465",
+        "src/cmd/matrixbench/main.mbt": "1d41e2a400f1fb31dc37d10f0965afb07cf640cee5de7b3ac7a585b8899ade5d",
+        "src/testsupport/moon.pkg": "f686002c2aaca1dcdabf2c624e18581195dedefbedc9faaa64b372be6d3a9d13",
+        "src/testsupport/oracle.mbt": "16bf44bd91d55bda40b4db0734708963652bc88a74766620616f9188891a710f",
+        "src/exact/moon.pkg": "547ea2c2b18f44310e5ab03e0598610c2971d8c78a95bb7bc66677ff03a6f889",
+        "src/exact/exact.mbt": "d2e0676b7519c3935d3f65a38e1ea822a7b0dff3044629f8f9b2cafbcd695d88",
+        "src/exact/subtraction.mbt": "33595f91f4531e2884aa7d0ae098470a501ef6617d7d0e70bde06155f691641b",
+        "src/exact/tiny_gcd.mbt": "17cb7f2a006e82b46d4d7f357c7708b9c1f238f98f4681073e4bae9e0abc30c2",
+        "src/binary/moon.pkg": "307c276559466ec914c581981f99e6ac3b90e178694d1613f2d6b706bbffcbdb",
+        "src/binary/binary.mbt": "e64d0e008d62d829fad9bfc76fe5bf469cd803e8c6991cf3f55a449eff9f98c5",
+        "src/binary/comparison.mbt": "318cae9bdec6742425fcbe6e1e87efdf0e549338082cb14ddfa10f0dce8bcee2",
+        "src/binary/constants.mbt": "88859d7755ecdd072e6d5fcd2c74cf5ec0de4c4d1225634839958302aa0b7327",
+        "src/binary/division.mbt": "d82d1e7dea9a772d4d3b52e0f9d65e8af7bebc5de4098beaa6f818f9fb6f0448",
+        "src/binary/from_nat_grouped.mbt": "80c9fa2c9dca95a16931ba22011dcd9cda568f2160d5f89716f1ef6dd76081ff",
+        "src/binary/karatsuba.mbt": "dfb68a2cb0bb29fc0f3d3a152c404280ccedb1fcfe37169c2fddac4bd00a02f1",
+        "src/binary/number_theory.mbt": "df7b32f09a2163b8bce573f820a43ba6d88fc33711bcfe5a3e3104f26ebd6979",
+        "src/binary/tiny_differences.mbt": "ac86b4135d63f6a3c65ad10bda4453a3710ae8d014b5bca6f5daaa6e4ba4f085",
+        "src/binary/tiny_products.mbt": "194699856d92045f1dcf9072dfeb9b6df2d472e76349e323163fb1ff5215a3f0",
+        "src/core/moon.pkg": "4de79fec8c4e3c978464375db6eb973653dadd58a4dafa718e3420074eb976af",
+        "src/core/data.mbt": "174c34ebd638a8ebeee9e23f1d50c3b36cbc5fc3612252f71c2b9e31941026de",
+        "src/core/natural.mbt": "8748cbd3adbefddeabe76e7868ab7b83e5da8f3656cd7fe768c58dacf86d3148",
+        "src/core/queue.mbt": "e5273edd13ce1e1fdb06a43f2e02e659eb54eea4d9347e2cc1c09f56e57fce8d",
+        "src/matrix/moon.pkg": "4ab5d4316dba55d8a7f61cee051af7db34728e5625fc1039dfc3a14e65d7f85d",
+        "src/matrix/matrix.mbt": "f12110315c5ce0bd69b5528a707bbe61f5d05bfd9e4912059472e1c3a4bad2a0",
+        "src/algebra/moon.pkg": "440cf67b69a2f9679eb911f69f27370274ca54f655005e440ecea18f2969e001",
+        "src/algebra/algebra.mbt": "edc196964b2c6f813eb2257da1cb476a12c0dc02d4f9b8c37784b8c97a68878e"
+      },
+      "executable": ".tools/matrix-kernel/before.exe",
+      "executable_sha256": "0071d6b13fd6c3a764555882e8c1aaafca05cfc7ac44a01cfa391b564d82ea3e",
+      "c_sha256": "41ee172d4982577ea716859125381caf37e83f044750859624e513226e63b545"
+    },
+    "after": {
+      "side": "after",
+      "commit": "193162547171f36b694e6b6e70c128ddc0b1ef14",
+      "archive": "docs/measurements/matrix-kernel-20261118-after-source.tar.gz",
+      "archive_sha256": "aa513cf7bcc6e2c7d72949a44a431cc8d5158e41c35d657a0d1a81b2e0bad22d",
+      "source_sha256": {
+        "moon.mod": "8f54f730c4f7500ee68cf89d19536dd40bb9548a0d06c17dc3781923430cedef",
+        "src/cmd/matrixbench/moon.pkg": "1be7c0c82929b83c7fdb3b7c8400a89ce04fa2a915231f41d857c60c4738e465",
+        "src/cmd/matrixbench/main.mbt": "1d41e2a400f1fb31dc37d10f0965afb07cf640cee5de7b3ac7a585b8899ade5d",
+        "src/testsupport/moon.pkg": "f686002c2aaca1dcdabf2c624e18581195dedefbedc9faaa64b372be6d3a9d13",
+        "src/testsupport/oracle.mbt": "16bf44bd91d55bda40b4db0734708963652bc88a74766620616f9188891a710f",
+        "src/exact/moon.pkg": "547ea2c2b18f44310e5ab03e0598610c2971d8c78a95bb7bc66677ff03a6f889",
+        "src/exact/exact.mbt": "d2e0676b7519c3935d3f65a38e1ea822a7b0dff3044629f8f9b2cafbcd695d88",
+        "src/exact/subtraction.mbt": "33595f91f4531e2884aa7d0ae098470a501ef6617d7d0e70bde06155f691641b",
+        "src/exact/tiny_gcd.mbt": "17cb7f2a006e82b46d4d7f357c7708b9c1f238f98f4681073e4bae9e0abc30c2",
+        "src/binary/moon.pkg": "307c276559466ec914c581981f99e6ac3b90e178694d1613f2d6b706bbffcbdb",
+        "src/binary/binary.mbt": "e64d0e008d62d829fad9bfc76fe5bf469cd803e8c6991cf3f55a449eff9f98c5",
+        "src/binary/comparison.mbt": "318cae9bdec6742425fcbe6e1e87efdf0e549338082cb14ddfa10f0dce8bcee2",
+        "src/binary/constants.mbt": "88859d7755ecdd072e6d5fcd2c74cf5ec0de4c4d1225634839958302aa0b7327",
+        "src/binary/division.mbt": "d82d1e7dea9a772d4d3b52e0f9d65e8af7bebc5de4098beaa6f818f9fb6f0448",
+        "src/binary/from_nat_grouped.mbt": "80c9fa2c9dca95a16931ba22011dcd9cda568f2160d5f89716f1ef6dd76081ff",
+        "src/binary/karatsuba.mbt": "dfb68a2cb0bb29fc0f3d3a152c404280ccedb1fcfe37169c2fddac4bd00a02f1",
+        "src/binary/number_theory.mbt": "df7b32f09a2163b8bce573f820a43ba6d88fc33711bcfe5a3e3104f26ebd6979",
+        "src/binary/tiny_differences.mbt": "ac86b4135d63f6a3c65ad10bda4453a3710ae8d014b5bca6f5daaa6e4ba4f085",
+        "src/binary/tiny_products.mbt": "194699856d92045f1dcf9072dfeb9b6df2d472e76349e323163fb1ff5215a3f0",
+        "src/core/moon.pkg": "4de79fec8c4e3c978464375db6eb973653dadd58a4dafa718e3420074eb976af",
+        "src/core/data.mbt": "174c34ebd638a8ebeee9e23f1d50c3b36cbc5fc3612252f71c2b9e31941026de",
+        "src/core/natural.mbt": "8748cbd3adbefddeabe76e7868ab7b83e5da8f3656cd7fe768c58dacf86d3148",
+        "src/core/queue.mbt": "e5273edd13ce1e1fdb06a43f2e02e659eb54eea4d9347e2cc1c09f56e57fce8d",
+        "src/matrix/moon.pkg": "4ab5d4316dba55d8a7f61cee051af7db34728e5625fc1039dfc3a14e65d7f85d",
+        "src/matrix/matrix.mbt": "480567c9f6c51635735cf3bb1a862b8eba86f37b904ae6224dfee10aef242612",
+        "src/algebra/moon.pkg": "440cf67b69a2f9679eb911f69f27370274ca54f655005e440ecea18f2969e001",
+        "src/algebra/algebra.mbt": "edc196964b2c6f813eb2257da1cb476a12c0dc02d4f9b8c37784b8c97a68878e"
+      },
+      "executable": ".tools/matrix-kernel/after.exe",
+      "executable_sha256": "2742d0dbda465aa5fae7ea5e15f87b1479dbdbd8ddccfb3ff559c6a7c2c890a1",
+      "c_sha256": "28af988e1080024809bafe5cc3f9b7b4d963c50bb648a899fddd54c7ee07f4a4"
+    }
+  },
+  "changed_frozen_sources": [
+    "src/matrix/matrix.mbt"
+  ],
+  "harness_sha256": "b1228f5d3799f62cf01bad74692eb8fa376952e66c830bc1e9a8120e695e6e9e",
+  "summary": {
+    "zero": {
+      "process_ns_median": {
+        "before": 629102.0,
+        "after": 663339.0
+      },
+      "process_ns_range": {
+        "before": [
+          587121,
+          1106767
+        ],
+        "after": [
+          610356,
+          724602
+        ]
+      },
+      "before_over_after": 0.9483868730769637,
+      "block_ratios": [
+        1.3549994271047276,
+        0.9639840610185982,
+        0.9619549944029528,
+        0.9565536939001983,
+        0.9488671483529503
+      ]
+    },
+    "tiny": {
+      "process_ns_median": {
+        "before": 2722738.0,
+        "after": 1600327.5
+      },
+      "process_ns_range": {
+        "before": [
+          2438878,
+          3181244
+        ],
+        "after": [
+          1499028,
+          1763255
+        ]
+      },
+      "before_over_after": 1.7013630022604749,
+      "block_ratios": [
+        1.739233668475361,
+        1.6779313526012596,
+        1.538814553350863,
+        1.6895851191000375,
+        1.791670930389929
+      ]
+    },
+    "bool24": {
+      "process_ns_median": {
+        "before": 114582248.5,
+        "after": 50942411.5
+      },
+      "process_ns_range": {
+        "before": [
+          101977756,
+          123064100
+        ],
+        "after": [
+          47584897,
+          56085752
+        ]
+      },
+      "before_over_after": 2.249250577782326,
+      "block_ratios": [
+        2.1645755898397327,
+        2.2214409770915737,
+        2.388490038365651,
+        2.172872527122828,
+        2.1527075275708443
+      ]
+    },
+    "bool64": {
+      "process_ns_median": {
+        "before": 282245668.5,
+        "after": 135675922.5
+      },
+      "process_ns_range": {
+        "before": [
+          264066733,
+          303796206
+        ],
+        "after": [
+          133270855,
+          187676461
+        ]
+      },
+      "before_over_after": 2.0802929753435064,
+      "block_ratios": [
+        2.005526243037598,
+        1.7255760564380658,
+        2.0217336496151908,
+        2.0392298519541887,
+        2.1172981166053537
+      ]
+    },
+    "multiply24": {
+      "process_ns_median": {
+        "before": 15908213.5,
+        "after": 15733785.5
+      },
+      "process_ns_range": {
+        "before": [
+          14773683,
+          17012357
+        ],
+        "after": [
+          14947657,
+          17460854
+        ]
+      },
+      "before_over_after": 1.0110862068127215,
+      "block_ratios": [
+        1.0561057732277674,
+        1.023798809930235,
+        1.0311543652269541,
+        0.9493302963630131,
+        0.9631821174842994
+      ]
+    },
+    "tropical12": {
+      "process_ns_median": {
+        "before": 15192913.0,
+        "after": 12482750.0
+      },
+      "process_ns_range": {
+        "before": [
+          14242048,
+          16400898
+        ],
+        "after": [
+          11354573,
+          14578026
+        ]
+      },
+      "before_over_after": 1.217112655464541,
+      "block_ratios": [
+        1.3715418627238862,
+        1.1371905455174889,
+        1.29364601332405,
+        1.1997477726600825,
+        1.0748376478307502
+      ]
+    },
+    "block12": {
+      "process_ns_median": {
+        "before": 5665810.5,
+        "after": 3964338.0
+      },
+      "process_ns_range": {
+        "before": [
+          5514796,
+          6294373
+        ],
+        "after": [
+          3357328,
+          5113679
+        ]
+      },
+      "before_over_after": 1.4291946095413661,
+      "block_ratios": [
+        1.4762475036170022,
+        1.415395537476991,
+        1.5053432628600285,
+        1.375480154437005,
+        1.3924449322781498
+      ]
+    }
+  },
+  "run_count": 140,
+  "full_record": {
+    "path": "docs/measurements/matrix-kernel-20261118.json.gz",
+    "sha256": "57f81dd328db42b7c147342a8c80730273c3189b21322f7a2ffaced7a7ebe083",
+    "raw_sha256": "520e61510a03eb04096349c9008120ad9723e6049985030218fbf9b505ba667c"
+  }
+}
