@@ -11,6 +11,8 @@ import {
 // Values
 pub fn add(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
 
+pub fn add_f2_coefficients(@core.Chain[@binary.Binary], @core.Chain[@binary.Binary], @binary.Binary) -> @core.Chain[@binary.Binary]
+
 pub fn berlekamp_basis(Polynomial) -> Result[@core.Chain[Polynomial], PolyError]
 
 pub fn characteristic(Polynomial) -> @binary.Binary

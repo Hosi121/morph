@@ -23,3 +23,22 @@ test "characteristic two canonicalizes unreduced huge coefficients and scalar pa
   assert_eq(multiply(value, foreign), Err(FieldMismatch))
   assert_eq(divide(value, zero(test_field(3))), Err(FieldMismatch))
 }
+
+///|
+test "canonical F2 coefficient addition matches native XOR including cancellation" {
+  fn bits(value : Int32) -> @core.Chain[@binary.Binary] {
+    if value == 0 {
+      Nil
+    } else {
+      Cons(@oracle.binary(value & 1), bits(value >> 1))
+    }
+  }
+  for a in 0..<32 {
+    for b in 0..<32 {
+      assert_eq(
+        add_f2_coefficients(bits(a), bits(b), @binary.zero()),
+        bits(a ^ b),
+      )
+    }
+  }
+}

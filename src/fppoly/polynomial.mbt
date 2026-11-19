@@ -100,7 +100,7 @@ pub fn polynomial(
 ) -> Polynomial {
   {
     field,
-    coefficients: match characteristic_two(field) {
+    coefficients: match @primefield.is_f2(field) {
       true => char_two_trim(coefficients, @binary.zero(), @binary.one())
       false => trim(@primefield.modulus(field), coefficients)
     },
@@ -221,11 +221,11 @@ fn add_coefficients(
 
 ///|
 fn add_raw(a : Polynomial, b : Polynomial) -> Polynomial {
-  match characteristic_two(a.field) {
+  match @primefield.is_f2(a.field) {
     true =>
       return {
         field: a.field,
-        coefficients: char_two_add(
+        coefficients: add_f2_coefficients(
           a.coefficients,
           b.coefficients,
           @binary.zero(),
@@ -255,7 +255,7 @@ pub fn add(a : Polynomial, b : Polynomial) -> Result[Polynomial, PolyError] {
 
 ///|
 pub fn negate(value : Polynomial) -> Polynomial {
-  match characteristic_two(value.field) {
+  match @primefield.is_f2(value.field) {
     true => return value
     false => ()
   }
@@ -286,7 +286,7 @@ pub fn subtract(
 
 ///|
 pub fn scale(value : Polynomial, scalar : @binary.Binary) -> Polynomial {
-  match characteristic_two(value.field) {
+  match @primefield.is_f2(value.field) {
     true =>
       return match @binary.odd(scalar) {
         true => value
@@ -367,7 +367,7 @@ fn multiply_coefficients(
 
 ///|
 fn multiply_raw(a : Polynomial, b : Polynomial) -> Polynomial {
-  match characteristic_two(a.field) {
+  match @primefield.is_f2(a.field) {
     true =>
       return {
         field: a.field,
@@ -434,7 +434,7 @@ fn divide_loop(
         Less => { quotient, remainder, }
         _ => {
           let exponent = @core.subtract(remainder_width, divisor_width)
-          let scalar = match characteristic_two(remainder.field) {
+          let scalar = match @primefield.is_f2(remainder.field) {
             true => coefficient
             false =>
               multiply_reduced(
@@ -492,7 +492,7 @@ pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
             _ => ()
           }
           let divisor_width = @core.length(b.coefficients)
-          match characteristic_two(b.field) {
+          match @primefield.is_f2(b.field) {
             true =>
               return Ok(
                 divide_loop(a, b, divisor_width, @binary.one(), zero(a.field)),
@@ -513,7 +513,7 @@ pub fn divide(a : Polynomial, b : Polynomial) -> Result[Division, PolyError] {
 
 ///|
 pub fn monic(value : Polynomial) -> Result[Polynomial, PolyError] {
-  match characteristic_two(value.field) {
+  match @primefield.is_f2(value.field) {
     true => return Ok(value)
     false => ()
   }
@@ -557,7 +557,7 @@ fn euclid(
       match leading(a) {
         None => Ok({ gcd: a, left: zero(a.field), right: zero(a.field), })
         Some(coefficient) => {
-          match characteristic_two(a.field) {
+          match @primefield.is_f2(a.field) {
             true => return Ok({ gcd: a, left: u, right: s, })
             false => ()
           }
@@ -676,7 +676,7 @@ fn square_remainder(
   base : Polynomial,
   modulus : Polynomial,
 ) -> Result[Polynomial, PolyError] {
-  if !characteristic_two(base.field) {
+  if !@primefield.is_f2(base.field) {
     return product_remainder(base, base, modulus)
   }
   let square : Polynomial = {

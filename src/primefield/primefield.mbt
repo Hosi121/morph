@@ -39,6 +39,17 @@ pub fn modulus(field : Field) -> @modular.Modulus {
 }
 
 ///|
+/// Recognize exactly the prime field F2 from its checked canonical modulus.
+/// This capability applies to Binary zero/one coefficients, not arbitrary
+/// extension-field elements of characteristic two.
+pub fn is_f2(field : Field) -> Bool {
+  match @binary.bits(@modular.value(field.modulus)) {
+    Cons(false, Cons(true, Nil)) => true
+    _ => false
+  }
+}
+
+///|
 fn parity_residue(a : @binary.Binary) -> @binary.Binary {
   match @binary.odd(a) {
     false => @binary.zero()
@@ -91,9 +102,8 @@ fn arithmetic_two() -> @rowreduce.Field[@binary.Binary] {
 /// for values whose residue is zero, including unreduced multiples of p.
 pub fn arithmetic(field : Field) -> @rowreduce.Field[@binary.Binary] {
   let modulus = field.modulus
-  match @binary.bits(@modular.value(modulus)) {
-    Cons(false, Cons(true, Nil)) => return arithmetic_two()
-    _ => ()
+  if is_f2(field) {
+    return arithmetic_two()
   }
   {
     zero: @binary.zero(),

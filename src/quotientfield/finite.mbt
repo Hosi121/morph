@@ -99,9 +99,7 @@ pub fn bit_extension(
   source : @galois.Field,
   policy : @q.Policy,
 ) -> Result[BitExtension, @q.QuotientError] {
-  if !@galois.characteristic(source).equal(
-      @binary.add(@binary.one(), @binary.one()),
-    ) {
+  if !@primefield.is_f2(@galois.prime_field(source)) {
     return Err(@q.InvalidCoefficient)
   }
   match

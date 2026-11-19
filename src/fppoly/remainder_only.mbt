@@ -14,7 +14,7 @@ fn remainder_loop(
         Less => remainder
         _ => {
           let exponent = @core.subtract(remainder_width, divisor_width)
-          let scalar = match characteristic_two(remainder.field) {
+          let scalar = match @primefield.is_f2(remainder.field) {
             true => coefficient
             false =>
               multiply_reduced(
@@ -74,7 +74,7 @@ fn remainder_only(
             _ => ()
           }
           let divisor_width = @core.length(b.coefficients)
-          match characteristic_two(b.field) {
+          match @primefield.is_f2(b.field) {
             true =>
               return Ok(remainder_loop(a, b, divisor_width, @binary.one()))
             false => ()

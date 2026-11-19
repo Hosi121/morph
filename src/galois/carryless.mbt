@@ -1,39 +1,4 @@
 ///|
-/// The characteristic is checked and canonical, so this recognizes prime two.
-fn is_binary_field(field : Field) -> Bool {
-  match @binary.bits(characteristic(field)) {
-    Cons(false, Cons(true, Nil)) => true
-    _ => false
-  }
-}
-
-///|
-/// Canonical coefficients are zero or one. Reuse their immutable values and
-/// normalize only the high zero coefficients after XOR cancellation.
-fn xor_field_coefficients(
-  a : @core.Chain[@binary.Binary],
-  b : @core.Chain[@binary.Binary],
-  zero : @binary.Binary,
-) -> @core.Chain[@binary.Binary] {
-  match (a, b) {
-    (Nil, _) => b
-    (_, Nil) => a
-    (Cons(x, xs), Cons(y, ys)) => {
-      let tail = xor_field_coefficients(xs, ys, zero)
-      let head = match (@binary.is_zero(x), @binary.is_zero(y)) {
-        (true, _) => y
-        (_, true) => x
-        _ => zero
-      }
-      match (@binary.is_zero(head), tail) {
-        (true, Nil) => Nil
-        _ => Cons(head, tail)
-      }
-    }
-  }
-}
-
-///|
 /// Compare coefficient spans directly; constructing intermediate Nat lengths
 /// is unnecessary. Each element has width at most the checked field degree.
 fn full_coefficient_width(
@@ -60,7 +25,7 @@ fn binary_field_shift(
     (_, Cons(_, span)) => {
       let shifted : @core.Chain[@binary.Binary] = Cons(zero, coefficients)
       match full_coefficient_width(coefficients, span) {
-        true => xor_field_coefficients(shifted, modulus, zero)
+        true => @fppoly.add_f2_coefficients(shifted, modulus, zero)
         false => shifted
       }
     }
@@ -80,7 +45,7 @@ fn binary_product_loop(
     Nil => accumulator
     Cons(head, rest) => {
       let next = match @binary.odd(head) {
-        true => xor_field_coefficients(accumulator, left, zero)
+        true => @fppoly.add_f2_coefficients(accumulator, left, zero)
         false => accumulator
       }
       match rest {

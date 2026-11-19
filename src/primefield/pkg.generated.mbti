@@ -16,6 +16,8 @@ pub fn field(@binary.Binary) -> Field?
 
 pub fn from_prime(@primality.Prime) -> Field?
 
+pub fn is_f2(Field) -> Bool
+
 pub fn modulus(Field) -> @modular.Modulus
 
 // Errors

@@ -1,13 +1,4 @@
 ///|
-/// The checked characteristic is canonical Binary; this is exactly prime two.
-fn characteristic_two(field : @primefield.Field) -> Bool {
-  match @binary.bits(@modular.value(@primefield.modulus(field))) {
-    Cons(false, Cons(true, Nil)) => true
-    _ => false
-  }
-}
-
-///|
 /// Reduce arbitrary Binary coefficients by their low bit, sharing zero and one.
 fn char_two_trim(
   coefficients : @core.Chain[@binary.Binary],
@@ -28,9 +19,11 @@ fn char_two_trim(
 }
 
 ///|
-/// Canonical inputs already contain only zero and one. Reuse their immutable
-/// coefficients; an equal pair cancels without integer addition or remainder.
-fn char_two_add(
+/// Add low-first coefficient chains over F2, trimming high zero coefficients.
+/// Inputs must be canonical (only Binary zero/one, no high zero); zero must be
+/// Binary zero. Checked F2 polynomial/extension boundaries ensure this contract.
+/// Reuse immutable coefficients and tails; this does not reduce arbitrary inputs.
+pub fn add_f2_coefficients(
   a : @core.Chain[@binary.Binary],
   b : @core.Chain[@binary.Binary],
   zero : @binary.Binary,
@@ -39,7 +32,7 @@ fn char_two_add(
     (Nil, _) => b
     (_, Nil) => a
     (Cons(x, xs), Cons(y, ys)) => {
-      let tail = char_two_add(xs, ys, zero)
+      let tail = add_f2_coefficients(xs, ys, zero)
       let head = match (@binary.is_zero(x), @binary.is_zero(y)) {
         (true, _) => y
         (_, true) => x
@@ -69,16 +62,16 @@ fn char_two_multiply(
       }
       match @binary.is_zero(head) {
         true => shifted
-        false => char_two_add(b, shifted, zero)
+        false => add_f2_coefficients(b, shifted, zero)
       }
     }
   }
 }
 
 ///|
-/// In characteristic two, cross terms cancel and each canonical coefficient
-/// squares to itself. Insert one zero between coefficients, sharing the final
-/// constant chain so the result has no trailing zero.
+/// Over the prime base F2, cross terms cancel and each coefficient squares to
+/// itself (not over every characteristic-two field). Insert one zero between
+/// coefficients, sharing the final constant chain to avoid a high zero.
 fn char_two_square(
   coefficients : @core.Chain[@binary.Binary],
   zero : @binary.Binary,

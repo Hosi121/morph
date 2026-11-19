@@ -156,7 +156,7 @@ pub fn multiply(a : Element, b : Element) -> Result[Element, FieldError] {
   match a.field.equal(b.field) {
     false => Err(FieldMismatch)
     true => {
-      match is_binary_field(a.field) {
+      match @primefield.is_f2(prime_field(a.field)) {
         true => return Ok(binary_field_product(a, b))
         false => ()
       }

@@ -53,6 +53,7 @@ test "general prime field validates all small candidates including two" {
       None => assert_false(expected)
       Some(f) => {
         assert_true(expected)
+        assert_eq(is_f2(f), n == 2)
         assert_eq(@modular.value(modulus(f)), @oracle.binary(n))
       }
     }
@@ -64,6 +65,7 @@ test "checked prime and exact trial entry points construct the same field" {
   for p in [2, 3, 5, 65537] {
     let prime = @primality.check(certificate(p)).unwrap()
     assert_eq(from_prime(prime), field(@oracle.binary(p)))
+    assert_eq(is_f2(from_prime(prime).unwrap()), p == 2)
   }
   let large = @primality.check(certificate(998244353)).unwrap()
   assert_eq(

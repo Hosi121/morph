@@ -17,7 +17,7 @@ fn late_divide_square(
   base : Polynomial,
   modulus : Polynomial,
 ) -> Result[Polynomial, PolyError] {
-  if !characteristic_two(base.field) {
+  if !@primefield.is_f2(base.field) {
     return late_divide_product(base, base, modulus)
   }
   let square : Polynomial = {
