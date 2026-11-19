@@ -1,0 +1,561 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-19T11:44:40.519810+00:00",
+  "finished_utc": "2026-11-19T12:17:38.683615+00:00",
+  "baseline": "13b85cb842d732c8e10dff4332d42f62a55b845d",
+  "source_commit": "22f1727e38e50770ff883a306d93cbf3500a6ba0",
+  "scope": "Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.",
+  "full_repository": false,
+  "roots": [
+    "fppoly",
+    "galois",
+    "primefield",
+    "quotientfield"
+  ],
+  "packages": [
+    "aes",
+    "bch",
+    "cad2",
+    "cmd/advanced",
+    "cmd/canonicalfpbench",
+    "cmd/complex",
+    "cmd/complexbench",
+    "cmd/complexfieldbench",
+    "cmd/connections",
+    "cmd/conversionmodularbench",
+    "cmd/galois",
+    "cmd/hessianbench",
+    "cmd/information",
+    "cmd/latefrobeniusbench",
+    "cmd/lateremainderbench",
+    "cmd/lateunitbench",
+    "cmd/nfkernelbench",
+    "cmd/nightconvolutionbench",
+    "cmd/nightevalbench",
+    "cmd/nightfpbench",
+    "cmd/nightnfbench",
+    "cmd/primebench",
+    "cmd/rationalbench",
+    "cmd/spanbench",
+    "cmd/splitting",
+    "cmd/splittingbench",
+    "cmd/structurebench",
+    "cmd/tensorbench",
+    "complexautomorphism",
+    "complexcompositum",
+    "complexfactor",
+    "complexfield",
+    "complexprimitive",
+    "complexsplitting",
+    "complexsubfield",
+    "compositum",
+    "cubicradical",
+    "cyclicrs",
+    "discretelog",
+    "extensioncurve",
+    "fixedfield",
+    "fppoly",
+    "galois",
+    "galoissolvability",
+    "gaussian",
+    "hodge",
+    "listdecode",
+    "numberfield",
+    "orderedsturm",
+    "pairing",
+    "primefield",
+    "quotientfield",
+    "realminimal",
+    "recurrence",
+    "relativecad",
+    "semialgebraic",
+    "splittinggalois",
+    "statgeometry",
+    "tensor",
+    "zassenhaus"
+  ],
+  "runtime_packages": [
+    "aes",
+    "bch",
+    "cad2",
+    "cmd/conversionmodularbench",
+    "cmd/information",
+    "cmd/latefrobeniusbench",
+    "cmd/lateremainderbench",
+    "cmd/lateunitbench",
+    "cmd/nfkernelbench",
+    "cmd/nightconvolutionbench",
+    "cmd/nightevalbench",
+    "cmd/nightfpbench",
+    "cmd/nightnfbench",
+    "cmd/rationalbench",
+    "cmd/spanbench",
+    "complexautomorphism",
+    "complexcompositum",
+    "complexfactor",
+    "complexfield",
+    "complexprimitive",
+    "complexsplitting",
+    "complexsubfield",
+    "compositum",
+    "cubicradical",
+    "cyclicrs",
+    "discretelog",
+    "extensioncurve",
+    "fixedfield",
+    "fppoly",
+    "galois",
+    "galoissolvability",
+    "gaussian",
+    "hodge",
+    "listdecode",
+    "numberfield",
+    "orderedsturm",
+    "pairing",
+    "primefield",
+    "quotientfield",
+    "realminimal",
+    "recurrence",
+    "relativecad",
+    "semialgebraic",
+    "splittinggalois",
+    "statgeometry",
+    "tensor",
+    "zassenhaus"
+  ],
+  "reviewed_interface_changes": [
+    "src/fppoly/pkg.generated.mbti",
+    "src/primefield/pkg.generated.mbti"
+  ],
+  "runner_sha256": "03b2776306e7980ee2cbe8178912da450f94a865f62b1529031f3ffeb385cc2d",
+  "source_manifest_sha256": "cbc182d0ba84b5de663c8bf0cc0b4995bfbaa39f524d6d83417df68bbe878021",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "runner_git_object": "22f1727e38e50770ff883a306d93cbf3500a6ba0:tools/check_affected.py",
+  "source_manifest_entries": 1665,
+  "skipped_empty_command_packages": [
+    "cmd/advanced",
+    "cmd/canonicalfpbench",
+    "cmd/complex",
+    "cmd/complexbench",
+    "cmd/complexfieldbench",
+    "cmd/connections",
+    "cmd/galois",
+    "cmd/hessianbench",
+    "cmd/primebench",
+    "cmd/splitting",
+    "cmd/splittingbench",
+    "cmd/structurebench",
+    "cmd/tensorbench"
+  ],
+  "body_metrics": {
+    "fppoly": {
+      "before": {
+        "files": 5,
+        "physical": 1470,
+        "code": 1250
+      },
+      "after": {
+        "files": 5,
+        "physical": 1463,
+        "code": 1244
+      }
+    },
+    "galois": {
+      "before": {
+        "files": 2,
+        "physical": 409,
+        "code": 309
+      },
+      "after": {
+        "files": 2,
+        "physical": 374,
+        "code": 281
+      }
+    },
+    "primefield": {
+      "before": {
+        "files": 1,
+        "physical": 107,
+        "code": 76
+      },
+      "after": {
+        "files": 1,
+        "physical": 117,
+        "code": 81
+      }
+    },
+    "quotientfield": {
+      "before": {
+        "files": 2,
+        "physical": 361,
+        "code": 291
+      },
+      "after": {
+        "files": 2,
+        "physical": 359,
+        "code": 289
+      }
+    },
+    "total": {
+      "before": {
+        "files": 10,
+        "physical": 2347,
+        "code": 1926
+      },
+      "after": {
+        "files": 10,
+        "physical": 2313,
+        "code": 1895
+      }
+    }
+  },
+  "body_metric_definition": "Production .mbt in the four affected root packages; tests/CLI/generated interfaces excluded. Physical splitlines; code counts nonempty line.split(\"//\",1)[0].strip(), including braces.",
+  "structural_review": {
+    "canonical_xor_definitions_before": 2,
+    "canonical_xor_definitions_after": 1,
+    "prime_base_f2_predicate_definitions_before": 4,
+    "prime_base_f2_predicate_definitions_after": 1,
+    "new_packages": 0,
+    "new_types": 0,
+    "unreduced_parity_normalization_preserved": true,
+    "galois_fused_shift_reduce_preserved": true,
+    "quotient_and_quotientfield_capabilities_preserved": true,
+    "canonical_preconditions": "F2 Binary zero/one coefficient chains, no high zero; supplied zero is Binary zero. Public mathematical operations retain checked constructors and context guards.",
+    "xor_body_byte_identical_after_recursive_rename": true
+  },
+  "preservation": {
+    "galois": {
+      "interface_byte_identical": true,
+      "sha256": "f9f4e3306dce098ab7c6a4ee276b19e0a1d7e7a7b8f7a04c04780d713cc14ab8"
+    },
+    "quotientfield": {
+      "interface_byte_identical": true,
+      "sha256": "8c6c7bc6b7f9c5853882ab9a64301221f7676cb841953598a619bc21b304931e"
+    },
+    "fppoly": {
+      "old_function_signatures_preserved": true,
+      "old_types_and_methods_byte_identical": true,
+      "added_function_signatures": [
+        "pub fn add_f2_coefficients(@core.Chain[@binary.Binary], @core.Chain[@binary.Binary], @binary.Binary) -> @core.Chain[@binary.Binary]"
+      ]
+    },
+    "primefield": {
+      "old_function_signatures_preserved": true,
+      "old_types_and_methods_byte_identical": true,
+      "added_function_signatures": [
+        "pub fn is_f2(Field) -> Bool"
+      ]
+    }
+  },
+  "benchmark_records": [
+    "docs/measurements/f2-sharing-frobenius-20261119.json",
+    "docs/measurements/f2-sharing-convolution-20261119.json",
+    "docs/measurements/f2-sharing-native-20261119.json"
+  ],
+  "formal_scope": "Existing formal model checks only; no new theorem for the shared coefficient function or arbitrary characteristic-two fields.",
+  "cleanup": "Own clean baseline worktree /home/hosi/morph-f2-before removed after freezing the comparison; original commit and ELF hashes retained. Only the main worktree remains.",
+  "commands": [
+    {
+      "name": "maintenance",
+      "argv": [
+        "bash",
+        "-c",
+        "set -euo pipefail\npython3 -m unittest discover -s tools -p 'test_*.py' -q\npython3 tools/check_docs.py\npython3 tools/check_evidence.py\npython3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json\npython3 tools/check_kernel_evidence.py\npython3 tools/matrix-kernel-check.py\npython3 tools/check_information_evidence.py\npython3 tools/inventory.py --check\npython3 tools/audit_purity.py\npython3 tools/audit_paths.py --check\npython3 tools/check_model_drift.py\npython3 tools/benchmark_bareiss.py --check-reference-only\npython3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null\npython3 tools/generate_binary_tiny_products.py --check\npython3 tools/generate_binary_tiny_differences.py --check --winner lookup\npython3 tools/generate_bernstein_fixtures.py --check\npython3 tools/generate_rational_elimination_cases.py --check\npython3 tools/generate_linearspan_fixtures.py --check\npython3 docs/research/night-normal-form-20261117-oracle.py --check\npython3 docs/research/night-product-20261117-oracle.py --check\npython3 docs/research/late-subtraction-20261117-oracle.py --check\npython3 docs/research/late-poly-unit-20261117-oracle.py --check\npython3 tools/generate_signed_residue_n04.py --check\npython3 tools/generate_tower_constant_fixtures.py --check\npython3 tools/generate_monic_identity_n05.py --check\npython3 tools/generate_markov_fixtures.py --check\npython3 tools/generate_riemann_fixtures.py --check\npython3 tools/generate_forms_fixtures.py --check\npython3 tools/generate_hodge_fixtures.py --check\npython3 tools/generate_simplexforms_fixtures.py --check\npython3 tools/generate_gaussian_fixtures.py --check\npython3 -S tools/generate_information_review_fixtures.py --check-stored\npython3 tools/extension-curves-20261118-oracle.py --check\npython3 tools/extension-pairings-20261118-oracle.py --check\npython3 tools/check_information_tour.py\npython3 tools/generate_homology_fixtures.py --check\npython3 tools/generate_persistence_fixtures.py --check\npython3 tools/generate_simplicialmap_fixtures.py --check\npython3 tools/generate_csscode_fixtures.py --check\npython3 tools/generate_cohomology_fixtures.py --check\npython3 tools/generate_relativehomology_fixtures.py --check\npython3 tools/generate_collapse_fixtures.py --check\ntools/moon fmt --check\npython3 tools/generate_comparison_candidates.py --check\ntools/moon check --deny-warn -j 1\npython3 tools/check_interfaces.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 73.74303406000035,
+      "sha256": "94e40b952e22c30b79d9588f279c47454271dce68b140844373d06cc037a6b3b",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 2492,
+        "length_bytes": 4654
+      }
+    },
+    {
+      "name": "check-js",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.144876270998793,
+      "sha256": "d94b40ba384e37837f8b9409f7dc6f3fa46a51ae4b3caef39e23284e58076471",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 7226,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "check-native",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.1494268889982777,
+      "sha256": "d94b40ba384e37837f8b9409f7dc6f3fa46a51ae4b3caef39e23284e58076471",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 7359,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "tests-wasm-gc",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/aes",
+        "src/bch",
+        "src/cad2",
+        "src/cmd/conversionmodularbench",
+        "src/cmd/information",
+        "src/cmd/latefrobeniusbench",
+        "src/cmd/lateremainderbench",
+        "src/cmd/lateunitbench",
+        "src/cmd/nfkernelbench",
+        "src/cmd/nightconvolutionbench",
+        "src/cmd/nightevalbench",
+        "src/cmd/nightfpbench",
+        "src/cmd/nightnfbench",
+        "src/cmd/rationalbench",
+        "src/cmd/spanbench",
+        "src/complexautomorphism",
+        "src/complexcompositum",
+        "src/complexfactor",
+        "src/complexfield",
+        "src/complexprimitive",
+        "src/complexsplitting",
+        "src/complexsubfield",
+        "src/compositum",
+        "src/cubicradical",
+        "src/cyclicrs",
+        "src/discretelog",
+        "src/extensioncurve",
+        "src/fixedfield",
+        "src/fppoly",
+        "src/galois",
+        "src/galoissolvability",
+        "src/gaussian",
+        "src/hodge",
+        "src/listdecode",
+        "src/numberfield",
+        "src/orderedsturm",
+        "src/pairing",
+        "src/primefield",
+        "src/quotientfield",
+        "src/realminimal",
+        "src/recurrence",
+        "src/relativecad",
+        "src/semialgebraic",
+        "src/splittinggalois",
+        "src/statgeometry",
+        "src/tensor",
+        "src/zassenhaus",
+        "--target",
+        "wasm-gc",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 426.553441115997,
+      "sha256": "34d606bddd5a909a6a61cbfa7a74d7fcc7e0d3167659b2f9eb822be9e7daccc5",
+      "test_totals": [
+        [
+          "1627",
+          "1627",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 8469,
+        "length_bytes": 44
+      }
+    },
+    {
+      "name": "tests-js",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/aes",
+        "src/bch",
+        "src/cad2",
+        "src/cmd/conversionmodularbench",
+        "src/cmd/information",
+        "src/cmd/latefrobeniusbench",
+        "src/cmd/lateremainderbench",
+        "src/cmd/lateunitbench",
+        "src/cmd/nfkernelbench",
+        "src/cmd/nightconvolutionbench",
+        "src/cmd/nightevalbench",
+        "src/cmd/nightfpbench",
+        "src/cmd/nightnfbench",
+        "src/cmd/rationalbench",
+        "src/cmd/spanbench",
+        "src/complexautomorphism",
+        "src/complexcompositum",
+        "src/complexfactor",
+        "src/complexfield",
+        "src/complexprimitive",
+        "src/complexsplitting",
+        "src/complexsubfield",
+        "src/compositum",
+        "src/cubicradical",
+        "src/cyclicrs",
+        "src/discretelog",
+        "src/extensioncurve",
+        "src/fixedfield",
+        "src/fppoly",
+        "src/galois",
+        "src/galoissolvability",
+        "src/gaussian",
+        "src/hodge",
+        "src/listdecode",
+        "src/numberfield",
+        "src/orderedsturm",
+        "src/pairing",
+        "src/primefield",
+        "src/quotientfield",
+        "src/realminimal",
+        "src/recurrence",
+        "src/relativecad",
+        "src/semialgebraic",
+        "src/splittinggalois",
+        "src/statgeometry",
+        "src/tensor",
+        "src/zassenhaus",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 560.0746372479989,
+      "sha256": "34d606bddd5a909a6a61cbfa7a74d7fcc7e0d3167659b2f9eb822be9e7daccc5",
+      "test_totals": [
+        [
+          "1627",
+          "1627",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 9568,
+        "length_bytes": 44
+      }
+    },
+    {
+      "name": "tests-native",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/aes",
+        "src/bch",
+        "src/cad2",
+        "src/cmd/conversionmodularbench",
+        "src/cmd/information",
+        "src/cmd/latefrobeniusbench",
+        "src/cmd/lateremainderbench",
+        "src/cmd/lateunitbench",
+        "src/cmd/nfkernelbench",
+        "src/cmd/nightconvolutionbench",
+        "src/cmd/nightevalbench",
+        "src/cmd/nightfpbench",
+        "src/cmd/nightnfbench",
+        "src/cmd/rationalbench",
+        "src/cmd/spanbench",
+        "src/complexautomorphism",
+        "src/complexcompositum",
+        "src/complexfactor",
+        "src/complexfield",
+        "src/complexprimitive",
+        "src/complexsplitting",
+        "src/complexsubfield",
+        "src/compositum",
+        "src/cubicradical",
+        "src/cyclicrs",
+        "src/discretelog",
+        "src/extensioncurve",
+        "src/fixedfield",
+        "src/fppoly",
+        "src/galois",
+        "src/galoissolvability",
+        "src/gaussian",
+        "src/hodge",
+        "src/listdecode",
+        "src/numberfield",
+        "src/orderedsturm",
+        "src/pairing",
+        "src/primefield",
+        "src/quotientfield",
+        "src/realminimal",
+        "src/recurrence",
+        "src/relativecad",
+        "src/semialgebraic",
+        "src/splittinggalois",
+        "src/statgeometry",
+        "src/tensor",
+        "src/zassenhaus",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1",
+        "--release"
+      ],
+      "returncode": 0,
+      "wall_seconds": 887.3226375330014,
+      "sha256": "34d606bddd5a909a6a61cbfa7a74d7fcc7e0d3167659b2f9eb822be9e7daccc5",
+      "test_totals": [
+        [
+          "1627",
+          "1627",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 10688,
+        "length_bytes": 44
+      }
+    },
+    {
+      "name": "formal",
+      "argv": [
+        "tools/check_formal"
+      ],
+      "returncode": 0,
+      "wall_seconds": 13.757144685998355,
+      "sha256": "c95694b68e70974a61349bdc5e70d29789e8730282066f62659644a829319ee5",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-20261119-validation.txt",
+        "offset_bytes": 10765,
+        "length_bytes": 4583
+      }
+    }
+  ],
+  "published_log_sha256": "a5a0d635560d299982460c4c52fa3892783c7e1ba91234c4c9597be98dae3e41"
+}

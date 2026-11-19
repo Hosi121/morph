@@ -42,6 +42,15 @@ numberfield/complexfieldの公開APIはbyte一致、linear/polynomialには計5�
 [固定checkpoint・全ログ・API照合](measurements/field-minpoly-sharing-20261119-validation.json)と[8入力・160プロセスの比較](measurements/field-minpoly-sharing-20261119.json)を保存する。
 既存の形式モデルの通過を、新しいgeneric関数や任意のcallbackの法則に対する形式証明とは扱わない。
 
+## F₂の係数規則の共有（2026-11-19）
+
+固定ソース`22f1727`、基準`13b85cb`。canonicalな係数列のXORと素体F₂の判定を共有し、既存のAPI・専用乗算・正規化境界を維持した。
+逆依存60packageのうちruntime 47packageをwasm-gc・JS・native releaseで実行し、**それぞれ1,627件成功**。
+残る13CLIはソースとcompiler metadataでtest不在を確認した。global型検査・85 Pythonテスト・純粋性396ファイル・既存形式モデルも通過した。
+[固定checkpoint・全ログ・API照合・本体の削減量](measurements/f2-sharing-20261119-validation.json)と
+[180プロセスの比較条件と制約](research/mathematical-constructions-20261118.md#f₂の係数規則を共有した結果2026-11-19)を保存した。
+既存モデルの通過は、共有したXORの任意長入力に対する新しい形式証明ではない。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。

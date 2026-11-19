@@ -79,6 +79,10 @@ XORの算法本体は同じで、採用理由は重複した規則の保守を�
 短いSDKテストの時間は起動・oracleにも左右されるため、これをkernel単体の効果へ帰属しない。
 GF256のpeak RSS中央値は前後とも2,048KiB、他のSDK二入力は1,920KiB。割当総量やJS/Wasmの性能は未計測である。
 
+固定ソース`22f1727`で逆依存60packageを選び、runtime 47packageを3targetで各1,627件まで確認した。
+省略はソース・metadataでtest不在を確認した13CLIのみ。global型検査、85 Pythonテスト、純粋性396ファイル、既存形式モデルも通過した。
+[checkpoint・全ログ・APIとXOR本体の照合](../measurements/f2-sharing-20261119-validation.json)を参照。既存形式モデルの成功を新規の形式証明には数えない。
+
 ## 1. galois と numberfield：多項式環の商による体拡大
 
 共通原理は、体 K 上の monic な正次数多項式 f に対し、K[X]/(f) の元を次数が deg(f) 未満の剰余で表すこと。和・差は次数制限を保ち、積は多項式積の還元、unit の逆は Bézout 恒等式から得られる。ただし商が体になるのは f が既約な場合である。
