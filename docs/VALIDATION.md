@@ -30,6 +30,17 @@ ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央
 商の140プロセス比較は、当時のharnessが全3,276,800出力を独立整数多項式oracleと照合します。
 `tools/check`では[証拠検査器](../tools/construction-bench.py)で保存済みの出力・集計・source/ELFのhashを再検査し、過去のベンチマークを再実行しません。
 
+## 数体・複素数体の重複処理の共有（2026-11-19）
+
+固定ソース `79676d8`、基準 `9984703`。Horner評価、係数・次数、冪の線形従属、最小性検査を既存polynomial/linearへ共有した。
+numberfield/complexfieldの公開APIはbyte一致、linear/polynomialには計5関数のみ追加し、既存の関数・型は変更していない。
+新しい型・パッケージは0、本体は共通核を含めて60物理行減（空白・コメントを除くcode行は69減）。テスト追加は別計上する。
+
+変更の逆依存106packageを選び、テストがある87packageをwasm-gc・JS・native releaseで実行し、**それぞれ4,966件成功**。
+残る19個はソースとコンパイラmetadataでtest不在を確認したCLIだけ。global型検査・84 Pythonテスト・純粋性396ファイル・既存形式モデルも成功した。
+[固定checkpoint・全ログ・API照合](measurements/field-minpoly-sharing-20261119-validation.json)と[8入力・160プロセスの比較](measurements/field-minpoly-sharing-20261119.json)を保存する。
+既存の形式モデルの通過を、新しいgeneric関数や任意のcallbackの法則に対する形式証明とは扱わない。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。

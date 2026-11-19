@@ -33,7 +33,10 @@ numberfield/complexfieldの公開APIはbyte一致。selected-root identity、複
 [設計と条件](../handbook/complex-fields.md#体の不変量と元の最小多項式)、[固定5ABBA・160プロセスの生値](../measurements/field-minpoly-sharing-20261119.json)と[完全な出力](../measurements/field-minpoly-sharing-20261119.json.gz)を参照。
 既存spanbenchのnf2/nf6/nf6-subfield/cf2-tiny/cf4/cf8と、未変更のFGLM3/8を対照にした。native release・CPU4・同一CLI・同一SDKで全結果が一致した。
 内部時間の旧/新中央値比は0.972〜1.036、対照でも差が混在するため速度改善は主張しない。プロセス時間にはsetup・検査・表示を含み、内部時間にはsetupを含めない。
-メモリとJS/Wasmの性能はこの変更では測っていない。以下は監査時点の記録として残す。
+メモリとJS/Wasmの性能はこの変更では測っていない。
+固定ソース `79676d8` で逆依存106packageを選び、runtime87packageを3targetで各4,966件まで確認した。19個の省略はソース・metadataでtest不在を確認したCLIのみ。
+[固定checkpoint・全ログ・API照合](../measurements/field-minpoly-sharing-20261119-validation.json)には、6種類の算法本体が名前・引数の置換を除き同じである静的照合も残す。これはcallbackの法則の形式証明ではない。
+global型検査、既存Pythonテスト・形式モデルも通過した。以下は監査時点の記録として残す。
 
 ## 1. galois と numberfield：多項式環の商による体拡大
 
