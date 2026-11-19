@@ -11,6 +11,30 @@
 公開型・APIと検査境界を維持し、本体は644→515物理行（空白・コメントを除くcode行は552→437）。新しい共通核・adapter・型は追加していない。
 呼出し先を1か所へ集めた変更であり、速度改善は主張しない。[3target各30テスト・公開API維持の検証](../measurements/simplification-20261118-validation.json)を保存した。以下の未実装候補・見積りは監査時点の記録である。
 
+## 数体と複素数体の重複を共有した結果（2026-11-19）
+
+`9984703`から`e975ed4`へ、係数・次数・Horner・冪の行列化・最初の線形従属・最小性検査を共有した。
+新しい構成型・辞書型・パッケージを追加せず、既存 `polynomial` に3関数、`linear` に2関数を追加し、旧側の重複した本体を置き換えた。
+numberfield/complexfieldの公開APIはbyte一致。selected-root identity、複素成分のvalid検査、public error、一般的な商環の能力は維持する。
+
+| 本体mbt | 物理行 前→後 | 空白・コメントを除くcode行 前→後 |
+| --- | ---: | ---: |
+| polynomial | 879→941 | 768→821 |
+| linear | 95→233 | 71→193 |
+| numberfield | 918→788 | 756→634 |
+| complexfield | 690→560 | 569→447 |
+| 合計 | 2,582→2,522（60減） | 2,164→2,095（69減） |
+
+本体はtests・CLI・生成interfaceを除く。物理行は`splitlines()`、code行は`line.split('//',1)[0].strip()`が非空の行で括弧も含む。
+新たな3テストは別計上で、非体の双対数・高次数の偽最小多項式・callback/shape failure・Hornerの零/不正次元を検査する。
+テスト込みの全ソース量が減ったという主張ではなく、二重に保守していた数学的処理を一か所にした変更である。
+
+探索は既存linearspan、checkerは独立のRREFと消去を使う。既約性や実根の情報まで一般代数へ移してはいない。
+[設計と条件](../handbook/complex-fields.md#体の不変量と元の最小多項式)、[固定5ABBA・160プロセスの生値](../measurements/field-minpoly-sharing-20261119.json)と[完全な出力](../measurements/field-minpoly-sharing-20261119.json.gz)を参照。
+既存spanbenchのnf2/nf6/nf6-subfield/cf2-tiny/cf4/cf8と、未変更のFGLM3/8を対照にした。native release・CPU4・同一CLI・同一SDKで全結果が一致した。
+内部時間の旧/新中央値比は0.972〜1.036、対照でも差が混在するため速度改善は主張しない。プロセス時間にはsetup・検査・表示を含み、内部時間にはsetupを含めない。
+メモリとJS/Wasmの性能はこの変更では測っていない。以下は監査時点の記録として残す。
+
 ## 1. galois と numberfield：多項式環の商による体拡大
 
 共通原理は、体 K 上の monic な正次数多項式 f に対し、K[X]/(f) の元を次数が deg(f) 未満の剰余で表すこと。和・差は次数制限を保ち、積は多項式積の還元、unit の逆は Bézout 恒等式から得られる。ただし商が体になるのは f が既約な場合である。

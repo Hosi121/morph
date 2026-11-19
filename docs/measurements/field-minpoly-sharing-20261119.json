@@ -1,0 +1,453 @@
+{
+  "utc": "2026-11-19T04:51:14.005530+00:00",
+  "before": {
+    "root": "/home/hosi/morph-minpoly-before",
+    "commit": "99847034845b1ea58c854049e7aaabbb6445f1e9",
+    "working_tree": [],
+    "source_manifest_sha256": "856e5d42949287627c705811250c0f39c5ea1ee477deed753b472b83e4bd1296",
+    "source_file_count": 1104,
+    "artifact": "/home/hosi/morph/.tools/dedup-minpoly/before.exe",
+    "artifact_sha256": "1552c92ed5c6ab3cd1bbb95beaed7114931061b4555079c2db9ebe033e781942",
+    "harness": {
+      "main.mbt": "d59c119b22a6bc8d0cc7265e7225db33e1a482c21ef913ccee7db90fe97a4d14",
+      "moon.pkg": "41a4c652ce4d6d2b85e95b63ed3ae24357b9ff261af58d4b6427f39f289c81fa"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "e975ed4ecdde8e036ccc570431ba975566a93301",
+    "working_tree": [],
+    "source_manifest_sha256": "34cc598c57a6724d4e04285eeb1461bfcc8c5abdbbb0569c49c6748b5ec0e2b8",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/dedup-minpoly/after.exe",
+    "artifact_sha256": "3f67412e159a7b0bea84b747613039d14d99651323d7e69cf3b53ccad0dd3d4b",
+    "harness": {
+      "main.mbt": "d59c119b22a6bc8d0cc7265e7225db33e1a482c21ef913ccee7db90fe97a4d14",
+      "moon.pkg": "41a4c652ce4d6d2b85e95b63ed3ae24357b9ff261af58d4b6427f39f289c81fa"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "nf2": {
+      "process_ns": {
+        "medians": {
+          "before": 39370759.0,
+          "after": 39041978.0
+        },
+        "ranges": {
+          "before": [
+            37381246,
+            41924829
+          ],
+          "after": [
+            36906272,
+            45379441
+          ]
+        },
+        "before_over_after": 1.0084212177979301,
+        "block_ratios": [
+          0.9783646290061243,
+          1.0420635846202357,
+          0.9428190117330291,
+          1.031095912805171,
+          0.9646154112609647
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 36718.711,
+          "after": 36598.529
+        },
+        "ranges": {
+          "before": [
+            34966.56,
+            39567.372
+          ],
+          "after": [
+            34649.511,
+            42447.746
+          ]
+        },
+        "before_over_after": 1.003283793181961,
+        "block_ratios": [
+          0.9774237001500912,
+          1.0418006596926455,
+          0.9431723701997196,
+          1.0301129032149328,
+          0.9634515642996723
+        ]
+      }
+    },
+    "nf6": {
+      "process_ns": {
+        "medians": {
+          "before": 76746587.5,
+          "after": 75088320.5
+        },
+        "ranges": {
+          "before": [
+            74330735,
+            87211757
+          ],
+          "after": [
+            69640007,
+            110815362
+          ]
+        },
+        "before_over_after": 1.0220842201417994,
+        "block_ratios": [
+          1.0407001411370433,
+          0.8285413280209946,
+          1.0709678183435838,
+          1.0724615797585824,
+          1.0186062669596347
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 72324.0475,
+          "after": 71244.01800000001
+        },
+        "ranges": {
+          "before": [
+            70871.717,
+            83302.868
+          ],
+          "after": [
+            66091.835,
+            106254.82
+          ]
+        },
+        "before_over_after": 1.0151595815384808,
+        "block_ratios": [
+          1.0462019567285996,
+          0.8231873786114786,
+          1.0788134248165508,
+          1.0718089428888835,
+          1.0100840039935903
+        ]
+      }
+    },
+    "nf6-subfield": {
+      "process_ns": {
+        "medians": {
+          "before": 17136840.0,
+          "after": 16632355.0
+        },
+        "ranges": {
+          "before": [
+            15882552,
+            20016843
+          ],
+          "after": [
+            15616623,
+            18511963
+          ]
+        },
+        "before_over_after": 1.0303315435487037,
+        "block_ratios": [
+          1.0443141591055893,
+          1.005871948440478,
+          1.0883669823449869,
+          1.0180170422878807,
+          1.0341436856405573
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 13637.1795,
+          "after": 13159.174500000001
+        },
+        "ranges": {
+          "before": [
+            12388.655,
+            16383.52
+          ],
+          "after": [
+            12393.664,
+            14298.593
+          ]
+        },
+        "before_over_after": 1.0363248469727337,
+        "block_ratios": [
+          1.0320542923818201,
+          1.0141080624249537,
+          1.093128034536154,
+          1.0368040558436247,
+          1.030862931567347
+        ]
+      }
+    },
+    "cf2-tiny": {
+      "process_ns": {
+        "medians": {
+          "before": 60630258.0,
+          "after": 59719386.5
+        },
+        "ranges": {
+          "before": [
+            58571096,
+            64512512
+          ],
+          "after": [
+            57511202,
+            68145601
+          ]
+        },
+        "before_over_after": 1.0152525260787801,
+        "block_ratios": [
+          1.0542354543167873,
+          0.9624841512098624,
+          0.9208363024772483,
+          1.0021803243628074,
+          1.0130585229947169
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 58324.454,
+          "after": 57339.33
+        },
+        "ranges": {
+          "before": [
+            56297.791000000005,
+            62257.896
+          ],
+          "after": [
+            54976.884,
+            65738.744
+          ]
+        },
+        "before_over_after": 1.0171805983781115,
+        "block_ratios": [
+          1.0558231909845615,
+          0.9630577942451015,
+          0.9191841159215366,
+          1.006641943568942,
+          1.0175549643607116
+        ]
+      }
+    },
+    "cf4": {
+      "process_ns": {
+        "medians": {
+          "before": 88742095.0,
+          "after": 90923645.5
+        },
+        "ranges": {
+          "before": [
+            83577287,
+            99923976
+          ],
+          "after": [
+            83169367,
+            93789447
+          ]
+        },
+        "before_over_after": 0.976006785825586,
+        "block_ratios": [
+          1.0824859448302249,
+          0.9371085395243317,
+          1.0031265490331776,
+          1.0229884787387884,
+          0.9621531634234122
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 86403.57800000001,
+          "after": 88634.7615
+        },
+        "ranges": {
+          "before": [
+            81312.06200000003,
+            97542.642
+          ],
+          "after": [
+            80812.533,
+            91518.932
+          ]
+        },
+        "before_over_after": 0.9748272183256229,
+        "block_ratios": [
+          1.0847960515452801,
+          0.934977176291712,
+          1.007531430466828,
+          1.0225237322910419,
+          0.9646465285408087
+        ]
+      }
+    },
+    "cf8": {
+      "process_ns": {
+        "medians": {
+          "before": 58533006.0,
+          "after": 60091696.5
+        },
+        "ranges": {
+          "before": [
+            55516336,
+            61898127
+          ],
+          "after": [
+            57473403,
+            71833320
+          ]
+        },
+        "before_over_after": 0.9740614662127237,
+        "block_ratios": [
+          1.0172350522530873,
+          0.8711249703139973,
+          0.9584432070187086,
+          1.0230792202302228,
+          0.9548896012480211
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 55530.741,
+          "after": 57158.953
+        },
+        "ranges": {
+          "before": [
+            52882.612,
+            58080.187
+          ],
+          "after": [
+            54538.128000000004,
+            68279.91500000001
+          ]
+        },
+        "before_over_after": 0.9715143137768811,
+        "block_ratios": [
+          1.0092599021481552,
+          0.8699467270718759,
+          0.9589628403985482,
+          1.0227938130300078,
+          0.9456471500440411
+        ]
+      }
+    },
+    "fglm3": {
+      "process_ns": {
+        "medians": {
+          "before": 27823887.0,
+          "after": 27337057.5
+        },
+        "ranges": {
+          "before": [
+            25955000,
+            30266658
+          ],
+          "after": [
+            25084967,
+            28285257
+          ]
+        },
+        "before_over_after": 1.0178084089701316,
+        "block_ratios": [
+          1.0736890597748745,
+          1.048281524389083,
+          1.0492223253407496,
+          1.0407352593890784,
+          0.972248946941178
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 25110.036,
+          "after": 24543.7475
+        },
+        "ranges": {
+          "before": [
+            23594.226,
+            27605.518
+          ],
+          "after": [
+            22353.030000000028,
+            25454.852
+          ]
+        },
+        "before_over_after": 1.0230726175780613,
+        "block_ratios": [
+          1.06129843422944,
+          1.0583281457080402,
+          1.063098720680485,
+          1.0585277998206382,
+          0.9780338589626664
+        ]
+      }
+    },
+    "fglm8": {
+      "process_ns": {
+        "medians": {
+          "before": 25810216.5,
+          "after": 26347104.5
+        },
+        "ranges": {
+          "before": [
+            24175045,
+            27929235
+          ],
+          "after": [
+            23315463,
+            30789668
+          ]
+        },
+        "before_over_after": 0.9796225046285447,
+        "block_ratios": [
+          1.05039704080317,
+          1.0613948215696243,
+          0.8921216728803837,
+          0.9502102514507709,
+          0.9637856278445454
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 23218.6145,
+          "after": 23636.966500000002
+        },
+        "ranges": {
+          "before": [
+            21619.8,
+            25080.157
+          ],
+          "after": [
+            20248.172,
+            27103.789
+          ]
+        },
+        "before_over_after": 0.9823009437357368,
+        "block_ratios": [
+          1.047870699847817,
+          1.075291063331001,
+          0.8913032975650446,
+          0.9398349438713915,
+          0.9587867522273316
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 160,
+  "lossless_full_record": {
+    "path": "docs/measurements/field-minpoly-sharing-20261119.json.gz",
+    "sha256": "b1e8538aff0de48ceaf3626aed3ce8cb27730e327c5ae332cd89bdb02d5e6af9",
+    "uncompressed_sha256": "45a7c77f841797680bd5943b7e7c3c9d7d6916ad26ff3f5e3b863a857c04836d"
+  }
+}

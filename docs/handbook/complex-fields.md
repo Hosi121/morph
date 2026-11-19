@@ -58,6 +58,11 @@ M_{a+i b}=\begin{pmatrix}M_a&-M_b\\M_b&M_a\end{pmatrix}
 一方、`minimal_polynomial(z)` は元 `z` 自身の最小多項式を求め、その次数は `[QQ(z):QQ]` となる。
 `1,z,z²,...` の最初の有理線形従属を使い、checker は消滅に加えて先行する冪の rank を確認する。
 消えるだけの高次数多項式では最小性の証拠にならない。
+この規則は実数体と共通なので、探索は既存の `linear.power_minimal_polynomial`、検査は別経路の `linear.check_power_minimal_polynomial` にまとめている。
+探索の増分spanと検査のfull RREFは分離し、両方を同じ探索結果で済ませない。Horner評価と係数取得も `polynomial` の共通処理を使う。
+共有核に必要なのは固定した有限次元QQ代数・非零の単位元・忠実な座標・同じ文脈の乗算であり、体であることは仮定しない。
+双対数では ε²=0 から最小多項式t²を得るが、これは既約でない。一般代数から体の性質を無条件に導く仕組みではない。
+実埋込み・複素成分の検査と既存の公開APIは各体に残す。
 
 | 元と ambient field | 元の最小多項式 | ambient 次数 | `trace` | `norm` |
 | --- | --- | ---: | ---: | ---: |

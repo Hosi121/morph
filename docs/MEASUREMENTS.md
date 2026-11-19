@@ -15,6 +15,12 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 最小多項式の共通化
+
+既存spanbenchの8入力を、`9984703`と`e975ed4`で比較した。native release・CPU4・5ABBA・160プロセスで全結果が一致した。
+共通核を含む本体は60物理行減、新しいパッケージ・型は0。時間の小差から高速化は主張しない。
+[共有範囲と条件](research/mathematical-constructions-20261118.md#数体と複素数体の重複を共有した結果2026-11-19)・[要約](measurements/field-minpoly-sharing-20261119.json)・[完全な生値](measurements/field-minpoly-sharing-20261119.json.gz)。
+
 ## 商構成試作の比較
 
 `cf08aaa`の商環試作を、既存のprepared NF乗算・galois carrylessを含む通常APIと比較しました。
