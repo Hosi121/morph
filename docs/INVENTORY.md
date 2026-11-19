@@ -7,7 +7,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：139パッケージ、396ソース。
-核のテスト宣言：5714、bench group：213。
+核のテスト宣言：5715、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -69,7 +69,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [finitefield](../src/finitefield) | 2 | 4 | 0 | `binary`, `core`, `modular`, `rowreduce` |
 | [fixedfield](../src/fixedfield) | 3 | 8 | 0 | `complexautomorphism`, `complexfield`, `core`, `exact`, `linear`, `matrix` |
 | [forms](../src/forms) | 7 | 542 | 0 | `binary`, `core`, `exact`, `polynomial` |
-| [fppoly](../src/fppoly) | 5 | 34 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
+| [fppoly](../src/fppoly) | 5 | 35 | 0 | `binary`, `core`, `matrix`, `modular`, `primefield`, `rowreduce` |
 | [galois](../src/galois) | 2 | 19 | 4 | `binary`, `core`, `fppoly`, `primefield` |
 | [galoissolvability](../src/galoissolvability) | 1 | 3 | 0 | `complexsplitting`, `core`, `permgroup`, `splittinggalois` |
 | [gaussian](../src/gaussian) | 4 | 12 | 0 | `avl`, `binary`, `core`, `exact`, `matrix`, `polynomial`, `positiveform`, `riemann`, `tensor` |
