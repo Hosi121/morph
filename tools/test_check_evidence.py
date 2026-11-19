@@ -152,6 +152,25 @@ class EvidenceTests(unittest.TestCase):
             dict(name='test', returncode=0, sha256=hashlib.sha256(b'passed\n').hexdigest(),
                  published_log=dict(path='log.txt', offset_bytes=7, length_bytes=7))])
 
+    def test_native_sdk_failure_cannot_pass_with_zero_exit_and_consistent_hashes(self):
+        for message in ['', 'assertion failed']:
+            events = [dict(type='start', file='oracle.mbt', index=0),
+                      dict(type='result', file='oracle.mbt', index=0, message=message)]
+            data = ('\n'.join(map(json.dumps, events)) + '\n').encode()
+            (self.root / 'native.txt').write_bytes(data)
+            digest = hashlib.sha256(data).hexdigest()
+            record = dict(status='passed', published_log_sha256=digest, commands=[
+                dict(name='native', returncode=0, sha256=digest, moon_test_results=events,
+                     published_log=dict(path='native.txt', offset_bytes=0, length_bytes=len(data)))])
+            if message:
+                with self.assertRaisesRegex(ValueError, 'MoonBit test did not pass'):
+                    validation(self.root, record)
+            else:
+                validation(self.root, record)
+                record['commands'][0]['moon_test_results'] = []
+                with self.assertRaisesRegex(ValueError, 'MoonBit test events differ'):
+                    validation(self.root, record)
+
     def test_log_byte_spans_verified(self):
         validation(self.root, self.log_fixture())
 

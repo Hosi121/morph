@@ -97,6 +97,16 @@ def validation(root, record):
                 'Invalid published span')
         require(offset >= end and length >= 0 and offset + length <= len(data), 'Overlapping/out-of-bounds log')
         require(digest(data[offset:offset + length]) == command['sha256'], 'Command log hash mismatch')
+        if 'moon_test_results' in command:
+            events = [json.loads(line) for line in data[offset:offset + length].decode().splitlines()
+                      if line.startswith('{')]
+            expected = command['moon_test_results']
+            require(bool(expected) and events == expected, 'MoonBit test events differ')
+            require(len(events) % 2 == 0, 'Incomplete MoonBit test events')
+            for start, result in zip(events[::2], events[1::2]):
+                require(start == dict(type='start', file=result['file'], index=result['index'])
+                        and result == dict(type='result', file=result['file'], index=result['index'], message=''),
+                        'MoonBit test did not pass')
         end = offset + length
     if 'harness_published_path' in record:
         require(digest(local(root, record['harness_published_path']).read_bytes()) == record['runner_sha256'],
