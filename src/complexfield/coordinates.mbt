@@ -1,21 +1,4 @@
 ///|
-fn coefficient(
-  polynomial : @poly.Polynomial,
-  exponent : @core.Nat,
-) -> @exact.Rational {
-  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(
-    sum,
-    term,
-  ) {
-    if term.exponents.equal(Cons(exponent, Nil)) {
-      @exact.rational_add(sum, term.coefficient)
-    } else {
-      sum
-    }
-  })
-}
-
-///|
 /// Exact QQ coordinates in [1,alpha,...,i,i*alpha,...].
 pub fn coordinates(value : Element) -> @core.Chain[@exact.Rational] {
   @core.append(@nf.coordinates(value.real), @nf.coordinates(value.imaginary))
@@ -60,43 +43,4 @@ pub fn from_coordinates(
       }
     _ => Err(InternalInvariant)
   }
-}
-
-///|
-fn polynomial_degree(polynomial : @poly.Polynomial) -> @core.Nat? {
-  match @poly.terms(polynomial) {
-    Cons({ exponents: Cons(d, Nil), .. }, _) => Some(d)
-    _ => None
-  }
-}
-
-///|
-/// Horner evaluation inside this checked quotient field.
-pub fn evaluate_polynomial(
-  value : Element,
-  polynomial : @poly.Polynomial,
-) -> Element? {
-  if !@poly.variables(polynomial).equal(Succ(Zero)) {
-    return None
-  }
-  let count : @core.Nat = match polynomial_degree(polynomial) {
-    Some(d) => Succ(d)
-    None => Zero
-  }
-  fn go(todo : @core.Chain[@core.Nat], accumulated : Element) -> Element? {
-    match todo {
-      Nil => Some(accumulated)
-      Cons(i, rest) =>
-        match multiply(accumulated, value) {
-          Err(_) => None
-          Ok(product) =>
-            match
-              add(product, rational(value.field, coefficient(polynomial, i))) {
-              Ok(next) => go(rest, next)
-              Err(_) => None
-            }
-        }
-    }
-  }
-  go(@core.reverse(@core.indices(count)), zero(value.field))
 }

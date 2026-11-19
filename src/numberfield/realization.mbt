@@ -83,7 +83,7 @@ fn interval_image(
   polynomial : @poly.Polynomial,
   input : @sturm.Interval,
 ) -> @sturm.Interval {
-  let count : @core.Nat = match polynomial_degree(polynomial) {
+  let count : @core.Nat = match @poly.univariate_degree(polynomial) {
     None => Zero
     Some(d) => Succ(d)
   }
@@ -95,7 +95,7 @@ fn interval_image(
     },
     fn(accumulated, i) {
       let product = interval_product(accumulated, input)
-      let c = coefficient(polynomial, i)
+      let c = @poly.univariate_coefficient(polynomial, i)
       @sturm.Interval::{
         lower: @exact.rational_add(product.lower, c),
         upper: @exact.rational_add(product.upper, c),

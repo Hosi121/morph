@@ -5,6 +5,8 @@ import {
   "Hosi121/morph/matrix",
   "Hosi121/morph/rowreduce",
   "Hosi121/morph/bareiss",
+  "Hosi121/morph/linearspan",
+  "Hosi121/morph/polynomial" @poly,
 }
 
 import {

@@ -5,13 +5,18 @@ import {
   "Hosi121/morph/core",
   "Hosi121/morph/exact",
   "Hosi121/morph/matrix",
+  "Hosi121/morph/polynomial",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub fn[A, E] check_power_minimal_polynomial(A, A, @core.Nat, (A) -> @core.Chain[@exact.Rational], (A, A) -> Result[A, E], (A, @polynomial.Polynomial) -> A?, (A) -> Bool, @polynomial.Polynomial) -> Bool
+
 pub fn determinant(@matrix.Matrix[@exact.Rational]) -> @exact.Rational?
 
 pub fn inverse(@matrix.Matrix[@exact.Rational]) -> @matrix.Matrix[@exact.Rational]?
+
+pub fn[A, E] power_minimal_polynomial(A, A, @core.Nat, (A) -> @core.Chain[@exact.Rational], (A, A) -> Result[A, E]) -> @polynomial.Polynomial?
 
 pub fn rref(@matrix.Matrix[@exact.Rational]) -> Reduction?
 

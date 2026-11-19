@@ -48,7 +48,7 @@ test "coordinate scan matches independent reduced sparse dense zero and degree o
       assert_eq(
         coordinates(a),
         @core.map(@core.indices(degree(f)), fn(i) {
-          coefficient(representative(a), i)
+          @poly.univariate_coefficient(representative(a), i)
         }),
       )
       assert_eq(@core.length(coordinates(a)), @oracle.nat(d))

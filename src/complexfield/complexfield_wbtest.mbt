@@ -284,6 +284,13 @@ test "checkers reject internally forged inconsistent element contexts" {
   assert_true(add(a, forged) is Err(DifferentField))
   assert_true(inverse(forged) is Err(DifferentField))
   assert_true(minimal_polynomial(forged) is Err(DifferentField))
+  assert_true(
+    equal(
+      evaluate_polynomial(forged, @poly.zero(@oracle.nat(1))).unwrap(),
+      zero(f),
+    ),
+  )
+  assert_true(evaluate_polynomial(forged, cf_integer_poly([1])) is None)
   assert_false(check_minimal_polynomial(forged, cf_integer_poly([-2, 0, 1])))
   assert_false(check_trace(forged, cf_rational(0, 1)))
   assert_false(check_norm(forged, cf_rational(4, 1)))

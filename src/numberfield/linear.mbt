@@ -1,21 +1,4 @@
 ///|
-fn coefficient(
-  polynomial : @poly.Polynomial,
-  exponent : @core.Nat,
-) -> @exact.Rational {
-  @core.fold_left(@poly.terms(polynomial), @exact.rational_zero(), fn(
-    sum,
-    term,
-  ) {
-    if term.exponents.equal(Cons(exponent, Nil)) {
-      @exact.rational_add(sum, term.coefficient)
-    } else {
-      sum
-    }
-  })
-}
-
-///|
 /// Column j is the residue of value*t^j in the power basis.
 pub fn multiplication_matrix(
   value : Element,

@@ -22,6 +22,8 @@ pub fn divides(@core.Chain[@core.Nat], @core.Chain[@core.Nat]) -> Bool
 
 pub fn evaluate(Polynomial, @core.Chain[@exact.Rational]) -> @exact.Rational?
 
+pub fn[A, E] evaluate_in(A, Polynomial, A, (@exact.Rational) -> A, (A, A) -> Result[A, E], (A, A) -> Result[A, E]) -> A?
+
 pub fn is_zero(Polynomial) -> Bool
 
 pub fn monic(Polynomial) -> Polynomial
@@ -43,6 +45,10 @@ pub fn scale(Polynomial, Term) -> Result[Polynomial, PolyError]
 pub fn subtract(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
 
 pub fn terms(Polynomial) -> @core.Chain[Term]
+
+pub fn univariate_coefficient(Polynomial, @core.Nat) -> @exact.Rational
+
+pub fn univariate_degree(Polynomial) -> @core.Nat?
 
 pub fn univariate_gcd(Polynomial, Polynomial) -> Result[Polynomial, PolyError]
 
