@@ -8,6 +8,7 @@
 `tools/check`の`check_evidence.py`は、`docs/measurements`の共通形式の比較JSONと完全なgzipの圧縮前後のhash、
 ABBAの全slot、stdoutと全出力の一致、標本から再集計した中央値・範囲・block比を検査します。
 検証ログは公開ファイルのhashと各コマンドのbyte位置・hashを照合します。
+`moon_test_results`付きのnative SDKログでは、start/resultの対と空の成功messageも確認し、終了コード0のassertion failureを拒否します。
 過去のジョブを再実行する処理ではなく、記録の整合性を検査するものです。
 実行結果の数学的な正しさや、ベンチマークの代表性を証明するものではありません。
 

@@ -1,0 +1,2479 @@
+{
+  "status": "passed",
+  "baseline": {
+    "root": "/home/hosi/morph-f2-before",
+    "commit": "13b85cb842d732c8e10dff4332d42f62a55b845d",
+    "working_tree": [],
+    "source_manifest_sha256": "34cc598c57a6724d4e04285eeb1461bfcc8c5abdbbb0569c49c6748b5ec0e2b8",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+    "artifact_sha256": "1eaf7fa199972afab665d37c69a7f58d0c732d739759359a49ad33b28cba2b11",
+    "harness": {
+      "src/galois/characteristic_two_wbtest.mbt": "71e17c989f4acc3974409669e62688a82626bb16b2495aadff8c744df14876f2",
+      "src/galois/carryless_wbtest.mbt": "ed3dbe1f20743d353d8a605ab7b03fc1def8987497376b3ecee34991bc4d66a6",
+      "src/galois/moon.pkg": "b0013084e66ba9c8847d4a05a576f9fa8e30fe69946753a01bdbe403e2217de6"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "candidate": {
+    "root": "/home/hosi/morph",
+    "commit": "08814b337fff743f6ca35b115b5e0eb89a2a1597",
+    "working_tree": [],
+    "source_manifest_sha256": "3bfb78633318484e1272ee17ea4349b117e0023f9478e79fa9ef7c7d46b472e7",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+    "artifact_sha256": "0c4bb5b0ccd842e991b60b437365242ea37a6df93c936e5455c171f43c89e9ff",
+    "harness": {
+      "src/galois/characteristic_two_wbtest.mbt": "71e17c989f4acc3974409669e62688a82626bb16b2495aadff8c744df14876f2",
+      "src/galois/carryless_wbtest.mbt": "ed3dbe1f20743d353d8a605ab7b03fc1def8987497376b3ecee34991bc4d66a6",
+      "src/galois/moon.pkg": "b0013084e66ba9c8847d4a05a576f9fa8e30fe69946753a01bdbe403e2217de6"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "Whole native release test process via GNU time, including startup, setup, exact independent oracle, assertions and SDK events; compilation excluded. Peak RSS is per-process KiB from GNU time. Not a kernel-only timing.",
+  "commands": [
+    {
+      "name": "gf256-0-0-before",
+      "case": "gf256",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 227936104,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 19,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-0-1-after",
+      "case": "gf256",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 228795356,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 320,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-0-2-after",
+      "case": "gf256",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 237742136,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 621,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-0-3-before",
+      "case": "gf256",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 243250850,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 923,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-1-0-before",
+      "case": "gf256",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 236662889,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 1225,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-1-1-after",
+      "case": "gf256",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 236429857,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 1526,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-1-2-after",
+      "case": "gf256",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 240220189,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 1827,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-1-3-before",
+      "case": "gf256",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 248928219,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 2129,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-2-0-before",
+      "case": "gf256",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 225098551,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 2431,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-2-1-after",
+      "case": "gf256",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 219230843,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 2732,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-2-2-after",
+      "case": "gf256",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 235812676,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 3033,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-2-3-before",
+      "case": "gf256",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 265418245,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 3335,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-3-0-before",
+      "case": "gf256",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 231474924,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 3637,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-3-1-after",
+      "case": "gf256",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 253831613,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 3938,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-3-2-after",
+      "case": "gf256",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 238486864,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 4239,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-3-3-before",
+      "case": "gf256",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 255184275,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 4541,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-4-0-before",
+      "case": "gf256",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 280032760,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 4843,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-4-1-after",
+      "case": "gf256",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 248766740,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 5144,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-4-2-after",
+      "case": "gf256",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 262891668,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 5445,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "gf256-4-3-before",
+      "case": "gf256",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "characteristic_two_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 237990185,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "characteristic_two_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "4477aaf5e9b63ad9d9b041ebc8217370606a8eb420b0aae6e68047871a71c94b",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 5747,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "degrees1to5-0-0-before",
+      "case": "degrees1to5",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 12934656,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 6055,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-0-1-after",
+      "case": "degrees1to5",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 12664911,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 6344,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-0-2-after",
+      "case": "degrees1to5",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 12905285,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 6633,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-0-3-before",
+      "case": "degrees1to5",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 13964799,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 6923,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-1-0-before",
+      "case": "degrees1to5",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 13527588,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 7213,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-1-1-after",
+      "case": "degrees1to5",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 14979677,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 7502,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-1-2-after",
+      "case": "degrees1to5",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 15319665,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 7791,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-1-3-before",
+      "case": "degrees1to5",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 14676890,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 8081,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-2-0-before",
+      "case": "degrees1to5",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 14343657,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 8371,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-2-1-after",
+      "case": "degrees1to5",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 14808351,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 8660,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-2-2-after",
+      "case": "degrees1to5",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 15411596,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 8949,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-2-3-before",
+      "case": "degrees1to5",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 13183585,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 9239,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-3-0-before",
+      "case": "degrees1to5",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 14888124,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 9529,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-3-1-after",
+      "case": "degrees1to5",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 15777436,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 9818,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-3-2-after",
+      "case": "degrees1to5",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 15228732,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 10107,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-3-3-before",
+      "case": "degrees1to5",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 13388213,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 10397,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-4-0-before",
+      "case": "degrees1to5",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 11686884,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 10687,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-4-1-after",
+      "case": "degrees1to5",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 12392099,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 10976,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-4-2-after",
+      "case": "degrees1to5",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 16874609,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 11265,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "degrees1to5-4-3-before",
+      "case": "degrees1to5",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:0-1"
+      ],
+      "returncode": 0,
+      "process_ns": 15483054,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 0
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 0,
+          "message": ""
+        }
+      ],
+      "sha256": "cbec3537825dff70606f8f7542e4c6ff164f91c2813c749f53a31edc10af26da",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 11555,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-0-0-before",
+      "case": "gf1024",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 5972162,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 11840,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-0-1-after",
+      "case": "gf1024",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 5339531,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 12124,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-0-2-after",
+      "case": "gf1024",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4448114,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 12408,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-0-3-before",
+      "case": "gf1024",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 5050568,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 12693,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-1-0-before",
+      "case": "gf1024",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 6009711,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 12978,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-1-1-after",
+      "case": "gf1024",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4853699,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 13262,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-1-2-after",
+      "case": "gf1024",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3943563,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 13546,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-1-3-before",
+      "case": "gf1024",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4703012,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 13831,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-2-0-before",
+      "case": "gf1024",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4733655,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 14116,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-2-1-after",
+      "case": "gf1024",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3853811,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 14400,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-2-2-after",
+      "case": "gf1024",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3933912,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 14684,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-2-3-before",
+      "case": "gf1024",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3790835,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 14969,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-3-0-before",
+      "case": "gf1024",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4254761,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 15254,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-3-1-after",
+      "case": "gf1024",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4030710,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 15538,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-3-2-after",
+      "case": "gf1024",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3986713,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 15822,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-3-3-before",
+      "case": "gf1024",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 5558904,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 16107,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-4-0-before",
+      "case": "gf1024",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4494121,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 16392,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-4-1-after",
+      "case": "gf1024",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 3982040,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 16676,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-4-2-after",
+      "case": "gf1024",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-after.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4396818,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 16960,
+        "length_bytes": 264
+      }
+    },
+    {
+      "name": "gf1024-4-3-before",
+      "case": "gf1024",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/f2-sharing/rss.txt",
+        "/home/hosi/morph/.tools/f2-sharing/galois-before.exe",
+        "carryless_wbtest.mbt:1-2"
+      ],
+      "returncode": 0,
+      "process_ns": 4478120,
+      "peak_rss_kib": 1920,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "carryless_wbtest.mbt",
+          "index": 1
+        },
+        {
+          "type": "result",
+          "file": "carryless_wbtest.mbt",
+          "index": 1,
+          "message": ""
+        }
+      ],
+      "sha256": "d0b027061fb4753cb0ffd8a43ad4e653924098688f269b4eeaa5434afd14e513",
+      "published_log": {
+        "path": "docs/measurements/f2-sharing-native-20261119.txt",
+        "offset_bytes": 17245,
+        "length_bytes": 264
+      }
+    }
+  ],
+  "timings": {
+    "gf256": {
+      "process_ns": {
+        "medians": {
+          "before": 240620517.5,
+          "after": 238114500.0
+        },
+        "ranges": {
+          "before": [
+            225098551,
+            280032760
+          ],
+          "after": [
+            219230843,
+            262891668
+          ]
+        },
+        "before_over_after": 1.0105244220742542,
+        "block_ratios": [
+          1.0099658914443685,
+          1.0187581267956072,
+          1.0779557899823644,
+          0.9885048433800708,
+          1.0124390353026311
+        ]
+      },
+      "peak_rss_kib": {
+        "medians": {
+          "before": 2048.0,
+          "after": 2048.0
+        },
+        "ranges": {
+          "before": [
+            2048,
+            2048
+          ],
+          "after": [
+            2048,
+            2048
+          ]
+        },
+        "before_over_after": 1.0,
+        "block_ratios": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "degrees1to5": {
+      "process_ns": {
+        "medians": {
+          "before": 13746193.5,
+          "after": 15104204.5
+        },
+        "ranges": {
+          "before": [
+            11686884,
+            15483054
+          ],
+          "after": [
+            12392099,
+            16874609
+          ]
+        },
+        "before_over_after": 0.9100905314146137,
+        "block_ratios": [
+          1.05198470125141,
+          0.9308610728246178,
+          0.9108964353908364,
+          0.9119584529116916,
+          0.9283564793143116
+        ]
+      },
+      "peak_rss_kib": {
+        "medians": {
+          "before": 1920.0,
+          "after": 1920.0
+        },
+        "ranges": {
+          "before": [
+            1920,
+            1920
+          ],
+          "after": [
+            1920,
+            1920
+          ]
+        },
+        "before_over_after": 1.0,
+        "block_ratios": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "gf1024": {
+      "process_ns": {
+        "medians": {
+          "before": 4718333.5,
+          "after": 4008711.5
+        },
+        "ranges": {
+          "before": [
+            3790835,
+            6009711
+          ],
+          "after": [
+            3853811,
+            5339531
+          ]
+        },
+        "before_over_after": 1.1770199726271147,
+        "block_ratios": [
+          1.1261881688598228,
+          1.2177337676199709,
+          1.094606215449625,
+          1.2240423138457333,
+          1.07081907820851
+        ]
+      },
+      "peak_rss_kib": {
+        "medians": {
+          "before": 1920.0,
+          "after": 1920.0
+        },
+        "ranges": {
+          "before": [
+            1920,
+            1920
+          ],
+          "after": [
+            1920,
+            1920
+          ]
+        },
+        "before_over_after": 1.0,
+        "block_ratios": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "published_log_sha256": "01c0861a455955ed903ccc886af02d5f51feab2487a5ac15b3b3dcb6e65af6e9"
+}

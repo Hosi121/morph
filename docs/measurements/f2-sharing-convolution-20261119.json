@@ -1,0 +1,153 @@
+{
+  "utc": "2026-11-19T06:21:43.269784+00:00",
+  "before": {
+    "root": "/home/hosi/morph-f2-before",
+    "commit": "13b85cb842d732c8e10dff4332d42f62a55b845d",
+    "working_tree": [],
+    "source_manifest_sha256": "34cc598c57a6724d4e04285eeb1461bfcc8c5abdbbb0569c49c6748b5ec0e2b8",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/f2-sharing/convolution-before.exe",
+    "artifact_sha256": "ef2ba88debcc98c8ab5f1189e9aa5c808833301e6fda8ff68ac43764a7578c5c",
+    "harness": {
+      "main.mbt": "10aca450c3d551d3952fc788322475b2cd0ec2134149f77a8fe8c96282b15352",
+      "moon.pkg": "669fef8303907671837ddfa340eb6281146767b2607620702d54cc0e2f8f6780"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "08814b337fff743f6ca35b115b5e0eb89a2a1597",
+    "working_tree": [],
+    "source_manifest_sha256": "3bfb78633318484e1272ee17ea4349b117e0023f9478e79fa9ef7c7d46b472e7",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/f2-sharing/convolution-after.exe",
+    "artifact_sha256": "689056f68ebc4896fbb77a4672a49006f2d348a5969fe63577ac2dda0164ec20",
+    "harness": {
+      "main.mbt": "10aca450c3d551d3952fc788322475b2cd0ec2134149f77a8fe8c96282b15352",
+      "moon.pkg": "669fef8303907671837ddfa340eb6281146767b2607620702d54cc0e2f8f6780"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "gf2-control": {
+      "process_ns": {
+        "medians": {
+          "before": 52647546.0,
+          "after": 52856978.0
+        },
+        "ranges": {
+          "before": [
+            41277355,
+            60259167
+          ],
+          "after": [
+            38743743,
+            56347553
+          ]
+        },
+        "before_over_after": 0.9960377606150695,
+        "block_ratios": [
+          1.0950481389578057,
+          1.0787212424494994,
+          0.9825601176888596,
+          0.9923787970596091,
+          0.9569898534576272
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 49238.05400000001,
+          "after": 49509.503
+        },
+        "ranges": {
+          "before": [
+            38235.231,
+            56601.91
+          ],
+          "after": [
+            36010.113,
+            52871.98
+          ]
+        },
+        "before_over_after": 0.9945172343984147,
+        "block_ratios": [
+          1.0741063093012913,
+          1.0795437982839677,
+          0.9793343903448926,
+          0.984339048201168,
+          0.9494888730577732
+        ]
+      }
+    },
+    "tiny17": {
+      "process_ns": {
+        "medians": {
+          "before": 69928935.0,
+          "after": 68070424.5
+        },
+        "ranges": {
+          "before": [
+            63322927,
+            76222041
+          ],
+          "after": [
+            61209249,
+            72503328
+          ]
+        },
+        "before_over_after": 1.027302760540299,
+        "block_ratios": [
+          1.0136793805915483,
+          1.0264204707898423,
+          1.075136391108339,
+          0.9666913657850805,
+          1.061300893813403
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 66778.39199999999,
+          "after": 65055.309
+        },
+        "ranges": {
+          "before": [
+            60380.163,
+            72461.614
+          ],
+          "after": [
+            58001.444,
+            69301.624
+          ]
+        },
+        "before_over_after": 1.0264864317222748,
+        "block_ratios": [
+          1.0098337461825881,
+          1.0318060687181934,
+          1.0818064567889754,
+          0.9677780832289192,
+          1.0559611715986663
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 40,
+  "lossless_full_record": {
+    "path": "docs/measurements/f2-sharing-convolution-20261119.json.gz",
+    "sha256": "6b93c81edd4c52eb005cf882d28095c07717ea780e7efdf17a48443865b9d1d9",
+    "uncompressed_sha256": "d797f3899b8df5ad5e1b28e0b8df7235a73671d80d29b0048c4733ad6491562e"
+  }
+}

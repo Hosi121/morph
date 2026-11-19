@@ -1,0 +1,480 @@
+# gf256 0 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 0 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 0 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 0 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 1 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 1 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 1 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 1 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 2 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 2 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 2 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 2 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 3 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 3 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 3 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 3 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 4 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 4 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 4 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf256 4 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"characteristic_two_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"characteristic_two_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 0 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 0 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 0 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 0 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 1 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 1 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 1 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 1 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 2 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 2 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 2 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 2 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 3 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 3 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 3 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 3 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 4 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 4 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 4 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# degrees1to5 4 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":0}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":0,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 0 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 0 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 0 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 0 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 1 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 1 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 1 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 1 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 2 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 2 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 2 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 2 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 3 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 3 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 3 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 3 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 4 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 4 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 4 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+
+# gf1024 4 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"carryless_wbtest.mbt","index":1}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"carryless_wbtest.mbt","index":1,"message":""}
+----- END MOON TEST RESULT -----
+

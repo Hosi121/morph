@@ -38,6 +38,47 @@ numberfield/complexfieldの公開APIはbyte一致。selected-root identity、複
 [固定checkpoint・全ログ・API照合](../measurements/field-minpoly-sharing-20261119-validation.json)には、6種類の算法本体が名前・引数の置換を除き同じである静的照合も残す。これはcallbackの法則の形式証明ではない。
 global型検査、既存Pythonテスト・形式モデルも通過した。以下は監査時点の記録として残す。
 
+## F₂の係数規則を共有した結果（2026-11-19）
+
+基準`13b85cb`、実装`1dbbb1d`。fppolyとgaloisにあった正規化済み0/1係数列のXORを、
+既存fppolyの`add_f2_coefficients`一つへまとめた。旧二本体は再帰名の置換を除きbyte一致する。
+さらに、素体がF₂である判定を`primefield.is_f2`へ集め、fppoly・galois・primefieldの辞書・quotientfieldのBool表現入口から使う。
+XORは2定義→1定義、F₂判定は4箇所→1定義。新しい型・パッケージ・変換・実行時推論器は0。
+
+数学的条件と表現の条件は分ける。係数型BinaryだけではF₂とは分からず、検査済みprimefieldの法が2である必要がある。
+canonicalな係数列の加法と、任意長・未還元Binaryを下位bitで正規化する処理も別である。
+GF(4)は標数2でも一般の非零係数を1とは扱えず、a²=aも継承しない。
+公開した低水準XORには「係数0/1・高位零なし・第三引数はBinary零」の前提を明記し、通常の公開演算では既存のopaque constructorが前提を保証する。
+第三引数は融合乗算中で準備済みの零を再利用するために残した。
+
+| 本体mbt | 物理行 前→後 | 空白・コメントを除くcode行 前→後 |
+| --- | ---: | ---: |
+| fppoly | 1,470→1,463 | 1,250→1,244 |
+| galois | 409→374 | 309→281 |
+| primefield | 107→117 | 76→81 |
+| quotientfield | 361→359 | 291→289 |
+| 合計 | 2,347→2,313（34減） | 1,926→1,895（31減） |
+
+上記と同じ計数規則でtests・CLI・生成interfaceは除く。新しい係数列テストは32×32組をnative XORと照合する。
+既存の任意長入力・異なる体・零のエラー順・既約性・逆元の検査は維持した。
+galois/quotientfieldの公開APIはbyte一致、fppoly/primefieldはそれぞれ1関数追加だけ。
+一般の商構成・有限体の融合乗算・奇素数用の経路は保持している。
+
+native release・CPU4・同一SDK・共有排他下で固定5ABBAを実行した。
+[既存Frobeniusの4入力・80プロセス](../measurements/f2-sharing-frobenius-20261119.json)、
+[既存畳み込みの2入力・40プロセス](../measurements/f2-sharing-convolution-20261119.json)は、同一CLIと独立整数oracleで完全な出力を照合する。
+[有限体の3入力・60プロセス](../measurements/f2-sharing-native-20261119.json)は、未変更のSDKテストdriverで
+GF256のAES/RS全131,072積、次数1–5の全既約表示、GF1024の積・逆元を検査し、成功イベントも確認する。
+終了コード0でもSDKがassertion failureを結果に格納できるため、保存済みログ検査にも成功イベントの照合を加えた。
+
+時間は起動・構築・oracle・検査を含む。Frobeniusの内部時間はCLI定義の区間で別記する。
+全process中央値の旧/新比は、dense-f2 0.925、lowdegree 0.989、odd17対照0.971、setup 0.977、
+畳み込みF₂0.996、tiny17対照1.027、GF256 1.011、次数1–5 0.910、GF1024 1.177。
+密F₂冪は約8%、次数1–5は約10%遅い中央値であり、速度維持・高速化を確認したとは主張しない。
+XORの算法本体は同じで、採用理由は重複した規則の保守を一か所へ減らしたこと。
+短いSDKテストの時間は起動・oracleにも左右されるため、これをkernel単体の効果へ帰属しない。
+GF256のpeak RSS中央値は前後とも2,048KiB、他のSDK二入力は1,920KiB。割当総量やJS/Wasmの性能は未計測である。
+
 ## 1. galois と numberfield：多項式環の商による体拡大
 
 共通原理は、体 K 上の monic な正次数多項式 f に対し、K[X]/(f) の元を次数が deg(f) 未満の剰余で表すこと。和・差は次数制限を保ち、積は多項式積の還元、unit の逆は Bézout 恒等式から得られる。ただし商が体になるのは f が既約な場合である。
@@ -66,9 +107,9 @@ global型検査、既存Pythonテスト・形式モデルも通過した。以�
 
 **Bool の二つの代数を混同しない。** `algebra.booleans` は OR/AND の半環、`gf2.scalars/field` は XOR/AND の F₂。`true+true` の値が異なる。同じ Bool 型から演算を自動選択できない。また modular は合成数の法も許すため、その半環を無条件に Field へ昇格できない。
 
-現在の [GF₂ 行列](../../src/gf2/kernel.mbt#L60)は `Chain[Bool]`、[carryless 積](../../src/galois/carryless.mbt#L105)は canonical 0/1 の `Chain[Binary]` を直接走査する。[Binary 自体](../../src/binary/binary.mbt#L2)も Bool Chain であり、機械 packedword ではない。反復 pack/unpack を除くという説明は現状に当てはまらない。carryless の終端には polynomial constructor による再正規化の走査が残るが、その省略の安全性と効果は未検証である。
+現在の [GF₂ 行列](../../src/gf2/kernel.mbt#L60)は `Chain[Bool]`、[carryless 積](../../src/galois/carryless.mbt)は canonical 0/1 の `Chain[Binary]` を直接走査する。[Binary 自体](../../src/binary/binary.mbt#L2)も Bool Chain であり、機械 packedword ではない。反復 pack/unpack を除くという説明は現状に当てはまらない。carryless の終端には polynomial constructor による再正規化の走査が残るが、その省略の安全性と効果は未検証である。
 
-**標数2と基礎体 F₂を分ける。** 現在は base が primefield なので characteristic=2 から係数が0/1と分かる。[両非零を零にする XOR](../../src/fppoly/characteristic_two.mbt#L33)、係数をそのままに零を挿入する square、非零 leading coefficient を1と扱う monic 処理は F₂ 専用。GF(4) も標数2だが、任意の非零係数は1ではなく、a²=a も成立しない。一般有限 K の相対 Frobenius は q=|K| 乗であり、現在の p 乗・p^degree・係数をそのまま取る p-th root を一律に継承できない。
+**標数2と基礎体 F₂を分ける。** 現在は base が primefield なので characteristic=2 から係数が0/1と分かる。[両非零を零にする XOR](../../src/fppoly/characteristic_two.mbt)、係数をそのままに零を挿入する square、非零 leading coefficient を1と扱う monic 処理は F₂ 専用。GF(4) も標数2だが、任意の非零係数は1ではなく、a²=a も成立しない。一般有限 K の相対 Frobenius は q=|K| 乗であり、現在の p 乗・p^degree・係数をそのまま取る p-th root を一律に継承できない。
 
 ## 4. positiveform：直和・逆・正スカラー倍の構造保持
 

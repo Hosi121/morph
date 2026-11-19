@@ -15,6 +15,16 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## F₂係数規則の共通化
+
+`13b85cb`と`1dbbb1d`の本体を、native release・CPU4・同一SDK・固定5ABBAで比較した。
+本体は34物理行減。速度は入力ごとに増減があり、高速化は主張しない。
+[前提と採用判断](research/mathematical-constructions-20261118.md#f₂の係数規則を共有した結果2026-11-19)・
+[Frobenius4入力・80プロセス](measurements/f2-sharing-frobenius-20261119.json)・
+[畳み込み2入力・40プロセス](measurements/f2-sharing-convolution-20261119.json)・
+[有限体3入力・60プロセスとRSS](measurements/f2-sharing-native-20261119.json)。
+既存のCLI・SDKテストと独立oracleを使い、全出力・成功イベントを照合した。コンパイルは時間に含めない。
+
 ## 最小多項式の共通化
 
 既存spanbenchの8入力を、`9984703`と`e975ed4`で比較した。native release・CPU4・5ABBA・160プロセスで全結果が一致した。
