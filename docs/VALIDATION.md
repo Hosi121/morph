@@ -67,6 +67,16 @@ numberfield/complexfieldの公開APIはbyte一致、linear/polynomialには計5�
 [固定checkpoint・全ログ・APIと本体の照合](measurements/tensor-temporaries-20261120-validation.json)・
 [単独/併用の比較と残る無駄](research/tensor-temporaries-20261120.md)を保存した。任意形状への新しい形式証明ではない。
 
+## スカラー曲率のrank 4展開の省略（2026-11-20）
+
+固定ソース`2d45adc`、基準`fe4a754`。既存zipとfoldを組み合わせ、対応成分n²個だけでスカラー縮約を再計算する。
+公開API・import・shape検査の順序は維持し、旧rank 4関数の本体をwhitebox参照として保存した。
+逆依存4packageのうち3packageをwasm-gc・JS・native releaseで実行し、各142件成功。残る1CLIはソースとnative metadataでtest不在を確認。
+非対角・不定値の有理計量、零次元、独立な単体・conformal公式と既存SymPy fixtureを含む。
+global型検査・85 Pythonテスト・純粋性396ファイル・既存形式モデルも通過した。
+[checkpoint・全ログ・構造とAPIの照合](measurements/scalar-contraction-20261120-validation.json)と
+[4入力・80プロセスの時間/RSS比較](research/scalar-contraction-20261120.md)を保存する。任意の計量についての新しい形式証明ではない。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。

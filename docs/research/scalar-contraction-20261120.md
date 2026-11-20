@@ -51,3 +51,9 @@ native release、CPU4、同一SDK、事前に固定した4入力・反復数・5
 
 汎用Tensor.product/contract、Tensor.zipの一時ペア列、denseなCurvature自体の格納は維持している。
 今回省いたのは、既にある逆計量とRicciからscalarだけを求める際の不要なrank 4展開である。
+
+固定ソース`2d45adc`を基準`fe4a754`と比較し、逆依存4packageのうち3packageを3targetで実行して各142件成功した。
+残る1CLIはソースとnative metadataからtest不在を確認した。global型検査・85 Pythonテスト・純粋性396ファイル・既存形式モデルも成功。
+[固定checkpoint・全コマンド・ログ・APIと構造の照合](../measurements/scalar-contraction-20261120-validation.json)を保存した。
+有限照合と既存形式モデルの成功を、任意の有理計量の新しい形式証明とは扱わない。
+比較用worktreeは削除し、必要なELFと完全な生データを保存している。
