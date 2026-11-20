@@ -50,12 +50,21 @@ Fraction参照のsourceは最終JSONの`independent_fraction_reference_source`�
 [診断profile](../measurements/tensor-temporaries-profile-20261120.txt)にはobject管理と厳密有理数演算が現れるが、zip単独の費用割合を切り出したものではない。
 sampled CPU weightとwall time、inclusiveな各関数の値は区別する。実メモリ・確保総量・JS/Wasmの性能は未測定で、peak RSS削減を主張しない。
 
+## 検証
+
+固定ソース`1d711b9`で逆依存8packageを選び、runtime 5packageを3targetで各165件確認した。
+Tensorの既存12 blockは、独立array oracle、rank 3–5の390 permutation、非Eq成分、
+旧lookup実装との完全なcallback列の照合を含む。Gaussian・Hodge・statgeometryと情報CLIの利用側も検査した。
+省略はソース・metadataでtest不在を確認した3CLIのみ。global型検査、85 Pythonテスト、純粋性396ファイル、既存形式モデルも通過した。
+[checkpoint・コマンド・全ログ・構造的差分](../measurements/tensor-temporaries-20261120-validation.json)を参照。有限検査と既存モデルの成功を、新しい任意形状の形式証明とは扱わない。
+
 ## 残る無駄
 
 | 経路 | 残る構築・探索 |
 | --- | --- |
 | [tabulate / 非恒等permute](../../src/tensor/tensor.mbt) | 全座標の列挙。置換では出力ごとに座標を組み直す。public atのflat Chain検索も線形のまま |
 | [Tensor.zip](../../src/tensor/tensor.mbt) | ペア列を作ってからmapする。今回の内積融合とは別に残る |
+| [mode/contractの要素数](../../src/tensor/cursor.mbt) | 通常経路でも出力要素数のunary Natを構築し、主に零判定へ使う。shapeから零軸を先に判定する候補がある |
 | [mode積のblock](../../src/tensor/cursor.mbt) | 同じ入力の列を出力行ごとに準備する。共有すると保持量も変わるため、単一出力行を含めた比較が必要 |
 | [縮約の中間block](../../src/tensor/cursor.mbt) | 対角部分を取る前に、捨てるoff-diagonalを含むblockもコピーする |
 | [scalar_by_contraction](../../src/statgeometry/tensors.mbt) | rank 2同士からrank 4の積を展開する。n⁴個の積に対し、最終結果に必要な対応成分の積はn²個。QQ専用経路の融合が次の大きい候補 |

@@ -1,0 +1,258 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-20T12:59:17.026172+00:00",
+  "finished_utc": "2026-11-20T13:07:22.193761+00:00",
+  "baseline": "3bc3ffcd995cf9fe006957116541681209e86102",
+  "source_commit": "1d711b91c3bd8d25e885abde7efcd367c09e8a98",
+  "scope": "Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.",
+  "full_repository": false,
+  "roots": [
+    "tensor"
+  ],
+  "packages": [
+    "cmd/hessianbench",
+    "cmd/information",
+    "cmd/structurebench",
+    "cmd/tensorbench",
+    "gaussian",
+    "hodge",
+    "statgeometry",
+    "tensor"
+  ],
+  "runtime_packages": [
+    "cmd/information",
+    "gaussian",
+    "hodge",
+    "statgeometry",
+    "tensor"
+  ],
+  "reviewed_interface_changes": [],
+  "runner_sha256": "03b2776306e7980ee2cbe8178912da450f94a865f62b1529031f3ffeb385cc2d",
+  "source_manifest_sha256": "e8e2c6fa61bdf4086a99dffc25ec1a9577a49d6fdb56f1ab603079edb6ca90a1",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "runner_git_object": "1d711b91c3bd8d25e885abde7efcd367c09e8a98:tools/check_affected.py",
+  "source_manifest_entries": 1665,
+  "skipped_empty_command_packages": [
+    "cmd/hessianbench",
+    "cmd/structurebench",
+    "cmd/tensorbench"
+  ],
+  "structural_review": {
+    "public_tensor_api_byte_identical": true,
+    "imports_byte_identical": true,
+    "existing_cli_harness_byte_identical": true,
+    "contract_and_mode_public_shape_guards_byte_identical": true,
+    "permutation_index_source_byte_identical": true,
+    "other_tensor_public_operations_byte_identical": true,
+    "cursor_changes": "Only the dot region and its accumulator argument at the call site change.",
+    "dot_precondition": "Opaque Matrix rows have checked axis width; cursor_rows and cursor_heads produce the same number of values. On publicly constructible inputs, both streams have equal length; times then plus are called in the original left fold order, including zero terms.",
+    "permutation_changes": "Only identity action after rank/bounds/bijection guards and reusing the existing axis list.",
+    "new_public_functions": 0,
+    "new_types": 0,
+    "new_packages": 0,
+    "body_metrics": {
+      "before": {
+        "files": 4,
+        "physical": 786,
+        "code": 685
+      },
+      "after": {
+        "files": 4,
+        "physical": 792,
+        "code": 688
+      }
+    }
+  },
+  "api_preservation": {
+    "tensor_interface_byte_identical": true,
+    "sha256": "69a150fa58b053e7244e5291aa7dc52316ce8172b18a70cde1385b6f7e3c1a8c",
+    "reviewed_existing_interface_changes": []
+  },
+  "body_metric_definition": "Four production tensor .mbt files; tests/CLI/generated interfaces excluded. Physical splitlines; code counts nonempty line.split(\"//\",1)[0].strip(), including braces.",
+  "benchmark_records": [
+    "docs/measurements/tensor-temporaries-dot-20261120.json",
+    "docs/measurements/tensor-temporaries-identity-20261120.json",
+    "docs/measurements/tensor-temporaries-identity-aa-20261120.json",
+    "docs/measurements/tensor-temporaries-final-20261120.json"
+  ],
+  "formal_scope": "Existing formal model checks only, not a new proof of arbitrary tensor shapes. Existing independent array/Fraction fixtures and complete legacy callback traces are retained.",
+  "cleanup": "Own clean baseline worktree removed after comparison; source commits, executable hashes, frozen native artifacts and required raw evidence retained. Only main worktree remains.",
+  "commands": [
+    {
+      "name": "maintenance",
+      "argv": [
+        "bash",
+        "-c",
+        "set -euo pipefail\npython3 -m unittest discover -s tools -p 'test_*.py' -q\npython3 tools/check_docs.py\npython3 tools/check_evidence.py\npython3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json\npython3 tools/check_kernel_evidence.py\npython3 tools/matrix-kernel-check.py\npython3 tools/check_information_evidence.py\npython3 tools/inventory.py --check\npython3 tools/audit_purity.py\npython3 tools/audit_paths.py --check\npython3 tools/check_model_drift.py\npython3 tools/benchmark_bareiss.py --check-reference-only\npython3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null\npython3 tools/generate_binary_tiny_products.py --check\npython3 tools/generate_binary_tiny_differences.py --check --winner lookup\npython3 tools/generate_bernstein_fixtures.py --check\npython3 tools/generate_rational_elimination_cases.py --check\npython3 tools/generate_linearspan_fixtures.py --check\npython3 docs/research/night-normal-form-20261117-oracle.py --check\npython3 docs/research/night-product-20261117-oracle.py --check\npython3 docs/research/late-subtraction-20261117-oracle.py --check\npython3 docs/research/late-poly-unit-20261117-oracle.py --check\npython3 tools/generate_signed_residue_n04.py --check\npython3 tools/generate_tower_constant_fixtures.py --check\npython3 tools/generate_monic_identity_n05.py --check\npython3 tools/generate_markov_fixtures.py --check\npython3 tools/generate_riemann_fixtures.py --check\npython3 tools/generate_forms_fixtures.py --check\npython3 tools/generate_hodge_fixtures.py --check\npython3 tools/generate_simplexforms_fixtures.py --check\npython3 tools/generate_gaussian_fixtures.py --check\npython3 -S tools/generate_information_review_fixtures.py --check-stored\npython3 tools/extension-curves-20261118-oracle.py --check\npython3 tools/extension-pairings-20261118-oracle.py --check\npython3 tools/check_information_tour.py\npython3 tools/generate_homology_fixtures.py --check\npython3 tools/generate_persistence_fixtures.py --check\npython3 tools/generate_simplicialmap_fixtures.py --check\npython3 tools/generate_csscode_fixtures.py --check\npython3 tools/generate_cohomology_fixtures.py --check\npython3 tools/generate_relativehomology_fixtures.py --check\npython3 tools/generate_collapse_fixtures.py --check\ntools/moon fmt --check\npython3 tools/generate_comparison_candidates.py --check\ntools/moon check --deny-warn -j 1\npython3 tools/check_interfaces.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 95.89444071600155,
+      "sha256": "cdc342c4a66e989550c1ca64a826b3c3ccb338e3ecd6e9939274b80546b66a84",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 2492,
+        "length_bytes": 4654
+      }
+    },
+    {
+      "name": "check-js",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.319160599996394,
+      "sha256": "3e5fcf6518a860c17dfdf048962fe86dc2ede70c515255efb11f5912c4736c4c",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 7226,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "check-native",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.4137021069982438,
+      "sha256": "3e5fcf6518a860c17dfdf048962fe86dc2ede70c515255efb11f5912c4736c4c",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 7359,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "tests-wasm-gc",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/information",
+        "src/gaussian",
+        "src/hodge",
+        "src/statgeometry",
+        "src/tensor",
+        "--target",
+        "wasm-gc",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 77.23671540299983,
+      "sha256": "f57d12ee173a34e02ff71b919d744733373d217aec042d7de034420dd2d9c227",
+      "test_totals": [
+        [
+          "165",
+          "165",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 7579,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-js",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/information",
+        "src/gaussian",
+        "src/hodge",
+        "src/statgeometry",
+        "src/tensor",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 95.04877465399477,
+      "sha256": "f57d12ee173a34e02ff71b919d744733373d217aec042d7de034420dd2d9c227",
+      "test_totals": [
+        [
+          "165",
+          "165",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 7786,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-native",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/information",
+        "src/gaussian",
+        "src/hodge",
+        "src/statgeometry",
+        "src/tensor",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1",
+        "--release"
+      ],
+      "returncode": 0,
+      "wall_seconds": 194.60331170700374,
+      "sha256": "f57d12ee173a34e02ff71b919d744733373d217aec042d7de034420dd2d9c227",
+      "test_totals": [
+        [
+          "165",
+          "165",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 8014,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "formal",
+      "argv": [
+        "tools/check_formal"
+      ],
+      "returncode": 0,
+      "wall_seconds": 17.604782135000278,
+      "sha256": "c95694b68e70974a61349bdc5e70d29789e8730282066f62659644a829319ee5",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/tensor-temporaries-20261120-validation.txt",
+        "offset_bytes": 8089,
+        "length_bytes": 4583
+      }
+    }
+  ],
+  "published_log_sha256": "79e45fa096d3fb794ff10c8abb1a0d3befa012cf05c3cb3683d5e1f112f7de6e"
+}

@@ -59,6 +59,14 @@ numberfield/complexfieldの公開APIはbyte一致、linear/polynomialには計5�
 [固定checkpoint・全ログ・APIと本体の照合](measurements/scalar-sharing-20261120-validation.json)と
 [共有範囲・削減量・性能比較](research/mathematical-constructions-20261118.md#利用側のスカラー代数を共有した結果2026-11-20)を保存する。
 
+## Tensorの一時列・恒等置換の省略（2026-11-20）
+
+固定ソース`1d711b9`、基準`3bc3ffc`。公開APIと格納表現を保ち、内積を直接の左foldへ融合し、恒等置換で不変Tensorを再利用した。
+逆依存8packageのうちruntime 5packageをwasm-gc・JS・native releaseで実行し、**それぞれ165件成功**。
+残る3CLIはソースとcompiler metadataでtest不在を確認した。global型検査・85 Pythonテスト・純粋性396ファイル・既存形式モデルも通過した。
+[固定checkpoint・全ログ・APIと本体の照合](measurements/tensor-temporaries-20261120-validation.json)・
+[単独/併用の比較と残る無駄](research/tensor-temporaries-20261120.md)を保存した。任意形状への新しい形式証明ではない。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。
