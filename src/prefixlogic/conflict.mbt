@@ -95,8 +95,9 @@ fn conjunct_conflict(formula : @qf.Formula) -> Bool {
     basis : @core.Chain[@poly.Polynomial],
   ) -> Bool {
     @core.any(atoms, fn(atom) {
-      match reduce(atom.0, basis) {
-        Some(r) => constant_false(r, atom.1)
+      let (p, relation) = atom
+      match reduce(p, basis) {
+        Some(r) => constant_false(r, relation)
         None => false
       }
     })
@@ -107,8 +108,14 @@ fn conjunct_conflict(formula : @qf.Formula) -> Bool {
     _ => ()
   }
   let equalities = @core.map(
-    @core.filter(atoms, fn(atom) { atom.1 is EqualZero }),
-    fn(atom) { atom.0 },
+    @core.filter(atoms, fn(atom) {
+      let (_, relation) = atom
+      relation is EqualZero
+    }),
+    fn(atom) {
+      let (p, _) = atom
+      p
+    },
   )
   // Keep the existing coordinate shortcut first. Extra equations must not
   // obscure a conflict that coordinate substitution already establishes.
