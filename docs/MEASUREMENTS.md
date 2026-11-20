@@ -15,6 +15,12 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## CSS・Markovのスカラー構成の共有
+
+`0abcc77`と`457da65`をnative release・CPU4・同一SDK・固定5ABBAで比較した。
+[CSSと未変更のGF₂対照](measurements/scalar-sharing-css-20261120.json)・[Markovの冪と合成、RSS](measurements/scalar-sharing-native-20261120.json)の計80プロセスが検査に成功。
+速度とRSSは増減・横ばいが混在する。[共有した構成・本体21行の削減・採用理由](research/mathematical-constructions-20261118.md#利用側のスカラー代数を共有した結果2026-11-20)を記録した。
+
 ## F₂係数規則の共通化
 
 `13b85cb`と`1dbbb1d`の本体を、native release・CPU4・同一SDK・固定5ABBAで比較した。

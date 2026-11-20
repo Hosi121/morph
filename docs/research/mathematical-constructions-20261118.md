@@ -83,6 +83,37 @@ GF256のpeak RSS中央値は前後とも2,048KiB、他のSDK二入力は1,920KiB
 省略はソース・metadataでtest不在を確認した13CLIのみ。global型検査、85 Pythonテスト、純粋性396ファイル、既存形式モデルも通過した。
 [checkpoint・全ログ・APIとXOR本体の照合](../measurements/f2-sharing-20261119-validation.json)を参照。既存形式モデルの成功を新規の形式証明には数えない。
 
+## 利用側のスカラー代数を共有した結果（2026-11-20）
+
+基準`0abcc77`、実装`457da65`。CSSのXOR・体辞書・半環辞書を既存gf2へ委譲し、
+Markovの有理数半環辞書を削除して既存`algebra.rationals`を直接使う。公開API・型・importは変更せず、新しい構成・factoryも増やしていない。
+これは四つの重複した構成箇所の共有であり、新しい代数算法や自動導出エンジンを実装したという主張ではない。
+
+| 構成 | 共有先 | 守る条件 |
+| --- | --- | --- |
+| CSSのXOR・体辞書・半環辞書 | `gf2.xor`・`field`・`scalars` | BoolをF₂として解釈する。OR/ANDのBoolean半環とは区別する |
+| Markovの有理数半環 | `algebra.rationals` | 厳密なQQ演算を共有する。確率の非負性・行和1・次元はMarkovの境界で引き続き検査する |
+
+本体7ファイルを共通先・wrapperを含めて数えると、CSSは693→677物理行、Markovは1,027→1,022物理行。
+合計1,720→1,699で21行減、空白・コメントを除くcode行は1,409→1,390で19行減。
+計数規則は上記と同じでtests・CLI・生成interfaceを除く。既存CSSテストへの15行の追加は別計上する。
+Bool全組合せで加減乗算・XOR、両値で符号反転と逆元を独立のtruth tableと照合した。
+
+CSSのAxis以降の算法本体はbyte一致する。Markovもprivateな辞書の削除と呼出し先の置換だけで、
+空白とformatterの末尾call commaを除いた静的照合を通した。旧有理数辞書と共有先の本体、旧CSSのXOR・半環辞書も一致する。
+CSSの証拠検査手順は維持するが、スカラー層は生成側と共有するため完全に独立なoracleとは扱わない。
+既存のbitmask総当たりとFraction fixturesも併用し、確率の境界・定常族・到達時間の検査を残す。
+
+native release・CPU4・同一SDK・固定5ABBAで、[CSSと未変更のGF₂分解の40プロセス](../measurements/scalar-sharing-css-20261120.json)と
+[Markovの40プロセス](../measurements/scalar-sharing-native-20261120.json)を比較した。
+CSSは既存CLIの全行列・pivot・変換・逆変換・証拠、Markovは未変更SDKテストのfixture28（4状態、冪0–6）と合成fixture7を検査する。
+SDKでは終了コードとstart/resultの成功イベントを両方確認した。全比較が成功し、生stdout・実行ファイルとソースのhashを保持する。
+
+全process中央値はCSS 117.89→121.07ms、未変更の分解対照231.88→240.38ms、Markov冪5.15→5.91ms、合成3.51→3.39ms。
+冪の中央値は約15%遅い。起動・構築・oracle・証拠検査を含み、MarkovはGNU time wrapperも含む短い測定であり、kernel単体の時間ではない。
+Markovのpeak RSS中央値は冪2,240→2,304KiB、合成2,176→2,176KiB。割当総量・JS/Wasm性能は未計測。
+速度維持・高速化・メモリ削減を確認したとは主張せず、重複した構成の保守を一か所へ寄せたことを採用理由とする。
+
 ## 1. galois と numberfield：多項式環の商による体拡大
 
 共通原理は、体 K 上の monic な正次数多項式 f に対し、K[X]/(f) の元を次数が deg(f) 未満の剰余で表すこと。和・差は次数制限を保ち、積は多項式積の還元、unit の逆は Bézout 恒等式から得られる。ただし商が体になるのは f が既約な場合である。

@@ -1,0 +1,320 @@
+# markov-power28 0 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 0 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 0 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 0 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 1 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 1 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 1 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 1 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 2 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 2 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 2 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 2 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 3 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 3 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 3 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 3 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 4 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 4 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 4 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-power28 4 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":28}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":28,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 0 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 0 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 0 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 0 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 1 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 1 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 1 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 1 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 2 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 2 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 2 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 2 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 3 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 3 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 3 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 3 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 4 0 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 4 1 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 4 2 after
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+
+# markov-compose7 4 3 before
+----- BEGIN MOON TEST RESULT -----
+{"type":"start","file":"fraction_fixtures_wbtest.mbt","index":36}
+----- END MOON TEST RESULT -----
+----- BEGIN MOON TEST RESULT -----
+{"type":"result","file":"fraction_fixtures_wbtest.mbt","index":36,"message":""}
+----- END MOON TEST RESULT -----
+

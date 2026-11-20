@@ -1,0 +1,105 @@
+{
+  "utc": "2026-11-20T04:32:04.211071+00:00",
+  "before": {
+    "root": "/home/hosi/morph-scalar-before",
+    "commit": "0abcc7782587ff7a8d6da4618e69b9a5eba074b1",
+    "working_tree": [],
+    "source_manifest_sha256": "3bfb78633318484e1272ee17ea4349b117e0023f9478e79fa9ef7c7d46b472e7",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-sharing/css-before.exe",
+    "artifact_sha256": "a56762d321cdf507e94e623b39a299212a8501935b393acde251120f662fccd1",
+    "harness": {
+      "main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+      "moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "457da65728ddbe2d915c3576fa9fca2e323df082",
+    "working_tree": [],
+    "source_manifest_sha256": "24b89ebb79901d362d1b19fb1d76bb44c031931c39e65affe1a956c051aef83a",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-sharing/css-after.exe",
+    "artifact_sha256": "4042427050fc9bfbf18a646818c5876c85cad177fef9b664743490b42b1ac326",
+    "harness": {
+      "main.mbt": "38518b6196d99d4feb9aa2fd1de9af7238afeab63be2d88901f74db3693b94eb",
+      "moon.pkg": "46f1e33fef22839d548674938f4ff53bf9bbf4d225c3bf0952401977ae574971"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "css-validate": {
+      "process_ns": {
+        "medians": {
+          "before": 117892311.0,
+          "after": 121073660.5
+        },
+        "ranges": {
+          "before": [
+            114276713,
+            128949266
+          ],
+          "after": [
+            114484610,
+            147929669
+          ]
+        },
+        "before_over_after": 0.9737238513574139,
+        "block_ratios": [
+          1.017245446413574,
+          0.9786572629967981,
+          1.0005865170264585,
+          0.9785839197744209,
+          0.816456670358457
+        ]
+      }
+    },
+    "factor-dense": {
+      "process_ns": {
+        "medians": {
+          "before": 231876543.0,
+          "after": 240384312.0
+        },
+        "ranges": {
+          "before": [
+            220853993,
+            245843422
+          ],
+          "after": [
+            222982430,
+            255199457
+          ]
+        },
+        "before_over_after": 0.9646076362920056,
+        "block_ratios": [
+          1.0113172786420845,
+          0.9726566861027622,
+          0.9735525618536284,
+          0.972708475921432,
+          0.9202564802655939
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "run_count": 40,
+  "lossless_full_record": {
+    "path": "docs/measurements/scalar-sharing-css-20261120.json.gz",
+    "sha256": "2943b8e4255c0d6cc40527126f6264bbe718a3e22907781e4def79c7c460a3fb",
+    "uncompressed_sha256": "93c32b8a989b8cf3ade1b5d700b3010b665eb424b2575da0c55bcb3fe668a0bc"
+  }
+}

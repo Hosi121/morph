@@ -1,0 +1,1669 @@
+{
+  "status": "passed",
+  "baseline": {
+    "root": "/home/hosi/morph-scalar-before",
+    "commit": "0abcc7782587ff7a8d6da4618e69b9a5eba074b1",
+    "working_tree": [],
+    "source_manifest_sha256": "3bfb78633318484e1272ee17ea4349b117e0023f9478e79fa9ef7c7d46b472e7",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+    "artifact_sha256": "4beb9ef367dc23bdbeb0355b04d06a030c9a3fbbc17a64a484ce762c117b96ee",
+    "harness": {
+      "src/markov/fraction_fixtures_wbtest.mbt": "5e99f6214179b08f09d391474a8b7f77ef0f56ea45040c4035166028c13027ff",
+      "src/markov/kernel_wbtest.mbt": "4689248dadc63811f9175883d3842a91d44c2a51364a2ce7dab0b09dc45433d8",
+      "src/markov/moon.pkg": "1eac067817d51d8a9da48bb9624e08b8ed0a6ec8b73b1b3b1fffe2e6a8f646b6"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "candidate": {
+    "root": "/home/hosi/morph",
+    "commit": "457da65728ddbe2d915c3576fa9fca2e323df082",
+    "working_tree": [],
+    "source_manifest_sha256": "24b89ebb79901d362d1b19fb1d76bb44c031931c39e65affe1a956c051aef83a",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+    "artifact_sha256": "24107ea46197fa58ef3b8e58b125d6ba866ba56d4c542774575073db2130ada1",
+    "harness": {
+      "src/markov/fraction_fixtures_wbtest.mbt": "5e99f6214179b08f09d391474a8b7f77ef0f56ea45040c4035166028c13027ff",
+      "src/markov/kernel_wbtest.mbt": "4689248dadc63811f9175883d3842a91d44c2a51364a2ce7dab0b09dc45433d8",
+      "src/markov/moon.pkg": "1eac067817d51d8a9da48bb9624e08b8ed0a6ec8b73b1b3b1fffe2e6a8f646b6"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "Whole native release test process via GNU time, including startup, setup, exact independent oracle, assertions and SDK events; compilation excluded. Peak RSS is per-process KiB from GNU time. Not a kernel-only timing.",
+  "commands": [
+    {
+      "name": "markov-power28-0-0-before",
+      "case": "markov-power28",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 5323516,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 28,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-0-1-after",
+      "case": "markov-power28",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 8867749,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 338,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-0-2-after",
+      "case": "markov-power28",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4344010,
+      "peak_rss_kib": 2432,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 648,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-0-3-before",
+      "case": "markov-power28",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4971068,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 959,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-1-0-before",
+      "case": "markov-power28",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4973257,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 1270,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-1-1-after",
+      "case": "markov-power28",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4553078,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 1580,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-1-2-after",
+      "case": "markov-power28",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4137198,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 1890,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-1-3-before",
+      "case": "markov-power28",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4209206,
+      "peak_rss_kib": 2432,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 2201,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-2-0-before",
+      "case": "markov-power28",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4672571,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 2512,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-2-1-after",
+      "case": "markov-power28",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 5402330,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 2822,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-2-2-after",
+      "case": "markov-power28",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 5486188,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 3132,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-2-3-before",
+      "case": "markov-power28",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 4825354,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 3443,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-3-0-before",
+      "case": "markov-power28",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 5450630,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 3754,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-3-1-after",
+      "case": "markov-power28",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 8465544,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 4064,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-3-2-after",
+      "case": "markov-power28",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 6744792,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 4374,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-3-3-before",
+      "case": "markov-power28",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 5919222,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 4685,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-4-0-before",
+      "case": "markov-power28",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 7834039,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 4996,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-4-1-after",
+      "case": "markov-power28",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 6337096,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 5306,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-4-2-after",
+      "case": "markov-power28",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 7284710,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 5616,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-power28-4-3-before",
+      "case": "markov-power28",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:28-29"
+      ],
+      "returncode": 0,
+      "process_ns": 8273887,
+      "peak_rss_kib": 2304,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 28,
+          "message": ""
+        }
+      ],
+      "sha256": "f1ec9bd5efa5da091acad4aa73562dd8f1e19a353eee2d14db822c2917156314",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 5927,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-0-0-before",
+      "case": "markov-compose7",
+      "group": 0,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3455756,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 6239,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-0-1-after",
+      "case": "markov-compose7",
+      "group": 0,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3678242,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 6550,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-0-2-after",
+      "case": "markov-compose7",
+      "group": 0,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3642033,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 6861,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-0-3-before",
+      "case": "markov-compose7",
+      "group": 0,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 4117046,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 7173,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-1-0-before",
+      "case": "markov-compose7",
+      "group": 1,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3569837,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 7485,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-1-1-after",
+      "case": "markov-compose7",
+      "group": 1,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3347548,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 7796,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-1-2-after",
+      "case": "markov-compose7",
+      "group": 1,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3431949,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 8107,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-1-3-before",
+      "case": "markov-compose7",
+      "group": 1,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3728642,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 8419,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-2-0-before",
+      "case": "markov-compose7",
+      "group": 2,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3947762,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 8731,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-2-1-after",
+      "case": "markov-compose7",
+      "group": 2,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3345451,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 9042,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-2-2-after",
+      "case": "markov-compose7",
+      "group": 2,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3668858,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 9353,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-2-3-before",
+      "case": "markov-compose7",
+      "group": 2,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3082062,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 9665,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-3-0-before",
+      "case": "markov-compose7",
+      "group": 3,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 2828517,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 9977,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-3-1-after",
+      "case": "markov-compose7",
+      "group": 3,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 2915136,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 10288,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-3-2-after",
+      "case": "markov-compose7",
+      "group": 3,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3167058,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 10599,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-3-3-before",
+      "case": "markov-compose7",
+      "group": 3,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 2955002,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 10911,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-4-0-before",
+      "case": "markov-compose7",
+      "group": 4,
+      "position": 0,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3554805,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 11223,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-4-1-after",
+      "case": "markov-compose7",
+      "group": 4,
+      "position": 1,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 3873748,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 11534,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-4-2-after",
+      "case": "markov-compose7",
+      "group": 4,
+      "position": 2,
+      "variant": "after",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-after.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 2818430,
+      "peak_rss_kib": 2176,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 11845,
+        "length_bytes": 282
+      }
+    },
+    {
+      "name": "markov-compose7-4-3-before",
+      "case": "markov-compose7",
+      "group": 4,
+      "position": 3,
+      "variant": "before",
+      "argv": [
+        "/usr/bin/time",
+        "-f",
+        "%M",
+        "-o",
+        "/home/hosi/morph/.tools/scalar-sharing/rss.txt",
+        "/home/hosi/morph/.tools/scalar-sharing/markov-before.exe",
+        "fraction_fixtures_wbtest.mbt:36-37"
+      ],
+      "returncode": 0,
+      "process_ns": 2923297,
+      "peak_rss_kib": 2048,
+      "moon_test_results": [
+        {
+          "type": "start",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36
+        },
+        {
+          "type": "result",
+          "file": "fraction_fixtures_wbtest.mbt",
+          "index": 36,
+          "message": ""
+        }
+      ],
+      "sha256": "141a1d061e4cf875ef7bc105ade0474c0dfaefec9b431797e9d7bea32b3a66e8",
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-native-20261120.txt",
+        "offset_bytes": 12157,
+        "length_bytes": 282
+      }
+    }
+  ],
+  "timings": {
+    "markov-power28": {
+      "process_ns": {
+        "medians": {
+          "before": 5148386.5,
+          "after": 5911642.0
+        },
+        "ranges": {
+          "before": [
+            4209206,
+            8273887
+          ],
+          "after": [
+            4137198,
+            8867749
+          ]
+        },
+        "before_over_after": 0.8708894246302465,
+        "block_ratios": [
+          0.7791985911944049,
+          1.0566365210955326,
+          0.872288129569148,
+          0.7475082733215098,
+          1.182510307370403
+        ]
+      },
+      "peak_rss_kib": {
+        "medians": {
+          "before": 2240.0,
+          "after": 2304.0
+        },
+        "ranges": {
+          "before": [
+            2048,
+            2432
+          ],
+          "after": [
+            2176,
+            2432
+          ]
+        },
+        "before_over_after": 0.9722222222222222,
+        "block_ratios": [
+          0.9459459459459459,
+          1.0,
+          0.9722222222222222,
+          0.9166666666666666,
+          1.0
+        ]
+      }
+    },
+    "markov-compose7": {
+      "process_ns": {
+        "medians": {
+          "before": 3505280.5,
+          "after": 3389748.5
+        },
+        "ranges": {
+          "before": [
+            2828517,
+            4117046
+          ],
+          "after": [
+            2818430,
+            3873748
+          ]
+        },
+        "before_over_after": 1.0340827645472812,
+        "block_ratios": [
+          1.0344969280525664,
+          1.076551696976929,
+          1.0022119071172941,
+          0.9508935426919957,
+          0.968011012259387
+        ]
+      },
+      "peak_rss_kib": {
+        "medians": {
+          "before": 2176.0,
+          "after": 2176.0
+        },
+        "ranges": {
+          "before": [
+            2048,
+            2176
+          ],
+          "after": [
+            2176,
+            2176
+          ]
+        },
+        "before_over_after": 1.0,
+        "block_ratios": [
+          1.0,
+          1.0,
+          0.9705882352941176,
+          1.0,
+          0.9411764705882353
+        ]
+      }
+    }
+  },
+  "published_log_sha256": "79ae4a92ad0c064ff702a60b9a521d19a911992059c5502e4aa4fe33e7d89a51"
+}
