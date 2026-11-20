@@ -148,6 +148,21 @@ fn distance_value(code : Code, axis : Axis) -> Int32 {
 
 ///|
 test "GF2 parity differs from Boolean reachability and shape validation is exact" {
+  let ops = field()
+  assert_false(ops.zero)
+  assert_true(ops.one)
+  for a in [false, true] {
+    assert_eq((ops.negate)(a), a)
+    assert_eq((ops.inverse)(a), if a { Some(true) } else { None })
+    for b in [false, true] {
+      assert_eq(xor(a, b), a != b)
+      assert_eq((ops.add)(a, b), a != b)
+      assert_eq((ops.subtract)(a, b), a != b)
+      assert_eq((ops.multiply)(a, b), a && b)
+      assert_eq((scalars().plus)(a, b), a != b)
+      assert_eq((scalars().times)(a, b), a && b)
+    }
+  }
   assert_false(xor(true, true))
   let pair = masks(2, [3])
   assert_true(commute(pair, pair))

@@ -95,16 +95,6 @@ pub fn transitions(value : Kernel) -> @matrix.Matrix[@exact.Rational] {
 }
 
 ///|
-fn arithmetic() -> @algebra.Semiring[@exact.Rational] {
-  {
-    zero: @exact.rational_zero(),
-    one: @exact.rational_one(),
-    plus: @exact.rational_add,
-    times: @exact.rational_multiply,
-  }
-}
-
-///|
 fn adopt(
   value : @matrix.Matrix[@exact.Rational],
 ) -> Result[Kernel, MarkovError] {
@@ -118,7 +108,7 @@ fn adopt(
 pub fn identity(count : @core.Nat) -> Result[Kernel, MarkovError] {
   match count {
     Zero => Err(EmptyStateSpace)
-    Succ(_) => adopt(@matrix.identity(count, arithmetic()))
+    Succ(_) => adopt(@matrix.identity(count, @algebra.rationals()))
   }
 }
 
@@ -196,7 +186,12 @@ pub fn compose(first : Kernel, second : Kernel) -> Result[Kernel, MarkovError] {
   if !states(first).equal(states(second)) {
     Err(DimensionMismatch)
   } else {
-    match @matrix.multiply(first.transition, second.transition, arithmetic()) {
+    match
+      @matrix.multiply(
+        first.transition,
+        second.transition,
+        @algebra.rationals(),
+      ) {
       None => Err(InternalInvariant)
       Some(result) => adopt(result)
     }
@@ -209,7 +204,7 @@ pub fn power(
   value : Kernel,
   exponent : @binary.Binary,
 ) -> Result[Kernel, MarkovError] {
-  match @matrix.power(value.transition, exponent, arithmetic()) {
+  match @matrix.power(value.transition, exponent, @algebra.rationals()) {
     None => Err(InternalInvariant)
     Some(result) => adopt(result)
   }

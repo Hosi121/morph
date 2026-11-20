@@ -76,7 +76,7 @@ fn stationary_system(value : Kernel) -> @matrix.Matrix[@exact.Rational]? {
   match
     rows(
       @matrix.rows(@matrix.transpose(value.transition)),
-      @matrix.rows(@matrix.identity(states(value), arithmetic())),
+      @matrix.rows(@matrix.identity(states(value), @algebra.rationals())),
     ) {
     None => None
     Some(equations) => @matrix.matrix(states(value), equations)

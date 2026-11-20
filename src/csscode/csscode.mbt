@@ -1,33 +1,17 @@
 ///|
-/// Binary field addition. This is XOR, unlike algebra.booleans' OR.
+/// Binary field addition, shared with the GF2 kernel (not Boolean OR).
 pub fn xor(a : Bool, b : Bool) -> Bool {
-  match a {
-    true => !b
-    false => b
-  }
+  @gf2.xor(a, b)
 }
 
 ///|
 pub fn field() -> @rowreduce.Field[Bool] {
-  {
-    zero: false,
-    one: true,
-    add: xor,
-    subtract: xor,
-    negate: fn(a) { a },
-    multiply: fn(a, b) { a && b },
-    inverse: fn(a) {
-      match a {
-        true => Some(true)
-        false => None
-      }
-    },
-  }
+  @gf2.field()
 }
 
 ///|
 pub fn scalars() -> @algebra.Semiring[Bool] {
-  { zero: false, one: true, plus: xor, times: fn(a, b) { a && b }, }
+  @gf2.scalars()
 }
 
 ///|
