@@ -107,7 +107,7 @@ pub fn pullback_cubic(
 }
 
 ///|
-/// Trace Ric_ij g^ij through the shared tensor product and contraction kernels.
+/// Trace Ric_ij g^ij directly, without materializing its rank-four outer product.
 pub fn scalar_by_contraction(
   value : @riemann.Curvature,
 ) -> Result[@exact.Rational, GeometryError] {
@@ -135,18 +135,15 @@ pub fn scalar_by_contraction(
     Ok(value) => value
     Err(error) => return Err(error)
   }
-  let product = @tensor.product(@algebra.rationals(), inverse, ricci)
-  let first = match
-    @tensor.contract(@algebra.rationals(), product, Zero, Succ(Succ(Zero))) {
-    Ok(value) => value
-    Err(error) => return Err(Tensor(error))
-  }
-  match @tensor.contract(@algebra.rationals(), first, Zero, Succ(Zero)) {
+  match @tensor.zip(inverse, ricci, @exact.rational_multiply) {
     Err(error) => Err(Tensor(error))
-    Ok(scalar) =>
-      match @tensor.at(scalar, @core.Nil) {
-        Ok(value) => Ok(value)
-        Err(error) => Err(Tensor(error))
-      }
+    Ok(terms) =>
+      Ok(
+        @core.fold_left(
+          @tensor.entries(terms),
+          @exact.rational_zero(),
+          @exact.rational_add,
+        ),
+      )
   }
 }
