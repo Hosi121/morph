@@ -79,3 +79,10 @@ SMTのSAT例はprocessで約15%遅い標本を得た。この観測も除外せ�
 LeanのBooleanモデルはbyte一致であり、同じ条件付き健全性を再確認する。
 除算・恒等式・QQから実数への評価・検査順序の等価性・MoonBitへの翻訳は形式証明していない。
 [対応と未証明部分](../../formal/REVIEW-prefixlogic.md#不採用の余りの再構築を省く2026-11-21)を参照する。
+
+固定checkpoint`85d8eb7`を基準`2f46fca`と比較し、影響6package・runtime5packageで
+wasm-gc・JS・native releaseが各303テスト成功した。残る1CLIはソースとnative metadataでtest不在を確認。
+global型検査・85 Pythonテスト・純粋性397ファイル・188生成API・全既存形式モデルも成功した。
+計測ソース`bdd99a3`とcheckpointのmodule・wrapper・全srcはbyte一致を確認した。
+[固定checkpoint・全コマンド・全ログ・構造の照合](../measurements/cad-demand-20261121-validation.json)を保存した。
+計測用overlayは元のbytesへ戻し、比較用のclean worktreeを削除した。凍結ELFと必要な生ログ・再現用overlayは保持している。
