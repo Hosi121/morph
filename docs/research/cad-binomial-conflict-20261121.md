@@ -68,3 +68,11 @@ Leanモデルは変更せず、任意selectorに対する必須原子の抽出�
 算術の除算・恒等式・余りの帰結・QQ評価・MoonBitへの翻訳は形式証明していない。
 以前保存したOR/NOT変異の拒否は同一Leanソースの証拠であり、今回の新しい証明とは数えない。
 [対応・適用条件・未証明部分](../../formal/REVIEW-prefixlogic.md#二項等式と六関係への一般化2026-11-21)を参照する。
+
+固定checkpoint`8c8b7b8`を基準`7d80b62`と比較し、影響6package・runtime5packageについて
+wasm-gc・JS・native releaseで各303テストが成功した。残る1CLIはソースとnative metadataでtest不在を確認。
+global型検査、85 Pythonテスト、純粋性397ファイル、188生成API、全既存形式モデルも成功した。
+計測ソース`a1a0d23`からcheckpointまでmodule・wrapper・全srcのbyte一致を確認した。
+[固定checkpoint・全コマンド・全ログ・構造の照合](../measurements/cad-binomial-conflict-20261121-validation.json)を保存した。
+既存の独立oracleや重要な公開処理は削除せず、比較用のclean worktreeだけを削除した。
+必要な凍結ELF・生ログと、純粋性監査による構文修正前の比較はprivateな作業記録に保持する。
