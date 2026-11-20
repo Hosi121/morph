@@ -80,16 +80,15 @@ test "search rejects xy equals one over the entire x equals zero parent cell" {
   }
   let proof = certificate(compact)
   assert_true(check_result(problem, compact, proof))
-  match proof.tree {
-    Stack(_, cells) => {
-      assert_eq(@core.length(cells), @oracle.nat(3))
-      assert_true(
-        @core.all(cells, fn(cell) { cell.subtree.equal(Leaf(false)) }),
-      )
-    }
-    _ => fail("the x line must be covered before pruning its y cylinders")
-  }
+  // The checked identity xy-1 = y*x-1 now refutes the whole cylinder.
+  assert_eq(proof.tree, Leaf(false))
   let reference = finish(problem, 2000)
+  assert_true(check_result(problem, reference, certificate(reference)))
+  // Keep the complete geometric reference, including the three x cells.
+  match certificate(reference).tree {
+    Stack(_, cells) => assert_eq(@core.length(cells), @oracle.nat(3))
+    _ => fail("complete CAD must retain its geometric root cover")
+  }
   assert_eq(
     sentence(
       reference,
@@ -234,5 +233,62 @@ test "shortened proof leaves cannot replace unknown cells or forge source plans"
       )
     }
     _ => fail("expected nontrivial x cover")
+  }
+}
+
+///|
+test "quadratic nullification conflict has a checked root leaf bound to its original source" {
+  let source = @qf.Conjunction(
+    @qf.Atom(
+      incremental_review_polynomial(3, [(1, 1, [1, 0, 0])]),
+      @qf.EqualZero,
+    ),
+    @qf.Conjunction(
+      @qf.Atom(
+        incremental_review_polynomial(3, [(1, 1, [0, 1, 0]), (-1, 1, [0, 0, 0])]),
+        @qf.EqualZero,
+      ),
+      @qf.Atom(
+        incremental_review_polynomial(3, [
+          (1, 1, [1, 0, 2]),
+          (1, 1, [0, 1, 1]),
+          (-1, 1, [0, 0, 1]),
+          (-1, 1, [0, 0, 0]),
+        ]),
+        @qf.EqualZero,
+      ),
+    ),
+  )
+  let problem = prepare(@oracle.nat(3), source).unwrap()
+  let value = match search_step(start_search(problem)).unwrap() {
+    Unsatisfiable(value) => value
+    _ => fail("global polynomial identity must avoid lifting")
+  }
+  assert_eq(certificate(value).tree, Leaf(false))
+  assert_true(check_result(problem, value, certificate(value)))
+  // A coherent source/projection relabel to SAT must still reject the false leaf.
+  let other = @qf.Conjunction(
+    @qf.Atom(polynomial_fixture(3, [(1, [1, 0, 0])]), @qf.EqualZero),
+    @qf.Conjunction(
+      @qf.Atom(
+        polynomial_fixture(3, [(1, [0, 1, 0]), (-1, [0, 0, 0])]),
+        @qf.EqualZero,
+      ),
+      @qf.Atom(
+        polynomial_fixture(3, [(1, [1, 0, 2]), (1, [0, 1, 1]), (-1, [0, 0, 1])]),
+        @qf.EqualZero,
+      ),
+    ),
+  )
+  let sat = prepare(@oracle.nat(3), other).unwrap()
+  let forged : Certificate = {
+    ..certificate(value),
+    formula: other,
+    projection: projection(sat),
+  }
+  assert_true(check(sat, forged) is None)
+  match search_run(start_search(sat), @oracle.nat(20000)).unwrap() {
+    Satisfiable(point) => assert_true(check_witness(sat, point))
+    _ => fail("zero residual was incorrectly refuted")
   }
 }

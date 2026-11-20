@@ -14,6 +14,7 @@ tools/check_formal
 | 主張 | Leanの定理 | 対応するMoonBitの関数 |
 | --- | --- | --- |
 | 原子観測の一様性を任意深さのBoolean式へ伝える | partialEvaluate_sound / known_is_uniform | prefixlogic.evaluate_conditional のBoolean部分（[対応と仮定](REVIEW-prefixlogic.md)） |
+| 必須の等式をANDだけから取り出して矛盾を伝える | requiredAtoms_sound / conjunct_conflict_sound | 算術の矛盾を前提とするBoolean条件（[対応と未証明部分](REVIEW-prefixlogic.md#座標等式からの大域的な矛盾2026-11-20)） |
 | 全8条件のfull adderが桁の和を保存 | fullAdder_sound | binary.full_adder |
 | 任意の有限bit列のincrementが値を1増やす | increment_sound | binary.increment_bits |
 | 任意の二つの有限bit列とcarryの加算が値を保存 | addition_sound | binary.add_bits / add |

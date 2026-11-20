@@ -86,3 +86,38 @@ python3 tools/test_model_drift.py
 162 件の一様性確定、3 変数の係数合成、非整数の消滅点 `2/3`、
 不足した係数の保守的な不明判定、改変した Plan の拒否を三バックエンドで検査した。
 これらは有界の回帰検査であり、上の未証明事項の一般証明として扱わない。
+
+## 座標等式からの大域的な矛盾（2026-11-20）
+
+`linear_conflict`は、ANDだけをたどって必須の`EqualZero`原子を集める。
+その中の非零な座標等式`a*x_i+b=0`を除数とし、他の必須等式pを既存の多項式除算で簡約する。
+余りが非零定数cなら、返された商q_iから`p = Σ q_i d_i + c`を厳密に再構築し、元のpとの一致を検査する。
+全てのd_iとpが零である点ではcも零になるはずなので、非零定数との矛盾から元の式全体が偽となる。
+この場合だけ各stageを`Constant(false)`とし、CAD checkerも元の式から同じ判定と恒等式を再計算する。
+`Known(true)`は導出しない。OR・否定・他の関係の内側から等式を仮定しない。
+
+除数を座標等式に限るのは計算量の条件である。一般の連立一次式からの代入は単項式を多数へ展開し得るため、今回の経路では使わない。
+対象のpは線形にも非線形にもなり得る。非零定数を得られない場合、完全性やSATを主張せず既存の係数判定とCADへ戻る。
+Groebner基底を準備する新しいsolverや、公開の証拠型・API・importは追加していない。
+
+Leanの`requiredAtoms_sound`は、任意の有限式と任意の原子selectorについて、元の式が真なら
+ANDのみから取り出した全原子が真であることを構造帰納法で証明する。
+`conjunct_conflict_sound`は、その必須原子が同時に真になれないという前提の下で、元の式が偽になることを示す。
+二つの定理の公理依存は標準の`[propext, Quot.sound]`で、`sorryAx`や独自公理はない。既存の二定理は変更していない。
+ORと否定の内側の原子も集める二つの誤ったモデルは、それぞれLeanの定理とsanity exampleに拒否された。
+
+算術的な矛盾の前提は、MoonBitの除算結果・係数条件・再構築した恒等式が担う。
+これらの多項式演算、QQから実数への評価、再構築とモデルの翻訳は、このLeanモデルでは形式証明していない。
+誤った係数・次数・arityを許してよいという意味ではなく、既存の検査と独立した有限回帰で補う範囲である。
+
+| 変更判定 | 記録 |
+| --- | --- |
+| claim_id | CAD-CONJUNCT-CONFLICT-001 |
+| source_of_truth | 厳密な判定・元の式への証拠の束縛を保ち、不要なCAD展開を省くという契約 |
+| spec_delta / code_delta | 検査した座標等式の恒等式から全域の偽を導出する。一般CAD・元の原子・射影と証拠検査は維持 |
+| model_delta / drift_class | 新しい必須原子の抽出を追加。主分類はcoverage-gap。Boolean条件を補い、算術の一般証明は未達と明記 |
+| check_command | `.tools/lean/bin/lean -DwarningAsError=true formal/PrefixLogic.lean`、`tools/check_formal`、`tools/check_model_drift.py` |
+| previous_machine_result | 既存のBoolean一様性定理は成功。新しい抽出についての定理は未存在 |
+| current_machine_result | 新定理が成功し、OR/NOTを仮定へ取り込む二変異を拒否（machine-confirmed）。数値回帰と統合範囲は検証記録に保存 |
+| domain_wording / domain_question | 条件付きの等式から無条件の矛盾を作らない。既存契約と実装の許可で判断でき、追加の業務判断は不要 |
+| lock_update | `linear_conflict`全体と`prepare`の接続をsource-mapへ追加し、モデルを再検査してhashを更新。翻訳証明ではない |

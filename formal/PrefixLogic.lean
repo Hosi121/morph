@@ -160,6 +160,53 @@ example (observe : Atom → Truth) (body : Formula Atom) :
     partialEvaluate observe (.disjunction (.constant true) body) = .known true := by
   simp [partialEvaluate, disjoin]
 
+/-
+The equality collector used by linear_conflict follows only conjunctions.
+The selector is arbitrary: EqualZero and the coordinate-equation guard are checked outside this
+Boolean model. A checked polynomial identity supplies the conflict premise;
+polynomial division and real evaluation are not formalized here.
+-/
+def requiredAtoms (keep : Atom → Bool) : Formula Atom → List Atom
+  | .constant _ => []
+  | .atom atom => if keep atom then [atom] else []
+  | .negation _ => []
+  | .conjunction left right => requiredAtoms keep left ++ requiredAtoms keep right
+  | .disjunction _ _ => []
+
+theorem requiredAtoms_sound (keep : Atom → Bool) (assignment : Atom → Bool)
+    (source : Formula Atom) :
+    totalEvaluate assignment source = true →
+      ∀ atom ∈ requiredAtoms keep source, assignment atom = true := by
+  induction source with
+  | constant value => simp [requiredAtoms]
+  | atom value =>
+      cases selected : keep value <;> simp_all [requiredAtoms, totalEvaluate]
+  | negation body ih => simp [requiredAtoms]
+  | disjunction left right leftIH rightIH => simp [requiredAtoms]
+  | conjunction left right leftIH rightIH =>
+      intro holds atom member
+      have both : totalEvaluate assignment left = true ∧
+          totalEvaluate assignment right = true := by simpa [totalEvaluate] using holds
+      rcases List.mem_append.mp member with member | member
+      · exact leftIH both.1 atom member
+      · exact rightIH both.2 atom member
+
+theorem conjunct_conflict_sound (keep : Atom → Bool) (assignment : Atom → Bool)
+    (source : Formula Atom)
+    (conflict : (∀ atom ∈ requiredAtoms keep source, assignment atom = true) → False) :
+    totalEvaluate assignment source = false := by
+  cases holds : totalEvaluate assignment source with
+  | false => rfl
+  | true => exact False.elim (conflict (requiredAtoms_sound keep assignment source holds))
+
+-- A selected atom under OR or NOT cannot become an unconditional assumption.
+example (atom : Atom) : requiredAtoms (fun _ => true)
+    (.disjunction (.atom atom) (.constant true)) = [] := rfl
+example (atom : Atom) : requiredAtoms (fun _ => true) (.negation (.atom atom)) = [] := rfl
+
+#print axioms requiredAtoms_sound
+#print axioms conjunct_conflict_sound
+
 #print axioms partialEvaluate_sound
 #print axioms known_is_uniform
 

@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 LOCK = ROOT / "formal/source-map.json"
 REGIONS = {
     "src/prefixlogic/evaluate.mbt": ["evaluate_conditional"],
+    "src/prefixlogic/linear.mbt": ["linear_conflict"],
+    "src/prefixlogic/prepare.mbt": ["prepare"],
     "src/core/data.mbt": ["replicate", "replicate_onto", "reverse", "reverse_onto"],
     "src/core/natural.mbt": ["halve_nat", "half_nat"],
     "src/binary/binary.mbt": ["full_adder", "increment_bits", "add_bits", "add", "low_bit", "zero", "one", "from_nat", "compare_bits"],

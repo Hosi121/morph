@@ -173,6 +173,7 @@ pub fn prepare(
   fn stages(
     depth : @core.Nat,
     families : @core.Chain[@core.Chain[@poly.Polynomial]],
+    conflict : Bool,
   ) -> Result[@core.Chain[Stage], PrefixError] {
     match families {
       Nil => Ok(Nil)
@@ -181,7 +182,14 @@ pub fn prepare(
           Err(DimensionMismatch)
         } else {
           match
-            (compile_formula(depth, formula, family), stages(Succ(depth), rest)) {
+            (
+              if conflict {
+                Ok(Constant(false))
+              } else {
+                compile_formula(depth, formula, family)
+              },
+              stages(Succ(depth), rest, conflict),
+            ) {
             (Ok(conditional), Ok(tail)) =>
               Ok(
                 Cons(
@@ -198,7 +206,7 @@ pub fn prepare(
     !@core.all(@logic.qf_atoms(formula), fn(p) { valid_polynomial(p, arity) }) {
     Err(DimensionMismatch)
   } else {
-    match stages(Zero, families) {
+    match stages(Zero, families, linear_conflict(formula)) {
       Ok(stages) => Ok({ stages, })
       Err(error) => Err(error)
     }

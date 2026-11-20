@@ -6,8 +6,8 @@
 テスト欄はソース上の宣言数で、成功数・独立性・網羅率を表さない。
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
-算法の核：139パッケージ、396ソース。
-核のテスト宣言：5716、bench group：213。
+算法の核：139パッケージ、397ソース。
+核のテスト宣言：5720、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -27,7 +27,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [bitcodec](../src/bitcodec) | 1 | 2 | 0 | `binary`, `core` |
 | [blossom](../src/blossom) | 2 | 12 | 0 | `core` |
 | [boolean](../src/boolean) | 1 | 2 | 0 | `core` |
-| [cad](../src/cad) | 8 | 91 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `prefixlogic`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
+| [cad](../src/cad) | 8 | 92 | 0 | `cadprojection`, `core`, `exact`, `polynomial`, `prefixlogic`, `realcad`, `realformula`, `realtower`, `signcad`, `sturm` |
 | [cad2](../src/cad2) | 5 | 47 | 0 | `binary`, `core`, `numberfield`, `orderedsturm`, `polynomial`, `projection`, `realalgebraic`, `realcad`, `realminimal`, `relativecad` |
 | [cadprojection](../src/cadprojection) | 4 | 33 | 0 | `core`, `elimination`, `exact`, `polynomial` |
 | [cdcl](../src/cdcl) | 6 | 57 | 65 | `binary`, `core`, `sat` |
@@ -102,7 +102,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [persistence](../src/persistence) | 4 | 9 | 0 | `core`, `exact` |
 | [polynomial](../src/polynomial) | 7 | 137 | 8 | `binary`, `core`, `exact` |
 | [positiveform](../src/positiveform) | 2 | 5 | 0 | `core`, `exact`, `matrix` |
-| [prefixlogic](../src/prefixlogic) | 3 | 9 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
+| [prefixlogic](../src/prefixlogic) | 4 | 12 | 0 | `core`, `exact`, `polynomial`, `realcad`, `realformula` |
 | [presentation](../src/presentation) | 2 | 8 | 0 | `binary`, `core`, `exact`, `matrix`, `smith` |
 | [primality](../src/primality) | 3 | 13 | 9 | `binary`, `core`, `modular` |
 | [primefield](../src/primefield) | 1 | 6 | 6 | `binary`, `modular`, `primality`, `rowreduce` |
