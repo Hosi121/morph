@@ -7,7 +7,7 @@
 bench欄もgroup数で、group内部の個別計測数とは異なる。
 
 算法の核：139パッケージ、396ソース。
-核のテスト宣言：5715、bench group：213。
+核のテスト宣言：5716、bench group：213。
 testsupport・cmd・benchmarksは核の集計から除外する。
 
 | パッケージ | 核ソース | テスト宣言 | bench group | 直接の核依存 |
@@ -142,7 +142,7 @@ testsupport・cmd・benchmarksは核の集計から除外する。
 | [sorting](../src/sorting) | 1 | 2 | 0 | `core` |
 | [spanning](../src/spanning) | 1 | 2 | 0 | `binary`, `core`, `graph`, `heap`, `sorting` |
 | [splittinggalois](../src/splittinggalois) | 3 | 11 | 0 | `complexfield`, `complexsplitting`, `complexsubfield`, `core`, `exact`, `polynomial` |
-| [statgeometry](../src/statgeometry) | 6 | 24 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `positiveform`, `riemann`, `tensor` |
+| [statgeometry](../src/statgeometry) | 6 | 25 | 0 | `algebra`, `core`, `exact`, `gaussian`, `infogeom`, `linear`, `matrix`, `positiveform`, `riemann`, `tensor` |
 | [sturm](../src/sturm) | 1 | 3 | 0 | `core`, `exact`, `polynomial` |
 | [synthesis](../src/synthesis) | 2 | 11 | 0 | `cdcl`, `core`, `sat` |
 | [tarski](../src/tarski) | 3 | 402 | 0 | `binary`, `core`, `exact`, `polynomial`, `realalgebraic`, `sturm` |

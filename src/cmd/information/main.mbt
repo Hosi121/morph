@@ -297,7 +297,34 @@ fn demo() -> Unit {
 ///|
 fn main {
   let args = @env.args()
-  if args.length() >= 3 && args[args.length() - 2] == "--benchmark" {
+  if args.length() >= 3 && args[args.length() - 2] == "--contraction" {
+    let name = args[args.length() - 1]
+    let (d, iterations) = match name {
+      "scalar0" => (0, 32768)
+      "scalar3" => (3, 8192)
+      "scalar5" | "cached5" => (5, 2048)
+      _ => abort("unknown scalar contraction case")
+    }
+    // A categorical simplex has sectional curvature 1/4, hence scalar d(d-1)/4.
+    // Prepare curvature once, then time its independently recomputed contraction.
+    let value = @statgeometry.curvature(simplex(Array::make(d, q(1, d + 1)))).unwrap()
+    let expected = q(d * (d - 1), 4)
+    for _ in 0..<iterations {
+      let actual = if name == "cached5" {
+        @riemann.scalar_curvature(value)
+      } else {
+        @statgeometry.scalar_by_contraction(value).unwrap()
+      }
+      if actual != expected {
+        abort("scalar differs from independent simplex formula")
+      }
+    }
+    println(
+      "{\"case\":\"\{name}\",\"iterations\":\{iterations},\"checked\":true,\"result\":" +
+      rational_json(expected) +
+      "}",
+    )
+  } else if args.length() >= 3 && args[args.length() - 2] == "--benchmark" {
     let name = args[args.length() - 1]
     let (iterations, operation) = benchmark_case(name)
     let wanted = operation()
