@@ -1,0 +1,403 @@
+{
+  "utc": "2026-11-20T15:14:59.963696+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "timeout_seconds": 3,
+  "scope": "Whole native release process including startup, fixture construction, prepare, search, independent result checker invocation and output; excludes compilation. CLI clock intervals exclude fixture creation. One input per process.",
+  "case_specs": [
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-unsat3",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": true
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-unsat4",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": true
+    },
+    {
+      "layer": "smt",
+      "mode": "core",
+      "case": "diagonal-unsat4",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": true
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "quadratic-nullification3",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "prefix-unsat2",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "univariate-sat",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "univariate-unsat",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    }
+  ],
+  "summary": {
+    "cad/pruned/diagonal-unsat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 18347861.5,
+          "preparation_us": 268.2315,
+          "search_us": 7884.4310000000005,
+          "verification_us": 8059.904,
+          "total_us": 16326.600999999999
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1380388.5,
+          "preparation_us": 288.42150000000004,
+          "search_us": 1.8695,
+          "verification_us": 286.02750000000003,
+          "total_us": 585.266
+        }
+      },
+      "process_before_over_after": 13.291809878161112,
+      "process_block_ratios": [
+        9.72480187713202,
+        14.263669551991676,
+        15.67505901862885,
+        14.431689997379635,
+        11.98709066311097
+      ]
+    },
+    "cad/pruned/diagonal-unsat4": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 37720589.5,
+          "preparation_us": 603.537,
+          "search_us": 16089.482,
+          "verification_us": 18945.010000000002,
+          "total_us": 35511.875499999995
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 2052053.5,
+          "preparation_us": 597.5175,
+          "search_us": 1.8565,
+          "verification_us": 679.5355,
+          "total_us": 1280.291
+        }
+      },
+      "process_before_over_after": 18.38187430298479,
+      "process_block_ratios": [
+        18.07031003936534,
+        16.94791590872585,
+        14.081824571964477,
+        19.050312087920968,
+        19.942360690196374
+      ]
+    },
+    "smt/core/diagonal-unsat4": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 78367463.5,
+          "preparation_us": 14.4525,
+          "search_us": 57089.9185,
+          "verification_us": 20229.985500000003,
+          "total_us": 76145.9345
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4395049.0,
+          "preparation_us": 13.7605,
+          "search_us": 2595.143,
+          "verification_us": 652.3054999999999,
+          "total_us": 3229.8605
+        }
+      },
+      "process_before_over_after": 17.830850918840724,
+      "process_block_ratios": [
+        19.07105212854018,
+        20.238047700445886,
+        17.42394728344549,
+        14.629514675652784,
+        15.64923387683546
+      ]
+    },
+    "cad/pruned/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4570354.0,
+          "preparation_us": 344.82000000000005,
+          "search_us": 2966.6755000000003,
+          "verification_us": 56.165000000000006,
+          "total_us": 3344.0815000000002
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4169891.0,
+          "preparation_us": 342.994,
+          "search_us": 2800.2855,
+          "verification_us": 55.442,
+          "total_us": 3188.303
+        }
+      },
+      "process_before_over_after": 1.096036802880459,
+      "process_block_ratios": [
+        1.1519040909146179,
+        1.0805487339687496,
+        0.8248201935058393,
+        1.1120430807150476,
+        1.1088136384453973
+      ]
+    },
+    "cad/pruned/quadratic-nullification3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 92023751.0,
+          "preparation_us": 44158.332,
+          "search_us": 2.7005,
+          "verification_us": 45636.5055,
+          "total_us": 89399.65299999999
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 93664301.0,
+          "preparation_us": 45734.475,
+          "search_us": 2.747,
+          "verification_us": 45086.691,
+          "total_us": 90941.3
+        }
+      },
+      "process_before_over_after": 0.9824847889485664,
+      "process_block_ratios": [
+        0.9929338928101176,
+        1.0088489747379572,
+        0.9997275219186903,
+        0.9617507589343053,
+        1.011251946285106
+      ]
+    },
+    "cad/pruned/prefix-unsat2": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 864456.0,
+          "preparation_us": 56.988,
+          "search_us": 1.598,
+          "verification_us": 38.984,
+          "total_us": 100.346
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 804671.0,
+          "preparation_us": 55.185500000000005,
+          "search_us": 1.6155,
+          "verification_us": 40.102000000000004,
+          "total_us": 97.459
+        }
+      },
+      "process_before_over_after": 1.074297445788403,
+      "process_block_ratios": [
+        1.116685725014619,
+        2.0387469386788015,
+        0.729471405908904,
+        1.881761062153408,
+        0.7750098180127137
+      ]
+    },
+    "cad/pruned/univariate-sat": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1226628.0,
+          "preparation_us": 59.935500000000005,
+          "search_us": 283.3835,
+          "verification_us": 7.6265,
+          "total_us": 362.877
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1040092.0,
+          "preparation_us": 58.870000000000005,
+          "search_us": 268.896,
+          "verification_us": 7.578,
+          "total_us": 336.078
+        }
+      },
+      "process_before_over_after": 1.1793456732673648,
+      "process_block_ratios": [
+        0.7867901246423016,
+        0.9983532250329833,
+        0.9677388003362606,
+        1.217226879983591,
+        1.027299915231946
+      ]
+    },
+    "cad/pruned/univariate-unsat": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1327766.0,
+          "preparation_us": 62.11150000000001,
+          "search_us": 180.15300000000002,
+          "verification_us": 256.26550000000003,
+          "total_us": 491.54150000000004
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1248039.0,
+          "preparation_us": 54.1625,
+          "search_us": 183.2645,
+          "verification_us": 260.9365,
+          "total_us": 505.256
+        }
+      },
+      "process_before_over_after": 1.063881817795758,
+      "process_block_ratios": [
+        0.9236851147899433,
+        0.7681463088605989,
+        1.0850585484102175,
+        1.8823716792643772,
+        1.0926802753778828
+      ]
+    }
+  },
+  "runner_sha256": "1ad70631d85d0675d8c6b34c494f73ec783782cc9bab2ae0f48abde306c9462f",
+  "before": {
+    "root": "/home/hosi/morph-binomial-before",
+    "commit": "7d80b622e8cd7b529449bac7e83e1f3c8c35c01a",
+    "working_tree": [],
+    "source_manifest_sha256": "b8a2b26681a6a52ec7691238fb55edbee7f0a5e0ccb56a09fc5731db3fbe0f7a",
+    "source_file_count": 1110,
+    "artifact": "/home/hosi/morph/.tools/cad-binomial/before.exe",
+    "artifact_sha256": "efa66993533069bbfd45228062901810e6c9b51026c94b2a435f3d5f61ffb4cf",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "a1a0d230ac312eca982edc0a05dc89fccdfdabce",
+    "working_tree": [],
+    "source_manifest_sha256": "2694eddebc392f8ebe95b46c3a3795604d299b49056304dff2adc5343af6bfbf",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-binomial/after.exe",
+    "artifact_sha256": "0a1bbaac6d4eca99361aca8003df15a63058d17dd391d90a7681e8e08aa111c5",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "compiler_binary_sha256": {
+    "moon": "3fdfe18b453e619c707eb8ec50f1277a834bdb840a6e85094102b8978b06ef2e",
+    "moonc": "ec9d278bc212bf47e9ae38457e53635c2d9590aeb3ff1db18356afc8a2872f4f",
+    "moonrun": "38718520d7b86e6b12aebd69e075d739f17964c58586c256bb7637bfe86d1fb7"
+  },
+  "oracle": "Diagonals: mandatory coordinate aliases and x^2=2 imply the final squared equality, contradicting its disequality. SAT counterpart has a sqrt(2) branch. Quadratic nullification: x=0,y=1 gives -1=0. Prefix x=0 makes xy-1=-1. Univariate x^2=2 SAT, x^2+1=0 UNSAT. Every CLI exit checks its model or complete refutation against the original input.",
+  "status": "passed",
+  "kind": "verified complete measurement protocol; all exact decisions and result checks completed",
+  "run_count": 160,
+  "completed_solver_runs": 160,
+  "censored_baseline_runs": 0,
+  "all_solver_runs_completed": true,
+  "harness_published_path": "docs/measurements/cad-binomial-conflict-20261121-runner.py",
+  "published_log_sha256": "0c7e4ea659080e4649e8a916751adb58238cb188f9f9a7a55724d58bf8bead99",
+  "manifest_review": "Both clean source manifests independently reconstructed from the recorded Git trees; identical CLI bytes; all ABBA slots, exact decisions, retained raw output and summaries independently replayed before publication.",
+  "commands": [
+    {
+      "name": "bounded-native-comparison-protocol",
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        ".tools/cad-binomial/compare.py"
+      ],
+      "returncode": 0,
+      "sha256": "0c7e4ea659080e4649e8a916751adb58238cb188f9f9a7a55724d58bf8bead99",
+      "published_log": {
+        "path": "docs/measurements/cad-binomial-conflict-20261121-comparison.txt",
+        "offset_bytes": 0,
+        "length_bytes": 215402
+      }
+    }
+  ]
+}

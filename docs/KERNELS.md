@@ -15,6 +15,15 @@
 一般CADと公開APIは維持する。[8経路の比較・適用条件・4変数対照の3.4%退行・未証明部分](research/cad-linear-conflict-20261120.md)を記録した。
 旧版の打切りから有限の改善倍率や全入力の性能保証は導かない。
 
+## 二項等式の共通簡約
+
+前回の恒等式検査を再利用し、`x=y`の連鎖や`xy=1`も扱う。
+`7d80b62`→`a1a0d23`のnative release・CPU4・固定5ABBAでは、3変数矛盾が18.348→1.380 ms、
+4変数が37.721→2.052 ms、SMT経由が78.367→4.395 ms。各5/5 blockで改善し、全160回が検査まで成功した。
+SAT対照や既存の座標例の差は安定せず、一般化しない。
+[規則・全対照・限界](research/cad-binomial-conflict-20261121.md)と
+[全ログとsource/ELF](measurements/cad-binomial-conflict-20261121-comparison.json)を保存した。
+
 ## 高階テンソルの走査
 
 `tensor.mode_product` と `contract` は、各成分のoffset再構築から不変blockのcursorへ進めました。

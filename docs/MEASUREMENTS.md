@@ -15,6 +15,15 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## 二項等式の共通簡約
+
+前回の恒等式検査を再利用し、`x=y`の連鎖や`xy=1`も扱う。
+`7d80b62`→`a1a0d23`のnative release・CPU4・固定5ABBAでは、3変数矛盾が18.348→1.380 ms、
+4変数が37.721→2.052 ms、SMT経由が78.367→4.395 ms。各5/5 blockで改善し、全160回が検査まで成功した。
+SAT対照や既存の座標例の差は安定せず、一般化しない。
+[規則・全対照・限界](research/cad-binomial-conflict-20261121.md)と
+[全ログとsource/ELF](measurements/cad-binomial-conflict-20261121-comparison.json)を保存した。
+
 ## 座標等式の恒等式でCAD展開を省く
 
 `1edc2c2`と`6861797`のnative release・CPU4・固定5ABBAで8経路を比較した。
