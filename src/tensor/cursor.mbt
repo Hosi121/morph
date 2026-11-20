@@ -63,21 +63,22 @@ fn[A] cursor_columns(
 }
 
 ///|
+/// Checked matrix rows and axis cursors have equal lengths. Fold them directly
+/// in the original left-to-right callback order, without a temporary pair Chain.
 fn[A] cursor_dot(
   arithmetic : @algebra.Semiring[A],
   coefficients : @core.Chain[A],
   values : @core.Chain[A],
+  accumulated : A,
 ) -> Result[A, TensorError] {
-  match @core.zip(coefficients, values) {
-    None => Err(InternalShape)
-    Some(pairs) =>
-      Ok(
-        @core.fold_left(pairs, arithmetic.zero, fn(total, pair) {
-          let (coefficient, value) = pair
-          let term = (arithmetic.times)(coefficient, value)
-          (arithmetic.plus)(total, term)
-        }),
-      )
+  match (coefficients, values) {
+    (Nil, Nil) => Ok(accumulated)
+    (Cons(coefficient, rest), Cons(value, tail)) => {
+      let term = (arithmetic.times)(coefficient, value)
+      let next = (arithmetic.plus)(accumulated, term)
+      cursor_dot(arithmetic, rest, tail, next)
+    }
+    _ => Err(InternalShape)
   }
 }
 
@@ -93,7 +94,7 @@ fn[A] cursor_mapped_block(
     Cons(row, rest) =>
       match
         cursor_columns(inner, rows, fn(values) {
-          cursor_dot(arithmetic, row, values)
+          cursor_dot(arithmetic, row, values, arithmetic.zero)
         }) {
         Err(error) => Err(error)
         Ok(values) =>
