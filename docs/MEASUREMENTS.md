@@ -15,6 +15,12 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## Tensorの一時列と恒等変換
+
+`3bc3ffc`と併用版`0b9cab0`のnative release・CPU4・固定5ABBAでは、添字上げdim3/5が1.078/1.051倍、恒等置換が13.475倍。
+[最終5入力・100プロセス](measurements/tensor-temporaries-final-20261120.json)と[単独比較・同一ELF対照・残る無駄](research/tensor-temporaries-20261120.md)を保存した。
+geometryは事前に固定した32倍反復で、2026-11-18のデフォルト反復の系列とは合成しない。非恒等置換の差と実メモリへの効果は未確定。
+
 ## CSS・Markovのスカラー構成の共有
 
 `0abcc77`と`457da65`をnative release・CPU4・同一SDK・固定5ABBAで比較した。

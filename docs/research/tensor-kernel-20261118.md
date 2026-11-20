@@ -18,6 +18,8 @@ semiring 辞書には変更がない。機械数値、array、mutation、FFI、�
 新しい検索は一出力あたり各軸の index の和に従う。参照木の準備と出力座標の生成は
 別途必要であり、これを wall-clock の一般的な保証には読み替えない。
 
+恒等置換を直接返す経路は、この記録の後に[2026-11-20の追補](tensor-temporaries-20261120.md)で追加した。以下は当時の固定sourceの結果である。
+
 ## 固定比較の結果
 
 native release、MoonBit moonc `v0.10.20+65efd5b93`、Intel Core Ultra 7 255H、

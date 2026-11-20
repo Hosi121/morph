@@ -1,0 +1,221 @@
+{
+  "utc": "2026-11-20T12:39:22.645594+00:00",
+  "before": {
+    "root": "/home/hosi/morph-tensor-before",
+    "commit": "82587b810a88dc363779e25548733056369b992f",
+    "working_tree": [],
+    "source_manifest_sha256": "929cbb531e9455f47ae6af09e4d7862394f5aba32dd5910a9a2110a0807a96a0",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/dot.exe",
+    "artifact_sha256": "569a166385e92d0bb3f9d809de52e214d3731546bd19f5958c8ed22bc218af04",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "82587b810a88dc363779e25548733056369b992f",
+    "working_tree": [
+      "M src/tensor/tensor.mbt"
+    ],
+    "source_manifest_sha256": "f39adf6e53dd62683f571907518d7b0ce280b4f32d4e0ff2e5ed6fa9bc4d5960",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/combined.exe",
+    "artifact_sha256": "7c2b8e772bc3d04f6152d6a8a3e7258be69f16a1389a14c090331b8a6a018c6d",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "permute-scalar": {
+      "process_ns": {
+        "medians": {
+          "before": 4462165.0,
+          "after": 2284563.0
+        },
+        "ranges": {
+          "before": [
+            3118040,
+            6478085
+          ],
+          "after": [
+            1657458,
+            3786878
+          ]
+        },
+        "before_over_after": 1.9531809803450375,
+        "block_ratios": [
+          1.9817664410108142,
+          1.9134468745150022,
+          2.222251323876984,
+          2.0213680070835567,
+          2.2245492180545137
+        ]
+      }
+    },
+    "permute-zero": {
+      "process_ns": {
+        "medians": {
+          "before": 11199031.0,
+          "after": 8532233.5
+        },
+        "ranges": {
+          "before": [
+            5259562,
+            14036987
+          ],
+          "after": [
+            4231051,
+            13466212
+          ]
+        },
+        "before_over_after": 1.3125556162990617,
+        "block_ratios": [
+          1.038499728905378,
+          1.1366259023532812,
+          1.744166302103859,
+          1.1070737222557259,
+          1.8721553682788694
+        ]
+      }
+    },
+    "permute-tiny": {
+      "process_ns": {
+        "medians": {
+          "before": 17773671.5,
+          "after": 17650655.5
+        },
+        "ranges": {
+          "before": [
+            16106377,
+            23633297
+          ],
+          "after": [
+            15294165,
+            28439370
+          ]
+        },
+        "before_over_after": 1.0069694862040677,
+        "block_ratios": [
+          0.9312011425690532,
+          0.8695739780055598,
+          1.0320652694195205,
+          1.0063789031480275,
+          1.0034148086558585
+        ]
+      }
+    },
+    "permute-rect": {
+      "process_ns": {
+        "medians": {
+          "before": 68708695.5,
+          "after": 67540035.5
+        },
+        "ranges": {
+          "before": [
+            54443137,
+            75683105
+          ],
+          "after": [
+            61255177,
+            71329050
+          ]
+        },
+        "before_over_after": 1.0173032186220867,
+        "block_ratios": [
+          0.8249344696346115,
+          1.0298012205647644,
+          1.088253869081136,
+          1.0435601365950085,
+          1.048892869696075
+        ]
+      }
+    },
+    "permute-rank5": {
+      "process_ns": {
+        "medians": {
+          "before": 67646619.0,
+          "after": 70531928.0
+        },
+        "ranges": {
+          "before": [
+            59610629,
+            74382623
+          ],
+          "after": [
+            62421071,
+            76041311
+          ]
+        },
+        "before_over_after": 0.9590921575261632,
+        "block_ratios": [
+          1.0264526491932136,
+          0.983228060030216,
+          0.9445788766177106,
+          0.9519183150602216,
+          0.8990923493992085
+        ]
+      }
+    },
+    "permute-identity": {
+      "process_ns": {
+        "medians": {
+          "before": 72366148.0,
+          "after": 3993844.0
+        },
+        "ranges": {
+          "before": [
+            66303960,
+            89752987
+          ],
+          "after": [
+            3297188,
+            6284116
+          ]
+        },
+        "before_over_after": 18.11942279167639,
+        "block_ratios": [
+          20.615149296089452,
+          14.005040649883162,
+          17.9942719126103,
+          19.285566176530462,
+          15.222792122237701
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "argument_prefix": [
+    "--profile"
+  ],
+  "verified_source_commits": {
+    "before": "82587b810a88dc363779e25548733056369b992f",
+    "after": "0b9cab0b6148e8d111728ab1ba8cf6937796514c"
+  },
+  "comparison_purpose": "Identity action isolated on top of the accepted dot change.",
+  "additional_reference": "Every complete payload checked against Python mixed-radix permutation oracle or independent Fraction reconstruction; reference source stored in final record.",
+  "permutation_reference_git_object": "3bc3ffc:tools/tensor-kernel-compare.py",
+  "run_count": 120,
+  "lossless_full_record": {
+    "path": "docs/measurements/tensor-temporaries-identity-20261120.json.gz",
+    "sha256": "78133c713832d527c1e9e07788dcf87dc6f45a9c2b880f8a64c1540f5d17a32b",
+    "uncompressed_sha256": "92411570f69379cc9f3f7459d301eaa4c9c989ce5bf58e8447bfe90ae197b625"
+  }
+}

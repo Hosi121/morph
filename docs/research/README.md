@@ -26,6 +26,7 @@
 | [拡大体上のTate評価](extension-pairings-20261118.md) | shifted divisor、Millerの中間零/極、全商群・双線形性・独立有限体参照 |
 | [点での微分幾何](riemann-20261118.md) | 計量jetの検査、接続と曲率、独立Fraction参照 |
 | [高階テンソルの共通部品](tensor-20261118.md) | shape・置換・縮約・mode product、零次元と演算辞書 |
+| [Tensorの一時列と恒等変換](tensor-temporaries-20261120.md) | 内積のzip融合・不変Tensorの再利用、単独/併用比較、残るn⁴展開 |
 | [多項式の微分形式](forms-20261118.md) | 外積と外微分、次数と符号、縮約とCartanのLie微分 |
 | [微分形式と単体の積分](simplexforms-20261118.md) | 向き付き単体、厳密積分、全境界を束縛するStokes証拠 |
 | [Gaussianの厳密モーメント](gaussian-20261118.md) | Stein再帰・不変memoization、独立Wick pairingとの照合 |

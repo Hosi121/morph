@@ -1,0 +1,89 @@
+{
+  "utc": "2026-11-20T12:41:39.276575+00:00",
+  "before": {
+    "root": "/home/hosi/morph-tensor-before",
+    "commit": "82587b810a88dc363779e25548733056369b992f",
+    "working_tree": [],
+    "source_manifest_sha256": "929cbb531e9455f47ae6af09e4d7862394f5aba32dd5910a9a2110a0807a96a0",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/dot.exe",
+    "artifact_sha256": "569a166385e92d0bb3f9d809de52e214d3731546bd19f5958c8ed22bc218af04",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-tensor-before",
+    "commit": "82587b810a88dc363779e25548733056369b992f",
+    "working_tree": [],
+    "source_manifest_sha256": "929cbb531e9455f47ae6af09e4d7862394f5aba32dd5910a9a2110a0807a96a0",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/dot.exe",
+    "artifact_sha256": "569a166385e92d0bb3f9d809de52e214d3731546bd19f5958c8ed22bc218af04",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "permute-rank5": {
+      "process_ns": {
+        "medians": {
+          "before": 66310398.0,
+          "after": 65730038.0
+        },
+        "ranges": {
+          "before": [
+            56889696,
+            81909548
+          ],
+          "after": [
+            58224005,
+            72745589
+          ]
+        },
+        "before_over_after": 1.0088294487217548,
+        "block_ratios": [
+          0.9264834368724945,
+          1.0435347738168783,
+          1.1644731212632076,
+          1.0572621867857166,
+          0.9400370431608068
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "argument_prefix": [
+    "--profile"
+  ],
+  "verified_source_commits": {
+    "before": "82587b810a88dc363779e25548733056369b992f",
+    "after": "82587b810a88dc363779e25548733056369b992f"
+  },
+  "comparison_purpose": "Same native ELF on both sides; diagnostic noise control, not an optimization result.",
+  "additional_reference": "Every complete payload checked against Python mixed-radix permutation oracle or independent Fraction reconstruction; reference source stored in final record.",
+  "permutation_reference_git_object": "3bc3ffc:tools/tensor-kernel-compare.py",
+  "run_count": 20,
+  "lossless_full_record": {
+    "path": "docs/measurements/tensor-temporaries-identity-aa-20261120.json.gz",
+    "sha256": "f2bd500b272201a492a31a0f5f89cc173212666c4889c4dfa60a1d8f298e8e58",
+    "uncompressed_sha256": "ec37308319e1949bfa20703a852cc0ef058f355fe96afd938da9c65559236461"
+  }
+}

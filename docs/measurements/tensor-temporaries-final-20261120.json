@@ -1,0 +1,194 @@
+{
+  "utc": "2026-11-20T12:43:30.570889+00:00",
+  "before": {
+    "root": "/home/hosi/morph-tensor-before",
+    "commit": "3bc3ffcd995cf9fe006957116541681209e86102",
+    "working_tree": [],
+    "source_manifest_sha256": "24b89ebb79901d362d1b19fb1d76bb44c031931c39e65affe1a956c051aef83a",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/before.exe",
+    "artifact_sha256": "4048c27494dea982bfc9c69f05b5dc7cf59fc74dd289c932e4b67cba5588a72d",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "0b9cab0b6148e8d111728ab1ba8cf6937796514c",
+    "working_tree": [],
+    "source_manifest_sha256": "f39adf6e53dd62683f571907518d7b0ce280b4f32d4e0ff2e5ed6fa9bc4d5960",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/tensor-reuse/combined.exe",
+    "artifact_sha256": "7c2b8e772bc3d04f6152d6a8a3e7258be69f16a1389a14c090331b8a6a018c6d",
+    "harness": {
+      "main.mbt": "133f43bebfa52bf304b541fd29cbeb0b5b1bcaa6ca47eafd08337e155685d67c",
+      "moon.pkg": "8757fd3196978e777c04ef787b7c3725ba8af66c9261e8315dc5090f6ea9aa5d"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "raise3": {
+      "process_ns": {
+        "medians": {
+          "before": 3805284793.0,
+          "after": 3530151982.5
+        },
+        "ranges": {
+          "before": [
+            3378387479,
+            3923372759
+          ],
+          "after": [
+            3426923487,
+            3629838982
+          ]
+        },
+        "before_over_after": 1.0779379505086224,
+        "block_ratios": [
+          1.0791741315702352,
+          1.0428605735162668,
+          1.0120970446886168,
+          1.0900100701134119,
+          1.0869390155064076
+        ]
+      }
+    },
+    "raise5": {
+      "process_ns": {
+        "medians": {
+          "before": 6581627248.5,
+          "after": 6264270711.0
+        },
+        "ranges": {
+          "before": [
+            6376389689,
+            6774222999
+          ],
+          "after": [
+            5909184391,
+            6575134721
+          ]
+        },
+        "before_over_after": 1.0506613701963303,
+        "block_ratios": [
+          1.0456537162697606,
+          1.0584918187415666,
+          1.0313305876150138,
+          1.0922143812291827,
+          1.0844695635104515
+        ]
+      }
+    },
+    "scalar5": {
+      "process_ns": {
+        "medians": {
+          "before": 8548879873.0,
+          "after": 8466957296.5
+        },
+        "ranges": {
+          "before": [
+            8101230638,
+            8911192421
+          ],
+          "after": [
+            7988261195,
+            9240484761
+          ]
+        },
+        "before_over_after": 1.0096755627353717,
+        "block_ratios": [
+          1.02592864599551,
+          0.9425190835404295,
+          0.982486027076315,
+          1.0056181169617264,
+          1.0282234868057902
+        ]
+      }
+    },
+    "permute-identity": {
+      "process_ns": {
+        "medians": {
+          "before": 73585255.0,
+          "after": 5460747.0
+        },
+        "ranges": {
+          "before": [
+            65491301,
+            83052042
+          ],
+          "after": [
+            3597532,
+            7856975
+          ]
+        },
+        "before_over_after": 13.475309330390147,
+        "block_ratios": [
+          14.696474885910783,
+          13.101415590946146,
+          16.046023755833694,
+          13.562344499867127,
+          11.472870887442228
+        ]
+      }
+    },
+    "permute-rank5": {
+      "process_ns": {
+        "medians": {
+          "before": 66492721.5,
+          "after": 63296219.5
+        },
+        "ranges": {
+          "before": [
+            58404702,
+            82579251
+          ],
+          "after": [
+            59404895,
+            72600489
+          ]
+        },
+        "before_over_after": 1.0505006780065278,
+        "block_ratios": [
+          0.9787265326108087,
+          1.161277528660087,
+          0.9828722270614775,
+          1.028815264743495,
+          1.0648629906159122
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "argument_prefix": [
+    "--profile"
+  ],
+  "verified_source_commits": {
+    "before": "3bc3ffcd995cf9fe006957116541681209e86102",
+    "after": "0b9cab0b6148e8d111728ab1ba8cf6937796514c"
+  },
+  "comparison_purpose": "Final combination compared with the original baseline; five predeclared cases.",
+  "additional_reference": "Every complete payload checked against Python mixed-radix permutation oracle or independent Fraction reconstruction; reference source stored in final record.",
+  "permutation_reference_git_object": "3bc3ffc:tools/tensor-kernel-compare.py",
+  "independent_fraction_reference_source": "from fractions import Fraction as F\nfrom itertools import product\n\ndef geometry_expected(case):\n n,count={'tiny':(1,10000),'zero':(0,10000),'raise3':(3,2000),'raise5':(5,500),'scalar3':(3,1000),'scalar5':(5,500)}[case]\n m=n+1\n def g(i,j):return F(m*(i==j)-1,m*m)\n def lower(i,j,k):return F(0) if i==j==k else F(m*m,2)\n def ricci(i,j):return F((n-1)*m*(1+(i==j)),4)\n def tensor(rank,term):\n  return dict(shape=[n]*rank,entries=[[x.numerator,x.denominator] for ix in product(range(n),repeat=rank) for x in [term(*ix)]])\n return dict(case=case,dimension=n,iterations=count*32,checked=True,\n  inverse=tensor(2,g),lower=tensor(3,lower),ricci=tensor(2,ricci),\n  raised=tensor(3,lambda i,j,k:sum((g(k,a)*lower(i,j,a) for a in range(n)),F(0))),\n  product=tensor(4,lambda i,j,k,l:g(i,j)*ricci(k,l)),\n  first_trace=tensor(2,lambda j,l:sum((g(i,j)*ricci(i,l) for i in range(n)),F(0))),\n  scalar=dict(shape=[],entries=[[F(n*(n-1),4).numerator,F(n*(n-1),4).denominator]]))\n",
+  "run_count": 100,
+  "lossless_full_record": {
+    "path": "docs/measurements/tensor-temporaries-final-20261120.json.gz",
+    "sha256": "2abbb655bc8b898df75f351f1dd3772a5878fc1252731ec65c09863dc15d2a81",
+    "uncompressed_sha256": "a508d004f4b3c49eca2ca1acb2ab358efbff05d7e93a3e795866ebf6319cf4d0"
+  }
+}
