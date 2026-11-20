@@ -94,7 +94,8 @@ Markovの有理数半環辞書を削除して既存`algebra.rationals`を直接�
 | CSSのXOR・体辞書・半環辞書 | `gf2.xor`・`field`・`scalars` | BoolをF₂として解釈する。OR/ANDのBoolean半環とは区別する |
 | Markovの有理数半環 | `algebra.rationals` | 厳密なQQ演算を共有する。確率の非負性・行和1・次元はMarkovの境界で引き続き検査する |
 
-本体7ファイルを共通先・wrapperを含めて数えると、CSSは693→677物理行、Markovは1,027→1,022物理行。
+変更対象2packageの本体7ファイル（残るwrapperを含む）は、CSSが693→677物理行、Markovが1,027→1,022物理行。
+共有先のgf2/algebraは既存のままであり、追加した共通核はない。
 合計1,720→1,699で21行減、空白・コメントを除くcode行は1,409→1,390で19行減。
 計数規則は上記と同じでtests・CLI・生成interfaceを除く。既存CSSテストへの15行の追加は別計上する。
 Bool全組合せで加減乗算・XOR、両値で符号反転と逆元を独立のtruth tableと照合した。
@@ -113,6 +114,10 @@ SDKでは終了コードとstart/resultの成功イベントを両方確認し�
 冪の中央値は約15%遅い。起動・構築・oracle・証拠検査を含み、MarkovはGNU time wrapperも含む短い測定であり、kernel単体の時間ではない。
 Markovのpeak RSS中央値は冪2,240→2,304KiB、合成2,176→2,176KiB。割当総量・JS/Wasm性能は未計測。
 速度維持・高速化・メモリ削減を確認したとは主張せず、重複した構成の保守を一か所へ寄せたことを採用理由とする。
+
+固定ソース`fc701be`で逆依存12packageを選び、runtime 7packageを3targetで各306件確認した。
+省略はソース・metadataでtest不在を確認した5CLIのみ。global型検査、85 Pythonテスト、純粋性396ファイル、既存形式モデルも通過した。
+[固定checkpoint・全ログ・APIと静的照合](../measurements/scalar-sharing-20261120-validation.json)を参照。これを新しい形式証明とは扱わない。
 
 ## 1. galois と numberfield：多項式環の商による体拡大
 

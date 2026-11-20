@@ -1,0 +1,311 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-20T04:34:21.339795+00:00",
+  "finished_utc": "2026-11-20T04:36:56.613054+00:00",
+  "baseline": "0abcc7782587ff7a8d6da4618e69b9a5eba074b1",
+  "source_commit": "fc701beb912b3144981048ebe3e02a6a003bedf4",
+  "scope": "Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.",
+  "full_repository": false,
+  "roots": [
+    "csscode",
+    "markov"
+  ],
+  "packages": [
+    "cmd/gf2consumerbench",
+    "cmd/information",
+    "cmd/latebasisbench",
+    "cmd/lateboolproductbench",
+    "cmd/nightcursorbench",
+    "cmd/nighteliminatebench",
+    "cmd/nightgf2bench",
+    "cmd/topology",
+    "cmd/topologyrings",
+    "cohomology",
+    "csscode",
+    "markov"
+  ],
+  "runtime_packages": [
+    "cmd/gf2consumerbench",
+    "cmd/information",
+    "cmd/nightcursorbench",
+    "cmd/nighteliminatebench",
+    "cohomology",
+    "csscode",
+    "markov"
+  ],
+  "reviewed_interface_changes": [],
+  "runner_sha256": "03b2776306e7980ee2cbe8178912da450f94a865f62b1529031f3ffeb385cc2d",
+  "source_manifest_sha256": "11b0bdfd6f6b6ec557a6b48d49564459ee535bedcfe8711fdfb2f8fc4b9665f7",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "runner_git_object": "fc701beb912b3144981048ebe3e02a6a003bedf4:tools/check_affected.py",
+  "source_manifest_entries": 1665,
+  "skipped_empty_command_packages": [
+    "cmd/latebasisbench",
+    "cmd/lateboolproductbench",
+    "cmd/nightgf2bench",
+    "cmd/topology",
+    "cmd/topologyrings"
+  ],
+  "body_metrics": {
+    "csscode": {
+      "before": {
+        "files": 2,
+        "physical": 693,
+        "code": 546
+      },
+      "after": {
+        "files": 2,
+        "physical": 677,
+        "code": 530
+      }
+    },
+    "markov": {
+      "before": {
+        "files": 5,
+        "physical": 1027,
+        "code": 863
+      },
+      "after": {
+        "files": 5,
+        "physical": 1022,
+        "code": 860
+      }
+    },
+    "total": {
+      "before": {
+        "files": 7,
+        "physical": 1720,
+        "code": 1409
+      },
+      "after": {
+        "files": 7,
+        "physical": 1699,
+        "code": 1390
+      }
+    }
+  },
+  "body_metric_definition": "Production .mbt in csscode and markov, including unchanged files and remaining delegates. Tests/CLI/generated interfaces excluded. Physical splitlines; code counts nonempty line.split(\"//\",1)[0].strip(), including braces.",
+  "structural_review": {
+    "css_algorithm_tail_byte_identical": true,
+    "markov_changes_only_shared_factory_substitution": "Compared after removing whitespace and formatter-added trailing call commas.",
+    "markov_old_recipe_identical_to_algebra_rationals": true,
+    "css_old_xor_and_semiring_bodies_identical_to_gf2": true,
+    "css_field_inverse": "Boolean match and if are checked over both Bool values; all add/subtract/multiply/xor operations checked against independent truth tables.",
+    "new_public_functions": 0,
+    "new_types": 0,
+    "new_packages": 0,
+    "new_imports": 0
+  },
+  "preservation": {
+    "csscode": {
+      "moon.pkg": {
+        "byte_identical": true,
+        "sha256": "b4275497406d0ba306975a3f7e635373c53aafe437e46c394e3308a33736524e"
+      },
+      "pkg.generated.mbti": {
+        "byte_identical": true,
+        "sha256": "ec33a7f15c287ce59612e2457337281ee39517cb0fa674628a4d1c76cd69d226"
+      }
+    },
+    "markov": {
+      "moon.pkg": {
+        "byte_identical": true,
+        "sha256": "1eac067817d51d8a9da48bb9624e08b8ed0a6ec8b73b1b3b1fffe2e6a8f646b6"
+      },
+      "pkg.generated.mbti": {
+        "byte_identical": true,
+        "sha256": "7c1091e0ea2871f32568aa384be26083f50b05385ebbd3cd3aba04b622089c1d"
+      }
+    }
+  },
+  "benchmark_records": [
+    "docs/measurements/scalar-sharing-css-20261120.json",
+    "docs/measurements/scalar-sharing-native-20261120.json"
+  ],
+  "formal_scope": "Existing formal model checks only; no new formal proof of the dictionary delegates. Boolean operations are tested over the complete finite Bool domain; integer bitmask and Fraction oracles remain separate.",
+  "cleanup": "Own clean baseline worktree removed after freezing comparison; source commit and executable hashes retained. Only main worktree remains.",
+  "commands": [
+    {
+      "name": "maintenance",
+      "argv": [
+        "bash",
+        "-c",
+        "set -euo pipefail\npython3 -m unittest discover -s tools -p 'test_*.py' -q\npython3 tools/check_docs.py\npython3 tools/check_evidence.py\npython3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json\npython3 tools/check_kernel_evidence.py\npython3 tools/matrix-kernel-check.py\npython3 tools/check_information_evidence.py\npython3 tools/inventory.py --check\npython3 tools/audit_purity.py\npython3 tools/audit_paths.py --check\npython3 tools/check_model_drift.py\npython3 tools/benchmark_bareiss.py --check-reference-only\npython3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null\npython3 tools/generate_binary_tiny_products.py --check\npython3 tools/generate_binary_tiny_differences.py --check --winner lookup\npython3 tools/generate_bernstein_fixtures.py --check\npython3 tools/generate_rational_elimination_cases.py --check\npython3 tools/generate_linearspan_fixtures.py --check\npython3 docs/research/night-normal-form-20261117-oracle.py --check\npython3 docs/research/night-product-20261117-oracle.py --check\npython3 docs/research/late-subtraction-20261117-oracle.py --check\npython3 docs/research/late-poly-unit-20261117-oracle.py --check\npython3 tools/generate_signed_residue_n04.py --check\npython3 tools/generate_tower_constant_fixtures.py --check\npython3 tools/generate_monic_identity_n05.py --check\npython3 tools/generate_markov_fixtures.py --check\npython3 tools/generate_riemann_fixtures.py --check\npython3 tools/generate_forms_fixtures.py --check\npython3 tools/generate_hodge_fixtures.py --check\npython3 tools/generate_simplexforms_fixtures.py --check\npython3 tools/generate_gaussian_fixtures.py --check\npython3 -S tools/generate_information_review_fixtures.py --check-stored\npython3 tools/extension-curves-20261118-oracle.py --check\npython3 tools/extension-pairings-20261118-oracle.py --check\npython3 tools/check_information_tour.py\npython3 tools/generate_homology_fixtures.py --check\npython3 tools/generate_persistence_fixtures.py --check\npython3 tools/generate_simplicialmap_fixtures.py --check\npython3 tools/generate_csscode_fixtures.py --check\npython3 tools/generate_cohomology_fixtures.py --check\npython3 tools/generate_relativehomology_fixtures.py --check\npython3 tools/generate_collapse_fixtures.py --check\ntools/moon fmt --check\npython3 tools/generate_comparison_candidates.py --check\ntools/moon check --deny-warn -j 1\npython3 tools/check_interfaces.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 80.74678985100036,
+      "sha256": "3d53eb4cb2f9e962342059a5fc47284661c2da5d788c62a0d9c61af85bbd9ab1",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 2492,
+        "length_bytes": 4654
+      }
+    },
+    {
+      "name": "check-js",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.8609818339973572,
+      "sha256": "80b487f65e500f98b651ee9c2d3023d6bd32e176e63d2851c46410b31dbe99bb",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 7226,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "check-native",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.3277950099945883,
+      "sha256": "80b487f65e500f98b651ee9c2d3023d6bd32e176e63d2851c46410b31dbe99bb",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 7359,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "tests-wasm-gc",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/gf2consumerbench",
+        "src/cmd/information",
+        "src/cmd/nightcursorbench",
+        "src/cmd/nighteliminatebench",
+        "src/cohomology",
+        "src/csscode",
+        "src/markov",
+        "--target",
+        "wasm-gc",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 4.64728801700403,
+      "sha256": "91f40713d16f14b75d90eab0ef81e3318fac087845f6d1a4eb89aff2917bdf06",
+      "test_totals": [
+        [
+          "306",
+          "306",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 7650,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-js",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/gf2consumerbench",
+        "src/cmd/information",
+        "src/cmd/nightcursorbench",
+        "src/cmd/nighteliminatebench",
+        "src/cohomology",
+        "src/csscode",
+        "src/markov",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 3.6844337259972235,
+      "sha256": "91f40713d16f14b75d90eab0ef81e3318fac087845f6d1a4eb89aff2917bdf06",
+      "test_totals": [
+        [
+          "306",
+          "306",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 7928,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-native",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cmd/gf2consumerbench",
+        "src/cmd/information",
+        "src/cmd/nightcursorbench",
+        "src/cmd/nighteliminatebench",
+        "src/cohomology",
+        "src/csscode",
+        "src/markov",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1",
+        "--release"
+      ],
+      "returncode": 0,
+      "wall_seconds": 44.88978157100064,
+      "sha256": "91f40713d16f14b75d90eab0ef81e3318fac087845f6d1a4eb89aff2917bdf06",
+      "test_totals": [
+        [
+          "306",
+          "306",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 8227,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "formal",
+      "argv": [
+        "tools/check_formal"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.733013072996982,
+      "sha256": "c95694b68e70974a61349bdc5e70d29789e8730282066f62659644a829319ee5",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/scalar-sharing-20261120-validation.txt",
+        "offset_bytes": 8302,
+        "length_bytes": 4583
+      }
+    }
+  ],
+  "published_log_sha256": "4cd1227afb4759c5511130ed44256f6a2ef8a2a7cf1c5420c4650d3c3db9e483"
+}

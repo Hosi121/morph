@@ -51,6 +51,14 @@ numberfield/complexfieldの公開APIはbyte一致、linear/polynomialには計5�
 [180プロセスの比較条件と制約](research/mathematical-constructions-20261118.md#f₂の係数規則を共有した結果2026-11-19)を保存した。
 既存モデルの通過は、共有したXORの任意長入力に対する新しい形式証明ではない。
 
+## CSS・Markovのスカラー構成の共有（2026-11-20）
+
+固定ソース`fc701be`、基準`0abcc77`。既存gf2とalgebraの構成へ委譲し、公開API・型・importは維持した。
+逆依存12packageのうちruntime 7packageをwasm-gc・JS・native releaseで実行し、**それぞれ306件成功**。
+残る5CLIはソースとcompiler metadataでtest不在を確認した。global型検査・85 Pythonテスト・純粋性396ファイル・既存形式モデルも通過した。
+[固定checkpoint・全ログ・APIと本体の照合](measurements/scalar-sharing-20261120-validation.json)と
+[共有範囲・削減量・性能比較](research/mathematical-constructions-20261118.md#利用側のスカラー代数を共有した結果2026-11-20)を保存する。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。
