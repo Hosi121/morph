@@ -255,6 +255,11 @@ pub fn[A] permute(
   if !distinct(order) {
     return Err(PermutationNotBijective)
   }
+  let axes = @core.indices(n)
+  // The identity action preserves the checked tensor and its immutable entries.
+  if order.equal(axes) {
+    return Ok(value)
+  }
   match
     traverse(order, fn(axis) {
       match @core.nth(value.dimensions, axis) {
@@ -265,7 +270,7 @@ pub fn[A] permute(
     Err(error) => Err(error)
     Ok(dimensions) =>
       match
-        traverse(@core.indices(n), fn(axis) {
+        traverse(axes, fn(axis) {
           match position(order, axis, @core.Nat::Zero) {
             None => Err(InternalShape)
             Some(index) => Ok(index)
