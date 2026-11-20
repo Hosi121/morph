@@ -58,6 +58,7 @@ def main():
     parser.add_argument("--after-root", type=Path, required=True)
     parser.add_argument("--harness", required=True, help="same relative CLI package path in both roots")
     parser.add_argument("--case", action="append", required=True)
+    parser.add_argument("--arg", action="append", default=[], help="common argument before the case (use --arg=--flag)")
     parser.add_argument("--groups", type=int, default=5)
     parser.add_argument("--timeout-seconds", type=float, default=120)
     parser.add_argument("--output", type=Path, required=True)
@@ -74,7 +75,7 @@ def main():
               "groups": args.groups, "order": ["before", "after", "after", "before"],
               "scope": "whole process including startup, any warm-up, setup, operation and result checks; prebuilt artifacts exclude compilation",
               "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
-              "runs": [], "summary": {}, "all_checked": False}
+              "runs": [], "summary": {}, "all_checked": False, "argument_prefix": args.arg}
     expected = {}
     def save():
         args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -84,7 +85,7 @@ def main():
             for group in range(args.groups):
                 for position, variant in enumerate(report["order"]):
                     start = time.perf_counter_ns()
-                    process = subprocess.run([str(artifacts[variant]), case], capture_output=True,
+                    process = subprocess.run([str(artifacts[variant]), *args.arg, case], capture_output=True,
                                              text=True, timeout=args.timeout_seconds)
                     elapsed = time.perf_counter_ns() - start
                     payload = json.loads(process.stdout)
