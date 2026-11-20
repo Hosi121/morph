@@ -137,6 +137,27 @@ fn fixture(name : String) -> (Int32, @qf.Formula, Bool) {
         ]),
         false,
       )
+    "quadratic-nullification3" =>
+      (
+        3,
+        conjunction([
+          @qf.Atom(polynomial(3, [(1, [1, 0, 0])]), @qf.EqualZero),
+          @qf.Atom(
+            polynomial(3, [(1, [0, 1, 0]), (-1, [0, 0, 0])]),
+            @qf.EqualZero,
+          ),
+          @qf.Atom(
+            polynomial(3, [
+              (1, [1, 0, 2]),
+              (1, [0, 1, 1]),
+              (-1, [0, 0, 1]),
+              (-1, [0, 0, 0]),
+            ]),
+            @qf.EqualZero,
+          ),
+        ]),
+        false,
+      )
     "univariate-sat" =>
       (1, @qf.Atom(polynomial(1, [(1, [2]), (-2, [0])]), @qf.EqualZero), true)
     "univariate-unsat" =>
