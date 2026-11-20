@@ -1,0 +1,263 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-20T14:35:33.476033+00:00",
+  "finished_utc": "2026-11-20T14:41:10.857817+00:00",
+  "baseline": "828a04a173ce5f19796ada8e15cbf79d86e25496",
+  "source_commit": "f2014d8a086557cae1bc2b978234eb9d989bd3a7",
+  "scope": "Changed packages and reverse closure of old+new imports, including tests. Unrelated unchanged tests not rerun.",
+  "full_repository": false,
+  "roots": [
+    "cad",
+    "cmd/incrementalbench",
+    "prefixlogic"
+  ],
+  "packages": [
+    "cad",
+    "cmd/incrementalbench",
+    "cmd/realclosed",
+    "prefixlogic",
+    "realclosed",
+    "realnlsmt"
+  ],
+  "runtime_packages": [
+    "cad",
+    "cmd/incrementalbench",
+    "prefixlogic",
+    "realclosed",
+    "realnlsmt"
+  ],
+  "reviewed_interface_changes": [],
+  "runner_sha256": "03b2776306e7980ee2cbe8178912da450f94a865f62b1529031f3ffeb385cc2d",
+  "source_manifest_sha256": "325037612eb75904eeeba63fe5407548ac3a8541617ddf2a6af5c9feb074571c",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "toolchain": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+  "runner_git_object": "f2014d8a086557cae1bc2b978234eb9d989bd3a7:tools/check_affected.py",
+  "source_manifest_entries": 1667,
+  "skipped_empty_command_packages": [
+    "cmd/realclosed"
+  ],
+  "structural_review": {
+    "base": "828a04a",
+    "public_interfaces_byte_identical": true,
+    "imports_byte_identical": true,
+    "cad_realnlsmt_realtower_production_byte_identical": true,
+    "new_public_functions": 0,
+    "new_types": 0,
+    "new_packages": 0,
+    "new_private_rule": "linear_conflict with local collectors, coordinate guard and identity reconstruction",
+    "body_metrics": {
+      "before": {
+        "files": 3,
+        "physical": 386,
+        "code": 310
+      },
+      "after": {
+        "files": 4,
+        "physical": 470,
+        "code": 388
+      }
+    },
+    "applicability": "Mandatory EqualZero atoms obtained only through conjunction; divisors ax_i+b are nonzero and have exactly one nonconstant degree-one term. This excludes substitution expansion from coupled rows.",
+    "proof": "Existing exact polynomial division gives quotients and remainder; a nonzero constant remainder is accepted only after exact reconstruction p=sum(q_i*d_i)+c. No SAT or Known(true) inference.",
+    "fallback": "Unproved cases retain the original coefficient plan and full CAD. Malformed source/family/observations still fail the original validation guards.",
+    "legacy_reference": "The full CAD path and checker remain; xy=1 with x=0 now has a verified root false leaf, while its complete three-cell geometric reference is retained in the test."
+  },
+  "api_preservation": {
+    "reviewed_interfaces_byte_identical": {
+      "prefixlogic": "94e668cd3649e690277bf239cba06513779f12f2f60df9e049618a594c07d0d0",
+      "cad": "a82856f618cadbc66e3f7cd3b37a4e0192ca4c860077c65196e6e71185b47602",
+      "realnlsmt": "73b03668607523a8f77f9b73b68cb59347954f8892d9a4b61865e864e6cbe9ec",
+      "realtower": "48a058b85073d57c9902b165a24a600996c1e3d74dab15ecf9c74cc01c968da8"
+    },
+    "reviewed_existing_interface_changes": [],
+    "global_snapshot_count": 188
+  },
+  "benchmark_record": "docs/measurements/cad-linear-conflict-20261120-comparison.json",
+  "benchmark_policy": "160 fixed ABBA trials: 20 hard baseline runs censored at 3 seconds, not successful solver runs or completion times; 140 completed-and-checked results. No finite speedup for censored cases. Four-variable control regression retained.",
+  "formal_scope": "Boolean required-conjunct extraction and conditional conflict propagation only; polynomial division/reconstruction, QQ-to-real semantics and source translation are not formally proved. Existing full CAD and independent Z3 corpus remain.",
+  "cleanup": "Own clean baseline worktree removed after comparison; frozen native artifacts, diagnostic profile and required raw records retained. Only main worktree remains.",
+  "commands": [
+    {
+      "name": "maintenance",
+      "argv": [
+        "bash",
+        "-c",
+        "set -euo pipefail\npython3 -m unittest discover -s tools -p 'test_*.py' -q\npython3 tools/check_docs.py\npython3 tools/check_evidence.py\npython3 tools/construction-bench.py --verify docs/measurements/mathematical-constructions-20261118.json\npython3 tools/check_kernel_evidence.py\npython3 tools/matrix-kernel-check.py\npython3 tools/check_information_evidence.py\npython3 tools/inventory.py --check\npython3 tools/audit_purity.py\npython3 tools/audit_paths.py --check\npython3 tools/check_model_drift.py\npython3 tools/benchmark_bareiss.py --check-reference-only\npython3 src/exact/generate_tiny_gcd.py --winner direct --check > /dev/null\npython3 tools/generate_binary_tiny_products.py --check\npython3 tools/generate_binary_tiny_differences.py --check --winner lookup\npython3 tools/generate_bernstein_fixtures.py --check\npython3 tools/generate_rational_elimination_cases.py --check\npython3 tools/generate_linearspan_fixtures.py --check\npython3 docs/research/night-normal-form-20261117-oracle.py --check\npython3 docs/research/night-product-20261117-oracle.py --check\npython3 docs/research/late-subtraction-20261117-oracle.py --check\npython3 docs/research/late-poly-unit-20261117-oracle.py --check\npython3 tools/generate_signed_residue_n04.py --check\npython3 tools/generate_tower_constant_fixtures.py --check\npython3 tools/generate_monic_identity_n05.py --check\npython3 tools/generate_markov_fixtures.py --check\npython3 tools/generate_riemann_fixtures.py --check\npython3 tools/generate_forms_fixtures.py --check\npython3 tools/generate_hodge_fixtures.py --check\npython3 tools/generate_simplexforms_fixtures.py --check\npython3 tools/generate_gaussian_fixtures.py --check\npython3 -S tools/generate_information_review_fixtures.py --check-stored\npython3 tools/extension-curves-20261118-oracle.py --check\npython3 tools/extension-pairings-20261118-oracle.py --check\npython3 tools/check_information_tour.py\npython3 tools/generate_homology_fixtures.py --check\npython3 tools/generate_persistence_fixtures.py --check\npython3 tools/generate_simplicialmap_fixtures.py --check\npython3 tools/generate_csscode_fixtures.py --check\npython3 tools/generate_cohomology_fixtures.py --check\npython3 tools/generate_relativehomology_fixtures.py --check\npython3 tools/generate_collapse_fixtures.py --check\ntools/moon fmt --check\npython3 tools/generate_comparison_candidates.py --check\ntools/moon check --deny-warn -j 1\npython3 tools/check_interfaces.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 36.64582841099764,
+      "sha256": "766d282b9f9fa0d2a2f9a8b4a9bc67393bf49a38477debf0f56cd61f7715426f",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 2492,
+        "length_bytes": 4654
+      }
+    },
+    {
+      "name": "check-js",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.4564875010109972,
+      "sha256": "60ed775d567b98f58219333fb810112fc5666e052004c5644ff594a11c0e8f1f",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 7226,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "check-native",
+      "argv": [
+        "tools/moon",
+        "check",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.4502721219905652,
+      "sha256": "60ed775d567b98f58219333fb810112fc5666e052004c5644ff594a11c0e8f1f",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 7359,
+        "length_bytes": 45
+      }
+    },
+    {
+      "name": "tests-wasm-gc",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cad",
+        "src/cmd/incrementalbench",
+        "src/prefixlogic",
+        "src/realclosed",
+        "src/realnlsmt",
+        "--target",
+        "wasm-gc",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 9.911618876998546,
+      "sha256": "eff9a65478cab6ea7da4a08ea8e90ef2d3d3223dbf316a5c383b8e54f4d344aa",
+      "test_totals": [
+        [
+          "298",
+          "298",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 7586,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-js",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cad",
+        "src/cmd/incrementalbench",
+        "src/prefixlogic",
+        "src/realclosed",
+        "src/realnlsmt",
+        "--target",
+        "js",
+        "--deny-warn",
+        "-j",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 13.508113952993881,
+      "sha256": "eff9a65478cab6ea7da4a08ea8e90ef2d3d3223dbf316a5c383b8e54f4d344aa",
+      "test_totals": [
+        [
+          "298",
+          "298",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 7800,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "tests-native",
+      "argv": [
+        "tools/moon",
+        "test",
+        "src/cad",
+        "src/cmd/incrementalbench",
+        "src/prefixlogic",
+        "src/realclosed",
+        "src/realnlsmt",
+        "--target",
+        "native",
+        "--deny-warn",
+        "-j",
+        "1",
+        "--release"
+      ],
+      "returncode": 0,
+      "wall_seconds": 43.068447844008915,
+      "sha256": "eff9a65478cab6ea7da4a08ea8e90ef2d3d3223dbf316a5c383b8e54f4d344aa",
+      "test_totals": [
+        [
+          "298",
+          "298",
+          "0"
+        ]
+      ],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 8035,
+        "length_bytes": 42
+      }
+    },
+    {
+      "name": "formal",
+      "argv": [
+        "tools/check_formal"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.298581410010229,
+      "sha256": "7389a7a72e16e1f1dafac444ce68f72a46dabb2d51dcda846cbc1cbecc4b51ee",
+      "test_totals": [],
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+        "offset_bytes": 8110,
+        "length_bytes": 4749
+      }
+    }
+  ],
+  "formal_controls": {
+    "path": "docs/measurements/cad-linear-conflict-20261120-validation.txt",
+    "offset_bytes": 12921,
+    "length_bytes": 4094,
+    "sha256": "71e408bd66bc1990cab24c4388f543d9b6ef7309e4ef5b08aec07a8493d40d46",
+    "note": "The two nonzero Lean exits are expected rejections of unsound OR/NOT variants, not accepted theorems. Their error diagnostics and exact source mutations are retained."
+  },
+  "published_log_sha256": "92b5421ed4de33aea82ea1ff2f53e39792a43e1da2f32ebf5ee76510e3853d62"
+}

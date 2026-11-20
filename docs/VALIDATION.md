@@ -77,6 +77,17 @@ global型検査・85 Pythonテスト・純粋性396ファイル・既存形式�
 [checkpoint・全ログ・構造とAPIの照合](measurements/scalar-contraction-20261120-validation.json)と
 [4入力・80プロセスの時間/RSS比較](research/scalar-contraction-20261120.md)を保存する。任意の計量についての新しい形式証明ではない。
 
+## 座標等式からのCAD短絡（2026-11-20）
+
+固定ソース`f2014d8`、基準`828a04a`。必須の座標等式による除算と恒等式の再構築をprefixlogicへ追加し、非零定数の矛盾だけを全域の偽へ導く。
+CAD・SMT・realtowerの本体と公開APIを維持。完全CADの幾何学的な参照と、SATへの整合的なsource/projection貼替えの拒否も確認した。
+影響6packageの実行対象5packageをwasm-gc・JS・native releaseで確認し、各298件成功。残る1CLIはソースとnative metadataでtest不在を確認。
+global型検査・85 Pythonテスト・397核ソースの純粋性・188生成API・全形式モデルも通過した。
+Leanは任意のBoolean式からANDのみの必須原子を抽出する条件と、矛盾を前提とする全体の偽を検査し、OR/NOTからも仮定を取る二つの変異を拒否した。
+多項式除算・QQから実数への評価・MoonBitへの翻訳まで形式証明したものではない。
+[checkpoint・全ログ・正負の形式検査](measurements/cad-linear-conflict-20261120-validation.json)と
+[8経路160試行・時間切れ・対照の3.4%退行・適用条件](research/cad-linear-conflict-20261120.md)を保存する。
+
 ## 確率・情報幾何の検証の到達段階
 
 Amari–Chentsovテンソルの明示API、添字上げ・trace・ノルム・接ベクトルへの作用、Gaussianの2・3次cumulant経路を追加しました。
