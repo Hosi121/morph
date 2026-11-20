@@ -1,0 +1,375 @@
+{
+  "utc": "2026-11-20T14:24:27.757761+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "timeout_seconds": 3,
+  "scope": "Whole native release process including startup, fixture construction, prepare, search, independent result checker invocation and output; excludes compilation. CLI clock intervals exclude fixture creation. One input per process.",
+  "case_specs": [
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "quadratic-nullification3",
+      "expected": false,
+      "baseline_timeout_allowed": true,
+      "may_change_tree": true
+    },
+    {
+      "layer": "smt",
+      "mode": "core",
+      "case": "quadratic-nullification3",
+      "expected": false,
+      "baseline_timeout_allowed": true,
+      "may_change_tree": true
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "prefix-unsat2",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": true
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-unsat4",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "univariate-sat",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "univariate-unsat",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "smt",
+      "mode": "retained",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    }
+  ],
+  "summary": {
+    "cad/pruned/quadratic-nullification3": {
+      "before": {
+        "completed": 0,
+        "censored": 10,
+        "medians_completed_only": null
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 109423897.5,
+          "preparation_us": 51878.0205,
+          "search_us": 2.3315,
+          "verification_us": 55679.9505,
+          "total_us": 106981.257
+        }
+      }
+    },
+    "smt/core/quadratic-nullification3": {
+      "before": {
+        "completed": 0,
+        "censored": 10,
+        "medians_completed_only": null
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 174160281.0,
+          "preparation_us": 11.7605,
+          "search_us": 128657.86600000001,
+          "verification_us": 43084.961,
+          "total_us": 171946.4375
+        }
+      }
+    },
+    "cad/pruned/prefix-unsat2": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 817956.0,
+          "preparation_us": 42.9315,
+          "search_us": 55.5775,
+          "verification_us": 91.8005,
+          "total_us": 192.049
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 658439.0,
+          "preparation_us": 41.725,
+          "search_us": 0.8180000000000001,
+          "verification_us": 32.4335,
+          "total_us": 75.75450000000001
+        }
+      },
+      "process_before_over_after": 1.2422654186644473,
+      "process_block_ratios": [
+        1.6731373967850356,
+        1.1674242720542116,
+        1.2591131321525515,
+        1.500394648505779,
+        1.1575740920813427
+      ]
+    },
+    "cad/pruned/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 3629163.5,
+          "preparation_us": 262.4535,
+          "search_us": 2476.587,
+          "verification_us": 50.50450000000001,
+          "total_us": 2808.5035
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 3365166.5,
+          "preparation_us": 253.83800000000002,
+          "search_us": 2431.866,
+          "verification_us": 48.724000000000004,
+          "total_us": 2737.2884999999997
+        }
+      },
+      "process_before_over_after": 1.0784499073077067,
+      "process_block_ratios": [
+        1.046239809265307,
+        1.3552594359956485,
+        1.058247098650394,
+        1.1002660676622127,
+        0.8913817958117473
+      ]
+    },
+    "cad/pruned/diagonal-unsat4": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 34906703.5,
+          "preparation_us": 532.7950000000001,
+          "search_us": 14708.674500000001,
+          "verification_us": 16862.088,
+          "total_us": 32470.6245
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 36083614.0,
+          "preparation_us": 516.2365,
+          "search_us": 15006.717,
+          "verification_us": 17247.605,
+          "total_us": 33560.64
+        }
+      },
+      "process_before_over_after": 0.9673837964234957,
+      "process_block_ratios": [
+        0.9855340363494371,
+        0.9795526067730838,
+        0.9403852455453514,
+        0.9662299286531115,
+        0.9892769139623457
+      ]
+    },
+    "cad/pruned/univariate-sat": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 975589.5,
+          "preparation_us": 51.379999999999995,
+          "search_us": 232.964,
+          "verification_us": 6.4705,
+          "total_us": 290.8065
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 887867.0,
+          "preparation_us": 45.4415,
+          "search_us": 226.45800000000003,
+          "verification_us": 6.307,
+          "total_us": 277.8005
+        }
+      },
+      "process_before_over_after": 1.0988013970560906,
+      "process_block_ratios": [
+        1.0890588935428078,
+        1.0204209108914892,
+        1.8177487380476172,
+        0.6725119165023011,
+        1.137126373393289
+      ]
+    },
+    "cad/pruned/univariate-unsat": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 986891.5,
+          "preparation_us": 45.506,
+          "search_us": 147.452,
+          "verification_us": 222.9115,
+          "total_us": 423.29949999999997
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1024821.0,
+          "preparation_us": 46.651,
+          "search_us": 150.4735,
+          "verification_us": 221.89499999999998,
+          "total_us": 421.2745
+        }
+      },
+      "process_before_over_after": 0.9629891463972733,
+      "process_block_ratios": [
+        1.8754454848320228,
+        0.5760387127414667,
+        1.5792283968916405,
+        1.258449554086501,
+        0.9554941151623371
+      ]
+    },
+    "smt/retained/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 3892503.0,
+          "preparation_us": 9.693000000000001,
+          "search_us": 2959.8155,
+          "verification_us": 97.8505,
+          "total_us": 3070.154
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4375893.0,
+          "preparation_us": 9.287500000000001,
+          "search_us": 2972.5315,
+          "verification_us": 98.84100000000001,
+          "total_us": 3083.05
+        }
+      },
+      "process_before_over_after": 0.8895334049530005,
+      "process_block_ratios": [
+        0.8670353685522018,
+        1.1705942177783804,
+        1.063833727389709,
+        0.821386681847872,
+        0.995743978403217
+      ]
+    }
+  },
+  "runner_sha256": "e7005d91b3a1ff3b764365009d8953b72dff6ae757f22d01d1612b1649e29845",
+  "before": {
+    "root": "/home/hosi/morph-cad-before",
+    "commit": "1edc2c2df187ac7689cb6163208afe80b3339d37",
+    "working_tree": [],
+    "source_manifest_sha256": "8a6f06d0b33add49f4178afc403c13cd84c1eeba594c5a430617bcd266895cc1",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/cad-cost/before.exe",
+    "artifact_sha256": "782afff6c6d2f257b5ff17ae905626b944b2971e519f5dcfeb68addc4d5ce887",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "68617970a5b3ea070f0d68734073fc4ee2573777",
+    "working_tree": [],
+    "source_manifest_sha256": "b8a2b26681a6a52ec7691238fb55edbee7f0a5e0ccb56a09fc5731db3fbe0f7a",
+    "source_file_count": 1110,
+    "artifact": "/home/hosi/morph/.tools/cad-cost/after.exe",
+    "artifact_sha256": "efa66993533069bbfd45228062901810e6c9b51026c94b2a435f3d5f61ffb4cf",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "compiler_binary_sha256": {
+    "moon": "3fdfe18b453e619c707eb8ec50f1277a834bdb840a6e85094102b8978b06ef2e",
+    "moonc": "ec9d278bc212bf47e9ae38457e53635c2d9590aeb3ff1db18356afc8a2872f4f",
+    "moonrun": "38718520d7b86e6b12aebd69e075d739f17964c58586c256bb7637bfe86d1fb7"
+  },
+  "oracle": "Hard: x=0, y=1 makes x*z^2+y*z-z-1=-1. Prefix: x=0 makes xy-1=-1. Diagonals: all coordinates equal +/-sqrt(2), final squared equality/disequality. Univariate: x^2=2 SAT, x^2+1=0 UNSAT. Every completed program run checks its model or complete certificate/refutation against the original input.",
+  "status": "passed",
+  "kind": "verified censored measurement protocol; this is not a claim that the baseline solver completed",
+  "run_count": 160,
+  "completed_solver_runs": 140,
+  "censored_baseline_runs": 20,
+  "all_solver_runs_completed": false,
+  "harness_published_path": "docs/measurements/cad-linear-conflict-20261120-runner.py",
+  "published_log_sha256": "74f9f21597586a2ce4f646b58efdb492543731607fc0b229e2477681f2eacec2",
+  "manifest_review": "Both clean source manifests independently reconstructed from the recorded Git trees; identical CLI bytes; all ABBA slots, exact decisions, retained raw output and summaries independently replayed before publication.",
+  "commands": [
+    {
+      "name": "bounded-native-comparison-protocol",
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        ".tools/cad-cost/compare.py"
+      ],
+      "returncode": 0,
+      "sha256": "74f9f21597586a2ce4f646b58efdb492543731607fc0b229e2477681f2eacec2",
+      "published_log": {
+        "path": "docs/measurements/cad-linear-conflict-20261120-comparison.txt",
+        "offset_bytes": 0,
+        "length_bytes": 197444
+      }
+    }
+  ]
+}
