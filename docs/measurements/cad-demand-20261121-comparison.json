@@ -1,0 +1,403 @@
+{
+  "utc": "2026-11-20T16:02:59.439189+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "timeout_seconds": 3,
+  "scope": "Whole native release process including startup, fixture construction, prepare, search, independent result checker invocation and output; excludes compilation. CLI clock intervals exclude fixture creation. One input per process.",
+  "case_specs": [
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "smt",
+      "mode": "retained",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-unsat3",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "diagonal-unsat4",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "smt",
+      "mode": "core",
+      "case": "diagonal-unsat4",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "quadratic-nullification3",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "prefix-unsat2",
+      "expected": false,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "circle-sat2",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    }
+  ],
+  "summary": {
+    "cad/pruned/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 5543015.0,
+          "preparation_us": 377.2505,
+          "search_us": 3143.044,
+          "verification_us": 61.849500000000006,
+          "total_us": 3575.9269999999997
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4947765.5,
+          "preparation_us": 377.957,
+          "search_us": 3199.638,
+          "verification_us": 65.328,
+          "total_us": 3676.8505
+        }
+      },
+      "process_before_over_after": 1.1203067324027383,
+      "process_block_ratios": [
+        1.2806993956197033,
+        1.187181585232341,
+        0.9889585770244186,
+        0.7589745639669012,
+        1.067283444627236
+      ]
+    },
+    "smt/retained/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 5513116.5,
+          "preparation_us": 12.8325,
+          "search_us": 3855.602,
+          "verification_us": 131.303,
+          "total_us": 4051.326
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 6321134.0,
+          "preparation_us": 13.5495,
+          "search_us": 3998.91,
+          "verification_us": 118.62,
+          "total_us": 4138.372
+        }
+      },
+      "process_before_over_after": 0.8721720659615823,
+      "process_block_ratios": [
+        0.9433402509296618,
+        1.087819342983669,
+        0.7425866008272692,
+        0.9672803042105731,
+        0.8239153043908982
+      ]
+    },
+    "cad/pruned/diagonal-unsat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1697314.5,
+          "preparation_us": 351.704,
+          "search_us": 1.823,
+          "verification_us": 358.7615,
+          "total_us": 717.887
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1430525.5,
+          "preparation_us": 360.98900000000003,
+          "search_us": 1.8505,
+          "verification_us": 343.90700000000004,
+          "total_us": 700.1945000000001
+        }
+      },
+      "process_before_over_after": 1.1864971998052465,
+      "process_block_ratios": [
+        0.9765002781048951,
+        1.109374609556256,
+        1.0245086447316394,
+        1.0313028389370487,
+        1.1629049298606682
+      ]
+    },
+    "cad/pruned/diagonal-unsat4": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 2707952.5,
+          "preparation_us": 683.121,
+          "search_us": 2.1165,
+          "verification_us": 742.3810000000001,
+          "total_us": 1437.741
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 2477936.0,
+          "preparation_us": 679.633,
+          "search_us": 2.253,
+          "verification_us": 782.5740000000001,
+          "total_us": 1489.0855000000001
+        }
+      },
+      "process_before_over_after": 1.0928258437667477,
+      "process_block_ratios": [
+        0.8558132744700756,
+        1.0313695635077986,
+        0.8209833752497973,
+        1.4178613638864515,
+        1.2864259098248665
+      ]
+    },
+    "smt/core/diagonal-unsat4": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 5988702.5,
+          "preparation_us": 15.694500000000001,
+          "search_us": 2891.129,
+          "verification_us": 805.9300000000001,
+          "total_us": 3700.1090000000004
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 5345408.5,
+          "preparation_us": 15.592500000000001,
+          "search_us": 2848.388,
+          "verification_us": 738.45,
+          "total_us": 3701.1065
+        }
+      },
+      "process_before_over_after": 1.120345152292851,
+      "process_block_ratios": [
+        1.5603096944249757,
+        1.2669056674349644,
+        0.9781886941250474,
+        0.8638747406054783,
+        1.0202405798341194
+      ]
+    },
+    "cad/pruned/quadratic-nullification3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 111972171.5,
+          "preparation_us": 53390.649000000005,
+          "search_us": 3.466,
+          "verification_us": 58486.91599999998,
+          "total_us": 109502.75099999999
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 115339602.0,
+          "preparation_us": 56490.955500000004,
+          "search_us": 3.492,
+          "verification_us": 57830.215,
+          "total_us": 112827.77050000001
+        }
+      },
+      "process_before_over_after": 0.9708042125895319,
+      "process_block_ratios": [
+        0.9783012818270853,
+        1.0261244211770713,
+        0.9007776904937147,
+        1.0011884047867234,
+        0.9444319896869833
+      ]
+    },
+    "cad/pruned/prefix-unsat2": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1180966.5,
+          "preparation_us": 76.238,
+          "search_us": 2.5825,
+          "verification_us": 50.301500000000004,
+          "total_us": 133.659
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1192183.5,
+          "preparation_us": 75.8955,
+          "search_us": 2.512,
+          "verification_us": 49.646,
+          "total_us": 134.3495
+        }
+      },
+      "process_before_over_after": 0.9905912135170467,
+      "process_block_ratios": [
+        1.3715944177293597,
+        1.3637542425280351,
+        0.7629160074364629,
+        0.944198807054891,
+        1.4442600488934798
+      ]
+    },
+    "cad/pruned/circle-sat2": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1995327.5,
+          "preparation_us": 212.373,
+          "search_us": 476.46000000000004,
+          "verification_us": 12.0515,
+          "total_us": 724.1565
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1769350.5,
+          "preparation_us": 205.1405,
+          "search_us": 488.4705,
+          "verification_us": 11.5875,
+          "total_us": 704.6025
+        }
+      },
+      "process_before_over_after": 1.1277174872926534,
+      "process_block_ratios": [
+        1.0999755517338758,
+        1.2084933193690692,
+        1.0784082407465219,
+        1.0957860273727524,
+        1.3944627974730617
+      ]
+    }
+  },
+  "runner_sha256": "745473737d269d63ba72be7dd7ee42a2a34d5b5e72e4b472b2a5e624c35cffec",
+  "before": {
+    "root": "/home/hosi/morph-demand-before",
+    "commit": "2f46fcaebfbe9b6f38854dc2207cffb63195e57b",
+    "working_tree": [],
+    "source_manifest_sha256": "2694eddebc392f8ebe95b46c3a3795604d299b49056304dff2adc5343af6bfbf",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/before.exe",
+    "artifact_sha256": "0a1bbaac6d4eca99361aca8003df15a63058d17dd391d90a7681e8e08aa111c5",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "bdd99a36401042a137371e638a275c906b16a7f9",
+    "working_tree": [],
+    "source_manifest_sha256": "2147b1bed18892f5aba3fbb2f3975b4578ed12e814580291e88dfc2d3e6daba9",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/after.exe",
+    "artifact_sha256": "ed675389639f0a09a20e243d063d88f13d45ddfaf55b574079095f4fef72554b",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "compiler_binary_sha256": {
+    "moon": "3fdfe18b453e619c707eb8ec50f1277a834bdb840a6e85094102b8978b06ef2e",
+    "moonc": "ec9d278bc212bf47e9ae38457e53635c2d9590aeb3ff1db18356afc8a2872f4f",
+    "moonrun": "38718520d7b86e6b12aebd69e075d739f17964c58586c256bb7637bfe86d1fb7"
+  },
+  "oracle": "Diagonals: mandatory coordinate aliases and x^2=2 imply the final squared equality, contradicting its disequality. SAT counterpart has a sqrt(2) branch. Quadratic nullification: x=0,y=1 gives -1=0. Prefix x=0 makes xy-1=-1. Circle x^2+y^2=1 SAT. Every CLI exit checks its model or complete refutation against the original input.",
+  "status": "passed",
+  "kind": "verified complete measurement protocol; all exact decisions and result checks completed",
+  "run_count": 160,
+  "completed_solver_runs": 160,
+  "censored_baseline_runs": 0,
+  "all_solver_runs_completed": true,
+  "harness_published_path": "docs/measurements/cad-demand-20261121-runner.py",
+  "published_log_sha256": "8ab8e9483a87ec0f004351f7414ce2e9cbc623f31a4f6b95df0e8d174e234354",
+  "manifest_review": "Both clean source manifests independently reconstructed from the recorded Git trees; identical CLI bytes; all ABBA slots, exact decisions, retained raw output and summaries independently replayed before publication.",
+  "commands": [
+    {
+      "name": "bounded-native-comparison-protocol",
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        ".tools/cad-demand/compare.py"
+      ],
+      "returncode": 0,
+      "sha256": "8ab8e9483a87ec0f004351f7414ce2e9cbc623f31a4f6b95df0e8d174e234354",
+      "published_log": {
+        "path": "docs/measurements/cad-demand-20261121-comparison.txt",
+        "offset_bytes": 0,
+        "length_bytes": 214659
+      }
+    }
+  ]
+}

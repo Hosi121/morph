@@ -1,0 +1,163 @@
+{
+  "utc": "2026-11-20T16:07:14.384497+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "timeout_seconds": 3,
+  "scope": "Whole native release process including startup, fixture construction, prepare, search, independent result checker invocation and output; excludes compilation. CLI clock intervals exclude fixture creation. One input per process.",
+  "case_specs": [
+    {
+      "layer": "smt",
+      "mode": "retained",
+      "case": "diagonal-sat3",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    },
+    {
+      "layer": "cad",
+      "mode": "pruned",
+      "case": "circle-sat2",
+      "expected": true,
+      "baseline_timeout_allowed": false,
+      "may_change_tree": false
+    }
+  ],
+  "summary": {
+    "smt/retained/diagonal-sat3": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 5718936.0,
+          "preparation_us": 10.937000000000001,
+          "search_us": 3490.2529999999997,
+          "verification_us": 103.2045,
+          "total_us": 3607.5885
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 4584568.5,
+          "preparation_us": 9.725999999999999,
+          "search_us": 3380.0564999999997,
+          "verification_us": 106.6785,
+          "total_us": 3495.5275
+        }
+      },
+      "process_before_over_after": 1.2474316830471615,
+      "process_block_ratios": [
+        1.1682859111209234,
+        0.8449406210660809,
+        1.1505466571064011,
+        1.3427530007648363,
+        1.1416034917005362
+      ]
+    },
+    "cad/pruned/circle-sat2": {
+      "before": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1430445.0,
+          "preparation_us": 157.653,
+          "search_us": 440.0825,
+          "verification_us": 10.4895,
+          "total_us": 611.606
+        }
+      },
+      "after": {
+        "completed": 10,
+        "censored": 0,
+        "medians_completed_only": {
+          "process_ns": 1197214.5,
+          "preparation_us": 157.4355,
+          "search_us": 421.6735,
+          "verification_us": 9.8605,
+          "total_us": 584.0630000000001
+        }
+      },
+      "process_before_over_after": 1.1948109549291293,
+      "process_block_ratios": [
+        1.5865161575415483,
+        1.1966941360569316,
+        1.3947383290757107,
+        1.5482239196400545,
+        1.1168813920042564
+      ]
+    }
+  },
+  "runner_sha256": "2fe7f3cf528ce31b221ff2f6d5c98c985d15a30e05e5ba0d36275f9e2753e134",
+  "before": {
+    "root": "/home/hosi/morph-demand-before",
+    "commit": "2f46fcaebfbe9b6f38854dc2207cffb63195e57b",
+    "working_tree": [],
+    "source_manifest_sha256": "2694eddebc392f8ebe95b46c3a3795604d299b49056304dff2adc5343af6bfbf",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/before.exe",
+    "artifact_sha256": "0a1bbaac6d4eca99361aca8003df15a63058d17dd391d90a7681e8e08aa111c5",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph-demand-before",
+    "commit": "2f46fcaebfbe9b6f38854dc2207cffb63195e57b",
+    "working_tree": [],
+    "source_manifest_sha256": "2694eddebc392f8ebe95b46c3a3795604d299b49056304dff2adc5343af6bfbf",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/before.exe",
+    "artifact_sha256": "0a1bbaac6d4eca99361aca8003df15a63058d17dd391d90a7681e8e08aa111c5",
+    "harness": {
+      "main.mbt": "604eb5ded6cc46a60c09d75bbc8280687968ac3ca84b74d13a3f0615e22d6ef7",
+      "moon.pkg": "656b986ba5626cb7de0b3fbe78dd6052b5f1c1a978be9589c9e88849d132f469"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "compiler_binary_sha256": {
+    "moon": "3fdfe18b453e619c707eb8ec50f1277a834bdb840a6e85094102b8978b06ef2e",
+    "moonc": "ec9d278bc212bf47e9ae38457e53635c2d9590aeb3ff1db18356afc8a2872f4f",
+    "moonrun": "38718520d7b86e6b12aebd69e075d739f17964c58586c256bb7637bfe86d1fb7"
+  },
+  "oracle": "Diagonals: mandatory coordinate aliases and x^2=2 imply the final squared equality, contradicting its disequality. SAT counterpart has a sqrt(2) branch. Quadratic nullification: x=0,y=1 gives -1=0. Prefix x=0 makes xy-1=-1. Circle x^2+y^2=1 SAT. Every CLI exit checks its model or complete refutation against the original input.",
+  "status": "passed",
+  "kind": "verified complete measurement protocol; all exact decisions and result checks completed",
+  "run_count": 40,
+  "completed_solver_runs": 40,
+  "censored_baseline_runs": 0,
+  "all_solver_runs_completed": true,
+  "harness_published_path": "docs/measurements/cad-demand-20261121-identical-runner.py",
+  "published_log_sha256": "01a9910fead4ccb49154a68065310cf19bca7b249e78703cce71cdfe7bf14d7c",
+  "manifest_review": "Both clean source manifests independently reconstructed from the recorded Git trees; identical CLI bytes; all ABBA slots, exact decisions, retained raw output and summaries independently replayed before publication.",
+  "commands": [
+    {
+      "name": "bounded-native-comparison-protocol",
+      "argv": [
+        "tools/measure",
+        "--cpu",
+        "4",
+        "python3",
+        ".tools/cad-demand/control/compare.py"
+      ],
+      "returncode": 0,
+      "sha256": "01a9910fead4ccb49154a68065310cf19bca7b249e78703cce71cdfe7bf14d7c",
+      "published_log": {
+        "path": "docs/measurements/cad-demand-20261121-identical.txt",
+        "offset_bytes": 0,
+        "length_bytes": 55892
+      }
+    }
+  ]
+}

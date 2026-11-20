@@ -1,0 +1,292 @@
+{
+  "utc": "2026-11-20T16:06:16.234832+00:00",
+  "before": {
+    "root": "/home/hosi/morph-demand-before",
+    "commit": "2f46fcaebfbe9b6f38854dc2207cffb63195e57b",
+    "working_tree": [
+      "M src/cmd/incrementalbench/main.mbt",
+      " M src/cmd/incrementalbench/moon.pkg"
+    ],
+    "source_manifest_sha256": "bb6c4cdb2b1090144f5237ee29397e393a9ce247f46510314e79b408cd1d0ea4",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/prefix/before.exe",
+    "artifact_sha256": "cc78d1152a4b462c58d99f0d4636c46c6a0740827a6166ecc68cde58cd8892a2",
+    "harness": {
+      "main.mbt": "8c0855d7c1be0d0be01d6263a249e3b056a74875c829bdd723da3c7d25286b1f",
+      "moon.pkg": "a381abc3f562ef11d98d06581c918e7c6b70d9a677507e5c9692e9bb6e882faf"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "bdd99a36401042a137371e638a275c906b16a7f9",
+    "working_tree": [
+      "M src/cmd/incrementalbench/main.mbt",
+      " M src/cmd/incrementalbench/moon.pkg",
+      "?? docs/measurements/cad-demand-20261121-comparison.json",
+      "?? docs/measurements/cad-demand-20261121-comparison.txt"
+    ],
+    "source_manifest_sha256": "b2e6860dc301b367cfe5a4f843628502e557792b9d48bf2ea2f513862d8e796f",
+    "source_file_count": 1111,
+    "artifact": "/home/hosi/morph/.tools/cad-demand/prefix/after.exe",
+    "artifact_sha256": "d89904c191c37489da656ef0ffb9b0ae274afb7d854dac9fdd6cb5adc72cf978",
+    "harness": {
+      "main.mbt": "8c0855d7c1be0d0be01d6263a249e3b056a74875c829bdd723da3c7d25286b1f",
+      "moon.pkg": "a381abc3f562ef11d98d06581c918e7c6b70d9a677507e5c9692e9bb6e882faf"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "scope": "Native release CPU4. Inner elapsed_us includes 128 prepare calls with unchanged actual CAD projection families, full per-iteration Plan equality and bench.keep; excludes initial CAD/projection construction, reference plan, final source check and rendering. Process time includes all of these and startup/output. Debug text uses the SDK default rendering depth of 16; this is not a general serialization proof.",
+  "inner_scope": "elapsed_us if supplied; interval is defined by the identical benchmark source",
+  "summary": {
+    "diagonal-sat3": {
+      "process_ns": {
+        "medians": {
+          "before": 4491018.5,
+          "after": 3749872.5
+        },
+        "ranges": {
+          "before": [
+            3668315,
+            5538571
+          ],
+          "after": [
+            3330722,
+            5031476
+          ]
+        },
+        "before_over_after": 1.197645653285545,
+        "block_ratios": [
+          1.1145926109901365,
+          1.163756614530467,
+          1.2016843277240494,
+          1.2221458096007303,
+          1.123206601775407
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 2555.5445,
+          "after": 2293.8705
+        },
+        "ranges": {
+          "before": [
+            2320.9990000000003,
+            2999.364
+          ],
+          "after": [
+            2075.578,
+            2547.958
+          ]
+        },
+        "before_over_after": 1.1140753150624676,
+        "block_ratios": [
+          1.0246897251806473,
+          1.0848260515077814,
+          1.1750515227724876,
+          1.0953319518170332,
+          1.1616437751952446
+        ]
+      }
+    },
+    "diagonal-unsat4": {
+      "process_ns": {
+        "medians": {
+          "before": 6391254.0,
+          "after": 5935814.0
+        },
+        "ranges": {
+          "before": [
+            4735847,
+            7364427
+          ],
+          "after": [
+            4541670,
+            9478959
+          ]
+        },
+        "before_over_after": 1.0767274715818251,
+        "block_ratios": [
+          0.8137358366244153,
+          1.099520693075094,
+          0.7884333838572056,
+          1.1672802601090422,
+          1.1739403198514968
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 3644.2675,
+          "after": 2976.6145
+        },
+        "ranges": {
+          "before": [
+            3078.06,
+            3805.565
+          ],
+          "after": [
+            2652.6910000000003,
+            5655.342000000001
+          ]
+        },
+        "before_over_after": 1.2242994516085304,
+        "block_ratios": [
+          0.8387683059566295,
+          1.079313226853083,
+          0.9693453381850341,
+          1.3500762579469838,
+          1.147084723367177
+        ]
+      }
+    },
+    "prefix-unsat2": {
+      "process_ns": {
+        "medians": {
+          "before": 1218010.5,
+          "after": 1115123.5
+        },
+        "ranges": {
+          "before": [
+            968068,
+            1383668
+          ],
+          "after": [
+            941522,
+            2313363
+          ]
+        },
+        "before_over_after": 1.0922651168233832,
+        "block_ratios": [
+          1.034612945865095,
+          1.0292925962900192,
+          0.775273275143662,
+          1.0709682956023576,
+          1.10383351285663
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 329.0485,
+          "after": 271.29
+        },
+        "ranges": {
+          "before": [
+            272.09000000000003,
+            376.415
+          ],
+          "after": [
+            258.049,
+            384.592
+          ]
+        },
+        "before_over_after": 1.2129031663533487,
+        "block_ratios": [
+          1.067803030924217,
+          0.9674008633236102,
+          1.1545973960034488,
+          1.124841318639739,
+          1.1561662826893975
+        ]
+      }
+    },
+    "circle-sat2": {
+      "process_ns": {
+        "medians": {
+          "before": 1467257.5,
+          "after": 1505836.5
+        },
+        "ranges": {
+          "before": [
+            1281625,
+            2793121
+          ],
+          "after": [
+            1251518,
+            2933248
+          ]
+        },
+        "before_over_after": 0.9743803527142555,
+        "block_ratios": [
+          1.0795260736018228,
+          1.3326941927682145,
+          1.0897906648411881,
+          0.6981042071541823,
+          0.8557759550946874
+        ]
+      },
+      "elapsed_us": {
+        "medians": {
+          "before": 352.6645,
+          "after": 350.71900000000005
+        },
+        "ranges": {
+          "before": [
+            309.783,
+            395.904
+          ],
+          "after": [
+            338.516,
+            402.113
+          ]
+        },
+        "before_over_after": 1.0055471759442742,
+        "block_ratios": [
+          1.035444237093342,
+          0.9899756152757375,
+          1.0436967064349774,
+          0.8965574974615999,
+          0.9582383126356359
+        ]
+      }
+    }
+  },
+  "all_checked": true,
+  "argument_prefix": [
+    "prefix",
+    "pruned"
+  ],
+  "status": "passed",
+  "kind": "verified public prefix preparation comparison with common temporary host overlay",
+  "run_count": 80,
+  "source_overlay": {
+    "src/cmd/incrementalbench/main.mbt": "///|\n/// Measurement host only: the imported algorithms retain the pure ADT kernel.\nfn polynomial(\n  variables : Int32,\n  terms : Array[(Int32, Array[Int32])],\n) -> @poly.Polynomial {\n  @poly.polynomial(\n    @oracle.nat(variables),\n    @oracle.chain(\n      terms.map(fn(term) {\n        let (coefficient, exponents) = term\n        @poly.Term::{\n          coefficient: @oracle.rational(coefficient, 1),\n          exponents: @oracle.chain(exponents.map(@oracle.nat)),\n        }\n      }),\n    ),\n  ).unwrap()\n}\n\n///|\nfn conjunction(atoms : Array[@qf.Formula]) -> @qf.Formula {\n  atoms.fold(init=@qf.Truth(true), fn(left, right) {\n    @qf.Conjunction(left, right)\n  })\n}\n\n///|\nfn alternatives(\n  count : Int32,\n  variables : Int32,\n  satisfiable : Bool,\n) -> @qf.Formula {\n  let mut source : @qf.Formula = @qf.Truth(false)\n  for index in 0..<count {\n    let terms = if variables == 0 {\n      [(index + 1, [])]\n    } else {\n      [(1, [2]), (index + 1, [0])]\n    }\n    source = @qf.Disjunction(\n      source,\n      @qf.Atom(polynomial(variables, terms), @qf.LessZero),\n    )\n  }\n  if satisfiable {\n    @qf.Disjunction(\n      source,\n      @qf.Atom(polynomial(variables, [(1, [1])]), @qf.AtLeastZero),\n    )\n  } else {\n    source\n  }\n}\n\n///|\nfn fixture(name : String) -> (Int32, @qf.Formula, Bool) {\n  match name {\n    \"constant-unsat4\" => (0, alternatives(4, 0, false), false)\n    \"constant-unsat6\" => (0, alternatives(6, 0, false), false)\n    \"squares-unsat3\" => (1, alternatives(3, 1, false), false)\n    \"squares-unsat4\" => (1, alternatives(4, 1, false), false)\n    \"alternatives-sat3\" => (1, alternatives(3, 1, true), true)\n    \"alternatives-sat4\" => (1, alternatives(4, 1, true), true)\n    \"constant-sat4\" => (4, @qf.Truth(true), true)\n    \"prefix-unsat2\" =>\n      (\n        2,\n        conjunction([\n          @qf.Atom(polynomial(2, [(1, [1, 0])]), @qf.EqualZero),\n          @qf.Atom(polynomial(2, [(1, [1, 1]), (-1, [0, 0])]), @qf.EqualZero),\n        ]),\n        false,\n      )\n    \"circle-sat2\" =>\n      (\n        2,\n        @qf.Atom(\n          polynomial(2, [(1, [2, 0]), (1, [0, 2]), (-1, [0, 0])]),\n          @qf.EqualZero,\n        ),\n        true,\n      )\n    \"diagonal-sat3\" | \"diagonal-unsat3\" => {\n      let sat = name == \"diagonal-sat3\"\n      (\n        3,\n        conjunction([\n          @qf.Atom(\n            polynomial(3, [(1, [2, 0, 0]), (-2, [0, 0, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(3, [(1, [0, 1, 0]), (-1, [1, 0, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(3, [(1, [0, 0, 1]), (-1, [0, 1, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(3, [(1, [0, 0, 2]), (-2, [0, 0, 0])]),\n            if sat {\n              @qf.EqualZero\n            } else {\n              @qf.NotZero\n            },\n          ),\n        ]),\n        sat,\n      )\n    }\n    \"diagonal-unsat4\" =>\n      (\n        4,\n        conjunction([\n          @qf.Atom(\n            polynomial(4, [(1, [1, 0, 0, 0]), (-1, [0, 1, 0, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(4, [(1, [0, 1, 0, 0]), (-1, [0, 0, 1, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(4, [(1, [0, 0, 1, 0]), (-1, [0, 0, 0, 1])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(4, [(1, [2, 0, 0, 0]), (-2, [0, 0, 0, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(4, [(1, [0, 0, 0, 2]), (-2, [0, 0, 0, 0])]),\n            @qf.NotZero,\n          ),\n        ]),\n        false,\n      )\n    \"quadratic-nullification3\" =>\n      (\n        3,\n        conjunction([\n          @qf.Atom(polynomial(3, [(1, [1, 0, 0])]), @qf.EqualZero),\n          @qf.Atom(\n            polynomial(3, [(1, [0, 1, 0]), (-1, [0, 0, 0])]),\n            @qf.EqualZero,\n          ),\n          @qf.Atom(\n            polynomial(3, [\n              (1, [1, 0, 2]),\n              (1, [0, 1, 1]),\n              (-1, [0, 0, 1]),\n              (-1, [0, 0, 0]),\n            ]),\n            @qf.EqualZero,\n          ),\n        ]),\n        false,\n      )\n    \"univariate-sat\" =>\n      (1, @qf.Atom(polynomial(1, [(1, [2]), (-2, [0])]), @qf.EqualZero), true)\n    \"univariate-unsat\" =>\n      (1, @qf.Atom(polynomial(1, [(1, [2]), (1, [0])]), @qf.EqualZero), false)\n    _ => abort(\"unknown benchmark fixture\")\n  }\n}\n\n///|\nenum CadAnswer {\n  Sat(@cad.Point)\n  Unsat(@cad.Decomposition)\n}\n\n///|\nfn cad_search(problem : @cad.Problem, full : Bool) -> (CadAnswer, Int32) {\n  if full {\n    let mut state = @cad.start(problem)\n    for transitions in 1..<=100000 {\n      match @cad.step(state).unwrap() {\n        Paused(next) => state = next\n        Complete(value) => {\n          let answer = match @cad.witness(value).unwrap() {\n            Some(point) => Sat(point)\n            None => Unsat(value)\n          }\n          return (answer, transitions)\n        }\n      }\n    }\n  } else {\n    let mut state = @cad.start_search(problem)\n    for transitions in 1..<=100000 {\n      match @cad.search_step(state).unwrap() {\n        Paused(next) => state = next\n        Satisfiable(point) => return (Sat(point), transitions)\n        Unsatisfiable(value) => return (Unsat(value), transitions)\n      }\n    }\n  }\n  abort(\"benchmark exhausted transition limit\")\n}\n\n///|\nfn checked_cad(problem : @cad.Problem, answer : CadAnswer) -> Bool {\n  match answer {\n    Sat(point) => {\n      if !@cad.check_witness(problem, point) {\n        abort(\"invalid exact model\")\n      }\n      true\n    }\n    Unsat(value) => {\n      if !@cad.check_result(problem, value, @cad.certificate(value)) {\n        abort(\"invalid CAD coverage proof\")\n      }\n      if @cad.sentence(\n          value,\n          @core.replicate_onto(\n            @cad.arity(problem),\n            @logic.Quantifier::Exists,\n            Nil,\n          ),\n        ).unwrap() {\n        abort(\"nonempty alleged refutation\")\n      }\n      false\n    }\n  }\n}\n\n///|\nstruct SmtRun {\n  answer : @smt.Outcome\n  transitions : Int32\n  restarts : Int32\n  conflicts : Int32\n  proof_additions : Int32\n  core_probes : Int32\n  removed_literals : Int32\n  refutation_literals : Int32\n}\n\n///|\nfn smt_search(problem : @smt.Problem, mode : String) -> SmtRun {\n  let mut state = match mode {\n    \"full\" => @smt.start_full(problem)\n    \"pruned\" => @smt.start_restarting(problem)\n    \"retained\" => @smt.start_retained(problem)\n    \"core\" => @smt.start_core(problem)\n    _ => abort(\"unknown SMT mode\")\n  }\n  for transitions in 1..<=100000 {\n    match @smt.step(state).unwrap() {\n      Paused(next) => state = next\n      answer => {\n        let conflicts = match answer {\n          Unsatisfiable(proof) => @core.length(proof.lemmas)\n          _ => @smt.theory_conflicts(state)\n        }\n        let (proof_additions, refutation_literals) = match answer {\n          Unsatisfiable(refutation) => {\n            let additions = match refutation.propositional {\n              Rup(clauses) => @oracle.int_of_nat(@core.length(clauses))\n            }\n            let literals = @oracle.array(refutation.lemmas).fold(init=0, fn(\n              count,\n              lemma,\n            ) {\n              count + @oracle.int_of_nat(@core.length(lemma.assignment))\n            })\n            (additions, literals)\n          }\n          _ => (0, 0)\n        }\n        return {\n          answer,\n          transitions,\n          restarts: @oracle.int_of_nat(@smt.boolean_restarts(state)),\n          conflicts: @oracle.int_of_nat(conflicts),\n          proof_additions,\n          core_probes: @oracle.int_of_nat(@smt.core_probes(state)),\n          removed_literals: @oracle.int_of_nat(\n            @smt.core_literals_removed(state),\n          ),\n          refutation_literals,\n        }\n      }\n    }\n  }\n  abort(\"SMT benchmark exhausted transition limit\")\n}\n\n///|\nfn checked_smt(problem : @smt.Problem, answer : @smt.Outcome) -> Bool {\n  match answer {\n    Satisfiable(model) => {\n      if !@smt.check_model(problem, model) {\n        abort(\"invalid SMT model\")\n      }\n      true\n    }\n    Unsatisfiable(proof) => {\n      if !@smt.check_refutation(problem, proof) {\n        abort(\"invalid SMT refutation\")\n      }\n      false\n    }\n    Paused(_) => abort(\"unfinished SMT search\")\n  }\n}\n\n///|\nstruct Measurement {\n  preparation_us : Double\n  search_us : Double\n  verification_us : Double\n  transitions : Int32\n  restarts : Int32\n  conflicts : Int32\n  proof_additions : Int32\n  core_probes : Int32\n  removed_literals : Int32\n  refutation_literals : Int32\n  satisfiable : Bool\n}\n\n///|\nfn measure_cad(\n  variables : Int32,\n  source : @qf.Formula,\n  full : Bool,\n) -> Measurement {\n  let started = @bench.monotonic_clock_start()\n  let problem = @cad.prepare(@oracle.nat(variables), source).unwrap()\n  let preparation_us = @bench.monotonic_clock_end(started)\n  let started = @bench.monotonic_clock_start()\n  let (answer, transitions) = cad_search(problem, full)\n  let search_us = @bench.monotonic_clock_end(started)\n  let started = @bench.monotonic_clock_start()\n  let satisfiable = checked_cad(problem, answer)\n  {\n    preparation_us,\n    search_us,\n    verification_us: @bench.monotonic_clock_end(started),\n    transitions,\n    restarts: 0,\n    conflicts: 0,\n    proof_additions: 0,\n    core_probes: 0,\n    removed_literals: 0,\n    refutation_literals: 0,\n    satisfiable,\n  }\n}\n\n///|\nfn measure_smt(\n  variables : Int32,\n  source : @qf.Formula,\n  mode : String,\n) -> Measurement {\n  let started = @bench.monotonic_clock_start()\n  let problem = @smt.prepare(@oracle.nat(variables), source).unwrap()\n  let preparation_us = @bench.monotonic_clock_end(started)\n  let started = @bench.monotonic_clock_start()\n  let run = smt_search(problem, mode)\n  let search_us = @bench.monotonic_clock_end(started)\n  let started = @bench.monotonic_clock_start()\n  let satisfiable = checked_smt(problem, run.answer)\n  {\n    preparation_us,\n    search_us,\n    verification_us: @bench.monotonic_clock_end(started),\n    transitions: run.transitions,\n    restarts: run.restarts,\n    conflicts: run.conflicts,\n    proof_additions: run.proof_additions,\n    core_probes: run.core_probes,\n    removed_literals: run.removed_literals,\n    refutation_literals: run.refutation_literals,\n    satisfiable,\n  }\n}\n\n///|\n// Temporary measurement overlay: same public inputs/families in both sources.\nfn measure_prefix(variables : Int32, source : @qf.Formula, name : String) -> Unit {\n  let arity = @oracle.nat(variables)\n  let problem = @cad.prepare(arity, source).unwrap()\n  let families = @core.map(@cad.projection(problem).levels, @projection.family)\n  let reference = @prefix.prepare(arity, source, families).unwrap()\n  let sink = @bench.Bench()\n  let started = @bench.monotonic_clock_start()\n  for _ in 0..<128 {\n    let plan = @prefix.prepare(arity, source, families).unwrap()\n    if !plan.equal(reference) { abort(\"prefix plan changed during repetition\") }\n    sink.keep(plan)\n  }\n  let elapsed_us = @bench.monotonic_clock_end(started)\n  if !@prefix.check_plan(arity, source, families, reference) {\n    abort(\"prefix plan failed its source check\")\n  }\n  let plan = @debug.to_string(reference).escape()\n  println(\"{\\\"layer\\\":\\\"prefix\\\",\\\"case\\\":\\\"\\{name}\\\",\\\"iterations\\\":128,\\\"checked\\\":true,\\\"elapsed_us\\\":\\{elapsed_us},\\\"plan\\\":\\{plan}}\")\n}\n\n///|\nfn main {\n  let args = @env.args()\n  if args.length() < 3 || args.length() > 5 {\n    abort(\"usage: incrementalbench cad|smt full|pruned|retained|core CASE\")\n  }\n  // Runtime prefixes differ: Node includes both its executable and script.\n  let offset = args.length() - 3\n  let layer = args[offset]\n  let mode = args[offset + 1]\n  let name = args[offset + 2]\n  if mode != \"full\" && mode != \"pruned\" && mode != \"retained\" && mode != \"core\" {\n    abort(\"unknown mode\")\n  }\n  let (variables, source, expected) = fixture(name)\n  if layer == \"prefix\" {\n    measure_prefix(variables, source, name)\n    return\n  }\n  let started = @bench.monotonic_clock_start()\n  let measured = match layer {\n    \"cad\" => {\n      if mode == \"retained\" || mode == \"core\" {\n        abort(\"Boolean modes require SMT\")\n      }\n      measure_cad(variables, source, mode == \"full\")\n    }\n    \"smt\" => measure_smt(variables, source, mode)\n    _ => abort(\"unknown layer\")\n  }\n  let total_us = @bench.monotonic_clock_end(started)\n  if measured.satisfiable != expected {\n    abort(\"wrong decision\")\n  }\n  println(\n    \"{\\\"layer\\\":\\\"\\{layer}\\\",\\\"mode\\\":\\\"\\{mode}\\\",\\\"case\\\":\\\"\\{name}\\\",\\\"satisfiable\\\":\\{measured.satisfiable},\\\"transitions\\\":\\{measured.transitions},\\\"boolean_restarts\\\":\\{measured.restarts},\\\"theory_conflicts\\\":\\{measured.conflicts},\\\"proof_additions\\\":\\{measured.proof_additions},\\\"core_probes\\\":\\{measured.core_probes},\\\"removed_literals\\\":\\{measured.removed_literals},\\\"refutation_literals\\\":\\{measured.refutation_literals},\\\"preparation_us\\\":\\{measured.preparation_us},\\\"search_us\\\":\\{measured.search_us},\\\"verification_us\\\":\\{measured.verification_us},\\\"total_us\\\":\\{total_us}}\",\n  )\n}\n",
+    "src/cmd/incrementalbench/moon.pkg": "import {\n  \"Hosi121/morph/prefixlogic\" @prefix,\n  \"Hosi121/morph/cadprojection\" @projection,\n  \"moonbitlang/core/debug\",\n  \"Hosi121/morph/core\",\n  \"Hosi121/morph/polynomial\" @poly,\n  \"Hosi121/morph/realcad\" @qf,\n  \"Hosi121/morph/realformula\" @logic,\n  \"Hosi121/morph/cad\",\n  \"Hosi121/morph/realnlsmt\" @smt,\n  \"Hosi121/morph/testsupport\" @oracle,\n  \"moonbitlang/core/bench\",\n  \"moonbitlang/core/env\",\n}\n\npkgtype(kind: \"executable\")\n"
+  },
+  "source_overlay_sha256": {
+    "src/cmd/incrementalbench/main.mbt": "8c0855d7c1be0d0be01d6263a249e3b056a74875c829bdd723da3c7d25286b1f",
+    "src/cmd/incrementalbench/moon.pkg": "a381abc3f562ef11d98d06581c918e7c6b70d9a677507e5c9692e9bb6e882faf"
+  },
+  "source_review": "Both recorded Git trees independently reconstructed with only the exact two common CLI overlay files. All other source bytes come from the recorded commits. Dirty CLI paths are intentional and restored after measurement; no overlay remains in production.",
+  "generated_loop_review": "  _M0L6_2atmpS20126\n  = _M0FP37Hosi1215morph11prefixlogic7prepare(_M0L5arityS11951, _M0L6sourceS11954, _M0L8familiesS11955);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L9referenceS11956\n  = _M0MPB6Result6unwrapGRP37Hosi1215morph11prefixlogic4PlanRP37Hosi1215morph11prefixlogic11PrefixErrorE(_M0L6_2atmpS20126);\n  moonbit_decref_cycle_free(_M0L6_2atmpS20126);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L4sinkS11957 = _M0MPC15bench5Bench5Bench();\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L7startedS11958 = _M0FPC15bench23monotonic__clock__start();\n  _M0L2__S11959 = 0;\n  while (1) {\n    if (_M0L2__S11959 < 128) {\n      void* _M0L6_2atmpS20121;\n      struct _M0TP37Hosi1215morph11prefixlogic4Plan* _M0L4planS11960;\n      int32_t _M0L6_2atmpS20120;\n      int32_t _M0L6_2atmpS20122;\n      #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n      _M0L6_2atmpS20121\n      = _M0FP37Hosi1215morph11prefixlogic7prepare(_M0L5arityS11951, _M0L6sourceS11954, _M0L8familiesS11955);\n      #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n      _M0L4planS11960\n      = _M0MPB6Result6unwrapGRP37Hosi1215morph11prefixlogic4PlanRP37Hosi1215morph11prefixlogic11PrefixErrorE(_M0L6_2atmpS20121);\n      moonbit_decref_cycle_free(_M0L6_2atmpS20121);\n      #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n      _M0L6_2atmpS20120\n      = _M0IP37Hosi1215morph11prefixlogic4PlanPB2Eq5equal(_M0L4planS11960, _M0L9referenceS11956);\n      if (!_M0L6_2atmpS20120) {\n        #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n        moonbit_eprintln((moonbit_string_t)moonbit_string_literal_0.data);\n        moonbit_panic();\n      }\n      #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n      _M0MPC15bench5Bench4keepGRP37Hosi1215morph11prefixlogic4PlanE(_M0L4sinkS11957, _M0L4planS11960);\n      moonbit_decref_cycle_free(_M0L4planS11960);\n      _M0L6_2atmpS20122 = _M0L2__S11959 + 1;\n      _M0L2__S11959 = _M0L6_2atmpS20122;\n      continue;\n    } else {\n      moonbit_decref_cycle_free(_M0L4sinkS11957);\n    }\n    break;\n  }\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L11elapsed__usS11962\n  = _M0FPC15bench21monotonic__clock__end(_M0L7startedS11958);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L6_2atmpS20123\n  = _M0FP37Hosi1215morph11prefixlogic11check__plan(_M0L5arityS11951, _M0L6sourceS11954, _M0L8familiesS11955, _M0L9referenceS11956);\n  moonbit_decref_cycle_free(_M0L5arityS11951);\n  moonbit_decref_cycle_free(_M0L8familiesS11955);\n  if (!_M0L6_2atmpS20123) {\n    #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n    moonbit_eprintln((moonbit_string_t)moonbit_string_literal_1.data);\n    moonbit_panic();\n  }\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L6_2atmpS20125\n  = _M0FPC15debug10to__stringGRP37Hosi1215morph11prefixlogic4PlanE(_M0L9referenceS11956);\n  moonbit_decref_cycle_free(_M0L9referenceS11956);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L4planS11963\n  = _M0MPC16string6String14escape_2einner(_M0L6_2atmpS20125, 1);\n  moonbit_decref_cycle_free(_M0L6_2atmpS20125);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0L18_2astring__builderS11964\n  = _M0MPB13StringBuilder21StringBuilder_2einner(82);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0IPB13StringBuilderPB6Logger13write__string(_M0L18_2astring__builderS11964, (moonbit_string_t)moonbit_string_literal_2.data);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0MPB13StringBuilder13write__objectGsE(_M0L18_2astring__builderS11964, _M0L4nameS11965);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n  _M0IPB13StringBuilderPB6Logger13write__string(_M0L18_2astring__builderS11964, (moonbit_string_t)moonbit_string_literal_3.data);\n  #line 388 \"/home/hosi/morph/src/cmd/incrementalbench/main.mbt\"\n",
+  "generated_loop_note": "Candidate generated C contains prepare and keep inside the 128-iteration loop. Inspection, not a compiler correctness proof.",
+  "published_log_sha256": "244b8fe9500fccf9ce8cd01bca4268fd773686f2a933464e768dc1f732a32f6d",
+  "runner_source": "from pathlib import Path\nimport subprocess\nargv=['tools/measure','--cpu','4','python3','tools/compare_field_kernels.py','--before','.tools/cad-demand/prefix/before.exe','--after','.tools/cad-demand/prefix/after.exe','--before-root','/home/hosi/morph-demand-before','--after-root','/home/hosi/morph','--harness','src/cmd/incrementalbench','--arg=prefix','--arg=pruned','--groups','5','--timeout-seconds','3','--output','.tools/cad-demand/prefix/comparison.json']\nfor name in ['diagonal-sat3','diagonal-unsat4','prefix-unsat2','circle-sat2']:argv+=['--case',name]\nsubprocess.run(argv,check=True)\nprint('@@PREFIX_RECORD',flush=True)\nprint(Path('.tools/cad-demand/prefix/comparison.json').read_text(),flush=True)\n",
+  "measurement_runner_git_object": "bdd99a36401042a137371e638a275c906b16a7f9:tools/compare_field_kernels.py",
+  "commands": [
+    {
+      "name": "public-prefix-prepare-abba",
+      "argv": [
+        "python3",
+        ".tools/cad-demand/prefix/runner.py"
+      ],
+      "returncode": 0,
+      "sha256": "244b8fe9500fccf9ce8cd01bca4268fd773686f2a933464e768dc1f732a32f6d",
+      "published_log": {
+        "path": "docs/measurements/cad-demand-20261121-prefix.txt",
+        "offset_bytes": 0,
+        "length_bytes": 212638
+      }
+    }
+  ]
+}
