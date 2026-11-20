@@ -67,8 +67,8 @@ Tensorの既存12 blockは、独立array oracle、rank 3–5の390 permutation�
 | [mode/contractの要素数](../../src/tensor/cursor.mbt) | 通常経路でも出力要素数のunary Natを構築し、主に零判定へ使う。shapeから零軸を先に判定する候補がある |
 | [mode積のblock](../../src/tensor/cursor.mbt) | 同じ入力の列を出力行ごとに準備する。共有すると保持量も変わるため、単一出力行を含めた比較が必要 |
 | [縮約の中間block](../../src/tensor/cursor.mbt) | 対角部分を取る前に、捨てるoff-diagonalを含むblockもコピーする |
-| [scalar_by_contraction](../../src/statgeometry/tensors.mbt) | rank 2同士からrank 4の積を展開する。n⁴個の積に対し、最終結果に必要な対応成分の積はn²個。QQ専用経路の融合が次の大きい候補 |
+| [scalar_by_contraction](../../src/statgeometry/tensors.mbt) | 後続の`919b06f`で解消。既存zipとfoldで対応成分n²個だけを計算する。[独立比較と残る範囲](scalar-contraction-20261120.md)を参照 |
 
-最後の候補は、任意のSemiring callbackの順序を変えてよいという意味ではない。
+最後の変更は、任意のSemiring callbackの順序を変えてよいという意味ではない。
 固定QQの結合則・可換性を利用する経路と、汎用Tensor APIの観測契約を区別し、既存の独立照合も保つ必要がある。
 Tensorはshapeと全成分を持つdense表現であり、対称性・共変/反変・遅延した積や縮約を型で保持する実装は今回追加していない。

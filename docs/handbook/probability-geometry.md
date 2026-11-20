@@ -232,7 +232,9 @@ rank 0は成分を一つ持つscalar、長さ0の軸を含むテンソルは成�
 
 `mode_product(t,axis,map,semiring)` は一軸へ `map[out,in]` を作用させる。
 [statgeometry/tensors.mbt](../../src/statgeometry/tensors.mbt) では、逆計量による接続の添字上げ、
-Jacobianによるcubicテンソルの引き戻し、Ricci曲率と逆計量の積からの二回の縮約に再利用する。
+Jacobianによるcubicテンソルの引き戻しに再利用する。
+スカラー曲率は逆計量とRicciの対応成分を掛けて加算し、rank 4の直積を展開しない。
+このQQ専用経路は、キャッシュ済みscalarから独立して再計算する。[成立条件と比較](../research/scalar-contraction-20261120.md)を参照。
 引き戻しは一般の長方形Jacobianも受け取り、cubicのような共変テンソルを扱う。
 接続係数の非線形な座標変換には2階微分も必要なので、この操作だけでは済ませない。
 縮約とmode積はblock cursorを使い、mode積の内積では一時ペア列を作らず同じ順序で両列を畳み込む。

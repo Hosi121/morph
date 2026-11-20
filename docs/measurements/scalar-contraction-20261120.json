@@ -1,0 +1,259 @@
+{
+  "utc": "2026-11-20T13:44:17.138939+00:00",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "affinity": [
+    4
+  ],
+  "groups": 5,
+  "order": [
+    "before",
+    "after",
+    "after",
+    "before"
+  ],
+  "argument_prefix": [
+    "--contraction"
+  ],
+  "scope": "Whole native release process via GNU time, including startup, one curvature construction, fixed repetitions, exact formula assertions and JSON serialization; excludes compilation. Peak RSS is per-process KiB, not allocation volume or isolated contraction live space.",
+  "summary": {
+    "scalar0": {
+      "process_ns": {
+        "medians": {
+          "before": 14675485.0,
+          "after": 6386262.0
+        },
+        "ranges": {
+          "before": [
+            13530020,
+            17901971
+          ],
+          "after": [
+            5109221,
+            7219905
+          ]
+        },
+        "before_over_after": 2.2979772831117797,
+        "block_ratios": [
+          2.3491344671812175,
+          2.3655920646530575,
+          2.42621680958718,
+          2.4605936672399964,
+          2.5070662413347864
+        ]
+      }
+    },
+    "scalar3": {
+      "process_ns": {
+        "medians": {
+          "before": 160984543.0,
+          "after": 28792877.5
+        },
+        "ranges": {
+          "before": [
+            151234189,
+            197122653
+          ],
+          "after": [
+            25681343,
+            33357039
+          ]
+        },
+        "before_over_after": 5.591123811782966,
+        "block_ratios": [
+          5.898630784970763,
+          5.572446789954215,
+          5.487856626276918,
+          5.649574365560938,
+          5.33454452134867
+        ]
+      }
+    },
+    "scalar5": {
+      "process_ns": {
+        "medians": {
+          "before": 480498510.5,
+          "after": 41455716.0
+        },
+        "ranges": {
+          "before": [
+            454475281,
+            514300270
+          ],
+          "after": [
+            37178264,
+            47871457
+          ]
+        },
+        "before_over_after": 11.59064555778026,
+        "block_ratios": [
+          12.367369569865323,
+          10.64577454088763,
+          11.964505354624137,
+          11.622976226004637,
+          10.767032545394304
+        ]
+      }
+    },
+    "cached5": {
+      "process_ns": {
+        "medians": {
+          "before": 8136205.0,
+          "after": 8399655.0
+        },
+        "ranges": {
+          "before": [
+            7676243,
+            9288118
+          ],
+          "after": [
+            6896413,
+            15437500
+          ]
+        },
+        "before_over_after": 0.9686356165818715,
+        "block_ratios": [
+          1.1281227521356836,
+          0.8433171923191262,
+          1.01216296771039,
+          1.0527205091550826,
+          0.7066943733064062
+        ]
+      }
+    }
+  },
+  "memory_summary": {
+    "scalar0": {
+      "medians": {
+        "before": 2048.0,
+        "after": 2048.0
+      },
+      "ranges": {
+        "before": [
+          2048,
+          2048
+        ],
+        "after": [
+          2048,
+          2048
+        ]
+      },
+      "before_over_after": 1.0,
+      "block_ratios": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "scalar3": {
+      "medians": {
+        "before": 2176.0,
+        "after": 2176.0
+      },
+      "ranges": {
+        "before": [
+          2176,
+          2176
+        ],
+        "after": [
+          2176,
+          2176
+        ]
+      },
+      "before_over_after": 1.0,
+      "block_ratios": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "scalar5": {
+      "medians": {
+        "before": 2560.0,
+        "after": 2304.0
+      },
+      "ranges": {
+        "before": [
+          2560,
+          2560
+        ],
+        "after": [
+          2304,
+          2304
+        ]
+      },
+      "before_over_after": 1.1111111111111112,
+      "block_ratios": [
+        1.1111111111111112,
+        1.1111111111111112,
+        1.1111111111111112,
+        1.1111111111111112,
+        1.1111111111111112
+      ]
+    },
+    "cached5": {
+      "medians": {
+        "before": 2304.0,
+        "after": 2304.0
+      },
+      "ranges": {
+        "before": [
+          2304,
+          2304
+        ],
+        "after": [
+          2304,
+          2304
+        ]
+      },
+      "before_over_after": 1.0,
+      "block_ratios": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "all_checked": true,
+  "before": {
+    "root": "/home/hosi/morph-contraction-before",
+    "commit": "2115681a8cdb624bb397d0e154ccc9d07083654b",
+    "working_tree": [],
+    "source_manifest_sha256": "cdc85668595aa7ece45060d6d1d7788b7509b925c274630d391731d91f966af7",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-contraction/before.exe",
+    "artifact_sha256": "8e7b08d47775eef5b8f59844084fb7e9c53b758948aabc9a729f56d0ab7bb7fb",
+    "harness": {
+      "main.mbt": "3bb03cc5db6405b9f47fdf1bd6fd8c06d8f206d17aa93bd7b7a8af7638c74b01",
+      "moon.pkg": "27ec347135b409b5b62f6273bf33f7442e686d737c323188fcafa786dc1059ab"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "after": {
+    "root": "/home/hosi/morph",
+    "commit": "919b06ff718c6fb83b7a9a724ca18822c6357ad0",
+    "working_tree": [],
+    "source_manifest_sha256": "efdf7b585bc2c2cf85051602ca30d5a402d5371585171ff65c8760c1b4e1e7d2",
+    "source_file_count": 1108,
+    "artifact": "/home/hosi/morph/.tools/scalar-contraction/after.exe",
+    "artifact_sha256": "384f2db7c72a6a513443565d36349e250dd38582c831ed740d9565a012e5bd4b",
+    "harness": {
+      "main.mbt": "3bb03cc5db6405b9f47fdf1bd6fd8c06d8f206d17aa93bd7b7a8af7638c74b01",
+      "moon.pkg": "27ec347135b409b5b62f6273bf33f7442e686d737c323188fcafa786dc1059ab"
+    },
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n"
+  },
+  "runner_sha256": "516be6b4d3a8f7be4982182e208e818788584b25c4932d0b2279fdb0eef1b03f",
+  "independent_oracle": "Categorical simplex has constant sectional curvature 1/4; dimension d gives scalar d(d-1)/4. Every timed repetition checks exact QQ equality; Python separately decodes the complete canonical rational JSON.",
+  "run_count": 80,
+  "lossless_full_record": {
+    "path": "docs/measurements/scalar-contraction-20261120.json.gz",
+    "sha256": "139107bebaad995efea10c7cb9543beeef4481833463b9e2593c4429021fe18e",
+    "uncompressed_sha256": "dd0de6977fe8b298c58bf22dc464fea68566f15d619fb8ca9a10c5657ce20782"
+  }
+}

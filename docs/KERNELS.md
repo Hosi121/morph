@@ -21,6 +21,10 @@
 非恒等順列と零・微小入力の差は未確定。[単独・併用比較と残る無駄](research/tensor-temporaries-20261120.md)に範囲を記録する。
 これらの倍率は上の2026-11-18の系列と合成しない。
 
+さらに`statgeometry.scalar_by_contraction`は、既存のzipとfoldでrank 4の直積と二回の縮約を省く。
+固定native比較のdim3/5は5.591/11.591倍、各5/5 block改善。5次元のプロセスpeak RSSは2,560→2,304 KiB。
+[条件・旧経路との照合・限界](research/scalar-contraction-20261120.md)を記録した。上記Tensor比較とは別系列である。
+
 ## 置換・行列更新・圧縮展開
 
 | 対象 | 変更と比較範囲 |

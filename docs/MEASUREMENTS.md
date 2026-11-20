@@ -15,6 +15,12 @@
 中央値・平均・標準偏差、タイムアウトの打切り値も区別します。
 個別入力での改善を、全入力の速度保証へ一般化しません。
 
+## スカラー縮約の直積を省く
+
+`2115681`と`919b06f`のnative release・CPU4・固定5ABBA。準備済み曲率からの再縮約はdim3/5で5.591/11.591倍、
+5次元のプロセスpeak RSSは2,560→2,304 KiB。[4入力・80プロセス](measurements/scalar-contraction-20261120.json)と
+[数学的な成立条件・未変更のgetter対照・限界](research/scalar-contraction-20261120.md)を保存した。
+
 ## Tensorの一時列と恒等変換
 
 `3bc3ffc`と併用版`0b9cab0`のnative release・CPU4・固定5ABBAでは、添字上げdim3/5が1.078/1.051倍、恒等置換が13.475倍。
