@@ -206,7 +206,7 @@ pub fn prepare(
     !@core.all(@logic.qf_atoms(formula), fn(p) { valid_polynomial(p, arity) }) {
     Err(DimensionMismatch)
   } else {
-    match stages(Zero, families, linear_conflict(formula)) {
+    match stages(Zero, families, conjunct_conflict(formula)) {
       Ok(stages) => Ok({ stages, })
       Err(error) => Err(error)
     }

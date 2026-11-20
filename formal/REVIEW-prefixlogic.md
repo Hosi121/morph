@@ -89,6 +89,8 @@ python3 tools/test_model_drift.py
 
 ## 座標等式からの大域的な矛盾（2026-11-20）
 
+以下は採用ソース`6861797`時点の記録。現在の一般化は次節に記す。
+
 `linear_conflict`は、ANDだけをたどって必須の`EqualZero`原子を集める。
 その中の非零な座標等式`a*x_i+b=0`を除数とし、他の必須等式pを既存の多項式除算で簡約する。
 余りが非零定数cなら、返された商q_iから`p = Σ q_i d_i + c`を厳密に再構築し、元のpとの一致を検査する。
@@ -121,3 +123,41 @@ ORと否定の内側の原子も集める二つの誤ったモデルは、それ
 | current_machine_result | 新定理が成功し、OR/NOTを仮定へ取り込む二変異を拒否（machine-confirmed）。数値回帰と統合範囲は検証記録に保存 |
 | domain_wording / domain_question | 条件付きの等式から無条件の矛盾を作らない。既存契約と実装の許可で判断でき、追加の業務判断は不要 |
 | lock_update | `linear_conflict`全体と`prepare`の接続をsource-mapへ追加し、モデルを再検査してhashを更新。翻訳証明ではない |
+
+## 二項等式と六関係への一般化（2026-11-21）
+
+既存のprivate規則を`conjunct_conflict`へ改名し、ANDから必須の全関係原子を収集する。
+仮定にするのは引き続き`EqualZero`のみ。座標等式による既存判定を先に行い、
+それで決まらなければ非零の一項・二項多項式を除数へ加える。
+二項では、lex先頭項の総次数が残項以上という条件を加えた。
+一回の書き換えで一単項式は高々一単項式となり、総次数も増えない。
+係数のbit長・除算回数・全体の時間を一定とする保証ではない。
+
+各元等式を、それ自身と完全一致する式を除いた元等式群で一度ずつ簡約する。
+新しい二項以下の余り、または矛盾する定数だけを重複なく追加する。
+元の除数がm本なら追加は高々m本で、追加済みの結果を再帰的に閉包しない。
+`p = Σ q_i*d_i + r`を厳密に再構築した変更だけを採用し、変更がなければ恒等式`p=p`を使う。
+各追加余りは元の必須等式が成り立つ点で零である。その帰結を再度除数にしても同じ条件を保つ。
+
+必須原子の簡約結果が定数なら、既存の`relation_holds`で元の関係を評価する。
+非零定数と等号の矛盾に加え、零と厳密不等号・非等号の矛盾も扱える。
+`xy=0`から`x=0`や`y=0`を勝手に選ばず、`x²=y²`から`x=y`を導かない。
+ORと否定の内側は収集しない。`Known(true)`、完全性、一般のGroebner基底は導出しない。
+恒等式が確認できない場合は既存の係数判定と完全CADへ戻る。
+
+Leanモデルの変更はない。`requiredAtoms_sound`の任意selectorを全原子に適用し、
+`conjunct_conflict_sound`の条件付き論理伝播を再利用する。
+恒等式、余りの帰結、次数制限の算術的健全性とMoonBitへの翻訳は形式証明していない。
+実行時の恒等式検査、有理数の具体的証人、全六関係の独立整数評価、完全CAD参照、
+既存の独立Z3 corpusと三backendの回帰検査がこの範囲を補う。
+以前保存したOR/NOT変異の拒否は同一Leanソースの証拠であり、今回新規の証明とは数えない。
+
+| 変更判定 | 記録 |
+| --- | --- |
+| claim_id | CAD-CONJUNCT-CONFLICT-002 |
+| source_of_truth | 厳密な元の判定、証拠のsourceへの束縛、既存公開APIを保つ |
+| spec_delta / code_delta | 座標限定から次数を増やさない二項等式へ広げ、六関係の定数矛盾を共有処理する |
+| model_delta / drift_class | Leanはbyte一致。code-driftとしてselectorと算術前提の対応を再確認 |
+| check_command | `tools/check_formal`、`tools/check_model_drift.py`、三backendの影響範囲検査 |
+| lock_update | 旧private関数の領域を`conflict.mbt::conjunct_conflict`へ移し、`prepare`接続も更新。翻訳証明ではない |
+| remaining_obligation | 多項式除算、QQ評価、恒等式からの帰結、実装の形式的な翻訳は未証明 |

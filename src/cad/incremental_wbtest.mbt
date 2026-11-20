@@ -292,3 +292,39 @@ test "quadratic nullification conflict has a checked root leaf bound to its orig
     _ => fail("zero residual was incorrectly refuted")
   }
 }
+
+///|
+test "checked binomial shortcuts agree with full CAD on products and real branches" {
+  let product = polynomial_fixture(2, [(1, [1, 1])])
+  let product_one = polynomial_fixture(2, [(1, [1, 1]), (-1, [0, 0])])
+  let square_one = polynomial_fixture(2, [(1, [2, 2]), (-1, [0, 0])])
+  let x = polynomial_fixture(2, [(1, [1, 0])])
+  let difference = polynomial_fixture(2, [(1, [2, 0]), (-1, [0, 2])])
+  let linear = polynomial_fixture(2, [(1, [1, 0]), (-1, [0, 1])])
+  for
+    (source, expected) in [
+      (
+        @qf.Conjunction(
+          @qf.Atom(product_one, @qf.EqualZero),
+          @qf.Atom(square_one, @qf.NotZero),
+        ),
+        false,
+      ),
+      (
+        @qf.Conjunction(
+          @qf.Atom(product, @qf.EqualZero),
+          @qf.Atom(x, @qf.NotZero),
+        ),
+        true,
+      ),
+      (
+        @qf.Conjunction(
+          @qf.Atom(difference, @qf.EqualZero),
+          @qf.Atom(linear, @qf.NotZero),
+        ),
+        true,
+      ),
+    ] {
+    incremental_review_expect(2, source, expected, true)
+  }
+}

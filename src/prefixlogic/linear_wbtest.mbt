@@ -24,7 +24,7 @@ test "affine conjunct conflicts agree with an independent integer grid and input
         ]
         for order in [[0, 1, 2], [2, 0, 1], [1, 2, 0]] {
           let source = conjunction_fixture(order.map(i => atoms[i]))
-          assert_eq(linear_conflict(source), c != 0)
+          assert_eq(conjunct_conflict(source), c != 0)
           let plan = test_plan(3, source, [[], [], [], []])
           assert_eq(
             evaluate(plan, @oracle.nat(0), Nil),
@@ -71,10 +71,10 @@ test "conditional equalities and nonzero relations are not unconditional assumpt
     Atom(y, EqualZero),
     Atom(p, EqualZero),
   ])
-  assert_true(linear_conflict(bad))
+  assert_true(conjunct_conflict(bad))
   let incompatible = test_polynomial(3, [(1, [1, 0, 0]), (1, [0, 1, 0])])
   assert_true(
-    linear_conflict(
+    conjunct_conflict(
       conjunction_fixture([
         Atom(x, EqualZero),
         Atom(y, EqualZero),
@@ -96,36 +96,36 @@ test "conditional equalities and nonzero relations are not unconditional assumpt
         @qf.Disjunction(Atom(y, EqualZero), Atom(p, EqualZero)),
       ]),
     ] {
-    assert_false(linear_conflict(source))
+    assert_false(conjunct_conflict(source))
     assert_true(
       evaluate(test_plan(3, source, [[], [], [], []]), @oracle.nat(0), Nil) !=
       Ok(Known(false)),
     )
   }
-  // Coupled rows are deliberately left to CAD: avoid substitution expansion.
+  // Two-term aliases do not expand monomials and now derive the contradiction.
   let coupled = test_polynomial(3, [(1, [1, 0, 0]), (1, [0, 1, 0])])
   let coupled_target = test_polynomial(3, [
     (1, [1, 0, 1]),
     (1, [0, 1, 1]),
     (-1, [0, 0, 0]),
   ])
-  assert_false(
-    linear_conflict(
+  assert_true(
+    conjunct_conflict(
       conjunction_fixture([
         Atom(coupled, EqualZero),
         Atom(coupled_target, EqualZero),
       ]),
     ),
   )
-  // Zero divisors are excluded; a nonlinear assumption alone adds no rewrite.
+  // A nonlinear assumption alone need not decide an unrelated target.
   let nonlinear = test_polynomial(3, [(1, [2, 0, 0])])
   assert_false(
-    linear_conflict(
+    conjunct_conflict(
       conjunction_fixture([Atom(nonlinear, EqualZero), Atom(p, EqualZero)]),
     ),
   )
   assert_true(
-    linear_conflict(
+    conjunct_conflict(
       conjunction_fixture([Atom(@poly.zero(@oracle.nat(3)), EqualZero), bad]),
     ),
   )
