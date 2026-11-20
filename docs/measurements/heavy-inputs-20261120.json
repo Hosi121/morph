@@ -1,0 +1,94 @@
+{
+  "kind": "single-input-cost-observations",
+  "source_commit": "eed30409fb472111ff46c328409b11d476183891",
+  "overall_ranking": false,
+  "policy": "One trial per input, native release, CPU4 common lock. Excludes compilation, includes startup, preparation and checks when reached. Censored execution is neither a solver success nor a completed duration. No speedup or general worst-case claim.",
+  "existing_optional_stress_reference": "docs/measurements/incremental-review-oracle-20261117.json",
+  "tracked_source_and_exact_additional_probe_manifest_verified": true,
+  "additional_probe_source": {
+    "main.mbt": "///|\nfn polynomial(terms : Array[(Int32, Array[Int32])]) -> @poly.Polynomial {\n  @poly.polynomial(@oracle.nat(3), @oracle.chain(terms.map(fn(t) {\n    @poly.Term::{coefficient: @oracle.rational(t.0, 1), exponents: @oracle.chain(t.1.map(@oracle.nat))}\n  }))).unwrap()\n}\n\n///|\nfn main {\n  // The original optional quadratic-in-z stress from the independent review.\n  // x=0, y=1, x*z^2+y*z-z-1=0 is UNSAT by direct substitution.\n  let source = @qf.Conjunction(\n    @qf.Atom(polynomial([(1, [1, 0, 0])]), @qf.EqualZero),\n    @qf.Conjunction(\n      @qf.Atom(polynomial([(1, [0, 1, 0]), (-1, [0, 0, 0])]), @qf.EqualZero),\n      @qf.Atom(polynomial([(1, [1, 0, 2]), (1, [0, 1, 1]), (-1, [0, 0, 1]), (-1, [0, 0, 0])]), @qf.EqualZero),\n    ),\n  )\n  println(\"prepare\")\n  let problem = @cad.prepare(@oracle.nat(3), source).unwrap()\n  println(\"search\")\n  let mut state = @cad.start_search(problem)\n  for _ in 0..<100000 {\n    match @cad.search_step(state).unwrap() {\n      @cad.Paused(next) => state = next\n      @cad.Satisfiable(_) => abort(\"closed-form UNSAT returned SAT\")\n      @cad.Unsatisfiable(value) => {\n        println(\"check\")\n        if !@cad.check_result(problem, value, @cad.certificate(value)) {\n          abort(\"invalid certificate\")\n        }\n        println(\"UNSAT checked\")\n        return\n      }\n    }\n  }\n  abort(\"transition budget exhausted; no answer inferred\")\n}\n",
+    "moon.pkg": "import {\n  \"Hosi121/morph/cad\" @cad,\n  \"Hosi121/morph/realcad\" @qf,\n  \"Hosi121/morph/polynomial\" @poly,\n  \"Hosi121/morph/testsupport\" @oracle,\n}\npkgtype(kind: \"executable\")\n"
+  },
+  "cad_runner_source": "from pathlib import Path\nfrom datetime import datetime,timezone\nimport hashlib,json,os,subprocess,time,platform\nroot=Path.cwd();folder=root/'.tools/heavy-probe-20261120';exe=folder/'heavyprobe.exe'\nrecord=dict(utc=datetime.now(timezone.utc).isoformat(),source_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),working_tree=subprocess.check_output(['git','status','--porcelain'],text=True).splitlines(),platform=platform.platform(),affinity=sorted(os.sched_getaffinity(0)),compiler=subprocess.check_output([str(root/'tools/moon'),'version','--all'],text=True),backend='native release',scope='One original optional independent-review CAD stress input; startup, prepare, search and checker; excludes compilation. Timeout is execution time and never an UNSAT result.',input='x=0 AND y=1 AND x*z^2+y*z-z-1=0',expected='UNSAT by direct substitution, third equation becomes -1=0',timeout_seconds=65,transition_budget=100000,artifact_sha256=hashlib.sha256(exe.read_bytes()).hexdigest(),harness_sha256={name:hashlib.sha256((folder/name).read_bytes()).hexdigest() for name in ['main.mbt','moon.pkg']})\nstart=time.perf_counter()\ntry:\n p=subprocess.run(['stdbuf','-oL',str(exe)],capture_output=True,text=True,timeout=65)\n record.update(seconds=time.perf_counter()-start,censored=False,exit_code=p.returncode,stdout=p.stdout,stderr=p.stderr,checked=p.returncode==0 and p.stdout=='prepare\\nsearch\\ncheck\\nUNSAT checked\\n' and not p.stderr)\nexcept subprocess.TimeoutExpired as e:\n record.update(seconds=time.perf_counter()-start,censored=True,exit_code=None,stdout=(e.stdout or b'').decode() if isinstance(e.stdout,bytes) else (e.stdout or ''),stderr=(e.stderr or b'').decode() if isinstance(e.stderr,bytes) else (e.stderr or ''),checked=False)\n(folder/'cad.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\\n');print(json.dumps(record,ensure_ascii=False,indent=2))\n",
+  "galois_runner_git_object": "eed30409fb472111ff46c328409b11d476183891:tools/measure_connections.py",
+  "galois": {
+    "utc": "2026-11-20T13:57:50.629130+00:00",
+    "source_commit": "eed30409fb472111ff46c328409b11d476183891",
+    "working_tree_status": [
+      "?? src/cmd/heavyprobe/"
+    ],
+    "source_manifest": {
+      "files": 1110,
+      "sha256": "e49c8837570e6fe2cd3c23a8399eb29f1bfa648f2881db9398e62b7e3614327a"
+    },
+    "artifact": "_build/native/release/build/cmd/connections/connections.exe",
+    "artifact_sha256": "552555bbcbef15abddd4a540c250f1581387b2ed6ea0171f228eaa3c5725b1f2",
+    "affinity": [
+      4
+    ],
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+    "backend": "native",
+    "profile": "release (caller-provided prebuilt artifact)",
+    "scope": "process startup, example construction, preparation, computation and all example result checks; excludes compilation",
+    "case_scope": {
+      "groups": "S4/A5/S5 complete group generation, derived series and replay checks",
+      "bernstein": "exact quadratic enclosure, subdivision proof, independent CAD check, strict/non-strict boundary witnesses",
+      "homology": "H0/H1/H2 for circle, disk, sphere, RP2 with integral certificate checks",
+      "presentation": "five abelianizations including independent RP2/torus simplicial H1 comparisons",
+      "galois": "x^3-2 complete splitting field, full exact Galois action, derived series and bound certificate checks"
+    },
+    "repetitions": 1,
+    "timeout_seconds": 65.0,
+    "runs": [
+      {
+        "repetition": 0,
+        "mode": "galois",
+        "seconds": 14.65364786000282,
+        "exit_code": 0,
+        "stdout": "z^3-2: full Galois action -> derived orders 6 -> 3 -> 1; solvable by radicals [checked]\n",
+        "stderr": "",
+        "censored": false,
+        "checked": true
+      }
+    ],
+    "summary": {
+      "galois": {
+        "completed_and_checked": 1,
+        "censored": 0,
+        "median_seconds_completed_only": 14.65364786000282
+      }
+    },
+    "all_checked": true
+  },
+  "cad": {
+    "utc": "2026-11-20T13:58:14.032393+00:00",
+    "source_commit": "eed30409fb472111ff46c328409b11d476183891",
+    "working_tree": [
+      "?? src/cmd/heavyprobe/"
+    ],
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "affinity": [
+      4
+    ],
+    "compiler": "moon 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moon\nmoonc v0.10.20+65efd5b93 (2026-11-05) ~/morph/.tools/moon/bin/moonc\nmoonrun 0.1.20261104 (940aa18 2026-11-04) ~/morph/.tools/moon/bin/moonrun\n\nFeature flags enabled: rr_moon_mod,rr_moon_pkg\n",
+    "backend": "native release",
+    "scope": "One original optional independent-review CAD stress input; startup, prepare, search and checker; excludes compilation. Timeout is execution time and never an UNSAT result.",
+    "input": "x=0 AND y=1 AND x*z^2+y*z-z-1=0",
+    "expected": "UNSAT by direct substitution, third equation becomes -1=0",
+    "timeout_seconds": 65,
+    "transition_budget": 100000,
+    "artifact_sha256": "7af1afce1a5f9a30bff4c8e10b1202a47872644a1313094e05842a5acff2f614",
+    "harness_sha256": {
+      "main.mbt": "f93df5f1e36415d656316401d3827ba46f567eaa5397a2f5de964c1b396f4b5b",
+      "moon.pkg": "7c85c9e3bd96109918d6889a1d71ed0deb6f5af2fafe6fccb09daa540741e9c9"
+    },
+    "seconds": 65.06705870300357,
+    "censored": true,
+    "exit_code": null,
+    "stdout": "prepare\nsearch\n",
+    "stderr": "",
+    "checked": false
+  }
+}
