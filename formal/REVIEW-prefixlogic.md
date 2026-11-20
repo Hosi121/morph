@@ -161,3 +161,28 @@ Leanモデルの変更はない。`requiredAtoms_sound`の任意selectorを全�
 | check_command | `tools/check_formal`、`tools/check_model_drift.py`、三backendの影響範囲検査 |
 | lock_update | 旧private関数の領域を`conflict.mbt::conjunct_conflict`へ移し、`prepare`接続も更新。翻訳証明ではない |
 | remaining_obligation | 多項式除算、QQ評価、恒等式からの帰結、実装の形式的な翻訳は未証明 |
+
+## 不採用の余りの再構築を省く（2026-11-21）
+
+`reduce`の内部で、呼出側の採用条件を満たす余りかを先に調べる。
+矛盾判定では元の関係に反する定数、帰結の追加では未登録の二項以下の式または矛盾する定数だけが対象となる。
+条件に合わなければ`None`を返し、真偽の確定や除数への追加には使わない。
+合う場合は引き続き`p = Σ q_i*d_i + r`を再構築し、完全一致したものだけを返す。
+変化がない場合の恒等式`p=p`も維持する。採用する結果の算術的な検査は省略していない。
+
+旧処理の「恒等式の確認後に採用条件を調べる」と、新処理の「採用条件の後に恒等式を確認する」は、
+副作用のない検査が終了する場合に同じ結果を返す。新処理は、使われない再構築自体を実行しない。
+資源枯渇・未終了を含む実行時間の挙動まで同一とする契約ではない。
+不一致・除算エラーは引き続き帰結を作らず、元のCADへ戻る。
+必要な商の生成そのもの、除算、全Collins射影は今回の削減対象にしていない。
+
+| 変更判定 | 記録 |
+| --- | --- |
+| claim_id | CAD-CONJUNCT-CONFLICT-003 |
+| source_of_truth | 元の厳密な結果と証拠検査・公開APIを維持し、使わない中間計算を省く |
+| spec_delta / code_delta | 採用条件を恒等式の再構築より前へ移動。数学的な判定範囲と返却されるPlanは維持 |
+| model_delta / drift_class | code-driftとして算術前提の対応を再確認。BooleanのLeanモデルはbyte一致 |
+| check_command | `tools/check_formal`、source-map検査、三backendの影響範囲検査、旧版と固定CLI全出力の比較 |
+| previous_machine_result | 前回checkpointで三backend各303成功、既存形式モデル成功 |
+| lock_update | 同一private関数の領域hashだけを更新。翻訳証明ではない |
+| remaining_obligation | 算術の一般的な健全性・実装の翻訳は形式証明していない。今回の検査順序の等価性もLeanの対象外 |

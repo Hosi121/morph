@@ -65,11 +65,16 @@ fn conjunct_conflict(formula : @qf.Formula) -> Bool {
   fn reduce(
     p : @poly.Polynomial,
     divisors : @core.Chain[@poly.Polynomial],
+    needed : (@poly.Polynomial) -> Bool,
   ) -> @poly.Polynomial? {
     match @poly.divide(p, divisors) {
       Err(_) => None
       Ok(division) =>
-        if division.remainder.equal(p) {
+        // A rejected candidate cannot affect the caller's result. Accepted
+        // changes still require the same exact reconstructed identity.
+        if !needed(division.remainder) {
+          None
+        } else if division.remainder.equal(p) {
           Some(p)
         } else {
           match reconstruct(divisors, division.quotients, division.remainder) {
@@ -96,10 +101,7 @@ fn conjunct_conflict(formula : @qf.Formula) -> Bool {
   ) -> Bool {
     @core.any(atoms, fn(atom) {
       let (p, relation) = atom
-      match reduce(p, basis) {
-        Some(r) => constant_false(r, relation)
-        None => false
-      }
+      reduce(p, basis, fn(r) { constant_false(r, relation) }) is Some(_)
     })
   }
   let atoms = collect(formula, Nil)
@@ -136,15 +138,13 @@ fn conjunct_conflict(formula : @qf.Formula) -> Bool {
       p,
     ) {
       let others = @core.filter(inputs, fn(q) { !q.equal(p) })
-      match reduce(p, others) {
-        Some(r) =>
-          if (binomial(r) || constant_false(r, EqualZero)) &&
-            !@core.any(inputs, fn(q) { q.equal(r) }) &&
-            !@core.any(found, fn(q) { q.equal(r) }) {
-            Cons(r, found)
-          } else {
-            found
-          }
+      match
+        reduce(p, others, fn(r) {
+          (binomial(r) || constant_false(r, EqualZero)) &&
+          !@core.any(inputs, fn(q) { q.equal(r) }) &&
+          !@core.any(found, fn(q) { q.equal(r) })
+        }) {
+        Some(r) => Cons(r, found)
         None => found
       }
     })
